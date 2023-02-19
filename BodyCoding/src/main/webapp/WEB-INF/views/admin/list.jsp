@@ -9,6 +9,14 @@
 </head>
 <body>
 	<h2>지점리스트</h2>
+	<div>
+		<form method="get">
+			<div>
+				<input type="text" name="searchTxt" placeholder="검색어를 입력하세요."/>
+			</div>
+			<input type="submit" name="검색"/>
+		</form>
+	</div>
 	<table border="1">
 		<tr>
 			<th>지점코드</th>
@@ -23,8 +31,8 @@
 			<td>${row.GYM_CODE }</td>
 			<td>${row.GYM_SCALE }</td>
 			<td>
-				<a href="edit.do?id=${row.GYM_CODE }">수정</a>
-				<a href="delete.do?id=${row.GYM_CODE }">삭제</a>
+				<a href="edit.do?GYM_CODE=${row.GYM_CODE }">수정</a>
+				<a href="delete.do?GYM_CODE=${row.GYM_CODE }">삭제</a>
 			</td>
 		</tr>
 		</c:forEach>

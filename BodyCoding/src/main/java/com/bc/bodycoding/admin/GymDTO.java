@@ -24,4 +24,5 @@ public class GymDTO {
 	private String RTIME_SAT_END;
 	private String RTIME_HOLY_START;
 	private String RTIME_HOLY_END;
+	
 }

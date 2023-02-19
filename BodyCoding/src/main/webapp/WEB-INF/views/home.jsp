@@ -21,5 +21,9 @@
 	<ul>
 		<li><a href="main">member 메인페이지</a></li>
 	</ul>
+	
+	<ul>
+		<li><a href="./list.do">지점목록</a></li>
+	</ul>
 </body>
 </html>

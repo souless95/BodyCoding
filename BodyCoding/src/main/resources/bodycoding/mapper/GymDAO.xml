@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bc.bodycoding.admin.GymService">
+
+	<select id="select"
+		parameterType="com.bc.bodycoding.admin.GymDTO"
+		resultType="com.bc.bodycoding.admin.GymDTO">
+		select * from GYM_DETAIL order by GYM_CODE desc
+	</select>
+
+</mapper>

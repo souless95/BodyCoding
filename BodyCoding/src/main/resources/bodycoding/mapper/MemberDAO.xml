@@ -7,4 +7,3 @@
 	
 <mapper namespace="com.bc.bodycoding.account.MemberService">
 </mapper>
-

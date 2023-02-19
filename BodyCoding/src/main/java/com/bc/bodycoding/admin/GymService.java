@@ -8,4 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface GymService {
 
 	public List<GymDTO> select();
+	public int insert(GymDTO gymDTO);
+	public GymDTO selectOne(GymDTO gymDTO);
+	public int update(GymDTO gymDTO);
+	public int delete(GymDTO gymDTO);
 }

@@ -323,7 +323,7 @@
 		</section>
 		<!--End off video section -->
 
-
+		<!-- 필요없는 부분이라 생각됨 
 		<div class="container">
 			<div class="row">
 				<div class="main_featured m-top-100">
@@ -337,7 +337,9 @@
 				</div>
 			</div>
 		</div>
-
+		-->
+		
+		
 		<div class="featured_slider">
 			<div>
 				<div class="featured_img">
@@ -422,8 +424,8 @@
 		</section>
 		<!--End off Featured section-->
 
-
-		<!--Impress section-->
+		
+		<!-- 
 		<section id="impress" class="impress roomy-100">
 			<div class="overlay"></div>
 			<div class="container">
@@ -440,16 +442,16 @@
 						</div>
 					</div>
 				</div>
-				<!--End off row -->
+				End off row 주석
 			</div>
-			<!--End off container -->
-		</section>
-		<!-- End off Impress section-->
+			 End off container주석
+		</section>	
+		 -->
+	
 
 
 
-
-		<!--Portfolio Section-->
+		<!--Portfolio Section 주석
 		<section id="portfolio" class="portfolio lightbg">
 			<div class="container">
 				<div class="row">
@@ -549,11 +551,12 @@
 						</div>
 					</div>
 				</div>
-				<!--End off row -->
+				주석 End off row 주석
 			</div>
-			<!--End off container -->
+			주석 End off container 주석
 		</section>
-		<!-- End off Portfolio section-->
+		주석 End off Portfolio section
+		-->
 
 
 		<!--Skill Sections-->
@@ -644,7 +647,7 @@
 
 
 
-		<!--Testimonial Section-->
+		<!--Testimonial Section 주석
 		<section id="testimonial" class="testimonial fix">
 			<div class="overlay"></div>
 			<div class="container">
@@ -718,11 +721,12 @@
 					</div>
 
 				</div>
-				<!--End off row-->
+				-End off row 주석
 			</div>
-			<!--End off container -->
+			End off container 주석
 		</section>
-		<!--End off Testimonial section -->
+		-End off Testimonial section 주석
+		-->
 
 
 		<!--client brand section-->
@@ -769,7 +773,8 @@
 		<!-- End off Cbrand section -->
 
 
-		<!--Subscribe section-->
+		<!--
+		Subscribe section 주석
 		<section id="subscribe" class="subscribe roomy-100 fix">
 			<div class="overlay"></div>
 			<div class="container">
@@ -793,15 +798,16 @@
 						</div>
 					</div>
 				</div>
-				<!--End off row -->
+				End off row 주석
 			</div>
-			<!--End off container -->
+			End off container 주석
 		</section>
-		<!-- End off Impress section-->
+		 End off Impress section주석-->
+		
 
 
 
-		<!--Blog Section-->
+		<!--Blog Section
 		<section id="blog" class="blog">
 			<div class="container">
 				<div class="row">
@@ -853,13 +859,13 @@
 						</div>
 					</div>
 				</div>
-				<!--End off row -->
+				End off row주석
 			</div>
-			<!--End off container -->
+			주석 End off container주석
 		</section>
-		<!-- End off Blog section-->
+		주석 End off Blog section 
+		-->
 
-	
 
 		<!-- scroll up-->
 		<div class="scrollup">
@@ -881,8 +887,6 @@
 				</div>
 			</div>
 		</footer>
-
-
 
 	</div>
 	<!-- JS includes -->

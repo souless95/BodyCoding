@@ -8,5 +8,9 @@
 </head>
 <body>
 	<h2>바디코딩 프로젝트</h2>
+	
+	<ul>
+		<li><a href="/">홈</a></li>
+	</ul>
 </body>
 </html>

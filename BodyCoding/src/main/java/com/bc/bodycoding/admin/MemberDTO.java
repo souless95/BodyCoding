@@ -1,4 +1,4 @@
-package com.bc.admin.gym;
+package com.bc.bodycoding.admin;
 
 import java.util.Date;
 

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<%@ include file = "./inc/Top.jsp" %>
 <body>
 
 </body>

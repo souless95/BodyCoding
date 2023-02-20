@@ -6,7 +6,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>    
+<style>
+    body {
+      min-height: 100vh;
+
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+    }
+
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+    
+    * {	font-weight:bold; font-size:20px; 
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+  </style>
+
 </head>
+
 <body>
  <script type="text/javascript">
 function movePage(f){
@@ -22,85 +58,158 @@ function movePage(f){
 	
 }
 </script> 
-    <h1>회원가입</h1>
-    <form method="post" onsubmit="movePage(this)">
+<div class="container">
+	<div class="input-form-backgroud row">
+		<div class="input-form col-md-12 mx-auto">
+	<div style="text-align:center;">
+    <h2 class="mb-1">회원가입</h2>
+    </div>
+    <form method="post" onsubmit="movePage(this)" class="validation-form" novalidate>
     	<input type="hidden" id="mem_status" name="mem_status" value="1">
-    	
-    	<br>
-        <label for="mem_id">아이디(이메일):</label>
-        <input type="email" id="mem_id" name="mem_id" required><br>
-        
-        <label for="mem_pass">비밀번호:</label>
-        <input type="password" id="mem_pass" name="mem_pass" required><br>
-
-        <label for="mem_name">이름:</label>
-		<input type="text" id="mem_name" name="mem_name" required><br>
-
-        <label for="mem_gender">성별:</label>
-        <input type="radio" id="mem_gender" name="mem_gender" value="M">남자
-        <input type="radio" id="mem_gender" name="mem_gender" value="F">여자<br>
-
-        <label for="mem_birth">생년월일:</label>
-        <input type="date" id="mem_birth" name="mem_birth"><br>
-
-        <label for="mem_phone">전화번호:</label>
-        <input type="tel" id="mem_phone" name="mem_phone" required><br>
-
-        <label for="mem_address">주소:</label>
-        <input type="text" id="mem_address" name="mem_address" required><br>
-
-        <label for="gym_code">지점선택:</label>
-        <input type="text" id="gym_code" name="gym_code" required><br>
-
+	    
+	    <div>
+    	 <div class="mb-1" >
+	        <label for="mem_id">아이디(이메일)</label>
+	        <input type="email" class="form-control" id="mem_id" name="mem_id" placeholder="you@example.com" value="" required>
+	        <div class="invalid-feedback" style="margin-bottom:20px;">
+                아이디를 입력해주세요.
+              </div>
+        </div>
+       </div>
+        <div>
+         <div class="mb-1">
+	        <label for="mem_pass">비밀번호</label>
+	        <input type="password" class="form-control" id="mem_pass" name="mem_pass" placeholder="" value="" required><br>
+			<div class="invalid-feedback" style="margin-bottom:20px;">
+              	비밀번호를 입력해주세요.
+              </div>
+		</div>
+		</div>
+		 <div class="mb-1">
+	        <label for="mem_name">이름</label>
+			<input type="text" class="form-control" id="mem_name" name="mem_name" required><br>
+			<div class="invalid-feedback">
+              	이름을 입력해 주세요
+              </div>
+		</div>
+		
+		
+		 <div class="mb-2">
+	        <label for="mem_gender">성별</label>
+	        <input type="radio"  id="mem_gender" name="mem_gender" value="M">&nbsp;남자
+	        <input type="radio"  id="mem_gender" name="mem_gender" value="F">&nbsp;여자<br>
+	        <div class="invalid-feedback">
+              	성별을 선택해 주세요
+              </div>
+		</div>
+		
+		 <div class="mb-1">
+	        <label for="mem_birth">생년월일</label>
+	        <input type="date" class="form-control" id="mem_birth" name="mem_birth"><br>
+	        <div class="invalid-feedback">
+              	생년월일을 선택해 주세요
+             </div>
+		</div>
+		
+		 <div class="mb-1">
+	        <label for="mem_phone">전화번호</label>
+	        <input type="tel" class="form-control" id="mem_phone" name="mem_phone" required><br>
+	        <div class="invalid-feedback">
+              	전화번호를 입력해 주세요
+              </div>
+		</div>
+		
+		 <div class="mb-1">
+	        <label for="mem_address">주소</label>
+	        <input type="text" class="form-control" id="mem_address" name="mem_address" required><br>
+	        <div class="invalid-feedback">
+             	주소를 입력해 주세요
+             </div>
+		</div>
+		
+		 <div class="mb-1">
+	        <label for="gym_code">지점선택</label>&nbsp;
+	        <input type="text" id="gym_code" name="gym_code" required><br>
+	        <div class="invalid-feedback">
+             	지점을 선택해 주세요
+             </div>
+		</div>
+		
+		
+		 <div class="mb-1">
 		<c:if test="${mem_type eq 'member'}">
-			<input type="hidden" id="mem_point" name="mem_point" value="0">
-			<input type="hidden" id="mem_type" name="mem_type" value="MEMBER">
+			<input type="hidden" class="form-control" id="mem_point" name="mem_point" value="0">
+			<input type="hidden" class="form-control" id="mem_type" name="mem_type" value="MEMBER">
 	        <br>
-	        <label for="mem_height">키:</label>
-	        <input type="number" id="mem_height" name="mem_height" step="0.01" required><br>
+	        <label for="mem_height">키</label>
+	        <input type="number" class="form-control" id="mem_height" name="mem_height" step="0.01" required><br>
 	
-	        <label for="mem_weight">몸무게:</label>
-	        <input type="number" id="mem_weight" name="mem_weight" step="0.01" required><br>
-	        <label for="mem_disease">질병:</label>
-	        <input type="text" id="mem_disease" name="mem_disease"><br>
+	        <label for="mem_weight">몸무게</label>
+	        <input type="number" class="form-control" id="mem_weight" name="mem_weight" step="0.01" required><br>
+	        <label for="mem_disease">질병</label>
+	        <input type="text" class="form-control" id="mem_disease" name="mem_disease"><br>
 	
-	        <label for="mem_purpose">운동목적:</label>
-	        <input type="text" id="mem_purpose" name="mem_purpose"><br>
+	        <label for="mem_purpose">운동목적</label>
+	        <input type="text" class="form-control" id="mem_purpose" name="mem_purpose"><br>
 	
-	        <label for="mem_interest">관심사항:</label>
-	        <input type="text" id="mem_interest" name="mem_interest"><br>
+	        <label for="mem_interest">관심사항</label>
+	        <input type="text" class="form-control" id="mem_interest" name="mem_interest"><br>
 	
-	        <label for="mem_inflow">유입경로:</label>
-	        <input type="text" id="mem_inflow" name="mem_inflow"><br>
-	        
+	        <label for="mem_inflow">유입경로</label>
+	        <input type="text" class="form-control" id="mem_inflow" name="mem_inflow"><br>
         </c:if>
+        </div>
         
+         <div class="mb-1">
         <c:if test="${mem_type eq 'trainer'}">
-	        <input type="hidden" id="mem_type" name="mem_type" value="TRAINER">
+	        <input type="hidden" class="form-control" id="mem_type" name="mem_type" value="TRAINER">
 	        <br>
-	        <label for="mem_career">경력:</label>
-	        <input type="text" id="mem_career" name="mem_career"><br>
+	        <label for="mem_career">경력</label>
+	        <input type="text" class="form-control" id="mem_career" name="mem_career"><br>
 	        
-	        <label for="mem_comment">자기소개:</label>
-	        <input type="text" id="mem_comment" name="mem_comment"><br>
+	        <label for="mem_comment">자기소개</label>
+	        <input type="text" class="form-control" id="mem_comment" name="mem_comment"><br>
 	        
-	        <label for="mem_career">프로필 사진:</label>
-	        <input type="text" id="mem_career" name="mem_career"><br>
-	        
+	        <label for="mem_career">프로필 사진</label>
+	        <input type="text" class="form-control" id="mem_career" name="mem_career"><br>
         </c:if>
+        </div>
         
+         <div class="mb-1">
         <c:if test="${mem_type eq 'admin_sub'}">
-	        <input type="hidden" id="mem_type" name="mem_type" value="ADMIN_SUB">
+	        <input type="hidden" class="form-control" id="mem_type" name="mem_type" value="ADMIN_SUB">
 	        <br>
-	        <label for="mem_comment">매장소개:</label>
-	        <input type="text" id="mem_comment" name="mem_comment"><br>
+	        <label for="mem_comment">매장소개</label>
+	        <input type="text" class="form-control" id="mem_comment" name="mem_comment"><br>
 	        
-	        <label for="mem_career">매장 사진:</label>
-	        <input type="text" id="mem_career" name="mem_career"><br>
-	        
-        </c:if> 
+	        <label for="mem_career">매장 사진</label>
+	        <input type="text" class="form-control" id="mem_career" name="mem_career"><br>
+        </c:if>
+        </div> 
         
-        <button type="submit">가입하기</button>        
-	</form>
+        <button  class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+     	</form>
+  	
+   
+    	</div>
+	</div>
+</div>
+
+ <script>
+    window.addEventListener('load', () => {
+      const forms = document.getElementsByClassName('validation-form');
+
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+    </script>
 </body>
 </html>

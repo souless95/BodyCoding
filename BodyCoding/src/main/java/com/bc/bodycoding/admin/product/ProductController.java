@@ -17,10 +17,11 @@ public class ProductController {
 		return "/admin/product/pList";
 	}
 	
-	@RequestMapping("/pEdit.do")
-	public String edit() {
-		
-	}
+	/*
+	 * @RequestMapping("/pEdit.do") public String edit() {
+	 * 
+	 * }
+	 */
 	
 	
 	

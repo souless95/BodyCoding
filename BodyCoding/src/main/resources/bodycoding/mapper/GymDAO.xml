@@ -10,7 +10,11 @@
 	<select id="select"
 		parameterType="com.bc.bodycoding.admin.GymDTO"
 		resultType="com.bc.bodycoding.admin.GymDTO">
-		select * from GYM_DETAIL order by GYM_CODE desc
+		select * from GYM_DETAIL 
+		<if test="searchTxt!=null and !searchTxt.equals('')">
+ 			WHERE ${searchField} like '%'||#{searchTxt}||'%'
+ 		</if>
+		order by GYM_CODE desc
 	</select>
 
 	<insert id="insert"

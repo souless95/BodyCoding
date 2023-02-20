@@ -1,8 +1,10 @@
 package com.bc.bodycoding.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.transaction.annotation.Transactional;
 
 @Mapper
 public interface GymService {
@@ -12,4 +14,5 @@ public interface GymService {
 	public GymDTO selectOne(GymDTO gymDTO);
 	public int update(GymDTO gymDTO);
 	public int delete(GymDTO gymDTO);
+	
 }

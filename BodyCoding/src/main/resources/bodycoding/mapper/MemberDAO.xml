@@ -37,4 +37,18 @@
     		#{mem_birth}, #{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status},
     		#{gym_code}, #{mem_comment}, #{mem_img}, sysdate)
 	</insert>
+	
+	<select id="select"
+		parameterType="com.bc.bodycoding.account.MemberDTO"
+		resultType="com.bc.bodycoding.account.MemberDTO">
+		select * from member where mem_type='MEMBER' order by mem_regidate desc
+	</select>
+	
+	<select id="selectT"
+		parameterType="com.bc.bodycoding.account.MemberDTO"
+		resultType="com.bc.bodycoding.account.MemberDTO">
+		select * from member where mem_type='TRAINER' order by mem_regidate desc
+	</select>
+	
+	
 </mapper>

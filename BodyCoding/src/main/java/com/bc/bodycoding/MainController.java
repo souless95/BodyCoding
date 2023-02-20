@@ -27,4 +27,10 @@ public class MainController {
 	public String membermain(HttpSession session) {
 		return "member/main";
 	}
+	
+	//캘린더창으로 넘어가기
+	@GetMapping("calendar.do")
+	public String fullCalendar() {
+		return "fullCalendar";
+	}
 }

@@ -18,7 +18,7 @@ public class GymController {
 	@RequestMapping("/list.do")
 	public String gym1(Model model) {
 		model.addAttribute("gymList", dao.select());
-		return "admin/list";
+		return "admin/GymList";
 	}
 	
 	//지점등록페이지

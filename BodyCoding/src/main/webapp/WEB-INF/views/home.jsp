@@ -19,5 +19,8 @@
 	<ul>
 		<li><a href="main">member 메인페이지</a></li>
 	</ul>
+	<ul>
+		<li><a href="calendar.do">캘린더</a></li>
+	</ul>
 </body>
 </html>

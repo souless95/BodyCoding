@@ -11,7 +11,7 @@ public class MemberController {
 
 	MemberService memberdao;
 
-	//회원가입창으로 넘어가기
+	//회원가입창으로 넘어가기ㅎㅎ
 	@GetMapping("/signup.do")
 	public String signupM(Model model) {
 		model.addAttribute("mem_type","member");

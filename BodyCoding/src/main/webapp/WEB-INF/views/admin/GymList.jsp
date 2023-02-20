@@ -80,6 +80,14 @@
 									<td>${row.RTIME_SAT_END }</td>
 									<td>${row.RTIME_HOLY_START }</td>
 									<td>${row.RTIME_HOLY_END }</td>
+									<td>
+										<button type="button" class="btn btn-primary" onclick="location.href='edit.do?GYM_CODE=${row.GYM_CODE }'">
+											수정
+										</button>
+										<button type="button" class="btn btn-primary" onclick="location.href='delete.do?GYM_CODE=${row.GYM_CODE }'">
+											삭제
+										</button>
+									</td>
 								</tr>
 							</c:forEach>
 							<button type="button" class="btn btn-success" onclick="location.href='regist.do'">
@@ -88,10 +96,10 @@
 							<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do'">
 								트레이너 관리
 							</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='edit.do?idx=${row.GYM_CODE }'">
+							<button type="button" class="btn btn-primary" onclick="location.href='edit.do?GYM_CODE=${row.GYM_CODE }'">
 								수정
 							</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='delete.do?idx=${row.GYM_CODE }'">
+							<button type="button" class="btn btn-primary" onclick="location.href='delete.do?GYM_CODE=${row.GYM_CODE }'">
 								삭제
 							</button>
 							</tbody>

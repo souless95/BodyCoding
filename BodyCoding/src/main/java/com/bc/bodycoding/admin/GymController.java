@@ -1,24 +1,34 @@
 package com.bc.bodycoding.admin;
 
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import util.PagingUtil;
+
+
 @Controller
 public class GymController {
 
 	@Autowired
 	GymService dao;
+	@Autowired
+	SqlSession sqlSession;
 	
 	//지점리스트
 	@RequestMapping("/list.do")
 	public String gym1(Model model) {
 		model.addAttribute("gymList", dao.select());
-		return "admin/list";
-	}
-	
+		return "admin/GymList";
+	}	
 	//지점등록페이지
 	@RequestMapping(value="/regist.do", method=RequestMethod.GET)
 	public String gym2() {

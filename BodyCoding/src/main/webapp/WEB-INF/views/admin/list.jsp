@@ -21,6 +21,9 @@
 			<div class="card-body">
 				<form method="get">
 					<div>
+						<select name="searchField">
+							<option value="GYM_CODE">내용</option>
+						</select>
 						<input type="text" name="searchTxt" placeholder="검색어를 입력하세요." />
 						<input type="submit" name="검색" />
 					</div>

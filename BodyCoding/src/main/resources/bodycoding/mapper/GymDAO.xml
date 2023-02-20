@@ -10,7 +10,46 @@
 	<select id="select"
 		parameterType="com.bc.bodycoding.admin.GymDTO"
 		resultType="com.bc.bodycoding.admin.GymDTO">
-		select * from GYM_DETAIL order by GYM_CODE desc
+		select * from GYM_DETAIL 
+		<if test="searchTxt!=null and !searchTxt.equals('')">
+ 			WHERE ${searchField} like '%'||#{searchTxt}||'%'
+ 		</if>
+		order by GYM_CODE desc
 	</select>
 
+	<insert id="insert"
+		parameterType="com.bc.bodycoding.admin.GymDTO">
+		insert into GYM_DETAIL (GYM_CODE, GYM_SCALE, GYM_DTAIL_IMG, 
+			FACILITY_PARKING, FACILITY_HEALTH, FACILITY_YOGA, FACILITY_GX, 
+			FACILITY_PILATES, FACILITY_PT, FACILITY_24HOUR, FACILITY_SHOWER, 
+			FACILITY_WEAR, FACILITY_LOCKER, RTIME_WEEK_START, RTIME_WEEK_END, 
+			RTIME_SAT_START, RTIME_SAT_END, RTIME_HOLY_START, RTIME_HOLY_END) 
+		values(#{GYM_CODE}, #{GYM_SCALE}, #{GYM_DTAIL_IMG}, #{FACILITY_PARKING},
+		 #{FACILITY_HEALTH}, #{FACILITY_YOGA}, #{FACILITY_GX}, #{FACILITY_PILATES},
+		  #{FACILITY_PT}, #{FACILITY_24HOUR}, #{FACILITY_SHOWER}, #{FACILITY_WEAR}, 
+		  #{FACILITY_LOCKER}, #{RTIME_WEEK_START}, #{RTIME_WEEK_END},
+		  #{RTIME_SAT_START}, #{RTIME_SAT_END}, #{RTIME_HOLY_START},
+		  #{RTIME_HOLY_END})
+	</insert>
+	
+	<select id="selectOne"
+		parameterType="com.bc.bodycoding.admin.GymDTO"
+		resultType="com.bc.bodycoding.admin.GymDTO">
+		select * from GYM_DETAIL where GYM_CODE=#{GYM_CODE}
+	</select>
+	
+	<update id="update"
+		parameterType="com.bc.bodycoding.admin.GymDTO">
+		update GYM_DETAIL set GYM_SCALE=#{GYM_SCALE}, GYM_DTAIL_IMG=#{GYM_DTAIL_IMG}, 
+			FACILITY_PARKING=#{FACILITY_PARKING}, FACILITY_HEALTH=#{FACILITY_HEALTH}, FACILITY_YOGA=#{FACILITY_YOGA}, FACILITY_GX=#{FACILITY_GX}, 
+			FACILITY_PILATES=#{FACILITY_PILATES}, FACILITY_PT=#{FACILITY_PT}, FACILITY_24HOUR=#{FACILITY_24HOUR}, FACILITY_SHOWER=#{FACILITY_SHOWER}, 
+			FACILITY_WEAR=#{FACILITY_WEAR}, FACILITY_LOCKER=#{FACILITY_LOCKER}, RTIME_WEEK_START=#{RTIME_WEEK_START}, RTIME_WEEK_END=#{RTIME_WEEK_END}, 
+			RTIME_SAT_START=#{RTIME_SAT_START}, RTIME_SAT_END=#{RTIME_SAT_END}, RTIME_HOLY_START=#{RTIME_HOLY_START}, RTIME_HOLY_END=#{RTIME_HOLY_END} 
+		where GYM_CODE=#{GYM_CODE}
+	</update>
+	
+	<delete id="delete"
+		parameterType="com.bc.bodycoding.admin.GymDTO">
+		delete from GYM_DETAIL where GYM_CODE=#{GYM_CODE}
+	</delete>
 </mapper>

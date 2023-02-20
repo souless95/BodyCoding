@@ -13,6 +13,9 @@
 		<li><a href="/">홈</a></li>
 	</ul>
 	<ul>
+		<li><a class="navbar-brand ps-3" href="./list.do">Body Coding</a></li>
+	</ul>
+	<ul>
 		<li><a href="main/admin">admin 메인페이지</a></li>
 	</ul>
 	<ul>

@@ -1,31 +1,58 @@
 package com.bc.bodycoding.account;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
-@RequestMapping("/member/**")
 public class MemberController {
-	
-	@Autowired
-	private MemberService memberService;
-	
-	@GetMapping("login")
-	public void getSelectOne() throws Exception{}
-	
-//	@PostMapping("login")
-//	public String getSelectOne(MemberDTO memberDTO, HttpSession session) throws Exception{
-//		memberDTO = memberService.getSelectOne(memberDTO);
-//		if(memberDTO != null) {
-//			session.setAttribute("member", memberDTO);
-//		}
-//		
-//		return "redirect:main";
-//	}
 
+	MemberService memberdao;
+
+	//회원가입창으로 넘어가기ㅎㅎ
+	@GetMapping("/signup.do")
+	public String signupM(Model model) {
+		model.addAttribute("mem_type","member");
+		return "member/account/signup";
+	}
+	
+	@GetMapping("/signupT.do")
+	public String signupT(Model model) {
+		model.addAttribute("mem_type","trainer");
+		return "member/account/signup";
+	}
+	
+	@GetMapping("/signupASUB.do")
+	public String signupASUB(Model model) {
+		model.addAttribute("mem_type","admin_sub");
+		return "member/account/signup";
+	}
+	
+	//회원가입 폼 받아서 실행
+	@PostMapping("/signup.do")
+	public String signupM2(MemberDTO memberDTO) {
+			int result = memberdao.insertMember(memberDTO);
+			if(result==1) System.out.println("회원가입이 완료되었습니다.");
+			
+		return "main";
+	}
+	
+	//회원가입 폼 받아서 실행
+	@PostMapping("/signupT.do")
+	public String signupT2(MemberDTO memberDTO) {
+			int result = memberdao.insertMemberT(memberDTO);
+			if(result==1) System.out.println("회원가입이 완료되었습니다.");
+		return "main";
+	}
+	
+	//회원가입 폼 받아서 실행
+	@PostMapping("/signupASUB.do")
+	public String signupASUB2(MemberDTO memberDTO) {
+		int result = memberdao.insertMemberASUB(memberDTO);
+		if(result==1) System.out.println("회원가입이 완료되었습니다.");
+		return "main";
+	}
 }
+

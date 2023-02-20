@@ -1,10 +1,14 @@
 package com.bc.bodycoding.admin;
 
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @Controller
 public class GymController {
@@ -14,7 +18,7 @@ public class GymController {
 	
 	//지점리스트
 	@RequestMapping("/list.do")
-	public String gym1(Model model) {
+	public String gym1(Model model, HttpServletRequest req) {
 		model.addAttribute("gymList", dao.select());
 		return "admin/list";
 	}
@@ -54,4 +58,5 @@ public class GymController {
 		if(result==1) System.out.println("삭제되었습니다.");
 		return "redirect:list.do";
 	}
+	
 }

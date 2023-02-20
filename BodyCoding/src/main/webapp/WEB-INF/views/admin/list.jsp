@@ -11,10 +11,12 @@
 	<h2>지점리스트</h2>
 	<div>
 		<form method="get">
-			<div>
-				<input type="text" name="searchTxt" placeholder="검색어를 입력하세요."/>
-			</div>
-			<input type="submit" name="검색"/>
+			<select name="searchField">
+				<option value="GYM_CODE">지점코드</option>
+				<option value="GYM_SCALE">평수</option>
+			</select>
+			<input type="text" name="searchTxt" />
+			<input type="submit" value="검색" />
 		</form>
 	</div>
 	<table border="1">

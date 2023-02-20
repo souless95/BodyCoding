@@ -26,5 +26,6 @@ public class MemberDTO {
 	private String MEM_COMMENT;
 	private String MEM_IMG;
 	private Date MEM_REGIDATE;
+	private String MEM_NAME;
 	
 }

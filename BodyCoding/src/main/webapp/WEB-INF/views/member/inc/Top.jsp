@@ -85,7 +85,7 @@
 			            &nbsp;&nbsp;&nbsp;
 			            <li style="padding-top:15px;">
 			                <button class="btn btn-dark">
-			                    회원가입
+			                    <a href="signup.do">회원가입</a>
 			                </button>
 			            </li>
 			            

@@ -12,7 +12,19 @@
 <body>
 <div class="container">
 	<h2>지점리스트</h2>
+<<<<<<< HEAD
 	<table class="table" border="3">
+=======
+	<div>
+		<form method="get">
+			<div>
+				<input type="text" name="searchTxt" placeholder="검색어를 입력하세요."/>
+			</div>
+			<input type="submit" name="검색"/>
+		</form>
+	</div>
+	<table border="1">
+>>>>>>> refs/remotes/origin/main
 		<tr>
 			<th>지점코드</th>
 			<th>평수</th>
@@ -40,6 +52,7 @@
 		<tr>
 			<td>${row.GYM_CODE }</td>
 			<td>${row.GYM_SCALE }</td>
+<<<<<<< HEAD
 			<td>${row.GYM_DTAIL_IMG }</td>
 			<td>${row.FACILITY_PARKING }</td>
 			<td>${row.FACILITY_HEALTH }</td>
@@ -59,6 +72,12 @@
 			<td>${row.RTIME_HOLY_START }</td>
 			<td>${row.RTIME_HOLY_END }</td>
 			ㄴㅇㄴㅇ
+=======
+			<td>
+				<a href="edit.do?GYM_CODE=${row.GYM_CODE }">수정</a>
+				<a href="delete.do?GYM_CODE=${row.GYM_CODE }">삭제</a>
+			</td>
+>>>>>>> refs/remotes/origin/main
 		</tr>
 		</c:forEach>
 	</table>

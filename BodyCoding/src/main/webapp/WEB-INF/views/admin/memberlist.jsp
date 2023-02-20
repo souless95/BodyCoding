@@ -45,6 +45,9 @@
 	
 <ul>
 	<li><a href="main/admin">홈으로</a></li>
-</ul>	
+</ul>
+<c:if test="${mem_type eq 'trainer'}">
+	<a href="signupT.do">트레이너등록</a>
+</c:if>	
 </body>
 </html>

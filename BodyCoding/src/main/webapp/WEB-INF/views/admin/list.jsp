@@ -58,6 +58,7 @@
 			<td>${row.RTIME_SAT_END }</td>
 			<td>${row.RTIME_HOLY_START }</td>
 			<td>${row.RTIME_HOLY_END }</td>
+			ㄴㅇㄴㅇ
 		</tr>
 		</c:forEach>
 	</table>

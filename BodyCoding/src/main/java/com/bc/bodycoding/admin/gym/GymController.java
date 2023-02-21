@@ -1,10 +1,16 @@
 package com.bc.bodycoding.admin.gym;
 
+import java.lang.reflect.Member;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bc.bodycoding.MemberDTO;
 
 @Controller
 public class GymController {
@@ -61,5 +67,20 @@ public class GymController {
 		int result = gymdao.delete(gymDTO);
 		if(result==1) System.out.println("삭제되었습니다.");
 		return "redirect:gymadminlist.do";
+	}
+	
+	//지점 등록페이지로 이동
+	@GetMapping("/gymRegist.do")
+	public String  registASUB(Model model) {
+		model.addAttribute("mem_type","admin_sub");
+		return "admin/gym/gymRegist";
+	}
+	
+	//지점 등록 폼 받아서 등록
+	@PostMapping("/gymRegist.do")
+	public String registASUB2(MemberDTO memberDTO) {
+		int result = gymdao.insertMemberASUB(memberDTO);
+		if(result==1) System.out.println("회원가입이 완료되었습니다.");
+		return "redirect:/gymadminlist.do";
 	}
 }

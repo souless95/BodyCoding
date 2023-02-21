@@ -50,7 +50,7 @@
 	<div style="text-align:center;">
     <h2 class="mb-1">회원가입</h2>
     </div>
-    <form method="post"  action="/signup.do" class="validation-form" novalidate>
+    <form method="post" action="/signup.do" class="validation-form" novalidate>
     	<input type="hidden" id="mem_status" name="mem_status" value="1">
 	    
 	    <div>
@@ -84,6 +84,7 @@
 	        <label for="mem_gender">성별</label>
 	        <input type="radio"  id="mem_gender" name="mem_gender" value="M">&nbsp;남자
 	        <input type="radio"  id="mem_gender" name="mem_gender" value="F">&nbsp;여자<br>
+	        <input type="hidden"  id="mem_gender" name="mem_gender" value="">
 	        <div class="invalid-feedback">
               	성별을 선택해 주세요
               </div>

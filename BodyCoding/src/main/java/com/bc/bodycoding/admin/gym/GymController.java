@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bc.bodycoding.MemberDTO;
+
 @Controller
 public class GymController {
 
@@ -20,8 +22,9 @@ public class GymController {
 	}	
 	
 	@RequestMapping("/gymview.do")
-	public String gym7(GymDTO gymDTO, Model model) {
+	public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		gymDTO = gymdao.selectOne(gymDTO);
+		model.addAttribute("memList", gymdao.select());
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
 		return "admin/gym/gymView";

@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="../static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -49,7 +48,7 @@
 							<tbody>
 							<c:forEach items="${gymList }" var="row" varStatus="loop">
 								<tr>
-									<td onclick="location.href='view.do?GYM_CODE=${row.GYM_CODE }'">${row.GYM_CODE }</td>
+									<td>${row.GYM_CODE }</td>
 									<td>${row.GYM_SCALE }</td>
 									<td>${row.GYM_DTAIL_IMG }</td>
 									<td>${row.RTIME_WEEK_START }</td>
@@ -59,11 +58,8 @@
 									<td>${row.RTIME_HOLY_START }</td>
 									<td>${row.RTIME_HOLY_END }</td>
 									<td>
-										<button type="button" class="btn btn-primary" onclick="location.href='edit.do?GYM_CODE=${row.GYM_CODE }'">
-											수정
-										</button>
-										<button type="button" class="btn btn-primary" onclick="location.href='delete.do?GYM_CODE=${row.GYM_CODE }'">
-											삭제
+										<button type="button" class="btn btn-primary" onclick="location.href='view.do?GYM_CODE=${row.GYM_CODE }'">
+											상세보기
 										</button>
 									</td>
 								</tr>
@@ -82,5 +78,9 @@
 			</main>
 		</div>		
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../static/admin/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="../static/admin/js/datatables-simple-demo.js"></script>   
 </body>
 </html>

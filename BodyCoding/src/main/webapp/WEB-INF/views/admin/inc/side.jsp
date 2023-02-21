@@ -33,7 +33,7 @@
 						aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link" href="../list.do">GYM 관리</a> <a
-								class="nav-link" href="layout-sidenav-light.html">트레이너 관리</a>
+								class="nav-link" href="">트레이너 관리</a>
 						</nav>
 					</div>
 					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

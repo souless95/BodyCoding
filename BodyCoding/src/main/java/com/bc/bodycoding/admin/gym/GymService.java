@@ -14,4 +14,5 @@ public interface GymService {
 	public int update(GymDTO gymDTO);
 	public int delete(GymDTO gymDTO);
 	public int insertMemberASUB(MemberDTO memberDTO);
+	public int insertMember1(MemberDTO memberDTO);
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bc.bodycoding.account.AccountService">
+
+<insert id="insertMember"
+	parameterType="global.dto.MemberDTO">
+	insert 
+		into MEMBER (mem_id, mem_pass, mem_name, mem_gender, 
+			mem_birth, mem_phone, mem_address, mem_type, mem_status, 
+			gym_code, mem_height, mem_weight, mem_disease, mem_purpose, 
+			mem_interest, mem_inflow, mem_point,mem_regidate)
+   		values (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_gender},
+	   		#{mem_birth}, #{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status}, 
+	   		#{gym_code}, #{mem_height}, #{mem_weight}, #{mem_disease}, #{mem_purpose}, 
+	   		#{mem_interest}, #{mem_inflow}, #{mem_point}, sysdate)
+</insert>
+
+
+<select id="login"
+	parameterType="global.dto.MemberDTO"
+	resultType="String">
+	select mem_id from member 
+    where mem_id=#{mem_id} and mem_pass=#{mem_pass}
+</select>
+
+	
+
+</mapper>

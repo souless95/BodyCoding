@@ -32,8 +32,9 @@
 					<div class="collapse" id="collapseLayouts"
 						aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="../list.do">GYM 관리</a> <a
-								class="nav-link" href="layout-sidenav-light.html">트레이너 관리</a>
+							<a class="nav-link" href="/gymadminlist.do">GYM 관리</a> 
+							<a class="nav-link" href="/trainerList.do">트레이너 관리</a>
+							<a class="nav-link" href="/memberList.do">회원 관리</a>
 						</nav>
 					</div>
 					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -77,7 +78,7 @@
 								aria-labelledby="headingOne"
 								data-bs-parent="#sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="401.html">기간제 이용권</a> <a
+									<a class="nav-link" href="../pList.do">기간제 이용권</a> <a
 										class="nav-link" href="404.html">횟수권</a> <a
 										class="nav-link" href="500.html">기타 상품</a>
 								</nav>

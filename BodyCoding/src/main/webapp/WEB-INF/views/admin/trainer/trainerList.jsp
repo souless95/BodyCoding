@@ -9,12 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${mem_type eq 'member'}">
-	<h2>회원리스트</h2>
-	</c:if>
-	<c:if test="${mem_type eq 'trainer'}">
-	<h2>트레이너리스트</h2>
-	</c:if>
+	<h2>트레이너 리스트</h2>
 	<table border="1">
 		<tr>
 			<th>센터</th>
@@ -43,11 +38,7 @@
 		</c:forEach>
 	</table>
 	
-<ul>
-	<li><a href="main/admin">홈으로</a></li>
-</ul>
-<c:if test="${mem_type eq 'trainer'}">
-	<a href="signupT.do">트레이너등록</a>
-</c:if>	
+	<button type="button" onclick="location.href='main/admin'">홈으로</button> 
+	<button type="button" onclick="location.href='trainerRegist.do'">트레이너 등록</button> 
 </body>
 </html>

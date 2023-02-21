@@ -1,4 +1,4 @@
-package com.bc.bodycoding.account;
+package com.bc.bodycoding;
 
 import java.sql.Date;
 

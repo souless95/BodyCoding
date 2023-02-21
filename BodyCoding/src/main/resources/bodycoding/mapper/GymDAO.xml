@@ -16,7 +16,7 @@
  		</if>
 		order by GYM_CODE desc
 	</select>
-
+	
 	<insert id="insert"
 		parameterType="com.bc.bodycoding.admin.GymDTO">
 		insert into GYM_DETAIL (GYM_CODE, GYM_SCALE, GYM_DTAIL_IMG, 

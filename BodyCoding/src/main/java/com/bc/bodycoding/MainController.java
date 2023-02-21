@@ -16,7 +16,7 @@ public class MainController {
 		return "home";
 	}	
 	
-	//회원메인창으로 넘어가기
+	//adimin메인창으로 넘어가기
 	@GetMapping("main/admin")
 	public String adminmain(HttpSession session) {
 		return "admin/main";

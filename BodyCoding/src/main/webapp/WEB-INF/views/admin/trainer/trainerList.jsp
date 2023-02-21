@@ -65,5 +65,6 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="../static/admin/js/datatables-simple-demo.js"></script>   
 	
+	<button type="button" onclick="location.href='trainerRegist.do'">트레이너 등록</button> 
 </body>
 </html>

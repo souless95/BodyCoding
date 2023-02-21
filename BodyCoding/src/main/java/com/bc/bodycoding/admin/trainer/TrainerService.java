@@ -10,6 +10,5 @@ import com.bc.bodycoding.MemberDTO;
 public interface TrainerService {
 
 	public int insertMemberT(MemberDTO memberDTO);
-	public int insertMemberASUB(MemberDTO memberDTO);
 	public List<MemberDTO> selectT();
 }

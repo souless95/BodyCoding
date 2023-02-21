@@ -19,6 +19,12 @@
    		#{mem_interest}, #{mem_inflow}, #{mem_point}, sysdate)
 </insert>
 
+<select id="login"
+	parameterType="com.bc.bodycoding.MemberDTO"
+	resultType="String">
+	select mem_id from member 
+    where mem_id=#{mem_id} and mem_pass=#{mem_pass}
+</select>
 
 	
 

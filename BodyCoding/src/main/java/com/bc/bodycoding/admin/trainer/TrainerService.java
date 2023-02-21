@@ -1,14 +1,15 @@
-package com.bc.bodycoding.account;
+package com.bc.bodycoding.admin.trainer;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public interface MemberService{
+import com.bc.bodycoding.MemberDTO;
 
-	public int insertMember(MemberDTO memberDTO);
+@Mapper
+public interface TrainerService {
+
 	public int insertMemberT(MemberDTO memberDTO);
 	public int insertMemberASUB(MemberDTO memberDTO);
-	public List<MemberDTO> select();
 	public List<MemberDTO> selectT();
 }

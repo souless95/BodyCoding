@@ -32,8 +32,9 @@
 					<div class="collapse" id="collapseLayouts"
 						aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="../list.do">GYM 관리</a> <a
-								class="nav-link" href="">트레이너 관리</a>
+							<a class="nav-link" href="/gymadminlist.do">GYM 관리</a> 
+							<a class="nav-link" href="/trainerList.do">트레이너 관리</a>
+							<a class="nav-link" href="/memberList.do">회원 관리</a>
 						</nav>
 					</div>
 					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

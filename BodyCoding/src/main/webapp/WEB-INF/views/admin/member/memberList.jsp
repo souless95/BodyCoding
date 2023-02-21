@@ -11,9 +11,10 @@
 <link href="../static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<body sb-nav-fixed>
+<body class="sb-nav-fixed">
 	<!-- top메뉴  -->
 	<%@ include file ="../../admin/inc/top.jsp" %>
+	
 		<div id="layoutSidenav">
 		<!-- side -->
         <%@ include file ="../../admin/inc/side.jsp" %>

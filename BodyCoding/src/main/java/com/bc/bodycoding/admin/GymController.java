@@ -1,19 +1,11 @@
 package com.bc.bodycoding.admin;
 
-
-import java.util.ArrayList;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import util.PagingUtil;
-
 
 @Controller
 public class GymController {
@@ -33,7 +25,8 @@ public class GymController {
 	@RequestMapping("/view.do")
 	public String gym7(GymDTO gymDTO, Model model) {
 		gymDTO = dao.selectOne(gymDTO);
-		model.addAttribute("gymView", gymDTO);
+		model.addAttribute("dto", gymDTO);
+		System.out.println(gymDTO);
 		return "admin/gym/gymView";
 	}
 	

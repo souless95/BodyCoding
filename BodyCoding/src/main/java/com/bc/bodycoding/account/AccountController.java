@@ -30,7 +30,7 @@ public class AccountController {
 			int result = accountdao.insertMember(memberDTO);
 			if(result==1) System.out.println("회원가입이 완료되었습니다.");
 			
-		return "main";
+		return "member/main";
 	}
 	
 	//회원 로그인창으로 넘어가기

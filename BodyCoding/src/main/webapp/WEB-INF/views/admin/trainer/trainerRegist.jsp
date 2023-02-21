@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>트레이너 등록</h1>
-    <form method="post" action="/registT.do">
+    <form method="post" action="/trainerRegist.do">
     	<input type="hidden" id="mem_status" name="mem_status" value="1">
     	<input type="hidden" id="mem_type" name="mem_type" value="TRAINER">
     	
@@ -26,6 +26,7 @@
         <label for="mem_gender">성별:</label>
         <input type="radio" id="mem_gender" name="mem_gender" value="M">남자
         <input type="radio" id="mem_gender" name="mem_gender" value="F">여자<br>
+        <input type="hidden"  id="mem_gender" name="mem_gender" value="">
 
         <label for="mem_birth">생년월일:</label>
         <input type="date" id="mem_birth" name="mem_birth"><br>
@@ -46,7 +47,7 @@
         <input type="text" id="mem_comment" name="mem_comment"><br>
         
         <label for="mem_career">프로필 사진:</label>
-        <input type="text" id="mem_career" name="mem_career"><br>
+        <input type="text" id="mem_img" name="mem_img"><br>
 	        
         
         <button type="submit">가입하기</button>        

@@ -60,4 +60,12 @@
     		#{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status},
     		#{gym_code}, #{mem_comment}, #{mem_img})
 	</insert>
+	
+	<insert id="insertMember1"
+	parameterType="com.bc.bodycoding.admin.gym.GymDTO">
+	insert into GYM_DETAIL 
+	   		(gym_code) 
+	   	values 
+	   		(#{gym_code})
+	</insert>		
 </mapper>

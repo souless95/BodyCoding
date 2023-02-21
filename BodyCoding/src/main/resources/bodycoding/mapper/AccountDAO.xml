@@ -9,7 +9,7 @@
 
 <insert id="insertMember"
 	parameterType="com.bc.bodycoding.MemberDTO">
-	insert all 
+	insert 
 		into MEMBER (mem_id, mem_pass, mem_name, mem_gender, 
 			mem_birth, mem_phone, mem_address, mem_type, mem_status, 
 			gym_code, mem_height, mem_weight, mem_disease, mem_purpose, 
@@ -18,12 +18,8 @@
 	   		#{mem_birth}, #{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status}, 
 	   		#{gym_code}, #{mem_height}, #{mem_weight}, #{mem_disease}, #{mem_purpose}, 
 	   		#{mem_interest}, #{mem_inflow}, #{mem_point}, sysdate)
-	   	into GYM_DETAIL 
-	   		(gym_code) 
-	   	values 
-	   		(#{gym_code})
-	   	select * from dual
 </insert>
+
 
 <select id="login"
 	parameterType="com.bc.bodycoding.MemberDTO"

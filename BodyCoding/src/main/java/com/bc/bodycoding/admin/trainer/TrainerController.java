@@ -15,36 +15,20 @@ public class TrainerController {
 	@Autowired
 	TrainerService trainerdao;
 	
+	//트레이너 등록 페이지로 이동
 	@GetMapping("/trainerRegist.do")
 	public String signupT(Model model) {
 		model.addAttribute("mem_type","trainer");
 		return "admin/trainer/trainerRegist";
 	}
 
-//	admin_sub/gym이랑 회의 후 수정
-//	@GetMapping("/registASUB.do")
-//	public String signupASUB(Model model) {
-//		model.addAttribute("mem_type","admin_sub");
-//		return "member/account/signup";
-//	}
-	
 	//회원가입 폼 받아서 실행
 	@PostMapping("/trainerRegist.do")
 	public String signupT2(MemberDTO memberDTO) {
 			int result = trainerdao.insertMemberT(memberDTO);
 			if(result==1) System.out.println("회원가입이 완료되었습니다.");
-		return "main/admin";
+		return "redirect:/trainerList.do";
 	}
-	
-	
-//	admin_sub/gym이랑 회의 후 수정
-//	//회원가입 폼 받아서 실행
-//	@PostMapping("/registASUB.do")
-//	public String signupASUB2(MemberDTO memberDTO) {
-//		int result = trainerdao.insertMemberASUB(memberDTO);
-//		if(result==1) System.out.println("회원가입이 완료되었습니다.");
-//		return "main";
-//	}
 	
 	//admin에서 트레이너목록 보여주기
 	@RequestMapping("/trainerList.do")

@@ -49,4 +49,14 @@
 		parameterType="com.bc.bodycoding.admin.gym.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}
 	</delete>
+	
+	<insert id="insertMemberASUB"
+		parameterType="com.bc.bodycoding.MemberDTO">
+		insert into MEMBER (mem_id, mem_pass, mem_name, 
+			mem_phone, mem_address, mem_type, mem_status, 
+			gym_code,  mem_comment, mem_img)
+    	values (#{mem_id}, #{mem_pass}, #{mem_name},
+    		#{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status},
+    		#{gym_code}, #{mem_comment}, #{mem_img})
+	</insert>
 </mapper>

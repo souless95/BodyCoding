@@ -16,5 +16,5 @@ public class ProductDTO {
 	private String product_description;
 	private String product_img;
 	private int product_price;
-	private Date product_rigidate;
+	private Date product_regidate;
 }

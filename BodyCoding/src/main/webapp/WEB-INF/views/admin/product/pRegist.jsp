@@ -48,9 +48,9 @@
 				<option>분류선택</option>
 			</select> 
 			</td>
-			<th style="display:none;">기간</th>
+			<th style="">기간</th>
 			<td><input type="number">일</td> 			
-			<th style="display:none;">횟수</th>
+			<th style="">횟수</th>
 			<td><input type="number">회</td> 			
 			<th>상품명</th>
 			<td><input type="text" name="product_name"></td>

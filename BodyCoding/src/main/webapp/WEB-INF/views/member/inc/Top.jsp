@@ -174,7 +174,7 @@
 		<section id="hello" class="home bg-mega">
 		
 			<div class="overlay">
-			<img alt="메인화면" src="static/assets/images/main1.jpeg" style="width:100%; height:100%;">		
+			<img alt="메인화면" src="static/assets/images/main1.jpeg" style="width:100%;">		
 			</div>
 			<div class="container">
 				<div class="row">

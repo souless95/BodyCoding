@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bc.bodycoding.MemberDTO;
+import global.dto.GymDTO;
+import global.dto.MemberDTO;
 
 @Controller
 public class GymController {

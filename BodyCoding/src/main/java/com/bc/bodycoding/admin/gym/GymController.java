@@ -4,6 +4,7 @@ import java.lang.reflect.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +27,9 @@ public class GymController {
 	}	
 	
 	@RequestMapping("/gymview.do")
-	public String gym7(GymDTO gymDTO, Model model) {
+	public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		gymDTO = gymdao.selectOne(gymDTO);
+		model.addAttribute("memList", gymdao.select());
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
 		return "admin/gym/gymView";
@@ -78,9 +80,17 @@ public class GymController {
 	
 	//지점 등록 폼 받아서 등록
 	@PostMapping("/gymRegist.do")
+	@Transactional
 	public String registASUB2(MemberDTO memberDTO) {
-		int result = gymdao.insertMemberASUB(memberDTO);
-		if(result==1) System.out.println("회원가입이 완료되었습니다.");
-		return "redirect:/gymadminlist.do";
+		try {
+			int result1 = gymdao.insertMember1(memberDTO);
+			int result = gymdao.insertMemberASUB(memberDTO);
+			if(result==1) System.out.println("회원가입이 완료되었습니다.");
+			return "redirect:/gymadminlist.do";
+		} 
+		catch (Exception e) {
+			System.out.println("안됨 ㅋ");
+			return "redirect:/gymRegist.do";
+		}
 	}
 }

@@ -7,29 +7,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ProductController {
-	
-	@Autowired  
-	IProductService dao;
-	
+
+	@Autowired
+	IProductService productdao;
+
 	@RequestMapping("/pList.do")
 	public String list(Model model) {
-		model.addAttribute("pList", dao.select());
+		model.addAttribute("pList", productdao.select());
 		return "/admin/product/pList";
 	}
+
+	@RequestMapping("/pRegist.do") 
+	public String regist(ProductDTO productDTO) {
+		return "/admin/product/pRegist";
+	}
 	
-	/*
-	 * @RequestMapping("/pRegist.do") public String regist(ProductDTO productDTO) {
-	 * 
-	 * }
-	 */
-	
-	
+
 	/*
 	 * @RequestMapping("/pEdit.do") public String edit() {
 	 * 
 	 * }
 	 */
-	
-	
-	
+
 }

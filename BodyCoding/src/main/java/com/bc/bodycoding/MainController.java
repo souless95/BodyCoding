@@ -21,6 +21,11 @@ public class MainController {
 	public String adminmain(HttpSession session) {
 		return "admin/main";
 	}
+	//admin Login 창으로 먼저 슝
+	@RequestMapping("login")
+	public String adminLogin(HttpSession session) {
+		return "admin/login";
+	}
 	
 	//회원메인창으로 넘어가기
 	@GetMapping("main")

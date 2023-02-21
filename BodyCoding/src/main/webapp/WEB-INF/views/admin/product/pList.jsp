@@ -25,14 +25,14 @@
 			<th>가격</th>
 			<th>등록일</th>
 		</tr>
-		<c:forEach items="${}" var="row" varStatus="loop">
+		<c:forEach items="${pList}" var="pItem" varStatus="loop">
 		<tr>
-			<td>${}</td>
-			<td>${}</td>
-			<td>${}</td>
-			<td>${}</td>
-			<td>${}</td>
-			<td>${}</td>
+			<td></td>
+			<td>${pItem.product_type}</td>
+			<td>${pItem.product_category}</td>
+			<td>${pItem.product_name}</td>
+			<td>${pItem.product_price}</td>
+			<td>${pItem.product_regidate}</td>
 			<td>
 				<a href="pEdit.do">수정</a>
 				<a href="pDelete.do">삭제</a>

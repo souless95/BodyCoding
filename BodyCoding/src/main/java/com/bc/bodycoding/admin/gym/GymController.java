@@ -25,7 +25,7 @@ public class GymController {
 		return "admin/gym/gymList";
 	}	
 	//상세보기
-	@RequestMapping("/gymview.do")
+	@RequestMapping("/gymdetail.do")
 	public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		gymDTO = gymdao.selectOnegym(gymDTO);
 		memberDTO = gymdao.selectOneMember(memberDTO);
@@ -33,7 +33,7 @@ public class GymController {
 		model.addAttribute("dto", gymDTO);
 		System.out.println(memberDTO);
 		System.out.println(gymDTO);
-		return "admin/gym/gymView";
+		return "admin/gym/gymDetail";
 	}
 	
 	//지점등록페이지

@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import global.dto.GymDTO;
+import global.dto.MemberDTO;
+
 @Controller
 public class MemberController {
 	
@@ -19,4 +22,13 @@ public class MemberController {
 		return "admin/member/memberList";
 	}
 
+	//상세보기
+	@RequestMapping("/detail.do")
+	public String detailM(Model model, MemberDTO memberDTO) {
+		memberDTO = memberdao.selectOneMember(memberDTO);
+		model.addAttribute("dto", memberDTO);
+		System.out.println(memberDTO);
+		return "admin/member/Detail";
+	}
+	
 }

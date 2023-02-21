@@ -9,5 +9,5 @@ import global.dto.MemberDTO;
 public interface MemberService {
 	
 	public List<MemberDTO> select();
-
+	public MemberDTO selectOneMember(MemberDTO memberDTO);
 }

@@ -13,6 +13,12 @@
 		select * from member where mem_type like '%MEMBER%' order by mem_regidate desc
 	</select>
 
+	<select id="selectOneMember"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		select * from MEMBER where mem_id=#{mem_id}
+	</select>
+
 </mapper>	
 	
 	

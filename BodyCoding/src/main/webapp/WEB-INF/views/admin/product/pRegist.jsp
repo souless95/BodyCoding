@@ -34,6 +34,15 @@
 	<table border="1">
 		<tr>
 			<th>상품유형</th>
+			<th>상품분류</th>
+			<th style="">기간</th>
+			<th style="">횟수</th>
+			<th>상품명</th>
+			<th>상세설명</th>
+			<th>대표 이미지</th>
+			<th>가격</th>
+		</tr>
+		<tr>
 			<td> 
 			<select name="product_type" onchange="typeChk(this)">
 				<option>유형선택</option>
@@ -42,23 +51,16 @@
 				<option value="mbs_c">멤버쉽(횟수형)</option>
 			</select> 
 			</td>
-			<th>상품분류</th>
 			<td> 
 			<select name="product_category" id="pCategory">
 				<option>분류선택</option>
 			</select> 
 			</td>
-			<th style="">기간</th>
 			<td><input type="number">일</td> 			
-			<th style="">횟수</th>
 			<td><input type="number">회</td> 			
-			<th>상품명</th>
 			<td><input type="text" name="product_name"></td>
-			<th>상세설명</th>
 			<td><input type="text" name="product_description"></td>
-			<th>대표 이미지</th>
 			<td><input type="file" name="product_img"></td>
-			<th>가격</th>
 			<td><input type="text" name="product_price"></td>			
 		</tr>
 	</table>

@@ -26,8 +26,9 @@ public class GymController {
 	}	
 	
 	@RequestMapping("/gymview.do")
-	public String gym7(GymDTO gymDTO, Model model) {
+	public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		gymDTO = gymdao.selectOne(gymDTO);
+		model.addAttribute("memList", gymdao.select());
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
 		return "admin/gym/gymView";

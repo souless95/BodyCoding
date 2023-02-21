@@ -14,11 +14,11 @@
 </head>
 <body class="sb-nav-fixed">
 	<!-- top메뉴  -->
-	<%@ include file ="../admin/inc/top.jsp" %>
+	<%@ include file ="../../admin/inc/top.jsp" %>
 	
 	<div id="layoutSidenav">
 		<!-- side -->
-        <%@ include file ="../admin/inc/side.jsp" %>
+        <%@ include file ="../../admin/inc/side.jsp" %>
         
         <div id="layoutSidenav_content">
             <main>

@@ -27,12 +27,12 @@ public class GymController {
 	@RequestMapping("/list.do")
 	public String gym1(Model model) {
 		model.addAttribute("gymList", dao.select());
-		return "admin/GymList";
+		return "admin/gym/gymList";
 	}	
 	//지점등록페이지
 	@RequestMapping(value="/regist.do", method=RequestMethod.GET)
 	public String gym2() {
-		return "admin/regist";
+		return "admin/gym/regist";
 	}
 	//지점등록
 	@RequestMapping(value="/regist.do", method=RequestMethod.POST)
@@ -48,7 +48,7 @@ public class GymController {
 		gymDTO = dao.selectOne(gymDTO);
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
-		return "admin/edit";
+		return "admin/gym/edit";
 	}
 	@RequestMapping(value="/edit.do", method=RequestMethod.POST)
 	public String gym5(GymDTO gymDTO) {

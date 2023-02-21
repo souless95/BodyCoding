@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>지점상세정보등록</h2>
+	<h2>지점등록</h2>
 	<form action="regist.do" method="post">
 		<table border="1">
 			<tr>

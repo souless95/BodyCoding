@@ -56,7 +56,7 @@
 									</td>
 								</tr>
 							</c:forEach>
-							<button type="button" class="btn btn-success" onclick="location.href='regist.do'">
+							<button type="button" class="btn btn-success" onclick="location.href='gymRegist.do'">
 								지점등록
 							</button>
 							<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do'">

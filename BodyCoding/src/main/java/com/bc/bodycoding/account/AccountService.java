@@ -10,5 +10,4 @@ public interface AccountService{
 	public int insertMember(MemberDTO memberDTO);
 	public String login(MemberDTO memberDTO);
 	
-	
 }

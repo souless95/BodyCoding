@@ -24,7 +24,7 @@
             <main>
 		        <div class="card mb-4">
 		        	<div class="card-header">
-						<h2 class="mt-4">지점리스트</h2>
+						<h2 class="mt-4">지점장리스트</h2>
 		        	</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
@@ -37,33 +37,21 @@
 							<thead>
 							<tr>
 								<th>지점코드</th>
-								<th>평수</th>
-								<th>운영시간 : 평일_시작</th>
-								<th>운영시간 : 평일_종료</th>
-								<th>운영시간 : 토요일_시작</th>
-								<th>운영시간 : 토요일_종료</th>
-								<th>운영시간 : 공휴일_시작</th>
-								<th>운영시간 : 공휴일_종료</th>
+								<th>지점명</th>
+								<th>지점 전화번호</th>
+								<th>지점 주소</th>
 							</tr>
 							</thead>
 							<tbody>
 							<c:forEach items="${gymList }" var="row" varStatus="loop">
 								<tr>
-									<td onclick="location.href='view.do?GYM_CODE=${row.GYM_CODE }'">${row.GYM_CODE }</td>
-									<td>${row.GYM_SCALE }</td>
-									<td>${row.GYM_DTAIL_IMG }</td>
-									<td>${row.RTIME_WEEK_START }</td>
-									<td>${row.RTIME_WEEK_END }</td>
-									<td>${row.RTIME_SAT_START }</td>
-									<td>${row.RTIME_SAT_END }</td>
-									<td>${row.RTIME_HOLY_START }</td>
-									<td>${row.RTIME_HOLY_END }</td>
+									<td>${row.gym_code }</td>
+									<td>${row.mem_name }</td>
+									<td>${row.mem_phone }</td>
+									<td>${row.mem_address }</td>
 									<td>
-										<button type="button" class="btn btn-primary" onclick="location.href='edit.do?GYM_CODE=${row.GYM_CODE }'">
-											수정
-										</button>
-										<button type="button" class="btn btn-primary" onclick="location.href='delete.do?GYM_CODE=${row.GYM_CODE }'">
-											삭제
+										<button type="button" class="btn btn-primary" onclick="location.href='gymview.do?gym_code=${row.gym_code }'">
+											상세보기
 										</button>
 									</td>
 								</tr>

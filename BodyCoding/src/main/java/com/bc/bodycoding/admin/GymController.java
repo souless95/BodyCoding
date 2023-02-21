@@ -1,6 +1,5 @@
 package com.bc.bodycoding.admin;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,20 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class GymController {
 
 	@Autowired
-	GymService dao;
-	@Autowired
-	SqlSession sqlSession;
+	GymService gymdao;
 	
 	//지점리스트
-	@RequestMapping("/list.do")
+	@RequestMapping("/gymadminlist.do")
 	public String gym1(Model model) {
-		model.addAttribute("gymList", dao.select());
+		model.addAttribute("gymList", gymdao.select());
 		return "admin/gym/gymList";
 	}	
 	
-	@RequestMapping("/view.do")
+	@RequestMapping("/gymview.do")
 	public String gym7(GymDTO gymDTO, Model model) {
-		gymDTO = dao.selectOne(gymDTO);
+		gymDTO = gymdao.selectOne(gymDTO);
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
 		return "admin/gym/gymView";
@@ -38,31 +35,31 @@ public class GymController {
 	//지점등록
 	@RequestMapping(value="/regist.do", method=RequestMethod.POST)
 	public String gym3(GymDTO gymDTO) {
-		int result = dao.insert(gymDTO);
+		int result = gymdao.insert(gymDTO);
 		if(result==1) System.out.println("등록되었습니다.");
-		return "redirect:list.do";
+		return "redirect:gymadminlist.do";
 	}
 	
 	//수정하기
-	@RequestMapping(value="/edit.do", method=RequestMethod.GET)
+	@RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
 	public String gym4(GymDTO gymDTO, Model model) {
-		gymDTO = dao.selectOne(gymDTO);
+		gymDTO = gymdao.selectOne(gymDTO);
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
 		return "admin/gym/edit";
 	}
-	@RequestMapping(value="/edit.do", method=RequestMethod.POST)
+	@RequestMapping(value="/gymedit.do", method=RequestMethod.POST)
 	public String gym5(GymDTO gymDTO) {
-		int result = dao.update(gymDTO);
+		int result = gymdao.update(gymDTO);
 		if(result==1) System.out.println("수정되었습니다.");
-		return "redirect:list.do";
+		return "redirect:gymadminlist.do";
 	}
 	
 	//삭제
-	@RequestMapping("/delete.do")
+	@RequestMapping("/gymdelete.do")
 	public String gym6(GymDTO gymDTO) {
-		int result = dao.delete(gymDTO);
+		int result = gymdao.delete(gymDTO);
 		if(result==1) System.out.println("삭제되었습니다.");
-		return "redirect:list.do";
+		return "redirect:gymadminlist.do";
 	}
 }

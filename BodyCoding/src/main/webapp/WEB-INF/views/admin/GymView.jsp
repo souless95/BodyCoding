@@ -24,16 +24,10 @@
             <main>
 		        <div class="card mb-4">
 		        	<div class="card-header">
-						<h2 class="mt-4">지점리스트</h2>
+						<h2 class="mt-4">지점상세보기</h2>
 		        	</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
-							<form method="get">
-								<div>
-									<input type="text" name="searchTxt" placeholder="검색어를 입력하세요." />
-									<input type="submit" name="검색" />
-								</div>
-							</form>
 							<thead>
 							<tr>
 								<th>지점코드</th>
@@ -58,9 +52,9 @@
 							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${gymList }" var="row" varStatus="loop">
+							<c:forEach items="${gymVeiw }" var="row" varStatus="loop">
 								<tr>
-									<td onclick="location.href='view.do?GYM_CODE=${row.GYM_CODE }'">${row.GYM_CODE }</td>
+									<td>${row.GYM_CODE }</td>
 									<td>${row.GYM_SCALE }</td>
 									<td>${row.GYM_DTAIL_IMG }</td>
 									<td>${row.FACILITY_PARKING }</td>
@@ -80,21 +74,13 @@
 									<td>${row.RTIME_SAT_END }</td>
 									<td>${row.RTIME_HOLY_START }</td>
 									<td>${row.RTIME_HOLY_END }</td>
-									<td>
-										<button type="button" class="btn btn-primary" onclick="location.href='edit.do?GYM_CODE=${row.GYM_CODE }'">
-											수정
-										</button>
-										<button type="button" class="btn btn-primary" onclick="location.href='delete.do?GYM_CODE=${row.GYM_CODE }'">
-											삭제
-										</button>
-									</td>
 								</tr>
 							</c:forEach>
-							<button type="button" class="btn btn-success" onclick="location.href='regist.do'">
-								지점등록
+							<button type="button" class="btn btn-primary" onclick="location.href='edit.do?GYM_CODE=${row.GYM_CODE }'">
+								수정
 							</button>
-							<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do'">
-								트레이너 관리
+							<button type="button" class="btn btn-primary" onclick="location.href='delete.do?GYM_CODE=${row.GYM_CODE }'">
+								삭제
 							</button>
 							</tbody>
 						</table>

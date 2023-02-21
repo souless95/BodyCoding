@@ -69,9 +69,6 @@
                             </div>
                         </div>
                         
-                        <!-- 데이터 차트 보여주는 부분 -->
-                        
-                        
                         <!-- 메인에서 보여주는 멤버리스트 -->
                         <div class="card mb-4">
                             <div class="card-header">
@@ -104,6 +101,8 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- 데이터 차트 보여주는 부분 -->
                     <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">

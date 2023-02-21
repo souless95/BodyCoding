@@ -22,6 +22,12 @@ public class MainController {
 		return "admin/main";
 	}
 	
+	//adimin로그인으로 넘어가기
+	@RequestMapping("adminLogin.do")
+	public String adminLogin(HttpSession session) {
+		return "admin/login";
+	}
+	
 	//회원메인창으로 넘어가기
 	@GetMapping("main")
 	public String membermain(HttpSession session) {

@@ -1,4 +1,4 @@
-package com.bc.bodycoding.admin;
+package com.bc.bodycoding.admin.gym;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class GymController {
 	public String gym3(GymDTO gymDTO) {
 		int result = dao.insert(gymDTO);
 		if(result==1) System.out.println("등록되었습니다.");
-		return "redirect:list.do";
+		return "redirect:gymList.do";
 	}
 	
 	//수정하기
@@ -55,7 +55,7 @@ public class GymController {
 	public String gym5(GymDTO gymDTO) {
 		int result = dao.update(gymDTO);
 		if(result==1) System.out.println("수정되었습니다.");
-		return "redirect:list.do";
+		return "redirect:gymList.do";
 	}
 	
 	//삭제

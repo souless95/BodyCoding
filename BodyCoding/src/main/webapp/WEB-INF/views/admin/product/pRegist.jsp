@@ -35,7 +35,7 @@
 		<tr>
 			<th>상품유형</th>
 			<td> 
-			<select name="pType" onchange="typeChk(this)">
+			<select name="product_type" onchange="typeChk(this)">
 				<option>유형선택</option>
 				<option value="pdt">일반</option>
 				<option value="mbs_p">멤버쉽(기간형)</option>
@@ -44,18 +44,22 @@
 			</td>
 			<th>상품분류</th>
 			<td> 
-			<select name="pCategory" id="pCategory">
+			<select name="product_category" id="pCategory">
 				<option>분류선택</option>
 			</select> 
-			</td>			
+			</td>
+			<th style="display:none;">기간</th>
+			<td><input type="number">일</td> 			
+			<th style="display:none;">횟수</th>
+			<td><input type="number">회</td> 			
 			<th>상품명</th>
-			<td><input type="text" name="pName"></td>
+			<td><input type="text" name="product_name"></td>
 			<th>상세설명</th>
-			<td><input type="text" name="pDescirption"></td>
+			<td><input type="text" name="product_description"></td>
 			<th>대표 이미지</th>
-			<td><input type="file" name="pImg"></td>
+			<td><input type="file" name="product_img"></td>
 			<th>가격</th>
-			<td><input type="text" name="pPrice"></td>			
+			<td><input type="text" name="product_price"></td>			
 		</tr>
 	</table>
 	<input type="submit" value="등록">

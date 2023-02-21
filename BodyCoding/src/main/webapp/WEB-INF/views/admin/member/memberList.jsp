@@ -39,6 +39,6 @@
 	</table>
 	
 	<button type="button" onclick="location.href='main/admin'">홈으로</button> 
-	<button type="button" onclick="location.href='trainerRegist.do'">트레이너 등록</button> 
+	
 </body>
 </html>

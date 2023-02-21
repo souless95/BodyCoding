@@ -18,6 +18,13 @@ public class ProductController {
 	}
 	
 	/*
+	 * @RequestMapping("/pRegist.do") public String regist(ProductDTO productDTO) {
+	 * 
+	 * }
+	 */
+	
+	
+	/*
 	 * @RequestMapping("/pEdit.do") public String edit() {
 	 * 
 	 * }

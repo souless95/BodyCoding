@@ -53,33 +53,34 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>${dto.GYM_CODE }</td>
-									<td>${dto.GYM_SCALE }</td>
-									<td>${dto.GYM_DTAIL_IMG }</td>
-									<td>${dto.FACILITY_PARKING }</td>
-									<td>${dto.FACILITY_HEALTH }</td>
-									<td>${dto.FACILITY_YOGA }</td>
-									<td>${dto.FACILITY_YOGA }</td>
-									<td>${dto.FACILITY_GX }</td>
-									<td>${dto.FACILITY_PILATES }</td>
-									<td>${dto.FACILITY_PT }</td>
-									<td>${dto.FACILITY_24HOUR }</td>
-									<td>${dto.FACILITY_SHOWER }</td>
-									<td>${dto.FACILITY_WEAR }</td>
-									<td>${dto.FACILITY_LOCKER }</td>
-									<td>${dto.RTIME_WEEK_START }</td>
-									<td>${dto.RTIME_WEEK_END }</td>
-									<td>${dto.RTIME_SAT_START }</td>
-									<td>${dto.RTIME_SAT_END }</td>
-									<td>${dto.RTIME_HOLY_START }</td>
-									<td>${dto.RTIME_HOLY_END }</td>
+									<td>${dto.gym_code }</td>
+									<td>${dto.gym_scale }</td>
+									<td>${dto.gym_dtail_img }</td>
+									<td>${dto.facility_parking }</td>
+									<td>${dto.facility_health }</td>
+									<td>${dto.facility_yoga }</td>
+									<td>${dto.facility_gx }</td>
+									<td>${dto.facility_pilates }</td>
+									<td>${dto.facility_pt }</td>
+									<td>${dto.facility_24hour }</td>
+									<td>${dto.facility_shower }</td>
+									<td>${dto.facility_wear }</td>
+									<td>${dto.facility_locker }</td>
+									<td>${dto.rtime_week_start }</td>
+									<td>${dto.rtime_week_end}</td>
+									<td>${dto.rtime_sat_start }</td>
+									<td>${dto.rtime_sat_end }</td>
+									<td>${dto.rtime_holy_start }</td>
+									<td>${dto.rtime_holy_end }</td>
+									<td>
+										<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
+											수정
+										</button>
+										<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
+											삭제
+										</button>
+									</td>
 								</tr>
-								<button type="button" class="btn btn-primary" onclick="location.href='edit.do?GYM_CODE=${row.GYM_CODE }'">
-									수정
-								</button>
-								<button type="button" class="btn btn-primary" onclick="location.href='delete.do?GYM_CODE=${row.GYM_CODE }'">
-									삭제
-								</button>
 							</tbody>
 						</table>
 					</div>

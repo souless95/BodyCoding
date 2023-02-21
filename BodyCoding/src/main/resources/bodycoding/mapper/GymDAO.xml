@@ -5,7 +5,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.bc.bodycoding.admin.GymService">
+<mapper namespace="com.bc.bodycoding.admin.gym.GymService">
 
 	<select id="select"
 		parameterType="com.bc.bodycoding.MemberDTO"
@@ -14,7 +14,7 @@
 	</select>
 	
 	<insert id="insert"
-		parameterType="com.bc.bodycoding.admin.GymDTO">
+		parameterType="com.bc.bodycoding.admin.gym.GymDTO">
 		insert into GYM_DETAIL (gym_code, gym_scale, gym_dtail_img, 
 			facility_parking, facility_health, facility_yoga, facility_gx, 
 			facility_pilates, facility_pt, facility_24hour, facility_shower, 
@@ -29,13 +29,13 @@
 	</insert>
 	
 	<select id="selectOne"
-		parameterType="com.bc.bodycoding.admin.GymDTO"
-		resultType="com.bc.bodycoding.admin.GymDTO">
+		parameterType="com.bc.bodycoding.admin.gym.GymDTO"
+		resultType="com.bc.bodycoding.admin.gym.GymDTO">
 		select * from GYM_DETAIL where gym_code=#{gym_code}
 	</select>
 	
 	<update id="update"
-		parameterType="com.bc.bodycoding.admin.GymDTO">
+		parameterType="com.bc.bodycoding.admin.gym.GymDTO">
 		update GYM_DETAIL set gym_scale=#{gym_scale}, gym_dtail_img=#{gym_dtail_img}, 
 			facility_parking=#{facility_parking}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
 			facility_pilates=#{facility_pilates}, facility_pt=#{facility_pt}, facility_24hour=#{facility_24hour}, facility_shower=#{facility_shower}, 
@@ -45,7 +45,7 @@
 	</update>
 	
 	<delete id="delete"
-		parameterType="com.bc.bodycoding.admin.GymDTO">
+		parameterType="com.bc.bodycoding.admin.gym.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}
 	</delete>
 </mapper>

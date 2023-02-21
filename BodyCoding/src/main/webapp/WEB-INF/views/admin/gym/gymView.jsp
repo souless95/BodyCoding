@@ -14,26 +14,20 @@
 </head>
 <body class="sb-nav-fixed">
 	<!-- top메뉴  -->
-	<%@ include file ="../admin/inc/top.jsp" %>
+	<%@ include file ="../../admin/inc/top.jsp" %>
 	
 	<div id="layoutSidenav">
 		<!-- side -->
-        <%@ include file ="../admin/inc/side.jsp" %>
+        <%@ include file ="../../admin/inc/side.jsp" %>
         
         <div id="layoutSidenav_content">
             <main>
 		        <div class="card mb-4">
 		        	<div class="card-header">
-						<h2 class="mt-4">지점리스트</h2>
+						<h2 class="mt-4">지점상세보기</h2>
 		        	</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
-							<form method="get">
-								<div>
-									<input type="text" name="searchTxt" placeholder="검색어를 입력하세요." />
-									<input type="submit" name="검색" />
-								</div>
-							</form>
 							<thead>
 							<tr>
 								<th>지점코드</th>
@@ -58,42 +52,35 @@
 							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${gymList }" var="row" varStatus="loop">
 								<tr>
-									<td>${row.GYM_CODE }</td>
-									<td>${row.GYM_SCALE }</td>
-									<td>${row.GYM_DTAIL_IMG }</td>
-									<td>${row.FACILITY_PARKING }</td>
-									<td>${row.FACILITY_HEALTH }</td>
-									<td>${row.FACILITY_YOGA }</td>
-									<td>${row.FACILITY_YOGA }</td>
-									<td>${row.FACILITY_GX }</td>
-									<td>${row.FACILITY_PILATES }</td>
-									<td>${row.FACILITY_PT }</td>
-									<td>${row.FACILITY_24HOUR }</td>
-									<td>${row.FACILITY_SHOWER }</td>
-									<td>${row.FACILITY_WEAR }</td>
-									<td>${row.FACILITY_LOCKER }</td>
-									<td>${row.RTIME_WEEK_START }</td>
-									<td>${row.RTIME_WEEK_END }</td>
-									<td>${row.RTIME_SAT_START }</td>
-									<td>${row.RTIME_SAT_END }</td>
-									<td>${row.RTIME_HOLY_START }</td>
-									<td>${row.RTIME_HOLY_END }</td>
+									<td>${dto.gym_code }</td>
+									<td>${dto.gym_scale }</td>
+									<td>${dto.gym_dtail_img }</td>
+									<td>${dto.facility_parking }</td>
+									<td>${dto.facility_health }</td>
+									<td>${dto.facility_yoga }</td>
+									<td>${dto.facility_gx }</td>
+									<td>${dto.facility_pilates }</td>
+									<td>${dto.facility_pt }</td>
+									<td>${dto.facility_24hour }</td>
+									<td>${dto.facility_shower }</td>
+									<td>${dto.facility_wear }</td>
+									<td>${dto.facility_locker }</td>
+									<td>${dto.rtime_week_start }</td>
+									<td>${dto.rtime_week_end}</td>
+									<td>${dto.rtime_sat_start }</td>
+									<td>${dto.rtime_sat_end }</td>
+									<td>${dto.rtime_holy_start }</td>
+									<td>${dto.rtime_holy_end }</td>
+									<td>
+										<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
+											수정
+										</button>
+										<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
+											삭제
+										</button>
+									</td>
 								</tr>
-							</c:forEach>
-							<button type="button" class="btn btn-success" onclick="location.href='regist.do'">
-								지점등록
-							</button>
-							<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do'">
-								트레이너 관리
-							</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='edit.do?idx=${row.GYM_CODE }'">
-								수정
-							</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='delete.do?idx=${row.GYM_CODE }'">
-								삭제
-							</button>
 							</tbody>
 						</table>
 					</div>

@@ -79,7 +79,7 @@
 					<ul >
 						<li style="padding-top:15px;">
 			                <button class="btn btn-dark">
-			                    로그인
+			                    <a href="login.do">로그인</a>
 			                </button>
 			            </li>
 			            &nbsp;&nbsp;&nbsp;

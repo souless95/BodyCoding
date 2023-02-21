@@ -29,6 +29,14 @@ public class GymController {
 		model.addAttribute("gymList", dao.select());
 		return "admin/gym/gymList";
 	}	
+	
+	@RequestMapping("/view.do")
+	public String gym7(GymDTO gymDTO, Model model) {
+		gymDTO = dao.selectOne(gymDTO);
+		model.addAttribute("gymView", gymDTO);
+		return "admin/gym/gymView";
+	}
+	
 	//지점등록페이지
 	@RequestMapping(value="/regist.do", method=RequestMethod.GET)
 	public String gym2() {

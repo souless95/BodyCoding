@@ -44,27 +44,13 @@
 </head>
 
 <body>
- <script type="text/javascript">
-function movePage(f){
-	
-	let mem_type = f.mem_type.value;
-	
-	if(mem_type=='MEMBER')
-		f.action="/signup.do"
-	else if(mem_type=='TRAINER')
-		f.action="/signupT.do"
-	else if(mem_type=='ADMIN_SUB')
-		f.action="/signupASUB.do"
-	
-}
-</script> 
 <div class="container">
 	<div class="input-form-backgroud row">
 		<div class="input-form col-md-12 mx-auto">
 	<div style="text-align:center;">
     <h2 class="mb-1">회원가입</h2>
     </div>
-    <form method="post" onsubmit="movePage(this)" class="validation-form" novalidate>
+    <form method="post"  action="/signup.do" class="validation-form" novalidate>
     	<input type="hidden" id="mem_status" name="mem_status" value="1">
 	    
 	    <div>
@@ -137,7 +123,6 @@ function movePage(f){
 		
 		
 		 <div class="mb-1">
-		<c:if test="${mem_type eq 'member'}">
 			<input type="hidden" class="form-control" id="mem_point" name="mem_point" value="0">
 			<input type="hidden" class="form-control" id="mem_type" name="mem_type" value="MEMBER">
 	        <br>
@@ -157,34 +142,12 @@ function movePage(f){
 	
 	        <label for="mem_inflow">유입경로</label>
 	        <input type="text" class="form-control" id="mem_inflow" name="mem_inflow"><br>
-        </c:if>
         </div>
         
          <div class="mb-1">
-        <c:if test="${mem_type eq 'trainer'}">
-	        <input type="hidden" class="form-control" id="mem_type" name="mem_type" value="TRAINER">
-	        <br>
-	        <label for="mem_career">경력</label>
-	        <input type="text" class="form-control" id="mem_career" name="mem_career"><br>
-	        
-	        <label for="mem_comment">자기소개</label>
-	        <input type="text" class="form-control" id="mem_comment" name="mem_comment"><br>
-	        
-	        <label for="mem_career">프로필 사진</label>
-	        <input type="text" class="form-control" id="mem_career" name="mem_career"><br>
-        </c:if>
         </div>
         
          <div class="mb-1">
-        <c:if test="${mem_type eq 'admin_sub'}">
-	        <input type="hidden" class="form-control" id="mem_type" name="mem_type" value="ADMIN_SUB">
-	        <br>
-	        <label for="mem_comment">매장소개</label>
-	        <input type="text" class="form-control" id="mem_comment" name="mem_comment"><br>
-	        
-	        <label for="mem_career">매장 사진</label>
-	        <input type="text" class="form-control" id="mem_career" name="mem_career"><br>
-        </c:if>
         </div> 
         
         <button  class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>

@@ -19,8 +19,7 @@ public class AccountController {
 
 	//회원가입창으로 넘어가기
 	@GetMapping("/signup.do")
-	public String signupM(Model model) {
-		model.addAttribute("mem_type","member");
+	public String signupM() {
 		return "member/account/signup";
 	}
 	

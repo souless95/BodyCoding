@@ -295,7 +295,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	
 		<div class="mb-1">
 	        <label for="mem_inflow">유입경로</label>
-	        <select class="custom-select d-block w-100" name="gym_code"  required>
+	        <select class="custom-select d-block w-100" name="mem_inflow"  required>
                 <option value="" disabled selected> 센터를 알게된 경로를 선택해 주세요</option>
                 <option>지인추천</option>
                 <option>SNS</option>

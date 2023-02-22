@@ -12,7 +12,12 @@
 	</select>
 	
 	<insert id="insert" parameterType="global.dto.ProductDTO">
-		INSERT INTO product 
+		INSERT INTO product (
+			product_idx, product_type, product_category, membership_count, membership_period,
+			product_name, product_description, product_img, product_price)
+		VALUES 
+			(bodycoding_seq.nextval, #{product_type}, #{product_category}, #{membership_count}, 
+			#{membership_period}, #{product_name},#{product_description},#{product_img},#{product_price})
 	</insert>
 	
 	<select id="search" parameterType="global.dto.ProductDTO"

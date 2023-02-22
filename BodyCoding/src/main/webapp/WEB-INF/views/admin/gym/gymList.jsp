@@ -24,12 +24,12 @@
 					<div class="card-header">
 						<h2>지점 리스트</h2>
 					</div>
-					<form method="get">
+<!-- 					<form method="get">
 						<div>
 							<input type="text" name="searchTxt" placeholder="검색어를 입력하세요." />
 							<input type="submit" name="검색" />
 						</div>
-					</form>
+					</form> -->
 					<div class="card-body">
 						<table id="datatablesSimple">
 						<thead>
@@ -38,6 +38,7 @@
 								<th>지점명</th>
 								<th>지점 전화번호</th>
 								<th>지점 주소</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -68,6 +69,7 @@
 			</main>
 		</div>
 	</div>
+	
 	<button type="button" onclick="location.href='main/admin'">홈으로</button>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/scripts.js"></script>

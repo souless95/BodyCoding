@@ -35,6 +35,8 @@ dependencies {
 	//JSP 사용설정
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	//JSP 새로고침
+	implementation 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {

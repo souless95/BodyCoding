@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function typeChk(e){
 		var pdt = ["식품","의류","기구"];
 		var mbs_p =  ["헬스","GX"];
@@ -26,11 +26,11 @@
 			target.appendChild(opt);
 		}
 	}
-</script>
+</script> -->
 </head>
 <body>
 	<h2>상품 등록</h2>
-	<form action="pRegist.do" method="post">
+	<form action="productRegist.do" method="post">
 	<table border="1">
 		<tr>
 			<th>상품유형</th>
@@ -44,28 +44,35 @@
 		</tr>
 		<tr>
 			<td> 
-			<select name="product_type" onchange="typeChk(this)">
+			<!-- onchange="typeChk(this)" -->
+			<select name="product_type">
 				<option>유형선택</option>
-				<option value="pdt">일반</option>
-				<option value="mbs_p">멤버쉽(기간형)</option>
-				<option value="mbs_c">멤버쉽(횟수형)</option>
+				<option value="PDT">일반</option>
+				<option value="MBS_P">멤버쉽(기간형)</option>
+				<option value="MBS_C">멤버쉽(횟수형)</option>
 			</select> 
 			</td>
 			<td> 
 			<select name="product_category" id="pCategory">
-				<option>분류선택</option>
+				<option value="FOOD">식품</option>
+				<option value="WEAR">의류</option>
+				<option value="TOOL">기구</option>
+				<option value="HEALTH">헬스</option>
+				<option value="GX">GX</option>
+				<option value="PT">PT</option>
+				<option value="PILATES">필라테스</option>
 			</select> 
 			</td>
-			<td><input type="number">일</td> 			
-			<td><input type="number">회</td> 			
+			<td><input type="number" name="membership_period" value="0">일</td> 			
+			<td><input type="number" name="membership_count" value="0">회</td> 			
 			<td><input type="text" name="product_name"></td>
 			<td><input type="text" name="product_description"></td>
-			<td><input type="file" name="product_img"></td>
-			<td><input type="text" name="product_price"></td>			
+			<td><input type="text" name="product_img"></td>
+			<td><input type="number" name="product_price"></td>			
 		</tr>
 	</table>
 	<input type="submit" value="등록">
-	<button onclick="location.href='pList'" value="목록"></button>
+	<button type="button" onclick="location.href='productList.do'">목록</button>
 	</form>
 </body>
 </html>

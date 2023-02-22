@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <form method="get" action="search.do">
 	<div>
 		<input type="text" name="searchTxt" placeholder="상품명을 입력하세요."/>
@@ -18,7 +17,6 @@
 
 <table border="1">
 		<tr>
-			<th>번호</th>
 			<th>상품유형</th>
 			<th>상품분류</th>
 			<th>상품명</th>
@@ -27,7 +25,6 @@
 		</tr>
 		<c:forEach items="${pList}" var="pItem" varStatus="loop">
 		<tr>
-			<td></td>
 			<td>${pItem.product_type}</td>
 			<td>${pItem.product_category}</td>
 			<td>${pItem.product_name}</td>
@@ -40,7 +37,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-<a href="pRegist.do">상품등록</a>
+<a href="productRegist.do">상품등록</a>
 
 
 </body>

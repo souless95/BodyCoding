@@ -49,7 +49,10 @@
 							        <td>${row.mem_phone }</td>
 							        <td>${row.mem_regidate }</td>
 							        <td>
-							        	<a href="detail.do?mem_id=${row.mem_id }">상세보기</a>
+							        	<button type="button" class="btn btn-primary"
+												onclick="location.href='detail.do?mem_id=${row.mem_id }'">
+												상세보기</button>
+							        	<%-- <a href="detail.do?mem_id=${row.mem_id }">상세보기</a> --%>
 							        </td>
 							    </tr>
 						    </c:forEach>

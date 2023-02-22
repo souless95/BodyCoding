@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,6 +78,24 @@
 				<!-- Start Atribute Navigation -->
 				<div class="attr-nav">
 					<ul >
+						<c:if test="${not empty UserName}">
+						<li style="padding-top:15px;">
+			                <button class="btn btn-dark">
+			                    ${UserName}님 
+			                </button>
+			            </li>
+						<li style="padding-top:15px;">
+			                <button class="btn btn-dark">
+			                    <a href="#">마이페이지</a>
+			                </button>
+			            </li>
+						<li style="padding-top:15px;">
+			                <button class="btn btn-dark">
+			                    <a href="#" onclick="logoutcheck()">로그아웃</a>
+			                </button>
+			            </li>
+			            </c:if>
+			            <c:if test="${empty UserName}">
 						<li style="padding-top:15px;">
 			                <button class="btn btn-dark">
 			                    <a href="login.do">로그인</a>
@@ -88,6 +107,7 @@
 			                    <a href="signup.do">회원가입</a>
 			                </button>
 			            </li>
+			            </c:if>
 			            
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -11,11 +11,11 @@
 <h1>로그인</h1>
     <form method="post" action="/login.do">
     	
-        <label for="email">아이디(이메일):</label>
-        <input type="email" id="email" name="email" required><br>
+        <label for="mem_id">아이디(이메일):</label>
+        <input type="email" id="mem_id" name="mem_id" required><br>
         
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password" required><br>
+        <label for="mem_pass">비밀번호:</label>
+        <input type="password" id="mem_pass" name="mem_pass" required><br>
         
         <a href="#">아이디찾기</a>
         <a href="#">비밀번호찾기</a>

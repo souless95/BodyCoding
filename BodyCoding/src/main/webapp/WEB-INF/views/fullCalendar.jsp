@@ -1,6 +1,7 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,8 @@
 	    align-items: center;
 	}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script> <!-- 달력cdn --> 
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script> <!-- 달력cdn -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
@@ -24,10 +26,11 @@
         dragScroll: true, //날짜 드래그 가능
         editable: true,  //일정 수정 가능
         dayMaxEventRows: true, //월 달력에서 일별 표시되는 최대이벤트 기능 설정
-        views: {
-          timeGrid: {
-            dayMaxEventRows: 6
-          }
+        businessHours: true, //업무시간 기능. 아직 등록불가는 미구현.
+        businessHours: {
+        	  //daysOfWeek: [ 1, 2, 3, 4 ], // 0-6 일-월
+        	  startTime: '09:00',
+        	  endTime: '23:00',
         },
         buttonText: {
         	today: '오늘',
@@ -35,84 +38,56 @@
         	week: '주',
         	day: '일',
         },
-        customButtons: {
-        	cstButton: {
-              text: '일정추가',
-              click: function() {
-            	  var titleA = prompt("일정명을 입력하세요")
-                  var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-                  var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-
-                  if (!isNaN(date.valueOf())) { // valid?
-                    calendar.addEvent({
-                      title: titleA,
-                      start: date,
-                      allDay: true
-                    });
-                    alert('Great. Now, update your database...');
-                  } else {
-                    alert('Invalid date.');
-                  }
-                }
-            }
-        },
         headerToolbar: { //상단에 출력되는 기본옵션
-            right: 'cstButton dayGridMonth,timeGridWeek,timeGridDay',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay', //cstButton
             center: 'prev title next',
             left: 'today',
         },
+        eventSources: [{
+        	events: function(info, successCallback, failureCallback){
+        		$.ajax({
+        			url: './resources/sample.json',
+        			type: 'POST',
+        			dataType: 'json',
+        			data: {
+        				title : 
+        				start : moment(info.startStr),
+        				end : moment(info.startStr),
+        			},
+        			success: function(data){
+        				successCallback(data);
+        			}
+        		})
+        	}
+        }]
 	    events: [
 	   	    { 
-	   	      title: '축제', 
-	   	      start: '2023-02-21', 
-	   	      //end: '2023-02-23' 
+	   	      title: '김비실 회원님', 
+	   	      start: '2023-02-21T10:00:00', 
+	   	      end: '2023-02-21T12:00:00' 
 	   	    },
-	   	  { 
-		   	      title: '축제2', 
-		   	      start: '2023-02-21', 
-		   	      //end: '2023-02-23' 
-		   	    },
-		   	 { 
-			   	      title: '축제3', 
-			   	      start: '2023-02-21', 
-			   	      //end: '2023-02-23' 
-			   	    },
-			   	 { 
-				   	      title: '축제4', 
-				   	      start: '2023-02-21', 
-				   	      //end: '2023-02-23' 
-				   	    },
-				   	 { 
-					   	      title: '축제5', 
-					   	      start: '2023-02-21', 
-					   	      //end: '2023-02-23' 
-					   	    },
-					   	 { 
-						   	      title: '축제6', 
-						   	      start: '2023-02-21', 
-						   	      //end: '2023-02-23' 
-						   	    },
-						   	 { 
-							   	      title: '축제7', 
-							   	      start: '2023-02-21', 
-							   	      //end: '2023-02-23' 
-							   	    },
-							   	 { 
-								   	      title: '축제8', 
-								   	      start: '2023-02-21', 
-								   	      //end: '2023-02-23' 
-								   	    }, 
-	   	    
-      	],
-	      	dateClick: function() {
-	      	    alert('a day has been clicked!');
-	      	  }
+      	], 
+      	
+      	dateClick: function(info) {
+      		var titleA = prompt("일정명을 입력하세요");
+      		if(titleA != null || titleA == ''){
+      			calendar.addEvent({
+                    title: titleA,
+                    start: info.dateStr,
+                  });
+      		}
+      		else {}      		 
+      	},
+        /* select: function(info) {
+        	var titleA = prompt("일정명을 입력하세요");
+      		calendar.addEvent({
+                title: titleA,
+                start: info.startStr,
+                end: info.endStr,
+              });
+        } */
       });
       calendar.render();
-      calendar.on('dateClick', function(info) {
-    	  console.log('clicked on ' + info.dateStr);
-    	});
-      
     });
 </script>
 <title>MyCalendar</title>
@@ -122,19 +97,3 @@
   <div id='calendar' style="width:800px;"></div>
 </body>
 </html>
-
-
-<!-- click: function() {
-          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-
-          if (!isNaN(date.valueOf())) { // valid?
-            calendar.addEvent({
-              title: 'dynamic event',
-              start: date,
-              allDay: true
-            });
-            alert('Great. Now, update your database...');
-          } else {
-            alert('Invalid date.');
-          } -->

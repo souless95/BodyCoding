@@ -22,7 +22,7 @@
 		        <main>
 		        	<div class="card mb-4">
 		        		<div class="card-header">
-							<h2>회원 리스트</h2>
+							<h2>회원 상세보기</h2>
 		        		</div>
 		        		<div class="card-body">
 							<table id="datatablesSimple">
@@ -34,25 +34,38 @@
 						         	<th>성별</th>
 						         	<th>생년월일</th>
 						       	 	<th>전화번호</th>
+						       	 	<th>주소</th>
+						       	 	<th>계정상태</th>
+						       	 	<th>키</th>
+						       	 	<th>체중</th>
+						       	 	<th>보유질병</th>
+						       	 	<th>운동목적</th>
+						       	 	<th>관심사</th>
+						       	 	<th>방문경로</th>
+						       	 	<th>보유포인트</th>
 						       	  	<th>가입일자</th>
 						       	  	<th></th>
 						      	</tr>
 							</thead>
 							<tbody>
-					     	<c:forEach items="${memberList }" var="row" varStatus="loop">
 						      	<tr>
-							        <td>${row.gym_code }</td>
-							        <td>${row.mem_id }</td>
-							        <td>${row.mem_name }</td>
-							        <td>${row.mem_gender }</td>
-							        <td>${row.mem_birth }</td>
-							        <td>${row.mem_phone }</td>
-							        <td>${row.mem_regidate }</td>
-							        <td>
-							        	<a href="detail.do?mem_id=${row.mem_id }">상세보기</a>
-							        </td>
+							        <td>${dto.gym_code }</td>
+							        <td>${dto.mem_id }</td>
+							        <td>${dto.mem_name }</td>
+							        <td>${dto.mem_gender }</td>
+							        <td>${dto.mem_birth }</td>
+							        <td>${dto.mem_phone }</td>
+							        <td>${dto.mem_address }</td>
+							        <td>${dto.mem_status }</td>
+							        <td>${dto.mem_height }</td>
+							        <td>${dto.mem_weight }</td>
+							        <td>${dto.mem_disease }</td>
+							        <td>${dto.mem_purpose }</td>
+							        <td>${dto.mem_interest }</td>
+							        <td>${dto.mem_inflow }</td>
+							        <td>${dto.mem_point }</td>
+							        <td>${dto.mem_regidate }</td>
 							    </tr>
-						    </c:forEach>
 							</tbody>
 							</table>
 		        		</div>

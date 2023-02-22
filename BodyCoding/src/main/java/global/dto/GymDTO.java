@@ -1,4 +1,4 @@
-package com.bc.bodycoding.admin.gym;
+package global.dto;
 
 import lombok.Data;
 

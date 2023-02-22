@@ -9,13 +9,13 @@
 <mapper namespace="com.bc.bodycoding.admin.gym.GymService">
 
 	<select id="select"
-		parameterType="com.bc.bodycoding.MemberDTO"
-		resultType="com.bc.bodycoding.MemberDTO">
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
 		select * from member where mem_type like '%ADMIN%'
 	</select>
 	
 	<insert id="insert"
-		parameterType="com.bc.bodycoding.admin.gym.GymDTO">
+		parameterType="global.dto.GymDTO">
 		insert all 
 			into GYM_DETAIL (gym_code, gym_scale, gym_dtail_img, 
 				facility_parking, facility_health, facility_yoga, facility_gx, 
@@ -30,14 +30,19 @@
 			  	#{rtime_holy_end})
 	</insert>
 	
-	<select id="selectOne"
-		parameterType="com.bc.bodycoding.admin.gym.GymDTO"
-		resultType="com.bc.bodycoding.admin.gym.GymDTO">
+	<select id="selectOnegym"
+		parameterType="global.dto.GymDTO"
+		resultType="global.dto.GymDTO">
 		select * from GYM_DETAIL where gym_code=#{gym_code}
+	</select>
+	<select id="selectOneMember"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		select * from MEMBER where gym_code=#{gym_code}
 	</select>
 	
 	<update id="update"
-		parameterType="com.bc.bodycoding.admin.gym.GymDTO">
+		parameterType="global.dto.GymDTO">
 		update GYM_DETAIL set gym_scale=#{gym_scale}, gym_dtail_img=#{gym_dtail_img}, 
 			facility_parking=#{facility_parking}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
 			facility_pilates=#{facility_pilates}, facility_pt=#{facility_pt}, facility_24hour=#{facility_24hour}, facility_shower=#{facility_shower}, 
@@ -47,12 +52,12 @@
 	</update>
 	
 	<delete id="delete"
-		parameterType="com.bc.bodycoding.admin.gym.GymDTO">
+		parameterType="global.dto.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}
 	</delete>
 	
 	<insert id="insertMemberASUB"
-		parameterType="com.bc.bodycoding.MemberDTO">
+		parameterType="global.dto.MemberDTO">
 		insert into MEMBER (mem_id, mem_pass, mem_name, 
 			mem_phone, mem_address, mem_type, mem_status, 
 			gym_code,  mem_comment, mem_img)
@@ -62,7 +67,7 @@
 	</insert>
 	
 	<insert id="insertMember1"
-	parameterType="com.bc.bodycoding.admin.gym.GymDTO">
+	parameterType="global.dto.GymDTO">
 	insert into GYM_DETAIL 
 	   		(gym_code) 
 	   	values 

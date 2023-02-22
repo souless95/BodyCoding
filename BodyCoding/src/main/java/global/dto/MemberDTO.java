@@ -1,4 +1,4 @@
-package com.bc.bodycoding;
+package global.dto;
 
 import java.sql.Date;
 

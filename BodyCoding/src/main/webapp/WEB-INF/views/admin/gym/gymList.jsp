@@ -50,7 +50,7 @@
 									<td>${row.mem_address }</td>
 									<td>
 										<button type="button" class="btn btn-primary"
-											onclick="location.href='gymview.do?gym_code=${row.gym_code }'">
+											onclick="location.href='gymdetail.do?gym_code=${row.gym_code }'">
 											상세보기</button>
 									</td>
 								</tr>

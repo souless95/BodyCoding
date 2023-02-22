@@ -123,7 +123,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
        <div>
          <div class="mb-1">
 	        <label for="mem_pass">비밀번호</label>
-	        <input type="password" class="form-control" id="mem_pass" name="mem_pass" placeholder="" value="" required>
+	        <input type="password" class="form-control" name="mem_pass" placeholder="" value="" required>
 			<div class="invalid-feedback" style="margin-bottom:20px;">
               	비밀번호를 입력해 주세요.
               </div>
@@ -131,7 +131,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 		
 		<div class="mb-1">
 	        <label for="mem_pass">비밀번호 확인</label>
-	        <input type="password" class="form-control" id="mem_pass" name="mem_pass" placeholder="" value="" required>
+	        <input type="password" class="form-control" name="mem_pass" placeholder="" value="" required>
 			<div class="invalid-feedback" style="margin-bottom:20px;">
               	비밀번호를 입력해 주세요
             </div>
@@ -172,11 +172,12 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	 	<div class="mb-1">
 	        <label for="mem_phone">전화번호</label>
 	        <div id="phone">
-                <div style="width:30%;"><input type ="tel" class="form-control valid" placeholder="010" name ="mem_phone" id="tel1"  size="3" onkeyup="commonFocusMove('tel1', '3', 'tel2'); checkNone();" maxlength="3" required></div>
+	        	<div><input type ="hid den" name ="mem_phone" id="telFinal" value="" required></div>
+                <div style="width:30%;"><input type ="tel" class="form-control valid" placeholder="010" id="tel1"  size="3" onkeyup="commonFocusMove('tel1', '3', 'tel2'); checkNone();" maxlength="3" required></div>
                 <span style="margin-top:6px;">-</span>
-                <div style="width:35%;"><input type ="tel" class="form-control valid" name ="mem_phone" id="tel2" size="4" onkeyup="commonFocusMove('tel2', '4', 'tel3'); checkNone();" maxlength="4" required></div>
+                <div style="width:35%;"><input type ="tel" class="form-control valid" id="tel2" size="4" onkeyup="commonFocusMove('tel2', '4', 'tel3'); checkNone();" maxlength="4" required></div>
                 <span style="margin-top:6px;">-</span>
-                <div style="width:35%;"><input type ="tel" class="form-control valid" name ="mem_phone" maxlength='4' id="tel3" onkeyup="commonFocusMove('tel3', '4', 'email1'); checkNone();" maxlength="4" required></div>
+                <div style="width:35%;"><input type ="tel" class="form-control valid" maxlength='4' id="tel3" onkeyup="checkNone();" maxlength="4" required></div>
             </div>
 			</div>
 			<div id="phonecheck" style="margin-bottom:20px; display:none;">
@@ -196,7 +197,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 		
 		 <div class="mb-1">
 	        <label for="gym_code">지점선택</label>&nbsp;
-	        <select class="custom-select d-block w-100" id="gym_code" name="gym_code" required>
+	        <select class="custom-select d-block w-100" name="gym_code" required>
                 <option value="" disabled selected>지점을 선택해 주세요</option>
                 <option>종로</option>
                 <option>일산</option>
@@ -297,7 +298,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	
 		<div class="mb-1">
 	        <label for="mem_inflow">유입경로</label>
-	        <select class="custom-select d-block w-100" id="gym_code" name="gym_code"  required>
+	        <select class="custom-select d-block w-100" name="mem_inflow"  required>
                 <option value="" disabled selected> 센터를 알게된 경로를 선택해 주세요</option>
                 <option>지인추천</option>
                 <option>SNS</option>
@@ -345,15 +346,28 @@ function commonFocusMove(thisObj, numLength, nextObj){
     function totalcheck(forms){
     	
     	const gc = document.getElementsByName("mem_gender");
+<<<<<<< HEAD
     	if(gc[0].checked==false || gc[1].checked==false){
     		document.getElementById("mnw").style.display = "inline-block";
+=======
+    	if(gc[0].checked==false && gc[1].checked==false){
+    		document.getElementById("mnw").style.display = "inline";
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
     	}
     	
+<<<<<<< HEAD
     	const tell1 = document.getElementById("tel1"); 
     	const tell2 = document.getElementById("tel2");
     	const tell3 = document.getElementById("tel3");
     	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
     		document.getElementById("phonecheck").style.display = 'inline-block';
+=======
+    	const tel1 = document.getElementById("tel1"); 
+    	const tel2 = document.getElementById("tel2");
+    	const tel3 = document.getElementById("tel3");
+    	if(tel1.value=="" || tel2.value=="" || tel3.value==""){
+    		document.getElementById("phonecheck").style.display = 'inline';
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
     	}
     	
     	const disease = document.getElementsByName("mem_disease");
@@ -373,17 +387,24 @@ function commonFocusMove(thisObj, numLength, nextObj){
     			mem_interest[3].checked == false){
     		document.getElementById("interestcheck").style.display = 'inline-block';
     	}
+    	
+    	document.getElementById("telFinal").value = tel1.value + "-" + tel2.value + "-" + tel3.value;
     }
     
     function checkNone(){
-    	const tell1 = document.getElementById("tel1");
-    	const tell2 = document.getElementById("tel2");
-    	const tell3 = document.getElementById("tel3");
-    	if(tell1.value!="" && tell2.value!="" && tell3.value!=""){
+    	const tel1 = document.getElementById("tel1");
+    	const tel2 = document.getElementById("tel2");
+    	const tel3 = document.getElementById("tel3");
+    	if(tel1.value!="" && tel2.value!="" && tel3.value!=""){
     		document.getElementById("phonecheck").style.display = 'none';
     	}
+<<<<<<< HEAD
     	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
     		document.getElementById("phonecheck").style.display = 'inline-block';
+=======
+    	if(tel1.value=="" || tel2.value=="" || tel3.value==""){
+    		document.getElementById("phonecheck").style.display = 'inline';
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
     	}
     	
     	const gc = document.getElementsByName("mem_gender");

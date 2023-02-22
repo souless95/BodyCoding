@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bc.bodycoding.MemberDTO;
+import global.dto.MemberDTO;
 
 @Controller
 public class AccountController {
@@ -19,8 +19,7 @@ public class AccountController {
 
 	//회원가입창으로 넘어가기
 	@GetMapping("/signup.do")
-	public String signupM(Model model) {
-		model.addAttribute("mem_type","member");
+	public String signupM() {
 		return "member/account/signup";
 	}
 	
@@ -43,8 +42,8 @@ public class AccountController {
 	@PostMapping("/login.do")
 	public String login1(HttpSession session, MemberDTO memberDTO) {
 		try {
-			session.setAttribute("UserEmail", accountdao.login(memberDTO));
-			return "main";
+			session.setAttribute("UserName", accountdao.login(memberDTO));
+			return "redirect:main";
 		}
 		catch (Exception e) {
 			System.out.println("로그인 중 오류발생");
@@ -56,7 +55,7 @@ public class AccountController {
 	@GetMapping("/logout.do")
 	public String logout1(HttpSession session) {
 		session.invalidate();
-		return "main";
+		return "redirect:main";
 	}
 
 

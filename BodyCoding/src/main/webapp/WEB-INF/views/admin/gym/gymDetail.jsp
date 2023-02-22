@@ -81,37 +81,32 @@
 										</button>
 									</td>
 								</tr>
-								<button type="button" class="btn btn-success" onclick="location.href='regist.do'">
+								<!-- <button type="button" class="btn btn-success" onclick="location.href='regist.do'">
 								지점등록
-								</button>
+								</button> -->
 							</tbody>
 						</table>
 						<table id="datatablesSimple">
 							<thead>
 							<tr>
 								<th>지점코드</th>
+								<th>지점아이디</th>
 								<th>지점명</th>
 								<th>지점 전화번호</th>
 								<th>지점 주소</th>
 							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${memList }" var="row" varStatus="loop">
 								<tr>
-									<td>${row.gym_code }</td>
-									<td>${row.mem_name }</td>
-									<td>${row.mem_phone }</td>
-									<td>${row.mem_address }</td>
-									<td>
-										<button type="button" class="btn btn-primary" onclick="location.href='gymview.do?gym_code=${row.gym_code }'">
-											상세보기
-										</button>
-									</td>
+									<td>${memList.gym_code }</td>
+									<td>${memList.mem_id }</td>
+									<td>${memList.mem_name }</td>
+									<td>${memList.mem_phone }</td>
+									<td>${memList.mem_address }</td>
 								</tr>
-							</c:forEach>
-							<button type="button" class="btn btn-success" onclick="location.href='regist.do'">
+							<!-- <button type="button" class="btn btn-success" onclick="location.href='regist.do'">
 								지점등록
-							</button>
+							</button> -->
 							<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do'">
 								트레이너 관리
 							</button>

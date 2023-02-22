@@ -1,7 +1,5 @@
 package com.bc.bodycoding.admin.gym;
 
-import java.lang.reflect.Member;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bc.bodycoding.MemberDTO;
+import global.dto.GymDTO;
+import global.dto.MemberDTO;
 
 @Controller
 public class GymController {
@@ -25,14 +24,16 @@ public class GymController {
 		model.addAttribute("gymList", gymdao.select());
 		return "admin/gym/gymList";
 	}	
-	
-	@RequestMapping("/gymview.do")
+	//상세보기
+	@RequestMapping("/gymdetail.do")
 	public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
-		gymDTO = gymdao.selectOne(gymDTO);
-		model.addAttribute("memList", gymdao.select());
+		gymDTO = gymdao.selectOnegym(gymDTO);
+		memberDTO = gymdao.selectOneMember(memberDTO);
+		model.addAttribute("memList", memberDTO);
 		model.addAttribute("dto", gymDTO);
+		System.out.println(memberDTO);
 		System.out.println(gymDTO);
-		return "admin/gym/gymView";
+		return "admin/gym/gymDetail";
 	}
 	
 	//지점등록페이지
@@ -51,7 +52,7 @@ public class GymController {
 	//수정하기
 	@RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
 	public String gym4(GymDTO gymDTO, Model model) {
-		gymDTO = gymdao.selectOne(gymDTO);
+		gymDTO = gymdao.selectOnegym(gymDTO);
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
 		return "admin/gym/edit";

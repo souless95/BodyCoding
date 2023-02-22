@@ -8,7 +8,7 @@
 <mapper namespace="com.bc.bodycoding.admin.trainer.TrainerService">
 
 	<insert id="insertMemberT"
-		parameterType="com.bc.bodycoding.MemberDTO">
+		parameterType="global.dto.MemberDTO">
 		insert into MEMBER (mem_id, mem_pass, mem_name, mem_gender, 
 			mem_birth, mem_phone, mem_address, mem_type, mem_status, 
 			gym_code, mem_career, mem_comment, mem_img)
@@ -19,8 +19,8 @@
 	
 	
 	<select id="selectT"
-		parameterType="com.bc.bodycoding.MemberDTO"
-		resultType="com.bc.bodycoding.MemberDTO">
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
 		select * from member where mem_type='TRAINER' order by mem_regidate desc
 	</select>
 	

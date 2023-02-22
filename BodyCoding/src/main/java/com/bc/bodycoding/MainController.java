@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -33,4 +34,22 @@ public class MainController {
 	public String fullCalendar() {
 		return "fullCalendar";
 	}
+	
+	//json불러오기 실험
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping("/test3") public String test3(){ JsonObject obj =new
+	 * JsonObject();
+	 * 
+	 * obj.addProperty("title", "테스트3"); obj.addProperty("content", "테스트3 내용");
+	 * 
+	 * JsonObject data = new JsonObject();
+	 * 
+	 * data.addProperty("time", "12:00");,
+	 * 
+	 * obj.add("data", data);
+	 * 
+	 * return obj.toString(); }
+	 */
 }

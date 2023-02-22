@@ -10,6 +10,8 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="../static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+
 </head>
 <body class="sb-nav-fixed">
 	<!-- top메뉴  -->
@@ -44,7 +46,6 @@
 						       	 	<th>방문경로</th>
 						       	 	<th>보유포인트</th>
 						       	  	<th>가입일자</th>
-						       	  	<th></th>
 						      	</tr>
 							</thead>
 							<tbody>

@@ -17,50 +17,43 @@
 
 	<div id="layoutSidenav">
 		<!-- side -->
-		<%@ include file="../../admin/inc/side.jsp"%>
+	<%@ include file="../../admin/inc/side.jsp"%>
+	
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="card mb-4">
 					<div class="card-header">
 						<h2>지점 리스트</h2>
 					</div>
-					<form method="get">
+					<!-- <form method="get">
 						<div>
 							<input type="text" name="searchTxt" placeholder="검색어를 입력하세요." />
 							<input type="submit" name="검색" />
 						</div>
-					</form>
+					</form> -->
 					<div class="card-body">
 						<table id="datatablesSimple">
-						<thead>
-							<tr>
-								<th>지점코드</th>
-								<th>지점명</th>
-								<th>지점 전화번호</th>
-								<th>지점 주소</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${gymList }" var="row" varStatus="loop">
+							<thead>
 								<tr>
-		
-									<td>${row.gym_code }</td>
-									<td>${row.mem_name }</td>
-									<td>${row.mem_phone }</td>
-									<td>${row.mem_address }</td>
-									<td>
-										<button type="button" class="btn btn-primary"
-											onclick="location.href='gymdetail.do?gym_code=${row.gym_code }'">
-											상세보기</button>
-									</td>
+									<th>지점코드</th>
+									<th>지점명</th>
+									<th>지점 전화번호</th>
+									<th>지점 주소</th>
+									<th></th>
 								</tr>
-							</c:forEach>
-							<button type="button" class="btn btn-success" onclick="location.href='gymRegist.do'">
-								지점등록
-							</button>
-							<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do'">
-								트레이너 관리
-							</button>
+							</thead>
+							<tbody>
+								<c:forEach items="${gymList }" var="row" varStatus="loop">
+									<tr>
+										<td>${row.gym_code }</td>
+										<td>${row.mem_name }</td>
+										<td>${row.mem_phone }</td>
+										<td>${row.mem_address }</td>
+										<td>
+											<a href="gymdetail.do?gym_code=${row.gym_code }">상세보기</a>
+										</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -73,6 +66,5 @@
 	<script src="../static/admin/js/scripts.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/datatables-simple-demo.js"></script>
-
 </body>
 </html>

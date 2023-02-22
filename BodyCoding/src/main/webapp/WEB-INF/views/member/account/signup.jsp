@@ -148,12 +148,15 @@ function commonFocusMove(thisObj, numLength, nextObj){
 		
 		<br>
 		
-		 <div class="mb-1" >
+		 <div class="mb-2">
 	        <label for="mem_gender">성별</label>
 	       		<input type="radio" name="mem_gender" value="M" onchange="checkNone();" required>&nbsp;남자
 	        	<input type="radio" name="mem_gender" value="F" onchange="checkNone();" required>&nbsp;여자<br>
-	        <div id='mnw' style="margin-bottom:20px; display:none;">
-              	<span style="color:#DC3545; font-size:16px;">성별을 선택해 주세요</span>
+	    	<div style="padding-bottom:30px;">
+	    		<div style="margin-bottom:-15px;"></div>
+		        <div id="mnw"  style="display:none;">
+	              	<span style="color:#DC3545; font-size:16px;">성별을 선택해 주세요</span>
+				</div>
 			</div>
 		</div>
 		
@@ -268,7 +271,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	        	<label for="etc">그 외</label>&nbsp;&nbsp;
 	         </div>
 	         <div id="purposecheck" style="margin-bottom:20px; display:none;">
-              	<span style="color:#DC3545; font-size:16px;">운동목적을 선택해 주세요</span><br>
+              	<span style="color:#DC3545; font-size:16px;" style="margin-bottom:20px;">운동목적을 선택해 주세요</span><br>
              </div>
 	
 	        <label for="mem_interest">관심사항</label>
@@ -288,7 +291,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	         </div>
 	         
 	         <div id="interestcheck" style="margin-bottom:20px; display:none;">
-              	<span style="color:#DC3545; font-size:16px;">관심사항을 선택해 주세요</span><br>
+              	<span style="color:#DC3545; font-size:16px;" style="margin-bottom:20px;">관심사항을 선택해 주세요</span><br>
              </div>
 	
 	
@@ -343,32 +346,32 @@ function commonFocusMove(thisObj, numLength, nextObj){
     	
     	const gc = document.getElementsByName("mem_gender");
     	if(gc[0].checked==false || gc[1].checked==false){
-    		document.getElementById("mnw").style.display = "inline";
+    		document.getElementById("mnw").style.display = "inline-block";
     	}
     	
     	const tell1 = document.getElementById("tel1"); 
     	const tell2 = document.getElementById("tel2");
     	const tell3 = document.getElementById("tel3");
     	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
-    		document.getElementById("phonecheck").style.display = 'inline';
+    		document.getElementById("phonecheck").style.display = 'inline-block';
     	}
     	
     	const disease = document.getElementsByName("mem_disease");
     	if(disease[0].checked == false && disease[1].checked == false && disease[2].checked == false &&
     			disease[3].checked == false && disease[4].checked == false){
-    		document.getElementById("diseasecheck").style.display = 'inline';
+    		document.getElementById("diseasecheck").style.display = 'inline-block';
     	}
     	
     	const purpose = document.getElementsByName("mem_purpose");
     	if(purpose[0].checked == false && purpose[1].checked == false && purpose[2].checked == false &&
     			purpose[3].checked == false){
-    		document.getElementById("purposecheck").style.display = 'inline';
+    		document.getElementById("purposecheck").style.display = 'inline-block';
     	}
     	
     	const mem_interest = document.getElementsByName("mem_interest");
     	if(mem_interest[0].checked == false && mem_interest[1].checked == false && mem_interest[2].checked == false &&
     			mem_interest[3].checked == false){
-    		document.getElementById("interestcheck").style.display = 'inline';
+    		document.getElementById("interestcheck").style.display = 'inline-block';
     	}
     }
     
@@ -380,7 +383,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
     		document.getElementById("phonecheck").style.display = 'none';
     	}
     	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
-    		document.getElementById("phonecheck").style.display = 'inline';
+    		document.getElementById("phonecheck").style.display = 'inline-block';
     	}
     	
     	const gc = document.getElementsByName("mem_gender");
@@ -395,7 +398,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
     	}
     	if(disease[0].checked == false && disease[1].checked == false && disease[2].checked == false &&
     			disease[3].checked == false && disease[4].checked == false){
-    		document.getElementById("diseasecheck").style.display = 'inline';
+    		document.getElementById("diseasecheck").style.display = 'inline-block';
     	}
     	
     	const purpose = document.getElementsByName("mem_purpose");
@@ -405,7 +408,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
     	}
     	if(purpose[0].checked == false && purpose[1].checked == false && purpose[2].checked == false &&
     			purpose[3].checked == false){
-    		document.getElementById("purposecheck").style.display = 'inline';
+    		document.getElementById("purposecheck").style.display = 'inline-block';
     	}
     	
     	const mem_interest = document.getElementsByName("mem_interest");
@@ -415,7 +418,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
     	}
     	if(mem_interest[0].checked == false && mem_interest[1].checked == false && mem_interest[2].checked == false &&
     			mem_interest[3].checked == false){
-    		document.getElementById("interestcheck").style.display = 'inline';
+    		document.getElementById("interestcheck").style.display = 'inline-block';
     	}
     }
     

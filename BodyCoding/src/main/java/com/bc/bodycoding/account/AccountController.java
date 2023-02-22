@@ -42,8 +42,8 @@ public class AccountController {
 	@PostMapping("/login.do")
 	public String login1(HttpSession session, MemberDTO memberDTO) {
 		try {
-			session.setAttribute("UserEmail", accountdao.login(memberDTO));
-			return "main";
+			session.setAttribute("UserName", accountdao.login(memberDTO));
+			return "redirect:main";
 		}
 		catch (Exception e) {
 			System.out.println("로그인 중 오류발생");
@@ -55,7 +55,7 @@ public class AccountController {
 	@GetMapping("/logout.do")
 	public String logout1(HttpSession session) {
 		session.invalidate();
-		return "main";
+		return "redirect:main";
 	}
 
 

@@ -421,8 +421,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
     		document.getElementById("interestcheck").style.display = 'inline';
     	}
     }
-    
-    
+        
     </script>
 </body>
 </html>

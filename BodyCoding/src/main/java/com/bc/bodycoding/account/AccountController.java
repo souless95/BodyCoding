@@ -56,7 +56,7 @@ public class AccountController {
 	@GetMapping("/logout.do")
 	public String logout1(HttpSession session) {
 		session.invalidate();
-		return "main";
+		return "redirect:main";
 	}
 
 

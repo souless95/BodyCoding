@@ -89,6 +89,11 @@
 			                    <a href="#">마이페이지</a>
 			                </button>
 			            </li>
+						<li style="padding-top:15px;">
+			                <button class="btn btn-dark">
+			                    <a href="#" onclick="logoutcheck()">로그아웃</a>
+			                </button>
+			            </li>
 			            </c:if>
 			            <c:if test="${empty UserName}">
 						<li style="padding-top:15px;">

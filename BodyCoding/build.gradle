@@ -31,21 +31,12 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-<<<<<<< HEAD
-	testImplementation 'org.springframework.security:spring-security-test'
-	
-=======
 	//testImplementation 'org.springframework.security:spring-security-test'
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 	//JSP 사용설정
 	implementation 'javax.servlet:jstl'
-<<<<<<< HEAD
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'	
-=======
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	//JSP 새로고침
 	implementation 'org.springframework.boot:spring-boot-devtools'
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 }
 
 tasks.named('test') {

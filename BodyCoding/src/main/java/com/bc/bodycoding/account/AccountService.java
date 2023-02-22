@@ -2,10 +2,12 @@ package com.bc.bodycoding.account;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import global.dto.MemberDTO;
+
 @Mapper
-public interface MemberService{
+public interface AccountService{
 
 	public int insertMember(MemberDTO memberDTO);
-	public int insertMemberT(MemberDTO memberDTO);
-	public int insertMemberASUB(MemberDTO memberDTO);
+	public String login(MemberDTO memberDTO);
+	
 }

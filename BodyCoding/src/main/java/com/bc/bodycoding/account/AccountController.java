@@ -43,8 +43,8 @@ public class AccountController {
 	@PostMapping("/login.do")
 	public String login1(HttpSession session, MemberDTO memberDTO) {
 		try {
-			session.setAttribute("UserEmail", accountdao.login(memberDTO));
-			return "main";
+			session.setAttribute("UserName", accountdao.login(memberDTO));
+			return "redirect:main";
 		}
 		catch (Exception e) {
 			System.out.println("로그인 중 오류발생");

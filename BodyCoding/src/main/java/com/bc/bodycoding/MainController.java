@@ -30,6 +30,7 @@ public class MainController {
 	//회원메인창으로 넘어가기
 	@GetMapping("main")
 	public String membermain(HttpSession session) {
+		session.getAttribute("UserName");
 		return "member/main";
 	}
 	

@@ -20,14 +20,12 @@
 	   		#{mem_interest}, #{mem_inflow}, #{mem_point}, sysdate)
 </insert>
 
-
 <select id="login"
 	parameterType="global.dto.MemberDTO"
 	resultType="String">
-	select mem_id from member 
-    where mem_id=#{mem_id} and mem_pass=#{mem_pass}
+	select mem_name from member
+    	where mem_id=#{mem_id} and mem_pass=#{mem_pass}
 </select>
-
 	
 
 </mapper>

@@ -346,28 +346,15 @@ function commonFocusMove(thisObj, numLength, nextObj){
     function totalcheck(forms){
     	
     	const gc = document.getElementsByName("mem_gender");
-<<<<<<< HEAD
     	if(gc[0].checked==false || gc[1].checked==false){
     		document.getElementById("mnw").style.display = "inline-block";
-=======
-    	if(gc[0].checked==false && gc[1].checked==false){
-    		document.getElementById("mnw").style.display = "inline";
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
     	}
     	
-<<<<<<< HEAD
     	const tell1 = document.getElementById("tel1"); 
     	const tell2 = document.getElementById("tel2");
     	const tell3 = document.getElementById("tel3");
     	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
     		document.getElementById("phonecheck").style.display = 'inline-block';
-=======
-    	const tel1 = document.getElementById("tel1"); 
-    	const tel2 = document.getElementById("tel2");
-    	const tel3 = document.getElementById("tel3");
-    	if(tel1.value=="" || tel2.value=="" || tel3.value==""){
-    		document.getElementById("phonecheck").style.display = 'inline';
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
     	}
     	
     	const disease = document.getElementsByName("mem_disease");

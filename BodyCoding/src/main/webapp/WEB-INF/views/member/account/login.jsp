@@ -22,8 +22,8 @@
         
         <button type="submit">로그인하기</button>
         <!-- Host: kauth.kakao.com -->
-        <a href="https://kauth.kakao.com/oauth/authorize?client_id=bd8c5cf77602a837f1013c5f5b356e29&redirect_uri=http://localhost:8080/callback&response_type=code">
-			<img src="../static/member/images/kakao_login.png"></a>
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code">
+			<img src="images/kakao_login.png"></a>
 	</form>
 	
 	<a href="main">메인으로 이동</a>

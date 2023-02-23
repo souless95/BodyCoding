@@ -24,6 +24,24 @@
 		select * from member where mem_type='TRAINER' order by mem_regidate desc
 	</select>
 	
+	<select id="selectOneT"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		select * from member where mem_type='TRAINER' and mem_id=#{mem_id}
+	</select>
 	
+	
+	<update id="update"
+		parameterType="global.dto.MemberDTO">
+		update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_gender=#{mem_gender},
+			mem_phone=#{mem_phone}, mem_address=#{mem_address}, mem_status=#{mem_status}, gym_code=#{gym_code},
+			mem_career=#{mem_career}, mem_comment=#{mem_comment}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<delete id="deleteT"
+		parameterType="global.dto.MemberDTO">
+		delete from member where mem_id=#{mem_id}
+	</delete>
 </mapper>
 	

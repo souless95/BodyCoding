@@ -22,7 +22,7 @@
 		        <main>
 		        	<div class="card mb-4">
 		        		<div class="card-header">
-							<h2>회원 리스트</h2>
+							<h2>트레이너 상세보기</h2>
 		        		</div>
 		        		<div class="card-body">
 							<table id="datatablesSimple">
@@ -34,28 +34,36 @@
 						         	<th>성별</th>
 						         	<th>생년월일</th>
 						       	 	<th>전화번호</th>
-						       	  	<th>가입일자</th>
+						       	 	<th>주소</th>
+						       	 	<th>계정상태</th>
+						       	 	<th>경력</th>
+						       	 	<th>자기소개</th>
+						       	 	<th>프로필 이미지</th>
 						       	  	<th></th>
 						      	</tr>
 							</thead>
 							<tbody>
-					     	<c:forEach items="${memberList }" var="row" varStatus="loop">
 						      	<tr>
-							        <td>${row.gym_code }</td>
-							        <td>${row.mem_id }</td>
-							        <td>${row.mem_name }</td>
-							        <td>${row.mem_gender }</td>
-							        <td>${row.mem_birth }</td>
-							        <td>${row.mem_phone }</td>
-							        <td>${row.mem_regidate }</td>
-							        <td>
-							        	<button type="button" class="btn btn-primary"
-												onclick="location.href='detail.do?mem_id=${row.mem_id }'">
-												상세보기</button>
-							        	<%-- <a href="detail.do?mem_id=${row.mem_id }">상세보기</a> --%>
-							        </td>
+							        <td>${trainerList.gym_code }</td>
+							        <td>${trainerList.mem_id }</td>
+							        <td>${trainerList.mem_name }</td>
+							        <td>${trainerList.mem_gender }</td>
+							        <td>${trainerList.mem_birth }</td>
+							        <td>${trainerList.mem_phone }</td>
+							        <td>${trainerList.mem_address }</td>
+							        <td>${trainerList.mem_status }</td>
+							        <td>${trainerList.mem_career }</td>
+							        <td>${trainerList.mem_comment }</td>
+							        <td>${trainerList.mem_img }</td>
 							    </tr>
-						    </c:forEach>
+							    <td>
+									<button type="button" class="btn btn-primary" onclick="location.href='trainerEdit.do?mem_id=${trainerList.mem_id }'">
+										수정
+									</button>
+									<button type="button" class="btn btn-primary" onclick="location.href='trainerdelete.do?mem_id=${trainerList.mem_id }'">
+										삭제
+									</button>
+								</td>
 							</tbody>
 							</table>
 		        		</div>

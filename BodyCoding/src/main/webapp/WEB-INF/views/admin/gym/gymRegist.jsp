@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h1>회원가입</h1>
+    <h1>지점등록</h1>
     <form method="post" action="/gymRegist.do">
     	<input type="hidden" id="mem_status" name="mem_status" value="1">
     	<input type="hidden" id="mem_type" name="mem_type" value="ADMIN_SUB">

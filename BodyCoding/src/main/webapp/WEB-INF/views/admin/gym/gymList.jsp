@@ -32,6 +32,7 @@
 							<input type="submit" name="검색" />
 						</div>
 					</form> -->
+					<button type="button" onclick="location.href='/gymRegist.do'">등록하기</button>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>

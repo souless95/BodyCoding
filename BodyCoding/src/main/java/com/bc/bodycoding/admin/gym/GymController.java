@@ -36,26 +36,13 @@ public class GymController {
 		return "admin/gym/gymDetail";
 	}
 	
-	//지점등록페이지
-	@RequestMapping(value="/regist.do", method=RequestMethod.GET)
-	public String gym2() {
-		return "admin/gym/regist";
-	}
-	//지점등록
-	@RequestMapping(value="/regist.do", method=RequestMethod.POST)
-	public String gym3(GymDTO gymDTO) {
-		int result = gymdao.insert(gymDTO);
-		if(result==1) System.out.println("등록되었습니다.");
-		return "redirect:gymadminlist.do";
-	}
-	
 	//수정하기
 	@RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
 	public String gym4(GymDTO gymDTO, Model model) {
 		gymDTO = gymdao.selectOnegym(gymDTO);
 		model.addAttribute("dto", gymDTO);
 		System.out.println(gymDTO);
-		return "admin/gym/edit";
+		return "admin/gym/gymEdit";
 	}
 	@RequestMapping(value="/gymedit.do", method=RequestMethod.POST)
 	public String gym5(GymDTO gymDTO) {
@@ -82,19 +69,24 @@ public class GymController {
 	//지점 등록 폼 받아서 등록
 	@PostMapping("/gymRegist.do")
 	@Transactional
-	public String registASUB2(MemberDTO memberDTO) {
+	public String registASUB2(MemberDTO memberDTO, GymDTO gymDTO) {
 		try {
-			int result1 = gymdao.insertMember1(memberDTO);
-			int result = gymdao.insertMemberASUB(memberDTO);
-			if(result==1) System.out.println("회원가입이 완료되었습니다.");
-			return "redirect:/gymadminlist.do";
+			int count = gymdao.codeCheck(gymDTO);
+			if(count==1) { 
+				System.out.println("이미 등록된 지점입니다.");
+				return "admin/gym/gymRegist";
+			}
+			else {
+				int result1 = gymdao.insertMember1(memberDTO);
+				int result = gymdao.insertMemberASUB(memberDTO);
+				if(result==1) System.out.println("회원가입이 완료되었습니다.");
+				return "redirect:/gymadminlist.do";
+			}
 		} 
 		catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("안됨 ㅋ");
 			return "redirect:/gymRegist.do";
 		}
 	}
-	
-	
-	
 }

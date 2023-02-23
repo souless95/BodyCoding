@@ -26,7 +26,6 @@
 						<h2>지점 리스트</h2>
 					</div>
 <!-- 					<form method="get">
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 						<div>
 							<input type="text" name="searchTxt" placeholder="검색어를 입력하세요." />
 							<input type="submit" name="검색" />

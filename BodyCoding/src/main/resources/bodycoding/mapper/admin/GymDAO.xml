@@ -22,7 +22,7 @@
 	<select id="selectOneMember"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from MEMBER where gym_code=#{gym_code}
+		select * from MEMBER where mem_type='ADMIN_SUB' and gym_code=#{gym_code}
 	</select>
 	
 	<update id="update"
@@ -38,6 +38,10 @@
 	<delete id="delete"
 		parameterType="global.dto.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}
+	</delete>
+	<delete id="deleteM"
+		parameterType="global.dto.GymDTO">
+		delete from MEMBER where gym_code=#{gym_code}
 	</delete>
 	
 	<insert id="insertMemberASUB"

@@ -24,9 +24,8 @@
 		<input type="text" id="mem_name" name="mem_name" required><br>
 
         <label for="mem_gender">성별:</label>
-        <input type="radio" id="mem_gender" name="mem_gender" value="M">남자
-        <input type="radio" id="mem_gender" name="mem_gender" value="F">여자<br>
-        <input type="hidden"  id="mem_gender" name="mem_gender" value="">
+        <input type="radio" id="mem_gender" name="mem_gender" value="M" required>남자
+        <input type="radio" id="mem_gender" name="mem_gender" value="F" required>여자<br>
 
         <label for="mem_birth">생년월일:</label>
         <input type="date" id="mem_birth" name="mem_birth"><br>

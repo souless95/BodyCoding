@@ -38,7 +38,7 @@
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${memberList }" var="row" varStatus="loop">
+							<c:forEach items="${trainerList }" var="row" varStatus="loop">
 							<tr>
 								<td>${row.gym_code }</td>
 								<td>${row.mem_id }</td>
@@ -48,7 +48,7 @@
 								<td>${row.mem_phone }</td>
 								<td>${row.mem_regidate }</td>
 								<td>
-									<a href="detail.do?mem_id=${row.mem_id }">상세보기</a>
+									<a href="trainerDetail.do?mem_id=${row.mem_id }">상세보기</a>
 								</td>
 							</tr>
 							</c:forEach>

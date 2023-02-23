@@ -94,4 +94,7 @@ public class GymController {
 			return "redirect:/gymRegist.do";
 		}
 	}
+	
+	
+	
 }

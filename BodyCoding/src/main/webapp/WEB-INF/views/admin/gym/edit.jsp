@@ -8,7 +8,8 @@
 </head>
 <body>
 	<h2>지점수정</h2>
-	<form action="gymedit.do" method="post">
+	<form action="gymedit.do" method="post"
+		enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>지점코드(수정불가)</th>
@@ -17,10 +18,6 @@
 			<tr>
 				<th>평수</th>
 				<td><input type="text" name="gym_scale" value="${dto.gym_scale}" /></td>
-			</tr>
-			<tr>
-				<th>헬스장 상세 이미지</th>
-				<td><input type="text" name="gym_dtail_img" value="${dto.gym_dtail_img}" /></td>
 			</tr>
 			<tr>
 				<th>주차여부</th>
@@ -85,6 +82,11 @@
 			<tr>
 				<th>운영시간 : 공휴일_종료</th>
 				<td><input type="text" name="rtime_holy_end" value="${dto.rtime_holy_end}" /></td>
+			</tr>
+			<!-- 다중파일 업로드 해보기 -->
+			<tr>
+				<th>헬스장 상세 이미지</th>
+				<td><input multiple="multiple" type="file" name="gym_dtail_img" value="${dto.gym_dtail_img}" /></td>
 			</tr>
 		</table>
 		<input type="submit" value="전송하기" />

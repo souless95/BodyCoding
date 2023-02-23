@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.dto.MemberDTO;
 
@@ -34,8 +35,37 @@ public class TrainerController {
 	@RequestMapping("/trainerList.do")
 	public String listT(Model model) {
 		model.addAttribute("mem_type","trainer");
-		model.addAttribute("memberList",trainerdao.selectT());
+		model.addAttribute("trainerList",trainerdao.selectT());
 		return "admin/trainer/trainerList";
 	}
+	
+	@RequestMapping("/trainerDetail.do")
+	public String detailT(Model model, MemberDTO memberDTO) {
+		memberDTO = trainerdao.selectOneT(memberDTO);
+		model.addAttribute("trainerList",memberDTO);
+		return "admin/trainer/trainerDetail";
+	}
 
+	//수정하기
+	@RequestMapping(value="/trainerEdit.do", method=RequestMethod.GET)
+	public String editT(Model model, MemberDTO memberDTO) {
+		memberDTO = trainerdao.selectOneT(memberDTO);
+		model.addAttribute("trainer", memberDTO);
+		return "admin/trainer/trainerEdit";
+	}
+	@RequestMapping(value="/trainerEdit.do", method=RequestMethod.POST)
+	public String editT(MemberDTO memberDTO) {
+		int result = trainerdao.update(memberDTO);
+		System.out.println(result);
+		if(result==1) System.out.println("수정되었습니다.");
+		return "redirect:trainerList.do";
+	}
+	
+	//삭제
+	@RequestMapping("/trainerdelete.do")
+	public String deleteT(MemberDTO memberDTO) {
+		int result = trainerdao.deleteT(memberDTO);
+		if(result==1) System.out.println("삭제되었습니다.");
+		return "redirect:trainerList.do";
+	}
 }

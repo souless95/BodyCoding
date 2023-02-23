@@ -38,20 +38,20 @@
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${trainerList }" var="row" varStatus="loop">
-							<tr>
-								<td>${row.gym_code }</td>
-								<td>${row.mem_id }</td>
-								<td>${row.mem_name }</td>
-								<td>${row.mem_gender }</td>
-								<td>${row.mem_birth }</td>
-								<td>${row.mem_phone }</td>
-								<td>${row.mem_regidate }</td>
-								<td>
-									<a href="trainerDetail.do?mem_id=${row.mem_id }">상세보기</a>
-								</td>
-							</tr>
-							</c:forEach>
+								<c:forEach items="${trainerList }" var="row" varStatus="loop">
+								<tr>
+									<td>${row.gym_code }</td>
+									<td>${row.mem_id }</td>
+									<td>${row.mem_name }</td>
+									<td>${row.mem_gender }</td>
+									<td>${row.mem_birth }</td>
+									<td>${row.mem_phone }</td>
+									<td>${row.mem_regidate }</td>
+									<td>
+										<a href="trainerDetail.do?mem_id=${row.mem_id }">상세보기</a>
+									</td>
+								</tr>
+								</c:forEach>
 							</tbody>
 							</table>
 		        		</div>

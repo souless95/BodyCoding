@@ -27,4 +27,5 @@ public class GymDTO {
 	private String rtime_holy_start;
 	private String rtime_holy_end;
 	
+	
 }

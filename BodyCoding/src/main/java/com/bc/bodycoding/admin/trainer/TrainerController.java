@@ -1,5 +1,7 @@
 package com.bc.bodycoding.admin.trainer;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,9 +35,8 @@ public class TrainerController {
 	
 	//admin에서 트레이너목록 보여주기
 	@RequestMapping("/trainerList.do")
-	public String listT(Model model) {
-		model.addAttribute("mem_type","trainer");
-		model.addAttribute("trainerList",trainerdao.selectT());
+	public String listT(Model model, MemberDTO memberDTO) {
+		model.addAttribute("trainerList",trainerdao.selectGT(memberDTO));
 		return "admin/trainer/trainerList";
 	}
 	

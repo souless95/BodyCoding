@@ -6,31 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script type="text/javascript">
-	function typeChk(e){
-		var pdt = ["식품","의류","기구"];
-		var mbs_p =  ["헬스","GX"];
-		var mbs_c = ["PT","필라테스"];
-		var target = document.getElementById("pCategory");
-		
-		if(e.value == "pdt") var option = pdt;
-		else if(e.value == "mbs_p") var option = mbs_p;
-		else if(e.value == "mbs_c") var option = mbs_c;
-		
-		target.options.length = 0;
-		
-		for (x in option){
-			var opt = document.createElement("option");
-			opt.value = option[x];
-			opt.innerHTML = opthion[x];
-			target.appendChild(opt);
-		}
-	}
-</script> -->
+<script type="text/javascript">
+ 
+onload = function(){
+	var obj1 = document.getElementById('pType');
+	 var type = '<c:out value="${dto.product_type}"/>';
+	 
+	 for(var i=0 ; i<4 ; i++){
+	     if(obj1.options[i].value==type){ 
+	    	 obj1.options[i].selected=true;
+	     }
+	 }
+	 
+	var obj2 = document.getElementById('pCategory');
+	 var type = '<c:out value="${dto.product_category}"/>';
+	 
+	 for(var i=0 ; i<8 ; i++){
+	     if(obj2.options[i].value==type){ 
+	    	 obj2.options[i].selected=true;
+	     }
+	 }
+ }
+ 
+</script>
 </head>
 <body>
-	<h2>상품 등록</h2>
-	<form action="productRegist.do" method="post">
+	<h2>상품 수정</h2>
+	<form action="productEdit.do" method="post">
+	<input type="hidden" name="product_idx" value=${ dto.product_idx} >
 	<table border="1">
 		<tr>
 			<th>상품유형</th>
@@ -44,9 +47,8 @@
 		</tr>
 		<tr>
 			<td> 
-			<!-- onchange="typeChk(this)" -->
-			<select name="product_type">
-				<option>유형선택</option>
+			<select name="product_type" id="pType">
+				<option value="">유형선택</option>
 				<option value="PDT">일반</option>
 				<option value="MBS_P">멤버쉽(기간형)</option>
 				<option value="MBS_C">멤버쉽(횟수형)</option>
@@ -54,6 +56,7 @@
 			</td>
 			<td> 
 			<select name="product_category" id="pCategory">
+				<option value="">분류선택</option>
 				<option value="FOOD">식품</option>
 				<option value="WEAR">의류</option>
 				<option value="TOOL">기구</option>
@@ -63,15 +66,15 @@
 				<option value="PILATES">필라테스</option>
 			</select> 
 			</td>
-			<td><input type="number" name="membership_period" value="0">일</td> 			
-			<td><input type="number" name="membership_count" value="0">회</td> 			
-			<td><input type="text" name="product_name"></td>
-			<td><input type="text" name="product_description"></td>
-			<td><input type="text" name="product_img"></td>
-			<td><input type="number" name="product_price"></td>			
+			<td><input type="number" name="membership_period" value="${ dto.membership_period }">일</td> 			
+			<td><input type="number" name="membership_count" value="${ dto.membership_count }">회</td> 			
+			<td><input type="text" name="product_name" value="${ dto.product_name }"></td>
+			<td><input type="text" name="product_description" value="${ dto.product_description }"></td>
+			<td><input type="text" name="product_img" value="${ dto.product_img }"></td>
+			<td><input type="number" name="product_price" value="${ dto.product_price }"></td>			
 		</tr>
 	</table>
-	<input type="submit" value="등록">
+	<input type="submit" value="수정">
 	<button type="button" onclick="location.href='productList.do'">목록</button>
 	</form>
 </body>

@@ -7,9 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<script>
+		let fileSubmit = function(frm, gubun){
+			else if(gubun==2){
+				frm.action="gymedit.do"
+			}
+			frm.submit();
+		}
+	</script>
 	<h2>지점수정</h2>
-	<form action="gymedit.do" method="post"
-		enctype="multipart/form-data">
+	<form method="post" enctype="multipart/form-data">
+	<!-- <form action="gymedit.do" method="post" enctype="multipart/form-data"> -->
 		<table border="1">
 			<tr>
 				<th>지점코드(수정불가)</th>
@@ -86,10 +94,10 @@
 			<!-- 다중파일 업로드 해보기 -->
 			<tr>
 				<th>헬스장 상세 이미지</th>
-				<td><input multiple="multiple" type="file" name="gym_dtail_img" value="${dto.gym_dtail_img}" /></td>
+				<td><input multiple="multiple" type="file" name="gym_dtail_img"/></td>
 			</tr>
 		</table>
-		<input type="submit" value="전송하기" />
+		<input type="submit" value="전송하기" onclick="fileSubmit(this.form, 2);"/>
 	</form>
 </body>
 </html>

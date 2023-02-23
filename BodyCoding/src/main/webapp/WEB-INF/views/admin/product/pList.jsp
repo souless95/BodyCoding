@@ -31,8 +31,8 @@
 			<td>${pItem.product_price}</td>
 			<td>${pItem.product_regidate}</td>
 			<td>
-				<a href="pEdit.do">수정</a>
-				<a href="pDelete.do">삭제</a>
+				<a href="productEdit.do?product_idx=${pItem.product_idx}">수정</a>
+				<a href="productDelete.do?product_idx=${pItem.product_idx}">삭제</a>
 			</td>
 		</tr>
 		</c:forEach>

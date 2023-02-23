@@ -20,22 +20,30 @@ public class ProductController {
 		return "/admin/product/pList";
 	}
 
-	@RequestMapping(value = "/productRegist.do", method = RequestMethod.GET) 
+	@RequestMapping(value = "/productRegist.do", method = RequestMethod.GET)
 	public String regist1() {
 		return "/admin/product/pRegist";
 	}
-	
+
 	@RequestMapping(value = "/productRegist.do", method = RequestMethod.POST)
 	public String regist2(ProductDTO productDTO) {
 		System.out.println("실행완료");
 		int result = productdao.insert(productDTO);
 		return "redirect:productList.do";
 	}
-
-	/*
-	 * @RequestMapping("/pEdit.do") public String edit() {
-	 * 
-	 * }
-	 */
+	
+	
+	@RequestMapping("/productEdit.do") 
+	public String edit(ProductDTO productDTO, Model model) {
+		productDTO = productdao.selectOne(productDTO);
+		model.addAttribute("dto",productDTO);
+		return "/admin/product/pEdit";
+	}
+	
+	@RequestMapping(value="/productEdit.do", method=RequestMethod.POST) 
+	public String edit(ProductDTO productDTO) {
+		int result = productdao.update(productDTO);
+		return "redirect:productList.do";
+	}
 
 }

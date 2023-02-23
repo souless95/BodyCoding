@@ -39,4 +39,13 @@
 	
 	<delete id="delete" parameterType="global.dto.ProductDTO">
 	</delete>
+	
+	<select id="stockSelect" parameterType="global.dto.ProductDTO" 
+		resultType="global.dto.ProductDTO">
+		SELECT product_detail_idx,PD.gym_code, PD.product_idx,product_type,product_category,product_name,product_status,product_stock,product_price
+			FROM  member M
+				INNER JOIN product_detail PD ON M.gym_code=PD.gym_code 
+				INNER JOIN product P ON P.product_idx=PD.product_idx
+			WHERE mem_id='admin_sub1'
+	</select>
 </mapper>

@@ -148,12 +148,12 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp" style="padding-top:5px;">
-						<li><a href="#hello">플젝명</a></li>
+						<li><a href="#hello">바디코딩</a></li>
 						<li><a href="#about">프로그램</a></li>
-						<li><a href="#service">회원권 신청</a></li>
-						<li><a href="#portfolio">마이페이지</a></li>
-						<li><a href="#pricing">고객센터</a></li>
-						<li><a href="#blog">플젝 홈쇼핑</a></li>
+						<li><a href="#service">지점</a></li>
+						<li><a href="trainer">트레이너</a></li>
+						<li><a href="#pricing">상품몰</a></li>
+						<li><a href="#blog">게시판</a></li>
 										
 					</ul>
 				</div>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bc.bodycoding.main.MemberMainService">
+
+<select id="gymlistSelect"
+	parameterType="global.dto.MemberDTO"
+	resultType="global.dto.MemberDTO">
+	select * from member where mem_type='ADMIN_SUB' and mem_status ='1'
+</select>
+
+<select id="trainerlistSelect"
+	parameterType="global.dto.MemberDTO"
+	resultType="global.dto.MemberDTO">
+	select * from member where mem_type='TRAINER' and mem_status ='1'
+</select>
+
+<select id="trainerInfoSelect"
+	parameterType="global.dto.MemberDTO"
+	resultType="global.dto.MemberDTO">
+	select * from member 
+		where mem_type='TRAINER' and mem_id=#{mem_id}
+</select>
+
+<select id="gymInfoSelect"
+	parameterType="global.dto.MemberDTO"
+	resultType="String">
+	select mem_name from member 
+		where mem_type='ADMIN_SUB' and gym_code=#{gym_code}
+		and mem_status ='1'
+</select>
+
+</mapper>

@@ -27,7 +27,8 @@
 	
 	<update id="update"
 		parameterType="global.dto.GymDTO">
-		update GYM_DETAIL set gym_scale=#{gym_scale}, <!-- gym_dtail_img=#{gym_dtail_img},  -->
+
+		update GYM_DETAIL set gym_scale=#{gym_scale}, <!-- gym_dtail_img=#{gym_dtail_img}, --> 
 			facility_parking=#{facility_parking}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
 			facility_pilates=#{facility_pilates}, facility_pt=#{facility_pt}, facility_24hour=#{facility_24hour}, facility_shower=#{facility_shower}, 
 			facility_wear=#{facility_wear}, facility_locker=#{facility_locker}, rtime_week_start=#{rtime_week_start}, rtime_week_end=#{rtime_week_end}, 

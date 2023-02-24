@@ -67,9 +67,12 @@ public class GymController {
 	
 	//수정하기
 	@RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
-	public String gym4(GymDTO gymDTO, Model model) {
+	public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		gymDTO = gymdao.selectOnegym(gymDTO);
+		memberDTO = gymdao.selectOneMember(memberDTO);
 		model.addAttribute("dto", gymDTO);
+		model.addAttribute("memList", memberDTO);
+		System.out.println(memberDTO);
 		System.out.println(gymDTO);
 		return "admin/gym/gymEdit";
 	}
@@ -149,7 +152,7 @@ public class GymController {
 				int result1 = gymdao.insertMember1(gymDTO);
 				int result = gymdao.insertMemberASUB(memberDTO);
 				if(result==1) System.out.println("회원가입이 완료되었습니다.");
-				return "redirect:/admin/gym/gymadminlist.do";
+				return "redirect:/gymadminlist.do";
 			}
 		} 
 		catch (Exception e) {
@@ -165,7 +168,7 @@ public class GymController {
 		int result1 = gymdao.deleteM(memberDTO);
 		int result = gymdao.delete(gymDTO);
 		if(result==1) System.out.println("삭제되었습니다.");
-		return "redirect:/admin/gym/gymadminlist.do";
+		return "redirect:/gymadminlist.do";
 	}
 	
 	//파일업로드

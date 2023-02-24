@@ -28,7 +28,7 @@
 		                                    	<h3 class="text-center font-weight-light my-4">지점등록</h3>
 		                                    </div>
 		                                    <div class="card-body">
-		                                        <form method="post" action="/regist.do">
+		                                        <form method="post" action="/gymRegist.do">
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                <input type="hidden" id="mem_status" name="mem_status" value="1">
@@ -67,8 +67,8 @@
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_adress" name="em_adress" type="text" placeholder="Create a password" />
-		                                                        <label for="mem_adress">지점주소</label>
+		                                                        <input class="form-control" id="mem_address" name="mem_address" type="text" placeholder="Create a password" />
+		                                                        <label for="mem_address">지점주소</label>
 		                                                    </div>
 		                                                </div>
 		                                                <div class="col-md-6">

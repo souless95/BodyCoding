@@ -122,33 +122,16 @@
 							<td align="center">${dto.rtime_holy_end }</td>
 						</tr>
 					</table>
-					
-					
 					<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
 						수정
 					</button>
 					<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
 						삭제
 					</button>
-					<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do?gym_code=${dto.gym_code }'">
-						트레이너 관리
-					</button>
 				</div>
 			</div>
-			<div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+			<!-- bottom -->
+			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>		
 	</div>
 </body>

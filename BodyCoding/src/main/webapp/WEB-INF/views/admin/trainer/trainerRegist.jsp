@@ -33,10 +33,10 @@
 		                                                <div class="col-md-4">
 			                                                <input type="hidden" id="mem_status" name="mem_status" value="1">
 							    							<input type="hidden" id="mem_type" name="mem_type" value="TRAINER">
-		                                                
+			                                                <!-- 로그인한 ADMIN의 지점코드가 자동으로 삽입되게 만들기 -->
 		                                                    <div class="form-floating">
 		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" />
-		                                                        <label for="gym_code">지점 코드</label>
+		                                                        <label for="gym_code">지점 선택</label>
 		                                                    </div>
 		                                                </div>
 		                                                
@@ -47,11 +47,10 @@
 		                                                    </div>
 		                                                </div>
 		                                                <div class="col-md-4">
-			                                                <div class="form-floating">
 		                                                        <label for="mem_gender">성별:</label>
+			                                                <div class="form-floating">
 														        <input type="radio" id="mem_gender" name="mem_gender" value="M" required>남자
-														        <input 
-														        type="radio" id="mem_gender" name="mem_gender" value="F" required>여자
+														        <input type="radio" id="mem_gender" name="mem_gender" value="F" required>여자
 		                                                    </div>
 		                                                </div>
 		                                            </div>
@@ -62,22 +61,36 @@
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_pass" name="mem_pass" type="password" placeholder="Create a password" />
+		                                                        <input class="form-control" id="mem_pass" name="mem_pass" type="text" placeholder="Create a password" />
 		                                                        <label for="mem_pass">비밀번호</label>
 		                                                    </div>
 		                                                </div>
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
 		                                                        <input class="form-control" id="mem_phone" name="mem_phone" type="text" placeholder="Confirm password" />
-		                                                        <label for="mem_phone">대표번호</label>
+		                                                        <label for="mem_phone">전화번호</label>
 		                                                    </div>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_adress" name="em_adress" type="text" placeholder="Create a password" />
-		                                                        <label for="mem_adress">지점주소</label>
+		                                                        <input class="form-control" id="mem_birth" name="mem_birth" type="text" placeholder="Create a your birth" />
+		                                                        <label for="mem_birth">생년월일</label>
+		                                                    </div>
+		                                                </div>
+		                                                <div class="col-md-6">
+		                                                    <div class="form-floating mb-3 mb-md-0">
+		                                                        <input class="form-control" id="mem_career" name="mem_career" type="text" placeholder="Confirm password" />
+		                                                        <label for="mem_career">경력</label>
+		                                                    </div>
+		                                                </div>
+		                                            </div>
+		                                            <div class="row mb-3">
+		                                                <div class="col-md-6">
+		                                                    <div class="form-floating mb-3 mb-md-0">
+		                                                        <input class="form-control" id="mem_address" name="mem_address" type="text" placeholder="Create a password" />
+		                                                        <label for="mem_address">지점주소</label>
 		                                                    </div>
 		                                                </div>
 		                                                <div class="col-md-6">
@@ -93,7 +106,9 @@
 		                                                </div>
 		                                            </div>
 		                                            <div class="mt-4 mb-0">
-		                                                <button class="btn btn-primary" type="submit">가입하기</button>
+		                                                <button class="btn btn-primary" type="submit">등록하기</button>
+		                                                <button class="btn btn-primary" type="reset">reset</button>        
+      													<button class="btn btn-primary" type="button" onclick="location.href='/trainerList.do'">트레이너 리스트 목록</button>
 		                                            </div>
 		                                        </form>
 		                                    </div>

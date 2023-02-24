@@ -25,13 +25,6 @@
 					<div class="card-header">
 						<h2>지점 리스트</h2>
 					</div>
-<!-- 					<form method="get">
-						<div>
-							<input type="text" name="searchTxt" placeholder="검색어를 입력하세요." />
-							<input type="submit" name="검색" />
-						</div>
-					</form> -->
-					<button type="button" onclick="location.href='/gymRegist.do'">등록하기</button>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
@@ -62,9 +55,10 @@
 					</div>
 				</div>
 			</main>
+			<!-- bottom -->
+			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>
 	</div>
-	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/scripts.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

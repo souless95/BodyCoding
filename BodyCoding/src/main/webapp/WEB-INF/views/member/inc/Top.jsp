@@ -1,150 +1,108 @@
+<!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-<meta charset="utf-8">
-	<title>Rage Freebie HTML5 Landing page</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="favicon.ico">
+	<head>
+	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+		<title>Arcana by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+	<style type="text/css">
+	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+	
+	</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
 
-	<!--Google Font link-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+			<!-- Header -->
+				<div id="header">
 
+					<!-- Logo -->
+						<h1><a href="main.jsp" id="logo"><span style="font-weight:bold; font-size:40px; 
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';">
+						Body Coding</span></a></h1>
 
-	<link rel="stylesheet" href="staticstatic/assets/css/slick.css">
-	<link rel="stylesheet" href="static/assets/css/slick-theme.css">
-	<link rel="stylesheet" href="static/assets/css/animate.css">
-	<link rel="stylesheet" href="static/assets/css/fonticons.css">
-	<link rel="stylesheet" href="static/assets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="static/assets/css/bootstrap.css">
-	<link rel="stylesheet" href="static/assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="static/assets/css/bootsnav.css">
-
-
-	<!--For Plugins external css-->
-	<!--<link rel="stylesheet" href="static/assets/css/plugins.css" />-->
-
-	<!--Theme custom css -->
-	<link rel="stylesheet" href="static/assets/css/style.css">
-	<!--<link rel="stylesheet" href="static/assets/css/colors/maron.css">-->
-
-	<!--Theme Responsive css-->
-	<link rel="stylesheet" href="static/assets/css/responsive.css" />
-
-	<script src="static/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-</head>
-<body data-spy="scroll" data-target=".navbar-collapse">
-
-
-	<!-- Preloader -->
-	<div id="loading">
-		<div id="loading-center">
-			<div id="loading-center-absolute">
-				<div class="object" id="object_one"></div>
-				<div class="object" id="object_two"></div>
-				<div class="object" id="object_three"></div>
-				<div class="object" id="object_four"></div>
-			</div>
-		</div>
-	</div>
-	<!--End off Preloader -->
-
-
-	<div class="culmn">
-		<!--Home page style-->
-
-		<nav class="navbar navbar-light navbar-expand-lg  navbar-fixed white no-background bootsnav">
-			<!-- Start Top Search -->
-			<div class="top-search">
-				<div class="container">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-search"></i></span>
-						<input type="text" class="form-control" placeholder="Search">
-						<span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-					</div>
-				</div>
-			</div>
-			<!-- End Top Search -->
-
-			<div class="container">
-				<div>
-				<img src="static/assets/images/logo.jpg" style="width:70px; height:40px;"   alt="">
-				</div>
-				<!-- Start Atribute Navigation -->
-				<div class="attr-nav">
-					<ul >
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="index.html">Home</a></li>
+								<li>
+									<a href="#">Dropdown</a>
+									<ul>
+										<li><a href="#">Lorem dolor</a></li>
+										<li><a href="#">Magna phasellus</a></li>
+										<li><a href="#">Etiam sed tempus</a></li>
+										<li>
+											<a href="#">Submenu</a>
+											<ul>
+												<li><a href="#">Lorem dolor</a></li>
+												<li><a href="#">Phasellus magna</a></li>
+												<li><a href="#">Magna phasellus</a></li>
+												<li><a href="#">Etiam nisl</a></li>
+												<li><a href="#">Veroeros feugiat</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Veroeros feugiat</a></li>
+									</ul>
+								</li>
+								<li><a href="left-sidebar.html">Left Sidebar</a></li>
+								<li><a href="right-sidebar.html">Right Sidebar</a></li>
+								<li><a href="two-sidebar.html">Two Sidebar</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
 						<c:if test="${not empty UserName}">
-						<li style="padding-top:15px;">
-			                <button class="btn btn-dark">
-			                    ${UserName}님 
-			                </button>
+						<li>
+			                    ${UserName}님 환영합니다.
 			            </li>
-						<li style="padding-top:15px;">
-			                <button class="btn btn-dark">
-			                    <a href="#">마이페이지</a>
-			                </button>
+						<li><a href="#">마이페이지</a>
 			            </li>
-						<li style="padding-top:15px;">
-			                <button class="btn btn-dark">
+						<li>
 			                    <a href="#" onclick="logoutcheck()">로그아웃</a>
-			                </button>
 			            </li>
 			            </c:if>
 			            <c:if test="${empty UserName}">
-						<li style="padding-top:15px;">
-			                <button class="btn btn-dark">
+						<li>
 			                    <a href="login.do">로그인</a>
-			                </button>
 			            </li>
-			            &nbsp;&nbsp;&nbsp;
-			            <li style="padding-top:15px;">
-			                <button class="btn btn-dark">
+			           
+			            <li>
 			                    <a href="signup.do">회원가입</a>
-			                </button>
 			            </li>
 			            </c:if>
-			            
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-shopping-bag"></i>
-                                    <span class="badge">3</span>
-                                </a>
-							<ul class="dropdown-menu cart-list">
-								<li>
-									<a href="#" class="photo"><img src="static/assets/images/thumb01.jpg" class="cart-thumb" alt="" /></a>
-									<h6><a href="#">Delica omtantur </a></h6>
-									<p class="m-top-10">2x - <span class="price">$99.99</span></p>
-								</li>
-								
-								<!---- More List ---->
-								<li class="total">
-									<span class="pull-right"><strong>Total</strong>: $0.00</span>
-									<a href="#" class="btn btn-cart">Cart</a>
-								</li>
-							</ul>
-						</li>
-						<!-- <li class="search"><a href="#"><i class="fa fa-search"></i></a></li> -->
-						<li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
-					</ul>
-				</div>
-				<!-- End Atribute Navigation -->
+						</ul>
+					</nav>
 
-				<!-- Start Header Navigation -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
+				</div>
+
+			<!-- Banner -->
+				<section id="banner">
+				<img alt="메인화면" src="static/assets/images/main1.jpg" style="width:100%;">
+					<header>
 					
-				</div>
-				<!-- End Header Navigation -->
+						<h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2>
+						<a href="#" class="button">Learn More</a>
+						
+					</header>
+				</section>
 
+<<<<<<< HEAD
+			<!-- Highlights -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row gtr-200">
+							<section class="col-4 col-12-narrower">
+								<div class="box highlight">
+									<i class="icon solid major fa-paper-plane"></i>
+									<h3>This Is Important</h3>
+									<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+=======
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp" style="padding-top:5px;">
@@ -234,717 +192,172 @@
 
 								<div class="about_btns m-top-40">
 									<a href="" class="btn btn-primary">DOWNLOAD NOW</a>
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="about_accordion wow fadeIn">
-								<div id="faq_main_content" class="faq_main_content">
-									<h6><i class="fa fa-angle-right"></i> UNIQUE DESIGN </h6>
-									<div>
-										<div class="content">
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, </p>
-
-										</div>
-									</div>
-									<!-- End off accordion item-1 -->
-
-									<h6 class="open"><i class="fa fa-angle-right"></i> EXPERIENCE TEAM</h6>
-									<div class="open">
-										<div class="content">
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, </p>
-										</div>
-									</div>
-									<!-- End off accordion item-2 -->
-
-									<h6> <i class="fa fa-angle-right"></i> GREAT SERVICE </h6>
-									<div>
-										<div class="content">
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, </p>
-										</div>
-									</div>
-									<!-- End off accordion item-3 -->
-
-									<h6><i class="fa fa-angle-right"></i> FREE UPDATES </h6>
-									<div>
-										<div class="content">
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, </p>
-										</div>
-									</div>
-									<!-- End off accordion item-4 -->
+							</section>
+							<section class="col-4 col-12-narrower">
+								<div class="box highlight">
+									<i class="icon solid major fa-pencil-alt"></i>
+									<h3>Also Important</h3>
+									<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
 								</div>
-							</div>
+							</section>
+							<section class="col-4 col-12-narrower">
+								<div class="box highlight">
+									<i class="icon solid major fa-wrench"></i>
+									<h3>Probably Important</h3>
+									<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+								</div>
+							</section>
 						</div>
 					</div>
-				</div>
-				<!--End off row-->
-			</div>
-			<!--End off container -->
-			<br />
-			<br />
-			<br />
-			<br />
-			<hr />
-			<br />
-			<br />
-			<div class="container">
-				<div class="row">
-					<div class="about_bottom_content">
-						<div class="col-md-4">
-							<div class="about_bottom_item m-top-20">
-								<div class="ab_head">
-									<div class="ab_head_icon">
-										<i class="icofont icofont-fire-burn"></i>
-									</div>
-									<h6 class="m-top-20"> WE’RE CREATIVE</h6>
-								</div>
-								<p class="m-top-20">Lorem ipsum dolor sit amet, consectetuer adipiscing ealit, sed diaim nonummy nibsih euismod tincidiunt laorieet doloire magna diam aliquafm erat voluitpati. </p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="about_bottom_item m-top-20">
-								<div class="ab_head">
-									<div class="ab_head_icon">
-										<i class="icofont icofont-speech-comments"></i>
-									</div>
-									<h6 class="m-top-20">WE'RE FRIENDLY</h6>
-								</div>
-								<p class="m-top-20">Lorem ipsum dolor sit amet, consectetuer adipiscing ealit, sed diaim nonummy nibsih euismod tincidiunt laorieet doloire magna diam aliquafm erat voluitpati. </p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="about_bottom_item m-top-20">
-								<div class="ab_head">
-									<div class="ab_head_icon">
-										<i class="icofont icofont-heart"></i>
-									</div>
-									<h6 class="m-top-20">WE LOVE MINIMALISM</h6>
-								</div>
-								<p class="m-top-20">Lorem ipsum dolor sit amet, consectetuer adipiscing ealit, sed diaim nonummy nibsih euismod tincidiunt laorieet doloire magna diam aliquafm erat voluitpati. </p>
-							</div>
-						</div>
+				</section>
+
+			<!-- Gigantic Heading -->
+				<section class="wrapper style2">
+					<div class="container">
+						<header class="major">
+							<h2>A gigantic heading you can use for whatever</h2>
+							<p>With a much smaller subtitle hanging out just below it</p>
+						</header>
 					</div>
-				</div>
-				<!--End off row-->
-			</div>
-			<!--End off container -->
-		</section>
-		<!--End off About section -->
+				</section>
 
-
-		<!--Video section-->
-		<section id="video" class="video">
-			<div class="overlay"></div>
-			<div class="main_video roomy-100 m-top-100 m-bottom-100 text-center">
-				<div class="video_text text-center">
-					<a href="http://www.youtube.com/watch?v=7HKoqNJtMTQ" class="video-link"><span class="fa fa-play"></span></a>
-				</div>
-			</div>
-		</section>
-		<!--End off video section -->
-
-		<!-- 필요없는 부분이라 생각됨 
-		<div class="container">
-			<div class="row">
-				<div class="main_featured m-top-100">
-					<div class="col-sm-12">
-						<div class="head_title text-center">
-							<h2>FEATURED WORK</h2>
-							<div class="separator_auto"></div>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		-->
-		
-		
-		<div class="featured_slider">
-			<div>
-				<div class="featured_img">
-					<img src="static/assets/images/fprojects/1.jpg" alt="" />
-					<a href="static/assets/images/fprojects/1.jpg" class="popup-img"></a>
-				</div>
-			</div>
-			<div>
-				<div class="featured_img">
-					<img src="static/assets/images/fprojects/2.jpg" alt="" />
-					<a href="static/assets/images/fprojects/2.jpg" class="popup-img"></a>
-				</div>
-			</div>
-			<div>
-				<div class="featured_img">
-					<img src="static/assets/images/fprojects/3.jpg" alt="" />
-					<a href="static/assets/images/fprojects/3.jpg" class="popup-img"></a>
-				</div>
-			</div>
-			<div>
-				<div class="featured_img">
-					<img src="static/assets/images/fprojects/4.jpg" alt="" />
-					<a href="static/assets/images/fprojects/4.jpg" class="popup-img"></a>
-				</div>
-			</div>
-			<div>
-				<div class="featured_img">
-					<img src="static/assets/images/fprojects/5.jpg" alt="" />
-					<a href="static/assets/images/fprojects/5.jpg" class="popup-img"></a>
-				</div>
-			</div>
-		</div>
-		<!-- End off featured slider -->
-
-
-
-		<!--Service Section-->
-		<section id="service" class="service">
-			<div class="container">
-				<div class="row">
-					<div class="main_service roomy-100">
-						<div class="col-md-8 col-sm-10 mr-md-auto ml-md-auto mr-sm-auto ml-sm-auto">
-							<div class="head_title text-center">
-								<h2>OUR SERVICES</h2>
-								<div class="separator_auto"></div>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-							</div>
+			<!-- Posts -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row">
+							<section class="col-6 col-12-narrower">
+								<div class="box post">
+									<a href="#" class="image left"><img src="static/assets/images/pic01.jpg" alt="" /></a>
+									<div class="inner">
+										<h3>The First Thing</h3>
+										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+									</div>
+								</div>
+							</section>
+							<section class="col-6 col-12-narrower">
+								<div class="box post">
+									<a href="#" class="image left"><img src="static/assets/images/pic02.jpg" alt="" /></a>
+									<div class="inner">
+										<h3>The Second Thing</h3>
+										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+									</div>
+								</div>
+							</section>
 						</div>
 						<div class="row">
-
-
-							<div class="col-md-4">
-								<div class="service_item">
-									<i class="icofont icofont-light-bulb"></i>
-									<h6 class="m-top-30">BRANDING</h6>
-									<div class="separator_small"></div>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+							<section class="col-6 col-12-narrower">
+								<div class="box post">
+									<a href="#" class="image left"><img src="static/assets/images/pic03.jpg" alt="" /></a>
+									<div class="inner">
+										<h3>The Third Thing</h3>
+										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+									</div>
 								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="service_item">
-									<i class="icofont icofont-imac"></i>
-									<h6 class="m-top-30">BRANDING</h6>
-									<div class="separator_small"></div>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+							</section>
+							<section class="col-6 col-12-narrower">
+								<div class="box post">
+									<a href="#" class="image left"><img src="static/assets/images/pic04.jpg" alt="" /></a>
+									<div class="inner">
+										<h3>The Fourth Thing</h3>
+										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+									</div>
 								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="service_item">
-									<i class="icofont icofont-video"></i>
-									<h6 class="m-top-30">BRANDING</h6>
-									<div class="separator_small"></div>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-								</div>
-							</div>
+							</section>
 						</div>
 					</div>
-				</div>
-				<!--End off row -->
-			</div>
-			<!--End off container -->
-		</section>
-		<!--End off Featured section-->
+				</section>
 
-		
-		<!-- 
-		<section id="impress" class="impress roomy-100">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="main_impress text-center">
-						<div class="col-sm-8 mr-sm-auto ml-sm-auto">
-							<h2 class="text-white text-uppercase">Impressed? Let’s work together</h2>
-							<p class="m-top-40 text-white">At vero eos et accusamus et iusto odio dignissimos ducimus qui ditqs praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias</p>
-
-							<div class="impress_btns m-top-30">
-								<a href="" class="btn btn-primary m-top-20">HIRE US</a>
-								<a href="" class="btn btn-default m-top-20">HIRE US</a>
-							</div>
-						</div>
+			<!-- CTA -->
+				<section id="cta" class="wrapper style3">
+					<div class="container">
+						<header>
+							<h2>Are you ready to continue your quest?</h2>
+							<a href="#" class="button">Insert Coin</a>
+						</header>
 					</div>
-				</div>
-				End off row 주석
-			</div>
-			 End off container주석
-		</section>	
-		 -->
-	
+				</section>
 
-
-
-		<!--Portfolio Section 주석
-		<section id="portfolio" class="portfolio lightbg">
-			<div class="container">
-				<div class="row">
-					<div class="main_portfolio roomy-100">
-						<div class="col-md-8 mr-md-auto ml-md-auto">
-							<div class="head_title text-center">
-								<h2>OUR PORTOFLIO</h2>
-								<div class="separator_auto"></div>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-							</div>
-						</div>
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
 						<div class="row">
-							<div class="portfolio_content">
-								<div class="col-md-8">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="portfolio_item">
-												<img src="static/assets/images/Portfolio/2.jpg" alt="" />
-												<div class="portfolio_hover text-center">
-													<h6 class="text-uppercase text-white">Title</h6>
-													<p class=" text-white">Lorem ipsum dolor sit amet</p>
-													<div class="portfolio_hover_icon">
-														<a href="static/assets/images/Portfolio/2.jpg" class="popup-img"><i class="fa fa-expand"></i></a>
-														<a href=""><i class="fa fa-search"></i></a>
-													</div>
-												</div>
-											</div>
+							<section class="col-3 col-6-narrower col-12-mobilep">
+								<h3>Links to Stuff</h3>
+								<ul class="links">
+									<li><a href="#">Mattis et quis rutrum</a></li>
+									<li><a href="#">Suspendisse amet varius</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum accumsan dolor</a></li>
+									<li><a href="#">Mattis rutrum accumsan</a></li>
+									<li><a href="#">Suspendisse varius nibh</a></li>
+									<li><a href="#">Sed et dapibus mattis</a></li>
+								</ul>
+							</section>
+							<section class="col-3 col-6-narrower col-12-mobilep">
+								<h3>More Links to Stuff</h3>
+								<ul class="links">
+									<li><a href="#">Duis neque nisi dapibus</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum accumsan sed</a></li>
+									<li><a href="#">Mattis et sed accumsan</a></li>
+									<li><a href="#">Duis neque nisi sed</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum amet varius</a></li>
+								</ul>
+							</section>
+							<section class="col-6 col-12-narrower">
+								<h3>Get In Touch</h3>
+								<form>
+									<div class="row gtr-50">
+										<div class="col-6 col-12-mobilep">
+											<input type="text" name="name" id="name" placeholder="Name" />
 										</div>
-										<div class="col-md-6 m-top-30">
-											<div class="portfolio_item portfolio_item2">
-												<img src="static/assets/images/Portfolio/3.jpg" alt="" />
-												<div class="portfolio_hover text-center">
-													<h6 class="text-uppercase text-white">Title</h6>
-													<p class=" text-white">Lorem ipsum dolor sit amet</p>
-													<div class="portfolio_hover_icon">
-														<a href="static/assets/images/Portfolio/3.jpg" class="popup-img"><i class="fa fa-expand"></i></a>
-														<a href=""><i class="fa fa-search"></i></a>
-													</div>
-												</div>
-											</div>
+										<div class="col-6 col-12-mobilep">
+											<input type="email" name="email" id="email" placeholder="Email" />
 										</div>
-										<div class="col-md-6 m-top-30">
-											<div class="portfolio_item portfolio_item2">
-												<img src="static/assets/images/Portfolio/5.jpg" alt="" />
-												<div class="portfolio_hover text-center">
-													<h6 class="text-uppercase text-white">Title</h6>
-													<p class=" text-white">Lorem ipsum dolor sit amet</p>
-													<div class="portfolio_hover_icon">
-														<a href="static/assets/images/Portfolio/5.jpg" class="popup-img"><i class="fa fa-expand"></i></a>
-														<a href=""><i class="fa fa-search"></i></a>
-													</div>
-												</div>
-											</div>
+										<div class="col-12">
+											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
 										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="portfolio_item portfolio_item3 sm-m-top-30">
-										<img src="static/assets/images/Portfolio/1.jpg" alt="" />
-										<div class="portfolio_hover text-center">
-											<h6 class="text-uppercase text-white">Title</h6>
-											<p class=" text-white">Lorem ipsum dolor sit amet</p>
-											<div class="portfolio_hover_icon">
-												<a href="static/assets/images/Portfolio/1.jpg" class="popup-img"><i class="fa fa-expand"></i></a>
-												<a href=""><i class="fa fa-search"></i></a>
-											</div>
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" class="button alt" value="Send Message" /></li>
+											</ul>
 										</div>
 									</div>
-								</div>
-								<div class="col-md-4 m-top-30">
-									<div class="portfolio_item portfolio_item2">
-										<img src="static/assets/images/Portfolio/6.jpg" alt="" />
-										<div class="portfolio_hover text-center">
-											<h6 class="text-uppercase text-white">Title</h6>
-											<p class=" text-white">Lorem ipsum dolor sit amet</p>
-											<div class="portfolio_hover_icon">
-												<a href="static/assets/images/Portfolio/6.jpg" class="popup-img"><i class="fa fa-expand"></i></a>
-												<a href=""><i class="fa fa-search"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 m-top-30">
-									<div class="portfolio_item">
-										<img src="static/assets/images/Portfolio/4.jpg" alt="" />
-										<div class="portfolio_hover text-center">
-											<h6 class="text-uppercase text-white">Title</h6>
-											<p class=" text-white">Lorem ipsum dolor sit amet</p>
-											<div class="portfolio_hover_icon">
-												<a href="static/assets/images/Portfolio/4.jpg" class="popup-img"><i class="fa fa-expand"></i></a>
-												<a href=""><i class="fa fa-search"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				주석 End off row 주석
-			</div>
-			주석 End off container 주석
-		</section>
-		주석 End off Portfolio section
-		-->
-
-
-		<!--Skill Sections-->
-		<section id="skill" class="skill roomy-100">
-			<div class="container">
-				<div class="row">
-					<div class="main_skill">
-						<div class="col-md-6">
-							<div class="skill_content wow fadeIn">
-								<h2>Our skill</h2>
-								<div class="separator_left"></div>
-
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="skill_bar sm-m-top-50">
-								<div class="teamskillbar clearfix m-top-20" data-percent="80%">
-									<h6>GRAPHIC DESIGN</h6>
-									<div class="teamskillbar-bar"></div>
-								</div>
-								<!-- End Skill Bar -->
-
-								<div class="teamskillbar clearfix m-top-50" data-percent="75%">
-									<h6>TYPOGRAPHY</h6>
-									<div class="teamskillbar-bar"></div>
-								</div>
-								<!-- End Skill Bar -->
-
-								<div class="teamskillbar clearfix m-top-50" data-percent="90%">
-									<h6>HTML / CSS</h6>
-									<div class="teamskillbar-bar"></div>
-								</div>
-								<!-- End Skill Bar -->
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--End off row-->
-			</div>
-			<!--End off container -->
-			<br />
-			<br />
-			<br />
-			<hr />
-			<br />
-			<br />
-			<br />
-			<div class="container">
-				<div class="row">
-					<div class="skill_bottom_content text-center">
-						<div class="col-md-3">
-							<div class="skill_bottom_item">
-								<h2 class="statistic-counter">3468</h2>
-								<div class="separator_small"></div>
-								<h5><em>Projects Finished</em></h5>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="skill_bottom_item">
-								<h2 class="statistic-counter">4638</h2>
-								<div class="separator_small"></div>
-								<h5><em>Happy Clients</em></h5>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="skill_bottom_item">
-								<h2 class="statistic-counter">3468</h2>
-								<div class="separator_small"></div>
-								<h5><em>Hours of work</em></h5>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="skill_bottom_item">
-								<h2 class="statistic-counter">3468</h2>
-								<div class="separator_small"></div>
-								<h5><em>Cup of coffee</em></h5>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--End off row-->
-			</div>
-			<!--End off container -->
-		</section>
-		<!--End off Skill section -->
-
-
-
-		<!--Testimonial Section 주석
-		<section id="testimonial" class="testimonial fix">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-
-
-					<div class="main_testimonial col-sm-8 ml-sm-auto mr-sm-auto">
-						<div class="head_title text-center roomy-100">
-							<h2 class="text-white">OUR TESTIMONIALS</h2>
+								</form>
+							</section>
 						</div>
 					</div>
 
+					<!-- Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+						</ul>
 
-					<div class="testimonial_slid text-center">
-						<div class="testimonial_item">
-							<div class="col-sm-10 mr-sm-auto ml-sm-auto">
-								<p class="text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-
-								<div class="test_authour m-top-30">
-									<h6 class="text-white m-bottom-20">JOHN DOE - THEMEFOREST USER</h6>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
 						</div>
-						<div class="testimonial_item">
-							<div class="col-sm-10 mr-sm-auto ml-sm-auto">
-								<p class="text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-
-								<div class="test_authour m-top-30">
-									<h6 class="text-white m-bottom-20">JOHN DOE - THEMEFOREST USER</h6>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-						<div class="testimonial_item">
-							<div class="col-sm-10 mr-sm-auto ml-sm-auto">
-								<p class="text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-
-								<div class="test_authour m-top-30">
-									<h6 class="text-white m-bottom-20">JOHN DOE - THEMEFOREST USER</h6>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-						<div class="testimonial_item">
-							<div class="col-sm-10 mr-sm-auto ml-sm-auto">
-								<p class="text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-
-								<div class="test_authour m-top-30">
-									<h6 class="text-white m-bottom-20">JOHN DOE - THEMEFOREST USER</h6>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-					</div>
 
 				</div>
-				-End off row 주석
-			</div>
-			End off container 주석
-		</section>
-		-End off Testimonial section 주석
-		-->
 
-
-		<!--client brand section-->
-		<section id="cbrand" class="cbrand">
-			<div class="container">
-				<div class="row">
-					<div class="main_cbrand text-center roomy-100">
-						<div class="col-md-2 col-sm-4 col-6">
-							<div class="cbrand_item m-bottom-10">
-								<a href=""><img src="static/assets/images/clients/1.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-4 col-6">
-							<div class="cbrand_item m-bottom-10">
-								<a href=""><img src="static/assets/images/clients/2.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-4 col-6">
-							<div class="cbrand_item m-bottom-10">
-								<a href=""><img class="" src="static/assets/images/clients/5.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-4 col-6">
-							<div class="cbrand_item m-bottom-10">
-								<a href=""><img src="static/assets/images/clients/4.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-4 col-6">
-							<div class="cbrand_item m-bottom-10">
-								<a href=""><img src="static/assets/images/clients/3.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-4 col-6">
-							<div class="cbrand_item m-bottom-10">
-								<a href=""><img src="static/assets/images/clients/1.jpg" alt="" /></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End off row -->
-			</div>
-			<!-- End off container -->
-		</section>
-		<!-- End off Cbrand section -->
-
-
-		<!--
-		Subscribe section 주석
-		<section id="subscribe" class="subscribe roomy-100 fix">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="main_subscribe text-center">
-						<div class="col-sm-8 mr-sm-auto ml-sm-auto">
-							<h2 class="text-white">SUBSCRIBE US</h2>
-							<p class="m-top-30 text-white">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
-						</div>
-						<div class="row justify-content-md-center">
-							<div class="col-sm-10 col-10 ml-auto">
-								<div class="subscribe_btns m-top-40">
-									<form class="form-inline">
-										<div class="form-control">
-											<input type="email" class="form-control-label" id="inputEmail2" placeholder="Email Address">
-										</div>
-										<button type="submit" class="btn btn-primary">SUBSCRIBE</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				End off row 주석
-			</div>
-			End off container 주석
-		</section>
-		 End off Impress section주석-->
-		
-
-
-
-		<!--Blog Section
-		<section id="blog" class="blog">
-			<div class="container">
-				<div class="row">
-					<div class="main_blog text-center roomy-100">
-						<div class="col-sm-8 mr-sm-auto ml-sm-auto">
-							<div class="head_title text-center">
-								<h2>RECENT BLOGS</h2>
-								<div class="separator_auto"></div>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-							</div>
-						</div>
-
-						<div class="row">
-
-							<div class="col-md-4">
-								<div class="blog_item m-top-20">
-									<div class="blog_item_img">
-										<img src="static/assets/images/Blog/1.jpg" alt="" />
-									</div>
-									<div class="blog_text roomy-40">
-										<h6>PLEASUARE WITHOUT CONSCIENCE</h6>
-										<p><em><a href="">May 15, 2016</a> /<a href="">admin</a>/<a href=""> Co-working</a></em></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="blog_item m-top-20">
-									<div class="blog_item_img">
-										<img src="static/assets/images/Blog/2.jpg" alt="" />
-									</div>
-									<div class="blog_text roomy-40">
-										<h6>PLEASUARE WITHOUT CONSCIENCE</h6>
-										<p><em><a href="">May 15, 2016</a> /<a href="">admin</a>/<a href=""> Co-working</a></em></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="blog_item m-top-20">
-									<div class="blog_item_img">
-										<img src="static/assets/images/Blog/3.jpg" alt="" />
-									</div>
-									<div class="blog_text roomy-40">
-										<h6>PLEASUARE WITHOUT CONSCIENCE</h6>
-										<p><em><a href="">May 15, 2016</a> /<a href="">admin</a>/<a href=""> Co-working</a></em></p>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				End off row주석
-			</div>
-			주석 End off container주석
-		</section>
-		주석 End off Blog section 
-		-->
-
-
-		<!-- scroll up-->
-		<div class="scrollup">
-			<a href="#"><i class="fa fa-chevron-up"></i></a>
 		</div>
-		<!-- End off scroll up -->
 
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
 
-		<footer id="footer" class="footer bg-black">
-			<div class="container">
-				<div class="row">
-					<div class="main_footer text-center p-top-40 p-bottom-30">
-						<p class="wow fadeInRight" data-wow-duration="1s">
-							Made with
-							<i class="fa fa-heart"></i> by
-							<a target="_blank" href="https://bootstrapthemes.co">Bootstrap Themes</a> 2016. All Rights Reserved
-						</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-
-	</div>
-	<!-- JS includes -->
-
-	<script src="static/assets/js/vendor/jquery-1.11.2.min.js"></script>
-	<script src="static/assets/js/vendor/popper.min.js"></script>
-	<script src="static/assets/js/vendor/bootstrap.min.js"></script>
-
-	<script src="static/assets/js/jquery.magnific-popup.js"></script>
-	<script src="static/assets/js/jquery.easing.1.3.js"></script>
-	<script src="static/assets/js/slick.min.js"></script>
-	<script src="static/assets/js/jquery.collapse.js"></script>
-	<script src="static/assets/js/bootsnav.js"></script>
-
-
-	<!-- paradise slider js -->
-
-
-	<script src="http://maps.google.com/maps/api/js?key=AIzaSyD_tAQD36pKp9v4at5AnpGbvBUsLCOSJx8"></script>
-	<script src="static/assets/js/gmaps.min.js"></script>
-
-	<script>
-		function showmap() {
-			var mapOptions = {
-				zoom: 8,
-				scrollwheel: false,
-				center: new google.maps.LatLng(-34.397, 150.644),
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-			$('.mapheight').css('height', '350');
-			$('.maps_text h3').hide();
-		}
-
-	</script>
-
-	<script src="static/assets/js/plugins.js"></script>
-	<script src="static/assets/js/main.js"></script>
-
-</body>
+	</body>
 </html>

@@ -65,8 +65,7 @@ public class GymController {
 	
 	//수정하기
 	@RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
-<<<<<<< HEAD
-	public String gym4(GymDTO gymDTO, Model model) {
+	public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		String rootPath = System.getProperty("user.dir");
 		//파일 경로
 		String fileDir = rootPath + "\\src\\main\\resources\\static\\uploads";
@@ -74,10 +73,6 @@ public class GymController {
 		try {
 			String path = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
 		} catch (Exception e) {}
-		
-=======
-	public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 		gymDTO = gymdao.selectOnegym(gymDTO);
 		memberDTO = gymdao.selectOneMember(memberDTO);
 		model.addAttribute("dto", gymDTO);

@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 	
+	
+	
+	@RequestMapping("account/myinfo")
+	public String myinfo() {
+		return "account/myinfo";
+	}
+	
 	@RequestMapping("/")
 	public String home() {
 		return "home";
@@ -40,6 +47,9 @@ public class MainController {
 	public String fullCalendar() {
 		return "fullCalendar";
 	}
+	
+	
+	
 	
 	//json불러오기 실험
 	/*

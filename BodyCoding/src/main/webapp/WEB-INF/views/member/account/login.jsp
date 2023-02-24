@@ -38,13 +38,12 @@ body {
 
 
 <body>
-<<<<<<< HEAD
   <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
-            <h2 class="card-title text-center mb-5 fw-light fs-5">Sign In</h2>
+            <h2 class="card-title text-center mb-5 fw-light fs-5">로그인</h2>
             <form method="post" action="/login.do">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="mem_id" name="mem_id" placeholder="email@domain.com" required>
@@ -90,26 +89,6 @@ body {
       </div>
     </div>
   </div>
-=======
-<h1>로그인</h1>
-    <form method="post" action="/login.do">
-    	
-        <label for="mem_id">아이디(이메일):</label>
-        <input type="email" id="mem_id" name="mem_id" required><br>
-        
-        <label for="mem_pass">비밀번호:</label>
-        <input type="password" id="mem_pass" name="mem_pass" required><br>
-        
-        <a href="#">아이디찾기</a>
-        <a href="#">비밀번호찾기</a>
-        
-        <button type="submit">로그인하기</button>
-        <!-- Host: kauth.kakao.com -->
-        <a href="https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code">
-			<img src="static/member/images/kakao_login.png"></a>
-	</form>
 	
-	<a href="main">메인으로 이동</a>
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

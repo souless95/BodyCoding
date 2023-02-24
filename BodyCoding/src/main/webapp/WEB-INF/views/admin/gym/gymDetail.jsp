@@ -120,19 +120,16 @@
 							<td align="center">${dto.rtime_holy_end }</td>
 						</tr>
 					</table>
-					
-					
 					<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
 						수정
 					</button>
 					<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
 						삭제
 					</button>
-					<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do?gym_code=${dto.gym_code }'">
-						트레이너 관리
-					</button>
 				</div>
 			</div>
+			<!-- bottom -->
+			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>		
 	</div>
 </body>

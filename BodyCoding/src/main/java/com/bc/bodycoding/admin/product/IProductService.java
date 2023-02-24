@@ -15,8 +15,12 @@ public interface IProductService {
 	public int insert(ProductDTO productDTO);
 	//상품 검색
 	public ProductDTO search(ProductDTO productDTO);
+	//상품 1개 가져오기
+	public ProductDTO selectOne(ProductDTO productDTO);
 	//상품 수정
 	public int update(ProductDTO productDTO);
 	//상품 삭제
 	public int delete(ProductDTO productDTO);
+	//재고 조회
+	public List<ProductDTO> stockSelect();
 }

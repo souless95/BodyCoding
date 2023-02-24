@@ -9,9 +9,9 @@
 </head>
 <body>
 <h2>트레이너 정보</h2>
-<table id="datatablesSimple" >
+<table>
 	<tr>
-		<td rowspan="4">센터사진 넣을거임!!!</td>
+		<td rowspan="4">${trainerInfo.mem_img}</td>
 		<td>이름: ${trainerInfo.mem_name}</td>
 	</tr>
 	<tr>
@@ -25,6 +25,7 @@
 	</tr>
 </table>
 <button type="button">pt 등록하기(결제)</button>
+<button type="button" onclick="location.href='trainer'">목록으로</button>
 
 </body>
 </html>

@@ -13,7 +13,7 @@
 			<div class="sb-sidenav-menu">
 				<div class="nav">
 					<div class="sb-sidenav-menu-heading">Core</div>
-					<a class="nav-link" href="index.html">
+					<a class="nav-link" href="#">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
 						</div> 전체 리스트
@@ -64,7 +64,7 @@
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="login.html">공지사항 관리</a> <a
 										class="nav-link" href="register.html">이벤트 관리</a> <a
-										class="nav-link" href="password.html">자유게시판 관리</a>
+										class="nav-link" href="/boardList.do">자유게시판 관리</a>
 								</nav>
 							</div>
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

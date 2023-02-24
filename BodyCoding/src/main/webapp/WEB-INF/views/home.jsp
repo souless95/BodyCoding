@@ -25,6 +25,12 @@
 	<ul>
 		<li><a href="calendar.do">캘린더</a></li>
 	</ul>
+	<ul>
+		<li><a href="trainer">트레이너 목록보기</a></li>
+	</ul>
+	<ul>
+		<li><a href="product">상품 목록보기</a></li>
+	</ul>
 	
 	
 </body>

@@ -30,7 +30,13 @@
 	        	</div>
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
-					<div>${dto.gym_dtail_img }</div>	
+					<c:forEach items="${fileMap }" var="file" varStatus="vs">
+						<tr>
+							<td><img src="uploads/${file.key }" width="200" 
+									height="150" /></td>
+						</tr>
+					</c:forEach>
+					<%-- <div>${dto.gym_dtail_img }</div> --%>	
 					<h4>기본정보</h4>
 					<table class="table" border=2>
 						<tr>
@@ -114,19 +120,16 @@
 							<td align="center">${dto.rtime_holy_end }</td>
 						</tr>
 					</table>
-					
-					
 					<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
 						수정
 					</button>
 					<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
 						삭제
 					</button>
-					<button type="button" class="btn btn-danger" onclick="location.href='trainerList.do'">
-						트레이너 관리
-					</button>
 				</div>
 			</div>
+			<!-- bottom -->
+			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>		
 	</div>
 </body>

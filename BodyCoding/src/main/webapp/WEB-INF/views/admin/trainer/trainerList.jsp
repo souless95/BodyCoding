@@ -38,29 +38,29 @@
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${trainerList }" var="row" varStatus="loop">
-							<tr>
-								<td>${row.gym_code }</td>
-								<td>${row.mem_id }</td>
-								<td>${row.mem_name }</td>
-								<td>${row.mem_gender }</td>
-								<td>${row.mem_birth }</td>
-								<td>${row.mem_phone }</td>
-								<td>${row.mem_regidate }</td>
-								<td>
-									<a href="trainerDetail.do?mem_id=${row.mem_id }">상세보기</a>
-								</td>
-							</tr>
-							</c:forEach>
+								<c:forEach items="${trainerList }" var="row" varStatus="loop">
+								<tr>
+									<td>${row.gym_code }</td>
+									<td>${row.mem_id }</td>
+									<td>${row.mem_name }</td>
+									<td>${row.mem_gender }</td>
+									<td>${row.mem_birth }</td>
+									<td>${row.mem_phone }</td>
+									<td>${row.mem_regidate }</td>
+									<td>
+										<a href="trainerDetail.do?mem_id=${row.mem_id }">상세보기</a>
+									</td>
+								</tr>
+								</c:forEach>
 							</tbody>
 							</table>
+							<button type="button" onclick="location.href='trainerRegist.do'">트레이너 등록</button> 
+							<button type="button" onclick="location.href='main/admin'">홈으로</button> 
 		        		</div>
 					</div>
 				</main>
 			</div>
 		</div>
-	<button type="button" onclick="location.href='trainerRegist.do'">트레이너 등록</button> 
-	<button type="button" onclick="location.href='main/admin'">홈으로</button> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../static/admin/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

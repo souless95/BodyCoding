@@ -16,7 +16,7 @@
 					<a class="nav-link" href="index.html">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
-						</div> 전체 멤버 리스트
+						</div> 전체 리스트
 					</a>
 					<div class="sb-sidenav-menu-heading">Interface</div>
 					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -78,9 +78,8 @@
 								aria-labelledby="headingOne"
 								data-bs-parent="#sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="../productList.do">기간제 이용권</a> <a
-										class="nav-link" href="404.html">횟수권</a> <a
-										class="nav-link" href="500.html">기타 상품</a>
+									<a class="nav-link" href="../productList.do">상품관리</a> 
+									<a class="nav-link" href="../stockList.do">재고관리</a>
 								</nav>
 							</div>
 						</nav>

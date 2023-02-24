@@ -17,11 +17,14 @@
     		#{gym_code}, #{mem_career}, #{mem_comment}, #{mem_img})
 	</insert>
 	
-	
-	<select id="selectT"
+	<select id="selectGT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from member where mem_type='TRAINER' order by mem_regidate desc
+		select * from member where mem_type='TRAINER' 
+		<if test="gym_code!=null">
+			and gym_code=#{gym_code}
+		</if>
+		order by mem_regidate desc
 	</select>
 	
 	<select id="selectOneT"
@@ -29,7 +32,6 @@
 		resultType="global.dto.MemberDTO">
 		select * from member where mem_type='TRAINER' and mem_id=#{mem_id}
 	</select>
-	
 	
 	<update id="update"
 		parameterType="global.dto.MemberDTO">

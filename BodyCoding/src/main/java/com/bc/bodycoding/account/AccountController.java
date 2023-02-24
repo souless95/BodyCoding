@@ -36,14 +36,16 @@ public class AccountController {
 	}
 	
 	//회원 로그인창으로 넘어가기
-	@GetMapping("/login.do")
+	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public String login1() {
 		return "member/account/login";
 	}
 	
 	//회원 로그인 하기
-	@PostMapping("/login.do")
+	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login1(HttpSession session, MemberDTO memberDTO) {
+		System.out.println(memberDTO.getMem_id());
+		System.out.println(memberDTO.getMem_pass());
 		try {
 			session.setAttribute("UserName", accountdao.login(memberDTO));
 			return "redirect:main";

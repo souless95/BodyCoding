@@ -10,7 +10,7 @@ import global.dto.MemberDTO;
 public interface TrainerService {
 
 	public int insertMemberT(MemberDTO memberDTO);
-	public List<MemberDTO> selectT();
+	public List<MemberDTO> selectGT(MemberDTO memberDTO);
 	public int update(MemberDTO memberDTO);
 	public int deleteT(MemberDTO memberDTO);
 	public MemberDTO selectOneT(MemberDTO memberDTO);

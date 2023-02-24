@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>    
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 <style>
     body {
       min-height: 100vh;
@@ -23,7 +23,7 @@
     }
 
     .input-form {
-      max-width: 680px;
+      max-width: 720px;
 
       margin-top: 80px;
       padding: 32px;
@@ -84,22 +84,145 @@
 		color: #c0c0c0;
 	}
 	
-	.gender{
-		float:left;
-	}
-  </style>
+	</style>
 
 </head>
 <script type="text/javascript">
-function commonFocusMove(thisObj, numLength, nextObj){
-	var obj1 = document.getElementById(thisObj);
-	var strLen2 = obj1.value.length;
-	if(strLen2 == numLength){
-		document.getElementById(nextObj).focus();
+	function commonFocusMove(thisObj, numLength, nextObj){
+		var obj1 = document.getElementById(thisObj);
+		var strLen2 = obj1.value.length;
+		if(strLen2 == numLength){
+			document.getElementById(nextObj).focus();
+		}
 	}
-}
+	
+	 const frms = document.getElementsByClassName('validation-form');
+	    window.addEventListener('load', () => {      
+	      Array.prototype.filter.call(frms, (form) => {
+	        form.addEventListener('submit', function (event) {
+	          if (form.checkValidity() == false) {
+	            event.preventDefault();
+	            event.stopPropagation();
+	          }
 
+	          form.classList.add('was-validated');
+	        }, false);
+	      });
+	    }, false);
+	    
+	    //"was-validated"
+	 
+    function totalcheck(frms){
+    	
+    	const idc = document.getElementById("mem_id");
+    	console.log(idc.value);
+    	if(idc.value=="" || idc.value==null){
+    		document.getElementById("idcheck").style.display = "inline";
+    	}
+    	
+    	    	
+    	const gc = document.getElementsByName("mem_gender");
+    	if(gc[0].checked==false && gc[1].checked==false){
+    		document.getElementById("mnw").style.display = "inline";
+    	}
+    	
+    	const tel1 = document.getElementById("tel1"); 
+    	const tel2 = document.getElementById("tel2");
+    	const tel3 = document.getElementById("tel3");
+    	if(tel1.value=="" || tel2.value=="" || tel3.value==""){
+    		document.getElementById("phonecheck").style.display = 'inline';
+    	}
+    	
+    	const disease = document.getElementsByName("mem_disease");
+    	if(disease[0].checked == false && disease[1].checked == false && disease[2].checked == false &&
+    			disease[3].checked == false && disease[4].checked == false){
+    		document.getElementById("diseasecheck").style.display = 'inline';
+    	}
+    	
+    	const purpose = document.getElementsByName("mem_purpose");
+    	if(purpose[0].checked == false && purpose[1].checked == false && purpose[2].checked == false &&
+    			purpose[3].checked == false){
+    		document.getElementById("purposecheck").style.display = 'inline';
+    	}
+    	
+    	const mem_interest = document.getElementsByName("mem_interest");
+    	if(mem_interest[0].checked == false && mem_interest[1].checked == false && mem_interest[2].checked == false &&
+    			mem_interest[3].checked == false){
+    		document.getElementById("interestcheck").style.display = 'inline';
+    	}
+    	
+    	document.getElementById("telFinal").value = tel1.value + "-" + tel2.value + "-" + tel3.value; 
+    	
+    	//frms.submit(); 
+    }
+    
+ 
+   function checkNoneid(){
+    	const idc = document.getElementById("idc");
+    	if(idc.value=""){
+    		document.getElementById("idcheck").style.display ='none';
+    	}
+    }
+
+    function checkNone1(){
+    	const gc = document.getElementsByName("mem_gender");
+    	if(gc[0].checked==true || gc[1].checked==true){
+    		document.getElementById("mnw").style.display = "none";
+    	}
+    	if(idc.value==""){
+    		document.getElementById("idcheck").style.display = 'inline';
+    	}
+    }
+
+    function checkNone2(){
+	    const tel1 = document.getElementById("tel1");
+	    const tel2 = document.getElementById("tel2");
+	    const tel3 = document.getElementById("tel3");
+	    if(tel1.value!="" && tel2.value!="" && tel3.value!=""){
+		    document.getElementById("phonecheck").style.display = 'none';
+		    }
+	    if(tel1.value=="" || tel2.value=="" || tel3.value==""){
+		    document.getElementById("phonecheck").style.display = 'inline';
+		    }
+	    }
+
+    function checkNone3(){
+	    const disease = document.getElementsByName("mem_disease");
+	    if(disease[0].checked == true || disease[1].checked == true || disease[2].checked == true ||
+	    	disease[3].checked == true || disease[4].checked == true){
+		    	document.getElementById("diseasecheck").style.display = 'none';
+		}
+	    if(disease[0].checked == false && disease[1].checked == false && disease[2].checked == false &&
+	   		disease[3].checked == false && disease[4].checked == false){
+		    	document.getElementById("diseasecheck").style.display = 'inline';
+		    }
+	    }
+
+    function checkNone4(){
+    const purpose = document.getElementsByName("mem_purpose");
+	    if(purpose[0].checked == true || purpose[1].checked == true || purpose[2].checked == true ||
+		    purpose[3].checked == true){
+			    document.getElementById("purposecheck").style.display = 'none';
+	    }
+    if(purpose[0].checked == false && purpose[1].checked == false && purpose[2].checked == false &&
+    	purpose[3].checked == false){
+    		document.getElementById("purposecheck").style.display = 'inline';
+   		}
+    }
+
+    function checkNone5(){
+    const mem_interest = document.getElementsByName("mem_interest");
+   		if(mem_interest[0].checked == true || mem_interest[1].checked == true || mem_interest[2].checked == true ||
+    		mem_interest[3].checked == true){
+   				document.getElementById("interestcheck").style.display = 'none';
+    }
+    if(mem_interest[0].checked == false && mem_interest[1].checked == false && mem_interest[2].checked == false &&
+    		mem_interest[3].checked == false){
+    			document.getElementById("interestcheck").style.display = 'inline';
+   		 }
+    }
 </script>
+
 <body>
 <div class="container">
 	<div class="input-form-backgroud row">
@@ -113,17 +236,17 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	    <div>
     	 <div class="mb-1" >
 	        <label for="mem_id">아이디(이메일)</label>
-	        <input type="email" class="form-control" id="mem_id" name="mem_id" placeholder="you@example.com" value="" required>
-	        <div class="invalid-feedback" style="margin-bottom:20px;">
-                아이디를 입력해주세요.
-              </div>
+	        <input type="email" class="form-control" id="mem_id" name="mem_id" onchange="checkNoneid()" placeholder="you@example.com" value="" required>
+	        <div id="idcheck" style="margin-bottom:20px; display:none;">
+                <span style="color:#DC3545; font-size:16px; ">아이디를 입력해주세요.</span>
+            </div>
         </div>
        </div>
        
        <div>
          <div class="mb-1">
 	        <label for="mem_pass">비밀번호</label>
-	        <input type="password" class="form-control" name="mem_pass" placeholder="" value="" required>
+	        <input type="password" class="form-control" name="mem_pass" placeholder="" value="" autocomplete="off" required>
 			<div class="invalid-feedback" style="margin-bottom:20px;">
               	비밀번호를 입력해 주세요.
               </div>
@@ -131,7 +254,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 		
 		<div class="mb-1">
 	        <label for="mem_pass">비밀번호 확인</label>
-	        <input type="password" class="form-control" name="mem_pass" placeholder="" value="" required>
+	        <input type="password" class="form-control" placeholder="" value="" autocomplete="off" required>
 			<div class="invalid-feedback" style="margin-bottom:20px;">
               	비밀번호를 입력해 주세요
             </div>
@@ -147,11 +270,10 @@ function commonFocusMove(thisObj, numLength, nextObj){
 		</div>
 		
 		<br>
-		
 		 <div class="mb-2">
 	        <label for="mem_gender">성별</label>
-	       		<input type="radio" name="mem_gender" value="M" onchange="checkNone();" required>&nbsp;남자
-	        	<input type="radio" name="mem_gender" value="F" onchange="checkNone();" required>&nbsp;여자<br>
+	       		<input type="radio" name="mem_gender" value="M" onchange="checkNone1();" required>&nbsp;남자
+	        	<input type="radio" name="mem_gender" value="F" onchange="checkNone1();" required>&nbsp;여자<br>
 	    	<div style="padding-bottom:30px;">
 	    		<div style="margin-bottom:-15px;"></div>
 		        <div id="mnw"  style="display:none;">
@@ -160,6 +282,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
 			</div>
 		</div>
 		
+		<!-- 생년월일 -->
 		 <div class="mb-1">
 	        <label for="mem_birth">생년월일</label>
 	        <input type="date" class="form-control" id="mem_birth" name="mem_birth" required>
@@ -172,12 +295,12 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	 	<div class="mb-1">
 	        <label for="mem_phone">전화번호</label>
 	        <div id="phone">
-	        	<div><input type ="hid den" name ="mem_phone" id="telFinal" value="" required></div>
-                <div style="width:30%;"><input type ="tel" class="form-control valid" placeholder="010" id="tel1"  size="3" onkeyup="commonFocusMove('tel1', '3', 'tel2'); checkNone();" maxlength="3" required></div>
+	        	<div><input type ="hidden" name ="mem_phone" id="telFinal" value="" required></div>
+                <div style="width:30%;"><input type ="tel" class="form-control valid" placeholder="010" id="tel1"  size="3" onkeyup="commonFocusMove('tel1', '3', 'tel2'); checkNone2();" maxlength="3" required></div>
                 <span style="margin-top:6px;">-</span>
-                <div style="width:35%;"><input type ="tel" class="form-control valid" id="tel2" size="4" onkeyup="commonFocusMove('tel2', '4', 'tel3'); checkNone();" maxlength="4" required></div>
+                <div style="width:35%;"><input type ="tel" class="form-control valid" id="tel2" size="4" onkeyup="commonFocusMove('tel2', '4', 'tel3'); checkNone2();" maxlength="4" required></div>
                 <span style="margin-top:6px;">-</span>
-                <div style="width:35%;"><input type ="tel" class="form-control valid" maxlength='4' id="tel3" onkeyup="checkNone();" maxlength="4" required></div>
+                <div style="width:35%;"><input type ="tel" class="form-control valid" maxlength='4' id="tel3" onkeyup="checkNone2();" maxlength="4" required></div>
             </div>
 			</div>
 			<div id="phonecheck" style="margin-bottom:20px; display:none;">
@@ -194,7 +317,6 @@ function commonFocusMove(thisObj, numLength, nextObj){
              </div>
 		</div>
 		<br>
-		
 		 <div class="mb-1">
 	        <label for="gym_code">지점선택</label>&nbsp;
 	        <select class="custom-select d-block w-100" name="gym_code" required>
@@ -226,24 +348,24 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	        <label for="mem_disease">질병</label>
 	        <div class="disease">
 		        
-		        <input type="checkbox" class="checkStyle" name="mem_disease" value="shoulder" onchange="checkNone()" required>
+		        <input type="checkbox" class="checkStyle" name="mem_disease" value="shoulder" onchange="checkNone3()" required>
 		        <label for="shoulder">어깨부상</label>&nbsp;&nbsp;
 		        
 		        
-	        	<input type="checkbox" class="checkStyle" name="mem_disease" value="knee" onchange="checkNone()" required>
+	        	<input type="checkbox" class="checkStyle" name="mem_disease" value="knee" onchange="checkNone3()" required>
 	        	<label for="knee">무릎부상</label>&nbsp;&nbsp;
 	        
 	        
-	        	<input type="checkbox"  class="checkStyle" name="mem_disease" value="back" onchange="checkNone()" required>	
+	        	<input type="checkbox"  class="checkStyle" name="mem_disease" value="back" onchange="checkNone3()" required>	
 	        	<label for="back">허리부상</label>&nbsp;&nbsp;
 	        	
 		        
-	           	<input type="checkbox" class="checkStyle" name="mem_disease" value="hnf" onchange="checkNone()" required>
+	           	<input type="checkbox" class="checkStyle" name="mem_disease" value="hnf" onchange="checkNone3()" required>
 	        	<label for="hnf">손목 또는 발목</label>&nbsp;&nbsp;
 
 		        
-	        	<input type="checkbox" class="checkStyle" name="mem_disease" value="ect" onchange="checkNone()" required>
-	        	<label for="ect">그 외</label>
+	        	<input type="checkbox" class="checkStyle" name="mem_disease" value="none" onchange="checkNone3()" required>
+	        	<label for="none">선택사항 없음</label>
 	         </div>
 	        
 	         <div id="diseasecheck" style="margin-bottom:20px; display:none;">
@@ -256,38 +378,38 @@ function commonFocusMove(thisObj, numLength, nextObj){
 	        </div>
 	        <div class=purpose_detail>
 		        
-		        <input type="checkbox" class="checkStyle" name="mem_purpose" value="diet" onchange="checkNone();" required>
+		        <input type="checkbox" class="checkStyle" name="mem_purpose" value="diet" onchange="checkNone4();" required>
 		        <label for="diet">다이어트</label>&nbsp;&nbsp;
 		        
 		        
-	        	<input type="checkbox" class="checkStyle" name="mem_purpose" value="competition" onchange="checkNone();" required>
+	        	<input type="checkbox" class="checkStyle" name="mem_purpose" value="competition" onchange="checkNone4();" required>
 	        	<label for="competition">대회준비</label>&nbsp;&nbsp;
 	        
 	        
-	        	<input type="checkbox"  class="checkStyle" name="mem_purpose" value="healthcare" onchange="checkNone();" required>	
+	        	<input type="checkbox"  class="checkStyle" name="mem_purpose" value="healthcare" onchange="checkNone4();" required>	
 	        	<label for="healthcare">체력관리</label>&nbsp;&nbsp;
 	        	
 		        
-	           	<input type="checkbox" class="checkStyle" name="mem_purpose" value="etc" onchange="checkNone();" required>
+	           	<input type="checkbox" class="checkStyle" name="mem_purpose" value="etc" onchange="checkNone4();" required>
 	        	<label for="etc">그 외</label>&nbsp;&nbsp;
 	         </div>
 	         <div id="purposecheck" style="margin-bottom:20px; display:none;">
               	<span style="color:#DC3545; font-size:16px;" style="margin-bottom:20px;">운동목적을 선택해 주세요</span><br>
-             </div>
+             </div><br>
 	
 	        <label for="mem_interest">관심사항</label>
 	        <div class="interest">
 		        
-		        <input type="checkbox" class="checkStyle" name="mem_interest" value="PT" onchange="checkNone();" required>
+		        <input type="checkbox" class="checkStyle" name="mem_interest" value="PT" onchange="checkNone5();" required>
 		        <label for="PT">개인PT</label>&nbsp;&nbsp;
 		        		        
-	        	<input type="checkbox" class="checkStyle" name="mem_interest" value="pila" onchange="checkNone();" required>
+	        	<input type="checkbox" class="checkStyle" name="mem_interest" value="pila" onchange="checkNone5();" required>
 	        	<label for="pila">필라테스</label>&nbsp;&nbsp;
 	        	        
-	        	<input type="checkbox"  class="checkStyle" name="mem_interest" value="gx" onchange="checkNone();" required>	
+	        	<input type="checkbox"  class="checkStyle" name="mem_interest" value="gx" onchange="checkNone5();" required>	
 	        	<label for="gx">GX</label>&nbsp;&nbsp;
 		        
-	        	<input type="checkbox" class="checkStyle" name="mem_interest" value="health" onchange="checkNone();" required>
+	        	<input type="checkbox" class="checkStyle" name="mem_interest" value="health" onchange="checkNone5();" required>
 	        	<label for="yoga">헬스</label>
 	         </div>
 	         
@@ -314,10 +436,11 @@ function commonFocusMove(thisObj, numLength, nextObj){
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
              <div class="invalid-feedback" >개인정보 수집 및 이용에 동의해주세요.</div>
         </div>
-        
 
         <br>
-        <button  class="btn btn-primary btn-lg btn-block" type="submit" onclick="totalcheck();">가입하기</button>
+        
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="totalcheck(this.form);">가입하기</button>
+        
      	</form>
   	
    
@@ -327,6 +450,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
       <p class="mb-1">&copy; 2023 BodyCoding</p>
     </footer>
 </div>
+<<<<<<< HEAD
 
  <script>
  	const forms = document.getElementsByClassName('validation-form');
@@ -431,5 +555,7 @@ function commonFocusMove(thisObj, numLength, nextObj){
     }
         
     </script>
+=======
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

@@ -61,10 +61,11 @@
                     start: info.dateStr,
                   };
       			$.ajax({
-      				type: "POST",
-      				url: "AddEventServlet",
-      				data: JSON.stringify(eventData),
+      				url: "/AddCalendar",
       				contentType: "application/json; charset=utf-8",
+      				//data: JSON.stringify(eventData),
+      				data: eventData,
+      				dataType: 'JSON',
       				success: function(){
       					calendar.addEvent(eventData);
       				},
@@ -86,12 +87,3 @@
   <div id='calendar' style="width:800px;"></div>
 </body>
 </html>
-
- <!-- select: function(info) {
-        	var titleA = prompt("일정명을 입력하세요");
-      		calendar.addEvent({
-                title: titleA,
-                start: info.startStr,
-                end: info.endStr,
-              });
-        } -->

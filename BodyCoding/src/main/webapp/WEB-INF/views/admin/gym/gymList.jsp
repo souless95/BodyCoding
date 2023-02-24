@@ -57,13 +57,14 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<button type="button" class="btn btn-primary" onclick="location.href='/gymRegist.do'">지점 등록</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
 					</div>
 				</div>
 			</main>
 		</div>
 	</div>
 	
-	<button type="button" onclick="location.href='main/admin'">홈으로</button>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/scripts.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

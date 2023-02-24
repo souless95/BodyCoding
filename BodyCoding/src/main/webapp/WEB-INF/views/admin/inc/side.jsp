@@ -16,7 +16,7 @@
 					<a class="nav-link" href="index.html">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
-						</div> 전체 멤버 리스트
+						</div> 전체 리스트
 					</a>
 					<div class="sb-sidenav-menu-heading">Interface</div>
 					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

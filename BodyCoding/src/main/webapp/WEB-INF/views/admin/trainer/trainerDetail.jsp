@@ -20,58 +20,61 @@
         <%@ include file ="../../admin/inc/side.jsp" %>
 			<div id="layoutSidenav_content">
 		        <main>
-		        	<div class="card mb-4">
+		        	<div class="card mb-4" style="border-bottom: none;">
 		        		<div class="card-header">
-							<h2>트레이너 상세보기</h2>
+							<h2>${trainerList.mem_name } 트레이너 상세보기</h2>
 		        		</div>
-		        		<div class="card-body">
-							<table id="datatablesSimple">
-							<thead>
+		        		<div class="card-body" style="width: 80%">
+		        			<h4>프로필 사진</h4>
+		        			<div>${trainerList.mem_img }</div>
+		        			<table class="table" border="2">
 								<tr>
-						         	<th>센터</th>
-						         	<th>이메일(아이디)</th>
-						         	<th>이름</th>
-						         	<th>성별</th>
-						         	<th>생년월일</th>
-						       	 	<th>전화번호</th>
-						       	 	<th>주소</th>
-						       	 	<th>계정상태</th>
-						       	 	<th>경력</th>
-						       	 	<th>자기소개</th>
-						       	 	<th>프로필 이미지</th>
-						       	  	<th></th>
-						      	</tr>
-							</thead>
-							<tbody>
-						      	<tr>
+						         	<th>센터코드</th>
 							        <td>${trainerList.gym_code }</td>
+						         	<th colspan="2">이메일(아이디)</th>
 							        <td>${trainerList.mem_id }</td>
+						         	<th>이름</th>
 							        <td>${trainerList.mem_name }</td>
+						        </tr>
+		        			</table>
+							<table class="table" border="2">
+						        <tr>
+						         	<th>성별</th>
 							        <td>${trainerList.mem_gender }</td>
+						         	<th colspan="2">생년월일</th>
 							        <td>${trainerList.mem_birth }</td>
+						        </tr>
+						       	<tr>
+						       	 	<th>전화번호</th>
 							        <td>${trainerList.mem_phone }</td>
+						       	 	<th colspan="2">주소</th>
 							        <td>${trainerList.mem_address }</td>
+						      	</tr>
+							    <tr>
+						       	 	<th>계정상태</th>
 							        <td>${trainerList.mem_status }</td>
-							        <td>${trainerList.mem_career }</td>
-							        <td>${trainerList.mem_comment }</td>
-							        <td>${trainerList.mem_img }</td>
 							    </tr>
-							    <td>
-									<button type="button" class="btn btn-primary" onclick="location.href='trainerEdit.do?mem_id=${trainerList.mem_id }'">
-										수정
-									</button>
-									<button type="button" class="btn btn-primary" onclick="location.href='trainerdelete.do?mem_id=${trainerList.mem_id }'">
-										삭제
-									</button>
-								</td>
-							</tbody>
 							</table>
+							<table class="table" border="2">	
+						      	<tr>
+						       	 	<th>경력</th>
+							        <td>${trainerList.mem_career }</td>
+						       	 	<th>자기소개</th>
+							        <td>${trainerList.mem_comment }</td>
+						      	</tr>
+							</table>
+								<button type="button" class="btn btn-primary" onclick="location.href='trainerEdit.do?mem_id=${trainerList.mem_id }'">
+									수정
+								</button>
+								<button type="button" class="btn btn-primary" onclick="location.href='trainerdelete.do?mem_id=${trainerList.mem_id }'">
+									삭제
+								</button>
+								<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button> 
 		        		</div>
 					</div>
 				</main>
 			</div>
 		</div>
-	<button type="button" onclick="location.href='main/admin'">홈으로</button> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../static/admin/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

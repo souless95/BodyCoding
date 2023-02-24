@@ -8,8 +8,7 @@
 </head>
 <body>
 	<h2>지점수정</h2>
-	<form action="gymedit.do" method="post"
-		enctype="multipart/form-data">
+	<form action="gymedit.do" method="post">
 		<table border="1">
 			<tr>
 				<th>지점코드(수정불가)</th>
@@ -84,10 +83,10 @@
 				<td><input type="text" name="rtime_holy_end" value="${dto.rtime_holy_end}" /></td>
 			</tr>
 			<!-- 다중파일 업로드 해보기 -->
-			<tr>
+			<%-- <tr>
 				<th>헬스장 상세 이미지</th>
 				<td><input multiple="multiple" type="file" name="gym_dtail_img" value="${dto.gym_dtail_img}" /></td>
-			</tr>
+			</tr> --%>
 		</table>
 		<input type="submit" value="전송하기" />
 	</form>

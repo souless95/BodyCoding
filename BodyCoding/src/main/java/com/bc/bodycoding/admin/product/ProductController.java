@@ -57,12 +57,23 @@ public class ProductController {
 		return "/admin/product/stockList";
 	}
 	
-
-	
 	@ResponseBody
 	@RequestMapping(value="/stockUpdate.do", method = RequestMethod.POST)
-	public String sUpdate(Model model, HttpServletRequest req) {
-		System.out.println(req.getParameter("product_stock"));
+	public String sUpdate(@RequestBody ProductDTO productDTO) {
+		int result = productdao.stockUpdate(productDTO);
+		if(result==1) {
+			System.out.println("업데이트 성공!");
+		}
+		return "/admin/product/stockList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/stockInsert.do", method = RequestMethod.POST)
+	public String sInsert(@RequestBody ProductDTO productDTO) {
+		int result = productdao.stockInsert(productDTO);
+		if(result==1) {
+			System.out.println("인서트 성공!");
+		}
 		return "/admin/product/stockList";
 	}
 

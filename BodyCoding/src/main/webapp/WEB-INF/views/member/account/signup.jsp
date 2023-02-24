@@ -314,6 +314,115 @@
       <p class="mb-1">&copy; 2023 BodyCoding</p>
     </footer>
 </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+ <script>
+ 	const forms = document.getElementsByClassName('validation-form');
+    window.addEventListener('load', () => {
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+    
+    function totalcheck(forms){
+    	
+    	const gc = document.getElementsByName("mem_gender");
+    	if(gc[0].checked==false || gc[1].checked==false){
+    		document.getElementById("mnw").style.display = "inline-block";
+    	}
+    	
+    	const tell1 = document.getElementById("tel1"); 
+    	const tell2 = document.getElementById("tel2");
+    	const tell3 = document.getElementById("tel3");
+    	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
+    		document.getElementById("phonecheck").style.display = 'inline-block';
+    	}
+    	
+    	const disease = document.getElementsByName("mem_disease");
+    	if(disease[0].checked == false && disease[1].checked == false && disease[2].checked == false &&
+    			disease[3].checked == false && disease[4].checked == false){
+    		document.getElementById("diseasecheck").style.display = 'inline-block';
+    	}
+    	
+    	const purpose = document.getElementsByName("mem_purpose");
+    	if(purpose[0].checked == false && purpose[1].checked == false && purpose[2].checked == false &&
+    			purpose[3].checked == false){
+    		document.getElementById("purposecheck").style.display = 'inline-block';
+    	}
+    	
+    	const mem_interest = document.getElementsByName("mem_interest");
+    	if(mem_interest[0].checked == false && mem_interest[1].checked == false && mem_interest[2].checked == false &&
+    			mem_interest[3].checked == false){
+    		document.getElementById("interestcheck").style.display = 'inline-block';
+    	}
+    	
+    	document.getElementById("telFinal").value = tel1.value + "-" + tel2.value + "-" + tel3.value;
+    }
+    
+    function checkNone(){
+    	const tel1 = document.getElementById("tel1");
+    	const tel2 = document.getElementById("tel2");
+    	const tel3 = document.getElementById("tel3");
+    	if(tel1.value!="" && tel2.value!="" && tel3.value!=""){
+    		document.getElementById("phonecheck").style.display = 'none';
+    	}
+<<<<<<< HEAD
+    	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
+    		document.getElementById("phonecheck").style.display = 'inline-block';
+=======
+    	if(tel1.value=="" || tel2.value=="" || tel3.value==""){
+    		document.getElementById("phonecheck").style.display = 'inline';
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
+    	}
+    	
+    	const gc = document.getElementsByName("mem_gender");
+    	if(gc[0].checked==true || gc[1].checked==true){
+    		document.getElementById("mnw").style.display = "none";
+    	}
+    	
+    	const disease = document.getElementsByName("mem_disease");
+    	if(disease[0].checked == true || disease[1].checked == true || disease[2].checked == true ||
+    			disease[3].checked == true || disease[4].checked == true){
+    		document.getElementById("diseasecheck").style.display = 'none';
+    	}
+    	if(disease[0].checked == false && disease[1].checked == false && disease[2].checked == false &&
+    			disease[3].checked == false && disease[4].checked == false){
+    		document.getElementById("diseasecheck").style.display = 'inline-block';
+    	}
+    	
+    	const purpose = document.getElementsByName("mem_purpose");
+    	if(purpose[0].checked == true || purpose[1].checked == true || purpose[2].checked == true ||
+    			purpose[3].checked == true){
+    		document.getElementById("purposecheck").style.display = 'none';
+    	}
+    	if(purpose[0].checked == false && purpose[1].checked == false && purpose[2].checked == false &&
+    			purpose[3].checked == false){
+    		document.getElementById("purposecheck").style.display = 'inline-block';
+    	}
+    	
+    	const mem_interest = document.getElementsByName("mem_interest");
+    	if(mem_interest[0].checked == true || mem_interest[1].checked == true || mem_interest[2].checked == true ||
+    			mem_interest[3].checked == true){
+    		document.getElementById("interestcheck").style.display = 'none';
+    	}
+    	if(mem_interest[0].checked == false && mem_interest[1].checked == false && mem_interest[2].checked == false &&
+    			mem_interest[3].checked == false){
+    		document.getElementById("interestcheck").style.display = 'inline-block';
+    	}
+    }
+        
+    </script>
+=======
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
+=======
 
 <script type="text/javascript">
 	function commonFocusMove(thisObj, numLength, nextObj){
@@ -594,5 +703,6 @@
       	}
       }
 </script>
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

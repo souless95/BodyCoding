@@ -48,4 +48,16 @@
 				INNER JOIN product P ON P.product_idx=PD.product_idx
 			WHERE mem_id='admin_sub1'
 	</select>
+	
+	<insert id="stockInsert" parameterType="global.dto.ProductDTO">
+		INSERT INTO product_detail 
+			VALUES(bodycoding_seq.nextval,gym_code=#{gym_code},product_idx=#{product_idx},
+				product_status,#{product_status},product_stock=#{product_stock})
+	</insert>
+	
+	<update id="stockUpdate" parameterType="global.dto.ProductDTO">
+		UPDATE product_detail 
+			SET product_status=#{product_status}, product_stock=#{product_stock} 
+		WHERE product_detail_idx=#{product_detail_idx} 
+	</update>
 </mapper>

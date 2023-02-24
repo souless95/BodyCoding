@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 	
+	
+	
+	@RequestMapping("account/myinfo")
+	public String myinfo() {
+		return "account/myinfo";
+	}
+	
 	@RequestMapping("/")
 	public String home() {
 		return "home";
@@ -35,6 +42,9 @@ public class MainController {
 		session.getAttribute("UserName");
 		return "member/main";
 	}
+	
+	
+	
 	
 	
 	

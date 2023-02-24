@@ -88,7 +88,12 @@
 <title>MyCalendar</title>
 </head>
 <body>
+<%@ include file = "../views/member/inc/Top.jsp" %>
+<div class="container">
+<%@ include file ="../views/member/inc/mypageside.jsp" %>
   <h1>MyCalendar</h1>
   <div id='calendar' style="width:800px;"></div>
+</div>
+<%@ include file = "../views/member/inc/Bottom.jsp" %>
 </body>
 </html>

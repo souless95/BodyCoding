@@ -62,7 +62,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Danger Card</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">상품관리</a>
+                                        <a class="small text-white stretched-link" href="../productList.do">상품관리</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -71,35 +71,44 @@
                         
                         <!-- 메인에서 보여주는 멤버리스트 -->
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                전체 멤버 리스트
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+			        		<div class="card-header">
+								<h2>전체 회원 리스트</h2>
+			        		</div>
+			        		<div class="card-body">
+								<table id="datatablesSimple">
+								<thead>
+									<tr>
+							         	<th>센터</th>
+							         	<th>이메일(아이디)</th>
+							         	<th>이름</th>
+							         	<th>성별</th>
+							         	<th>생년월일</th>
+							       	 	<th>전화번호</th>
+							       	  	<th>가입일자</th>
+							       	  	<th></th>
+							      	</tr>
+								</thead>
+								<tbody>
+						     	<c:forEach items="${memberList }" var="row" varStatus="loop">
+							      	<tr>
+								        <td>${row.gym_code }</td>
+								        <td>${row.mem_id }</td>
+								        <td>${row.mem_name }</td>
+								        <td>${row.mem_gender }</td>
+								        <td>${row.mem_birth }</td>
+								        <td>${row.mem_phone }</td>
+								        <td>${row.mem_regidate }</td>
+								        <td>
+								        	<button type="button" class="btn btn-primary" onclick="location.href='detail.do?mem_id=${row.mem_id }'">
+													상세보기
+											</button>
+								        </td>
+								    </tr>
+							    </c:forEach>
+								</tbody>
+								</table>
+			        		</div>
+						</div>
                     </div>
                     
                     <!-- 데이터 차트 보여주는 부분 -->
@@ -124,18 +133,8 @@
                             </div>
                         </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+            <!-- bottom -->
+			<%@ include file ="../admin/inc/bottom.jsp" %>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

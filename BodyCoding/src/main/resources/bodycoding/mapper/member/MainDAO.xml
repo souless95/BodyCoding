@@ -7,18 +7,29 @@
 	
 <mapper namespace="com.bc.bodycoding.main.MemberMainService">
 
+<!-- select 박스 지점 선택 -->
 <select id="gymlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select * from member where mem_type='ADMIN_SUB' and mem_status ='1'
+	select gym_code, mem_name from member where mem_type='ADMIN_SUB' and mem_status ='1'
 </select>
 
-<select id="trainerlistSelect"
+
+<!-- 모든 지점 트레이너 보여주기 -->
+<select id="trainerALLlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
 	select * from member where mem_type='TRAINER' and mem_status ='1'
 </select>
 
+<!-- 선택된 트레이너 보여주기 -->
+<select id="trainerlistSelect"
+	parameterType="String"
+	resultType="global.dto.MemberDTO">
+	select * from member where mem_type='TRAINER' and mem_status ='1' and gym_code=#{gym_code}
+</select>
+
+<!-- 트레이너 상세 정보 보여주기 -->
 <select id="trainerInfoSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
@@ -26,12 +37,34 @@
 		where mem_type='TRAINER' and mem_id=#{mem_id}
 </select>
 
+<!-- 트레이너 상세 정보중 지점명 보여주기(지점코드로 받아서 지점명으로 변환하는 과정) -->
 <select id="gymInfoSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="String">
 	select mem_name from member 
 		where mem_type='ADMIN_SUB' and gym_code=#{gym_code}
 		and mem_status ='1'
+</select>
+
+<!-- 모든 유형 상품 보여주기 -->
+<select id="product_categoryALLSelect"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+	select * from product where product_type='일반상품'
+</select>
+
+<!-- 선택된 유형 상품 보여주기 -->
+<select id="product_categorySelect"
+	parameterType="String"
+	resultType="global.dto.ProductDTO">
+	select * from product where product_type='일반상품' and product_category=#{product_category}
+</select> 
+
+<!-- 상품 상세 정보 보여주기 -->
+<select id="productInfoSelect"
+	parameterType="int"
+	resultType="global.dto.ProductDTO">
+	select * from product where product_idx = #{product_idx}
 </select>
 
 </mapper>

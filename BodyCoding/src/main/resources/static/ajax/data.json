@@ -1,15 +1,15 @@
 {
-    "PDT": [
-      { "id": 1, "name": "기구", "value1": "fEquipment" },
-      { "id": 2, "name": "식품", "value1": "food" },
-      { "id": 3, "name": "의류", "value1": "clothes" }
+    "일반": [
+      { "id": 1, "name": "기구", "value1": "기구" },
+      { "id": 2, "name": "식품", "value1": "식품" },
+      { "id": 3, "name": "의류", "value1": "의류" }
     ],
-    "MBSP": [
-      { "id": 1, "name": "헬스", "value": "health" },
-      { "id": 2, "name": "GX", "value": "gx" }
+    "멤버쉽기간형": [
+      { "id": 1, "name": "헬스", "value": "헬스" },
+      { "id": 2, "name": "GX", "value": "GX" }
     ],
-    "MBSC": [
-      { "id": 1, "name": "PT", "value": "pt" },
-      { "id": 2, "name": "필라테스", "value": "pilates" }
+    "멤버쉽횟수형": [
+      { "id": 1, "name": "PT", "value": "PT" },
+      { "id": 2, "name": "필라테스", "value": "필라테스" }
     ]
 } 

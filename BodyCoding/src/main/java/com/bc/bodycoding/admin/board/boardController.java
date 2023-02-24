@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import global.dto.BoardDTO;
+import global.dto.MemberDTO;
+
 @Controller
 public class boardController {
 
@@ -17,5 +20,21 @@ public class boardController {
 		model.addAttribute("boardList", boarddao.select());
 		
 		return "admin/board/boardList";
+	}
+	
+	@RequestMapping("/boardDetail.do")
+	public String board2(BoardDTO boardDTO, Model model) {
+		boardDTO = boarddao.selectOneBoard(boardDTO);
+		model.addAttribute("dto", boardDTO);
+		System.out.println(boardDTO);
+		
+		return "admin/board/boardDetail";
+	}
+	
+	@RequestMapping("/boardDelete.do")
+	public String delete(BoardDTO boardDTO) {
+		int result = boarddao.delete(boardDTO);
+		if(result==1) System.out.println("삭제되었습니다.");
+		return "redirect:boardList.do";
 	}
 }

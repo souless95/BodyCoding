@@ -28,9 +28,10 @@
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
+									<th>번호</th>
 									<th>작성자</th>
+									<th>카테고리</th>
 									<th>제목</th>
-									<th>내용</th>
 									<th>작성일</th>
 									<th>업로드 파일</th>
 									<th></th>
@@ -39,14 +40,13 @@
 							<tbody>
 								<c:forEach items="${boardList }" var="row" varStatus="loop">
 									<tr>
+										<td>${row.board_idx }</td>
 										<td>${row.mem_id }</td>
-										<td>${row.board_title }</td>
-										<td>${row.board_contents }</td>
+										<td>${row.board_category }</td>
+										<td><a href="boardDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>
 										<td>${row.board_postdate }</td>
 										<td>${row.board_sfile }</td>
-										<td>
-											<a href="gymdetail.do?gym_code=${row.gym_code }">상세보기</a>
-										</td>
+										<td></td>
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -12,4 +12,15 @@
 		resultType="global.dto.BoardDTO">
 		select * from freeboard
 	</select>
+	
+	<select id="selectOneBoard"
+		parameterType="global.dto.BoardDTO"
+		resultType="global.dto.BoardDTO">
+		select * from freeboard where board_idx=#{board_idx}
+	</select>
+	
+	<delete id="delete"
+		parameterType="global.dto.BoardDTO">
+		delete from freeboard where board_idx=#{board_idx}
+	</delete>
 </mapper>

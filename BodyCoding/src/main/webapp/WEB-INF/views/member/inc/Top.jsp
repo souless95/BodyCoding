@@ -64,7 +64,7 @@
 								<li>
 									<a href="board.jsp">게시판</a>
 									<ul> 
- 										<li><a href="#">자유게시판</a></li>
+ 										<li><a href="">자유게시판</a></li>
 										<li><a href="#">Q&A</a></li>
 										<li><a href="#">1:1문의(웹소켓 채팅)</a></li>
 									</ul>

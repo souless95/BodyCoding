@@ -65,7 +65,7 @@ public class GymController {
 	
 	//수정하기
 	@RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
-		public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
+	public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		String rootPath = System.getProperty("user.dir");
 		//파일 경로
 		String fileDir = rootPath + "\\src\\main\\resources\\static\\uploads";

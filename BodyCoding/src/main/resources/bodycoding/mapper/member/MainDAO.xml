@@ -10,13 +10,19 @@
 <select id="gymlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select * from member where mem_type='ADMIN_SUB' and mem_status ='1'
+	select gym_code, mem_name from member where mem_type='ADMIN_SUB' and mem_status ='1'
 </select>
 
-<select id="trainerlistSelect"
+<select id="trainerALLlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
 	select * from member where mem_type='TRAINER' and mem_status ='1'
+</select>
+
+<select id="trainerlistSelect"
+	parameterType="String"
+	resultType="global.dto.MemberDTO">
+	select * from member where mem_type='TRAINER' and mem_status ='1' and gym_code=#{gym_code}
 </select>
 
 <select id="trainerInfoSelect"

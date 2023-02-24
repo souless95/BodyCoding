@@ -52,12 +52,12 @@
 								</li>
 								
 								<li>
-									<a href="trainerinfo.jsp">트레이너</a>
+									<a href="trainer">트레이너</a>
 								</li>
 								
 								
 								<li>
-									<a href="product.jsp">상품몰</a>
+									<a href="product">상품몰</a>
 								</li>
 								
 								<li>
@@ -69,7 +69,7 @@
 									</ul>
 								</li>
 								
-								<li>
+								<!-- <li>
 									<a href="#" onclick="location.href='account/myinfo.jsp';">마이페이지</a>
 									<ul> 
  										<li><a href="#">이용내역</a></li>
@@ -78,7 +78,7 @@
 										<li><a href="#">정보수정</a></li>
 										<li><a href="#">하기싫어 재필아...</a></li>
 									</ul>
-								</li>
+								</li> -->
 								
 						
 						

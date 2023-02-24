@@ -23,4 +23,8 @@ public interface IProductService {
 	public int delete(ProductDTO productDTO);
 	//재고 조회
 	public List<ProductDTO> stockSelect();
+	//재고 등록
+	public int stockInsert(ProductDTO productDTO);
+	//재고 수정
+	public int stockUpdate(ProductDTO productDTO);
 }

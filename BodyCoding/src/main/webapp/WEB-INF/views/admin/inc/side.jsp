@@ -78,9 +78,8 @@
 								aria-labelledby="headingOne"
 								data-bs-parent="#sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="../productList.do">기간제 이용권</a> <a
-										class="nav-link" href="404.html">횟수권</a> <a
-										class="nav-link" href="500.html">기타 상품</a>
+									<a class="nav-link" href="../productList.do">상품관리</a> 
+									<a class="nav-link" href="../stockList.do">재고관리</a>
 								</nav>
 							</div>
 						</nav>

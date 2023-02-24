@@ -1,0 +1,15 @@
+{
+    "PDT": [
+      { "id": 1, "name": "기구", "value1": "fEquipment" },
+      { "id": 2, "name": "식품", "value1": "food" },
+      { "id": 3, "name": "의류", "value1": "clothes" }
+    ],
+    "MBSP": [
+      { "id": 1, "name": "헬스", "value": "health" },
+      { "id": 2, "name": "GX", "value": "gx" }
+    ],
+    "MBSC": [
+      { "id": 1, "name": "PT", "value": "pt" },
+      { "id": 2, "name": "필라테스", "value": "pilates" }
+    ]
+} 

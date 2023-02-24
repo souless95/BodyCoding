@@ -83,7 +83,8 @@
 <title>MyCalendar</title>
 </head>
 <body>
+	 	<%@ include file ="../views/member/inc/mypageside.jsp" %>
   <h1>MyCalendar</h1>
-  <div id='calendar' style="width:800px;"></div>
+  <div id='calendar' style="width:800px; position:absolute; left: 500px;"></div>
 </body>
 </html>

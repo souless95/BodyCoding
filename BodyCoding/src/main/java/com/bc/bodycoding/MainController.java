@@ -34,6 +34,11 @@ public class MainController {
 		session.getAttribute("UserName");
 		return "member/main";
 	}
+	//회원마이페이지로 넘어가기
+	@GetMapping("mypagemain")
+	public String mypagemain(HttpSession session) {
+		return "member/mypage/mypagemain";
+	}
 	
 	//캘린더창으로 넘어가기
 	@GetMapping("calendar.do")

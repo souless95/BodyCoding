@@ -38,7 +38,6 @@ body {
 
 
 <body>
-<<<<<<< HEAD
   <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -90,7 +89,6 @@ body {
       </div>
     </div>
   </div>
-=======
 <h1>로그인</h1>
     <form method="post" action="/login.do">
     	
@@ -110,6 +108,5 @@ body {
 	</form>
 	
 	<a href="main">메인으로 이동</a>
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

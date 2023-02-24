@@ -236,6 +236,5 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>		
 	</div>
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

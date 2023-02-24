@@ -63,9 +63,8 @@
       			$.ajax({
       				url: "/AddCalendar",
       				contentType: "application/json; charset=utf-8",
-      				//data: JSON.stringify(eventData),
       				data: eventData,
-      				dataType: 'JSON',
+      				dataType: 'text',
       				success: function(){
       					calendar.addEvent(eventData);
       				},
@@ -83,7 +82,12 @@
 <title>MyCalendar</title>
 </head>
 <body>
+<%@ include file = "../views/member/inc/Top.jsp" %>
+<div class="container">
+<%@ include file ="../views/member/inc/mypageside.jsp" %>
   <h1>MyCalendar</h1>
   <div id='calendar' style="width:800px;"></div>
+</div>
+<%@ include file = "../views/member/inc/Bottom.jsp" %>
 </body>
 </html>

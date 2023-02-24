@@ -15,7 +15,13 @@
 			location.href="logout.do"
 		}
 	}
+
 	</script>
+</head>
+	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	</style>
@@ -26,10 +32,10 @@
 	<link rel="stylesheet" href="static/assets/css/main.css" />
 </head>
 <body class="is-preload">
-	<div id="page-wrapper">
+	<body class="is-preload">
+	<%@ include file="../member/inc/Top.jsp" %>
+		<div id="page-wrapper">
 
-		<!-- Header -->
-		<%@ include file="../member/inc/Top.jsp" %>
 		
 		<!-- Banner -->
 		<div>

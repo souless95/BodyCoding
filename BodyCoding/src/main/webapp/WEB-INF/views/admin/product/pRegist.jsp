@@ -40,17 +40,23 @@ $(function(){
                         );
                     }
                     
-                    if(cate=="MBSP"){
+                    if(cate=="멤버쉽기간형"){
                     	$('#p').css('display','inline');
                     	$('#pp').css('display','inline');
                     	$('#c').css('display','none');
                     	$('#cc').css('display','none');
                     }
-                    else if(cate=="MBSC"){
+                    else if(cate=="멤버쉽횟수형"){
                     	$('#c').css('display','inline');
                     	$('#cc').css('display','inline');
                     	$('#p').css('display','none');
                     	$('#pp').css('display','none');
+                    }
+                    else{                    	
+                    	$('#c').css('display','none');
+                		$('#cc').css('display','none');
+                    	$('#p').css('display','none');
+                    	$('#pp').css('display','none');                    	
                     }
                     //페이지에 출력되는 컬럼값을 바꾸고 싶다면 이렇게
                     //
@@ -87,9 +93,9 @@ $(function(){
 			<td> 
 			<select name="product_type" id="fSelect">
 				<option value="">유형선택</option>
-				<option value="PDT">일반</option>
-				<option value="MBSP">멤버쉽(기간형)</option>
-				<option value="MBSC">멤버쉽(횟수형)</option>
+				<option value="일반">일반</option>
+				<option value="멤버쉽기간형">멤버쉽(기간형)</option>
+				<option value="멤버쉽횟수형">멤버쉽(횟수형)</option>
 			</select> 
 			</td>
 			<td> 

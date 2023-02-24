@@ -6,37 +6,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <script type="text/javascript">
-   function logoutcheck(){
-      
-      var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
-      
-      if(confirmed){
-         location.href="logout.do"
-      }
+<script type="text/javascript">
+function logoutcheck(){
+   
+   var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
+   
+   if(confirmed){
+      location.href="logout.do"
    }
-   </script>
-   <style type="text/css">
-     * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-   </style>
+}
+</script>
+
 </head>
    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-   <link rel="stylesheet" href="static/assets/css/main.css" />
-</head>
-<body class="is-preload">
-   <div id="page-wrapper">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <link rel="stylesheet" href="static/assets/css/main.css" />
+   <style type="text/css">
+     * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+   
+   </style>
+   </head>
+   <body class="is-preload">
+   <%@ include file="../member/inc/Top.jsp" %>
+      <div id="page-wrapper">
 
       <!-- Header -->
-      <%@ include file="../member/inc/Top.jsp" %>
       
       <!-- Banner -->
       <div>
-         <img alt="메인화면" src="static/assets/images/main1.jpg" style="width:100%;">
+       <img alt="메인화면" src="static/assets/images/main1.jpg" style="width:100%;">
       </div>
       <!-- Posts -->
-      
       <!-- 컨텐츠영역 -->
       <div>
          <div class="container">
@@ -94,7 +95,7 @@
    
    <!-- Bottom -->
    
-   <%@ include file="../member/inc/Bottom.jsp" %>
    </div>
+   <%@ include file="../member/inc/Bottom.jsp" %>
 </body>
 </html>

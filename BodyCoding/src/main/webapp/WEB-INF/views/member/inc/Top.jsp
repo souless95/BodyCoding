@@ -30,16 +30,16 @@
                         <li>
                            <a href="#">BodyCoding(Dropdown)</a>
                            <ul>
-                              <li><a href="#">바디코딩소개</a></li>
+                              <li><a href="/menu/introgym.jsp">바디코딩소개</a></li>
                               <li><a href="#">소중한팀원들소개하지마이쉐끼야</a></li>
                                                             
                            </ul>
                         </li>
                         
                         <li>
-                           <a href="program.jsp"> 프로그램</a>
+                           <a href="#"> 프로그램</a>
                            <ul>
-                              <li><a href="#">헬스</a></li>
+                              <li><a href="/menu/health.jsp">헬스</a></li>
                               <li><a href="#">PT</a></li>
                               <li><a href="#">요가</a></li>
                               <li><a href="#">GX</a></li>

@@ -31,6 +31,12 @@
 	<ul>
 		<li><a href="./fileList.do">파일 목록</a></li>
 	</ul>
+	<ul>
+		<li><a href="trainer">트레이너 목록보기</a></li>
+	</ul>
+	<ul>
+		<li><a href="product">상품 목록보기</a></li>
+	</ul>
 	
 	
 </body>

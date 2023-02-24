@@ -14,22 +14,6 @@
 		select * from member where mem_type like '%ADMIN%'
 	</select>
 	
-	<insert id="insert"
-		parameterType="global.dto.GymDTO">
-		insert all 
-			into GYM_DETAIL (gym_code, gym_scale, gym_dtail_img, 
-				facility_parking, facility_health, facility_yoga, facility_gx, 
-				facility_pilates, facility_pt, facility_24hour, facility_shower, 
-				facility_wear, facility_locker, rtime_week_start, rtime_week_end, 
-				rtime_sat_start, rtime_sat_end, rtime_holy_start, rtime_holy_end) 
-			values(#{gym_code}, #{gym_scale}, #{gym_dtail_img}, #{facility_parking},
-			 	#{facility_health}, #{facility_yoga}, #{facility_gx}, #{facility_pilates},
-			  	#{facility_pt}, #{facility_24hour}, #{facility_shower}, #{facility_wear}, 
-			  	#{facility_locker}, #{rtime_week_start}, #{rtime_week_end},
-			  	#{rtime_sat_start}, #{rtime_sat_end}, #{rtime_holy_start},
-			  	#{rtime_holy_end})
-	</insert>
-	
 	<select id="selectOnegym"
 		parameterType="global.dto.GymDTO"
 		resultType="global.dto.GymDTO">
@@ -38,12 +22,13 @@
 	<select id="selectOneMember"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from MEMBER where gym_code=#{gym_code}
+		select * from MEMBER where mem_type='ADMIN_SUB' and gym_code=#{gym_code}
 	</select>
 	
 	<update id="update"
 		parameterType="global.dto.GymDTO">
-		update GYM_DETAIL set gym_scale=#{gym_scale}, gym_dtail_img=#{gym_dtail_img}, 
+
+		update GYM_DETAIL set gym_scale=#{gym_scale}, <!-- gym_dtail_img=#{gym_dtail_img}, --> 
 			facility_parking=#{facility_parking}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
 			facility_pilates=#{facility_pilates}, facility_pt=#{facility_pt}, facility_24hour=#{facility_24hour}, facility_shower=#{facility_shower}, 
 			facility_wear=#{facility_wear}, facility_locker=#{facility_locker}, rtime_week_start=#{rtime_week_start}, rtime_week_end=#{rtime_week_end}, 
@@ -55,6 +40,10 @@
 		parameterType="global.dto.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}
 	</delete>
+	<delete id="deleteM"
+		parameterType="global.dto.GymDTO">
+		delete from MEMBER where gym_code=#{gym_code}
+	</delete>
 	
 	<insert id="insertMemberASUB"
 		parameterType="global.dto.MemberDTO">
@@ -65,12 +54,18 @@
     		#{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status},
     		#{gym_code}, #{mem_comment}, #{mem_img})
 	</insert>
-	
 	<insert id="insertMember1"
 	parameterType="global.dto.GymDTO">
 	insert into GYM_DETAIL 
 	   		(gym_code) 
 	   	values 
 	   		(#{gym_code})
-	</insert>		
+	</insert>	
+	
+	
+	<select id="codeCheck"
+		parameterType="global.dto.GymDTO"
+		resultType="int">
+		select count(*) from GYM_DETAIL where gym_code=#{gym_code}
+	</select>
 </mapper>

@@ -25,6 +25,12 @@
 	<ul>
 		<li><a href="calendar.do">캘린더</a></li>
 	</ul>
+	<ul>
+		<li><a href="./fileUpload.do">파일 업로드 폼</a></li>
+	</ul>
+	<ul>
+		<li><a href="./fileList.do">파일 목록</a></li>
+	</ul>
 	
 	
 </body>

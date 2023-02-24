@@ -92,6 +92,7 @@
 					</header>
 				</section>
 
+<<<<<<< HEAD
 			<!-- Highlights -->
 				<section class="wrapper style1">
 					<div class="container">
@@ -101,6 +102,97 @@
 									<i class="icon solid major fa-paper-plane"></i>
 									<h3>This Is Important</h3>
 									<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+=======
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp" style="padding-top:5px;">
+						<li><a href="#hello">바디코딩</a></li>
+						<li><a href="#about">프로그램</a></li>
+						<li><a href="#service">지점</a></li>
+						<li><a href="trainer">트레이너</a></li>
+						<li><a href="#pricing">상품몰</a></li>
+						<li><a href="#blog">게시판</a></li>
+										
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+
+
+			<!-- Start Side Menu -->
+			<div class="side">
+				<a href="#" class="close-side"><i class="fa fa-times"></i></a>
+				<div class="widget">
+					<h6 class="title">Custom Pages</h6>
+					<ul class="link">
+						<li><a href="#">About</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Portfolio</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+				<div class="widget">
+					<h6 class="title">Additional Links</h6>
+					<ul class="link">
+						<li><a href="#">Retina Homepage</a></li>
+						<li><a href="#">New Page Examples</a></li>
+						<li><a href="#">Parallax Sections</a></li>
+						<li><a href="#">Shortcode Central</a></li>
+						<li><a href="#">Ultimate Font Collection</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- End Side Menu -->
+
+		</nav>
+	
+		<!--Home Sections-->
+		
+		<section id="hello" class="home bg-mega">
+		
+			<div class="overlay">
+			<img alt="메인화면" src="static/assets/images/main1.jpeg" style="width:100%;">		
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="main_home">
+						<div class="home_text">
+							<h2 class="text-white">우리는 낙자쌤의 도움이 <br/> 필요합니다 !</h1>
+						</div>
+
+						<div class="home_btns m-top-40">
+							<a href="https://bootstrapthemes.co" target="_blank" class="btn btn-primary m-top-20" style="padding:auto;">
+							누르면 어딘가로 이동</a>
+							
+							<a href="https://bootstrapthemes.co" target="_blank" class="btn btn-default m-top-20" style="margin-bottom:14px; padding:auto;">
+							지도 API여기에넣을까</a>
+						</div>
+
+					</div>
+				</div>
+				<!--End off row-->
+			</div>
+			<!--End off container -->
+		</section>
+		<!--End off Home Sections-->
+
+
+		<!--About Sections-->
+		<section id="about" class="about roomy-100">
+			<div class="container">
+				<div class="row">
+					<div class="main_about">
+						<div class="col-md-6">
+							<div class="about_content">
+								<h2>ABOUT US</h2>
+								<div class="separator_left"></div>
+
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+
+								<div class="about_btns m-top-40">
+									<a href="" class="btn btn-primary">DOWNLOAD NOW</a>
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 								</div>
 							</section>
 							<section class="col-4 col-12-narrower">

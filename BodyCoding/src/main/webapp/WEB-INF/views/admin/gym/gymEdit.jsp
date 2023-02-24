@@ -16,6 +16,14 @@
 </style>
 </head>
 <body class="sb-nav-fixed">
+<script>
+	let fileSubmit = function(frm, gubun){
+		else if(gubun==2){
+			frm.action="gymedit.do"
+		}
+		frm.submit();
+	}
+</script>
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
 	
@@ -25,8 +33,9 @@
         
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
+	        <form method="post" enctype="multipart/form-data">
 	        	<div class="card-header">
-					<h2>${memList.mem_name } 상세보기</h2>
+					<h2>${memList.mem_name } 수정 페이지</h2>
 	        	</div>
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
@@ -45,11 +54,11 @@
 							<th>지점명</th>
 							<td>${memList.mem_name }</td>
 							<th>지점코드</th>
-							<td>${dto.gym_code }</td>
+							<td><input type="text" name="gym_code" value="${dto.gym_code}" readonly style="width: 100px; border: none;"/></td>
 						</tr>
 						<tr>
 							<th>평수</th>
-							<td>${dto.gym_scale }</td>
+							<td><input type="text" name="gym_scale" value="${dto.gym_scale}" style="width: 100px;"/></td>
 							<th>지점 전화번호</th>
 							<td>${memList.mem_phone }</td>
 						</tr>
@@ -86,16 +95,16 @@
 							<th>락커</th>
 						</tr>
 						<tr align="center">
-							<td>${dto.facility_parking }</td>
-							<td>${dto.facility_health }</td>
-							<td>${dto.facility_yoga }</td>
-							<td>${dto.facility_gx }</td>
-							<td>${dto.facility_pilates }</td>
-							<td>${dto.facility_pt }</td>
-							<td>${dto.facility_24hour }</td>
-							<td>${dto.facility_shower }</td>
-							<td>${dto.facility_wear }</td>
-							<td>${dto.facility_locker }</td>
+							<td><input type="text" name="facility_parking" value="${dto.facility_parking}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_health" value="${dto.facility_health}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_yoga" value="${dto.facility_yoga}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_gx" value="${dto.facility_gx}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_pilates" value="${dto.facility_pilates}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_pt" value="${dto.facility_pt}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_24hour" value="${dto.facility_24hour}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_shower" value="${dto.facility_shower}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_wear" value="${dto.facility_wear}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td><input type="text" name="facility_locker" value="${dto.facility_locker}" style="width: 100px;" placeholder="Y or N" /></td>
 						</tr>
 					</table>
 						<h4>운영시간</h4>
@@ -113,22 +122,18 @@
 							<td width="10%" align="center">OPEN</td>
 							<td width="10%" align="center">CLOSE</td>
 						</tr>
-						<tr>
-							<td align="center">${dto.rtime_week_start }</td>
-							<td align="center">${dto.rtime_week_end}</td>
-							<td align="center">${dto.rtime_sat_start }</td>
-							<td align="center">${dto.rtime_sat_end }</td>
-							<td align="center">${dto.rtime_holy_start }</td>
-							<td align="center">${dto.rtime_holy_end }</td>
+						<tr align="center">
+							<td><input type="text" name="rtime_week_start" value="${dto.rtime_week_start}" style="width: 100px;"/></td>
+							<td><input type="text" name="rtime_week_end" value="${dto.rtime_week_end}" style="width: 100px;"/></td>
+							<td><input type="text" name="rtime_sat_start" value="${dto.rtime_sat_start}" style="width: 100px;"/></td>
+							<td><input type="text" name="rtime_sat_end" value="${dto.rtime_sat_end}" style="width: 100px;"/></td>
+							<td><input type="text" name="rtime_holy_start" value="${dto.rtime_holy_start}" style="width: 100px;"/></td>
+							<td><input type="text" name="rtime_holy_end" value="${dto.rtime_holy_end}" style="width: 100px;"/></td>
 						</tr>
 					</table>
-					<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
-						수정
-					</button>
-					<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
-						삭제
-					</button>
+					<input type="submit" value="전송하기" onclick="fileSubmit(this.form, 2);"/>
 				</div>
+			</form>
 			</div>
 			<!-- bottom -->
 			<%@ include file ="../../admin/inc/bottom.jsp" %>

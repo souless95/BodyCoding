@@ -2965,10 +2965,10 @@ input, select, textarea {
 					top: 0.25em;
 				}
 
-			.box.post .inner {
+			/* .box.post .inner {
 				margin-left: calc(20% + 2em);
 			}
-
+ */
 			.box.post .image {
 				width: 20%;
 			}

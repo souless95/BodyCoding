@@ -43,49 +43,39 @@
             center: 'prev title next',
             left: 'today',
         },
-        eventSources: [{
-        	events: function(info, successCallback, failureCallback){
-        		$.ajax({
-        			url: './resources/sample.json',
-        			type: 'POST',
-        			dataType: 'json',
-        			data: {
-        				title : 
-        				start : moment(info.startStr),
-        				end : moment(info.startStr),
-        			},
-        			success: function(data){
-        				successCallback(data);
-        			}
-        		})
-        	}
-        }]
+        
 	    events: [
 	   	    { 
 	   	      title: '김비실 회원님', 
 	   	      start: '2023-02-21T10:00:00', 
-	   	      end: '2023-02-21T12:00:00' 
+	   	      end: '2023-02-21T12:00:00'
 	   	    },
-      	], 
+	   	    
+      	],
       	
       	dateClick: function(info) {
       		var titleA = prompt("일정명을 입력하세요");
       		if(titleA != null || titleA == ''){
-      			calendar.addEvent({
+      			var eventData = {
                     title: titleA,
                     start: info.dateStr,
-                  });
+                  };
+      			$.ajax({
+      				url: "/AddCalendar",
+      				contentType: "application/json; charset=utf-8",
+      				//data: JSON.stringify(eventData),
+      				data: eventData,
+      				dataType: 'JSON',
+      				success: function(){
+      					calendar.addEvent(eventData);
+      				},
+      				error: function(){
+      					alert('일정 추가에 실패했습니다.');
+      				}
+      			});
       		}
-      		else {}      		 
+      		else {}
       	},
-        /* select: function(info) {
-        	var titleA = prompt("일정명을 입력하세요");
-      		calendar.addEvent({
-                title: titleA,
-                start: info.startStr,
-                end: info.endStr,
-              });
-        } */
       });
       calendar.render();
     });

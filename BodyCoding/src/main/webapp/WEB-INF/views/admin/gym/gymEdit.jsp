@@ -15,12 +15,109 @@
 .table-bordered{font-family: Verdana, Geneva, Tahoma, sans-serif;}
 </style>
 </head>
+<<<<<<< HEAD
+<body>
+	<script>
+		let fileSubmit = function(frm, num){
+			if(num==1){
+				frm.action="gymedit.do"
+			}
+			frm.submit();
+=======
 <body class="sb-nav-fixed">
 <script>
 	let fileSubmit = function(frm, gubun){
 		else if(gubun==2){
 			frm.action="gymedit.do"
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 		}
+<<<<<<< HEAD
+	</script>
+	<h2>지점수정</h2>
+	<form method="post" enctype="multipart/form-data">
+	<!-- <form action="gymedit.do" method="post" enctype="multipart/form-data"> -->
+		<table border="1">
+			<tr>
+				<th>지점코드(수정불가)</th>
+				<td><input type="text" name="gym_code" value="${dto.gym_code}" readonly /></td>
+			</tr>
+			<tr>
+				<th>평수</th>
+				<td><input type="text" name="gym_scale" value="${dto.gym_scale}" /></td>
+			</tr>
+			<tr>
+				<th>주차여부</th>
+				<td><input type="text" name="facility_parking" value="${dto.facility_parking}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>헬스가능여부</th>
+				<td><input type="text" name="facility_health" value="${dto.facility_health}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>요가가능여부</th>
+				<td><input type="text" name="facility_yoga" value="${dto.facility_yoga}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>GX가능여부</th>
+				<td><input type="text" name="facility_gx" value="${dto.facility_gx}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>필라테스 가능여부</th>
+				<td><input type="text" name="facility_pilates" value="${dto.facility_pilates}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>PT 가능여부</th>
+				<td><input type="text" name="facility_pt" value="${dto.facility_pt}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>24시 운영여부</th>
+				<td><input type="text" name="facility_24hour" value="${dto.facility_24hour}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>샤워장 제공여부</th>
+				<td><input type="text" name="facility_shower" value="${dto.facility_shower}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>운동복 제공여부</th>
+				<td><input type="text" name="facility_wear" value="${dto.facility_wear}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>라커 사용여부</th>
+				<td><input type="text" name="facility_locker" value="${dto.facility_locker}" placeholder="Y 또는 N만 입력하세요" /></td>
+			</tr>
+			<tr>
+				<th>운영시간 : 평일_시작</th>
+				<td><input type="text" name="rtime_week_start" value="${dto.rtime_week_start}" /></td>
+			</tr>
+			<tr>
+				<th>운영시간 : 평일_종료</th>
+				<td><input type="text" name="rtime_week_end" value="${dto.rtime_week_end}" /></td>
+			</tr>
+			<tr>
+				<th>운영시간 : 토요일_시작</th>
+				<td><input type="text" name="rtime_sat_start" value="${dto.rtime_sat_start}" /></td>
+			</tr>
+			<tr>
+				<th>운영시간 : 토요일_종료</th>
+				<td><input type="text" name="rtime_sat_end" value="${dto.rtime_sat_end}" /></td>
+			</tr>
+			<tr>
+				<th>운영시간 : 공휴일_시작</th>
+				<td><input type="text" name="rtime_holy_start" value="${dto.rtime_holy_start}" /></td>
+			</tr>
+			<tr>
+				<th>운영시간 : 공휴일_종료</th>
+				<td><input type="text" name="rtime_holy_end" value="${dto.rtime_holy_end}" /></td>
+			</tr>
+			<!-- 다중파일 업로드 해보기 -->
+			<tr>
+				<th>헬스장 상세 이미지</th>
+				<td><input multiple="multiple" type="file" name="gym_dtail_img"/></td>
+			</tr>
+		</table>
+		<input type="submit" value="전송하기" onclick="fileSubmit(this.form, 1);"/>
+	</form>
+=======
 		frm.submit();
 	}
 </script>
@@ -139,5 +236,6 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>		
 	</div>
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

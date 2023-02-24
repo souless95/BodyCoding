@@ -38,6 +38,7 @@ dependencies {
 	//JSP 새로고침
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation fileTree(dir:'libs',include:['*.jar'])
+	compileOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {

@@ -1,6 +1,8 @@
 package com.bc.bodycoding.admin.gym;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import global.dto.GymDTO;
@@ -14,6 +16,7 @@ public interface GymService {
 	public GymDTO selectOnegym(GymDTO gymDTO);
 	public MemberDTO selectOneMember(MemberDTO memberDTO);
 	public int update(GymDTO gymDTO);
+//	public int updateimg(Map<String, Object> fileMap);
 	public int delete(GymDTO gymDTO);
 	public int deleteM(MemberDTO memberDTO);
 	public int insertMemberASUB(MemberDTO memberDTO);

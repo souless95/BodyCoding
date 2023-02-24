@@ -34,8 +34,6 @@
 						<tr>
 							<td><img src="uploads/${file.key }" width="200" 
 									height="150" /></td>
-							<td>${file.key }</td>
-							<td>${file.value }Kb</td>
 						</tr>
 					</c:forEach>
 					<%-- <div>${dto.gym_dtail_img }</div> --%>	

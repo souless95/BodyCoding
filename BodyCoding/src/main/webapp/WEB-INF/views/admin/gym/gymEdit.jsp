@@ -8,8 +8,8 @@
 </head>
 <body>
 	<script>
-		let fileSubmit = function(frm, gubun){
-			else if(gubun==2){
+		let fileSubmit = function(frm, num){
+			if(num==1){
 				frm.action="gymedit.do"
 			}
 			frm.submit();
@@ -97,7 +97,7 @@
 				<td><input multiple="multiple" type="file" name="gym_dtail_img"/></td>
 			</tr>
 		</table>
-		<input type="submit" value="전송하기" onclick="fileSubmit(this.form, 2);"/>
+		<input type="submit" value="전송하기" onclick="fileSubmit(this.form, 1);"/>
 	</form>
 </body>
 </html>

@@ -16,7 +16,7 @@ function logoutcheck(){
 	}
 }
 </script>
-<%@ include file="../member/inc/Top.jsp" %>
+
 </head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8" />
@@ -28,9 +28,10 @@ function logoutcheck(){
 	</style>
 	</head>
 	<body class="is-preload">
+	<%@ include file="../member/inc/Top.jsp" %>
 		<div id="page-wrapper">
 
-			<!-- Header -->
+		<!-- Header -->
 		
 		<!-- Banner -->
 		<div>
@@ -95,6 +96,6 @@ function logoutcheck(){
 	<!-- Bottom -->
 	
 	</div>
-<%@ include file="../member/inc/Bottom.jsp" %>
+	<%@ include file="../member/inc/Bottom.jsp" %>
 </body>
 </html>

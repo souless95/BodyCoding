@@ -8,7 +8,8 @@ import global.dto.MemberDTO;
 public interface MemberMainService {
 	
 	public List<MemberDTO> gymlistSelect();
-	public List<MemberDTO> trainerlistSelect();
+	public List<MemberDTO> trainerALLlistSelect();
+	public List<MemberDTO> trainerlistSelect(String gym_code);
 	public MemberDTO trainerInfoSelect(MemberDTO memberDTO);
 	public String gymInfoSelect(MemberDTO memberDTO);
 

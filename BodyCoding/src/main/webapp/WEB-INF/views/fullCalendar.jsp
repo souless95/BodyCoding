@@ -43,29 +43,29 @@
             center: 'prev title next',
             left: 'today',
         },
-        
-	    events: [
-	   	    { 
-	   	      title: '김비실 회원님', 
-	   	      start: '2023-02-21T10:00:00', 
-	   	      end: '2023-02-21T12:00:00'
-	   	    },
-	   	    
+	    events: //DB에 저장된 스케쥴 로드하여 달력에 표시 
+	    [
+			<c:forEach var="c" items="${cList}">
+				{
+					id : "<c:out value="${c.id}" />",
+					title: "<c:out value="${c.title}" />",
+				  	start: "<c:out value="${c.start1}" />",
+				},
+			</c:forEach>
       	],
-      	
       	dateClick: function(info) {
       		var titleA = prompt("일정명을 입력하세요");
       		if(titleA != null || titleA == ''){
       			var eventData = {
                     title: titleA,
                     start: info.dateStr,
+                    
                   };
       			$.ajax({
       				url: "/AddCalendar",
       				contentType: "application/json; charset=utf-8",
-      				//data: JSON.stringify(eventData),
       				data: eventData,
-      				dataType: 'JSON',
+      				dataType: 'text',
       				success: function(){
       					calendar.addEvent(eventData);
       				},
@@ -76,6 +76,11 @@
       		}
       		else {}
       	},
+      	eventClick: function(info){
+      		var ii = calendar.getEventSourceById(info.event.id);
+      		console.log(ii);
+      		
+      	}
       });
       calendar.render();
     });

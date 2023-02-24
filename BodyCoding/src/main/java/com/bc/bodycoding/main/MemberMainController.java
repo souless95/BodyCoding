@@ -44,4 +44,5 @@ public class MemberMainController {
 		System.out.println(maindao.trainerInfoSelect(memberDTO));
 		return "member/main/trainerInfo";
 	}
+	
 }

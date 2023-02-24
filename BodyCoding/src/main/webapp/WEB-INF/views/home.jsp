@@ -25,9 +25,6 @@
 	<ul>
 		<li><a href="calendar.do">캘린더</a></li>
 	</ul>
-	<ul>
-		<li><a href="mypagemain">마이페이지 끄적</a></li>
-	</ul>
 	
 	
 </body>

@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 	
+	
+	
+	@RequestMapping("account/myinfo")
+	public String myinfo() {
+		return "account/myinfo";
+	}
+	
 	@RequestMapping("/")
 	public String home() {
 		return "home";
@@ -34,17 +41,15 @@ public class MainController {
 		session.getAttribute("UserName");
 		return "member/main";
 	}
-	//회원마이페이지로 넘어가기
-	@GetMapping("mypagemain")
-	public String mypagemain(HttpSession session) {
-		return "member/mypage/mypagemain";
-	}
 	
 	//캘린더창으로 넘어가기
 	@GetMapping("calendar.do")
 	public String fullCalendar() {
 		return "fullCalendar";
 	}
+	
+	
+	
 	
 	//json불러오기 실험
 	/*

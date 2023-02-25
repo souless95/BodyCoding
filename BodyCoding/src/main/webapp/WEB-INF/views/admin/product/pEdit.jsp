@@ -21,7 +21,7 @@ onload = function(){
 	var obj2 = document.getElementById('pCategory');
 	 var type = '<c:out value="${dto.product_category}"/>';
 	 
-	 for(var i=0 ; i<8 ; i++){
+	 for(var i=0 ; i<9 ; i++){
 	     if(obj2.options[i].value==type){ 
 	    	 obj2.options[i].selected=true;
 	     }
@@ -49,7 +49,7 @@ onload = function(){
 			<td> 
 			<select name="product_type" id="pType">
 				<option value="">유형선택</option>
-				<option value="일반">일반</option>
+				<option value="일반상품">일반상품</option>
 				<option value="멤버쉽기간형">멤버쉽(기간형)</option>
 				<option value="멤버쉽횟수형">멤버쉽(횟수형)</option>
 			</select> 
@@ -64,6 +64,7 @@ onload = function(){
 				<option value="GX">GX</option>
 				<option value="PT">PT</option>
 				<option value="필라테스">필라테스</option>
+				<option value="요가">요가</option>
 			</select> 
 			</td>
 			<td><input type="number" name="membership_period" value="${ dto.membership_period }">일</td> 			

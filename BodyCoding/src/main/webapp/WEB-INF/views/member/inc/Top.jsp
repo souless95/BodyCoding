@@ -83,17 +83,17 @@
 								
 						
 						
-							<c:if test="${not empty UserName}">
+							<c:if test="${not empty UserInfo}">
 							<li>
-				                    ${UserName}님 환영합니다.
+				                    ${UserInfo.mem_id}님 환영합니다.
 				            </li>
-							<li><a href="#">마이페이지</a>
+							<li><a href="mypage.do?gym_code=${UserInfo.gym_code }">마이페이지</a>
 				            </li>
 							<li>
 				                    <a href="#" onclick="logoutcheck()">로그아웃</a>
 				            </li>
 				            </c:if>
-				            <c:if test="${empty UserName}">
+				            <c:if test="${empty UserInfo}">
 							<li>
 				                    <a href="login.do">로그인</a>
 				            </li>

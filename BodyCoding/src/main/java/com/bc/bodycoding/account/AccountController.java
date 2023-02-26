@@ -47,7 +47,8 @@ public class AccountController {
 		System.out.println(memberDTO.getMem_id());
 		System.out.println(memberDTO.getMem_pass());
 		try {
-			session.setAttribute("UserName", accountdao.login(memberDTO));
+			session.setAttribute("UserInfo", accountdao.login(memberDTO));
+			System.out.println(memberDTO);
 			return "redirect:main";
 		}
 		catch (Exception e) {

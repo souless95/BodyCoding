@@ -28,19 +28,18 @@
 								<li class="current"><a href="/main">Home</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
 								<li>
-									<a href="#">BodyCoding(Dropdown)</a>
+									<a href="#">BodyCoding</a>
 									<ul>
 										<li><a href="/menu/introgym.jsp">바디코딩소개</a></li>
-										<li><a href="#">소중한팀원들소개하지마이쉐끼야</a></li>
 																				
 									</ul>
 								</li>
 								
 								<li>
-									<a href="program.jsp"> 프로그램</a>
+									<a href="#"> 프로그램</a>
 									<ul>
 										<li><a href="health.jsp">헬스</a></li>
-										<li><a href="#">PT</a></li>
+										<li><a href="pt.jsp">PT</a></li>
 										<li><a href="#">요가</a></li>
 										<li><a href="#">GX</a></li>
 										<li><a href="#">필라테스</a></li>
@@ -48,20 +47,20 @@
 								</li>
 								
 								<li>
-									<a href="gymlocaton.jsp">지점정보</a>
+									<a href="#">지점정보</a>
 								</li>
 								
 								<li>
-									<a href="trainerinfo.jsp">트레이너</a>
+									<a href="#">트레이너</a>
 								</li>
 								
 								
 								<li>
-									<a href="product.jsp">상품몰</a>
+									<a href="#">상품몰</a>
 								</li>
 								
 								<li>
-									<a href="board.jsp">게시판</a>
+									<a href="#">게시판</a>
 									<ul> 
  										<li><a href="#">자유게시판</a></li>
 										<li><a href="#">Q&A</a></li>
@@ -70,13 +69,12 @@
 								</li>
 								
 								<li>
-									<a href="#" onclick="location.href='account/myinfo.jsp';">마이페이지</a>
+									<a href="myinfo.jsp">마이페이지</a>
 									<ul> 
  										<li><a href="#">이용내역</a></li>
 										<li><a href="#">활동내역</a></li>
 										<li><a href="#">운동관리</a></li>
 										<li><a href="#">정보수정</a></li>
-										<li><a href="#">하기싫어 재필아...</a></li>
 									</ul>
 								</li>
 								

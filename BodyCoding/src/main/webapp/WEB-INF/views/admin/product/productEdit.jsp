@@ -22,18 +22,14 @@ onload = function(){
 	    	 obj1.options[i].selected=true;
 	     }
 	 }
-	 
-	var obj2 = document.getElementById('sSelect');
-	 var type = '<c:out value="${dto.product_category}"/>';
-	 
-	 for(var i=0 ; i<9 ; i++){
-	     if(obj2.options[i].value==type){ 
-	    	 obj2.options[i].selected=true;
-	     }
-	 }
 }
 
 $(function(){
+	
+	$(document).ready(function() {        
+        $('#fSelect').trigger('change');
+    });
+	
     $('#fSelect').change(function(){
         //this.value 찍어보면 현재 고른 fSelect value값인 것을 확인가능
         //console.log(this.value);

@@ -7,11 +7,24 @@
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	
 	</style>
+	
+<script type="text/javascript">
+function logoutcheck(){
+	
+	var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
+	
+	if(confirmed){
+		location.href="logout.do"
+	}
+}
+</script>
+
+
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
@@ -25,13 +38,12 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="main">Home</a></li>
+								<li class="current"><a href="/main">Home</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
 								<li>
-									<a href="#">BodyCoding(Dropdown)</a>
+									<a href="#">BodyCoding</a>
 									<ul>
 										<li><a href="/menu/introgym.jsp">바디코딩소개</a></li>
-										<li><a href="#">소중한팀원들소개하지마이쉐끼야</a></li>
 																				
 									</ul>
 								</li>
@@ -39,8 +51,8 @@
 								<li>
 							<a href="#"> 프로그램</a>
 							<ul>
-								<li><a href="/menu/health.jsp">헬스</a></li>
-								<li><a href="/menu/pt.jsp">PT</a></li>
+								<li><a href="../menu/health.jsp">헬스</a></li>
+								<li><a href="../menu/pt.jsp">PT</a></li>
 								<li><a href="#">요가</a></li>
 								<li><a href="#">GX</a></li>
 								<li><a href="#">필라테스</a></li>
@@ -76,7 +88,7 @@
 						</li>
 						
 						<li>
-							<a href="/menu/myinfo.jsp">마이페이지</a>
+							<a href="../menu/myinfo.jsp">마이페이지</a>
 							<ul> 
 								<li><a href="#">이용내역</a></li>
 								<li><a href="#">활동내역</a></li>
@@ -99,11 +111,11 @@
 			            </c:if>
 			            <c:if test="${empty UserName}">
 						<li>
-			                    <a href="login.do">로그인</a>
+			                    <a href="/login.do">로그인</a>
 			            </li>
 			           
 			            <li>
-			                    <a href="signup.do">회원가입</a>
+			                    <a href="/signup.do">회원가입</a>
 			            </li>
 			            </c:if>
 					</ul>
@@ -111,12 +123,12 @@
 			</div>
 		</div>
 		<!-- Scripts -->
-		<script src="static/assets/js/jquery.min.js"></script>
-		<script src="static/assets/js/jquery.dropotron.min.js"></script>
-		<script src="static/assets/js/browser.min.js"></script>
-		<script src="static/assets/js/breakpoints.min.js"></script>
-		<script src="static/assets/js/util.js"></script>
-		<script src="static/assets/js/main.js"></script>
+		<script src="../static/assets/js/jquery.min.js"></script>
+		<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+		<script src="../static/assets/js/browser.min.js"></script>
+		<script src="../static/assets/js/breakpoints.min.js"></script>
+		<script src="../static/assets/js/util.js"></script>
+		<script src="../static/assets/js/main.js"></script>
 
 	</body>
 </html>

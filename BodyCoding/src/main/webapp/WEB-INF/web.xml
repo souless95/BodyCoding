@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID">
 	<display-name>BodyCoding</display-name>
 	<welcome-file-list>
@@ -11,5 +10,3 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
-=======
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git

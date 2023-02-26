@@ -24,7 +24,7 @@
 		<td>한마디: ${trainerInfo.mem_comment }</td>  
 	</tr>
 </table>
-<button type="button">pt 등록하기(결제)</button>
+<button type="button" onclick="location.href='membershipPurchase.do'">pt 등록하기(결제)</button>
 <button type="button" onclick="location.href='trainer'">목록으로</button>
 
 </body>

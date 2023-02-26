@@ -93,21 +93,12 @@ $(function(){
 			<td> 
 			<select name="product_type" id="fSelect">
 				<option value="">유형선택</option>
-				<option value="일반">일반</option>
+				<option value="일반상품">일반상품</option>
 				<option value="멤버쉽기간형">멤버쉽(기간형)</option>
 				<option value="멤버쉽횟수형">멤버쉽(횟수형)</option>
 			</select> 
 			</td>
 			<td> 
-			<!-- <select name="product_category" id="sSelect">
-				<option value="FOOD">식품</option>
-				<option value="WEAR">의류</option>
-				<option value="TOOL">기구</option>
-				<option value="HEALTH">헬스</option>
-				<option value="GX">GX</option>
-				<option value="PT">PT</option>
-				<option value="PILATES">필라테스</option>
-			</select>  -->
 			<select name="product_category" id="sSelect">
 				<option value="">=========</option>
 			</select> 

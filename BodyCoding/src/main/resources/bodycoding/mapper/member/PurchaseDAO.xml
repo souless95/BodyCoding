@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bc.bodycoding.purchase.IPurchaseService">
+	<select id="gymSelect" parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		SELECT gym_code, mem_name FROM member WHERE mem_type='ADMIN_SUB'
+	</select>
+	
+	<select id="productSelect" parameterType="global.dto.ProductDTO"
+		resultType="global.dto.ProductDTO">
+		SELECT * FROM product WHERE product_category=#{product_category}
+	</select>
+	
+	<select id="trainerSelect" parameterType="global.dto.ProductDTO"
+		resultType="global.dto.ProductDTO">
+		SELECT mem_name, mem_img 
+    		FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
+    	INNER JOIN (SELECT * FROM lesson WHERE lesson_category=#{product_category}) L
+    	ON M.mem_id=L.trainer_id
+	</select>
+	
+	
+</mapper>

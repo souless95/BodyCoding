@@ -21,7 +21,6 @@
 	<div id="footer">
 		<div class="container">
 			<div class="row">
-				바텀에 필요하면 뭐 추가 하던지, 구글지도 넣던지 
 			</div>
 		</div>
 	

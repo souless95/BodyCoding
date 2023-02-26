@@ -26,7 +26,7 @@
 		        		</div>
 		        		<div class="card-body" style="width: 80%">
 		        			<h4>프로필 사진</h4>
-		        			<div>${trainerList.mem_img }</div>
+		        			<div><img src="static/uploads/trainer/${trainerList.mem_img }" style="width:200px; height:200px;"></div>
 		        			<table class="table" border="2">
 								<tr>
 						         	<th>센터코드</th>

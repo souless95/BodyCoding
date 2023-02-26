@@ -13,7 +13,7 @@
 			mem_birth, mem_phone, mem_address, mem_type, mem_status, 
 			gym_code, mem_career, mem_comment, mem_img)
     	values (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_gender}, 
-    		#{mem_birth}, #{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status}, 
+    		#{mem_birth}, #{mem_phone}, #{mem_address}, 'TRAINER', '1', 
     		#{gym_code}, #{mem_career}, #{mem_comment}, #{mem_img})
 	</insert>
 	

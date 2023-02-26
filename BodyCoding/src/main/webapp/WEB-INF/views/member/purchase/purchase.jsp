@@ -6,14 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js" integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
 <script type="text/javascript">
 $(function(){
+	
 	$('#gymSelect').change(function(){
 		if($('#gymSelect').val()==""){
 			$('input[name=product_category]').is(':checked')=false;
 			$('input[name=product_idx]').css("display","none");
 		}
 	});  
+	
 	$('input[name=product_category]').click(function(){
 
 		$('#pTitle').css("display","inline");
@@ -31,24 +34,7 @@ $(function(){
 		});
 		
 	});
-});
-function sucCallBackP(resData) {
-	let pData = "";
-	$(resData).each(function(index, data){
-		pData += ""
-		+"<td><input type='radio' name='product_idx' value='" +data.product_idx+ "'>["
-		+data.product_category+"]"+data.product_name+"</td>"
-		+"<td>"+data.product_price+"</td>"             
-	});
-	
-	$('#show_product').html(pData);
-}
-		
-function errCallBackP(errData){
-	console.log(errData.status+":"+errData.statusText);
-}
-
-$(function(){
+	  
 	$(document).on('click','input[name=product_idx]',function(){
 		$('#tTitle').css("display","inline");
 		
@@ -73,7 +59,36 @@ $(function(){
 			error: errCallBackT
 		});
 	});
+	
+ 	$('#kPayBtn').click(function(){
+		$.ajax({
+			url: 'kakaoPay.do',
+			dataType:"json",
+			success:function(data){
+				console.log(data);
+
+			},
+			error:function(error){
+				alert(error);
+			}
+		});		
+	});
 });
+function sucCallBackP(resData) {
+	let pData = "";
+	$(resData).each(function(index, data){
+		pData += ""
+		+"<td><input type='radio' name='product_idx' value='" +data.product_idx+ "'>["
+		+data.product_category+"]"+data.product_name+"</td>"
+		+"<td>"+data.product_price+"</td>"             
+	});
+	
+	$('#show_product').html(pData);
+}
+		
+function errCallBackP(errData){
+	console.log(errData.status+":"+errData.statusText);
+}
 
 function sucCallBackT(resData) {
 	let tData = "";
@@ -132,9 +147,8 @@ function errCallBackT(errData){
 	<tr>
 		<td id="show_trainer"></td>
 	</tr>
-	
 	<tr>
-		<td><button onclick="location.href='purchase.do'">결제!!!</button> </td>
+		<td><button id="kPayBtn">카카오페이 결제!!!</button> </td>
 	</tr>
 </table>
 </body>

@@ -134,7 +134,7 @@ function errCallBackT(errData){
 	</tr>
 	
 	<tr>
-		<td><button onclick="location.hred='purchase.do'">결제!!!</button> </td>
+		<td><button onclick="location.href='purchase.do'">결제!!!</button> </td>
 	</tr>
 </table>
 </body>

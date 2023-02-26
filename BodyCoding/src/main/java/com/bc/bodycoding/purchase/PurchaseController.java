@@ -52,6 +52,6 @@ public class PurchaseController {
 	@RequestMapping("/purchase.do")
 	public String purchase() {
 		
-		return "purchaseDone";
+		return "/member/purchase/purchaseDone";
 	}
 }

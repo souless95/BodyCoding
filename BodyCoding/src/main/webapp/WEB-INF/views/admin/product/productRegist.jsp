@@ -77,7 +77,7 @@ $(function(){
 </head>
 <body>
 	<h2>상품 등록</h2>
-	<form action="productRegist.do" method="post">
+	<form action="productRegist.do" enctype="multipart/form-data" method="post">
 	<table border="1">
 		<tr>
 			<th>상품유형</th>
@@ -107,7 +107,7 @@ $(function(){
 			<td style="display:none;" id="cc"><input type="number" name="membership_count" value="0">회</td> 			
 			<td><input type="text" name="product_name"></td>
 			<td><input type="text" name="product_description"></td>
-			<td><input type="text" name="product_img"></td>
+			<td><input type="file" name="product_img"></td>
 			<td><input type="number" name="product_price"></td>			
 		</tr>
 	</table>

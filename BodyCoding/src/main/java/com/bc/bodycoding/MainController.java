@@ -4,6 +4,7 @@ package com.bc.bodycoding;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,11 +43,7 @@ public class MainController {
 		return "member/main";
 	}
 	
-	//캘린더창으로 넘어가기
-	@GetMapping("calendar.do")
-	public String fullCalendar() {
-		return "fullCalendar";
-	}
+	
 	
 	
 	

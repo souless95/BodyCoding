@@ -9,14 +9,14 @@
 <body>
 
 	<!-- CTA -->
-	<section id="cta" class="wrapper style3">
+	<!-- <section id="cta" class="wrapper style3">
 		<div class="container">
 			<header>
 				<h2>Are you ready to continue your quest?</h2>
 				<a href="#" class="button">Insert Coin</a>
 			</header>
 		</div>
-	</section>
+	</section> -->
 	<!-- Footer -->
 	<div id="footer">
 		<div class="container">

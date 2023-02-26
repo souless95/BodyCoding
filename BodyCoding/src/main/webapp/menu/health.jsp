@@ -36,47 +36,53 @@
 								</li>
 								
 								<li>
-									<a href="#"> 프로그램</a>
-									<ul>
-										<li><a href="health.jsp">헬스</a></li>
-										<li><a href="pt.jsp">PT</a></li>
-										<li><a href="#">요가</a></li>
-										<li><a href="#">GX</a></li>
-										<li><a href="#">필라테스</a></li>
-									</ul>
-								</li>
-								
-								<li>
-									<a href="#">지점정보</a>
-								</li>
-								
-								<li>
-									<a href="#">트레이너</a>
-								</li>
-								
-								
-								<li>
-									<a href="#">상품몰</a>
-								</li>
-								
-								<li>
-									<a href="#">게시판</a>
-									<ul> 
- 										<li><a href="#">자유게시판</a></li>
-										<li><a href="#">Q&A</a></li>
-										<li><a href="#">1:1문의(웹소켓 채팅)</a></li>
-									</ul>
-								</li>
-								
-								<li>
-									<a href="myinfo.jsp">마이페이지</a>
-									<ul> 
- 										<li><a href="#">이용내역</a></li>
-										<li><a href="#">활동내역</a></li>
-										<li><a href="#">운동관리</a></li>
-										<li><a href="#">정보수정</a></li>
-									</ul>
-								</li>
+							<a href="#"> 프로그램</a>
+							<ul>
+								<li><a href="/menu/health.jsp">헬스</a></li>
+								<li><a href="/menu/pt.jsp">PT</a></li>
+								<li><a href="#">요가</a></li>
+								<li><a href="#">GX</a></li>
+								<li><a href="#">필라테스</a></li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="#">지점정보</a>
+							<ul>
+								<li><a href="#">지점확인</a></li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="#">트레이너</a>
+							<ul>
+								<li><a href="#">트레이너정보</a></li>
+							</ul>
+						</li>
+						
+						
+						<li>
+							<a href="#">상품몰</a>
+						</li>
+						
+						<li>
+							<a href="#">게시판</a>
+							<ul> 
+									<li><a href="#">자유게시판</a></li>
+								<li><a href="#">Q&A</a></li>
+								<li><a href="#">1:1문의(웹소켓 채팅)</a></li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="/menu/myinfo.jsp">마이페이지</a>
+							<ul> 
+								<li><a href="#">이용내역</a></li>
+								<li><a href="#">활동내역</a></li>
+								<li><a href="#">운동관리</a></li>
+								<li><a href="#">정보수정</a></li>
+							</ul>
+						</li>
 								
 						
 						

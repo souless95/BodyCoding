@@ -12,10 +12,10 @@
 	insert into calendar values (calendar_seq.nextval, #{title}, #{start1})
 </insert>
 
-<!-- <select id="login"
+<select id="loadCList"
 	parameterType="com.bc.bodycoding.calendar.CalendarDTO"
 	resultType="com.bc.bodycoding.calendar.CalendarDTO">
 	select * from calendar
-</select> -->
+</select>
 
 </mapper>

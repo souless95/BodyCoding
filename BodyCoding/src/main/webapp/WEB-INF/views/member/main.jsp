@@ -6,17 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function logoutcheck(){
-	
-	var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
-	
-	if(confirmed){
-		location.href="logout.do"
+	<script type="text/javascript">
+	function logoutcheck(){
+		
+		var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
+		
+		if(confirmed){
+			location.href="logout.do"
+		}
 	}
-}
-</script>
-
+	</script>
 </head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8" />
@@ -24,9 +23,14 @@ function logoutcheck(){
 		<link rel="stylesheet" href="static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-	
 	</style>
-	</head>
+</head>
+	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="static/assets/css/main.css" />
+</head>
+<body class="is-preload">
 	<body class="is-preload">
 		<div id="page-wrapper">
 
@@ -36,7 +40,6 @@ function logoutcheck(){
 				<!-- Logo -->
 				<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif';">
 				Body Coding</span></a></h1>
-				
 				
 		
 				<!-- Nav -->
@@ -125,11 +128,14 @@ function logoutcheck(){
 			</nav>
 		</div>
 		<div>
-		 <img alt="메인화면" src="static/assets/images/main1.jpg" style="width:100%;">
+			<img alt="메인화면" src="static/assets/images/main1.jpg" style="width:100%;">
 		</div>
 	</div>
 	
 		<section class="wrapper style1">
+		<!-- Posts -->
+		
+		<!-- 컨텐츠영역 -->
 			<div class="container">
 				<div class="row">
 					<section class="col-6 col-12-narrower">

@@ -20,7 +20,7 @@
 		resultType="global.dto.ProductDTO">
 		SELECT mem_name, mem_img 
     		FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
-    	INNER JOIN (SELECT * FROM lesson WHERE lesson_category=#{product_category}) L
+    	INNER JOIN (SELECT * FROM lesson WHERE lesson_category=#{lesson_category}) L
     	ON M.mem_id=L.trainer_id
 	</select>
 	

@@ -35,4 +35,10 @@ public class ProductDTO {
 	private String product_status;
 	//재고
 	private int product_stock;
+	//수업 분류
+	private String lesson_category;
+	//트레이너 이름
+	private String mem_name;
+	//트레이너 이미지
+	private String mem_img;
 }

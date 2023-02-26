@@ -10,7 +10,7 @@ import global.dto.MemberDTO;
 public interface AccountService{
 
 	public int insertMember(MemberDTO memberDTO);
-	public String login(MemberDTO memberDTO);
+	public MemberDTO login(MemberDTO memberDTO);
 	public int kakaoinsert(Map<String, String> map);
 	public String kakaoselect(String mem_id);
 	public int kakaoupdate(MemberDTO memberDTO);

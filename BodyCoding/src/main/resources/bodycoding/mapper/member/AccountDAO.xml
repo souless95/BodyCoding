@@ -22,8 +22,8 @@
 
 <select id="login"
 	parameterType="global.dto.MemberDTO"
-	resultType="String">
-	select mem_name from member
+	resultType="global.dto.MemberDTO">
+	select mem_name, gym_code, mem_id from member
     	where mem_id=#{mem_id} and mem_pass=#{mem_pass}
 </select>
 

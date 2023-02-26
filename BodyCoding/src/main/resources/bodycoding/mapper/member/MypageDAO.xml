@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bc.bodycoding.main.mypage.MypageService">
+
+	<select id="basicListM"
+		parameterType='global.dto.MemberDTO'
+		resultType='global.dto.MemberDTO'>
+		select mem_name, mem_phone, mem_address 
+		from member
+		where gym_code=#{gym_code} and mem_type='ADMIN_SUB'
+	</select>
+	
+	<select id="basicListG"
+		parameterType='global.dto.GymDTO'
+		resultType='global.dto.GymDTO'>
+		select gym_scale, facility_parking, facility_health, facility_yoga,
+			facility_gx, facility_pilates, facility_pt, facility_24hour,
+			facility_shower, facility_wear, facility_locker
+		from GYM_DETAIL
+		where gym_code=#{gym_code}
+	</select>
+	
+	<select id="selectOneMember"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		select * from member where mem_id=#{mem_id}
+	</select>
+	
+	<update id="update"
+		parameterType="global.dto.MemberDTO">
+		update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_gender=#{mem_gender}, mem_phone=#{mem_phone},
+			mem_address=#{mem_address}, gym_code=#{gym_code}, mem_height=#{mem_height}, mem_weight=#{mem_weight}, mem_disease=#{mem_disease},
+			mem_purpose=#{mem_purpose}, mem_interest=#{mem_interest}
+		where mem_id=#{mem_id}
+	</update>
+</mapper>

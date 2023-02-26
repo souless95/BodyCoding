@@ -53,7 +53,7 @@ function logoutcheck(){
 							<ul>
 								<li><a href="../menu/health.jsp">헬스</a></li>
 								<li><a href="../menu/pt.jsp">PT</a></li>
-								<li><a href="#">요가</a></li>
+								<li><a href="../menu/yoga.jsp">요가</a></li>
 								<li><a href="#">GX</a></li>
 								<li><a href="#">필라테스</a></li>
 							</ul>

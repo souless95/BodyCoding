@@ -1,14 +1,25 @@
 package com.bc.bodycoding.admin.trainer;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import global.dto.MemberDTO;
 
@@ -27,9 +38,42 @@ public class TrainerController {
 
 	//회원가입 폼 받아서 실행
 	@PostMapping("/trainerRegist.do")
-	public String signupT2(MemberDTO memberDTO) {
-			int result = trainerdao.insertMemberT(memberDTO);
-			if(result==1) System.out.println("회원가입이 완료되었습니다.");
+	public String signupT2(MemberDTO memberDTO, HttpServletRequest req) {
+		try {
+			int size = 1024 * 1024 * 10; 
+			String path = ResourceUtils
+							.getFile("classpath:static/uploads/trainer")
+							.toPath().toString();
+			System.out.println("트레이너 사진 저장 경로:"+ path);
+			
+			MultipartRequest multi = new MultipartRequest(req, path, 
+						size, "UTF-8", new DefaultFileRenamePolicy());
+			
+			Enumeration files = multi.getFileNames();
+			String str = (String)files.nextElement();
+			
+			memberDTO.setMem_id(multi.getParameter("mem_id"));
+			memberDTO.setMem_pass(multi.getParameter("mem_pass"));
+			memberDTO.setMem_name(multi.getParameter("mem_name"));
+			memberDTO.setMem_gender(multi.getParameter("mem_gender"));
+			memberDTO.setMem_birth(multi.getParameter("mem_birth"));
+			memberDTO.setMem_phone(multi.getParameter("mem_phone"));
+			memberDTO.setMem_address(multi.getParameter("mem_address"));
+			memberDTO.setGym_code(multi.getParameter("gym_code"));
+			memberDTO.setMem_career(multi.getParameter("mem_career"));
+			memberDTO.setMem_comment(multi.getParameter("mem_comment"));
+			memberDTO.setMem_img(multi.getOriginalFileName(str));
+			System.out.println("파일 업로드 성공");
+		}	
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("파일 업로드 실패");
+		}
+		
+		int result = trainerdao.insertMemberT(memberDTO);
+		if(result==1) System.out.println("회원가입이 완료되었습니다.");
+		
+		req.setAttribute("msg", "트레이너 등록이 완료되었습니다.");
 		return "redirect:/trainerList.do";
 	}
 	
@@ -41,7 +85,7 @@ public class TrainerController {
 	}
 	
 	@RequestMapping("/trainerDetail.do")
-	public String detailT(Model model, MemberDTO memberDTO) {
+	public String detailT(Model model, MemberDTO memberDTO, HttpServletRequest req) {
 		memberDTO = trainerdao.selectOneT(memberDTO);
 		model.addAttribute("trainerList",memberDTO);
 		return "admin/trainer/trainerDetail";

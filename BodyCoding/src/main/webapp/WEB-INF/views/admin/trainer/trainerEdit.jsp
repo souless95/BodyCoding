@@ -20,14 +20,15 @@
         <%@ include file ="../../admin/inc/side.jsp" %>
 			<div id="layoutSidenav_content">
 		        <main>
-		        <form action="trainerEdit.do" method="post">
+		        <form action="trainerEdit.do" method="post" enctype="multipart/form-data">
 		        	<div class="card mb-4" style="border-bottom: none;">
 		        		<div class="card-header">
-							<h2>${trainer.mem_name} 트레이너 상세보기</h2>
+							<h2>${trainer.mem_name} 트레이너정보 수정하기</h2>
 		        		</div>
 		        		<div class="card-body" style="width: 80%">
 		        			<h4>프로필 사진</h4>
-		        			<div>${trainer.mem_img }</div>
+		        			<div><img src="static/uploads/trainer/${trainer.mem_img }" style="width:200px; height:200px;">
+		        			<input class="form-control" id="mem_img" name="mem_img" type="file" style="display:inline;" /></div>
 		        			<table class="table" border="2">
 								<tr>
 						         	<th>센터코드</th>

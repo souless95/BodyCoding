@@ -12,6 +12,15 @@
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body sb-nav-fixed>
+<script type="text/javascript">
+function msg(){
+	var msg = "트레이너 등록이 완료 되었습니다.";
+	alert(msg);
+}
+<c:if test="${not empty msg}">
+window.onload = msg;
+</c:if> 
+</script>
 	<!-- top메뉴  -->
 	<%@ include file ="../../admin/inc/top.jsp" %>
 		<div id="layoutSidenav">

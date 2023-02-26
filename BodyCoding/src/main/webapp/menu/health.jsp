@@ -10,7 +10,7 @@
 
 <%@ include file="../inc/Top.jsp" %>
 	
-<!-- 페이지 내용  -->
+<!-- 페이지 내용  작성할-->
 <section class="page_wrap">
 <section class="page_wrap">
 <div class="container sub_bg sub_bg03"> </div>

@@ -28,7 +28,7 @@
 		                                    	<h3 class="text-center font-weight-light my-4">트레이너 등록</h3>
 		                                    </div>
 		                                    <div class="card-body">
-		                                        <form method="post" action="/trainerRegist.do">
+		                                        <form method="post" action="/trainerRegist.do" enctype="multipart/form-data">
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-4">
 			                                                <input type="hidden" id="mem_status" name="mem_status" value="1">

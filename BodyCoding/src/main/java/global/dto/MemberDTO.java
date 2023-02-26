@@ -3,6 +3,7 @@ package global.dto;
 import java.sql.Date;
 
 import org.apache.ibatis.jdbc.SQL;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 

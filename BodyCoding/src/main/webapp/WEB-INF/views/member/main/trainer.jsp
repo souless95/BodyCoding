@@ -43,7 +43,7 @@ function sucCallBack(resData) {
 	let tableData = "";
 	$(resData).each(function(index, data) {
 		tableData += "<a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
-		+"<img class='card-img-top mt-2' src='static/member/images/kakao_login.png' "
+		+"<img class='card-img-top mt-2' src='static/uploads/trainer/"+data.mem_img+"' "
 		+" style='width:100%; height:180px;'>"
 		+"<div class='card-body'>"
 		+"<b>"+data.mem_name+"<b><br>"

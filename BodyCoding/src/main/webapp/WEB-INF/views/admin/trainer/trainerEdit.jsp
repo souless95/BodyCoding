@@ -28,6 +28,7 @@
 		        		<div class="card-body" style="width: 80%">
 		        			<h4>프로필 사진</h4>
 		        			<div><img src="static/uploads/trainer/${trainer.mem_img }" style="width:200px; height:200px;">
+		        			<input type="hidden" name="mem_img" value="${trainer.mem_img }">
 		        			<input class="form-control" id="mem_img" name="mem_img" type="file" style="display:inline;" /></div>
 		        			<table class="table" border="2">
 								<tr>

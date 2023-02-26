@@ -35,9 +35,9 @@
 	
 	<update id="update"
 		parameterType="global.dto.MemberDTO">
-		update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_gender=#{mem_gender},
+		update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_gender=#{mem_gender}, mem_birth=#{mem_birth},
 			mem_phone=#{mem_phone}, mem_address=#{mem_address}, mem_status=#{mem_status}, gym_code=#{gym_code},
-			mem_career=#{mem_career}, mem_comment=#{mem_comment}
+			mem_career=#{mem_career}, mem_comment=#{mem_comment}, mem_img=#{mem_img}
 		where mem_id=#{mem_id}
 	</update>
 	

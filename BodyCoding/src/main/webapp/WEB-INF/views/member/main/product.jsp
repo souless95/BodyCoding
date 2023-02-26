@@ -36,10 +36,9 @@ function sucCallBack(resData) {
 	let tableData = "";
 	$(resData).each(function(index, data) {
 		tableData += "<a href='productInfo?product_idx="+data.product_idx+"'>"
-		+"<img class='card-img-top mt-2' src='static/member/images/kakao_login.png' "
+		+"<img class='card-img-top mt-2' src='static/uploads/product/"+data.product_img+"' "
 		+" style='width:100%; height:180px;'>"
 		+"<div class='card-body'>"
-		+"<b>"+data.product_img+"<b><br>"
 		+"<b>"+data.product_name+"<b><br>"
 		+data.product_price + "</div></a>";
 	}); 

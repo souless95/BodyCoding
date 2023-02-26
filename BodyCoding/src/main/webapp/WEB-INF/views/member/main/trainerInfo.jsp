@@ -11,7 +11,7 @@
 <h2>트레이너 정보</h2>
 <table>
 	<tr>
-		<td rowspan="4">${trainerInfo.mem_img}</td>
+		<td rowspan="4"><img src="static/uploads/trainer/${trainerInfo.mem_img}" style="width:100%;height:180px;"></td>
 		<td>이름: ${trainerInfo.mem_name}</td>
 	</tr>
 	<tr>

@@ -33,6 +33,61 @@ body {
 	display : flex;
 	text-align : center;
 	}
+
+.loginbtn{
+	display:flex;
+}
+
+}
+
+#btn3 {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  	outline: none;
+}
+
+/* 1 */
+.btn-1 {
+  border: none;
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+  background-color:#00AAFF;
+  width:183px;
+  height:45px;
+  
+}
+
+
+.btn-1:hover {
+background: rgb(0,3,255);
+background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+}
+
 </style>
 </head>
 
@@ -54,23 +109,26 @@ body {
                 <input type="password" class="form-control" id="mem_pass" name="mem_pass" placeholder="Password" required >
                 <label for="mem_pass">비밀번호</label>
               </div>
-
-              <!-- Host: kauth.kakao.com -->
-              <button type="button" class="btn btn-primary" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'";>
-              <img src="static/member/images/kakao_login.png" ></button>
-              <br>
               
+			  <div class="loginbtn">
+              <!-- Host: kauth.kakao.com -->
+              <div style="background-size: cover; background-color:white;">
+              <button type="button" style="border:none; style="" 
+               onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'";>
+              <img src="static/member/images/kakao_login.png"  ></button>&nbsp;
+              <br>
+              </div>
         	  <!-- <a href="https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code">
 		      <img src="static/member/images/kakao_login.png" style="width:270px; height:59px;"></a>
 		       -->
-              
+		      <div>
               <div class="d-grid">
-              <button class="btn btn-primary" type="submit">로그인하기</button>
+              		<button class="btn-1" style="margin-left:40px; font-weight:bold" type="submit">로그인하기</button>
               </div>
-              <hr class="my-4">
+              </div>
               
-              
-              
+              </div>
+              <br>
               <div class="d-grid mb-2">
               	<button class="btn btn-google" type="submit">
                   <i class="fab fa-google me-2"></i> Sign in with Google

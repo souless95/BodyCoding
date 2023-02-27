@@ -38,7 +38,7 @@ function logoutcheck(){
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="/main">Home</a></li>
+								<li class="current"><a href="/main">Home33</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
 								<li>
 									<a href="#">BodyCoding</a>
@@ -103,7 +103,7 @@ function logoutcheck(){
 						<li>
 			                    ${UserName}님 환영합니다.
 			            </li>
-						<li><a href="#">마이페이지</a>
+						<li><a href="mypage.do?gym_code=${UserInfo.gym_code }">마이페이지</a>
 			            </li>
 						<li>
 			                    <a href="#" onclick="logoutcheck()">로그아웃</a>

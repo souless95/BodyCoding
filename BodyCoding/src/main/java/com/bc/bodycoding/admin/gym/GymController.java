@@ -120,9 +120,9 @@ public class GymController {
    }
    
    //지점 등록페이지로 이동
-   @GetMapping("/gymRegist.do")
+   @PostMapping("/admin/gym/gymRegist")
    public String  registASUB(Model model) {
-      model.addAttribute("mem_type","admin_sub");
+      model.addAttribute("authority","ADMIN_SUB");
       return "admin/gym/gymRegist";
    }
    

@@ -17,7 +17,7 @@
 		<li><a href="main/admin">admin 메인페이지</a></li>
 	</ul> -->
 	<ul>
-		<li><a href="login">admin 로그인</a></li>
+		<li><a href="/adminLogin.do">admin 로그인</a></li>
 	</ul>
 	<ul>
 		<li><a href="main">member 메인페이지</a></li>

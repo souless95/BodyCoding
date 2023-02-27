@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
 	compileOnly 'org.projectlombok:lombok'
@@ -31,7 +31,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	//testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	//JSP 사용설정
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'	
@@ -39,6 +39,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation fileTree(dir:'libs',include:['*.jar'])
 	compileOnly 'org.springframework.boot:spring-boot-devtools'
+	//시큐리티 의존설정 추가
+	implementation 'org.springframework.security:spring-security-taglibs'
 }
 
 tasks.named('test') {

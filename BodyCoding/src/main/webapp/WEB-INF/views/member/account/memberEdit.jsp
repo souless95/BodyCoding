@@ -114,7 +114,7 @@
 		
 		 <div class="mb-1">
 			<input type="hidden" class="form-control" id="mem_point" name="mem_point" value="0">
-			<input type="hidden" class="form-control" id="mem_type" name="mem_type" value="MEMBER">
+			<input type="hidden" class="form-control" id="authority" name="authority" value="MEMBER">
 	        <br>
 	        <label for="mem_height">키</label>
 	        <input type="number" class="form-control" id="mem_height" name="mem_height" onkeydown="checkNoneheight()" step="0.01" required>

@@ -127,7 +127,7 @@
 							<td><input type="text" name="rtime_holy_end" value="${dto.rtime_holy_end}" style="width: 100px;"/></td>
 						</tr>
 					</table>
-					<input type="submit" value="전송하기" onclick="fileSubmit(this.form, 2);"/>
+					<input type="submit" value="전송하기"/>
 				</div>
 			</form>
 			</div>

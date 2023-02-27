@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -51,7 +52,7 @@ public class GymController {
    //지점 등록페이지로 이동
    @RequestMapping(value="/gymRegist.do", method=RequestMethod.GET)
    public String  registASUB(Model model) {
-      model.addAttribute("mem_type","admin_sub");
+      model.addAttribute("authority","admin_sub");
       return "admin/gym/gymRegist";
    }
    
@@ -60,6 +61,10 @@ public class GymController {
    @Transactional
    public String registASUB2(MemberDTO memberDTO, GymDTO gymDTO, HttpServletRequest req) {
 	   try {
+		   String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(memberDTO.getMem_pass());
+	       System.out.println(passwd);
+	       memberDTO.setMem_pass(passwd);
+	       
 		   int size = 1024 * 1024 * 10;
            String path = ResourceUtils
           		 .getFile("classpath:static/uploads/gym")
@@ -113,7 +118,7 @@ public class GymController {
    @RequestMapping(value="/gymedit.do", method=RequestMethod.POST)
    public String gym5(GymDTO gymDTO, MemberDTO memberDTO) {
 	   int result = gymdao.update(gymDTO);
-//	   int result1 = gymdao.updateM(memberDTO);
+	   int result1 = gymdao.updateM(memberDTO);
        if(result==1) System.out.println("수정되었습니다.");
        return "redirect:/gymadminlist.do";
    }

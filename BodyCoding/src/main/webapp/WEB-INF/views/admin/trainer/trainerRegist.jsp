@@ -31,18 +31,18 @@
 		                                        <form method="post" action="/trainerRegist.do" enctype="multipart/form-data">
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-4">
-			                                                <input type="hidden" id="mem_status" name="mem_status" value="1">
-							    							<input type="hidden" id="mem_type" name="mem_type" value="TRAINER">
+			                                                <input type="hidden" id="enabled" name="enabled" value="1">
+							    							<input type="hidden" id="authority" name="authority" value="TRAINER">
 			                                                <!-- 로그인한 ADMIN의 지점코드가 자동으로 삽입되게 만들기 -->
 		                                                    <div class="form-floating">
-		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" />
+		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" required/>
 		                                                        <label for="gym_code">지점 선택</label>
 		                                                    </div>
 		                                                </div>
 		                                                
 		                                                <div class="col-md-4">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_name" name="mem_name" type="text" placeholder="Enter your first name" />
+		                                                        <input class="form-control" id="mem_name" name="mem_name" type="text" placeholder="Enter your first name" required/>
 		                                                        <label for="mem_name">이름</label>
 		                                                    </div>
 		                                                </div>
@@ -55,19 +55,19 @@
 		                                                </div>
 		                                            </div>
 		                                            <div class="form-floating mb-3">
-		                                                <input class="form-control" id="mem_id" name="mem_id" type="text" placeholder="name@example.com" />
+		                                                <input class="form-control" id="mem_id" name="mem_id" type="text" placeholder="name@example.com" required/>
 		                                                <label for="mem_id">아이디(이메일)</label>
 		                                            </div>
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_pass" name="mem_pass" type="text" placeholder="Create a password" />
+		                                                        <input class="form-control" id="mem_pass" name="mem_pass" type="text" placeholder="Create a password" required/>
 		                                                        <label for="mem_pass">비밀번호</label>
 		                                                    </div>
 		                                                </div>
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_phone" name="mem_phone" type="text" placeholder="Confirm password" />
+		                                                        <input class="form-control" id="mem_phone" name="mem_phone" type="text" placeholder="Confirm password" required/>
 		                                                        <label for="mem_phone">전화번호</label>
 		                                                    </div>
 		                                                </div>
@@ -89,14 +89,14 @@
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_address" name="mem_address" type="text" placeholder="Create a password" />
-		                                                        <label for="mem_address">지점주소</label>
+		                                                        <input class="form-control" id="mem_address" name="mem_address" type="text" placeholder="Create a password" required />
+		                                                        <label for="mem_address">주소</label>
 		                                                    </div>
 		                                                </div>
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
 		                                                        <input class="form-control" id="mem_comment" name="mem_comment" type="text" placeholder="Confirm password" />
-		                                                        <label for="mem_comment">지점소개</label>
+		                                                        <label for="mem_comment">자기소개</label>
 		                                                    </div>
 		                                                </div>
 		                                                <div class="col-md-6">

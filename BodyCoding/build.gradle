@@ -39,6 +39,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation fileTree(dir:'libs',include:['*.jar'])
 	compileOnly 'org.springframework.boot:spring-boot-devtools'
+	//implementation 'org.springframework.security:spring-security-taglibs'
 }
 
 tasks.named('test') {

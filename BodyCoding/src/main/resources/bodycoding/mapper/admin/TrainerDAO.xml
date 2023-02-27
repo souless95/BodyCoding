@@ -10,7 +10,7 @@
 	<insert id="insertMemberT"
 		parameterType="global.dto.MemberDTO">
 		insert into MEMBER (mem_id, mem_pass, mem_name, mem_gender, 
-			mem_birth, mem_phone, mem_address, mem_type, mem_status, 
+			mem_birth, mem_phone, mem_address, authority, enabled, 
 			gym_code, mem_career, mem_comment, mem_img)
     	values (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_gender}, 
     		#{mem_birth}, #{mem_phone}, #{mem_address}, 'TRAINER', '1', 
@@ -20,7 +20,7 @@
 	<select id="selectGT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from member where mem_type='TRAINER' 
+		select * from member where authority='TRAINER' 
 		<if test="gym_code!=null">
 			and gym_code=#{gym_code}
 		</if>
@@ -30,13 +30,13 @@
 	<select id="selectOneT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from member where mem_type='TRAINER' and mem_id=#{mem_id}
+		select * from member where authority='TRAINER' and mem_id=#{mem_id}
 	</select>
 	
 	<update id="update"
 		parameterType="global.dto.MemberDTO">
 		update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_gender=#{mem_gender}, mem_birth=#{mem_birth},
-			mem_phone=#{mem_phone}, mem_address=#{mem_address}, mem_status=#{mem_status}, gym_code=#{gym_code},
+			mem_phone=#{mem_phone}, mem_address=#{mem_address}, enabled=#{enabled}, gym_code=#{gym_code},
 			mem_career=#{mem_career}, mem_comment=#{mem_comment}, mem_img=#{mem_img}
 		where mem_id=#{mem_id}
 	</update>

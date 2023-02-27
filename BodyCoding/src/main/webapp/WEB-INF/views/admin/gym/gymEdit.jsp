@@ -16,12 +16,6 @@
 </style>
 </head>
 <body class="sb-nav-fixed">
-<script>
-	let fileSubmit = function(frm, gubun){
-		else if(gubun==2){
-			frm.action="gymedit.do"
-		}
-</script>
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
 	
@@ -31,26 +25,30 @@
         
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
-	        <form method="post" enctype="multipart/form-data">
+	        <form action="/gymedit.do" method="post">
 	        	<div class="card-header">
 					<h2>${memList.mem_name } 수정 페이지</h2>
 	        	</div>
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
-					<c:forEach items="${fileMap }" var="file" varStatus="vs">
+					<%-- <div><img src="static/uploads/trainer/${memList.mem_img }" style="width:200px; height:200px;">
+		        			<input type="hidden" name="mem_img" value="${memList.mem_img }">
+		        			<input class="form-control" id="mem_img" name="mem_img" type="file" style="display:inline;" />
+		        	</div> --%>
+					<%-- <c:forEach items="${fileMap }" var="file" varStatus="vs">
 						<tr>
 							<td><img src="uploads/${file.key }" width="200" 
 									height="150" /></td>
 							<td>${file.key }</td>
 							<td>${file.value }Kb</td>
 						</tr>
-					</c:forEach>
+					</c:forEach> --%>
 					<%-- <div>${dto.gym_dtail_img }</div> --%>	
 					<h4>기본정보</h4>
 					<table class="table" border=2>
 						<tr>
 							<th>지점명</th>
-							<td>${memList.mem_name }</td>
+							<td><input type="text" name="mem_name" value="${memList.mem_name}" style="width: 100px;"/></td>
 							<th>지점코드</th>
 							<td><input type="text" name="gym_code" value="${dto.gym_code}" readonly style="width: 100px; border: none;"/></td>
 						</tr>
@@ -58,11 +56,11 @@
 							<th>평수</th>
 							<td><input type="text" name="gym_scale" value="${dto.gym_scale}" style="width: 100px;"/></td>
 							<th>지점 전화번호</th>
-							<td>${memList.mem_phone }</td>
+							<td><input type="text" name="mem_phone" value="${memList.mem_phone}" style="width: 100px;"/></td>
 						</tr>
 						<tr>
 							<th>지점 주소</th>
-							<td>${memList.mem_address }</td>
+							<td><input type="text" name="mem_address" value="${memList.mem_address}" style="width: 100px;"/></td>
 						</tr>
 					</table>
 				

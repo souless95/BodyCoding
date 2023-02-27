@@ -25,11 +25,11 @@
 		                                    	<h3 class="text-center font-weight-light my-4">지점등록</h3>
 		                                    </div>
 		                                    <div class="card-body">
-		                                        <form method="post" action="/gymRegist.do">
+		                                        <form method="post" action="/gymRegist.do" enctype="multipart/form-data">
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
-		                                                <input type="hidden" id="mem_status" name="mem_status" value="1">
-						    							<input type="hidden" id="mem_type" name="mem_type" value="ADMIN_SUB">
+		                                                <input type="hid den" id="mem_status" name="mem_status" value="1">
+						    							<input type="hid den" id="mem_type" name="mem_type" value="ADMIN_SUB">
 		                                                
 		                                                    <div class="form-floating">
 		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" />

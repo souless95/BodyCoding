@@ -16,10 +16,10 @@ public interface GymService {
 	public GymDTO selectOnegym(GymDTO gymDTO);
 	public MemberDTO selectOneMember(MemberDTO memberDTO);
 	public int update(GymDTO gymDTO);
-//	public int updateimg(Map<String, Object> fileMap);
+//	public int updateM(MemberDTO memberDTO);
 	public int delete(GymDTO gymDTO);
 	public int deleteM(MemberDTO memberDTO);
 	public int insertMemberASUB(MemberDTO memberDTO);
-	public int insertMember1(GymDTO gymDTO);
-	public int codeCheck(GymDTO gymDTO);
+	public int insertMember1(MemberDTO memberDTO);
+	public int codeCheck(String gym_code);
 }

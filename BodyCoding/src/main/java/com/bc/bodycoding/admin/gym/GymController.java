@@ -140,8 +140,8 @@ public class GymController {
             int result1 = gymdao.insertMember1(gymDTO);
             int result = gymdao.insertMemberASUB(memberDTO);
             if(result==1) System.out.println("회원가입이 완료되었습니다.");
-            return "redirect:/gymadminlist.do";
-         }
+	            return "redirect:/gymadminlist.do";
+	       }
       } 
       catch (Exception e) {
          e.printStackTrace();

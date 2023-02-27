@@ -10,7 +10,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 a{
-    text-decoration-line: none;
+    text-decoration: none;
+}
+.mypage{
+	color:white;
 }
 ul{
     list-style: none;
@@ -72,7 +75,7 @@ div{
 			<div class="accordion" id="accordion">
 				<div class="card">
 					<div class="left_h2">
-						<a>마이페이지 </a>
+						<a class="mypage" href="mypage.do?gym_code=${UserInfo.gym_code }">마이페이지 </a>
 					</div>
 				</div>
 				<div class="card">
@@ -122,7 +125,7 @@ div{
 				</div>
 				<div class="card">
 					<div class="card-header">
-						<a class="btn" href="#"> 정보수정 </a>
+						<a class="btn" href="memberEdit.do?mem_id=${UserInfo.mem_id }"> 정보수정 </a>
 					</div>
 				</div>
 			</div>

@@ -46,6 +46,22 @@
 		and mem_status ='1'
 </select>
 
+<!-- 트레이너에 대한 평점 보여주기 -->
+<select id="gradeSelete"
+	parameterType="String"
+	resultType="int">
+	select ceil(avg(review_grade)) from review 
+		where review_type='TRAINER' and review_subject =#{review_subject}
+</select>
+
+<!-- 트레이너에 대한 후기 보여주기 -->
+<select id="reviewSelect"
+	parameterType="String"
+	resultType="global.dto.ReviewDTO">
+	select * from review 
+		where review_type='TRAINER' and review_subject=#{review_subject}
+</select>
+
 <!-- 모든 유형 상품 보여주기 -->
 <select id="product_categoryALLSelect"
 	parameterType="global.dto.ProductDTO"

@@ -15,4 +15,7 @@ public interface AccountService{
 	public String kakaoselect(String mem_id);
 	public int kakaoupdate(MemberDTO memberDTO);
 	
+	public String pwCheck(String mem_id);
+	public int deleteMember(String mem_id);
+	
 }

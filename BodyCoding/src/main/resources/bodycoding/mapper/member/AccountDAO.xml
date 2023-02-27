@@ -44,11 +44,27 @@
    		'전화번호', '주소', 'MEMBER', '1')
 </insert>
 
+<!-- 카카오 회원정보 추가 -->
 <update id="kakaoupdate"
 	parameterType="global.dto.MemberDTO">
 	update member 
     set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address= #{mem_address}
     where mem_id = #{mem_id}
 </update>	
+
+<!-- 비밀번호 확인 -->
+<select id="pwCheck"
+	parameterType="String"
+	resultType="String">
+	select mem_pass from member where mem_id = #{mem_id}
+</select> 
+
+<!-- 탈퇴하기 -->
+<update id="deleteMember"
+	parameterType="String">
+	update member 
+		set mem_status='0' where mem_id = #{mem_id}
+</update>
+
 
 </mapper>

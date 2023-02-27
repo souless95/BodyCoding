@@ -43,6 +43,13 @@ public class MainController {
 		return "member/main";
 	}
 	
+	//회원메인창으로 넘어가기(세영연습)
+	@GetMapping("main2")
+	public String membermain2(HttpSession session) {
+		session.getAttribute("UserName");
+		return "member/main2";
+	}
+	
 	
 	
 	

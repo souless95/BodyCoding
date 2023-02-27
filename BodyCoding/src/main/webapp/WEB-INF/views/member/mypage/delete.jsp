@@ -21,16 +21,17 @@ body{
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
 	        	<div class="card-header">
-					<h1>정보수정</h1>
+					<h1>회원 탈퇴</h1>
 					<hr>
-					<h4>비밀번호 확인</h4>
-					본인 확인을 위해 비밀번호를 입력해 주세요.
-					<form method="post" action="pwcheck">
-					<input type="hidden" name="mem_id" value=${UserEmail }>
-					<input type="password" name="mem_pass">
-					<input type="submit" value="확인">
+					<h5>회원 정보 및 구매 내역 삭제</h5>
+					<p>
+					회원 탈퇴 즉시, 회원 정보는 모두 삭제되고 재가입시에도 복원되지 않습니다.
+					이점 꼭 양지해 주시기 바랍니다.
+					</p>
+					<form method="post" action="/delete">
+					<input type="hidden" name="mem_id" id="mem_id" value="${UserEmail }">
+					<input type="submit" value="탈퇴하기">
 					</form>
-					
 					
 	        	</div>
 			</div>

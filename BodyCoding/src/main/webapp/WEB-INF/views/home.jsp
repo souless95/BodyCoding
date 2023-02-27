@@ -32,6 +32,10 @@
 		<li><a href="product">상품 목록보기</a></li>
 	</ul>
 	
+	<ul>
+		<li><a href="pwcheck">마이페이지</a></li>
+	</ul>
+	
 	
 </body>
 </html>

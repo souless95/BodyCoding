@@ -25,7 +25,7 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="main">Home</a></li>
+								<li class="current"><a href="main">Home111</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
 								<li>
 									<a href="#">BodyCoding(Dropdown)</a>
@@ -73,17 +73,6 @@
 								<li><a href="#">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
-						
-						<li>
-							<a href="/menu/myinfo.jsp">마이페이지</a>
-							<ul> 
-								<li><a href="#">이용내역</a></li>
-								<li><a href="#">활동내역</a></li>
-								<li><a href="#">운동관리</a></li>
-								<li><a href="#">정보수정</a></li>
-							</ul>
-						</li>
-							
 					
 					
 						<c:if test="${not empty UserInfo}">
@@ -91,6 +80,12 @@
 			                    ${UserInfo.mem_id}님 환영합니다.
 			            </li>
 						<li><a href="mypage.do?gym_code=${UserInfo.gym_code }">마이페이지</a>
+							<ul> 
+								<li><a href="#">이용내역</a></li>
+								<li><a href="#">활동내역</a></li>
+								<li><a href="#">운동관리</a></li>
+								<li><a href="#">정보수정</a></li>
+							</ul>
 			            </li>
 						<li>
 			                    <a href="#" onclick="logoutcheck()">로그아웃</a>

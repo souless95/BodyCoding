@@ -1,6 +1,8 @@
 package com.bc.bodycoding.main;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
+import global.dto.ReviewDTO;
+import lombok.Data;
 
 @Controller
 public class MemberMainController {
@@ -44,13 +48,56 @@ public class MemberMainController {
 	@RequestMapping("trainerInfo")
 	public String trainerInfo(Model model, MemberDTO memberDTO) {
 		//트레이너 지점이름
-		model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO));
+		model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO.getGym_code()));
 		//트레이너 정보
-		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO));
+		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO.getMem_id()));
+		
 		//트레이너 평점
-		model.addAttribute("avg_grade", maindao.gradeSelete(memberDTO.getMem_id()));
+		Integer avg_grade = 0;
+		if(maindao.gradeSelete(memberDTO.getMem_id())!= null) {
+			avg_grade = maindao.gradeSelete(memberDTO.getMem_id());
+		}
+		model.addAttribute("avg_grade", avg_grade);
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		Date now = new Date();
+		String now_dt = format.format(now);
+		System.out.println(now_dt);
+		model.addAttribute("nowdate",now_dt);
 		//리뷰
 		model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
+		return "member/main/trainerInfo";
+	}
+	
+	//트레이너 후기 작성
+	@RequestMapping("trainerReview")
+	public String trainerReview(Model model, MemberDTO memberDTO, ReviewDTO reviewDTO) {
+		int result = maindao.reviewInsert(reviewDTO);
+		if(result==1){
+			System.out.println("리뷰 등록 완료");
+		}
+		else {
+			System.out.println("리뷰 등록 실패");
+		}
+		//트레이너 지점이름
+		model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO.getGym_code()));
+		//트레이너 정보
+		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(reviewDTO.getReview_subject()));
+		
+		//트레이너 평점
+		Integer avg_grade = 0;
+		if(maindao.gradeSelete(reviewDTO.getReview_subject())!= null) {
+			avg_grade = maindao.gradeSelete(reviewDTO.getReview_subject());
+		}
+		model.addAttribute("avg_grade", avg_grade);
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		Date now = new Date();
+		String now_dt = format.format(now);
+		System.out.println(now_dt);
+		model.addAttribute("nowdate",now_dt);
+		//리뷰
+		model.addAttribute("reviewInfo", maindao.reviewSelect(reviewDTO.getReview_subject()));
 		return "member/main/trainerInfo";
 	}
 	

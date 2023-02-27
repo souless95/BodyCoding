@@ -17,7 +17,7 @@
 
 
 
-<div class="single-content single-page-content entry clr"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vcex-spacing" style="height:60px"></div>
+<div class="single-content single-page-content entry clr"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
 	<div class="wpb_text_column wpb_content_element " >
 		<div class="wpb_wrapper" style="text-align:center;">
 			<div class="location_wrap">
@@ -36,7 +36,7 @@
 	</div>
 <div class="vcex-spacing" style="height:60px"></div>
 	<div class="wpb_text_column wpb_content_element " >
-		<div class="wpb_wrapper">
+		<div class="wpb_wrapper" style="font-size:35px; font-weight:bold;">>
 			<p style="text-align: center;"><span class="title_slog"><span style="color: #545354;">몸과 마음의 힐링 플레이스,</span><br />
 <span class="title_accent"><span style="color: #2e445b;">BodyCoding YOGA</span><span style="color: #545354;">입니다.</span></span></span></p>
 

@@ -31,7 +31,7 @@
 
 <!-- 트레이너 상세 정보 보여주기 -->
 <select id="trainerInfoSelect"
-	parameterType="global.dto.MemberDTO"
+	parameterType="String"
 	resultType="global.dto.MemberDTO">
 	select * from member 
 		where authority='TRAINER' and mem_id=#{mem_id}
@@ -39,7 +39,7 @@
 
 <!-- 트레이너 상세 정보중 지점명 보여주기(지점코드로 받아서 지점명으로 변환하는 과정) -->
 <select id="gymInfoSelect"
-	parameterType="global.dto.MemberDTO"
+	parameterType="String"
 	resultType="String">
 	select mem_name from member 
 		where authority='ADMIN_SUB' and gym_code=#{gym_code}
@@ -60,7 +60,17 @@
 	resultType="global.dto.ReviewDTO">
 	select * from review 
 		where review_type='TRAINER' and review_subject=#{review_subject}
+		order by review_regidate desc
 </select>
+
+<!-- 트레이너 후기 등록 -->
+<insert id="reviewInsert"
+	parameterType="global.dto.ReviewDTO">
+	insert into REVIEW (review_idx, review_type, review_subject, review_comment, mem_id, review_grade)
+    	values(bodycoding_seq.nextval, 'TRAINER', #{review_subject}
+    	, #{review_comment}, #{mem_id}, #{review_grade})
+
+</insert>
 
 <!-- 모든 유형 상품 보여주기 -->
 <select id="product_categoryALLSelect"

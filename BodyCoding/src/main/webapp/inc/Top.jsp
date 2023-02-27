@@ -38,7 +38,7 @@ function logoutcheck(){
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="/main">Home</a></li>
+								<li class="current"><a href="/main">Home33</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
 								<li>
 									<a href="#">BodyCoding</a>
@@ -54,8 +54,8 @@ function logoutcheck(){
 								<li><a href="../menu/health.jsp">헬스</a></li>
 								<li><a href="../menu/pt.jsp">PT</a></li>
 								<li><a href="../menu/yoga.jsp">요가</a></li>
-								<li><a href="#">GX</a></li>
-								<li><a href="#">필라테스</a></li>
+								<li><a href="../menu/gx.jsp">GX</a></li>
+								<li><a href="../menu/pila.jsp">필라테스</a></li>
 							</ul>
 						</li>
 						
@@ -103,7 +103,7 @@ function logoutcheck(){
 						<li>
 			                    ${UserName}님 환영합니다.
 			            </li>
-						<li><a href="#">마이페이지</a>
+						<li><a href="mypage.do?gym_code=${UserInfo.gym_code }">마이페이지</a>
 			            </li>
 						<li>
 			                    <a href="#" onclick="logoutcheck()">로그아웃</a>

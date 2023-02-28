@@ -52,7 +52,6 @@ public class AccountController {
 			session.setAttribute("UserInfo", accountdao.login(memberDTO));
 			session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
 			session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
-			System.out.println(memberDTO);
 			return "redirect:main";
 		}
 		catch (Exception e) {

@@ -1,6 +1,8 @@
 package com.bc.bodycoding.main;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
@@ -10,6 +12,8 @@ import global.dto.ReviewDTO;
 public interface MemberMainService {
 	
 	public List<MemberDTO> gymlistSelect();
+	public List<MemberDTO> gymlistSearch(String searchWord);
+	public List<MemberDTO> gymlistCheck(Map<String, String> checkList);
 	public List<MemberDTO> trainerALLlistSelect();
 	public List<MemberDTO> trainerlistSelect(String gym_code);
 	public MemberDTO trainerInfoSelect(String mem_id);

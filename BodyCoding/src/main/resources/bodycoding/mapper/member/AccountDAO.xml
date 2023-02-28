@@ -23,7 +23,7 @@
 <select id="login"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select mem_name, gym_code, mem_id from member
+	select * from member
     	where mem_id=#{mem_id} and mem_pass=#{mem_pass} and enabled ='1'
 </select>
 

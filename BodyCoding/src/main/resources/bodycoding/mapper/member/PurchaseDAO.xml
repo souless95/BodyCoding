@@ -8,7 +8,7 @@
 <mapper namespace="com.bc.bodycoding.purchase.IPurchaseService">
 	<select id="gymSelect" parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		SELECT gym_code, mem_name FROM member WHERE authority='ADMIN_SUB'
+		SELECT gym_code, mem_name FROM member WHERE authority='ROLE_ADMIN_SUB'
 	</select>
 	
 	<select id="productSelect" parameterType="global.dto.ProductDTO"

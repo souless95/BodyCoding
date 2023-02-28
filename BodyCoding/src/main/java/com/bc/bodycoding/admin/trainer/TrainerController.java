@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
@@ -22,7 +23,7 @@ public class TrainerController {
 	TrainerService trainerdao;
 	
 	//트레이너 등록 페이지로 이동
-	@GetMapping("/trainerRegist.do")
+	@GetMapping("/admin/trainer/trainerRegist")
 	public String signupT(Model model) {
 		model.addAttribute("authority","trainer");
 		return "admin/trainer/trainerRegist";
@@ -44,8 +45,13 @@ public class TrainerController {
 			Enumeration files = multi.getFileNames();
 			String str = (String)files.nextElement();
 			
+			System.out.println(multi.getParameter("mem_pass"));
+			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
+					.encode(multi.getParameter("mem_pass"));
+			System.out.println(passwd);
+			
 			memberDTO.setMem_id(multi.getParameter("mem_id"));
-			memberDTO.setMem_pass(multi.getParameter("mem_pass"));
+			memberDTO.setMem_pass(passwd);
 			memberDTO.setMem_name(multi.getParameter("mem_name"));
 			memberDTO.setMem_gender(multi.getParameter("mem_gender"));
 			memberDTO.setMem_birth(multi.getParameter("mem_birth"));
@@ -89,7 +95,7 @@ public class TrainerController {
 	}
 
 	//수정하기
-	@RequestMapping(value="/trainerEdit.do", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/trainer/trainerEdit", method=RequestMethod.GET)
 	public String editT(Model model, MemberDTO memberDTO) {
 		memberDTO = trainerdao.selectOneT(memberDTO);
 		model.addAttribute("trainer", memberDTO);
@@ -100,13 +106,10 @@ public class TrainerController {
 	public String editT(MemberDTO memberDTO, HttpServletRequest req) {
 		try {
 			int size = 1024 * 1024 * 10; 
-			String path = ResourceUtils
-							.getFile("classpath:static/uploads/trainer")
-							.toPath().toString();
+			String path = ResourceUtils.getFile("classpath:static/uploads/trainer").toPath().toString();
 			System.out.println("트레이너 사진 저장 경로:"+ path);
 			
-			MultipartRequest multi = new MultipartRequest(req, path, 
-						size, "UTF-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(req, path, size, "UTF-8", new DefaultFileRenamePolicy());
 			
 			Enumeration files = multi.getFileNames();
 			String str = (String)files.nextElement();
@@ -116,8 +119,10 @@ public class TrainerController {
 			if(file.exists()) {
 				file.delete();
 			}
+			
 			System.out.println(multi.getParameter("mem_img"));
 			System.out.println(multi.getOriginalFileName(str));
+			
 			memberDTO.setMem_id(multi.getParameter("mem_id"));
 			memberDTO.setMem_pass(multi.getParameter("mem_pass"));
 			memberDTO.setMem_name(multi.getParameter("mem_name"));
@@ -125,7 +130,7 @@ public class TrainerController {
 			memberDTO.setMem_birth(multi.getParameter("mem_birth"));
 			memberDTO.setMem_phone(multi.getParameter("mem_phone"));
 			memberDTO.setMem_address(multi.getParameter("mem_address"));
-			memberDTO.setAuthority(multi.getParameter("authority"));
+			memberDTO.setEnabled(multi.getParameter("enabled"));
 			memberDTO.setGym_code(multi.getParameter("gym_code"));
 			memberDTO.setMem_career(multi.getParameter("mem_career"));
 			memberDTO.setMem_comment(multi.getParameter("mem_comment"));

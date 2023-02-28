@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
+<link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -20,7 +20,7 @@
         <%@ include file ="../../admin/inc/side.jsp" %>
 			<div id="layoutSidenav_content">
 		        <main>
-		        <form action="trainerEdit.do" method="post" enctype="multipart/form-data">
+		        <form action="/trainerEdit.do" method="post" enctype="multipart/form-data">
 		        	<div class="card mb-4" style="border-bottom: none;">
 		        		<div class="card-header">
 							<h2>${trainer.mem_name} 트레이너정보 수정하기</h2>
@@ -37,7 +37,7 @@
 						         	<th colspan="2">이메일(아이디)</th>
 							        <td><input type="text" name="mem_id" value="${trainer.mem_id}" readonly /></td>
 						         	<th>비밀번호</th>
-									<td><input type="text" name="mem_pass" value="${trainer.mem_pass}" /></td>
+									<td><input type="password" name="mem_pass" value="${trainer.mem_pass}" /></td>
 						         	<th>이름</th>
 							        <td><input type="text" name="mem_name" value="${trainer.mem_name}"/></td>
 						        </tr>
@@ -79,8 +79,8 @@
 			</div>
 		</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/scripts.js"></script>
+    <script src="/static/admin/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/datatables-simple-demo.js"></script>   
+    <script src="/static/admin/js/datatables-simple-demo.js"></script>   
 </body>
 </html>

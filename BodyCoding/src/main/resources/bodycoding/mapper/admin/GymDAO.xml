@@ -11,7 +11,7 @@
 	<select id="select"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from member where authority like '%ADMIN%'
+		select * from member where authority like '%ROLE_ADMIN_SUB%'
 	</select>
 	
 	<select id="selectOnegym"
@@ -40,6 +40,11 @@
 		where gym_code=#{gym_code}
 	</update>
 	
+	<update id="updateImg"
+		parameterType="global.dto.MemberDTO">
+		update MEMBER set mem_img=#{mem_img} where mem_id=#{mem_id}
+	</update>
+	
 	<delete id="delete"
 		parameterType="global.dto.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}
@@ -49,6 +54,7 @@
 		delete from MEMBER where gym_code=#{gym_code}
 	</delete>
 	
+	<!-- 지점 등록 -->
 	<insert id="insertMemberASUB"
 		parameterType="global.dto.MemberDTO">
 		insert into MEMBER (mem_id, mem_pass, mem_name, 

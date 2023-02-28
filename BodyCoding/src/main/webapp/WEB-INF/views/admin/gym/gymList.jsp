@@ -50,7 +50,7 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						<button type="button" class="btn btn-primary" onclick="location.href='/gymRegist.do'">지점 등록</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymRegist'">지점 등록</button>
 						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
 					</div>
 				</div>

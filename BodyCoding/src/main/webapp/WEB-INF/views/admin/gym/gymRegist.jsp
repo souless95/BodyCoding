@@ -33,8 +33,8 @@
 		                                        <form method="post" action="/gymRegist.do" enctype="multipart/form-data">
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
-		                                                <input type="hid den" id="enabled" name="enabled" value="1">
-						    							<input type="hid den" id="authority" name="authority" value="ADMIN_SUB">
+		                                                <input type="hidden" id="mem_status" name="enabled" value="1">
+						    							<input type="hidden" id="mem_type" name="authority" value="ADMIN_SUB">
 		                                                
 		                                                    <div class="form-floating">
 		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" />

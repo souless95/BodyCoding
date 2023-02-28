@@ -98,7 +98,7 @@
 			</div>
 			<div class="sb-sidenav-footer">
 				<div class="small">Logged in as:</div>
-				로그인 된 아이디 확인하는 곳
+				${mem_id } 접속.
 			</div>
 		</nav>
 	</div>

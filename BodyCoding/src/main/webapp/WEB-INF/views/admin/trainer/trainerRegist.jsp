@@ -32,7 +32,7 @@
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-4">
 			                                                <input type="hidden" id="enabled" name="enabled" value="1">
-							    							<input type="hidden" id="authority" name="authority" value="TRAINER">
+							    							<input type="hidden" id="authority" name="authority" value="ROLE_TRAINER">
 			                                                <!-- 로그인한 ADMIN의 지점코드가 자동으로 삽입되게 만들기 -->
 		                                                    <div class="form-floating">
 		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" required/>

@@ -365,6 +365,8 @@
     	}
     	
     	document.getElementById("telFinal").value = tel1.value + "-" + tel2.value + "-" + tel3.value;
+    	
+    	/* forms.submit(); */
     }
     
     function checkNone(){
@@ -374,13 +376,8 @@
     	if(tel1.value!="" && tel2.value!="" && tel3.value!=""){
     		document.getElementById("phonecheck").style.display = 'none';
     	}
-<<<<<<< HEAD
-    	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
-    		document.getElementById("phonecheck").style.display = 'inline-block';
-=======
     	if(tel1.value=="" || tel2.value=="" || tel3.value==""){
     		document.getElementById("phonecheck").style.display = 'inline';
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
     	}
     	
     	const gc = document.getElementsByName("mem_gender");
@@ -420,18 +417,15 @@
     }
         
     </script>
-=======
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
-=======
 
-<script type="text/javascript">
-	function commonFocusMove(thisObj, numLength, nextObj){
-		var obj1 = document.getElementById(thisObj);
-		var strLen2 = obj1.value.length;
-		if(strLen2 == numLength){
-			document.getElementById(nextObj).focus();
+	<script type="text/javascript">
+		function commonFocusMove(thisObj, numLength, nextObj){
+			var obj1 = document.getElementById(thisObj);
+			var strLen2 = obj1.value.length;
+			if(strLen2 == numLength){
+				document.getElementById(nextObj).focus();
+			}
 		}
-	}
 	
 	 /* const frms = document.getElementsByClassName('validation-form');
 	    window.addEventListener('load', () => {      
@@ -703,6 +697,5 @@
       	}
       }
 </script>
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

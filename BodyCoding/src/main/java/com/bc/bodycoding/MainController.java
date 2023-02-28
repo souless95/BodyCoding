@@ -50,16 +50,20 @@ public class MainController {
 	@RequestMapping("/adminLogin.do")
 	public String adminLogin(Principal principal, Model model) {
 		
+		String page = "";
+		
 		try {
 			String mem_id = principal.getName();
 			model.addAttribute("mem_id", mem_id);
 			System.out.println(mem_id);
+			page = "main/admin";
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("로그인X");
+			page = "admin/auth/login";
 		}
-		return "admin/auth/login";
+		return page;
 	}
 	
 

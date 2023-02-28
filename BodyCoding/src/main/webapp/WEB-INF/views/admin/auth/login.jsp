@@ -48,6 +48,5 @@
 	</c:if>	
 	</div>
         <!-- bottom -->
-		<%@ include file ="../inc/bottom.jsp" %>
 </body>
 </html>

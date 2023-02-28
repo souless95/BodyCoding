@@ -7,7 +7,7 @@
 </head>
 <body>
 <!-- Top.jsp -->
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 
 <!-- 페이지에 작성할 내용 -->
 <div class="caontainer-fluid" style="margin-left:200px;  background:#f9f9f9;"> 
@@ -17,6 +17,6 @@
 </div>
 
 
-<%@ include file ="../inc/Bottom.jsp" %>	
+<%@ include file="../../../../inc/Bottom.jsp" %>	
 </body>
 </html>

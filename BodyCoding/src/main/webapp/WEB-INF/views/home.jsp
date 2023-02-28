@@ -17,7 +17,7 @@
 		<li><a href="main/admin">admin 메인페이지</a></li>
 	</ul> -->
 	<ul>
-		<li><a href="login">admin 로그인</a></li>
+		<li><a href="/adminLogin.do">admin 로그인</a></li>
 	</ul>
 	<ul>
 		<li><a href="main">member 메인페이지</a></li>
@@ -32,6 +32,12 @@
 		<li><a href="product">상품 목록보기</a></li>
 	</ul>
 	
+	<ul>
+		<li><a href="pwcheck">마이페이지</a></li>
+	</ul>
+	<ul>
+		<li><a href="delete">탈퇴</a></li>
+	</ul>
 	
 </body>
 </html>

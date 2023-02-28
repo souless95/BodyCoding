@@ -56,51 +56,53 @@
         	  startTime: '06:00',
         	  endTime: '23:00',
         }, 
-        buttonText: {
+        buttonText: { //영문명 버튼 명칭 지정
         	today: '오늘',
         	month: '월',
         	week: '주',
         	day: '일',
         },
-        headerToolbar: { //상단에 출력되는 기본옵션
-            right: 'dayGridMonth,timeGridWeek,timeGridDay', //cstButton
+        headerToolbar: { //상단에 출력되는 기본옵션.
+            right: 'dayGridMonth,timeGridWeek,timeGridDay', 
             center: 'prev title next',
             left: 'today',
         },
 	    events: //DB에 저장된 스케쥴 로드하여 달력에 표시 
 	    	tempArray ,
-      	dateClick: function(info) {
+      	dateClick: function(info) { //클릭시 일정등록 기능
       		const date = new Date(info.dateStr);
-      		const end = new Date(date.getTime() + (10 * 60 * 60 * 1000)).toISOString().replace(".000Z", "+09:00");
-      		timeA = info.dateStr.split("T");
-      		var timeB = parseInt(timeA[1].substr(0, 2));
-      		console.log(timeB);
-      		
-            if (timeB >= 6 && timeB <= 22) {
-	      		var titleA = prompt("일정명을 입력하세요");
-	      		if(titleA == null || titleA.trim() == ''){}
-	      		else {
-	      			var eventData = {	                   
-	      				title: titleA,
-	                    start: info.dateStr,
-	                    end: end
-	                };
-	      			$.ajax({
-	      				url: "/AddCalendar",
-	      				contentType: "application/json; charset=utf-8",
-	      				data: eventData,
-	      				dataType: 'text',
-	      				success: function(resData){	
-	      					eventData.id = resData;
-	      					calendar.addEvent(eventData);
-	      				},
-	      				error: function(){
-	      					alert('일정 추가에 실패했습니다.');
-	      				}
-	      			});
-	      		}
-            }
-            else {}
+      		if(info.dateStr.indexOf("T") != -1){ //콘솔에러를 막기위한 if문
+	      		const end = new Date(date.getTime() + (10 * 60 * 60 * 1000)).toISOString().replace(".000Z", "+09:00");
+	      		timeA = info.dateStr.split("T");
+	      		var timeB = parseInt(timeA[1].substr(0, 2));
+	      		console.log(timeB);
+	      		
+	            if (timeB >= 6 && timeB <= 22) {
+		      		var titleA = prompt("일정명을 입력하세요");
+		      		if(titleA == null || titleA.trim() == ''){}
+		      		else {
+		      			var eventData = {	                   
+		      				title: titleA,
+		                    start: info.dateStr,
+		                    end: end
+		                };
+		      			$.ajax({
+		      				url: "/AddCalendar",
+		      				contentType: "application/json; charset=utf-8",
+		      				data: eventData,
+		      				dataType: 'text',
+		      				success: function(resData){	
+		      					eventData.id = resData;
+		      					calendar.addEvent(eventData);
+		      				},
+		      				error: function(){
+		      					alert('일정 추가에 실패했습니다.');
+		      				}
+		      			});
+		      		}
+	            }
+	            else {}
+      		}
       	},
       	eventClick: function(info){
       		var eventId = info.event.id;
@@ -184,12 +186,9 @@
 <title>MyCalendar</title>
 </head>
 <body>
-<%-- <%@ include file = "../views/member/inc/Top.jsp" %>
-<div class="container">
-<%@ include file ="../views/member/inc/mypageside.jsp" %> --%>
+<%-- <%@ include file ="../../../inc/mypageside.jsp" %> --%>
   <h1>MyCalendar</h1>
   <div id='calendar' style="width:800px;"></div>
-</div>
-<%-- <%@ include file = "../views/member/inc/Bottom.jsp" %> --%>
+<%-- <%@ include file="../../../inc/Bottom.jsp" %> --%>
 </body>
 </html>

@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<link href="/static/admin/css/styles.css" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 <!-- top메뉴  -->
@@ -25,11 +30,11 @@
 		                                    	<h3 class="text-center font-weight-light my-4">지점등록</h3>
 		                                    </div>
 		                                    <div class="card-body">
-		                                        <form method="post" action="/gymRegist.do">
+		                                        <form method="post" action="/gymRegist.do" enctype="multipart/form-data">
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
-		                                                <input type="hidden" id="mem_status" name="mem_status" value="1">
-						    							<input type="hidden" id="mem_type" name="mem_type" value="ADMIN_SUB">
+		                                                <input type="hidden" id="mem_status" name="enabled" value="1">
+						    							<input type="hidden" id="mem_type" name="authority" value="ROLE_ADMIN_SUB">
 		                                                
 		                                                    <div class="form-floating">
 		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" />

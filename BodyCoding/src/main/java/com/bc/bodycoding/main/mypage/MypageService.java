@@ -19,4 +19,6 @@ public interface MypageService {
 	public GymDTO basicListG(GymDTO gymDTO);
 	public MemberDTO selectOneMember(MemberDTO memberDTO);
 	public int update(MemberDTO memberDTO);
+	
+	
 }

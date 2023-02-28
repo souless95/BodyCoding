@@ -11,7 +11,7 @@
 <select id="gymlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select gym_code, mem_name from member where mem_type='ADMIN_SUB' and mem_status ='1'
+	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
 </select>
 
 
@@ -19,32 +19,58 @@
 <select id="trainerALLlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select * from member where mem_type='TRAINER' and mem_status ='1'
+	select * from member where authority='ROLE_TRAINER' and enabled ='1'
 </select>
 
 <!-- 선택된 트레이너 보여주기 -->
 <select id="trainerlistSelect"
 	parameterType="String"
 	resultType="global.dto.MemberDTO">
-	select * from member where mem_type='TRAINER' and mem_status ='1' and gym_code=#{gym_code}
+	select * from member where authority='ROLE_TRAINER' and enabled ='1' and gym_code=#{gym_code}
 </select>
 
 <!-- 트레이너 상세 정보 보여주기 -->
 <select id="trainerInfoSelect"
-	parameterType="global.dto.MemberDTO"
+	parameterType="String"
 	resultType="global.dto.MemberDTO">
 	select * from member 
-		where mem_type='TRAINER' and mem_id=#{mem_id}
+		where authority='ROLE_TRAINER' and mem_id=#{mem_id}
 </select>
 
 <!-- 트레이너 상세 정보중 지점명 보여주기(지점코드로 받아서 지점명으로 변환하는 과정) -->
 <select id="gymInfoSelect"
-	parameterType="global.dto.MemberDTO"
+	parameterType="String"
 	resultType="String">
 	select mem_name from member 
-		where mem_type='ADMIN_SUB' and gym_code=#{gym_code}
+		where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
 		and mem_status ='1'
 </select>
+
+<!-- 트레이너에 대한 평점 보여주기 -->
+<select id="gradeSelete"
+	parameterType="String"
+	resultType="int">
+	select ceil(avg(review_grade)) from review 
+		where review_type='TRAINER' and review_subject =#{review_subject}
+</select>
+
+<!-- 트레이너에 대한 후기 보여주기 -->
+<select id="reviewSelect"
+	parameterType="String"
+	resultType="global.dto.ReviewDTO">
+	select * from review 
+		where review_type='TRAINER' and review_subject=#{review_subject}
+		order by review_regidate desc
+</select>
+
+<!-- 트레이너 후기 등록 -->
+<insert id="reviewInsert"
+	parameterType="global.dto.ReviewDTO">
+	insert into REVIEW (review_idx, review_type, review_subject, review_comment, mem_id, review_grade)
+    	values(bodycoding_seq.nextval, 'TRAINER', #{review_subject}
+    	, #{review_comment}, #{mem_id}, #{review_grade})
+
+</insert>
 
 <!-- 모든 유형 상품 보여주기 -->
 <select id="product_categoryALLSelect"

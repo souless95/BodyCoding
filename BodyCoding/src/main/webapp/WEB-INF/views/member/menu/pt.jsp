@@ -12,7 +12,7 @@
 </style>
 </head>
 <body>
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 
 
 <section class="page_wrap"> 
@@ -40,6 +40,6 @@
 </section>
 
 		
-<%@ include file ="../inc/Bottom.jsp" %>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

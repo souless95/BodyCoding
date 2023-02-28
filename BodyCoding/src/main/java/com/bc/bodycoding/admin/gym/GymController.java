@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -39,115 +40,86 @@ public class GymController {
    }   
    //상세보기
    @RequestMapping("/gymdetail.do")
-   public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO, HttpServletRequest req) {
-      try {
-         String path = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
-         Map<String, Integer> fileMap = new HashMap<String, Integer>();
-         
-         File file = new File(path);
-         File[] fileArray = file.listFiles();
-         for(File f : fileArray) {
-            fileMap.put(f.getName(), (int)Math.ceil(f.length()/1024.0));
-         }
-         model.addAttribute("fileMap", fileMap);
-      } catch (Exception e) {}
-      
+   public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
       gymDTO = gymdao.selectOnegym(gymDTO);
       memberDTO = gymdao.selectOneMember(memberDTO);
       model.addAttribute("memList", memberDTO);
       model.addAttribute("dto", gymDTO);
-      System.out.println(memberDTO);
-      System.out.println(gymDTO);
       
       return "admin/gym/gymDetail";
    }
    
-   //수정하기
-   @RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
-      public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
-      String rootPath = System.getProperty("user.dir");
-      //파일 경로
-      String fileDir = rootPath + "\\src\\main\\resources\\static\\uploads";
-      System.out.println("fileDir="+fileDir);
-      try {
-         String path = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
-      } catch (Exception e) {}
-      gymDTO = gymdao.selectOnegym(gymDTO);
-      memberDTO = gymdao.selectOneMember(memberDTO);
-      model.addAttribute("dto", gymDTO);
-      model.addAttribute("memList", memberDTO);
-      System.out.println(memberDTO);
-      System.out.println(gymDTO);
-      return "admin/gym/gymEdit";
-   }
-   @RequestMapping(value="/gymedit.do", method=RequestMethod.POST)
-   public String gym5(GymDTO gymDTO, HttpServletRequest req) {
-      int size = 1024 * 1024 * 10; //10메가
-      //Map 생성
-      Map<String, Object> fileMap = new HashMap<>();
-      try {
-         //ResourceUtils : 파일을 불러올때 쓰는것같음(사실 잘 모름 아는사람 알려주셈)
-         String path = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
-         //DefaultFileRenamePolicy : 똑같은 이름이 있을때 이름뒤에 1,2,3을 자동으로 붙여줌
-         MultipartRequest multi = new MultipartRequest(req, path,
-               size, "UTF-8", new DefaultFileRenamePolicy());
-         
-         //List 컬렉션 생성
-         List<Map<String, String>> fileLists = new ArrayList<>();
-         //Enumeration : 데이터를 한번에 출력할수잇게 해준다는데 이것도 잘모름
-         Enumeration files = multi.getFileNames();
-         while(files.hasMoreElements()) {
-            //파일을 선택했던 input의 name속성을 가져온다.
-            String str = (String)files.nextElement();
-            
-            //Map객체에 원본파일명과 저장된파일명을 저장한다.
-            Map<String, String> fileObj = new HashMap<>();
-            fileObj.put("gym_dtail_img", multi.getFilesystemName(str));
-            
-            //Map배열에 파일 하나의 정보를 추가한다.
-            fileLists.add(fileObj);
-         }
-         //Map 컬렉션에 저장
-         fileMap.put("fileLists", fileLists);
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-      System.out.println(fileMap);
-//      int resultimg = gymdao.updateimg(fileMap);
-      int result = gymdao.update(gymDTO);
-      if(result==1) System.out.println("수정되었습니다.");
-      return "redirect:/gymadminlist.do";
-   }
-   
    //지점 등록페이지로 이동
-   @GetMapping("/gymRegist.do")
+   @RequestMapping("/admin/gym/gymRegist")
    public String  registASUB(Model model) {
-      model.addAttribute("mem_type","admin_sub");
       return "admin/gym/gymRegist";
    }
    
    //지점 등록 폼 받아서 등록
-   @PostMapping("/gymRegist.do")
+   @RequestMapping(value="/gymRegist.do", method=RequestMethod.POST)
    @Transactional
-   public String registASUB2(MemberDTO memberDTO, GymDTO gymDTO) {
-      try {
-         int count = gymdao.codeCheck(gymDTO);
+   public String registASUB2(MemberDTO memberDTO, GymDTO gymDTO, HttpServletRequest req) {
+	   try {
+		   String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(memberDTO.getMem_pass());
+	       System.out.println(passwd);
+	       memberDTO.setMem_pass(passwd);
+	       
+		   int size = 1024 * 1024 * 10;
+           String path = ResourceUtils
+          		 .getFile("classpath:static/uploads/gym")
+          		 .toPath().toString();
+           System.out.println("지점 상세이미지 저장경로 :"+ path);
+           MultipartRequest multi = new MultipartRequest(req, path,
+                 size, "UTF-8", new DefaultFileRenamePolicy());
+           
+           Enumeration files = multi.getFileNames();
+           String str = (String)files.nextElement();
+           
+         int count = gymdao.codeCheck(multi.getParameter("gym_code"));
          if(count==1) { 
             System.out.println("이미 등록된 지점입니다.");
             return "admin/gym/gymRegist";
          }
          else {
-            int result1 = gymdao.insertMember1(gymDTO);
-            int result = gymdao.insertMemberASUB(memberDTO);
-            if(result==1) System.out.println("회원가입이 완료되었습니다.");
-            return "redirect:/gymadminlist.do";
+             memberDTO.setMem_id(multi.getParameter("mem_id"));
+ 			 memberDTO.setMem_pass(multi.getParameter("mem_pass"));
+ 			 memberDTO.setMem_name(multi.getParameter("mem_name"));
+ 			 memberDTO.setMem_phone(multi.getParameter("mem_phone"));
+ 			 memberDTO.setMem_address(multi.getParameter("mem_address"));
+ 			 memberDTO.setGym_code(multi.getParameter("gym_code"));
+ 			 memberDTO.setMem_comment(multi.getParameter("mem_comment"));
+ 			 memberDTO.setMem_img(multi.getOriginalFileName(str));
+ 			 System.out.println("파일 업로드 성공");
          }
       } 
       catch (Exception e) {
          e.printStackTrace();
-         System.out.println("안됨 ㅋ");
+         System.out.println("등록 실패했습니다.");
          return "redirect:/gymRegist.do";
       }
+      int result1 = gymdao.insertMember1(memberDTO);
+      int result = gymdao.insertMemberASUB(memberDTO);
+      if(result==1) System.out.println("등록이 완료되었습니다.");
+      return "redirect:/gymadminlist.do";
+   }
+   
+   //수정하기
+   @RequestMapping(value="/gymedit.do", method=RequestMethod.GET)
+      public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
+      gymDTO = gymdao.selectOnegym(gymDTO);
+      memberDTO = gymdao.selectOneMember(memberDTO);
+      model.addAttribute("dto", gymDTO);
+      model.addAttribute("memList", memberDTO);
+      System.out.println(gymDTO);
+      System.out.println(memberDTO);
+      return "admin/gym/gymEdit";
+   }
+   @RequestMapping(value="/gymedit.do", method=RequestMethod.POST)
+   public String gym5(GymDTO gymDTO, MemberDTO memberDTO) {
+	   int result = gymdao.update(gymDTO);
+	   int result1 = gymdao.updateM(memberDTO);
+       if(result==1) System.out.println("수정되었습니다.");
+       return "redirect:/gymadminlist.do";
    }
    
    //삭제

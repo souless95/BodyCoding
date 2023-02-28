@@ -1,6 +1,8 @@
 package com.bc.bodycoding.account;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +50,8 @@ public class AccountController {
 		System.out.println(memberDTO.getMem_pass());
 		try {
 			session.setAttribute("UserInfo", accountdao.login(memberDTO));
+			session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
+			session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
 			System.out.println(memberDTO);
 			return "redirect:main";
 		}
@@ -62,6 +66,49 @@ public class AccountController {
 	public String logout1(HttpSession session) {
 		session.invalidate();
 		return "redirect:main";
+	}
+	
+	//비밀번호 확인 페이지로 넘어가기
+	@GetMapping("pwcheck")
+	public String pwcheck(HttpServletRequest req){
+		return "member/mypage/pwCheck";
+	}
+	
+	//비밀번호 확인후 정보수정 페이지로 넘어가기
+	@PostMapping("pwcheck")
+	public String pwcheck1(HttpServletRequest req){
+		String mem_passCheck = accountdao.pwCheck(req.getParameter("mem_id"));
+		String mem_pass = req.getParameter("mem_pass");
+		System.out.println(req.getParameter("mem_pass"));
+		System.out.println(mem_pass);
+		if(mem_pass.equals(mem_passCheck)) {
+			return "redirect:memberEdit.do?mem_id="+req.getParameter("mem_id");
+		}
+		return "redirect:pwcheck";
+	}
+	
+	//탈퇴페이지 넘어가기
+	@GetMapping("delete")
+	public String delete() {
+		return "member/mypage/delete";
+	}
+	
+	//탈퇴하기
+	@PostMapping("/delete")
+	public String delete1(HttpServletRequest req, HttpSession session) {
+		String mem_id = req.getParameter("mem_id"); 
+		System.out.println(mem_id);
+		int result = accountdao.deleteMember(mem_id);
+		System.out.println(result);
+//		if(result==1) {
+//			session.invalidate();
+//			System.out.println("탈퇴 성공");
+			return "redirect:main";
+//		}
+//		else {
+//			System.out.println("탈퇴 실패");
+//			return "delete";
+//		}
 	}
 
 

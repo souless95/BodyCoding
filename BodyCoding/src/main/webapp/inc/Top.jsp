@@ -41,21 +41,21 @@ function logoutcheck(){
 								<li class="current"><a href="/main">Home</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
 								<li>
-									<a href="#">BodyCoding</a>
+									<a href="introgym">BodyCoding</a>
 									<ul>
-										<li><a href="/menu/introgym.jsp">바디코딩소개</a></li>
+										<li><a href="introgym">바디코딩소개</a></li>
 																				
 									</ul>
 								</li>
 								
 								<li>
-							<a href="#"> 프로그램</a>
+							<a href="health"> 프로그램</a>
 							<ul>
-								<li><a href="../menu/health.jsp">헬스</a></li>
-								<li><a href="../menu/pt.jsp">PT</a></li>
-								<li><a href="../menu/yoga.jsp">요가</a></li>
-								<li><a href="#">GX</a></li>
-								<li><a href="#">필라테스</a></li>
+								<li><a href="health">헬스</a></li>
+								<li><a href="pt">PT</a></li>
+								<li><a href="yoga">요가</a></li>
+								<li><a href="gx">GX</a></li>
+								<li><a href="pila">필라테스</a></li>
 							</ul>
 						</li>
 						
@@ -67,15 +67,15 @@ function logoutcheck(){
 						</li>
 						
 						<li>
-							<a href="#">트레이너</a>
+							<a href="trainer">트레이너</a>
 							<ul>
-								<li><a href="#">트레이너정보</a></li>
+								<li><a href="trainer">트레이너정보</a></li>
 							</ul>
 						</li>
 						
 						
 						<li>
-							<a href="#">상품몰</a>
+							<a href="product">상품몰</a>
 						</li>
 						
 						<li>
@@ -86,8 +86,7 @@ function logoutcheck(){
 								<li><a href="#">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
-						
-						<li>
+<!-- 						<li>
 							<a href="../menu/myinfo.jsp">마이페이지</a>
 							<ul> 
 								<li><a href="#">이용내역</a></li>
@@ -95,15 +94,18 @@ function logoutcheck(){
 								<li><a href="#">운동관리</a></li>
 								<li><a href="#">정보수정</a></li>
 							</ul>
-						</li>
-							
-					
-					
+						</li> -->
 						<c:if test="${not empty UserName}">
 						<li>
 			                    ${UserName}님 환영합니다.
 			            </li>
-						<li><a href="#">마이페이지</a>
+						<li><a href="mypage.do?gym_code=${UserInfo.gym_code }">마이페이지</a>
+							<ul> 
+								<li><a href="#">이용내역</a></li>
+								<li><a href="#">활동내역</a></li>
+								<li><a href="#">운동관리</a></li>
+								<li><a href="#">정보수정</a></li>
+							</ul>
 			            </li>
 						<li>
 			                    <a href="#" onclick="logoutcheck()">로그아웃</a>

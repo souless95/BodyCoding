@@ -1,6 +1,8 @@
 package com.bc.bodycoding.main;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
+import global.dto.ReviewDTO;
+import lombok.Data;
 
 @Controller
 public class MemberMainController {
@@ -29,9 +33,11 @@ public class MemberMainController {
 	@ResponseBody
 	public List<MemberDTO> trainer(String gym_code) {
 		List<MemberDTO> trainerList;
+		//지점 value가 - 이면 모든 트레이너 보여주기
 		if(gym_code.equals("-")) {
 			trainerList = maindao.trainerALLlistSelect();
 		}
+		//지점에 맞는 트레이너 보여주기
 		else {
 			trainerList = maindao.trainerlistSelect(gym_code);
 		}
@@ -41,9 +47,57 @@ public class MemberMainController {
 	//회원창에서 트레이너 상세정보 보여주기
 	@RequestMapping("trainerInfo")
 	public String trainerInfo(Model model, MemberDTO memberDTO) {
-		model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO));
-		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO));
-		System.out.println(maindao.trainerInfoSelect(memberDTO));
+		//트레이너 지점이름
+		model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO.getGym_code()));
+		//트레이너 정보
+		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO.getMem_id()));
+		
+		//트레이너 평점
+		Integer avg_grade = 0;
+		if(maindao.gradeSelete(memberDTO.getMem_id())!= null) {
+			avg_grade = maindao.gradeSelete(memberDTO.getMem_id());
+		}
+		model.addAttribute("avg_grade", avg_grade);
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		Date now = new Date();
+		String now_dt = format.format(now);
+		System.out.println(now_dt);
+		model.addAttribute("nowdate",now_dt);
+		//리뷰
+		model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
+		return "member/main/trainerInfo";
+	}
+	
+	//트레이너 후기 작성
+	@RequestMapping("trainerReview")
+	public String trainerReview(Model model, MemberDTO memberDTO, ReviewDTO reviewDTO) {
+		int result = maindao.reviewInsert(reviewDTO);
+		if(result==1){
+			System.out.println("리뷰 등록 완료");
+		}
+		else {
+			System.out.println("리뷰 등록 실패");
+		}
+		//트레이너 지점이름
+		model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO.getGym_code()));
+		//트레이너 정보
+		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(reviewDTO.getReview_subject()));
+		
+		//트레이너 평점
+		Integer avg_grade = 0;
+		if(maindao.gradeSelete(reviewDTO.getReview_subject())!= null) {
+			avg_grade = maindao.gradeSelete(reviewDTO.getReview_subject());
+		}
+		model.addAttribute("avg_grade", avg_grade);
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		Date now = new Date();
+		String now_dt = format.format(now);
+		System.out.println(now_dt);
+		model.addAttribute("nowdate",now_dt);
+		//리뷰
+		model.addAttribute("reviewInfo", maindao.reviewSelect(reviewDTO.getReview_subject()));
 		return "member/main/trainerInfo";
 	}
 	
@@ -58,13 +112,13 @@ public class MemberMainController {
 	@ResponseBody
 	public List<ProductDTO> product(String product_type){
 		List<ProductDTO> productlist;
+		//모든 상품 보여주기
 		if(product_type.equals("-")) {
 			productlist = maindao.product_categoryALLSelect();
 		}
+		//상품 유형에 맞는 상품 	보여주기
 		else {
-			System.out.println("11111");
 			productlist = maindao.product_categorySelect(product_type);
-			System.out.println("22222");
 		}
 		return productlist;
 	}

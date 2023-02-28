@@ -153,11 +153,12 @@ public class SocialAccountController {
 				kakaoregister.put("mem_gender", mem_gender);
 				int result_kakao = socialdao.kakaoinsert(kakaoregister);
 				model.addAttribute("UserEmail",mem_id);
-				return "member/account/kakaologin";
+				return "member/account/kakaoLogin";
 			}
 			
 			else {
 				session.setAttribute("UserName", mem_name);
+				session.setAttribute("UserEmail", mem_id);
 				return "redirect:main"; 
 			}
 			
@@ -171,6 +172,7 @@ public class SocialAccountController {
 				System.out.println("카카오 정보 추가등록 완료");
 			}
 			session.setAttribute("UserName", memberDTO.getMem_name());
+			session.setAttribute("UserEmail", memberDTO.getMem_id());
 			return "redirect:main";
 		}
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 	
 <!-- 페이지 내용  작성할-->
 <section class="page_wrap">
@@ -34,7 +34,7 @@
 
 
 <!--  여기부터 바텀 -->
-<%@ include file ="../inc/Bottom.jsp" %>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 	
 </body>
 </html>

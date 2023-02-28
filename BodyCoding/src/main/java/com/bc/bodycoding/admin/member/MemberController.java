@@ -17,7 +17,7 @@ public class MemberController {
 	//admin에서 회원목록 보여주기
 	@RequestMapping("/memberList.do")
 	public String listM(Model model) {
-		//model.addAttribute("mem_type","member");
+		//model.addAttribute("authority","member");
 		model.addAttribute("memberList", memberdao.select());
 		return "admin/member/memberList";
 	}

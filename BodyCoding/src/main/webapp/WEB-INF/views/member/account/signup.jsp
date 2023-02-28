@@ -95,7 +95,7 @@
     <h2 class="mb-1">회원가입</h2>
     </div>
     <form method="post" action="/signup.do" class="validation-form" novalidate>
-    	<input type="hidden" id="mem_status" name="mem_status" value="1">
+    	<input type="hidden" id="enabled" name="enabled" value="1">
 	    
 	    <div>
     	 <div class="mb-1" >
@@ -199,7 +199,7 @@
 		
 		 <div class="mb-1">
 			<input type="hidden" class="form-control" id="mem_point" name="mem_point" value="0">
-			<input type="hidden" class="form-control" id="mem_type" name="mem_type" value="MEMBER">
+			<input type="hidden" class="form-control" id="authority" name="authority" value="MEMBER">
 	        <br>
 	        <label for="mem_height">키</label>
 	        <input type="number" class="form-control" id="mem_height" name="mem_height" onkeydown="checkNoneheight()" step="0.01" required>
@@ -365,6 +365,8 @@
     	}
     	
     	document.getElementById("telFinal").value = tel1.value + "-" + tel2.value + "-" + tel3.value;
+    	
+    	/* forms.submit(); */
     }
     
     function checkNone(){
@@ -374,13 +376,8 @@
     	if(tel1.value!="" && tel2.value!="" && tel3.value!=""){
     		document.getElementById("phonecheck").style.display = 'none';
     	}
-<<<<<<< HEAD
-    	if(tell1.value=="" || tell2.value=="" || tell3.value==""){
-    		document.getElementById("phonecheck").style.display = 'inline-block';
-=======
     	if(tel1.value=="" || tel2.value=="" || tel3.value==""){
     		document.getElementById("phonecheck").style.display = 'inline';
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
     	}
     	
     	const gc = document.getElementsByName("mem_gender");
@@ -420,18 +417,15 @@
     }
         
     </script>
-=======
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
-=======
 
-<script type="text/javascript">
-	function commonFocusMove(thisObj, numLength, nextObj){
-		var obj1 = document.getElementById(thisObj);
-		var strLen2 = obj1.value.length;
-		if(strLen2 == numLength){
-			document.getElementById(nextObj).focus();
+	<script type="text/javascript">
+		function commonFocusMove(thisObj, numLength, nextObj){
+			var obj1 = document.getElementById(thisObj);
+			var strLen2 = obj1.value.length;
+			if(strLen2 == numLength){
+				document.getElementById(nextObj).focus();
+			}
 		}
-	}
 	
 	 /* const frms = document.getElementsByClassName('validation-form');
 	    window.addEventListener('load', () => {      
@@ -703,6 +697,5 @@
       	}
       }
 </script>
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

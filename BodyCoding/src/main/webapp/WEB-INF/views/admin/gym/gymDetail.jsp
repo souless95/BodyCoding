@@ -30,13 +30,7 @@
 	        	</div>
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
-					<c:forEach items="${fileMap }" var="file" varStatus="vs">
-						<tr>
-							<td><img src="uploads/${file.key }" width="200" 
-									height="150" /></td>
-						</tr>
-					</c:forEach>
-					<%-- <div>${dto.gym_dtail_img }</div> --%>	
+					<div><img src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
 					<h4>기본정보</h4>
 					<table class="table" border=2>
 						<tr>

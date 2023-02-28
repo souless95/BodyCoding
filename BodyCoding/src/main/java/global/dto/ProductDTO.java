@@ -41,4 +41,8 @@ public class ProductDTO {
 	private String mem_name;
 	//트레이너 이미지
 	private String mem_img;
+	//회원 아이디
+	private String mem_id;
+	//트레이너 아이디
+	private String trainer_id;
 }

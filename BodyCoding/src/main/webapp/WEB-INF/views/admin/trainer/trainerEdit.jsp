@@ -57,7 +57,7 @@
 						      	</tr>
 							    <tr>
 						       	 	<th>계정상태</th>
-							        <td><input type="text" name="mem_status" value="${trainer.mem_status}"/></td>
+							        <td><input type="text" name="enabled" value="${trainer.enabled}"/></td>
 							    </tr>
 							</table>
 							<table class="table" border="2">	

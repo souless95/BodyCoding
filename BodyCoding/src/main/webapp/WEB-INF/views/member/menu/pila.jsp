@@ -109,7 +109,7 @@ label.invisible{*position:Absolute;}
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 
 <!-- <div class="sub0202_wrap">
 	<img src="../static/assets/images//ready/sub0202_all_new_pc.jpg" alt="" class="pc_img" style="width:100%;"/>
@@ -244,6 +244,6 @@ label.invisible{*position:Absolute;}
 
 
 
-<%@ include file ="../inc/Bottom.jsp" %>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

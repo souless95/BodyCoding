@@ -14,10 +14,10 @@ body{
 }
 </style>
 </head>
-<%@ include file = "../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 <body>
 	 <div class="container">
-	 	<%@ include file ="../../member/inc/mypageside.jsp" %>
+	 	<%@ include file ="../../../../inc/mypageside.jsp" %>
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
 	        	<div class="card-header">
@@ -37,5 +37,5 @@ body{
 		</div>
 	</div>
 </body>
-<%@ include file = "../inc/Bottom.jsp" %>	
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

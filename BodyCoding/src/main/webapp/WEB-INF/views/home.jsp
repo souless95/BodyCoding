@@ -38,10 +38,6 @@
 	<ul>
 		<li><a href="delete">탈퇴</a></li>
 	</ul>
-	<ul>
-		<li><a href="main2">member 메인페이지(세영 연습)</a></li>
-	</ul>
-	
 	
 </body>
 </html>

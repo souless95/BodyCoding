@@ -43,16 +43,30 @@ public class MainController {
 		return "member/main";
 	}
 	
-	//회원메인창으로 넘어가기(세영연습)
-	@GetMapping("main2")
-	public String membermain2(HttpSession session) {
-		session.getAttribute("UserName");
-		return "member/main2";
+	@RequestMapping("gx")
+	public String gx() {
+		return "member/menu/gx";
 	}
-	
-	
-	
-	
+	@RequestMapping("health")
+	public String health() {
+		return "member/menu/health";
+	}
+	@RequestMapping("introgym")
+	public String introgym() {
+		return "member/menu/introgym";
+	}
+	@RequestMapping("pila")
+	public String pila() {
+		return "member/menu/pila";
+	}
+	@RequestMapping("pt")
+	public String pt() {
+		return "member/menu/pt";
+	}
+	@RequestMapping("yoga")
+	public String yoga() {
+		return "member/menu/yoga";
+	}
 	
 	
 	//json불러오기 실험

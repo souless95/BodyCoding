@@ -35,7 +35,9 @@
 	<ul>
 		<li><a href="pwcheck">마이페이지</a></li>
 	</ul>
-	
+	<ul>
+		<li><a href="delete">탈퇴</a></li>
+	</ul>
 	
 </body>
 </html>

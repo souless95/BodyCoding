@@ -12,7 +12,7 @@
 		resultType='global.dto.MemberDTO'>
 		select mem_name, mem_phone, mem_address 
 		from member
-		where gym_code=#{gym_code} and mem_type='ROLE_ADMIN_SUB'
+		where gym_code=#{gym_code} and authority='ROLE_ADMIN_SUB'
 	</select>
 	
 	<select id="basicListG"

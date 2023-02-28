@@ -30,7 +30,7 @@
 		                                    	<h3 class="text-center font-weight-light my-4">지점등록</h3>
 		                                    </div>
 		                                    <div class="card-body">
-		                                        <form method="post" action="/gymRegist.do">
+		                                        <form method="post" action="/gymRegist.do" enctype="multipart/form-data">
 		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                <input type="hidden" id="mem_status" name="enabled" value="1">

@@ -21,7 +21,7 @@ ol, ul {
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 
 <div class="location_wrap" style="text-align:center;">
  	<div class="pro" style="text-align:center; margin-top:10px;">
@@ -157,6 +157,6 @@ ol, ul {
 		<!-- //내용영역 -->
 	</div>
 	<!-- //컨텐츠 영역 -->
-<%@ include file ="../inc/Bottom.jsp" %>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

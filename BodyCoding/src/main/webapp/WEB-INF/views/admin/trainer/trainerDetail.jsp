@@ -52,7 +52,7 @@
 						      	</tr>
 							    <tr>
 						       	 	<th>계정상태</th>
-							        <td>${trainerList.mem_status }</td>
+							        <td>${trainerList.enabled }</td>
 							    </tr>
 							</table>
 							<table class="table" border="2">	

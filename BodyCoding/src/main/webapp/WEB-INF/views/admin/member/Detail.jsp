@@ -82,7 +82,7 @@
 					       	</tr>
 					       	<tr>
 					       	 	<th>계정상태</th>
-					       	 	<td>${dto.mem_status }</td>
+					       	 	<td>${dto.enabled }</td>
 					       	</tr>
 					    </table>
 	        			<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">

@@ -6,16 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function logoutcheck(){
-	
-	var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
-	
-	if(confirmed){
-		location.href="logout.do"
-	}
-}
-</script>
 </head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8" />
@@ -31,7 +21,8 @@ function logoutcheck(){
 	<link rel="stylesheet" href="static/assets/css/main.css" />
 </head>
 <body class="is-preload">
-	<%@ include file="../member/inc/Top.jsp" %>
+	<%-- <%@ include file="../member/inc/Top.jsp" %> --%>
+	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
 		<!-- Posts -->
 		
@@ -91,6 +82,6 @@ function logoutcheck(){
 	
 	<!-- Bottom -->
 	
-	<%@ include file="../member/inc/Bottom.jsp" %>
+	<%@ include file="../../../inc/Bottom.jsp" %>
 </body>
 </html>

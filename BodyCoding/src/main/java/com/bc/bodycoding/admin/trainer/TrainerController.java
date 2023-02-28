@@ -24,7 +24,7 @@ public class TrainerController {
 	//트레이너 등록 페이지로 이동
 	@GetMapping("/trainerRegist.do")
 	public String signupT(Model model) {
-		model.addAttribute("mem_type","trainer");
+		model.addAttribute("authority","trainer");
 		return "admin/trainer/trainerRegist";
 	}
 
@@ -125,7 +125,7 @@ public class TrainerController {
 			memberDTO.setMem_birth(multi.getParameter("mem_birth"));
 			memberDTO.setMem_phone(multi.getParameter("mem_phone"));
 			memberDTO.setMem_address(multi.getParameter("mem_address"));
-			memberDTO.setMem_status(multi.getParameter("mem_status"));
+			memberDTO.setAuthority(multi.getParameter("authority"));
 			memberDTO.setGym_code(multi.getParameter("gym_code"));
 			memberDTO.setMem_career(multi.getParameter("mem_career"));
 			memberDTO.setMem_comment(multi.getParameter("mem_comment"));

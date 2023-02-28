@@ -45,6 +45,30 @@ public class MainController {
 		return "member/main";
 	}
 	
+	@RequestMapping("gx")
+	public String gx() {
+		return "member/menu/gx";
+	}
+	@RequestMapping("health")
+	public String health() {
+		return "member/menu/health";
+	}
+	@RequestMapping("introgym")
+	public String introgym() {
+		return "member/menu/introgym";
+	}
+	@RequestMapping("pila")
+	public String pila() {
+		return "member/menu/pila";
+	}
+	@RequestMapping("pt")
+	public String pt() {
+		return "member/menu/pt";
+	}
+	@RequestMapping("yoga")
+	public String yoga() {
+		return "member/menu/yoga";
+	}
 	
 	//시큐리티 로그인용
 	@RequestMapping("/adminLogin.do")

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- Header -->
-	<%@ include file="../../member/inc/Top.jsp" %>
+	<%@ include file="../../../../inc/Top.jsp" %>
 	
 	<!-- body부분 -->
 	<!-- 자유게시판 리스트가 나와야 하는 부분임 -->
@@ -42,6 +42,6 @@
         </table>
 	</div>
 	<!-- footer -->
-	<%@ include file="../../member/inc/Bottom.jsp" %>
+	<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

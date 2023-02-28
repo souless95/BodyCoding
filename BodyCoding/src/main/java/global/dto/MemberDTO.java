@@ -17,8 +17,8 @@ public class MemberDTO {
 	private String mem_birth;
 	private String mem_phone;
 	private String mem_address;
-	private String authority; //mem_type -> authority로 변경
-	private String enabled; //mem_status --> enabled 변경
+	private String authority;
+	private String enabled;
 	private String gym_code;
 	private Float  mem_height;
 	private Float  mem_weight;

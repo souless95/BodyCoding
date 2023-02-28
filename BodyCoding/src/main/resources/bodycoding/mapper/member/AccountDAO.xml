@@ -24,7 +24,7 @@
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
 	select mem_name, gym_code, mem_id from member
-    	where mem_id=#{mem_id} and mem_pass=#{mem_pass}
+    	where mem_id=#{mem_id} and mem_pass=#{mem_pass} and enabled ='1'
 </select>
 
 <!-- 카카오로 회원가입 되어있는지 확인 -->
@@ -63,7 +63,7 @@
 <update id="deleteMember"
 	parameterType="String">
 	update member 
-		set mem_status='0' where mem_id = #{mem_id}
+		set enabled='0' where mem_id = #{mem_id}
 </update>
 
 

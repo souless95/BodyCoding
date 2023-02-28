@@ -100,15 +100,15 @@ public class AccountController {
 		System.out.println(mem_id);
 		int result = accountdao.deleteMember(mem_id);
 		System.out.println(result);
-//		if(result==1) {
-//			session.invalidate();
-//			System.out.println("탈퇴 성공");
+		if(result==1) {
+			session.invalidate();
+			System.out.println("탈퇴 성공");
 			return "redirect:main";
-//		}
-//		else {
-//			System.out.println("탈퇴 실패");
-//			return "delete";
-//		}
+		}
+		else {
+			System.out.println("탈퇴 실패");
+			return "delete";
+		}
 	}
 
 

@@ -30,7 +30,7 @@ public class SecurityConfiguration {
 
 		http
             .authorizeRequests()
-            .antMatchers("/").permitAll()
+            .antMatchers("/**").permitAll()
             .antMatchers("/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
 			.antMatchers("/admin/gym/gymRegist").hasRole("ADMIN_SUPER")	
 			.antMatchers("/admin/gym/gymEdit").hasRole("ADMIN_SUB")	

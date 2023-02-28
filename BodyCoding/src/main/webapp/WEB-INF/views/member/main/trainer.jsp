@@ -12,6 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%@ include file="../../../../inc/Top.jsp" %>
 <script type="text/javascript">
 function trainerInfo(mem_id, gym_code){
 	let f = document.frm;
@@ -57,25 +58,27 @@ function errCallBack(errData){
 	console.log(errData.status+":"+errData.statusText);
 }
 </script> 
- <h2>트레이너 목록</h2>
-<hr>
-<h5>
-<select id="gym_code" required>
-    <option value="-">지점</option>
-	<c:forEach items="${gymList }" var="gym" varStatus="loop">
-    <option value="${gym.gym_code }">${gym.mem_name }</option>
-	</c:forEach>
-</select>
-<input type="button" value="지점선택" id="gymchoice"> </h5>
-
-
-<form name="frm" method="post" >
-	<input type="hidden" id="mem_id" name="mem_id">
-	<input type="hidden" id="gym_code" name="gym_code">
-</form>
+<div class="container">
+	 <h2>트레이너 목록</h2>
+	<hr>
+	<h5>
+	<select id="gym_code" required>
+	    <option value="-">지점</option>
+		<c:forEach items="${gymList }" var="gym" varStatus="loop">
+	    <option value="${gym.gym_code }">${gym.mem_name }</option>
+		</c:forEach>
+	</select>
+	<input type="button" value="지점선택" id="gymchoice"> </h5>
 	
-<div id="show_data" class="card m-2" style="width:150px" >
-
+	
+	<form name="frm" method="post" >
+		<input type="hidden" id="mem_id" name="mem_id">
+		<input type="hidden" id="gym_code" name="gym_code">
+	</form>
+		
+	<div id="show_data" class="card m-2" style="width:150px" >
+	</div>
 </div>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

@@ -122,7 +122,7 @@ div{
 				</div>
 				<div class="card">
 					<div class="card-header">
-						<a class="btn" href="#"> 정보수정 </a>
+						<a class="btn" href="pwcheck"> 정보수정 </a>
 					</div>
 				</div>
 			</div>

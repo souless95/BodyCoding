@@ -201,7 +201,7 @@
         
         <!-- <button type="submit" class="btn btn-primary btn-lg btn-block">수정하기</button> -->
        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="return totalcheck(this);">수정하기</button>
-        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="return totalcheck(this);">탈퇴하기</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='delete'">탈퇴하기</button>
         
      	</form>
   	

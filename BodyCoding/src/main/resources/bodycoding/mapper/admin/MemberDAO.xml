@@ -19,6 +19,16 @@
 		select * from MEMBER where mem_id=#{mem_id}
 	</select>
 
+	<update id="pointUpdate"
+		parameterType="global.dto.MemberDTO">
+		update MEMBER set mem_point = mem_point + #{mem_point} where mem_id=#{mem_id}
+	</update>
+	
+	<select id="selectPoint"
+		parameterType="String"
+		resultType="String">
+		select mem_point from MEMBER where mem_id=#{mem_id}	
+	</select>
 </mapper>	
 	
 	

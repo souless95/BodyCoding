@@ -68,13 +68,10 @@ $(function(){
        let product_price = $("label[for='"+product_name+"']").text();
        let gym_code = $('#gymSelect').val();
        
-       $('#trainer_id').val(trainer_id);
-       $('#product_idx').val(product_idx);
-       $('#product_name').val(product_name);
-       $('#product_price').val(product_price);
-       $('#gym_code').val(gym_code);
-       
        const payInfo = {
+    		 trainer_id : trainer_id,
+    		 product_idx : product_idx,
+    		 gym_code : gym_code,
              product_name : product_name,
              product_price : product_price
        }
@@ -84,8 +81,14 @@ $(function(){
          data : payInfo,
          dataType:"json",
          success:function(data){
-            console.log(data);
-            $('form').submit();
+ 			if(data.status === 500){
+				alert("카카오페이결제를 실패하였습니다.")
+			} 
+ 			else{
+ 				console.log("페이 진입");
+	            console.log(data);
+				location.href = data.next_redirect_pc_url;
+			}
          },
          error:function(error){
             alert(error);
@@ -171,14 +174,5 @@ function errCallBackT(errData){
       <td><button id="kPayBtn">카카오페이 결제!!!</button> </td>
    </tr>
 </table>
-
-<form id="paySuccess" action="purchaseApproval.do" method="post" style="display:none;" >
-<input type="hidden" value="${mem_id}" name="mem_id">
-<input type="hidden" id="trainer_id" name="trainer_id">
-<input type="hidden" id="product_idx" name="product_idx">
-<input type="hidden" id="product_name" name="product_name">
-<input type="hidden" id="product_price" name="product_price">
-<input type="hidden" id="gym_code" name="gym_code">
-</form>
 </body>
 </html>

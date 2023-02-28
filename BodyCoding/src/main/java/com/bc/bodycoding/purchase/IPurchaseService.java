@@ -16,4 +16,11 @@ public interface IPurchaseService {
 	public List<ProductDTO> productSelect(ProductDTO productDTO);
 	//트레이너 목록
 	public List<ProductDTO> trainerSelect(ProductDTO productDTO);
+	//구매할 멤버쉽 상품 정보 조회
+	public ProductDTO payProductSelect(ProductDTO productDTO);
+	//주문 데이터 추가
+	public int insertOrder(ProductDTO productDTO);
+	//멤버쉽 데이터 추가
+	public int insertMembership(ProductDTO productDTO);
+	
 }

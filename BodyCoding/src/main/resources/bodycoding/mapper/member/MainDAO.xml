@@ -36,6 +36,9 @@
 	        mem_address like '%'||#{searchWord}||'%' 
 	        or mem_name like '%'||#{searchWord}||'%' 
 	        or mem_phone like '%'||#{searchWord}||'%')
+=======
+	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </select>
 
 
@@ -43,14 +46,14 @@
 <select id="trainerALLlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select * from member where authority='TRAINER' and enabled ='1'
+	select * from member where authority='ROLE_TRAINER' and enabled ='1'
 </select>
 
 <!-- 선택된 트레이너 보여주기 -->
 <select id="trainerlistSelect"
 	parameterType="String"
 	resultType="global.dto.MemberDTO">
-	select * from member where authority='TRAINER' and enabled ='1' and gym_code=#{gym_code}
+	select * from member where authority='ROLE_TRAINER' and enabled ='1' and gym_code=#{gym_code}
 </select>
 
 <!-- 트레이너 상세 정보 보여주기 -->
@@ -58,7 +61,7 @@
 	parameterType="String"
 	resultType="global.dto.MemberDTO">
 	select * from member 
-		where authority='TRAINER' and mem_id=#{mem_id}
+		where authority='ROLE_TRAINER' and mem_id=#{mem_id}
 </select>
 
 <!-- 트레이너 상세 정보중 지점명 보여주기(지점코드로 받아서 지점명으로 변환하는 과정) -->
@@ -66,7 +69,7 @@
 	parameterType="String"
 	resultType="String">
 	select mem_name from member 
-		where authority='ADMIN_SUB' and gym_code=#{gym_code}
+		where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
 		and enabled ='1'
 </select>
 

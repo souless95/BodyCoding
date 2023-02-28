@@ -7,10 +7,28 @@
 	
 <mapper namespace="com.bc.bodycoding.calendar.CalendarService">
 
-<insert id="insertSchedule"
-	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
-	insert into calendar values (calendar_seq.nextval, #{title}, #{start1})
+<insert id="insertSchedule" parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+  <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+    select calendar_seq.nextval as id from dual
+  </selectKey>
+  insert into calendar (id, title, start1, end)
+  values (#{id}, #{title}, #{start1}, #{end})
 </insert>
+
+<delete id="deleteSchedule"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	delete from calendar where id=#{id}
+</delete>
+
+<update id="updateSchedule"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	update calendar set start1=#{start1}, end=#{end} where id=#{id}
+</update>
+
+<update id="updateSchedule2"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	update calendar set end=#{end} where id=#{id}
+</update>
 
 <select id="loadCList"
 	parameterType="com.bc.bodycoding.calendar.CalendarDTO"

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">바디코딩 Body Coding - Admin</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">로그인된 아이디 나오는 곳</li>
+                            <li class="breadcrumb-item active">${mem_id } 님, 좋은 아침입니다. <br /></li>
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">

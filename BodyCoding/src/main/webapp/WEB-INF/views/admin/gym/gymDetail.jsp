@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
+<link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <style type="text/css">
 .table-bordered{font-family: Verdana, Geneva, Tahoma, sans-serif;}
@@ -31,8 +31,12 @@
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
 					<div><img src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
+					<input type="hidden" id="mem_id" value="${memList.mem_id }"/>
+					<input type="file" id="mem_img" />
 					<h4>기본정보</h4>
 					<table class="table" border=2>
+						<input type="hidden" id="enabled" name="enabled" value="${memList.enabled }">
+					    <input type="hidden" id="authority" name="authority" value="${memList.authority }">
 						<tr>
 							<th>지점명</th>
 							<td>${memList.mem_name }</td>
@@ -54,7 +58,7 @@
 						<h4>편의시설</h4>
 					<table class="table" border=2>
 						<tr align="center">
-							<th><img src="../static/admin/images/0002.png"/><img src="../static/admin/images/0001.png"/></th>
+							<th><img src="../static/admin/images/0001.png"/></th>
 							<th><img src="../static/admin/images/0004.png"></th>
 							<th><img src="../static/admin/images/0005.png"></th>
 							<th><img src="../static/admin/images/0007.png"></th>
@@ -114,11 +118,14 @@
 							<td align="center">${dto.rtime_holy_end }</td>
 						</tr>
 					</table>
-					<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
+					<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
 						수정
 					</button>
 					<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
 						삭제
+					</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
+						메인으로
 					</button>
 				</div>
 			</div>

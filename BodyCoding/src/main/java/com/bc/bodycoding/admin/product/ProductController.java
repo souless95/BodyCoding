@@ -33,7 +33,7 @@ public class ProductController {
 		return "/admin/product/productList";
 	}
 
-	@RequestMapping(value = "/productRegist.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/product/productReigst", method = RequestMethod.GET)
 	public String regiForm() {
 		return "/admin/product/productRegist";
 	}
@@ -73,7 +73,6 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		
-		
 		return "redirect:productList.do";
 	}
 	
@@ -91,7 +90,8 @@ public class ProductController {
 		return "redirect:productList.do";
 	}
 	
-	@RequestMapping(value="/stockList.do")
+	//재고관리 리스트
+	@RequestMapping(value="/admin/product/stockList")
 	public String slist(Model model) {
 		model.addAttribute("sList", productdao.stockSelect());
 		return "/admin/product/stockList";

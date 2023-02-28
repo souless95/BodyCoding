@@ -50,8 +50,10 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<s:authorize access="hasRole('ROLE_ADMIN_SUPER')">
 							<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymRegist'">지점 등록</button>
 							<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
+						</s:authorize>
 					</div>
 				</div>
 			</main>

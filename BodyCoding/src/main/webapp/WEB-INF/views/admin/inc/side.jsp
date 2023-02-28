@@ -79,7 +79,7 @@
 								data-bs-parent="#sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="../productList.do">상품관리</a> 
-									<a class="nav-link" href="../stockList.do">재고관리</a>
+									<a class="nav-link" href="/admin/product/stockList">재고관리</a>
 								</nav>
 							</div>
 						</nav>

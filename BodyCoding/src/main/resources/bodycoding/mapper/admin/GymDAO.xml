@@ -22,7 +22,7 @@
 	<select id="selectOneMember"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from MEMBER where authority='ADMIN_SUB' and gym_code=#{gym_code}
+		select * from MEMBER where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
 	</select>
 	
 	<update id="update"
@@ -71,6 +71,6 @@
 	<select id="codeCheck"
 		parameterType="String"
 		resultType="int">
-		select count(*) from MEMBER where authority='ADMIN_SUB' and gym_code=#{gym_code}
+		select count(*) from MEMBER where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
 	</select>
 </mapper>

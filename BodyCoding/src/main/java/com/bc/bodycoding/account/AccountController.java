@@ -2,7 +2,6 @@ package com.bc.bodycoding.account;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -110,7 +109,55 @@ public class AccountController {
 //			return "delete";
 //		}
 	}
-
+	
+		//아이디찾기 창으로 넘어가기
+		@RequestMapping(value="findid", method=RequestMethod.GET)
+		public String findid() {
+		
+			return "member/account/findid";
+		}
+		
+		//아이디 찾기 
+		@RequestMapping(value="gofindid", method=RequestMethod.POST)
+		public String gofindid(MemberDTO memberDTO, Model model) {
+			MemberDTO member = accountdao.gofindid(memberDTO);
+			System.out.println(memberDTO);
+			if( member == null) {
+				model.addAttribute("check", 1);
+			}
+			else {
+				model.addAttribute("check", 0);
+				model.addAttribute("mem_id", member.getMem_id());
+				
+				System.out.println("아이디="+member.getMem_id());
+			}
+			return "member/account/findid";
+				
+		}
+		
+		
+		//비밀번호찾기
+		@RequestMapping(value="findpass", method=RequestMethod.GET)
+		public String findpass() {
+		
+			return "member/account/findpass";
+		}
+				
+		//비밀번호 찾기 
+		@RequestMapping(value="gofindpass", method=RequestMethod.POST)
+		public String gofindpass(MemberDTO memberDTO, Model model) {
+			MemberDTO member1 = accountdao.gofindpass(memberDTO);
+			System.out.println(memberDTO);
+			if( member1 == null) {
+				model.addAttribute("check", 1);
+			}
+			else {
+				model.addAttribute("check", 0);
+				model.addAttribute("mem_pass", member1.getMem_pass());
+			}
+			return "member/account/findpass";
+				
+		}
 
 
 }

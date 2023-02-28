@@ -18,4 +18,7 @@ public interface AccountService{
 	public String pwCheck(String mem_id);
 	public int deleteMember(String mem_id);
 	
+	public MemberDTO gofindid(MemberDTO memberDTO);
+	public MemberDTO gofindpass(MemberDTO memberDTO);
+	
 }

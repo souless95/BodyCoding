@@ -67,4 +67,16 @@
 </update>
 
 
+<!--아이디 비번찾기 -->
+<select id="gofindid" parameterType="global.dto.MemberDTO" resultType="global.dto.MemberDTO">
+	select * from member where mem_name=#{mem_name} and mem_birth=#{mem_birth} and
+	mem_phone=#{mem_phone}
+</select>
+
+<select id="gofindpass" parameterType="global.dto.MemberDTO" resultType="global.dto.MemberDTO">
+	select * from member where mem_id=#{mem_id} and mem_name=#{mem_name} and
+	mem_birth=#{mem_birth}
+</select>
+
+
 </mapper>

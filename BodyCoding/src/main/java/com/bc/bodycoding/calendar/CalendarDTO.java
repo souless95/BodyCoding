@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class CalendarDTO {
 	
-	private int id;
+	private String id;
 	private String title;
 	private String start1;
+	private String end;
 }

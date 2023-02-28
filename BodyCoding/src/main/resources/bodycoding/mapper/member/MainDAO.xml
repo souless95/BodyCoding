@@ -43,7 +43,7 @@
 	resultType="String">
 	select mem_name from member 
 		where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
-		and mem_status ='1'
+		and enabled ='1'
 </select>
 
 <!-- 트레이너에 대한 평점 보여주기 -->

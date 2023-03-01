@@ -137,6 +137,7 @@ public class GymController {
 	@RequestMapping("/mimgedit.do")
 	@ResponseBody
 	public String imgedit(Model model, MemberDTO memberDTO, HttpServletRequest req) {
+		String page;
 		try {
 			int size = 1024 * 1024 * 10;
 			String path = ResourceUtils.getFile("classpath:static/uploads/gym").toPath().toString();
@@ -159,7 +160,7 @@ public class GymController {
 			memberDTO.setMem_img(str);
 			System.out.println("파일 업로드 성공");
 			System.out.println(str);
-			model.addAttribute("mem_img", "str");
+			page = str;
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -169,7 +170,7 @@ public class GymController {
 		System.out.println(memberDTO);
 		int result = gymdao.updateImg(memberDTO);
 		if(result==1) System.out.println("수정되었습니다.");
-		return "/gymDetail.do";
+		return page;
 	}
 
 	// 삭제

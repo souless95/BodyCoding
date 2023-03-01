@@ -36,8 +36,9 @@ $(function(){
 	});
 });
 function sucCallBack(resData){
-	/* let tableDate = resData; */
+	/* let tableData = resData; */
 	console.log(resData);
+	$('#img').attr("src","static/uploads/gym/"+resData);
 }
 function errCallBack(errData){
 	console.log(errData.status+":"+errData.statusText);
@@ -58,7 +59,7 @@ function errCallBack(errData){
 	        	</div>
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
-					<div><img src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
+					<div><img id="img" src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
 					<form id="imgedit" method="post" action="/mimgedit.do" enctype="multipart/form-data">
 						<input type="hidden" name="o_mem_img" value="${memList.mem_img }" />
 						<input type="hidden" name="mem_id" id="mem_id" value="${memList.mem_id }" />

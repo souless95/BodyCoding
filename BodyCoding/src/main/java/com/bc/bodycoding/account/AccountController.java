@@ -1,12 +1,16 @@
 package com.bc.bodycoding.account;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,7 +55,6 @@ public class AccountController {
 			session.setAttribute("UserInfo", accountdao.login(memberDTO));
 			session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
 			session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
-			System.out.println(memberDTO);
 			return "redirect:main";
 		}
 		catch (Exception e) {
@@ -99,15 +102,15 @@ public class AccountController {
 		System.out.println(mem_id);
 		int result = accountdao.deleteMember(mem_id);
 		System.out.println(result);
-//		if(result==1) {
-//			session.invalidate();
-//			System.out.println("탈퇴 성공");
+		if(result==1) {
+			session.invalidate();
+			System.out.println("탈퇴 성공");
 			return "redirect:main";
-//		}
-//		else {
-//			System.out.println("탈퇴 실패");
-//			return "delete";
-//		}
+		}
+		else {
+			System.out.println("탈퇴 실패");
+			return "delete";
+		}
 	}
 	
 		//아이디찾기 창으로 넘어가기
@@ -158,6 +161,16 @@ public class AccountController {
 			return "member/account/findpass";
 				
 		}
+		
+		/* 비밀번호 찾기 */
+		@RequestMapping(value = "/findpw", method = RequestMethod.GET)
+		public void findPwGET() throws Exception{
+		}
 
-
+		@RequestMapping(value = "/findpw", method = RequestMethod.POST)
+		public void findPwPOST(@ModelAttribute MemberDTO memberDTO , HttpServletResponse response) throws Exception{
+			accountdao.findPw(response, memberDTO);
+		}
+		
+		
 }

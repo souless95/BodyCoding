@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -28,7 +29,7 @@ import global.dto.MemberDTO;
 
 @Controller
 public class GymController {
-
+	
 	@Autowired
 	GymService gymdao;
 
@@ -127,6 +128,17 @@ public class GymController {
 		int result = gymdao.update(gymDTO);
 		int result1 = gymdao.updateM(memberDTO);
 		if (result == 1)
+			System.out.println("수정되었습니다.");
+		return "redirect:/gymadminlist.do";
+	}
+	
+	//메인 이미지 수정
+	@RequestMapping("/Mimgedit.do")
+	@ResponseBody
+	public String imgedit(String mem_img) {
+		System.out.println(mem_img);
+		int result = gymdao.updateImg(mem_img);
+		if(result==1)
 			System.out.println("수정되었습니다.");
 		return "redirect:/gymadminlist.do";
 	}

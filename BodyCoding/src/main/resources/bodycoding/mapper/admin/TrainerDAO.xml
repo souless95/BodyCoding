@@ -2,9 +2,9 @@
 
 <!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
 <!DOCTYPE mapper 
-	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
 <mapper namespace="com.bc.bodycoding.admin.trainer.TrainerService">
 
 	<insert id="insertMemberT"
@@ -46,4 +46,4 @@
 		delete from member where mem_id=#{mem_id}
 	</delete>
 </mapper>
-	
+   

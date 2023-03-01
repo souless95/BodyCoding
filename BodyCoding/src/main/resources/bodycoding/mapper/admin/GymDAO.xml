@@ -40,6 +40,11 @@
 		where gym_code=#{gym_code}
 	</update>
 	
+	<update id="updateImg"
+		parameterType="global.dto.MemberDTO">
+		update MEMBER set mem_img=#{mem_img} where mem_id=#{mem_id}
+	</update>
+	
 	<delete id="delete"
 		parameterType="global.dto.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}

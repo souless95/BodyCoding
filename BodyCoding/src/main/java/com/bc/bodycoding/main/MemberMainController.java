@@ -2,25 +2,71 @@ package com.bc.bodycoding.main;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
 import global.dto.ReviewDTO;
-import lombok.Data;
 
 @Controller
 public class MemberMainController {
 	@Autowired
 	MemberMainService maindao;
+	
+	//회원창에서 지점 정보보기
+	@RequestMapping("gym")
+	public String gym(Model model) {
+		model.addAttribute("gymList",maindao.gymlistSelect());
+		return "member/main/gym";
+	}
+	
+	//회원창에서 검색된 지점 정보보기
+	@RequestMapping("/gymSearch.do")
+	@ResponseBody
+	public List<MemberDTO> gymSearch(String searchWord) {
+		List<MemberDTO> gymList;
+		gymList = maindao.gymlistSearch(searchWord);
+		System.out.println(gymList);
+		return gymList;
+	}
+	
+	//회원창에서 체크된 지점 정보보기
+	@RequestMapping("/gymCheck.do")
+	@ResponseBody
+	public List<MemberDTO> gymCheck(HttpServletRequest req) {
+		List<MemberDTO> checkgymList;
+		Map<String, String> checkList = new HashMap<>();
+		checkList.put("facility_parking", "N");
+		checkList.put("facility_health", "N");
+		checkList.put("facility_yoga", "N");
+		checkList.put("facility_gx", "N");
+		checkList.put("facility_pilates", "N");
+		checkList.put("facility_pt", "N");
+		checkList.put("facility_24hour", "N");
+		checkList.put("facility_shower", "N");
+		checkList.put("facility_wear", "N");
+		checkList.put("facility_locker", "N");
+		String checkboxVal = req.getParameter("chechboxVal");
+		String[] checkval = checkboxVal.split("&");
+		for(int i=0 ; i< checkval.length ; i++) {
+			String[] mapval = checkval[i].split("=");
+			checkList.put(mapval[0].toString(), mapval[1].toString());
+		}
+		System.out.println(checkList);
+		checkgymList = maindao.gymlistCheck(checkList);
+		
+		return checkgymList;
+	}
 	
 	//회원창에서 트레이너 목록 페이지로 가기(지점선택 select박스관련)
 	@RequestMapping("trainer")
@@ -130,5 +176,7 @@ public class MemberMainController {
 		model.addAttribute("productInfo",maindao.productInfoSelect(product_idx));
 		return "member/main/productInfo";
 	}
+	
+	
 	
 }

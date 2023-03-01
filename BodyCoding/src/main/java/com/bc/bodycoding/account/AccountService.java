@@ -2,6 +2,8 @@ package com.bc.bodycoding.account;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import global.dto.MemberDTO;
@@ -20,5 +22,15 @@ public interface AccountService{
 	
 	public MemberDTO gofindid(MemberDTO memberDTO);
 	public MemberDTO gofindpass(MemberDTO memberDTO);
+	
+	
+    public MemberDTO findUserByUserId(MemberDTO memberDTO);
+    public MemberDTO updateUserPassword(MemberDTO memberDTO);
+    
+    public void sendEmail(MemberDTO memberDTO, String email) throws Exception;
+    
+    public void findPw(HttpServletResponse resp, MemberDTO memberDTO) throws Exception;
+    
+	
 	
 }

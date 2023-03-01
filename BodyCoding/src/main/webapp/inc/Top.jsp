@@ -62,7 +62,7 @@ function logoutcheck(){
 						<li>
 							<a href="#">지점정보</a>
 							<ul>
-								<li><a href="#">지점확인</a></li>
+								<li><a href="gym">지점확인</a></li>
 							</ul>
 						</li>
 						

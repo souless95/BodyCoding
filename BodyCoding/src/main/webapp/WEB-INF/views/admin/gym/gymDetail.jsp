@@ -31,10 +31,12 @@
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
 					<div><img src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
+					<input type="hidden" id="mem_id" value="${memList.mem_id }"/>
+					<input type="file" id="mem_img" />
 					<h4>기본정보</h4>
 					<table class="table" border=2>
-						<input type="hid-den" id="enabled" name="enabled" value="${memList.enabled }">
-					    <input type="hid-den" id="authority" name="authority" value="${memList.authority }">
+						<input type="hidden" id="enabled" name="enabled" value="${memList.enabled }">
+					    <input type="hidden" id="authority" name="authority" value="${memList.authority }">
 						<tr>
 							<th>지점명</th>
 							<td>${memList.mem_name }</td>

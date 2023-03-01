@@ -55,8 +55,15 @@ public class ProductController {
 			Enumeration files = multi.getFileNames();
 				
 			String str = (String)files.nextElement();
+	           
+			if(str == null) {
+				str = multi.getOriginalFileName(str);
+			}
+			else {
+				str = "";
+			}
 			
-			productDTO.setProduct_img(multi.getOriginalFileName(str));
+			productDTO.setProduct_img(str);
 			productDTO.setProduct_type(multi.getParameter("product_type"));
 			productDTO.setProduct_category(multi.getParameter("product_category"));
 			productDTO.setMembership_period(Integer.parseInt(multi.getParameter("membership_period")));

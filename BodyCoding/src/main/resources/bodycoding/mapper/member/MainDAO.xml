@@ -36,9 +36,8 @@
 	        mem_address like '%'||#{searchWord}||'%' 
 	        or mem_name like '%'||#{searchWord}||'%' 
 	        or mem_phone like '%'||#{searchWord}||'%')
-=======
 	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
+
 </select>
 
 
@@ -120,4 +119,22 @@
 	select * from product where product_idx = #{product_idx}
 </select>
 
+
+<!-- 장바구니 목록 보기-->
+<select id="cartList"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+	select * from cart (이 안에 product와 member에서 join해서 받을 정보 조인하기) where mem_id=#{mem_id}
+</select>
+
+<!-- 장바구니에 상품 추가하기 -->
+<insert id="cartAdd"
+	parameterType="global.dto.ProductDTO">
+	insert into cart (cart_idx, mem_id, product_idx) values (bodycoding_seq.nextval, #{mem_id}, #{product_idx})
+</insert>
+<!-- 장바구니에 상품 삭제하기 -->
+<delete id="cartDelete"
+	parameterType="global.dto.ProductDTO">
+	delete from cart where mem_id=#{mem_id} and product_idx_#{product_idx}
+</delete>
 </mapper>

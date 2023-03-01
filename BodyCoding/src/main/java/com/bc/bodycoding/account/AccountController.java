@@ -1,12 +1,16 @@
 package com.bc.bodycoding.account;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -157,6 +161,16 @@ public class AccountController {
 			return "member/account/findpass";
 				
 		}
+		
+		/* 비밀번호 찾기 */
+		@RequestMapping(value = "/findpw", method = RequestMethod.GET)
+		public void findPwGET() throws Exception{
+		}
 
-
+		@RequestMapping(value = "/findpw", method = RequestMethod.POST)
+		public void findPwPOST(@ModelAttribute MemberDTO memberDTO , HttpServletResponse response) throws Exception{
+			accountdao.findPw(response, memberDTO);
+		}
+		
+		
 }

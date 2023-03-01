@@ -150,12 +150,16 @@ function errCallBack(errData){
 							<td align="center">${dto.rtime_holy_end }</td>
 						</tr>
 					</table>
-					<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
-						수정
-					</button>
-					<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
-						삭제
-					</button>
+					<s:authorize access="hasRole('ROLE_ADMIN_SUB')">
+						<s:authentication property="name" var="name">
+							<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
+								수정
+							</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
+								삭제
+							</button>
+						</s:authentication>
+					</s:authorize>
 					<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
 						메인으로
 					</button>

@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import global.dto.ReviewDTO;
 
 @Controller
 public class MemberMainController {
+	
 	@Autowired
 	MemberMainService maindao;
 	
@@ -162,7 +165,7 @@ public class MemberMainController {
 		if(product_type.equals("-")) {
 			productlist = maindao.product_categoryALLSelect();
 		}
-		//상품 유형에 맞는 상품 	보여주기
+		//상품 유형에 맞는 상품 보여주기
 		else {
 			productlist = maindao.product_categorySelect(product_type);
 		}
@@ -178,5 +181,36 @@ public class MemberMainController {
 	}
 	
 	
+	//장바구니로 상품목록 
+	@RequestMapping("cartList.do")
+	public String cartList(Model model, HttpServletRequest req) {
+		
+		
+		return "mamber/main/cart";
+	}
 	
+	//장바구니 상품 추가
+	@RequestMapping("cartAdd.do")
+	public String cartAdd(ProductDTO productDTO) {
+		
+		//정보 잘 받아오는 지 확인해보자
+		System.out.println(productDTO.getMem_id()); //멤버아이디
+		System.out.println(productDTO.getProduct_idx()); //받아온 product_idx
+		
+		int result = maindao.cartAdd(productDTO);
+		if (result==1) {
+			System.out.println("장바구니에 추가되었습니다.");
+		}
+		return "cartList.do";
+	}
+	//장바구니 상품 삭제
+	@RequestMapping("cartDelete.do")
+	public String cartDelete(ProductDTO productDTO) {
+		
+		int result = maindao.cartDelete(productDTO);
+		if (result==1) {
+			System.out.println("장바구니가 삭제되었습니다.");
+		}
+		return "cartList.do";
+	}
 }

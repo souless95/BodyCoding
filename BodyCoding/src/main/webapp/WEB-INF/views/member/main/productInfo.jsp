@@ -25,6 +25,8 @@
 	</table>
 	<button type="button">구매하기(결제)</button>
 	<button type="button" onclick="location.href='product'">목록으로</button>
+	<!-- 장바구니로 접근하는 버튼 -->
+	<button type="button" onclick="location.href='cartAdd.do?product_idx=${productInfo.product_idx}&mem_id=${UserEmail }'">장바구니</button>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </body>

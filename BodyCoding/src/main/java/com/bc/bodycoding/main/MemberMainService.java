@@ -24,5 +24,8 @@ public interface MemberMainService {
 	public List<ProductDTO> product_categoryALLSelect();
 	public List<ProductDTO> product_categorySelect(String product_type);
 	public ProductDTO productInfoSelect(int product_idx);
-
+	
+	
+	public int cartAdd(ProductDTO productDTO); //장바구니에 추가
+	public int cartDelete(ProductDTO productDTO); //장바구니 삭제 
 }

@@ -68,9 +68,9 @@ public class GymController {
 			MultipartRequest multi = new MultipartRequest(req, path, size, "UTF-8", new DefaultFileRenamePolicy());
 
 			Enumeration files = multi.getFileNames();
-			String str = (String) files.nextElement();
+			String str = (String)files.nextElement();
 
-			if (str == null) {
+			if (str != null) {
 				str = multi.getOriginalFileName(str);
 			} else {
 				str = "";
@@ -98,6 +98,7 @@ public class GymController {
 				memberDTO.setMem_comment(multi.getParameter("mem_comment"));
 				memberDTO.setMem_img(str);
 				System.out.println("파일 업로드 성공");
+				System.out.println(str);
 				int result1 = gymdao.insertMember1(memberDTO);
 				int result = gymdao.insertMemberASUB(memberDTO);
 				if (result == 1)
@@ -133,14 +134,42 @@ public class GymController {
 	}
 	
 	//메인 이미지 수정
-	@RequestMapping("/Mimgedit.do")
+	@RequestMapping("/mimgedit.do")
 	@ResponseBody
-	public String imgedit(String mem_img) {
-		System.out.println(mem_img);
-		int result = gymdao.updateImg(mem_img);
-		if(result==1)
-			System.out.println("수정되었습니다.");
-		return "redirect:/gymadminlist.do";
+	public String imgedit(Model model, MemberDTO memberDTO, HttpServletRequest req) {
+		try {
+			int size = 1024 * 1024 * 10;
+			String path = ResourceUtils.getFile("classpath:static/uploads/gym").toPath().toString();
+			System.out.println("지점 상세이미지 저장경로 :" + path);
+			MultipartRequest multi = new MultipartRequest(req, path, size, "UTF-8", new DefaultFileRenamePolicy());
+			String oPath = path + "/" + multi.getParameter("o_mem_img");
+			File file = new File(oPath);
+			if(file.exists()) {
+				file.delete();
+			}
+			Enumeration files = multi.getFileNames();
+			String str = (String)files.nextElement();
+
+			if (str != null) {
+				str = multi.getOriginalFileName(str);
+			} else {
+				str = "";
+			}
+			memberDTO.setMem_id(multi.getParameter("mem_id"));
+			memberDTO.setMem_img(str);
+			System.out.println("파일 업로드 성공");
+			System.out.println(str);
+			model.addAttribute("mem_img", "str");
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("수정 실패했습니다.");
+			return "redirect:/gymDetail.do";
+		}
+		System.out.println(memberDTO);
+		int result = gymdao.updateImg(memberDTO);
+		if(result==1) System.out.println("수정되었습니다.");
+		return "/gymDetail.do";
 	}
 
 	// 삭제

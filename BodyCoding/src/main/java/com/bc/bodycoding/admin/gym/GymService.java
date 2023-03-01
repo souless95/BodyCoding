@@ -23,5 +23,5 @@ public interface GymService {
 	public int insertMember1(MemberDTO memberDTO);
 	public int codeCheck(String gym_code);
 	
-	public int updateImg(String mem_img);
+	public int updateImg(MemberDTO memberDTO);
 }

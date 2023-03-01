@@ -27,21 +27,21 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		http
-            .authorizeRequests()
-            .antMatchers("/**").permitAll()
-            .antMatchers("/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
-			.antMatchers("/admin/gym/gymRegist").hasRole("ADMIN_SUPER")	
-			.antMatchers("/admin/gym/gymEdit").hasRole("ADMIN_SUB")	
-			.antMatchers("/admin/trainer/trainerRegist", "/admin/trainer/trainerEdit").hasRole("ADMIN_SUB")	
-			.antMatchers("/admin/product/pEdit").hasRole("ADMIN_SUB")	
-			.antMatchers("/admin/product/sockList").hasRole("ADMIN_SUB")
-			.antMatchers("/admin/product/pReigst").hasRole("ADMIN_SUPER")
-			.antMatchers("/admin/매출관리/**").hasRole("ADMIN_SUPER")	
-			.antMatchers("/admin/Q&A/qnaAnswer").hasRole("ADMIN_SUB")
-			.antMatchers("/admin/**").hasAnyRole("ADMIN_SUPER","ADMIN_SUB")
-			.anyRequest().authenticated();
-		
+//		http
+//            .authorizeRequests()
+//            .antMatchers("/**").permitAll()
+//            .antMatchers("/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
+//			.antMatchers("/admin/gym/gymRegist").hasRole("ADMIN_SUPER")	
+//			.antMatchers("/admin/gym/gymEdit").hasRole("ADMIN_SUB")	
+//			.antMatchers("/admin/trainer/trainerRegist", "/admin/trainer/trainerEdit").hasRole("ADMIN_SUB")	
+//			.antMatchers("/admin/product/pEdit").hasRole("ADMIN_SUB")	
+//			.antMatchers("/admin/product/sockList").hasRole("ADMIN_SUB")
+//			.antMatchers("/admin/product/pReigst").hasRole("ADMIN_SUPER")
+//			.antMatchers("/admin/매출관리/**").hasRole("ADMIN_SUPER")	
+//			.antMatchers("/admin/Q&A/qnaAnswer").hasRole("ADMIN_SUB")
+//			.antMatchers("/admin/**").hasAnyRole("ADMIN_SUPER","ADMIN_SUB")
+//			.anyRequest().authenticated();
+//		
 		//로그인 페이지 커스터마이징
 		http.formLogin()
 			.loginPage("/adminLogin.do")

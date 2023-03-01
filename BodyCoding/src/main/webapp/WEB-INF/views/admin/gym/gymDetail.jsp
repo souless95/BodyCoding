@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
@@ -16,6 +17,33 @@
 </style>
 </head>
 <body class="sb-nav-fixed">
+<script type="text/javascript">
+$(function(){
+	$('#imgupdate').change(function(){
+		var img = $('#imgedit')[0];
+		var formData = new FormData(img);
+		$.ajax({
+			type: 'post',
+			url: 'mimgedit.do',
+			data: formData,
+			enctype: "multipart/form-data",
+			processData: false, 
+			contentType: false,
+			cache: false,
+			success: sucCallBack,
+			error: errCallBack
+		});
+	});
+});
+function sucCallBack(resData){
+	/* let tableDate = resData; */
+	console.log(resData);
+}
+function errCallBack(errData){
+	console.log(errData.status+":"+errData.statusText);
+}
+ 
+</script>
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
 	
@@ -31,8 +59,12 @@
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
 					<div><img src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
-					<input type="hidden" id="mem_id" value="${memList.mem_id }"/>
-					<input type="file" id="mem_img" />
+					<form id="imgedit" method="post" action="/mimgedit.do" enctype="multipart/form-data">
+						<input type="hidden" name="o_mem_img" value="${memList.mem_img }" />
+						<input type="hidden" name="mem_id" id="mem_id" value="${memList.mem_id }" />
+						<input type="file" name="mem_img" id="imgupdate" />
+					</form>
+					
 					<h4>기본정보</h4>
 					<table class="table" border=2>
 						<input type="hidden" id="enabled" name="enabled" value="${memList.enabled }">

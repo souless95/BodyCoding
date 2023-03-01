@@ -138,6 +138,7 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
             <div class="find">
                 <div><a href="findid" type="submit" class="btn btn-outline btn-success"> 아이디찾기</a></div>&nbsp;&nbsp;&nbsp;
         	    <div><a href="findpass" type="submit" class="btn btn-outline btn-success" >비밀번호찾기</a></div>&nbsp;&nbsp;&nbsp;
+        	    <div><a href="emailpass" type="submit" class="btn btn-outline btn-success" >비밀번호찾기</a></div>&nbsp;&nbsp;&nbsp;
         	    <div><a href="main" type="submit" class="btn btn-outline btn-success" style="width:90px;">메인</a></div>
             </div>
                      

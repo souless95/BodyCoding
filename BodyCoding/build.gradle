@@ -41,6 +41,8 @@ dependencies {
 	compileOnly 'org.springframework.boot:spring-boot-devtools'
 	//시큐리티 의존설정 추가
 	implementation 'org.springframework.security:spring-security-taglibs'
+	//이메일 의존설정 추가
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 tasks.named('test') {

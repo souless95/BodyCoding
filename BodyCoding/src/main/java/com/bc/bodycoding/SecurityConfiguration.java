@@ -32,6 +32,7 @@ public class SecurityConfiguration {
             .authorizeRequests()
             .antMatchers("/").permitAll()
             .antMatchers("/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
+            .antMatchers("/admin/gym/gymRegist").hasRole("ADMIN_SUPER")
 			.antMatchers("/admin/gym/gymEdit").hasRole("ADMIN_SUB")	
 			.antMatchers("/admin/trainer/trainerRegist").hasRole("ADMIN_SUB")
 //			.antMatchers("/admin/trainer/trainerEdit").hasRole("ADMIN_SUB")

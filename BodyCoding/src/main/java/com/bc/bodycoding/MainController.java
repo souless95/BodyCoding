@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 	
-	
 	@RequestMapping("account/myinfo")
 	public String myinfo() {
 		return "account/myinfo";

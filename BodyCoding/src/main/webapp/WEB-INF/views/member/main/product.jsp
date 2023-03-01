@@ -7,12 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 </head>
 <body>
+<%@ include file="../../../../inc/Top.jsp" %>
 <script type="text/javascript">
 $(function() {
 	//해당 버튼을 클릭하면 ajax() 함수를 선택한다.
@@ -50,23 +47,25 @@ function errCallBack(errData){
 	console.log(errData.status+":"+errData.statusText);
 }
 </script> 
-<h2>상품 목록</h2>
-<hr>
-<h5>
-<select id="product_type" required>
-    <option value="-">상품유형</option>
-    <option value="식품">식품</option>
-    <option value="의류">의류</option>
-    <option value="기구">기구</option>
-</select>
-<input type="button" value="유형선택" id="product_typechoice"> </h5>
-
-<form name="frm" method="post" >
-	<input type="hidden" id="product_idx" name="product_idx">
-</form>
-
-<div id="show_data" class="card m-2" style="width:150px" >
-</div> 
-
+<div class="container">
+	<h2>상품 목록</h2>
+	<hr>
+	<h5>
+	<select id="product_type" required>
+	    <option value="-">상품유형</option>
+	    <option value="식품">식품</option>
+	    <option value="의류">의류</option>
+	    <option value="기구">기구</option>
+	</select>
+	<input type="button" value="유형선택" id="product_typechoice"> </h5>
+	
+	<form name="frm" method="post" >
+		<input type="hidden" id="product_idx" name="product_idx">
+	</form>
+	
+	<div id="show_data" class="card m-2" style="width:150px" >
+	</div> 
+</div>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

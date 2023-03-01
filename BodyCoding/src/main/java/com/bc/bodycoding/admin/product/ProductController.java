@@ -33,7 +33,7 @@ public class ProductController {
 		return "/admin/product/productList";
 	}
 
-	@RequestMapping(value = "/productRegist.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/product/productReigst", method = RequestMethod.GET)
 	public String regiForm() {
 		return "/admin/product/productRegist";
 	}
@@ -55,8 +55,15 @@ public class ProductController {
 			Enumeration files = multi.getFileNames();
 				
 			String str = (String)files.nextElement();
+	           
+			if(str == null) {
+				str = multi.getOriginalFileName(str);
+			}
+			else {
+				str = "";
+			}
 			
-			productDTO.setProduct_img(multi.getOriginalFileName(str));
+			productDTO.setProduct_img(str);
 			productDTO.setProduct_type(multi.getParameter("product_type"));
 			productDTO.setProduct_category(multi.getParameter("product_category"));
 			productDTO.setMembership_period(Integer.parseInt(multi.getParameter("membership_period")));
@@ -72,7 +79,6 @@ public class ProductController {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 		return "redirect:productList.do";
 	}
@@ -91,7 +97,8 @@ public class ProductController {
 		return "redirect:productList.do";
 	}
 	
-	@RequestMapping(value="/stockList.do")
+	//재고관리 리스트
+	@RequestMapping(value="/admin/product/stockList")
 	public String slist(Model model) {
 		model.addAttribute("sList", productdao.stockSelect());
 		return "/admin/product/stockList";

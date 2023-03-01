@@ -55,7 +55,6 @@ public class AccountController {
 			session.setAttribute("UserInfo", accountdao.login(memberDTO));
 			session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
 			session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
-			System.out.println(memberDTO);
 			return "redirect:main";
 		}
 		catch (Exception e) {
@@ -103,15 +102,15 @@ public class AccountController {
 		System.out.println(mem_id);
 		int result = accountdao.deleteMember(mem_id);
 		System.out.println(result);
-//		if(result==1) {
-//			session.invalidate();
-//			System.out.println("탈퇴 성공");
+		if(result==1) {
+			session.invalidate();
+			System.out.println("탈퇴 성공");
 			return "redirect:main";
-//		}
-//		else {
-//			System.out.println("탈퇴 실패");
-//			return "delete";
-//		}
+		}
+		else {
+			System.out.println("탈퇴 실패");
+			return "delete";
+		}
 	}
 	
 		//아이디찾기 창으로 넘어가기

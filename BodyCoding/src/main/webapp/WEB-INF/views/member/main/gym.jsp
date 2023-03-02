@@ -12,20 +12,20 @@
 <script type="text/javascript">
 $(function() {
 	
-	$(".facility").click(function() {
-		let chechboxVal = $('#gymCheck').serialize();
+ 	$(".facility").click(function() {
+		let checkboxVal = $('#gymCheck').serialize();
 		
-		console.log(chechboxVal);
+		console.log(checkboxVal);
 		$.ajax({
 			type:'get',
 			url: '../gymCheck.do',
-			data: {chechboxVal: chechboxVal},
+			data: {checkboxVal: checkboxVal},
 			contentType: "text/html;charset:utf-8",
 			dataType:"json",
 			success:sucCallBack,
 			error: errCallBack
 		});
-	});
+	}); 
 	
 	//해당 버튼을 클릭하면 ajax() 함수를 선택한다.
 	$('#search').click(function() {
@@ -52,6 +52,7 @@ function sucCallBack(resData) {
 	}); 
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);
+	/* $('#searchWord').val(''); */
 }
 //에러발생시 호출되는 콜백 함수
 function errCallBack(errData){
@@ -64,7 +65,7 @@ function errCallBack(errData){
     <ul>
     	<li>
 	        <input type="checkbox" name="facility_parking" value="Y" class="facility" id="facility_parking">
-	        <label for="facility_parking"><span></span> <img src="../static/admin/images/0002.png" width="50" height="50" align="absmiddle">
+	        <label for="facility_parking"><span></span> <img src="../static/admin/images/0001.png" width="50" height="50" align="absmiddle">
 	          주차       </label>
         </li>
       	<li>
@@ -128,7 +129,7 @@ function errCallBack(errData){
 <ul>
 <c:forEach items="${gymList }" var="row" varStatus="loop">
 	<li>
-		<div> ${row.mem_name} <button>상세보기</button></div>
+		<div> ${row.mem_name} <button onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button></div>
 		<div> ${row.mem_address}</div>
 		<div> ${row.mem_phone}</div>
 	</li>

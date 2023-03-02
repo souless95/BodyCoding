@@ -13,7 +13,7 @@
 		into MEMBER (mem_id, mem_pass, mem_name, mem_gender, 
 			mem_birth, mem_phone, mem_address, authority, enabled, 
 			gym_code, mem_height, mem_weight, mem_disease, mem_purpose, 
-			mem_interest, mem_inflow, mem_point,mem_regidate)
+			mem_interest, mem_inflow, mem_point, mem_regidate)
    		values (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_gender},
 	   		#{mem_birth}, #{mem_phone}, #{mem_address}, #{authority}, #{enabled}, 
 	   		#{gym_code}, #{mem_height}, #{mem_weight}, #{mem_disease}, #{mem_purpose}, 

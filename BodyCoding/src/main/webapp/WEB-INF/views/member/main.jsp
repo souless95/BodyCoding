@@ -21,7 +21,6 @@
 	<link rel="stylesheet" href="static/assets/css/main.css" />
 </head>
 <body class="is-preload">
-	<%-- <%@ include file="../member/inc/Top.jsp" %> --%>
 	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
 		<!-- Posts -->

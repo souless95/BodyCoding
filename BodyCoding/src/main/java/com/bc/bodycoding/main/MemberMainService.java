@@ -1,6 +1,8 @@
 package com.bc.bodycoding.main;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
@@ -10,6 +12,8 @@ import global.dto.ReviewDTO;
 public interface MemberMainService {
 	
 	public List<MemberDTO> gymlistSelect();
+	public List<MemberDTO> gymlistSearch(String searchWord);
+	public List<MemberDTO> gymlistCheck(Map<String, String> checkList);
 	public List<MemberDTO> trainerALLlistSelect();
 	public List<MemberDTO> trainerlistSelect(String gym_code);
 	public MemberDTO trainerInfoSelect(String mem_id);
@@ -20,5 +24,8 @@ public interface MemberMainService {
 	public List<ProductDTO> product_categoryALLSelect();
 	public List<ProductDTO> product_categorySelect(String product_type);
 	public ProductDTO productInfoSelect(int product_idx);
-
+	
+	
+	public int cartAdd(ProductDTO productDTO); //장바구니에 추가
+	public int cartDelete(ProductDTO productDTO); //장바구니 삭제 
 }

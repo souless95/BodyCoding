@@ -7,13 +7,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="../static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-
-
 </head>
 <body class="sb-nav-fixed">
+<script type="text/javascript">
+$(function(){
+	//해당 버튼을 클릭하면 ajax() 함수를 선택한다
+	$('#addpoint').click(function(){
+		$.ajax({
+			type: 'get',
+			url: '../addpoint.do',
+			data: {
+				mem_id: $('#mem_id').val(),
+				mem_point: $('#mem_point').val()
+			},
+			contentType: "text/html;charset:utf-8",
+			dataType: "text",
+			success: sucCallBack,
+			error: errCallBack
+		});
+	});	
+	 $('#addpoint').trigger('click'); 
+});
+function sucCallBack(resData){
+	let tableData = resData;
+	$('#show_data').html(tableData);
+	$('#mem_point').val(0);
+}
+function errCallBack(errData){
+	console.log(errData.status+":"+errData.statusText);
+}
+</script>
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
 	
@@ -56,7 +83,12 @@
 					      	</tr>
 					      	<tr>
 					       	 	<th>보유포인트</th>
-					       	 	<td>${dto.mem_point }</td>
+					       	 	<td>
+					       	 	<div  id="show_data"></div>
+					       	 	<input type="number" id="mem_point" value="0" style="width: 80px;"/>
+					       	 	<input type="hidden"  id="mem_id" value="${dto.mem_id }"/>
+					       	 	<input type="button" value="포인트추가" id="addpoint" />
+					       	 	</td>
 					      	</tr>
 					    </table>
 					    <table class="table" border=2>

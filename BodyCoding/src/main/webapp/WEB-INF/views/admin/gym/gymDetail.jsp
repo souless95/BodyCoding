@@ -6,16 +6,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
+<link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <style type="text/css">
 .table-bordered{font-family: Verdana, Geneva, Tahoma, sans-serif;}
 </style>
 </head>
 <body class="sb-nav-fixed">
+<script type="text/javascript">
+$(function(){
+	$('#imgupdate').change(function(){
+		var img = $('#imgedit')[0];
+		var formData = new FormData(img);
+		$.ajax({
+			type: 'post',
+			url: 'mimgedit.do',
+			data: formData,
+			enctype: "multipart/form-data",
+			processData: false, 
+			contentType: false,
+			cache: false,
+			success: sucCallBack,
+			error: errCallBack
+		});
+	});
+});
+function sucCallBack(resData){
+	/* let tableData = resData; */
+	console.log(resData);
+	$('#img').attr("src","static/uploads/gym/"+resData);
+}
+function errCallBack(errData){
+	console.log(errData.status+":"+errData.statusText);
+}
+ 
+</script>
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
 	
@@ -30,9 +59,17 @@
 	        	</div>
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
-					<div><img src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
+					<div><img id="img" src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
+					<form id="imgedit" method="post" action="/mimgedit.do" enctype="multipart/form-data">
+						<input type="hidden" name="o_mem_img" value="${memList.mem_img }" />
+						<input type="hidden" name="mem_id" id="mem_id" value="${memList.mem_id }" />
+						<input type="file" name="mem_img" id="imgupdate" />
+					</form>
+					
 					<h4>기본정보</h4>
 					<table class="table" border=2>
+						<input type="hidden" id="enabled" name="enabled" value="${memList.enabled }">
+					    <input type="hidden" id="authority" name="authority" value="${memList.authority }">
 						<tr>
 							<th>지점명</th>
 							<td>${memList.mem_name }</td>
@@ -54,7 +91,7 @@
 						<h4>편의시설</h4>
 					<table class="table" border=2>
 						<tr align="center">
-							<th><img src="../static/admin/images/0002.png"/><img src="../static/admin/images/0001.png"/></th>
+							<th><img src="../static/admin/images/0001.png"/></th>
 							<th><img src="../static/admin/images/0004.png"></th>
 							<th><img src="../static/admin/images/0005.png"></th>
 							<th><img src="../static/admin/images/0007.png"></th>
@@ -114,11 +151,18 @@
 							<td align="center">${dto.rtime_holy_end }</td>
 						</tr>
 					</table>
-					<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
-						수정
-					</button>
-					<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
-						삭제
+					<s:authorize access="hasRole('ROLE_ADMIN_SUB')">
+						<s:authentication property="name" var="name">
+							<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
+								수정
+							</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
+								삭제
+							</button>
+						</s:authentication>
+					</s:authorize>
+					<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
+						메인으로
 					</button>
 				</div>
 			</div>

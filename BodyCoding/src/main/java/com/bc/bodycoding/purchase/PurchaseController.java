@@ -21,17 +21,21 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
 
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
 
 @Controller
+@SessionAttributes({"mem_id","trainer_id","product_idx","gym_code","product_name"})
 public class PurchaseController {
    
    @Autowired
@@ -45,6 +49,7 @@ public class PurchaseController {
       String mem_id = (String)session.getAttribute("UserEmail");
       
       model.addAttribute("mem_id",mem_id);
+      System.out.println(mem_id);
       model.addAttribute("gymList",purchaseDao.gymSelect());
       return "/member/purchase/purchase";
    }
@@ -72,10 +77,16 @@ public class PurchaseController {
    
    @ResponseBody
    @RequestMapping("/kakaoPay.do")
-   public String purchase(HttpServletRequest req) {
+   public String purchase(HttpServletRequest req, Model model) {
       
       String product_name = req.getParameter("product_name");
       String product_price = req.getParameter("product_price");
+      
+      model.addAttribute("mem_id", req.getParameter("mem_id"));
+      model.addAttribute("trainer_id", req.getParameter("trainer_id"));
+      model.addAttribute("product_idx", req.getParameter("product_idx"));
+      model.addAttribute("gym_code", req.getParameter("gym_code"));
+      model.addAttribute("product_name", req.getParameter("product_name"));
       
       try {         
          //요청 url 생성
@@ -114,8 +125,6 @@ public class PurchaseController {
          
          int result = payUrlCon.getResponseCode();
          
-
-         
          InputStream iStream;
          
          if(result==200) {
@@ -140,10 +149,43 @@ public class PurchaseController {
       return "";
    }
    
+   @Transactional
    @RequestMapping("/purchaseApproval.do")
-   public String purchaseApproval(HttpServletRequest req) {
-      
-      
+   public String purchaseApproval(@ModelAttribute("mem_id")String mem_id, 
+		   @ModelAttribute("trainer_id") String trainer_id, 
+		   @ModelAttribute("product_idx") String product_idx,
+		   @ModelAttribute("gym_code") String gym_code,
+		   @ModelAttribute("product_name") String product_name) {
+	   
+	   try {
+		   
+		   System.out.println("성공진입");
+		   
+		   ProductDTO productDTO = new ProductDTO();
+		   
+		   productDTO.setMem_id(mem_id);
+		   productDTO.setTrainer_id(trainer_id);
+		   productDTO.setProduct_idx(Integer.parseInt(product_idx));
+		   productDTO.setGym_code(gym_code);
+		   productDTO.setProduct_name(product_name);
+		   
+		   ProductDTO pDTO = purchaseDao.payProductSelect(productDTO);
+		   
+		   productDTO.setMembership_count(pDTO.getMembership_count());
+		   productDTO.setMembership_period(pDTO.getMembership_period());
+		   productDTO.setProduct_type(pDTO.getProduct_type());
+		   
+		   int result1 = purchaseDao.insertOrder(productDTO);
+		   int result2 = purchaseDao.insertMembership(productDTO);
+		   
+		   if(result1==1 && result2==1) {
+			   System.out.println("주문성공");
+		   }
+	   } 
+	   catch (Exception e) {
+		   e.printStackTrace();
+		   System.out.println("주문실패");
+	   }
       
       return "/member/purchase/purchaseApproval";
    }

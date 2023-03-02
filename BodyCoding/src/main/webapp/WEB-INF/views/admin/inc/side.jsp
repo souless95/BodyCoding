@@ -79,7 +79,7 @@
 								data-bs-parent="#sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="../productList.do">상품관리</a> 
-									<a class="nav-link" href="../stockList.do">재고관리</a>
+									<a class="nav-link" href="/admin/product/stockList">재고관리</a>
 								</nav>
 							</div>
 						</nav>
@@ -98,7 +98,7 @@
 			</div>
 			<div class="sb-sidenav-footer">
 				<div class="small">Logged in as:</div>
-				로그인 된 아이디 확인하는 곳
+				${mem_id } 접속.
 			</div>
 		</nav>
 	</div>

@@ -22,4 +22,6 @@ public interface GymService {
 	public int insertMemberASUB(MemberDTO memberDTO);
 	public int insertMember1(MemberDTO memberDTO);
 	public int codeCheck(String gym_code);
+	
+	public int updateImg(MemberDTO memberDTO);
 }

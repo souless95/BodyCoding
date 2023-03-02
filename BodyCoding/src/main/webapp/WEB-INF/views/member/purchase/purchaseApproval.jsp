@@ -8,5 +8,6 @@
 </head>
 <body>
 <h2>결제완료</h2>
+<a type="button" href="main">홈으로 이동</a>&nbsp;&nbsp;
 </body>
 </html>

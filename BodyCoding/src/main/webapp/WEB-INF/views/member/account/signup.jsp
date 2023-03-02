@@ -94,9 +94,7 @@
 			</div><br />
 			<form method="post" action="signup.do">
 				<input type="hidden" name="enabled" value="1">
-				<input type="hidden" name="mem_point" value="0">
 				<input type="hidden" name="authority" value="ROLE_MEMBER">
-	
 			 	<div class="mb-3" >
 				    <span id="redStar">*</span>&nbsp;<label for="mem_id">아이디(이메일)</label>
 				    <input type="email" class="form-control" id="mem_id" name="mem_id" placeholder="you@example.com" required>
@@ -106,7 +104,6 @@
 			   		<span id="redStar">*</span>&nbsp;<label for="mem_pass">비밀번호</label>
 			        <input type="password" class="form-control" id="mem_pass" name="mem_pass" value="" onkeyup="validatePassword();" required>
 				</div>
-
 				<div class="mb-3">
 				    <span id="redStar">*</span>&nbsp;<label for="mem_pass1">비밀번호 확인</label>
 				    <input type="password" class="form-control" id="mem_pass1" value="" onkeyup="validatePassword();" required>
@@ -119,8 +116,8 @@
 
 				<div class="mb-3">
 			        <label for="mem_gender">성별</label> &nbsp;&nbsp;
-			      		<input type="radio" name="mem_gender" value="M">&nbsp;남자&nbsp;
-			       	<input type="radio" name="mem_gender" value="F">&nbsp;여자<br>
+	      			<input type="radio" name="mem_gender" value="M">&nbsp;남자&nbsp;
+		       		<input type="radio" name="mem_gender" value="F">&nbsp;여자<br>
 				</div>
 
 				<!-- 생년월일 -->
@@ -133,11 +130,11 @@
 				    <span id="redStar">*</span>&nbsp;<label for="mem_phone">전화번호</label>
 				    <div id="phone">
 				        <div><input type ="hidden" name ="mem_phone" id="telFinal" value="01034443355" required></div>
-				        <div style="width:30%;"><input type ="tel" class="form-control valid" placeholder="010" id="tel1"  size="3" onkeyup="commonFocusMove('tel1', '3', 'tel2');" maxlength="3" required></div>
+				        <div style="width:30%;"><input type ="tel" class="form-control valid" placeholder="010" id="tel1"  size="3" onkeyup="commonFocusMove('tel1', '3', 'tel2');" onchange="telValue();" maxlength="3" required></div>
 						<span style="margin-top:6px;">-</span>
-						<div style="width:35%;"><input type ="tel" class="form-control valid" id="tel2" size="4" onkeyup="commonFocusMove('tel2', '4', 'tel3');" maxlength="4" required></div>
+						<div style="width:35%;"><input type ="tel" class="form-control valid" id="tel2" size="4" onkeyup="commonFocusMove('tel2', '4', 'tel3');" onchange="telValue();" maxlength="4" required></div>
 						<span style="margin-top:6px;">-</span>
-						<div style="width:35%;"><input type ="tel" class="form-control valid" maxlength='4' id="tel3" maxlength="4" required></div>
+						<div style="width:35%;"><input type ="tel" class="form-control valid" maxlength='4' id="tel3" onchange="telValue();" maxlength="4" required></div>
 				    </div>
 				</div>
 				<br>
@@ -240,7 +237,7 @@
 				    <label class="custom-control-label" for="agreement">개인정보 수집 및 이용에 동의합니다.</label>
 				</div> -->
 				<br> 
-				<button type="submit" class="btn btn-primary btn-lg btn-block" onclick="bfSubmit(this.form);">가입하기</button>
+				<button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
 			</form>
 		</div>
 	</div>
@@ -248,7 +245,7 @@
 <footer class="my-3 text-center text-medium">
      <p class="mb-1">&copy; 2023 BodyCoding</p>
 </footer>
-<script>
+	<script>
 		function commonFocusMove(thisObj, numLength, nextObj){
 			var obj1 = document.getElementById(thisObj);
 			var strLen2 = obj1.value.length;
@@ -269,7 +266,7 @@
 		  }
 		}
 		
-		function bfSubmit(frm){
+		function telValue(){
 			var tel1 = document.getElementById("tel1");
 			var tel2 = document.getElementById("tel2");
 			var tel3 = document.getElementById("tel3");

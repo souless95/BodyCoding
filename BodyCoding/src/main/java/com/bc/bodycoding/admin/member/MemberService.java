@@ -10,4 +10,6 @@ public interface MemberService {
 	
 	public List<MemberDTO> select();
 	public MemberDTO selectOneMember(MemberDTO memberDTO);
+	public int pointUpdate(MemberDTO memberDTO);
+	public String selectPoint(String mem_id);
 }

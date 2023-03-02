@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>BodyCoding-Admin-Login</title>
-    <link href="../static/admin/css/styles.css" rel="stylesheet" />
+    <link href="/static/admin/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -27,14 +28,14 @@
 		</c:if>
 		<form action="/adminLoginAction.do" method="post">
 			<div class="form-floating mb-3 mt-3">
-				<input type="text" class="form-control" id="u_id" placeholder="Enter ID" 
+				<input type="text" class="form-control" id="mem_id" placeholder="Enter ID" 
 					name="mem_id">
-				<label for="user_id">아이디</label>
+				<label for="mem_id">아이디</label>
 			</div>	
 			<div class="form-floating mt-3 mb-3">
-				<input type="password" class="form-control" id="u_pass" placeholder="Enter password" 
+				<input type="password" class="form-control" id="mem_pass" placeholder="Enter password" 
 					name="mem_pass">
-				<label for="user_pass">비밀번호</label>
+				<label for="mem_pass">비밀번호</label>
 			</div>	
 			<div class="d-grid">
 				<button type="submit" class="btn btn-primary btn-block">Submit</button>
@@ -44,6 +45,7 @@
 	<c:if test="${not loginResult }">
 		 ${mem_id } 님, 좋은 아침입니다. <br />
 		<a href="/">Root</a>
+		<a href="main/admin">어드민페이지</a>
 		<a href="/adminLogout.do">Logout</a>	
 	</c:if>	
 	</div>

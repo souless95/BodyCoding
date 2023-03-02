@@ -109,6 +109,12 @@ public class MemberMainController {
 		return checkmemList;
 	}
 	
+	//gym상세보기
+	@RequestMapping("gymInfo.do")
+	public String gymInfo(HttpServletRequest req) {
+		return "member/main/gymInfo";
+	}
+	
 	//회원창에서 트레이너 목록 페이지로 가기(지점선택 select박스관련)
 	@RequestMapping("trainer")
 	public String trainerpage(Model model) {

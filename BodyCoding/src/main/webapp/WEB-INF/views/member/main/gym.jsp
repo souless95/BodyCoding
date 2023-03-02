@@ -129,7 +129,7 @@ function errCallBack(errData){
 <ul>
 <c:forEach items="${gymList }" var="row" varStatus="loop">
 	<li>
-		<div> ${row.mem_name} <button>상세보기</button></div>
+		<div> ${row.mem_name} <button onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button></div>
 		<div> ${row.mem_address}</div>
 		<div> ${row.mem_phone}</div>
 	</li>

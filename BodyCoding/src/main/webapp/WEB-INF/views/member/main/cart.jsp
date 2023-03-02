@@ -20,7 +20,7 @@
 			<thead>
 				<tr>
 					<th colspan="3" align="left">
-						<input type="checkbox" name="selected_all_product" value="check_all" checked>체크
+						<input type="checkbox" id="select_all_product" name="select_all_product" value="select_all_product" checked>체크
 					</th>
 					<th width="70%" class="txt_center">상품정보</th>
 					<th width="10%" class="txt_center">상품수량</th>

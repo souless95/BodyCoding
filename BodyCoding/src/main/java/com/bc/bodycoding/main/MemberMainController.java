@@ -47,28 +47,61 @@ public class MemberMainController {
 	@RequestMapping("/gymCheck.do")
 	@ResponseBody
 	public List<MemberDTO> gymCheck(HttpServletRequest req) {
-		List<MemberDTO> checkgymList;
-		Map<String, String> checkList = new HashMap<>();
-		checkList.put("facility_parking", "N");
-		checkList.put("facility_health", "N");
-		checkList.put("facility_yoga", "N");
-		checkList.put("facility_gx", "N");
-		checkList.put("facility_pilates", "N");
-		checkList.put("facility_pt", "N");
-		checkList.put("facility_24hour", "N");
-		checkList.put("facility_shower", "N");
-		checkList.put("facility_wear", "N");
-		checkList.put("facility_locker", "N");
-		String checkboxVal = req.getParameter("chechboxVal");
+		List<MemberDTO> checkmemList=null;
+		//선택된 값들 순서대로 list에 넣기
+		List<List<String>> checkgymList = new ArrayList<>();
+		//dao에서 이름과,'Y'으로 뽑기위해 map 이용하여 값 넣어주기
+		Map<String, String> checkFacility = new HashMap<>();
+		//ajax로 전달한 checkboxVal인 data값 받기
+		String checkboxVal = req.getParameter("checkboxVal");
+		//전달받은 checkboxVal에서 "&"와 "="를 이용하여 나눠준후 map에다가 넣어서 dao로 값 구하기
 		String[] checkval = checkboxVal.split("&");
 		for(int i=0 ; i< checkval.length ; i++) {
 			String[] mapval = checkval[i].split("=");
-			checkList.put(mapval[0].toString(), mapval[1].toString());
+			checkFacility.put("facility", mapval[0].toString());
+			
+			System.out.println("선택된 값"+checkFacility);
+			if(mapval[0].toString().equals("facility_parking")) {
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_health")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_yoga")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_gx")){
+				checkgymList.add(maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_pilates")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_pt")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_24hour")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_shower")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_wear")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_locker")){
+				checkgymList.add( maindao.gymlistCheck(checkFacility));
+			}
 		}
-		System.out.println(checkList);
-		checkgymList = maindao.gymlistCheck(checkList);
-		
-		return checkgymList;
+		System.out.println(checkgymList);
+		List<String> checkgymtemp = new ArrayList<>();
+		//전체 gym리스트 뽑아서 선택된 gym이랑 교집합 구하기
+		checkgymtemp = maindao.gymlisttemp();
+		System.out.println("전체 gym 리스트"+checkgymtemp);
+		for(int i=0 ; i<checkgymList.size();i++) {
+			checkgymtemp.retainAll(checkgymList.get(i));
+		}
+		System.out.println("교집합"+checkgymtemp);
+		return checkmemList;
 	}
 	
 	//회원창에서 트레이너 목록 페이지로 가기(지점선택 select박스관련)

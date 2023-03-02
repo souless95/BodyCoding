@@ -13,7 +13,8 @@ public interface MemberMainService {
 	
 	public List<MemberDTO> gymlistSelect();
 	public List<MemberDTO> gymlistSearch(String searchWord);
-	public List<MemberDTO> gymlistCheck(Map<String, String> checkList);
+	public List<String> gymlisttemp();
+	public List<String> gymlistCheck(Map<String, String> facility);
 	public List<MemberDTO> trainerALLlistSelect();
 	public List<MemberDTO> trainerlistSelect(String gym_code);
 	public MemberDTO trainerInfoSelect(String mem_id);

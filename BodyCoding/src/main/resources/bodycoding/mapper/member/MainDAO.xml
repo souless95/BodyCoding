@@ -7,23 +7,34 @@
 	
 <mapper namespace="com.bc.bodycoding.main.MemberMainService">
 
-<!-- select 박스 지점 선택 -->
+<!-- 모든 지점 선택 -->
 <select id="gymlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select * from member where authority='ADMIN_SUB' and enabled ='1'
+	select * from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
 </select>
 
 <!-- checkbox에 맞게 지점 검색 -->
-<select id="gymlistCheck"
+<!-- <select id="gymlistCheck"
 	parameterType="map"
 	resultType="global.dto.MemberDTO">
 	select * from member 
-		where authority='ADMIN_SUB' and enabled ='1'
+		where authority='ROLE_ADMIN_SUB' and enabled ='1'
   		and(
 	        mem_address like '%'||#{searchWord}||'%' 
 	        or mem_name like '%'||#{searchWord}||'%' 
 	        or mem_phone like '%'||#{searchWord}||'%')
+</select> -->
+<select id="gymlisttemp"
+	parameterType="String"
+	resultType="String">
+	select gym_code from gym_detail
+</select>
+
+<select id="gymlistCheck"
+	parameterType="map"
+	resultType="String">
+	select gym_code from gym_detail  where ${facility} = 'Y'
 </select>
 
 <!-- searchWord에 맞게 지점 검색 -->
@@ -31,12 +42,11 @@
 	parameterType="String"
 	resultType="global.dto.MemberDTO">
 	select * from member 
-		where authority='ADMIN_SUB' and enabled ='1'
+		where authority='ROLE_ADMIN_SUB' and enabled ='1'
   		and(
 	        mem_address like '%'||#{searchWord}||'%' 
 	        or mem_name like '%'||#{searchWord}||'%' 
 	        or mem_phone like '%'||#{searchWord}||'%')
-	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
 
 </select>
 

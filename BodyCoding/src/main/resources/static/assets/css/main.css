@@ -72,6 +72,13 @@ input, select, textarea {
 	appearance: none;
 }
 
+input[name="selected_all_product"] {
+ 	-moz-appearance: checkbox;
+	-webkit-appearance: checkbox;
+	-ms-appearance: checkbox;
+	appearance: checkbox;
+  }
+
 /* Basic */
 
 	html {

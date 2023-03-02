@@ -123,7 +123,7 @@
 <select id="cartList"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
-	select cart_idx, product_img, product_name, product_count, product_price 
+	select product_img, product_name, product_description, product_count, (product_count*product_price) product_price
 		from cart C
 			inner join product P on C.product_idx = P.product_idx
 			inner join member M on C.mem_id = M.mem_id 

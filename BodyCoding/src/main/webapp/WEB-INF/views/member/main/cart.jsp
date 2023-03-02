@@ -26,8 +26,9 @@
 					<th></th>
 				</tr>
 			<!-- 상품별 루프 시작 -->
-			<c:set value="total" value="0"/>
-				<c:forEach items="${myCartList }" var="myCartList" varStatus="status">
+			<c:set var="totalPrice" value="0"/>
+			<c:set var="totalCount" value="0"/>
+				<c:forEach items="${myCartList }" var="myCartList">
 					<tr>
 						<td style="vertical-align: middle; text-align: center;">
 							<input type="checkbox" name="selected_product" checked>
@@ -43,10 +44,11 @@
 								${myCartList.product_description }
 							</div>
 						</td>
-						<td style="vertical-align: middle; text-align: center;">${myCartList.product_count }</td>
-						<td style="vertical-align: middle; text-align: center;">${myCartList.product_price }</td>
+						<td style="vertical-align: middle; text-align: center;">${myCartList.product_count }개</td>
+						<td style="vertical-align: middle; text-align: center;">${myCartList.product_price }원</td>
 					</tr>
-					<c:set value="total" value="${total + myCartList.product_count }"/>
+					<c:set var="totalPrice" value="${totalPrice + myCartList.product_price}"/> 
+					<c:set var="totalCount" value="${totalCount + myCartList.product_count}"/>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -54,16 +56,14 @@
 		<table style="border: 5px solid #ffffff;">
 			<tbody>
 				<tr>
-					<td>
-						<div align="center"><strong style="font-size: 20px;">전체 주문금액</strong></div>
-					</td>
+					<td><div align="center"><strong style="font-size: 20px;">전체 주문금액</strong></div></td>
 					<td><div align="center"><strong style="font-size: 20px;">총 주문 수량</strong></div></td>
 				</tr>
 					<tr>
 						<td>
-							<div align="center"><strong style="font-size: 26px;">0원 </strong></div>
+							<div align="center"><strong style="font-size: 26px;"><c:out value="${totalPrice }"/>원</strong></div>
 						</td>
-						<td><div align="center"><strong style="font-size: 20px;"><c:out value="${total }"/></strong></div></td>
+						<td><div align="center"><strong style="font-size: 20px;"><c:out value="${totalCount }"/>개</strong></div></td>
 					</tr>
 			</tbody>
 		</table>

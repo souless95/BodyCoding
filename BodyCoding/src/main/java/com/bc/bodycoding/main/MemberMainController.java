@@ -234,6 +234,7 @@ public class MemberMainController {
 		productDTO.setMem_id(user);
 		
 		System.out.println(user);
+		System.out.println(maindao.cartList(productDTO));
 		
 		model.addAttribute("myCartList", maindao.cartList(productDTO));
 		

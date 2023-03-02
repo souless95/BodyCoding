@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 <style>
     body {
@@ -98,6 +98,7 @@
 			 	<div class="mb-3" >
 				    <span id="redStar">*</span>&nbsp;<label for="mem_id">아이디(이메일)</label>
 				    <input type="email" class="form-control" id="mem_id" name="mem_id" placeholder="you@example.com" required>
+				    <button type="button" id="idDuple">중복검사</button> &nbsp;	<span id="can"></span>	    
 			    </div>
      
 			    <div class="mb-3">
@@ -276,6 +277,27 @@
 			
 			/* frm.submit(); */
 		}
+		
+		$("#idDuple").click(function() {
+		    var mem_id = $("#mem_id").val();
+		    $.ajax({
+		      url : "/checkIdDuplicate", 
+		      contentType: "application/json; charset=utf-8",
+		      data : { mem_id : mem_id },
+		      dataType: 'text',
+		      success : function(data) { 
+		        if (data == "1") {
+		        	$("#can").html("<span style='color:red;'>이미 사용중인 아이디입니다.</span>");
+		        }
+		        else {
+		        	$("#can").html("<span style='color:green;'>사용가능한 아이디입니다.</span>");
+		        }
+		      },
+		      error : function() {
+		        alert("서버와의 통신 중 오류가 발생했습니다.");
+		      }
+		    });
+		});
 	</script>
 </body>
 </html>

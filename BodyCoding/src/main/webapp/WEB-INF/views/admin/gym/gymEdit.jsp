@@ -67,16 +67,16 @@
 						<h4>편의시설</h4>
 					<table class="table" border=2>
 						<tr align="center">
-							<th><img src="../static/admin/images/0002.png"/><img src="../static/admin/images/0001.png"/></th>
-							<th><img src="../static/admin/images/0004.png"></th>
-							<th><img src="../static/admin/images/0005.png"></th>
-							<th><img src="../static/admin/images/0007.png"></th>
-							<th><img src="../static/admin/images/0010.png"></th>
-							<th><img src="../static/admin/images/0011.png"></th>
-							<th><img src="../static/admin/images/0014.png"></th>
-							<th><img src="../static/admin/images/0017.png"></th>
-							<th><img src="../static/admin/images/0018.png"></th>
-							<th><img src="../static/admin/images/0020.png"></th>
+							<th><img src="/static/admin/images/0001.png"/></th>
+							<th><img src="/static/admin/images/0004.png"></th>
+							<th><img src="/static/admin/images/0005.png"></th>
+							<th><img src="/static/admin/images/0007.png"></th>
+							<th><img src="/static/admin/images/0010.png"></th>
+							<th><img src="/static/admin/images/0011.png"></th>
+							<th><img src="/static/admin/images/0014.png"></th>
+							<th><img src="/static/admin/images/0017.png"></th>
+							<th><img src="/static/admin/images/0018.png"></th>
+							<th><img src="/static/admin/images/0020.png"></th>
 						</tr>
 						<tr align="center">
 							<th>주차</th>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.dto.MemberDTO;
 
@@ -36,10 +37,22 @@ public class AccountController {
 	public String signupM2(MemberDTO memberDTO) {
 		System.out.println(memberDTO);
 		
-		 int result = accountdao.insertMember(memberDTO); if(result==1)
+		 int result = accountdao.insertMember(memberDTO); 
+		 
+		 if(result==1)
 		 System.out.println("회원가입이 완료되었습니다.");
 
 		return "member/main";
+	}
+	
+	// ajax 회원아이디 중복검사
+	@ResponseBody
+	@RequestMapping("/checkIdDuplicate")
+	public String checkIdDuplicate(MemberDTO memberDTO) {
+		
+		String result = accountdao.checkIdDuplicate(memberDTO);
+		
+		return result;
 	}
 
 	// 회원 로그인창으로 넘어가기

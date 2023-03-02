@@ -12,30 +12,40 @@
 <%@ include file="../../../../inc/Top.jsp" %>
 	<!-- 장바구니 목록 보여주는 곳 -->
 <div class="container">
-	<h2>장바구니 내역</h2>
-	<table id="datatablesSimple">
-		<thead>
-			<tr>
-				<th>상품 이미지</th>
-				<th>번호</th>
-				<th>상품명</th>
-				<th>갯수</th>
-				<th>가격</th>
-				<th>수정/삭제버튼</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${productList }" var="row" varStatus="loop">
+	<div>
+		<h2>장바구니 내역</h2>
+	</div>
+	<form method="post" name="form1" id="form1">
+		<table border="1">
+			<thead>
 				<tr>
-					<td>${상품이미지 }</td>
-					<td>${row.product_idx }</td>
-					<td>${row.product_name }</td>
-					<td>${row.상품갯수?? }</td>
-					<td>${row.product_price }</td>
+					<th colspan="3" align="left">
+						<input type="checkbox" name="selected_all_product" value="check_all" checked>체크
+					</th>
+					<th width="70%" class="txt_center">상품정보</th>
+					<th width="10%" class="txt_center">상품수량</th>
+					<th width="*" class="txt_center">상품금액</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<!-- 상품별 루프 시작 -->
+			<tbody>
+				<c:forEach items="${productList }" var="row" varStatus="loop">
+					<tr>
+						<td width="20%" class="txt_center">
+							<input type="checkbox" name="selected_all_product" checked>
+						</td>
+						<td><img src="static/uploads/product/${productInfo.product_img}" style="width:100%;height:180px;"></td>
+						<td>
+							<div><strong>${prodictInfo.product_name }</strong></div>
+							<div></div>
+						</td>
+						<td>${row.product_count }</td>
+						<td>${row.product_price }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</form>
 	<button type="button">구매하기(결제)</button>
 	<button type="button" onclick="location.href='product'">목록으로</button>
 </div>	

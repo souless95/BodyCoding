@@ -124,17 +124,39 @@
 <select id="cartList"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
-	select * from cart (이 안에 product와 member에서 join해서 받을 정보 조인하기) where mem_id=#{mem_id}
+	select * from cart (이 안에 product와 member에서 join해서 받을 정보 조인하기) 
+		where mem_id=#{mem_id} and cart_idx=#{cart_idx}
 </select>
 
-<!-- 장바구니에 상품 추가하기 -->
+<!-- 장바구니 상품 추가 전 확인 -->
+<select id="cartAddSelect"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+	select * from cart where mem_id=#{mem_id} and product_idx=#{product_idx}
+</select>
+<!-- 장바구니에 상품이 있을경우 1개 추가하기 -->
+<update id="cartAddPlus"
+	parameterType="global.dto.ProductDTO">
+	update cart set product_count=product_count+1 where mem_id=#{mem_id} and product_idx=#{product_idx}
+</update>
+
+<!-- 장바구니에 상품이 없을 경우 상품 추가하기 -->
 <insert id="cartAdd"
 	parameterType="global.dto.ProductDTO">
-	insert into cart (cart_idx, mem_id, product_idx) values (bodycoding_seq.nextval, #{mem_id}, #{product_idx})
+	insert into cart (cart_idx, mem_id, product_idx, product_count) 
+		values (bodycoding_seq.nextval, #{mem_id}, #{product_idx}, #{product_count})
 </insert>
-<!-- 장바구니에 상품 삭제하기 -->
+
+<!-- 장바구니에 전체 상품 삭제하기 -->
 <delete id="cartDelete"
 	parameterType="global.dto.ProductDTO">
 	delete from cart where mem_id=#{mem_id} and product_idx_#{product_idx}
 </delete>
+
+<!-- 장바구니에 상품 갯수 선택해서 삭제 -->
+<update id="cartDelete1"
+	parameterType="global.dto.ProductDTO">
+	
+</update>
+
 </mapper>

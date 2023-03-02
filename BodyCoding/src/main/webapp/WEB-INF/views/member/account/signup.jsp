@@ -116,6 +116,7 @@
 
 				<div class="mb-3">
 			        <label for="mem_gender">성별</label> &nbsp;&nbsp;
+	      			<input type="hidden" name="mem_gender" value="" checked>
 	      			<input type="radio" name="mem_gender" value="M">&nbsp;남자&nbsp;
 		       		<input type="radio" name="mem_gender" value="F">&nbsp;여자<br>
 				</div>
@@ -276,6 +277,15 @@
 			
 			/* frm.submit(); */
 		}
+		
+		onclick = function(){
+					console.log("실행?");
+					var gym = document.getElementsByName("gym_code")[0].value;
+					if (gym==null || gym==""){
+						gym="none";
+					}
+					console.log(gym);
+				}
 	</script>
 </body>
 </html>

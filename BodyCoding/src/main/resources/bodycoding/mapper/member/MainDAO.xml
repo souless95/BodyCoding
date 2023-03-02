@@ -151,4 +151,6 @@
 	parameterType="global.dto.ProductDTO">
 	delete from cart where mem_id=#{mem_id} and product_idx_#{product_idx}
 </delete>
+
+
 </mapper>

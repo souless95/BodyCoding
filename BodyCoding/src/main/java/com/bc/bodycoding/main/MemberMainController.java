@@ -226,27 +226,50 @@ public class MemberMainController {
 	
 	
 	//장바구니로 상품목록 
-	@RequestMapping("cartList.do")
-	public String cartList(Model model, HttpServletRequest req) {
+	@RequestMapping("/cartList.do")
+	public String cartList() {
 		
 		
-		return "mamber/main/cart";
+		return "member/main/cart";
 	}
 	
-	//장바구니 상품 추가
-	@RequestMapping("cartAdd.do")
-	public String cartAdd(ProductDTO productDTO) {
+	//장바구니에 추가 전 확인용
+	@RequestMapping("cartAddSelect.do")
+	public String cartAddSelect(ProductDTO productDTO) {
 		
-		//정보 잘 받아오는 지 확인해보자
-		System.out.println(productDTO.getMem_id()); //멤버아이디
-		System.out.println(productDTO.getProduct_idx()); //받아온 product_idx
+		//리스트 확인
+		ProductDTO result = maindao.cartAddSelect(productDTO);
+		productDTO.setProduct_count(1);
 		
-		int result = maindao.cartAdd(productDTO);
-		if (result==1) {
-			System.out.println("장바구니에 추가되었습니다.");
+		//상품이 있을경우
+		if (result != null) {
+			
+			int resultUpdate = maindao.cartAddPlus(productDTO);
+			System.out.println("장바구니에 상품이 있어서 수량이 추가되었습니다.");
 		}
-		return "cartList.do";
+		//상품이 없을 경우
+		else {
+			
+			int resultAdd = maindao.cartAdd(productDTO);
+			System.out.println("장바구니에 상품이 없어서 새로 추가되었습니다.");
+		}
+		
+		return "redirect:cartList.do";
 	}
+//	//장바구니 상품 추가
+//	@RequestMapping("cartAdd.do")
+//	public String cartAdd(ProductDTO productDTO) {
+//		
+//		//정보 잘 받아오는 지 확인해보자
+//		System.out.println(productDTO.getMem_id()); //멤버아이디
+//		System.out.println(productDTO.getProduct_idx()); //받아온 product_idx
+//		
+//		int result = maindao.cartAdd(productDTO);
+//		if (result==1) {
+//			System.out.println("장바구니에 추가되었습니다.");
+//		}
+//		return "cartList.do";
+//	}
 	//장바구니 상품 삭제
 	@RequestMapping("cartDelete.do")
 	public String cartDelete(ProductDTO productDTO) {

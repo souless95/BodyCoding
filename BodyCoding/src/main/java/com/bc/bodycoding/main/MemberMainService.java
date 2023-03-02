@@ -27,6 +27,7 @@ public interface MemberMainService {
 	
 	
 	//장바구니
+	public ProductDTO cartList(ProductDTO productDTO); //장바구니 리스트 보기
 	public ProductDTO cartAddSelect(ProductDTO productDTO); //장바구니에 추가 전 확인용select문
 	public int cartAdd(ProductDTO productDTO); //장바구니에 추가
 	public int cartAddPlus(ProductDTO productDTO); //장바구니에 갯수 추가

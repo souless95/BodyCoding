@@ -124,8 +124,12 @@
 <select id="cartList"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
-	select * from cart (이 안에 product와 member에서 join해서 받을 정보 조인하기) 
-		where mem_id=#{mem_id} and cart_idx=#{cart_idx}
+	select cart_idx, product_img, product_name, product_count, product_price 
+		from cart C
+			inner join product P on C.product_idx = P.product_idx
+			inner join member M on C.mem_id = M.mem_id 
+		where
+			lower(C.mem_id) = #{mem_id}
 </select>
 
 <!-- 장바구니 상품 추가 전 확인 -->

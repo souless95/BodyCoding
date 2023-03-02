@@ -23,14 +23,14 @@ public interface AccountService{
 	public MemberDTO gofindid(MemberDTO memberDTO);
 	public MemberDTO gofindpass(MemberDTO memberDTO);
 	
+	public MemberDTO dispMail(MemberDTO memberDTO);
+	public MemberDTO execMail(MemberDTO memberDTO);
 	
-    public MemberDTO findUserByUserId(MemberDTO memberDTO);
-    public MemberDTO updateUserPassword(MemberDTO memberDTO);
-    
-    public void sendEmail(MemberDTO memberDTO, String email) throws Exception;
-    
-    public void findPw(HttpServletResponse resp, MemberDTO memberDTO) throws Exception;
-    
-	
+	//비밀번호 찾기할때 아이디,이름,생년 같은지
+	public MemberDTO gofindpw(MemberDTO memberDTO);
+
+	//비밀번호 업데이트
+	public MemberDTO updatePass(MemberDTO memberDTO);
+	public String updatePass(String rnd);
 	
 }

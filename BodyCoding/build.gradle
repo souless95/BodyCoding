@@ -43,6 +43,7 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-taglibs'
 	//이메일 의존설정 추가
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation group: 'org.apache.commons', name : 'commons-email', version:'1.4'
 }
 
 tasks.named('test') {

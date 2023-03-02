@@ -37,7 +37,10 @@
 	        or mem_name like '%'||#{searchWord}||'%' 
 	        or mem_phone like '%'||#{searchWord}||'%')
 	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </select>
 
 

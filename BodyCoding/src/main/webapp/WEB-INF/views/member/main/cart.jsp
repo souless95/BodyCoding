@@ -26,7 +26,8 @@
 					<th></th>
 				</tr>
 			<!-- 상품별 루프 시작 -->
-				<c:forEach items="${myCartList }" var="myCartList">
+			<c:set value="total" value="0"/>
+				<c:forEach items="${myCartList }" var="myCartList" varStatus="status">
 					<tr>
 						<td style="vertical-align: middle; text-align: center;">
 							<input type="checkbox" name="selected_product" checked>
@@ -45,6 +46,7 @@
 						<td style="vertical-align: middle; text-align: center;">${myCartList.product_count }</td>
 						<td style="vertical-align: middle; text-align: center;">${myCartList.product_price }</td>
 					</tr>
+					<c:set value="total" value="${total + myCartList.product_count }"/>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -59,9 +61,9 @@
 				</tr>
 					<tr>
 						<td>
-							<div align="center"><strong style="font-size: 26px;">${product_price } </strong></div>
+							<div align="center"><strong style="font-size: 26px;">0원 </strong></div>
 						</td>
-						<td><div align="center"><strong style="font-size: 20px;">${product_count }</strong></div></td>
+						<td><div align="center"><strong style="font-size: 20px;"><c:out value="${total }"/></strong></div></td>
 					</tr>
 			</tbody>
 		</table>

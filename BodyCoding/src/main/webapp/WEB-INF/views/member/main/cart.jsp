@@ -26,6 +26,7 @@
 					<th></th>
 				</tr>
 			<!-- 상품별 루프 시작 -->
+				<c:set var="total" value="0"></c:set>
 				<c:forEach items="${myCartList }" var="myCartList">
 					<tr>
 						<td style="vertical-align: middle; text-align: center;">
@@ -44,6 +45,7 @@
 						</td>
 						<td style="vertical-align: middle; text-align: center;">${myCartList.product_count }</td>
 						<td style="vertical-align: middle; text-align: center;">${myCartList.product_price }</td>
+						<c:set var="total" value="${total+myCartList.product_price}"></c:set>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -59,7 +61,7 @@
 				</tr>
 					<tr>
 						<td>
-							<div align="center"><strong style="font-size: 26px;">${product_price } </strong></div>
+							<div align="center"><strong style="font-size: 26px;"><c:out value="${total }"></c:out></strong></div>
 						</td>
 						<td><div align="center"><strong style="font-size: 20px;">${product_count }</strong></div></td>
 					</tr>

@@ -21,30 +21,31 @@ public class AccountController {
 	@Autowired
 	AccountService accountdao;
 
-	//회원가입창으로 넘어가기
-	@RequestMapping(value="/signup.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
 	public String signupM() {
 		return "member/account/signup";
 	}
-	
-	//회원가입 폼 받아서 실행
-	//@PostMapping("/signup.do")
-	@RequestMapping(value="/signup.do", method=RequestMethod.POST)
+
+	// 회원가입 폼 받아서 실행
+	// @PostMapping("/signup.do")
+	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String signupM2(MemberDTO memberDTO) {
-			int result = accountdao.insertMember(memberDTO);
-			if(result==1) System.out.println("회원가입이 완료되었습니다.");
-			
+		System.out.println(memberDTO);
+		
+		 int result = accountdao.insertMember(memberDTO); if(result==1)
+		 System.out.println("회원가입이 완료되었습니다.");
+
 		return "member/main";
 	}
-	
-	//회원 로그인창으로 넘어가기
-	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+
+	// 회원 로그인창으로 넘어가기
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login1() {
 		return "member/account/login";
 	}
-	
-	//회원 로그인 하기
-	@RequestMapping(value="/login.do", method=RequestMethod.POST)
+
+	// 회원 로그인 하기
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login1(HttpSession session, MemberDTO memberDTO) {
 		System.out.println(memberDTO.getMem_id());
 		System.out.println(memberDTO.getMem_pass());
@@ -53,52 +54,52 @@ public class AccountController {
 			session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
 			session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
 			return "redirect:main";
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("로그인 중 오류발생");
 			return "member/account/login";
 		}
 	}
-	
-	//회원 로그아웃하기
+
+	// 회원 로그아웃하기
 	@GetMapping("/logout.do")
 	public String logout1(HttpSession session) {
 		session.invalidate();
 		return "redirect:main";
 	}
-	
-	//비밀번호 확인 페이지로 넘어가기
+
+	// 비밀번호 확인 페이지로 넘어가기
 	@GetMapping("pwcheck")
-	public String pwcheck(HttpServletRequest req){
+	public String pwcheck(HttpServletRequest req) {
 		return "member/mypage/pwCheck";
 	}
-	
-	//비밀번호 확인후 정보수정 페이지로 넘어가기
+
+	// 비밀번호 확인후 정보수정 페이지로 넘어가기
 	@PostMapping("pwcheck")
-	public String pwcheck1(HttpServletRequest req){
+	public String pwcheck1(HttpServletRequest req) {
 		String mem_passCheck = accountdao.pwCheck(req.getParameter("mem_id"));
 		String mem_pass = req.getParameter("mem_pass");
 		System.out.println(req.getParameter("mem_pass"));
 		System.out.println(mem_pass);
-		if(mem_pass.equals(mem_passCheck)) {
-			return "redirect:memberEdit.do?mem_id="+req.getParameter("mem_id");
+		if (mem_pass.equals(mem_passCheck)) {
+			return "redirect:memberEdit.do?mem_id=" + req.getParameter("mem_id");
 		}
 		return "redirect:pwcheck";
 	}
-	
-	//탈퇴페이지 넘어가기
+
+	// 탈퇴페이지 넘어가기
 	@GetMapping("delete")
 	public String delete() {
 		return "member/mypage/delete";
 	}
-	
-	//탈퇴하기
+
+	// 탈퇴하기
 	@PostMapping("/delete")
 	public String delete1(HttpServletRequest req, HttpSession session) {
-		String mem_id = req.getParameter("mem_id"); 
+		String mem_id = req.getParameter("mem_id");
 		System.out.println(mem_id);
 		int result = accountdao.deleteMember(mem_id);
 		System.out.println(result);
+
 		if(result==1) {
 			session.invalidate();
 			System.out.println("탈퇴 성공");
@@ -211,7 +212,6 @@ public class AccountController {
 			System.out.println("여기는 get방식");
 			return "member/account/findpw";
 		}
-		
 		
 		//랜덤함수로 임시비밀번호 만들기
 		  @RequestMapping("test")

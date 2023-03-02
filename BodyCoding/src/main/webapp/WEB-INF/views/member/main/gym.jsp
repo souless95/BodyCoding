@@ -15,7 +15,7 @@ $(function() {
  	$(".facility").click(function() {
 		let checkboxVal = $('#gymCheck').serialize();
 		
-		console.log(chechboxVal);
+		console.log(checkboxVal);
 		$.ajax({
 			type:'get',
 			url: '../gymCheck.do',

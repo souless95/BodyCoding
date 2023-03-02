@@ -14,28 +14,32 @@
 	select * from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
 </select>
 
-<!-- checkbox에 맞게 지점 검색 -->
-<!-- <select id="gymlistCheck"
-	parameterType="map"
-	resultType="global.dto.MemberDTO">
-	select * from member 
-		where authority='ROLE_ADMIN_SUB' and enabled ='1'
-  		and(
-	        mem_address like '%'||#{searchWord}||'%' 
-	        or mem_name like '%'||#{searchWord}||'%' 
-	        or mem_phone like '%'||#{searchWord}||'%')
-</select> -->
+<!-- 전체 gym_code -->
 <select id="gymlisttemp"
 	parameterType="String"
 	resultType="String">
 	select gym_code from gym_detail
 </select>
 
-<select id="gymlistCheck"
+<!-- CHECK된 gym_code 찾기 -->
+<select id="gymcodelistCheck"
 	parameterType="map"
 	resultType="String">
 	select gym_code from gym_detail  where ${facility} = 'Y'
 </select>
+
+<!-- checkbox에 맞게 지점 검색 -->
+<select id="gymlistCheck"
+	parameterType="String"
+	resultType="global.dto.MemberDTO">
+	select * from member 
+		where authority='ROLE_ADMIN_SUB' and enabled ='1'
+  		and gym_code in 
+  		<foreach item="item" collection="list" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	        
+</select> 
 
 <!-- searchWord에 맞게 지점 검색 -->
 <select id="gymlistSearch"

@@ -47,13 +47,14 @@ public class MemberMainController {
 	@RequestMapping("/gymCheck.do")
 	@ResponseBody
 	public List<MemberDTO> gymCheck(HttpServletRequest req) {
-		List<MemberDTO> checkmemList=null;
+		List<MemberDTO> checkmemList;
 		//선택된 값들 순서대로 list에 넣기
 		List<List<String>> checkgymList = new ArrayList<>();
 		//dao에서 이름과,'Y'으로 뽑기위해 map 이용하여 값 넣어주기
 		Map<String, String> checkFacility = new HashMap<>();
 		//ajax로 전달한 checkboxVal인 data값 받기
 		String checkboxVal = req.getParameter("checkboxVal");
+		System.out.println(checkboxVal);
 		//전달받은 checkboxVal에서 "&"와 "="를 이용하여 나눠준후 map에다가 넣어서 dao로 값 구하기
 		String[] checkval = checkboxVal.split("&");
 		for(int i=0 ; i< checkval.length ; i++) {
@@ -62,34 +63,34 @@ public class MemberMainController {
 			
 			System.out.println("선택된 값"+checkFacility);
 			if(mapval[0].toString().equals("facility_parking")) {
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_health")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_yoga")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_gx")){
-				checkgymList.add(maindao.gymlistCheck(checkFacility));
+				checkgymList.add(maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_pilates")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_pt")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_24hour")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_shower")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_wear")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 			else if(mapval[0].toString().equals("facility_locker")){
-				checkgymList.add( maindao.gymlistCheck(checkFacility));
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
 			}
 		}
 		System.out.println(checkgymList);
@@ -101,6 +102,10 @@ public class MemberMainController {
 			checkgymtemp.retainAll(checkgymList.get(i));
 		}
 		System.out.println("교집합"+checkgymtemp);
+		
+		//교집합인 checkgymtemp(list)를 이용해서 지점 찾기(memberDTO)
+		checkmemList = maindao.gymlistCheck(checkgymtemp);
+		
 		return checkmemList;
 	}
 	

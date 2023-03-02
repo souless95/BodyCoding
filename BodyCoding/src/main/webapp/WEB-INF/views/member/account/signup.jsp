@@ -92,7 +92,7 @@
 			<div style="text-align:center;">
 				<h2 class="mb-1">회원가입</h2>
 			</div><br />
-			<form method="post" action="signup.do">
+			<form method="post" action="signup.do" id="regiForm">
 				<input type="hidden" name="enabled" value="1">
 				<input type="hidden" name="authority" value="ROLE_MEMBER">
 			 	<div class="mb-3" >
@@ -147,7 +147,7 @@
 				<div class="mb-1">
 				    <label for="gym_code">지점선택</label>&nbsp;
 			        <select class="custom-select d-block w-100" name="gym_code">
-			            <option value="" disabled selected>지점을 선택해 주세요</option>
+			            <option value="" selected>지점을 선택해 주세요</option>
 			            <option value="1">종로</option>
 			            <option value="일산">일산</option>
 			            <option value="성북">성북</option>
@@ -158,12 +158,12 @@
 
 				<div class="mb-1">
 			        <label for="mem_height">키</label>
-			        <input type="number" class="form-control" name="mem_height" step="0.01">
+			        <input type="number" class="form-control" id="mem_height" name="mem_height" step="0.01">
 				</div>
 				
 				<div class="mb-1">
 					<label for="mem_weight">몸무게</label>
-					<input type="number" class="form-control" name="mem_weight" step="0.01">
+					<input type="number" class="form-control" id="mem_weight" name="mem_weight" step="0.01">
 				</div>	
 				
 				<div class="mb-1">
@@ -182,8 +182,7 @@
 				   	<input type="checkbox" class="checkStyle" name="mem_disease" value="hnf">
 					<label for="hnf">손목 또는 발목</label>&nbsp;&nbsp;
 				 
-					<input type="checkbox" class="checkStyle" name="mem_disease" value="none">
-					<label for="none">선택사항 없음</label>
+					<input type="hidden" class="checkStyle" name="mem_disease" value="">
 				</div>
  				<br />
 
@@ -204,6 +203,8 @@
 			       
 		         	<input type="checkbox" class="checkStyle" name="mem_purpose" value="etc">
 			      	<label for="etc">그 외</label>&nbsp;&nbsp;
+			      	
+			      	<input type="hidden" class="checkStyle" name="mem_purpose" value="">
 	       		</div>
 
 				<label for="mem_interest">관심사항</label>
@@ -220,12 +221,14 @@
 					
 					<input type="checkbox" class="checkStyle" name="mem_interest" value="health">
 					<label for="yoga">헬스</label>
+					
+					<input type="hidden" class="checkStyle" name="mem_interest" value="">
 				</div>
 
 				<div class="mb-1">
 				    <label for="mem_inflow">유입경로</label>
 				    <select class="custom-select d-block w-100" name="mem_inflow">
-			            <option value="" disabled selected> 센터를 알게된 경로를 선택해 주세요</option>
+			            <option value="" selected> 센터를 알게된 경로를 선택해 주세요</option>
 			            <option value="지인추천">지인추천</option>
 			            <option value="SNS">SNS</option>
 			            <option value="인터넷검색">인터넷 검색</option>
@@ -246,46 +249,55 @@
 <footer class="my-3 text-center text-medium">
      <p class="mb-1">&copy; 2023 BodyCoding</p>
 </footer>
-	<script>
-		function commonFocusMove(thisObj, numLength, nextObj){
-			var obj1 = document.getElementById(thisObj);
-			var strLen2 = obj1.value.length;
-			if(strLen2 == numLength){
-				document.getElementById(nextObj).focus();
-			}
+<script>
+	function commonFocusMove(thisObj, numLength, nextObj){
+		var obj1 = document.getElementById(thisObj);
+		var strLen2 = obj1.value.length;
+		if(strLen2 == numLength){
+			document.getElementById(nextObj).focus();
 		}
-			
-		var password = document.getElementById("mem_pass");
-		var confirm_password = document.getElementById("mem_pass1");
+	}
+		
+	var password = document.getElementById("mem_pass");
+	var confirm_password = document.getElementById("mem_pass1");
 
-		function validatePassword(){
-		  if(password.value != confirm_password.value) {
-			  confirm_password.setCustomValidity("비밀번호와 비밀번호 확인값이 일치하지 않습니다.");
-		  }
-		  else {
-		    confirm_password.setCustomValidity(''); 
-		  }
-		}
+	function validatePassword(){
+	  if(password.value != confirm_password.value) {
+		  confirm_password.setCustomValidity("비밀번호와 비밀번호 확인값이 일치하지 않습니다.");
+	  }
+	  else {
+	    confirm_password.setCustomValidity(''); 
+	  }
+	}
+	
+	function telValue(){
+		var tel1 = document.getElementById("tel1");
+		var tel2 = document.getElementById("tel2");
+		var tel3 = document.getElementById("tel3");
+		var telFinal = document.getElementById("telFinal");
 		
-		function telValue(){
-			var tel1 = document.getElementById("tel1");
-			var tel2 = document.getElementById("tel2");
-			var tel3 = document.getElementById("tel3");
-			var telFinal = document.getElementById("telFinal");
-			
-			telFinal.value = tel1.value + "-" + tel2.value + "-" + tel3.value;
-			
-			/* frm.submit(); */
-		}
+		telFinal.value = tel1.value + "-" + tel2.value + "-" + tel3.value;
 		
-		onclick = function(){
-					console.log("실행?");
-					var gym = document.getElementsByName("gym_code")[0].value;
-					if (gym==null || gym==""){
-						gym="none";
-					}
-					console.log(gym);
-				}
-	</script>
+		/* frm.submit(); */
+	}
+	
+ 	$(document).submit(function(){
+ 		if($('#mem_weight').val()=="" || $('#mem_weight').val()==null){
+			$('#mem_weight').val(0);
+		}
+ 		if($('#mem_height').val()=="" || $('#mem_height').val()==null){
+			$('#mem_height').val(0);
+		}
+ 		if($('input:checkbox[name=mem_disease]:checked').length=0){
+ 			$('input:checkbox[name=mem_disease]').val(null);
+ 		}
+ 		if($('input:checkbox[name=mem_purpose]:checked').length=0){
+ 			$('input:checkbox[name=mem_purpose]').val(null);
+ 		}
+ 		if($('input:checkbox[name=mem_interest]:checked').length=0){
+ 			$('input:checkbox[name=mem_interest]').val(null);
+ 		}
+	});
+</script>
 </body>
 </html>

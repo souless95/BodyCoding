@@ -157,10 +157,5 @@
 	delete from cart where mem_id=#{mem_id} and product_idx_#{product_idx}
 </delete>
 
-<!-- 장바구니에 상품 갯수 선택해서 삭제 -->
-<update id="cartDelete1"
-	parameterType="global.dto.ProductDTO">
-	
-</update>
 
 </mapper>

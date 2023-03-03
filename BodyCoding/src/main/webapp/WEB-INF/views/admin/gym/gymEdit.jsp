@@ -12,7 +12,38 @@
 <link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <style type="text/css">
-.table-bordered{font-family: Verdana, Geneva, Tahoma, sans-serif;}
+.table-bordered {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;;
+}
+
+.preview-item {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.preview-number {
+    font-weight: bold;
+    margin-right: 10px;
+    min-width: 20px; /* 수정 */
+    text-align: center; /* 수정 */
+}
+
+.preview-image {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -25,7 +56,7 @@
         
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
-	        <form action="/gymedit.do" method="post">
+	        <form action="/gymedit.do" method="post" enctype="multipart/form-data">
 	        	<div class="card-header">
 					<h2>${memList.mem_name } 수정 페이지</h2>
 	        	</div>
@@ -67,16 +98,16 @@
 						<h4>편의시설</h4>
 					<table class="table" border=2>
 						<tr align="center">
-							<th><img src="../static/admin/images/0002.png"/><img src="../static/admin/images/0001.png"/></th>
-							<th><img src="../static/admin/images/0004.png"></th>
-							<th><img src="../static/admin/images/0005.png"></th>
-							<th><img src="../static/admin/images/0007.png"></th>
-							<th><img src="../static/admin/images/0010.png"></th>
-							<th><img src="../static/admin/images/0011.png"></th>
-							<th><img src="../static/admin/images/0014.png"></th>
-							<th><img src="../static/admin/images/0017.png"></th>
-							<th><img src="../static/admin/images/0018.png"></th>
-							<th><img src="../static/admin/images/0020.png"></th>
+							<th><img src="/static/admin/images/0001.png"/></th>
+							<th><img src="/static/admin/images/0004.png"></th>
+							<th><img src="/static/admin/images/0005.png"></th>
+							<th><img src="/static/admin/images/0007.png"></th>
+							<th><img src="/static/admin/images/0010.png"></th>
+							<th><img src="/static/admin/images/0011.png"></th>
+							<th><img src="/static/admin/images/0014.png"></th>
+							<th><img src="/static/admin/images/0017.png"></th>
+							<th><img src="/static/admin/images/0018.png"></th>
+							<th><img src="/static/admin/images/0020.png"></th>
 						</tr>
 						<tr align="center">
 							<th>주차</th>
@@ -127,6 +158,52 @@
 							<td><input type="text" name="rtime_holy_end" value="${dto.rtime_holy_end}" style="width: 100px;"/></td>
 						</tr>
 					</table>
+					
+						<h4>사진 추가</h4>
+					<table class="table" border=2>
+						<tr>
+							<td><input type="file" id="fileInput" name="file_name" value="" style="width:500px; border:1px solid gray;" multiple /></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+					<div id="previewContainer"></div>
+					<script>
+					const fileInput = document.querySelector('#fileInput');
+					const previewContainer = document.querySelector('#previewContainer');
+
+				    function previewImages() {
+					    const files = fileInput.files;
+					    previewContainer.innerHTML = '';
+	
+					    for (let i = 0; i < files.length; i++) {
+					      const file = files[i];
+					      const reader = new FileReader();
+	
+					      reader.onload = function(event) {
+					        const imageUrl = event.target.result;
+					        createImagePreview(imageUrl, file.name);
+						};
+					      reader.readAsDataURL(file);
+					    }
+					}
+
+					function createImagePreview(imageUrl, fileName) {
+					    const img = document.createElement('img');
+					    img.src = imageUrl;
+					    img.alt = fileName;
+					    img.style.width = '200px';
+					    
+					    const div = document.createElement('div');
+					    div.classList.add('preview-item');
+					    div.innerHTML = '<span class="preview-number">' + (previewContainer.childElementCount + 1) + '.</span>' +
+		                '<div class="preview-image">' + img.outerHTML + '</div>';
+					    previewContainer.appendChild(div);
+					}
+					
+				    fileInput.addEventListener('change', previewImages);
+					</script>
 					<input type="submit" value="전송하기"/>
 				</div>
 			</form>

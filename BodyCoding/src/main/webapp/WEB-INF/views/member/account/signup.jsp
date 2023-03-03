@@ -87,6 +87,7 @@
 </head>
 <body>
 <div class="container">
+<<<<<<< HEAD
    <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
          <div style="text-align:center;">
@@ -99,6 +100,21 @@
                 <span id="redStar">*</span>&nbsp;<label for="mem_id">아이디(이메일)</label>
                 <input type="email" class="form-control" id="mem_id" name="mem_id" placeholder="you@example.com" required>
              </div>
+=======
+	<div class="input-form-backgroud row">
+		<div class="input-form col-md-12 mx-auto">
+			<div style="text-align:center;">
+				<h2 class="mb-1">회원가입</h2>
+			</div><br />
+			<form method="post" action="signup.do" id="regiForm">
+				<input type="hidden" name="enabled" value="1">
+				<input type="hidden" name="authority" value="ROLE_MEMBER">
+			 	<div class="mb-3" >
+				    <span id="redStar">*</span>&nbsp;<label for="mem_id">아이디(이메일)</label>
+				    <input type="email" class="form-control" id="mem_id" name="mem_id" placeholder="you@example.com" required>
+				    <button type="button" id="idDuple">중복검사</button> &nbsp;	<span id="can"></span>	    
+			    </div>
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
      
              <div class="mb-3">
                   <span id="redStar">*</span>&nbsp;<label for="mem_pass">비밀번호</label>
@@ -262,6 +278,7 @@
    var password = document.getElementById("mem_pass");
    var confirm_password = document.getElementById("mem_pass1");
 
+<<<<<<< HEAD
    function validatePassword(){
      if(password.value != confirm_password.value) {
         confirm_password.setCustomValidity("비밀번호와 비밀번호 확인값이 일치하지 않습니다.");
@@ -302,6 +319,66 @@
           $('input:radio[name=mem_gender]').val(null);
        }
    });
+=======
+	function validatePassword(){
+	  if(password.value != confirm_password.value) {
+		  confirm_password.setCustomValidity("비밀번호와 비밀번호 확인값이 일치하지 않습니다.");
+	  }
+	  else {
+	    confirm_password.setCustomValidity(''); 
+	  }
+	}
+	
+	function telValue(){
+		var tel1 = document.getElementById("tel1");
+		var tel2 = document.getElementById("tel2");
+		var tel3 = document.getElementById("tel3");
+		var telFinal = document.getElementById("telFinal");
+		
+		telFinal.value = tel1.value + "-" + tel2.value + "-" + tel3.value;
+		
+		/* frm.submit(); */
+	}
+	
+ 	$(document).submit(function(){
+ 		if($('#mem_weight').val()=="" || $('#mem_weight').val()==null){
+			$('#mem_weight').val(0);
+		}
+ 		if($('#mem_height').val()=="" || $('#mem_height').val()==null){
+			$('#mem_height').val(0);
+		}
+ 		if($('input:checkbox[name=mem_disease]:checked').length=0){
+ 			$('input:checkbox[name=mem_disease]').val(null);
+ 		}
+ 		if($('input:checkbox[name=mem_purpose]:checked').length=0){
+ 			$('input:checkbox[name=mem_purpose]').val(null);
+ 		}
+ 		if($('input:checkbox[name=mem_interest]:checked').length=0){
+ 			$('input:checkbox[name=mem_interest]').val(null);
+ 		}
+	});
+ 	
+	$("#idDuple").click(function() {
+	    var mem_id = $("#mem_id").val();
+	    $.ajax({
+	      url : "/checkIdDuplicate", 
+	      contentType: "application/json; charset=utf-8",
+	      data : { mem_id : mem_id },
+	      dataType: 'text',
+	      success : function(data) { 
+	        if (data == "1") {
+	        	$("#can").html("<span style='color:red;'>이미 사용중인 아이디입니다.</span>");
+	        }
+	        else {
+	        	$("#can").html("<span style='color:green;'>사용가능한 아이디입니다.</span>");
+	        }
+	      },
+	      error : function() {
+	        alert("서버와의 통신 중 오류가 발생했습니다.");
+	      }
+	    });
+	});
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </script>
 </body>
 </html>

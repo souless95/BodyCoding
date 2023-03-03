@@ -10,7 +10,7 @@
 <link href="../static/admin/css/styles.css" rel="stylesheet" />
 
 <!-- Bootstrap core JavaScript -->
-<script src="../static/assets/jquery/jquery-3.6.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Find ID</title>
 <style>
@@ -119,27 +119,16 @@ body {
 
 </head>
 <body>
-
-
+	<br>
     <h1>비밀번호 찾기</h1>
+          
+    <hr><br>
     
-      <h1>메일 발송</h1>
-
-    <form method="post" action="findpw1">
-        <input name="address" placeholder="이메일 주소"> <br>
-        <input name="title" placeholder="제목"> <br>
-        <textarea name="message" placeholder="메일 내용을 입력해주세요." cols="60" rows="20"></textarea>
-        <button>발송</button>
-    </form>
-    
-    <hr><br><br><br>
-    
-    
-	<h2> 아이디, 이름, 생년월일을 입력해주세요</h2>	
+	<h2> 이메일, 이름을 입력해주세요</h2>	
     <br><br>
     
     <!-- 비번찾기 로직 -->
-    <form method="post" class="form-signin" action="updatePass" name="findform">
+    <form method="post" class="form-signin" name="findform"> <!-- action="updatePass" --> 
 		<div class="form-label-group">
 			<input type="text" id="mem_id" name="mem_id" class="form-control"/>
 			<label for="name">id</label>
@@ -149,40 +138,56 @@ body {
 			<input type="text" id="mem_name" name="mem_name" class="form-control"/>
 			<label for="name">name</label>
 		</div>
-		
-		<div class="form-label-group">
-			<input type="text" id="mem_birth" name="mem_birth" class="form-control"/>
-			<label for="birth">birth</label>
-		</div>
 
+		<div class="form-label-group">
+			<button type="button" class="btn btn-lg btn-secondary btn-block text-uppercase" id="submitted">check</button>
+		</div>
+		<script>
+		$("#submitted").click(function() {
+		    var mem_id = $("#mem_id").val();
+		    var mem_name = $("#mem_name").val();
+		    $.ajax({
+		        url: "/validaation",
+		        contentType: "application/json; charset=utf-8",
+		        data: {
+		            mem_id: mem_id,
+		            mem_name: mem_name
+		        },
+		        dataType: 'text',
+		        success: function(data) {
+		            if (data == "") {
+		                $("#ajaxx").html("<span style='color:red;'> 일치하는 정보가 없습니다.</span>");
+		            } else {
+		                $("#ajaxx").html("<span style='color:green;'>새로 생성된 비밀번호를 이메일로 전송하였습니다.</span>");
+		                $.ajax({
+		                    url: "/updateuserPass",
+		                    contentType: "application/json; charset=utf-8",
+		                    data: {
+		                        mem_id: mem_id,
+		                        mem_pass: data
+		                    },
+		                    dataType: 'text',
+		                    success: function(data) {
+		                    	
+		                    },
+		                    error: function() {
+		                        alert("서버와의 통신 중 오류가 발생했습니다2.");
+		                    }
+		                });
+		            } 
+		        },
+		        error: function() {
+		            alert("서버와의 통신 중 오류가 발생했습니다.");
+		        }
+		    });
+		});
+		</script>
+		
+		<span style="font-size:25px;" id="ajaxx"></span>
 		<div class="form-label-group">
 			<input class="btn btn-lg btn-secondary btn-block text-uppercase"
-				type="submit" value="check">
+				type="button" value="로그인" onClick="location.href='/login.do'">
 		</div>
-
-		<!-- 이름과 전화번호가 일치하지 않을 때-->
-		<c:if test="${check == 1}">
-			<script>
-				opener.document.findform.mem_id.value = "";
-				opener.document.findform.mem_name.value = "";
-				opener.document.findform.mem_birth.value = "";
-			</script>
-			<label>일치하는 정보가 존재하지 않습니다.</label>
-		</c:if>
-
-		<!-- 이름과 비밀번호가 일치하지 않을 때 -->
-		<c:if test="${check == 0 }">
-		<label> 새로 생성된 비밀번호를 이메일로 전송하였습니다. </label>
-		<label> 이메일을 확인해 주세요</label>
-		<%-- <label>찾으시는 비밀번호는' ${mem_pass}' 입니다.</label>--%>
-		
-		<div class="form-label-group">
-				<input class="btn btn-lg btn-secondary btn-block text-uppercase"
-					type="button" value="로그인" onClick="location.href='/login.do'">
-			</div>
-		</c:if>
 	</form>
-	
-	<a href="/test">테스트버튼</a>
 </body>
 </html>

@@ -1,11 +1,13 @@
 package com.bc.bodycoding.admin.gym;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -125,13 +129,41 @@ public class GymController {
 	}
 
 	@RequestMapping(value = "/gymedit.do", method = RequestMethod.POST)
-	public String gym5(GymDTO gymDTO, MemberDTO memberDTO) {
+	public String gym5(MultipartFile[] uploadfiles, Model model, MultipartHttpServletRequest req,
+			GymDTO gymDTO, MemberDTO memberDTO) throws Exception {
 		int result = gymdao.update(gymDTO);
 		int result1 = gymdao.updateM(memberDTO);
+		
+		for(MultipartFile f: uploadfiles) {
+			System.out.println("파일 이름(uploadfile.getOriginalFilename()) : "+ f.getOriginalFilename());
+			System.out.println("파일 크기(uploadfile.getSize()) : "+ f.getSize());
+			saveFile(f);
+		}
+		
 		if (result == 1)
 			System.out.println("수정되었습니다.");
 		return "redirect:/gymadminlist.do";
 	}
+	
+	public String saveFile(MultipartFile file) {
+		UUID uuid = UUID.randomUUID();
+		String saveName = uuid + "_" + file.getOriginalFilename();
+		System.out.println("saveName: " + saveName);
+		
+		String path = "";
+		try {
+			path = ResourceUtils
+				.getFile("classpath:static/uploads/").toPath().toString();
+			System.out.println("물리적경로2:"+path);
+			File fileInfo = new File(path, saveName); // 저장할 폴더 경로, 저장할 파일 이름
+			file.transferTo(fileInfo); // 업로드 파일에 fileInfo이라는 정보를 추가하여 파일을 저장한다.
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return saveName;
+	} 
 	
 	//메인 이미지 수정
 	@RequestMapping("/mimgedit.do")

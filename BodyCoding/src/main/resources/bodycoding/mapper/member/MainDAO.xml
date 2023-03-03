@@ -37,6 +37,7 @@
 	        or mem_name like '%'||#{searchWord}||'%' 
 	        or mem_phone like '%'||#{searchWord}||'%')
 	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
+
 </select>
 
 
@@ -123,7 +124,7 @@
 <select id="cartList"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
-	select product_img, product_name, product_description, product_count, (product_count*product_price) product_price
+	select cart_idx, product_img, product_name, product_count, product_price 
 		from cart C
 			inner join product P on C.product_idx = P.product_idx
 			inner join member M on C.mem_id = M.mem_id 

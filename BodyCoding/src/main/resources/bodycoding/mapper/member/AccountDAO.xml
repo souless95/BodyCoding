@@ -84,15 +84,14 @@
 	mem_birth=#{mem_birth}
 </select>
 
-
-<!-- 비번찾기할때 아이디,이름, 생년월일 같은지 확인 -->
-<select id="findpw" parameterType="global.dto.MemberDTO" resultType="global.dto.MemberDTO">
-	select * from member where mem_id=#{mem_id} and mem_name=#{mem_name} and
-	mem_birth=#{mem_birth}
+<!-- 비번찾기할때 아이디,이름 같은지 확인 -->
+<select id="updatePass" parameterType="global.dto.MemberDTO" resultType="int">
+	SELECT COUNT(*) FROM member
+	WHERE mem_id=#{mem_id} AND mem_name=#{mem_name}
 </select>
 
 <!-- 비밀번호 업데이트  -->
-<update id="updatePass" parameterType="global.dto.MemberDTO" >
+<update id="updateuserPass" parameterType="global.dto.MemberDTO">
 	update member set mem_pass=#{mem_pass} where mem_id=#{mem_id} 
 </update>
 

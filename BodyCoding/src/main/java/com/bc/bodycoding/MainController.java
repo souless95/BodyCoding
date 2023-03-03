@@ -71,7 +71,7 @@ public class MainController {
 	
 	//시큐리티 로그인용
 	@RequestMapping("/adminLogin.do")
-	public String adminLogin(Principal principal, Model model) {
+	public String adminLogin(Principal principal, Model model, HttpSession session) {
 		
 		String page = "";
 		

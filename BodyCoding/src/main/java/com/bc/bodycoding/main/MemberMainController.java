@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -264,20 +265,7 @@ public class MemberMainController {
 		
 		return "redirect:cartList.do";
 	}
-//	//장바구니 상품 추가
-//	@RequestMapping("cartAdd.do")
-//	public String cartAdd(ProductDTO productDTO) {
-//		
-//		//정보 잘 받아오는 지 확인해보자
-//		System.out.println(productDTO.getMem_id()); //멤버아이디
-//		System.out.println(productDTO.getProduct_idx()); //받아온 product_idx
-//		
-//		int result = maindao.cartAdd(productDTO);
-//		if (result==1) {
-//			System.out.println("장바구니에 추가되었습니다.");
-//		}
-//		return "cartList.do";
-//	}
+	
 	//장바구니 상품 삭제
 	@RequestMapping("cartDelete.do")
 	public String cartDelete(ProductDTO productDTO) {
@@ -287,5 +275,24 @@ public class MemberMainController {
 			System.out.println("장바구니가 삭제되었습니다.");
 		}
 		return "cartList.do";
+	}
+	
+	//장바구니 수량 증감
+	@RequestMapping("/plusMinus.do")
+	@ResponseBody
+	public int plusMinus(@RequestBody ProductDTO productDTO, Model model) {
+		System.out.println(productDTO);
+		
+		int result = maindao.plusMinus(productDTO);
+		
+		
+		
+		ProductDTO select = maindao.selectPlusMinus(productDTO);
+		
+		int count = select.getProduct_count();
+		
+		System.out.println(select);
+		
+		return count;
 	}
 }

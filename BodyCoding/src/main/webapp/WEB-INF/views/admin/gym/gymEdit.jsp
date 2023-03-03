@@ -25,7 +25,7 @@
         
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
-	        <form action="/gymedit.do" method="post">
+	        <form action="/gymedit.do" method="post" enctype="multipart/form-data">
 	        	<div class="card-header">
 					<h2>${memList.mem_name } 수정 페이지</h2>
 	        	</div>
@@ -127,6 +127,15 @@
 							<td><input type="text" name="rtime_holy_end" value="${dto.rtime_holy_end}" style="width: 100px;"/></td>
 						</tr>
 					</table>
+					
+						<h4>사진 추가</h4>
+					<table class="table" border=2>
+						<tbody id="fileTableBody">
+							<tr>
+								<td><input type="file" id="main" name="file_name" value="" style="width:500px; border:1px solid gray;" onchange="addFileInput(); showPreview(this);" /><span id="preview"></span> </td>
+							</tr>
+					</table>
+					
 					<input type="submit" value="전송하기"/>
 				</div>
 			</form>
@@ -136,4 +145,45 @@
 		</div>		
 	</div>
 </body>
+<script>
+function addFileInput() {
+    // 파일 선택 버튼 영역
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.name = 'file_name';
+    fileInput.style = 'width:500px; border:1px solid gray;';
+    fileInput.onchange = addFileInput; showPreview(this); // 파일 선택 시 다시 함수 호출
+    // 삭제 버튼 영역
+    var deleteButton = document.createElement('button');
+    deleteButton.type = 'button';
+    deleteButton.innerHTML = '삭제';
+    deleteButton.onclick = function() {
+      if(fileInput.value == ''){}
+      else{
+    	fileInput.value == '';  
+        var tr = deleteButton.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+      }
+    }
+    var td = document.createElement('td');
+    td.appendChild(fileInput);
+    td.appendChild(deleteButton);
+    var tbody = document.getElementById('fileTableBody');
+    var tr = document.createElement('tr');
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+  }
+  
+	function showPreview(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader(); // FileReader 객체 생성
+	    reader.onload = function(e) {
+	      // 이미지 URL을 생성하여 미리보기 영역에 삽입
+	      var preview = document.getElementById('preview');
+	      preview.innerHTML = '<img src="' + e.target.result + '" />';
+	    }
+	    reader.readAsDataURL(input.files[0]); // 선택한 파일을 읽음
+	  }
+	}
+</script>
 </html>

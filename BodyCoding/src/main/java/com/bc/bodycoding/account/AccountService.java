@@ -28,9 +28,11 @@ public interface AccountService{
 	
 	//비밀번호 찾기할때 아이디,이름,생년 같은지
 	public MemberDTO gofindpw(MemberDTO memberDTO);
-
-	//비밀번호 업데이트
-	public MemberDTO updatePass(MemberDTO memberDTO);
-	public String updatePass(String rnd);
+	
+	//비밀번호 찾기할때 아이디, 이름 같은지
+	public int updatePass(MemberDTO memberDTO);
+	
+	//디비에 임시비밀번호 업데이트
+	public int updateuserPass(MemberDTO memberDTO);
 	
 }

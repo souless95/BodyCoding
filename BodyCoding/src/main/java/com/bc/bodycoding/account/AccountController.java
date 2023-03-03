@@ -1,5 +1,7 @@
 package com.bc.bodycoding.account;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.dto.MemberDTO;
 import lombok.AllArgsConstructor;
@@ -20,6 +24,9 @@ public class AccountController {
 
 	@Autowired
 	AccountService accountdao;
+	
+	@Autowired
+	private MailService mailService;
 
 	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
 	public String signupM() {
@@ -111,56 +118,54 @@ public class AccountController {
 		}
 	}
 	
-		//아이디찾기 창으로 넘어가기
-		@RequestMapping(value="findid", method=RequestMethod.GET)
-		public String findid() {
-		
-			return "member/account/findid";
+	//아이디찾기 창으로 넘어가기
+	@RequestMapping(value="findid", method=RequestMethod.GET)
+	public String findid() {
+	
+		return "member/account/findid";
+	}
+	
+	//아이디 찾기 
+	@RequestMapping(value="gofindid", method=RequestMethod.POST)
+	public String gofindid(MemberDTO memberDTO, Model model) {
+		MemberDTO member = accountdao.gofindid(memberDTO);
+		System.out.println(memberDTO);
+		if( member == null) {
+			model.addAttribute("check", 1);
 		}
+		else {
+			model.addAttribute("check", 0);
+			model.addAttribute("mem_id", member.getMem_id());
+			
+			System.out.println("아이디="+member.getMem_id());
+		}
+		return "member/account/findid";
+			
+	}
 		
-		//아이디 찾기 
-		@RequestMapping(value="gofindid", method=RequestMethod.POST)
-		public String gofindid(MemberDTO memberDTO, Model model) {
-			MemberDTO member = accountdao.gofindid(memberDTO);
-			System.out.println(memberDTO);
-			if( member == null) {
-				model.addAttribute("check", 1);
-			}
-			else {
-				model.addAttribute("check", 0);
-				model.addAttribute("mem_id", member.getMem_id());
+	//비밀번호찾기 페이지로만 넘김
+	@RequestMapping(value="findpass", method=RequestMethod.GET)
+	public String findpass() {
+	
+		return "member/account/findpass";
+	}
 				
-				System.out.println("아이디="+member.getMem_id());
-			}
-			return "member/account/findid";
-				
+	//비밀번호 찾기 실행
+	@RequestMapping(value="gofindpass", method=RequestMethod.POST)
+	public String gofindpass(MemberDTO memberDTO, Model model) {
+		MemberDTO member1 = accountdao.gofindpass(memberDTO);
+		System.out.println(memberDTO);
+		if( member1 == null) {
+			model.addAttribute("check", 1);
 		}
-		
-		
-		//비밀번호찾기
-		@RequestMapping(value="findpass", method=RequestMethod.GET)
-		public String findpass() {
-		
-			return "member/account/findpass";
+		else {
+			model.addAttribute("check", 0);
+			model.addAttribute("mem_pass", member1.getMem_pass());
 		}
-				
-		//비밀번호 찾기 
-		@RequestMapping(value="gofindpass", method=RequestMethod.POST)
-		public String gofindpass(MemberDTO memberDTO, Model model) {
-			MemberDTO member1 = accountdao.gofindpass(memberDTO);
-			System.out.println(memberDTO);
-			if( member1 == null) {
-				model.addAttribute("check", 1);
-			}
-			else {
-				model.addAttribute("check", 0);
-				model.addAttribute("mem_pass", member1.getMem_pass());
-			}
-			return "member/account/findpass";
-		}
+		return "member/account/findpass";
+	}
 		
-		
-//		//단순히 이메일만 발송
+//		//단순히 이메일만 발송하는 코드 
 //		@AllArgsConstructor
 //		@Controller
 //		public class MailController {
@@ -179,91 +184,61 @@ public class AccountController {
 //		        return "member/account/login";
 //		    }
 //		}
-		
-		// 이메일 보내기
-		@AllArgsConstructor
-		@Controller
-		public class MailController {
-		private final MailService mailService;
-		@RequestMapping(value="findpw1", method=RequestMethod.GET)
-	    public String dispMail() {
-	        return "member/account/findpw";
-	    }
-		
-	    @RequestMapping(value="findpw1", method=RequestMethod.POST)
-    	public String execMail(MemberDTO memberDTO) {
-	    	
-	    	String email = memberDTO.getMem_id();
-	    	String newpass = memberDTO.getMem_pass();
-	    	System.out.println("컨트롤러에서 값 찍기");
-	    	System.out.println(email);
-	    	System.out.println(newpass);
-	    	
-	    	mailService.mailSend(memberDTO);
-	    		
-		    return "member/account/login";
-	    }	
-		
-	}    
-
- 		//비밀번호 업데이트
+			
+ 		//이메일로 비밀번호 찾기 GET으로 findpw 페이지로 넘겨만 준다. 
 		@RequestMapping(value="findpw", method = RequestMethod.GET)
 		public String findpw() {
-			System.out.println("여기는 get방식");
 			return "member/account/findpw";
 		}
 		
 		//랜덤함수로 임시비밀번호 만들기
-		  @RequestMapping("test")
-		  public String getTempPassword(){
-		  char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C',
-				  'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-				  'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-		  
-		  String rnd = "";
-		  
-		  // 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
-		  int idx = 0; for (int i = 0; i < 10; i++) {
-			  idx = (int) (charSet.length * Math.random()); rnd += charSet[idx];
-		  }
-		  	
-		  	System.out.println("임시비번찍힘? : " + rnd);
+		@ResponseBody
+		@RequestMapping("/validaation")
+		public String getTempPassword(MemberDTO memberDTO, HttpServletRequest req){
+			memberDTO.setMem_id(req.getParameter("mem_id"));
+			memberDTO.setMem_name(req.getParameter("mem_name"));
+			
+			//findpw에서 아이디, 이름 입력했을때 memberDTO에 입력되는 정보 확인
+			//System.out.println(memberDTO);
+			
+			int result = accountdao.updatePass(memberDTO);
+			String rnd = "";
+			if(result == 1) {
+				char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C',
+						  'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+						  'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '@', '%', '^', '&' };
+				  
+				// 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
+				int idx = 0; for (int i = 0; i < 10; i++) {
+					idx = (int) (charSet.length * Math.random());
+					rnd += charSet[idx];
+				}
+				//임시 비밀번호 확인하는 용도 성공해서 주석처리함
+				//System.out.println("임시비번찍힘? : " + rnd);
+			}
+			else {
+				//비밀번호 업데이트 실패시 출력
+				System.out.println("비밀번호 업데이트 실패");
+			}
 		  	return rnd;
 		}
-		 
 		  
- 		@RequestMapping(value="updatePass", method=RequestMethod.POST)
- 		public String updatePass(MemberDTO memberDTO, Model model) {
- 			
- 			char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C',
- 					  'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
- 					  'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
- 			  
- 			  String rnd = "";
- 			  
- 			  // 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
- 			  int idx = 0; for (int i = 0; i < 10; i++) {
- 				  idx = (int) (charSet.length * Math.random()); rnd += charSet[idx];
- 			  }
- 			  
- 			System.out.println("임시비밀번호: "+ rnd);
- 			
- 			MemberDTO member1 = accountdao.updatePass(memberDTO);
- 			
- 			
- 			String newpass = accountdao.updatePass(rnd);
- 			
- 			 			
- 			if( member1 == null) {
- 				model.addAttribute("check", 1);
- 			}
- 			else {
- 				model.addAttribute("check", 0);
- 				model.addAttribute("mem_pass", member1.getMem_pass());
- 			}
- 			
- 			return "member/account/findpw";
- 	}
+		 //비밀번호 찾기 
+		@ResponseBody
+		@RequestMapping("/updateuserPass")
+		public String updatePass(MemberDTO memberDTO, HttpServletRequest req) {
+		    memberDTO.setMem_id(req.getParameter("mem_id"));
+		    memberDTO.setMem_pass(req.getParameter("mem_pass"));
+		    int result = accountdao.updateuserPass(memberDTO);
+		    
+		    if(result == 1) {
+		        mailService.mailSend(memberDTO);
+		    }
+		    else {
+		        System.out.println("비밀번호 찾기를 실패 하였습니다");
+		    }
+		    return "member/account/findpw";
+		}
 }
 
 

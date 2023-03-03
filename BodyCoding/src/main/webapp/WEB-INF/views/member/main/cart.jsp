@@ -15,39 +15,62 @@
 	<div>
 		<h2>장바구니 내역</h2>
 	</div>
-	<form method="post" name="form1" id="form1">
-		<table border="1">
-			<thead>
-				<tr>
-					<th colspan="3" align="left">
-						<input type="checkbox" name="selected_all_product" value="check_all" checked>체크
-					</th>
-					<th width="70%" class="txt_center">상품정보</th>
-					<th width="10%" class="txt_center">상품수량</th>
-					<th width="*" class="txt_center">상품금액</th>
-				</tr>
-			</thead>
-			<!-- 상품별 루프 시작 -->
+		<table style="border: 5px solid #cdd0d4;">
 			<tbody>
-				<c:forEach items="${productList }" var="row" varStatus="loop">
+					<input type="checkbox" id="selected_all_product" name="selected_all_product" value="selected_all_product" checked>전체선택
+				<tr>
+ 					<th><strong>선택</strong></th>
+					<th colspan="2"  width="70%"><strong>상품정보</strong></th>
+					<th width="10%"><strong>상품수량</strong></th>
+					<th width="*"><strong>상품금액</strong></th>
+					<th></th>
+				</tr>
+			<!-- 상품별 루프 시작 -->
+			<c:set var="totalPrice" value="0"/>
+			<c:set var="totalCount" value="0"/>
+				<c:forEach items="${myCartList }" var="myCartList">
 					<tr>
-						<td width="20%" class="txt_center">
-							<input type="checkbox" name="selected_all_product" checked>
+						<td style="vertical-align: middle; text-align: center;">
+							<input type="checkbox" name="selected_product" checked>
 						</td>
-						<td><img src="static/uploads/product/${productInfo.product_img}" style="width:100%;height:180px;"></td>
-						<td>
-							<div><strong>${prodictInfo.product_name }</strong></div>
-							<div></div>
+						<td width="10%">
+							<img src="static/uploads/product/${myCartList.product_img}" style="width:100px;">
+						</td> 
+						<td style="vertical-align: top;">
+							<div>
+								<strong>${myCartList.product_name }</strong>
+							</div>
+							<div>
+								${myCartList.product_description }
+							</div>
 						</td>
-						<td>${row.product_count }</td>
-						<td>${row.product_price }</td>
+						<td style="vertical-align: middle; text-align: center;">${myCartList.product_count }개</td>
+						<td style="vertical-align: middle; text-align: center;">${myCartList.product_price }원</td>
 					</tr>
+					<c:set var="totalPrice" value="${totalPrice + myCartList.product_price}"/> 
+					<c:set var="totalCount" value="${totalCount + myCartList.product_count}"/>
 				</c:forEach>
 			</tbody>
 		</table>
-	</form>
-	<button type="button">구매하기(결제)</button>
-	<button type="button" onclick="location.href='product'">목록으로</button>
+		<!-- 결제 예정 금액 : 0000원 // 계속 쇼핑하기, 구매하기 버튼 위치 -->
+		<table style="border: 5px solid #ffffff;">
+			<tbody>
+				<tr>
+					<td><div align="center"><strong style="font-size: 20px;">전체 주문금액</strong></div></td>
+					<td><div align="center"><strong style="font-size: 20px;">총 주문 수량</strong></div></td>
+				</tr>
+					<tr>
+						<td>
+							<div align="center"><strong style="font-size: 26px;"><c:out value="${totalPrice }"/>원</strong></div>
+						</td>
+						<td><div align="center"><strong style="font-size: 20px;"><c:out value="${totalCount }"/>개</strong></div></td>
+					</tr>
+			</tbody>
+		</table>
+		<div style="text-align: center; text-decoration: ">
+			<button type="button">구매하기(결제)</button>
+			<button type="button" onclick="location.href='product'">목록으로</button>
+		</div>
 </div>	
 <!-- bottom -->
 <%@ include file="../../../../inc/Bottom.jsp" %>

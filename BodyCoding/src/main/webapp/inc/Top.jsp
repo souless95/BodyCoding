@@ -12,7 +12,6 @@
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	
 	</style>
-	
 <script type="text/javascript">
 function logoutcheck(){
 	

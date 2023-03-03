@@ -7,51 +7,36 @@
 	
 <mapper namespace="com.bc.bodycoding.main.MemberMainService">
 
-<!-- 모든 지점 선택 -->
+<!-- select 박스 지점 선택 -->
 <select id="gymlistSelect"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
-	select * from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
-</select>
-
-<!-- 전체 gym_code -->
-<select id="gymlisttemp"
-	parameterType="String"
-	resultType="String">
-	select gym_code from gym_detail
-</select>
-
-<!-- CHECK된 gym_code 찾기 -->
-<select id="gymcodelistCheck"
-	parameterType="map"
-	resultType="String">
-	select gym_code from gym_detail  where ${facility} = 'Y'
+	select * from member where authority='ADMIN_SUB' and enabled ='1'
 </select>
 
 <!-- checkbox에 맞게 지점 검색 -->
 <select id="gymlistCheck"
-	parameterType="String"
+	parameterType="map"
 	resultType="global.dto.MemberDTO">
 	select * from member 
-		where authority='ROLE_ADMIN_SUB' and enabled ='1'
-  		and gym_code in 
-  		<foreach item="item" collection="list" open="(" close=")" separator=",">
-			#{item}
-		</foreach>
-	        
-</select> 
+		where authority='ADMIN_SUB' and enabled ='1'
+  		and(
+	        mem_address like '%'||#{searchWord}||'%' 
+	        or mem_name like '%'||#{searchWord}||'%' 
+	        or mem_phone like '%'||#{searchWord}||'%')
+</select>
 
 <!-- searchWord에 맞게 지점 검색 -->
 <select id="gymlistSearch"
 	parameterType="String"
 	resultType="global.dto.MemberDTO">
 	select * from member 
-		where authority='ROLE_ADMIN_SUB' and enabled ='1'
+		where authority='ADMIN_SUB' and enabled ='1'
   		and(
 	        mem_address like '%'||#{searchWord}||'%' 
 	        or mem_name like '%'||#{searchWord}||'%' 
 	        or mem_phone like '%'||#{searchWord}||'%')
-
+	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
 </select>
 
 
@@ -138,15 +123,34 @@
 <select id="cartList"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
-	select * from cart (이 안에 product와 member에서 join해서 받을 정보 조인하기) where mem_id=#{mem_id}
+	select product_img, product_name, product_description, product_count, (product_count*product_price) product_price
+		from cart C
+			inner join product P on C.product_idx = P.product_idx
+			inner join member M on C.mem_id = M.mem_id 
+		where
+			lower(C.mem_id) = #{mem_id}
 </select>
 
-<!-- 장바구니에 상품 추가하기 -->
+<!-- 장바구니 상품 추가 전 확인 -->
+<select id="cartAddSelect"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+	select * from cart where mem_id=#{mem_id} and product_idx=#{product_idx}
+</select>
+<!-- 장바구니에 상품이 있을경우 1개 추가하기 -->
+<update id="cartAddPlus"
+	parameterType="global.dto.ProductDTO">
+	update cart set product_count=product_count+1 where mem_id=#{mem_id} and product_idx=#{product_idx}
+</update>
+
+<!-- 장바구니에 상품이 없을 경우 상품 추가하기 -->
 <insert id="cartAdd"
 	parameterType="global.dto.ProductDTO">
-	insert into cart (cart_idx, mem_id, product_idx) values (bodycoding_seq.nextval, #{mem_id}, #{product_idx})
+	insert into cart (cart_idx, mem_id, product_idx, product_count) 
+		values (bodycoding_seq.nextval, #{mem_id}, #{product_idx}, #{product_count})
 </insert>
-<!-- 장바구니에 상품 삭제하기 -->
+
+<!-- 장바구니에 전체 상품 삭제하기 -->
 <delete id="cartDelete"
 	parameterType="global.dto.ProductDTO">
 	delete from cart where mem_id=#{mem_id} and product_idx_#{product_idx}

@@ -227,8 +227,16 @@ public class MemberMainController {
 	
 	//장바구니로 상품목록 
 	@RequestMapping("/cartList.do")
-	public String cartList() {
+	public String cartList(HttpSession session, ProductDTO productDTO, Model model) {
 		
+		String user = session.getAttribute("UserEmail").toString();
+		
+		productDTO.setMem_id(user);
+		
+		System.out.println(user);
+		System.out.println(maindao.cartList(productDTO));
+		
+		model.addAttribute("myCartList", maindao.cartList(productDTO));
 		
 		return "member/main/cart";
 	}

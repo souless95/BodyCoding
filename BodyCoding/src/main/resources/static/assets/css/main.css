@@ -72,12 +72,26 @@ input, select, textarea {
 	appearance: none;
 }
 
-input[name="selected_all_product"] {
+/* checkbox css 변경시 참고할 것 */
+input[type="checkbox"]{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	-moz-appearance: checkbox;
+	-webkit-appearance: checkbox;
+	-ms-appearance: checkbox;
+	appearance: checkbox;
+}
+/* input[name="selected_product"] {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
  	-moz-appearance: checkbox;
 	-webkit-appearance: checkbox;
 	-ms-appearance: checkbox;
 	appearance: checkbox;
-  }
+} */
+
 
 /* Basic */
 

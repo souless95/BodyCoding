@@ -116,7 +116,7 @@
 
 				<div class="mb-3">
 			        <label for="mem_gender">성별</label> &nbsp;&nbsp;
-	      			<input type="hidden" name="mem_gender" value="" checked>
+			        <input type="hidden" name="mem_gender" value="">
 	      			<input type="radio" name="mem_gender" value="M">&nbsp;남자&nbsp;
 		       		<input type="radio" name="mem_gender" value="F">&nbsp;여자<br>
 				</div>
@@ -296,6 +296,9 @@
  		}
  		if($('input:checkbox[name=mem_interest]:checked').length=0){
  			$('input:checkbox[name=mem_interest]').val(null);
+ 		}
+ 		if($('input:radio[name=mem_gender]:checked').length=0){
+ 			$('input:radio[name=mem_gender]').val(null);
  		}
 	});
 </script>

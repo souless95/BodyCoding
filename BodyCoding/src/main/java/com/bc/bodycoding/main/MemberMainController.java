@@ -280,19 +280,15 @@ public class MemberMainController {
 	//장바구니 수량 증감
 	@RequestMapping("/plusMinus.do")
 	@ResponseBody
-	public int plusMinus(@RequestBody ProductDTO productDTO, Model model) {
+	public String plusMinus(@RequestBody ProductDTO productDTO, Model model) {
 		System.out.println(productDTO);
 		
 		int result = maindao.plusMinus(productDTO);
 		
+		if(result==1) {
+			System.out.println("수량변경 성공");
+		}
 		
-		
-		ProductDTO select = maindao.selectPlusMinus(productDTO);
-		
-		int count = select.getProduct_count();
-		
-		System.out.println(select);
-		
-		return count;
+		return "";
 	}
 }

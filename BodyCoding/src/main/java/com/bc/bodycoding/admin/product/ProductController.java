@@ -162,10 +162,8 @@ public class ProductController {
 		int result = productdao.stockUpdate(productDTO);
 		if(result==1) {
 			System.out.println("업데이트 성공!");
-			List<ProductDTO> stockList = productdao.stockSelect();
-			model.addAttribute("pList", stockList);
 		}
-		return "/admin/product/stockList";
+		return "";
 	}       
 	
 	@ResponseBody
@@ -175,7 +173,7 @@ public class ProductController {
 		if(result==1) {
 			System.out.println("인서트 성공!");
 		}
-		return "/admin/product/stockList";
+		return "";
 	}
 
 }

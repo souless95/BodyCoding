@@ -10,8 +10,16 @@
 </head>
 <body>
 <script type="text/javascript">
+function chgCount(symbol){
+	if(symbol=="+"){
+
+	}
+	else{
+		
+	}
+}
 $(function(){
-   $('#plusMinus').click(function(){
+   $('.cButton').click(function(){
       console.log($('#product_idx').val()); console.log($('#mem_id').val()); console.log($('#product_count').val());
       let count1 = {
          mem_id: $('#mem_id').val(),
@@ -79,14 +87,17 @@ function errCallBack(errData){
                         ${myCartList.product_description }
                      </div>
                   </td>
-                  <td> <!-- 상품수량 증감 부분 -->
-                     <div id="show_data"></div>
-                             <input type="number" id="product_count" value="1" style="width: 80px;" min="1" max="10"/>
-                             <input type="hid-den"  id="mem_id" value="${myCartList.mem_id }"/>
-                             <input type="hid-den"  id="product_idx" value="${myCartList.product_idx }"/>
-                             <input type="button" value="수정" id="plusMinus" />
+                  <td> 
+                  	<!-- 상품수량 증감 부분 -->
+                     <input type="hidden"  id="mem_id" value="${myCartList.mem_id }"/>
+                     <input type="hidden"  id="product_idx" value="${myCartList.product_idx }"/>
+
                   </td>
-                  <td style="vertical-align: middle; text-align: center;">${myCartList.product_count }개</td>
+                  <td style="vertical-align: middle; text-align: center;">
+                  	 <input class="cButton" type="button" value="plus" onchange="chgCount('+');" style="width: 20px; float:left;"/>
+                     <span id="chgCount_${myCartList.product_idx }">${myCartList.product_count }개</span>
+                     <input class="cButton" type="button" value="minus" onchange="chgCount('-');" style="width: 20px; clear:both;"/>
+                  </td>
                   <td style="vertical-align: middle; text-align: center;">${myCartList.product_price }원</td>
                </tr>
                <c:set var="totalPrice" value="${totalPrice + myCartList.product_price}"/> 

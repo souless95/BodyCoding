@@ -1,15 +1,15 @@
 package com.bc.bodycoding.admin.member;
 
-import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import global.dto.GymDTO;
 import global.dto.MemberDTO;
 
 @Controller
@@ -46,5 +46,30 @@ public class MemberController {
 		System.out.println(point);
 		return point;
 	}
+	
+	
+	//trainer계정으로 로그인했을때 회원목록 보여주기
+	@RequestMapping("/memberlistT.do")
+	public String trainerml(Model model, HttpSession session, MemberDTO memberDTO) {
+		String trainer_id = (String)(session.getAttribute("UserEmail").toString());
+		memberDTO.setMem_id(trainer_id);
+		model.addAttribute("memberList", memberdao.selectFT(memberDTO));
+		return "member/trainer/memberlistT";
+	}
+
+	//상세보기 ml = memberlist
+	@RequestMapping("/memberdetailT.do")
+	public String trainermldeatil(Model model, HttpSession session, MemberDTO memberDTO, HttpServletRequest req) {
+		String uDetail = req.getParameter("mem_id");
+		memberDTO.setMem_id(uDetail);
+		model.addAttribute("dto", memberdao.selectDT(memberDTO));
+		return "member/trainer/memberdetailT";
+	}
+	
+	
+	
+	
+	
+	
 	
 }

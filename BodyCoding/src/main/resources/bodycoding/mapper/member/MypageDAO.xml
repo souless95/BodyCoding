@@ -38,4 +38,9 @@
 			mem_purpose=#{mem_purpose}, mem_interest=#{mem_interest}
 		where mem_id=#{mem_id}
 	</update>
+	
+	
+	
+	
+	
 </mapper>

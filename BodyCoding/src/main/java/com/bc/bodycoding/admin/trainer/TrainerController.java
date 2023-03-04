@@ -156,4 +156,9 @@ public class TrainerController {
 		if(result==1) System.out.println("삭제되었습니다.");
 		return "redirect:trainerList.do";
 	}
+	
+	
+	
+	
+	
 }

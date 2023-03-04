@@ -12,7 +12,38 @@
 <link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <style type="text/css">
-.table-bordered{font-family: Verdana, Geneva, Tahoma, sans-serif;}
+.table-bordered {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;;
+}
+
+.preview-item {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.preview-number {
+    font-weight: bold;
+    margin-right: 10px;
+    min-width: 20px; /* 수정 */
+    text-align: center; /* 수정 */
+}
+
+.preview-image {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -130,12 +161,71 @@
 					
 						<h4>사진 추가</h4>
 					<table class="table" border=2>
-						<tbody id="fileTableBody">
-							<tr>
-								<td><input type="file" id="main" name="file_name" value="" style="width:500px; border:1px solid gray;" onchange="addFileInput(); showPreview(this);" /><span id="preview"></span> </td>
-							</tr>
+						<tr>
+							<td><input type="file" id="fileInput" name="uploadfiles" value="" style="width:500px; border:1px solid gray;" multiple /></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
 					</table>
+					<div id="previewContainer"></div>
+					<script>
+					$(document).ready(function() {
+						  function modifyFile() {
+						    var filename = '11.jpg';
+						    $.ajax({
+						      url: '/files?filename=' + filename +'&filepath=/static/uploads/gym' ,
+						      type: 'GET',
+						      dataType: 'json',
+						      success: function(data) {
+						        var formData = new FormData();
+						        formData.append('file', data.file);
+
+						        var input = document.getElementById('fileInput');
+						        input.files = formData;
+						      },
+						      error: function(xhr, status, error) {
+						      }
+						    });
+						  }
+
+						  modifyFile();
+						});
 					
+					const fileInput = document.querySelector('#fileInput');
+					const previewContainer = document.querySelector('#previewContainer');
+
+				    function previewImages() {
+					    const files = fileInput.files;
+					    previewContainer.innerHTML = '';
+	
+					    for (let i = 0; i < files.length; i++) {
+					      const file = files[i];
+					      const reader = new FileReader();
+	
+					      reader.onload = function(event) {
+					        const imageUrl = event.target.result;
+					        createImagePreview(imageUrl, file.name);
+						};
+					      reader.readAsDataURL(file);
+					    }
+					}
+
+					function createImagePreview(imageUrl, fileName) {
+					    const img = document.createElement('img');
+					    img.src = imageUrl;
+					    img.alt = fileName;
+					    img.style.width = '200px';
+					    
+					    const div = document.createElement('div');
+					    div.classList.add('preview-item');
+					    div.innerHTML = '<span class="preview-number">' + (previewContainer.childElementCount + 1) + '.</span>' +
+		                '<div class="preview-image">' + img.outerHTML + '</div>';
+					    previewContainer.appendChild(div);
+					}
+					
+				    fileInput.addEventListener('change', previewImages);
+					</script>
 					<input type="submit" value="전송하기"/>
 				</div>
 			</form>
@@ -145,45 +235,4 @@
 		</div>		
 	</div>
 </body>
-<script>
-function addFileInput() {
-    // 파일 선택 버튼 영역
-    var fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.name = 'file_name';
-    fileInput.style = 'width:500px; border:1px solid gray;';
-    fileInput.onchange = addFileInput; showPreview(this); // 파일 선택 시 다시 함수 호출
-    // 삭제 버튼 영역
-    var deleteButton = document.createElement('button');
-    deleteButton.type = 'button';
-    deleteButton.innerHTML = '삭제';
-    deleteButton.onclick = function() {
-      if(fileInput.value == ''){}
-      else{
-    	fileInput.value == '';  
-        var tr = deleteButton.parentNode.parentNode;
-        tr.parentNode.removeChild(tr);
-      }
-    }
-    var td = document.createElement('td');
-    td.appendChild(fileInput);
-    td.appendChild(deleteButton);
-    var tbody = document.getElementById('fileTableBody');
-    var tr = document.createElement('tr');
-    tr.appendChild(td);
-    tbody.appendChild(tr);
-  }
-  
-	function showPreview(input) {
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader(); // FileReader 객체 생성
-	    reader.onload = function(e) {
-	      // 이미지 URL을 생성하여 미리보기 영역에 삽입
-	      var preview = document.getElementById('preview');
-	      preview.innerHTML = '<img src="' + e.target.result + '" />';
-	    }
-	    reader.readAsDataURL(input.files[0]); // 선택한 파일을 읽음
-	  }
-	}
-</script>
 </html>

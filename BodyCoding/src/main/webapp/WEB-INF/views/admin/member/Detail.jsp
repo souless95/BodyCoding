@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
+<link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -85,7 +85,7 @@ function errCallBack(errData){
 					       	 	<td>
 					       	 	<div  id="show_data"></div>
 					       	 	<input type="number" id="mem_point" value="0" style="width: 80px;"/>
-					       	 	<input type="hidden"  id="mem_id" value="${dto.mem_id }"/>
+					       	 	<input type="hid-den"  id="mem_id" value="${dto.mem_id }"/>
 					       	 	<input type="button" value="포인트추가" id="addpoint" />
 					       	 	</td>
 					      	</tr>

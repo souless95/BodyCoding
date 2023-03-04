@@ -95,6 +95,7 @@ $(function(){
 	<h2>상품 수정</h2>
 	<form action="productEdit.do" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="product_idx" value=${ dto.product_idx} >
+	<input type="hidden" name="o_product_img" value=${ dto.product_img} >
 	<table border="1">
 		<tr>
 			<th>상품유형</th>

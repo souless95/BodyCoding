@@ -36,10 +36,9 @@ public class AccountController {
 	public String signupM2(MemberDTO memberDTO) {
 		System.out.println(memberDTO);
 		
-		 int result = accountdao.insertMember(memberDTO); 
-		 
-		 if(result==1)
-		 System.out.println("회원가입이 완료되었습니다.");
+		int result = accountdao.insertMember(memberDTO); 
+		if(result==1) System.out.println("회원가입이 완료되었습니다.");
+		
 
 		return "member/main";
 	}
@@ -77,7 +76,8 @@ public class AccountController {
 			session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
 			session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
 			return "redirect:main";
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			System.out.println("로그인 중 오류발생");
 			return "member/account/login";
 		}

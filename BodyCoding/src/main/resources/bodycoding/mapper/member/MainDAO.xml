@@ -124,7 +124,7 @@
 <select id="cartList"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
-	select cart_idx, product_img, product_name, product_count, product_price 
+	select C.mem_id, C.product_idx, product_img, product_name, product_description, product_count, (product_count*product_price) product_price  
 		from cart C
 			inner join product P on C.product_idx = P.product_idx
 			inner join member M on C.mem_id = M.mem_id 
@@ -157,5 +157,23 @@
 	delete from cart where mem_id=#{mem_id} and product_idx_#{product_idx}
 </delete>
 
+<!-- 장바구니 수량 증감 -->
+<update id="plusMinus" parameterType="global.dto.ProductDTO">
+	update cart set product_count = #{product_count} 
+		where mem_id=#{mem_id} and product_idx=#{product_idx}
+</update>
+
+<!-- 증감된 수량 보여주기 -->
+<select id="selectPlusMinus"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+	
+	select C.mem_id, C.product_idx, product_count, (product_count*product_price) product_price  
+		from cart C
+			inner join product P on C.product_idx = P.product_idx
+			inner join member M on C.mem_id = M.mem_id 
+		where
+			lower(C.mem_id) = #{mem_id}
+</select>
 
 </mapper>

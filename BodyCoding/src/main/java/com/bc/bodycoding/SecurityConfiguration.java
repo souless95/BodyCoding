@@ -38,7 +38,7 @@ public class SecurityConfiguration {
 			.antMatchers("/admin/product/productReigst").hasRole("ADMIN_SUPER")
 //         		.antMatchers("/admin/product/productEdit").hasRole("ADMIN_SUPER")
 			.antMatchers("/admin/product/stockList").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER")
-//         		.antMatchers("/admin/매출관리/**").hasRole("ADMIN_SUPER")   
+//         		.antMatchers("/admin/매출관리/**").hasRole("ADMIN_SUPER")
 //         		.antMatchers("/admin/Q&A/qnaAnswer").hasRole("ADMIN_SUB")
 			.antMatchers("/admin/**").hasAnyRole("ADMIN_SUPER", "ADMIN_SUB")
 			.antMatchers("/**").permitAll()

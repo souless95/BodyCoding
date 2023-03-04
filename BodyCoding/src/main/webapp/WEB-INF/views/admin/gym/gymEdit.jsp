@@ -173,7 +173,6 @@
 					$(document).ready(function() {
 						  function modifyFile() {
 						    var filename = '11.jpg';
-
 						    $.ajax({
 						      url: '/files?filename=' + filename +'&filepath=/static/uploads/gym' ,
 						      type: 'GET',

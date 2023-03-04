@@ -128,33 +128,47 @@ public class GymController {
 		return "admin/gym/gymEdit";
 	}
 
+	@Transactional
 	@RequestMapping(value = "/gymedit.do", method = RequestMethod.POST)
 	public String gym5(MultipartFile[] uploadfiles, Model model, MultipartHttpServletRequest req,
 			GymDTO gymDTO, MemberDTO memberDTO) throws Exception {
-		int result = gymdao.update(gymDTO);
-		int result1 = gymdao.updateM(memberDTO);
 		
-		for(MultipartFile f: uploadfiles) {
-			System.out.println("파일 이름(uploadfile.getOriginalFilename()) : "+ f.getOriginalFilename());
-			System.out.println("파일 크기(uploadfile.getSize()) : "+ f.getSize());
-			saveFile(f);
+		try {
+			int result1 = gymdao.updateM(memberDTO);
+			
+			String GYM_DTAIL_IMG = "";
+			if(uploadfiles[0].isEmpty()) {}
+			else {
+				for(MultipartFile f: uploadfiles) {
+					System.out.println("파일 이름(uploadfile.getOriginalFilename()) : "+ f.getOriginalFilename());
+					System.out.println("파일 크기(uploadfile.getSize()) : "+ f.getSize());
+					GYM_DTAIL_IMG += saveFile(f) + ",";
+				}
+				GYM_DTAIL_IMG = GYM_DTAIL_IMG.substring(0, GYM_DTAIL_IMG.length()-1);
+			}
+			gymDTO.setGym_dtail_img(GYM_DTAIL_IMG);
+			int result = gymdao.update(gymDTO);
+			
+			if (result == 1 && result1 == 1)
+				System.out.println("수정되었습니다.");
+			else {
+				System.out.println("뭔가 잘 안됏읍니다.");
+			}
 		}
-		
-		if (result == 1)
-			System.out.println("수정되었습니다.");
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:/gymadminlist.do";
 	}
 	
 	public String saveFile(MultipartFile file) {
 		UUID uuid = UUID.randomUUID();
 		String saveName = uuid + "_" + file.getOriginalFilename();
-		System.out.println("saveName: " + saveName);
 		
 		String path = "";
 		try {
 			path = ResourceUtils
-				.getFile("classpath:static/uploads/").toPath().toString();
-			System.out.println("물리적경로2:"+path);
+				.getFile("classpath:static/uploads/gym/").toPath().toString();
 			File fileInfo = new File(path, saveName); // 저장할 폴더 경로, 저장할 파일 이름
 			file.transferTo(fileInfo); // 업로드 파일에 fileInfo이라는 정보를 추가하여 파일을 저장한다.
 		} 

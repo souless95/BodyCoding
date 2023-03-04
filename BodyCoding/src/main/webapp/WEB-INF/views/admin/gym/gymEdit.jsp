@@ -162,7 +162,7 @@
 						<h4>사진 추가</h4>
 					<table class="table" border=2>
 						<tr>
-							<td><input type="file" id="fileInput" name="file_name" value="" style="width:500px; border:1px solid gray;" multiple /></td>
+							<td><input type="file" id="fileInput" name="uploadfiles" value="" style="width:500px; border:1px solid gray;" multiple /></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -170,6 +170,28 @@
 					</table>
 					<div id="previewContainer"></div>
 					<script>
+					$(document).ready(function() {
+						  function modifyFile() {
+						    var filename = '11.jpg';
+						    $.ajax({
+						      url: '/files?filename=' + filename +'&filepath=/static/uploads/gym' ,
+						      type: 'GET',
+						      dataType: 'json',
+						      success: function(data) {
+						        var formData = new FormData();
+						        formData.append('file', data.file);
+
+						        var input = document.getElementById('fileInput');
+						        input.files = formData;
+						      },
+						      error: function(xhr, status, error) {
+						      }
+						    });
+						  }
+
+						  modifyFile();
+						});
+					
 					const fileInput = document.querySelector('#fileInput');
 					const previewContainer = document.querySelector('#previewContainer');
 

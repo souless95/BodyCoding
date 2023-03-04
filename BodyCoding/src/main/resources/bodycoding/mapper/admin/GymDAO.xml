@@ -28,7 +28,7 @@
 	<update id="update"
 		parameterType="global.dto.GymDTO">
 		update GYM_DETAIL set gym_scale=#{gym_scale},
-			facility_parking=#{facility_parking}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
+			facility_parking=#{facility_parking}, gym_dtail_img=#{gym_dtail_img}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
 			facility_pilates=#{facility_pilates}, facility_pt=#{facility_pt}, facility_24hour=#{facility_24hour}, facility_shower=#{facility_shower}, 
 			facility_wear=#{facility_wear}, facility_locker=#{facility_locker}, rtime_week_start=#{rtime_week_start}, rtime_week_end=#{rtime_week_end}, 
 			rtime_sat_start=#{rtime_sat_start}, rtime_sat_end=#{rtime_sat_end}, rtime_holy_start=#{rtime_holy_start}, rtime_holy_end=#{rtime_holy_end} 
@@ -37,7 +37,7 @@
 	<update id="updateM"
 		parameterType="global.dto.MemberDTO">
 		update MEMBER set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address=#{mem_address}			
-		where gym_code=#{gym_code}
+		where gym_code=#{gym_code} and authority='ROLE_ADMIN_SUB'
 	</update>
 	
 	<update id="updateImg"

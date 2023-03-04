@@ -37,7 +37,7 @@ public class MailService {
            
            // 제목
            //mailHandler.setSubject(memberDTO.getTitle());
-           mailHandler.setSubject("새로운 임시밀번호 발송 메일입니다.");
+           mailHandler.setSubject("새로운 임시비밀번호 발송 메일입니다.");
 
            // HTML Layout
            //String htmlContent = "<p>" + memberDTO.getMessage() +"<p> <img src='cid:sample-img'>";

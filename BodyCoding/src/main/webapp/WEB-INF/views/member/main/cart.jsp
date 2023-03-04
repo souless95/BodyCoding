@@ -11,27 +11,30 @@
 <body>
 <script type="text/javascript">
 
-function chgCount(symbol){
+function chgCount(symbol,f){
+
+	var parentId = $(f).closest("td").attr('id');
+	var pCount = $('#'+parentId).children('span').text();
+	var pIdx = $('#'+parentId).children('.pIdx').val();
+	
 	if(symbol=="+"){
-		   console.log("+입니다");
+		var newCount = eval("Number(pCount)+1");
 	}
 	else{
-		   console.log("-입니다");			
+		var newCount = eval("Number(pCount)-1");
 	}
+	
+	$('#'+parentId).children('span').text(newCount);
 }
+
 $(function(){
    $('.cButton').click(function(){
       
-	  var parentTdId = document.querySelector('.cButton').parentNode.parentNode.id;
-	   
-	  console.log(parentTdId);
-		
-	   
-	   
-      let count1 = {
+	  
+	  var count1 = {
          mem_id: $('#mem_id').val(),
-         product_idx: $('#product_idx').val(),
-         product_count: $('#product_count').val()
+         product_idx: pIdx,
+         product_count: newCount
       }
       
       console.log(count1.product_idx);
@@ -53,12 +56,6 @@ var count = 0; // 초기 카운트 값 설정
 
 function sucCallBack(resData){
    console.log(resData);
-/*    count++; // 카운트 증가
-   var parent = document.getElementById("parentDiv");
-   var newSpan = document.createElement("span");
-   newSpan.setAttribute("id", "chgCount_" + count); // span id 자동 생성
-   newSpan.innerHTML = "0개"; // 초기 텍스트 설정
-   parent.appendChild(newSpan); // 생성된 span을 부모 요소에 추가 */
 }
 
 function errCallBack(errData){
@@ -107,16 +104,14 @@ function errCallBack(errData){
                   <td> 
                   	<!-- 상품수량 증감 부분 -->
                      <input type="hidden" id="mem_id" value="${myCartList.mem_id }"/>
-                     <input type="hidden" id="product_idx" value="${myCartList.product_idx }"/>
                   </td>
                   <td style="vertical-align: middle; text-align: center;" id="product_${myCartList.product_idx }">
-                     <div>   
-	                  	 <input class="cButton" type="button" value="+" onclick="chgCount('+');" style="width: 20px; float:right;"/>
-	                     <span id="pCount">${myCartList.product_count }</span>개
-	                     <input class="cButton" type="button" value="-" onclick="chgCount('-');" style="width: 20px; float: left;"/>
-                     </div>
-                  </td>
-                  <td style="vertical-align: middle; text-align: center;">${myCartList.product_price }원</td>
+                     <input type="hidden" class="pIdx" value="${myCartList.product_idx }"/>
+                  	 <input class="cButton" type="button" value="+" onclick="chgCount('+',this);" style="width: 20px; float:right;"/>
+                     <span class="pCount">${myCartList.product_count }</span>개
+                     <input class="cButton" type="button" value="-" onclick="chgCount('-',this);" style="width: 20px; float: left;"/>
+                  </td> 
+                  <td style="vertical-align: middle; text-align: center;"><span>${myCartList.product_price }</span>원</td>
                </tr>
                <c:set var="totalPrice" value="${totalPrice + myCartList.product_price}"/> 
                <c:set var="totalCount" value="${totalCount + myCartList.product_count}"/>

@@ -43,7 +43,32 @@ function sucCallBack(resData){
 function errCallBack(errData){
 	console.log(errData.status+":"+errData.statusText);
 }
- 
+
+window.onload = function() {
+	const previewContainer = document.querySelector('#previewContainer');
+	
+	var imageArray = '${ dto.gym_dtail_img}';
+	var fileNames = imageArray.split(","); 
+	
+	for (let i = 0; i < fileNames.length; i++) {
+	  const fileName = fileNames[i];
+	  const imageUrl = '/static/uploads/gym/' + fileName;
+
+	  createImagePreview(imageUrl, fileName);
+	}
+
+	function createImagePreview(imageUrl, fileName) {
+	  const img = document.createElement('img');
+	  img.src = imageUrl;
+	  img.alt = fileName;
+	  img.style.width = '200px';
+
+	  const span = document.createElement('span');
+	  span.classList.add('preview-item');
+	  span.innerHTML = '<span class="preview-image">' + img.outerHTML + '</span>&nbsp;&nbsp;';
+	  previewContainer.appendChild(span);
+	}
+}
 </script>
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
@@ -127,6 +152,7 @@ function errCallBack(errData){
 							<td>${dto.facility_locker }</td>
 						</tr>
 					</table>
+					
 						<h4>운영시간</h4>
 					<table class="table" border=2>
 						<tr align="center">
@@ -149,6 +175,15 @@ function errCallBack(errData){
 							<td align="center">${dto.rtime_sat_end }</td>
 							<td align="center">${dto.rtime_holy_start }</td>
 							<td align="center">${dto.rtime_holy_end }</td>
+						</tr>
+					</table>
+					
+					<h4>운영시간</h4>
+					<table class="table" border=2>
+						<tr>
+							<td>
+							<span id="previewContainer" style="padding:10px;"></span>
+							</td>
 						</tr>
 					</table>
 					<s:authorize access="hasRole('ROLE_ADMIN_SUB')">

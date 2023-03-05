@@ -62,5 +62,16 @@ public class MypageController {
 		return "redirect:main";
 	}
 	
+	
+	//트레이너계정으로 로그인했을때 트레이너의 마이페이지로 이동
+	@RequestMapping("trainermypage.do")
+	public String trainermypage(GymDTO gymDTO, MemberDTO memberDTO,Model model) {
+		gymDTO = mydao.basicListG(gymDTO);
+		memberDTO = mydao.basicListM(memberDTO);
+		model.addAttribute("basicListG", gymDTO);
+		model.addAttribute("basicListM", memberDTO);
+		return "member/trainer/trainermypage";
+	}
+	
 
 } 

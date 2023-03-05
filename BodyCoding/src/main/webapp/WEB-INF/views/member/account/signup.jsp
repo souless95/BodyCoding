@@ -116,9 +116,9 @@
 
             <div class="mb-3">
                  <label for="mem_gender">성별</label> &nbsp;&nbsp;
+                  <input type="hidden" name="mem_gender" value="">
                   <input type="radio" name="mem_gender" value="M">&nbsp;남자&nbsp;
                   <input type="radio" name="mem_gender" value="F">&nbsp;여자<br>
-                  <input type="hidden" name="mem_gender" value="">
             </div>
 
             <!-- 생년월일 -->
@@ -146,14 +146,14 @@
             <br>
             <div class="mb-1">
                 <label for="gym_code">지점선택</label>&nbsp;
-                <select class="custom-select d-block w-100" name="gym_code">
+                 <select class="custom-select d-block w-100" name="gym_code">
                      <option value="" selected>지점을 선택해 주세요</option>
                      <option value="1">종로</option>
                      <option value="일산">일산</option>
                      <option value="성북">성북</option>
                      <option value="사당">사당</option>
                      <option value="오금">오금</option>
-                </select>
+                 </select>
             </div>
 
             <div class="mb-1">
@@ -182,7 +182,7 @@
                   <input type="checkbox" class="checkStyle" name="mem_disease" value="hnf">
                <label for="hnf">손목 또는 발목</label>&nbsp;&nbsp;
              
-              <input type="hidden" class="checkStyle" name="mem_disease" value="">
+               <input type="hidden" class="checkStyle" name="mem_disease" value="">
             </div>
              <br />
 
@@ -190,22 +190,22 @@
                 <label for="mem_purpose">운동목적</label>&nbsp;&nbsp;
             </div>
                
-            <div class=purpose_detail>
-              
-               <input type="checkbox" class="checkStyle" name="mem_purpose" value="diet">
-               <label for="diet">다이어트</label>&nbsp;&nbsp;
-              
-                <label><input type="checkbox" class="checkStyle" name="mem_purpose" value="competition">
-                대회준비</label>&nbsp;&nbsp;
-             
-                <input type="checkbox"  class="checkStyle" name="mem_purpose" value="healthcare">   
-                <label for="healthcare">체력관리</label>&nbsp;&nbsp;
-              
-                <input type="checkbox" class="checkStyle" name="mem_purpose" value="etc">
-                <label for="etc">그 외</label>&nbsp;&nbsp;
+              <div class=purpose_detail>
                 
-               <input type="hidden" class="checkStyle" name="mem_purpose" value="">
-            </div>
+                 <input type="checkbox" class="checkStyle" name="mem_purpose" value="diet">
+                 <label for="diet">다이어트</label>&nbsp;&nbsp;
+                
+                  <label><input type="checkbox" class="checkStyle" name="mem_purpose" value="competition">
+                  대회준비</label>&nbsp;&nbsp;
+               
+                  <input type="checkbox"  class="checkStyle" name="mem_purpose" value="healthcare">   
+                  <label for="healthcare">체력관리</label>&nbsp;&nbsp;
+                
+                  <input type="checkbox" class="checkStyle" name="mem_purpose" value="etc">
+                  <label for="etc">그 외</label>&nbsp;&nbsp;
+                  
+                  <input type="hidden" class="checkStyle" name="mem_purpose" value="">
+                </div>
 
             <label for="mem_interest">관심사항</label>
             <div class="interest">
@@ -222,7 +222,7 @@
                <input type="checkbox" class="checkStyle" name="mem_interest" value="health">
                <label for="yoga">헬스</label>
                
-              <input type="hidden" class="checkStyle" name="mem_interest" value="">
+               <input type="hidden" class="checkStyle" name="mem_interest" value="">
             </div>
 
             <div class="mb-1">
@@ -250,7 +250,6 @@
      <p class="mb-1">&copy; 2023 BodyCoding</p>
 </footer>
 <script>
-
    function commonFocusMove(thisObj, numLength, nextObj){
       var obj1 = document.getElementById(thisObj);
       var strLen2 = obj1.value.length;
@@ -298,8 +297,8 @@
  		if($('input:checkbox[name=mem_interest]:checked').length=0){
  			$('input:checkbox[name=mem_interest]').val(null);
  		}
- 		if($('input:radio[name=mem_gender]:checked').val()==null || $('input:radio[name=mem_gender]:checked').val()=="" ){
- 			$('input:radio[name=mem_gender]:checked').val("");
+ 		if($('input:radio[name=mem_gender]:checked').length=0){
+ 			$('input:radio[name=mem_gender]').val(null);
  		}
 	});
  	

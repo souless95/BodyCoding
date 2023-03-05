@@ -10,6 +10,7 @@
 </head>
 <body>
 <script type="text/javascript">
+<<<<<<< HEAD
 function chgCount(symbol){
 	if(symbol=="+"){
 
@@ -44,6 +45,56 @@ function sucCallBack(resData){
    $('#show_data').html(tableData);
    $('#product_count').val(0);
 }
+=======
+
+function chgCount(symbol,f){
+
+	var parentId = $(f).closest("td").attr('id');
+	var pCount = $('#'+parentId).children('span').text();
+	var pIdx = $('#'+parentId).children('.pIdx').val();
+	
+	if(symbol=="+"){
+		var newCount = eval("Number(pCount)+1");
+	}
+	else{
+		var newCount = eval("Number(pCount)-1");
+	}
+	
+	$('#'+parentId).children('span').text(newCount);
+}
+
+$(function(){
+   $('.cButton').click(function(){
+      
+	  
+	  var count1 = {
+         mem_id: $('#mem_id').val(),
+         product_idx: pIdx,
+         product_count: newCount
+      }
+      
+      console.log(count1.product_idx);
+      
+      $.ajax({
+         type: 'post',
+         url: '/plusMinus.do',
+         data: JSON.stringify(count1),
+         contentType: "application/json;charset:utf-8",
+         dataType: "text",
+         success: sucCallBack,
+         error: errCallBack
+      });
+   });
+   $('#plusMinus').trigger('click'); 
+});
+
+var count = 0; // 초기 카운트 값 설정
+
+function sucCallBack(resData){
+   console.log(resData);
+}
+
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 function errCallBack(errData){
    console.log(errData.status+":"+errData.statusText);
 }
@@ -89,6 +140,7 @@ function errCallBack(errData){
                   </td>
                   <td> 
                   	<!-- 상품수량 증감 부분 -->
+<<<<<<< HEAD
                      <input type="hidden"  id="mem_id" value="${myCartList.mem_id }"/>
                      <input type="hidden"  id="product_idx" value="${myCartList.product_idx }"/>
 
@@ -99,6 +151,17 @@ function errCallBack(errData){
                      <input class="cButton" type="button" value="minus" onchange="chgCount('-');" style="width: 20px; clear:both;"/>
                   </td>
                   <td style="vertical-align: middle; text-align: center;">${myCartList.product_price }원</td>
+=======
+                     <input type="hidden" id="mem_id" value="${myCartList.mem_id }"/>
+                  </td>
+                  <td style="vertical-align: middle; text-align: center;" id="product_${myCartList.product_idx }">
+                     <input type="hidden" class="pIdx" value="${myCartList.product_idx }"/>
+                  	 <input class="cButton" type="button" value="+" onclick="chgCount('+',this);" style="width: 20px; float:right;"/>
+                     <span class="pCount">${myCartList.product_count }</span>개
+                     <input class="cButton" type="button" value="-" onclick="chgCount('-',this);" style="width: 20px; float: left;"/>
+                  </td> 
+                  <td style="vertical-align: middle; text-align: center;"><span>${myCartList.product_price }</span>원</td>
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
                </tr>
                <c:set var="totalPrice" value="${totalPrice + myCartList.product_price}"/> 
                <c:set var="totalCount" value="${totalCount + myCartList.product_count}"/>

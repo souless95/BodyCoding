@@ -34,6 +34,15 @@
 			rtime_sat_start=#{rtime_sat_start}, rtime_sat_end=#{rtime_sat_end}, rtime_holy_start=#{rtime_holy_start}, rtime_holy_end=#{rtime_holy_end} 
 		where gym_code=#{gym_code}
 	</update>
+	<update id="update2"
+		parameterType="global.dto.GymDTO">
+		update GYM_DETAIL set gym_scale=#{gym_scale},
+			facility_parking=#{facility_parking}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
+			facility_pilates=#{facility_pilates}, facility_pt=#{facility_pt}, facility_24hour=#{facility_24hour}, facility_shower=#{facility_shower}, 
+			facility_wear=#{facility_wear}, facility_locker=#{facility_locker}, rtime_week_start=#{rtime_week_start}, rtime_week_end=#{rtime_week_end}, 
+			rtime_sat_start=#{rtime_sat_start}, rtime_sat_end=#{rtime_sat_end}, rtime_holy_start=#{rtime_holy_start}, rtime_holy_end=#{rtime_holy_end} 
+		where gym_code=#{gym_code}
+	</update>
 	<update id="updateM"
 		parameterType="global.dto.MemberDTO">
 		update MEMBER set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address=#{mem_address}			
@@ -73,10 +82,15 @@
 		   		(#{gym_code})
 	</insert>	
 	
-	
 	<select id="codeCheck"
 		parameterType="String"
 		resultType="int">
 		select count(*) from MEMBER where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
+	</select>
+	
+	<select id="loadImage"
+		parameterType="global.dto.MemberDTO"
+		resultType="String">
+		select gym_dtail_img from GYM_DETAIL where gym_code=#{gym_code}
 	</select>
 </mapper>

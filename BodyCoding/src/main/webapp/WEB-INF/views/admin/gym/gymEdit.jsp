@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style type="text/css">
 .table-bordered {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;;
@@ -46,6 +47,37 @@
 }
 </style>
 </head>
+<script>
+window.onload = function() {
+	const fileInput = document.querySelector('#fileInput');
+	const previewContainer = document.querySelector('#previewContainer');
+	
+	var imageArray = '${ dto.gym_dtail_img}';
+	var fileNames = imageArray.split(","); 
+	
+	for (let i = 0; i < fileNames.length; i++) {
+	  const fileName = fileNames[i];
+	  const imageUrl = '/static/uploads/gym/' + fileName;
+
+	  createImagePreview(imageUrl, fileName);
+	}
+
+	function createImagePreview(imageUrl, fileName) {
+	  const img = document.createElement('img');
+	  img.src = imageUrl;
+	  img.alt = fileName;
+	  img.style.width = '200px';
+
+	  const div = document.createElement('div');
+	  div.classList.add('preview-item');
+	  div.innerHTML = '<span class="preview-number">' + (previewContainer.childElementCount + 1) + '.</span>' +
+	    '<div class="preview-image">' + img.outerHTML + '</div>';
+	  previewContainer.appendChild(div);
+	}
+
+	fileInput.addEventListener('change', previewImages);
+}
+</script>
 <body class="sb-nav-fixed">
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>

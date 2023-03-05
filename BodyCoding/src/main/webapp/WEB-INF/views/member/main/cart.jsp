@@ -10,22 +10,35 @@
 </head>
 <body>
 <script type="text/javascript">
-function chgCount(symbol){
-	if(symbol=="+"){
 
+function chgCount(symbol,f){
+
+	var parentId = $(f).closest("td").attr('id');
+	var pCount = $('#'+parentId).children('span').text();
+	var pIdx = $('#'+parentId).children('.pIdx').val();
+	
+	if(symbol=="+"){
+		var newCount = eval("Number(pCount)+1");
 	}
 	else{
-		
+		var newCount = eval("Number(pCount)-1");
 	}
+	
+	$('#'+parentId).children('span').text(newCount);
 }
+
 $(function(){
    $('.cButton').click(function(){
-      console.log($('#product_idx').val()); console.log($('#mem_id').val()); console.log($('#product_count').val());
-      let count1 = {
+      
+	  
+	  var count1 = {
          mem_id: $('#mem_id').val(),
-         product_idx: $('#product_idx').val(),
-         product_count: $('#product_count').val()
+         product_idx: pIdx,
+         product_count: newCount
       }
+      
+      console.log(count1.product_idx);
+      
       $.ajax({
          type: 'post',
          url: '/plusMinus.do',
@@ -38,12 +51,13 @@ $(function(){
    });
    $('#plusMinus').trigger('click'); 
 });
+
+var count = 0; // 초기 카운트 값 설정
+
 function sucCallBack(resData){
    console.log(resData);
-   let tableData = resData;
-   $('#show_data').html(tableData);
-   $('#product_count').val(0);
 }
+
 function errCallBack(errData){
    console.log(errData.status+":"+errData.statusText);
 }
@@ -89,16 +103,15 @@ function errCallBack(errData){
                   </td>
                   <td> 
                   	<!-- 상품수량 증감 부분 -->
-                     <input type="hidden"  id="mem_id" value="${myCartList.mem_id }"/>
-                     <input type="hidden"  id="product_idx" value="${myCartList.product_idx }"/>
-
+                     <input type="hidden" id="mem_id" value="${myCartList.mem_id }"/>
                   </td>
-                  <td style="vertical-align: middle; text-align: center;">
-                  	 <input class="cButton" type="button" value="plus" onchange="chgCount('+');" style="width: 20px; float:left;"/>
-                     <span id="chgCount_${myCartList.product_idx }">${myCartList.product_count }개</span>
-                     <input class="cButton" type="button" value="minus" onchange="chgCount('-');" style="width: 20px; clear:both;"/>
-                  </td>
-                  <td style="vertical-align: middle; text-align: center;">${myCartList.product_price }원</td>
+                  <td style="vertical-align: middle; text-align: center;" id="product_${myCartList.product_idx }">
+                     <input type="hidden" class="pIdx" value="${myCartList.product_idx }"/>
+                  	 <input class="cButton" type="button" value="+" onclick="chgCount('+',this);" style="width: 20px; float:right;"/>
+                     <span class="pCount">${myCartList.product_count }</span>개
+                     <input class="cButton" type="button" value="-" onclick="chgCount('-',this);" style="width: 20px; float: left;"/>
+                  </td> 
+                  <td style="vertical-align: middle; text-align: center;"><span>${myCartList.product_price }</span>원</td>
                </tr>
                <c:set var="totalPrice" value="${totalPrice + myCartList.product_price}"/> 
                <c:set var="totalCount" value="${totalCount + myCartList.product_count}"/>

@@ -35,6 +35,9 @@ public class MemberDTO {
 	private String mem_comment;
 	private String mem_img;
 	private Date mem_regidate;
+	private String trainer_id;
+	private String membership_type;
+	private String membership_name;
 	
 	//메일관련
 	private String title;

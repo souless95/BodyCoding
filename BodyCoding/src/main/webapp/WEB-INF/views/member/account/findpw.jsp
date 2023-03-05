@@ -154,6 +154,7 @@ body {
 		            mem_name: mem_name
 		        },
 		        dataType: 'text',
+		        //결과 성공시 실행할 이벤트 지정 
 		        success: function(data) {
 		            if (data == "") {
 		                $("#ajaxx").html("<span style='color:red;'> 일치하는 정보가 없습니다.</span>");

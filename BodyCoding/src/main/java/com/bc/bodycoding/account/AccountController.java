@@ -1,6 +1,5 @@
 package com.bc.bodycoding.account;
 
-import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,13 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.dto.MemberDTO;
-import lombok.AllArgsConstructor;
 
 
 @Controller
@@ -65,10 +62,17 @@ public class AccountController {
 	// 회원 로그인 하기
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login1(HttpSession session, MemberDTO memberDTO) {
+		
+		MemberDTO UserInfo = accountdao.login(memberDTO);
+		
 		System.out.println(memberDTO.getMem_id());
 		System.out.println(memberDTO.getMem_pass());
+		
+		System.out.println(UserInfo.getAuthority());
+		System.out.println(UserInfo);
+		
 		try {
-			session.setAttribute("UserInfo", accountdao.login(memberDTO));
+			session.setAttribute("UserInfo", UserInfo);
 			session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
 			session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
 			return "redirect:main";
@@ -221,8 +225,9 @@ public class AccountController {
 						  'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '@', '%', '^', '&' };
 				  
 				// 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
-				int idx = 0; for (int i = 0; i < 10; i++) {
-					idx = (int) (charSet.length * Math.random());
+				int idx = 0;
+				for (int i = 0; i < 10; i++) {
+					idx =  (int) (charSet.length * Math.random());
 					rnd += charSet[idx];
 				}
 				//임시 비밀번호 확인하는 용도 성공해서 주석처리함

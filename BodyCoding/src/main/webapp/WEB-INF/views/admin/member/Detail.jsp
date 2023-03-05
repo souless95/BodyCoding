@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
+<link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -117,10 +117,7 @@ function errCallBack(errData){
 					       	 	<td>${dto.enabled }</td>
 					       	</tr>
 					    </table>
-	        			<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
-							수정
-						</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
+						<button type="button" class="btn btn-primary" onclick="location.href='memberDelete.do?mem_id=${dto.mem_id }'">
 							삭제
 						</button>
 						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button> 

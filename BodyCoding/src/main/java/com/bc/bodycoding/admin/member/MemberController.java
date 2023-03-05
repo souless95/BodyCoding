@@ -47,4 +47,12 @@ public class MemberController {
 		return point;
 	}
 	
+	@RequestMapping("/memberDelete.do")
+	public String delete(MemberDTO memberDTO) {
+		int result = memberdao.delete(memberDTO);
+		if(result==1)
+			System.out.println("삭제되었습니다.");
+		return "redirect:/memberList.do";
+	}
+	
 }

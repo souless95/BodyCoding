@@ -13,7 +13,9 @@ public interface MemberMainService {
 	
 	public List<MemberDTO> gymlistSelect();
 	public List<MemberDTO> gymlistSearch(String searchWord);
-	public List<MemberDTO> gymlistCheck(Map<String, String> checkList);
+	public List<String> gymlisttemp();
+	public List<String> gymcodelistCheck(Map<String, String> facility);
+	public List<MemberDTO> gymlistCheck(List<String> gym_code);
 	public List<MemberDTO> trainerALLlistSelect();
 	public List<MemberDTO> trainerlistSelect(String gym_code);
 	public MemberDTO trainerInfoSelect(String mem_id);
@@ -26,6 +28,12 @@ public interface MemberMainService {
 	public ProductDTO productInfoSelect(int product_idx);
 	
 	
+	//장바구니
+	public List<ProductDTO> cartList(ProductDTO productDTO);
+	public ProductDTO cartAddSelect(ProductDTO productDTO); //장바구니에 추가 전 확인용select문
 	public int cartAdd(ProductDTO productDTO); //장바구니에 추가
-	public int cartDelete(ProductDTO productDTO); //장바구니 삭제 
+	public int cartAddPlus(ProductDTO productDTO); //장바구니에 갯수 추가
+	public int cartDelete(ProductDTO productDTO); //장바구니 삭제
+	public int plusMinus(ProductDTO productDTO); //장바구니 수량 증감
+	public ProductDTO selectPlusMinus(ProductDTO productDTO); //증감된 거 보여주는 노무쉐끼
 }

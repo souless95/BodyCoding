@@ -8,76 +8,92 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>지점 정보</h2>
-<div class="main_s_left">
-<!-- 지도 붙이기 -->
-</div>
+<%@ include file="../../../../inc/Top.jsp" %>
+<h2>${memList.mem_name } 상세보기</h2>
+<div><img id="img" src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
+<h4>기본정보</h4>
+<table class="table" border=2>
+	<tr>
+		<th>지점명</th>
+		<td>${memList.mem_name }</td>
+		<th>지점코드</th>
+		<td>${dto.gym_code }</td>
+	</tr>
+	<tr>
+		<th>평수</th>
+		<td>${dto.gym_scale }</td>
+		<th>지점 전화번호</th>
+		<td>${memList.mem_phone }</td>
+	</tr>
+	<tr>
+		<th>지점 주소</th>
+		<td>${memList.mem_address }</td>
+	</tr>
+</table>
 
-
-<div style=" margin-left:20px;"> 
-<!-- 리스트 -->
-<h3>지점 정보</h3>
-<form name="">
-    <ul>
-    	<li>
-	        <input type="checkbox" name="facility" value="facility_parking" class="checkbox_sm" id="facility_parking" onclick="s_form.submit()">
-	        <label for="facility_parking"><span></span> <img src="../static/admin/images/0002.png" width="50" height="50" align="absmiddle">
-	          주차       </label>
-        </li>
-      	<li>
-	        <input type="checkbox" name="facility" value="facility_health" class="checkbox_sm" id="facility_health" onclick="s_form.submit()">
-	        <label for="facility_health"><span></span> <img src="../static/admin/images/0004.png" width="50" height="50" align="absmiddle">
-	          헬스        </label>
-      	</li>
-      	<li>
-	        <input type="checkbox" name="facility" value="facility_yoga" class="checkbox_sm" id="facility_yoga" onclick="s_form.submit()">
-	        <label for="facility_yoga"><span></span> <img src="../static/admin/images/0005.png" width="50" height="50" align="absmiddle">
-	          요가        </label>
-      	</li>
-     	 <li>
-	        <input type="checkbox" name="facility" value="facility_gx" class="checkbox_sm" id="facility_gx" onclick="s_form.submit()">
-	        <label for="facility_gx"><span></span> <img src="../static/admin/images/0007.png" width="50" height="50" align="absmiddle">
-	          G.X       </label>
-      	</li>
-      	<li>
-	        <input type="checkbox" name="facility" value="facility_pilates" class="checkbox_sm" id="facility_pilates" onclick="s_form.submit()">
-	        <label for="facility_pilates"><span></span> <img src="../static/admin/images/0010.png" width="50" height="50" align="absmiddle">
-	          필라테스        </label>
-      	</li>
-     	 <li>
-	        <input type="checkbox" name="facility" value="facility_pt" class="checkbox_sm" id="facility_pt" onclick="s_form.submit()">
-	        <label for="facility_pt"><span></span> <img src="../static/admin/images/0011.png" width="50" height="50" align="absmiddle">
-	          P.T        </label>
-      	</li>
-     	 <li>
-	        <input type="checkbox" name=facility value="facility_24hour" class="checkbox_sm" id="facility_24hour" onclick="s_form.submit()">
-	        <label for="facility_24hour"><span></span> <img src="../static/admin/images/0014.png" width="50" height="50" align="absmiddle">
-	          24시간        </label>
-     	 </li>
-     	 <li>
-	        <input type="checkbox" name="facility" value="facility_shower" class="checkbox_sm" id="facility_shower" onclick="s_form.submit()">
-	        <label for="facility_shower"><span></span> <img src="../static/admin/images/0017.png" width="50" height="50" align="absmiddle">
-	          샤워시설        </label>
-      	</li>
-     	 <li>
-	        <input type="checkbox" name="facility" value="facility_wear" class="checkbox_sm" id="facility_wear" onclick="s_form.submit()">
-	        <label for="facility_wear"><span></span> <img src="../static/admin/images/0018.png" width="50" height="50" align="absmiddle">
-	          운동복        </label>
-      	</li>
-      	<li>
-	        <input type="checkbox" name="facility" value="facility_locker" class="checkbox_sm" id="facility_locker" onclick="s_form.submit()">
-	        <label for="facility_locker"><img src="../static/admin/images/0020.png" width="50" height="50" align="absmiddle">
-	          락커       </label>
-      	</li>
-    </ul>
-</form>
-
-
-<li>
-<span> 지점이름 상세보기</span>
-<span> 지점 주소</span>
-<span> 전화번호</span>
-</li>
-</div>
+<h4>편의시설</h4>
+<table class="table" border=2>
+	<tr align="center">
+		<th><img src="../static/admin/images/0001.png"/></th>
+		<th><img src="../static/admin/images/0004.png"></th>
+		<th><img src="../static/admin/images/0005.png"></th>
+		<th><img src="../static/admin/images/0007.png"></th>
+		<th><img src="../static/admin/images/0010.png"></th>
+		<th><img src="../static/admin/images/0011.png"></th>
+		<th><img src="../static/admin/images/0014.png"></th>
+		<th><img src="../static/admin/images/0017.png"></th>
+		<th><img src="../static/admin/images/0018.png"></th>
+		<th><img src="../static/admin/images/0020.png"></th>
+	</tr>
+	<tr align="center">
+		<th>주차</th>
+		<th>헬스</th>
+		<th>요가</th>
+		<th>GX</th>
+		<th>필라테스</th>
+		<th>PT</th>
+		<th>24시간</th>
+		<th>샤워장</th>
+		<th>운동복</th>
+		<th>락커</th>
+	</tr>
+	<tr align="center">
+		<td>${dto.facility_parking }</td>
+		<td>${dto.facility_health }</td>
+		<td>${dto.facility_yoga }</td>
+		<td>${dto.facility_gx }</td>
+		<td>${dto.facility_pilates }</td>
+		<td>${dto.facility_pt }</td>
+		<td>${dto.facility_24hour }</td>
+		<td>${dto.facility_shower }</td>
+		<td>${dto.facility_wear }</td>
+		<td>${dto.facility_locker }</td>
+	</tr>
+</table>
+<h4>운영시간</h4>
+<table class="table" border=2>
+	<tr align="center">
+		<th colspan="2">평일</th>
+		<th colspan="2">토요일</th>
+		<th colspan="2">일요일, 공휴일</th>
+	</tr>
+	<tr>
+		<td width="10%" align="center">OPEN</td>
+		<td width="10%" align="center">CLOSE</td>
+		<td width="10%" align="center">OPEN</td>
+		<td width="10%" align="center">CLOSE</td>
+		<td width="10%" align="center">OPEN</td>
+		<td width="10%" align="center">CLOSE</td>
+	</tr>
+	<tr>
+		<td align="center">${dto.rtime_week_start }</td>
+		<td align="center">${dto.rtime_week_end}</td>
+		<td align="center">${dto.rtime_sat_start }</td>
+		<td align="center">${dto.rtime_sat_end }</td>
+		<td align="center">${dto.rtime_holy_start }</td>
+		<td align="center">${dto.rtime_holy_end }</td>
+	</tr>
+</table>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

@@ -45,4 +45,9 @@ public class ProductDTO {
 	private String mem_id;
 	//트레이너 아이디
 	private String trainer_id;
+	
+	//카트 일련번호
+	private int cart_idx;
+	//카트 물건 갯수
+	private int product_count;
 }

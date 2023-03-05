@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -47,28 +48,72 @@ public class MemberMainController {
 	@RequestMapping("/gymCheck.do")
 	@ResponseBody
 	public List<MemberDTO> gymCheck(HttpServletRequest req) {
-		List<MemberDTO> checkgymList;
-		Map<String, String> checkList = new HashMap<>();
-		checkList.put("facility_parking", "N");
-		checkList.put("facility_health", "N");
-		checkList.put("facility_yoga", "N");
-		checkList.put("facility_gx", "N");
-		checkList.put("facility_pilates", "N");
-		checkList.put("facility_pt", "N");
-		checkList.put("facility_24hour", "N");
-		checkList.put("facility_shower", "N");
-		checkList.put("facility_wear", "N");
-		checkList.put("facility_locker", "N");
-		String checkboxVal = req.getParameter("chechboxVal");
+		List<MemberDTO> checkmemList;
+		//선택된 값들 순서대로 list에 넣기
+		List<List<String>> checkgymList = new ArrayList<>();
+		//dao에서 이름과,'Y'으로 뽑기위해 map 이용하여 값 넣어주기
+		Map<String, String> checkFacility = new HashMap<>();
+		//ajax로 전달한 checkboxVal인 data값 받기
+		String checkboxVal = req.getParameter("checkboxVal");
+		System.out.println(checkboxVal);
+		//전달받은 checkboxVal에서 "&"와 "="를 이용하여 나눠준후 map에다가 넣어서 dao로 값 구하기
 		String[] checkval = checkboxVal.split("&");
 		for(int i=0 ; i< checkval.length ; i++) {
 			String[] mapval = checkval[i].split("=");
-			checkList.put(mapval[0].toString(), mapval[1].toString());
+			checkFacility.put("facility", mapval[0].toString());
+			
+			System.out.println("선택된 값"+checkFacility);
+			if(mapval[0].toString().equals("facility_parking")) {
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_health")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_yoga")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_gx")){
+				checkgymList.add(maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_pilates")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_pt")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_24hour")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_shower")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_wear")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
+			else if(mapval[0].toString().equals("facility_locker")){
+				checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+			}
 		}
-		System.out.println(checkList);
-		checkgymList = maindao.gymlistCheck(checkList);
+		System.out.println(checkgymList);
+		List<String> checkgymtemp = new ArrayList<>();
+		//전체 gym리스트 뽑아서 선택된 gym이랑 교집합 구하기
+		checkgymtemp = maindao.gymlisttemp();
+		System.out.println("전체 gym 리스트"+checkgymtemp);
+		for(int i=0 ; i<checkgymList.size();i++) {
+			checkgymtemp.retainAll(checkgymList.get(i));
+		}
+		System.out.println("교집합"+checkgymtemp);
 		
-		return checkgymList;
+		//교집합인 checkgymtemp(list)를 이용해서 지점 찾기(memberDTO)
+		checkmemList = maindao.gymlistCheck(checkgymtemp);
+		
+		return checkmemList;
+	}
+	
+	//gym상세보기
+	@RequestMapping("gymInfo.do")
+	public String gymInfo(HttpServletRequest req) {
+		return "member/main/gymInfo";
 	}
 	
 	//회원창에서 트레이너 목록 페이지로 가기(지점선택 select박스관련)
@@ -182,27 +227,45 @@ public class MemberMainController {
 	
 	
 	//장바구니로 상품목록 
-	@RequestMapping("cartList.do")
-	public String cartList(Model model, HttpServletRequest req) {
+	@RequestMapping("/cartList.do")
+	public String cartList(HttpSession session, ProductDTO productDTO, Model model) {
 		
+		String user = session.getAttribute("UserEmail").toString();
 		
-		return "mamber/main/cart";
+		productDTO.setMem_id(user);
+		
+		System.out.println(user);
+		System.out.println(maindao.cartList(productDTO));
+		
+		model.addAttribute("myCartList", maindao.cartList(productDTO));
+		
+		return "member/main/cart";
 	}
 	
-	//장바구니 상품 추가
-	@RequestMapping("cartAdd.do")
-	public String cartAdd(ProductDTO productDTO) {
+	//장바구니에 추가 전 확인용
+	@RequestMapping("cartAddSelect.do")
+	public String cartAddSelect(ProductDTO productDTO) {
 		
-		//정보 잘 받아오는 지 확인해보자
-		System.out.println(productDTO.getMem_id()); //멤버아이디
-		System.out.println(productDTO.getProduct_idx()); //받아온 product_idx
+		//리스트 확인
+		ProductDTO result = maindao.cartAddSelect(productDTO);
+		productDTO.setProduct_count(1);
 		
-		int result = maindao.cartAdd(productDTO);
-		if (result==1) {
-			System.out.println("장바구니에 추가되었습니다.");
+		//상품이 있을경우
+		if (result != null) {
+			
+			int resultUpdate = maindao.cartAddPlus(productDTO);
+			System.out.println("장바구니에 상품이 있어서 수량이 추가되었습니다.");
 		}
-		return "cartList.do";
+		//상품이 없을 경우
+		else {
+			
+			int resultAdd = maindao.cartAdd(productDTO);
+			System.out.println("장바구니에 상품이 없어서 새로 추가되었습니다.");
+		}
+		
+		return "redirect:cartList.do";
 	}
+	
 	//장바구니 상품 삭제
 	@RequestMapping("cartDelete.do")
 	public String cartDelete(ProductDTO productDTO) {
@@ -212,5 +275,20 @@ public class MemberMainController {
 			System.out.println("장바구니가 삭제되었습니다.");
 		}
 		return "cartList.do";
+	}
+	
+	//장바구니 수량 증감
+	@RequestMapping("/plusMinus.do")
+	@ResponseBody
+	public String plusMinus(@RequestBody ProductDTO productDTO, Model model) {
+		System.out.println(productDTO);
+		
+		int result = maindao.plusMinus(productDTO);
+		
+		if(result==1) {
+			System.out.println("수량변경 성공");
+		}
+		
+		return "";
 	}
 }

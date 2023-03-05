@@ -12,6 +12,7 @@ import global.dto.MemberDTO;
 public interface AccountService{
 
 	public int insertMember(MemberDTO memberDTO);
+	public String checkIdDuplicate(MemberDTO memberDTO);
 	public MemberDTO login(MemberDTO memberDTO);
 	public int kakaoinsert(Map<String, String> map);
 	public String kakaoselect(String mem_id);
@@ -23,14 +24,16 @@ public interface AccountService{
 	public MemberDTO gofindid(MemberDTO memberDTO);
 	public MemberDTO gofindpass(MemberDTO memberDTO);
 	
+	public MemberDTO dispMail(MemberDTO memberDTO);
+	public MemberDTO execMail(MemberDTO memberDTO);
 	
-    public MemberDTO findUserByUserId(MemberDTO memberDTO);
-    public MemberDTO updateUserPassword(MemberDTO memberDTO);
-    
-    public void sendEmail(MemberDTO memberDTO, String email) throws Exception;
-    
-    public void findPw(HttpServletResponse resp, MemberDTO memberDTO) throws Exception;
-    
+	//비밀번호 찾기할때 아이디,이름,생년 같은지
+	public MemberDTO gofindpw(MemberDTO memberDTO);
 	
+	//비밀번호 찾기할때 아이디, 이름 같은지
+	public int updatePass(MemberDTO memberDTO);
+	
+	//디비에 임시비밀번호 업데이트
+	public int updateuserPass(MemberDTO memberDTO);
 	
 }

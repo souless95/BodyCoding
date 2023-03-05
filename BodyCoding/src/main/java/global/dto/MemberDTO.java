@@ -5,9 +5,13 @@ import java.sql.Date;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberDTO {
 	
 	private String mem_id;
@@ -31,4 +35,8 @@ public class MemberDTO {
 	private String mem_comment;
 	private String mem_img;
 	private Date mem_regidate;
+	
+	//메일관련
+	private String title;
+	private String message;
 }

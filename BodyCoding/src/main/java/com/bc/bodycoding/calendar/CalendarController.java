@@ -24,7 +24,7 @@ public class CalendarController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/AddCalendar" )
+	@RequestMapping("/AddCalendar")
 	public String addCalendar(@Param("id") String id, HttpServletRequest req, CalendarDTO calendarDTO){
 		
 		calendarDTO.setTitle(req.getParameter("title"));
@@ -82,5 +82,4 @@ public class CalendarController {
 		}
 		return "calendar.do";
 	}
-	
 }

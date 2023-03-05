@@ -43,6 +43,11 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-taglibs'
 	//이메일 의존설정 추가
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation group: 'org.apache.commons', name : 'commons-email', version:'1.4'
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	implementation 'commons-io:commons-io:2.11.0'    
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+	implementation 'commons-fileupload:commons-fileupload:1.5'
 }
 
 tasks.named('test') {

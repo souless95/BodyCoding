@@ -270,18 +270,18 @@ public class MemberMainController {
 	@RequestMapping("cartDelete.do")
 	public String cartDelete(ProductDTO productDTO) {
 		
+		System.out.println();
 		int result = maindao.cartDelete(productDTO);
 		if (result==1) {
 			System.out.println("장바구니가 삭제되었습니다.");
 		}
-		return "cartList.do";
+		return "redirect:cartList.do";
 	}
 	
 	//장바구니 수량 증감
 	@RequestMapping("/plusMinus.do")
 	@ResponseBody
 	public String plusMinus(@RequestBody ProductDTO productDTO, Model model) {
-		System.out.println(productDTO);
 		
 		int result = maindao.plusMinus(productDTO);
 		
@@ -291,4 +291,5 @@ public class MemberMainController {
 		
 		return "";
 	}
+	
 }

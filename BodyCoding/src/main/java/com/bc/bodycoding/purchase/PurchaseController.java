@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -79,6 +80,12 @@ public class PurchaseController {
    @RequestMapping("/kakaoPay.do")
    public String purchase(HttpServletRequest req, Model model) {
       
+	  String type = req.getParameter("type");
+	  
+	  if(type.equals("멤버쉽")) {
+		  
+	  }
+	   
       String product_name = req.getParameter("product_name");
       String product_price = req.getParameter("product_price");
       
@@ -199,5 +206,12 @@ public class PurchaseController {
    public String purchaseCancel() {
       return "/member/purchase/purchaseCancel";
    }
+   
+   @GetMapping("/puchaseExpectInfo.do")
+   public String puchaseExpect(HttpServletRequest req) {
+	   System.out.println(req.getParameter("chkArray"));
+	   return "/member/purchase/puchaseExpectInfo";
+   }
+   
    
 }

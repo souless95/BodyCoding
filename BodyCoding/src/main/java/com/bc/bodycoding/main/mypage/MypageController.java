@@ -2,6 +2,7 @@ package com.bc.bodycoding.main.mypage;
 
 
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,8 @@ public class MypageController {
 	
 	@RequestMapping("mypage.do")
 	public String mypage(GymDTO gymDTO, MemberDTO memberDTO,Model model) {
+		System.out.println(gymDTO);
+		System.out.println(memberDTO);
 		gymDTO = mydao.basicListG(gymDTO);
 		memberDTO = mydao.basicListM(memberDTO);
 		model.addAttribute("basicListG", gymDTO);
@@ -33,10 +36,30 @@ public class MypageController {
 		return "member/account/memberEdit";
 	}
 	@RequestMapping(value="memberEdit.do", method=RequestMethod.POST)
-	public String memberedit1(MemberDTO memberDTO) {
+	public String memberedit1(HttpSession session, MemberDTO memberDTO) {
+		if(!(memberDTO.getMem_gender().equals(""))) {
+			memberDTO.setMem_gender(memberDTO.getMem_gender().substring(0, 1));
+		}
+		else if(memberDTO.getMem_disease()!=null||memberDTO.getMem_purpose()!=null||memberDTO.getMem_interest()!=null) {
+			memberDTO.setMem_disease(memberDTO.getMem_disease().replace(",", ""));
+			memberDTO.setMem_purpose(memberDTO.getMem_purpose().replace(",", ""));
+			memberDTO.setMem_interest(memberDTO.getMem_interest().replace(",", ""));
+		}
+		else {
+			memberDTO.setMem_disease("");
+	        memberDTO.setMem_purpose("");
+	        memberDTO.setMem_interest("");
+		}
+		System.out.println("여기가"+memberDTO);
 		int result = mydao.update(memberDTO);
-		if(result==1) System.out.println("수정되었습니다.");
-		return "redirect:mypage.do";
+		if(result==1) {
+			session.setAttribute("UserInfo", memberDTO);
+			session.setAttribute("UserName", memberDTO.getMem_name());
+			session.setAttribute("UserEmail", memberDTO.getMem_id());
+			
+			System.out.println("수정되었습니다.");
+		}
+		return "redirect:main";
 	}
 	
 	

@@ -14,4 +14,5 @@ public interface MemberService {
 	public MemberDTO selectDT(MemberDTO memberDTO);
 	public int pointUpdate(MemberDTO memberDTO);
 	public String selectPoint(String mem_id);
+	public int delete(MemberDTO memberDTO);
 }

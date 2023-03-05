@@ -30,6 +30,11 @@
 		select mem_point from MEMBER where mem_id=#{mem_id}	
 	</select>
 	
+	<delete id="delete"
+		parameterType="global.dto.MemberDTO">
+		delete from MEMBER where mem_id=#{mem_id} 
+	</delete>
+	
 	<select id="selectFT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">

@@ -7,116 +7,155 @@
 	
 <mapper namespace="com.bc.bodycoding.main.MemberMainService">
 
-<!-- select 박스 지점 선택 -->
+<!-- 모든 지점 위도 경도 선택 -->
+<select id="mapmarkerSelect"
+   parameterType="String"
+   resultType="global.dto.GymDTO">
+   select * from gym_detail
+</select> 
+
+<!-- 모든 지점 위도 경도 선택 -->
+<select id="gymMap"
+   parameterType="String"
+   resultType="global.dto.GymDTO">
+   select * from gym_detail where gym_code = #{gym_code}
+</select> 
+
+<!-- 모든 지점 선택 -->
 <select id="gymlistSelect"
-	parameterType="global.dto.MemberDTO"
-	resultType="global.dto.MemberDTO">
-	select * from member where authority='ADMIN_SUB' and enabled ='1'
+   parameterType="global.dto.MemberDTO"
+   resultType="global.dto.MemberDTO">
+   select * from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
+</select>
+
+<!-- 전체 gym_code -->
+<select id="gymlisttemp"
+   parameterType="String"
+   resultType="String">
+   select gym_code from gym_detail
+</select>
+
+<!-- CHECK된 gym_code 찾기 -->
+<select id="gymcodelistCheck"
+   parameterType="map"
+   resultType="String">
+   select gym_code from gym_detail  where ${facility} = 'Y'
 </select>
 
 <!-- checkbox에 맞게 지점 검색 -->
 <select id="gymlistCheck"
-	parameterType="map"
-	resultType="global.dto.MemberDTO">
-	select * from member 
-		where authority='ADMIN_SUB' and enabled ='1'
-  		and(
-	        mem_address like '%'||#{searchWord}||'%' 
-	        or mem_name like '%'||#{searchWord}||'%' 
-	        or mem_phone like '%'||#{searchWord}||'%')
-</select>
+   parameterType="String"
+   resultType="global.dto.MemberDTO">
+   select * from member 
+      where authority='ROLE_ADMIN_SUB' and enabled ='1'
+        and gym_code in 
+        <foreach item="item" collection="list" open="(" close=")" separator=",">
+         #{item}
+      </foreach>
+</select> 
 
 <!-- searchWord에 맞게 지점 검색 -->
 <select id="gymlistSearch"
-	parameterType="String"
-	resultType="global.dto.MemberDTO">
-	select * from member 
-		where authority='ADMIN_SUB' and enabled ='1'
-  		and(
-	        mem_address like '%'||#{searchWord}||'%' 
-	        or mem_name like '%'||#{searchWord}||'%' 
-	        or mem_phone like '%'||#{searchWord}||'%')
-	select gym_code, mem_name from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
-
+   parameterType="String"
+   resultType="global.dto.MemberDTO">
+   select * from member 
+      where authority='ROLE_ADMIN_SUB' and enabled ='1'
+        and(
+           mem_address like '%'||#{searchWord}||'%' 
+           or mem_name like '%'||#{searchWord}||'%' 
+           or mem_phone like '%'||#{searchWord}||'%')
 </select>
+
+<!-- 지점 상세 보기 -->
+<select id="selectOnegym"
+   parameterType="global.dto.GymDTO"
+   resultType="global.dto.GymDTO">
+   select * from GYM_DETAIL where gym_code=#{gym_code}
+</select>
+<select id="selectOneMember"
+   parameterType="global.dto.MemberDTO"
+   resultType="global.dto.MemberDTO">
+   select * from MEMBER where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
+</select>
+
 
 
 <!-- 모든 지점 트레이너 보여주기 -->
 <select id="trainerALLlistSelect"
-	parameterType="global.dto.MemberDTO"
-	resultType="global.dto.MemberDTO">
-	select * from member where authority='ROLE_TRAINER' and enabled ='1'
+   parameterType="global.dto.MemberDTO"
+   resultType="global.dto.MemberDTO">
+   select * from member where authority='ROLE_TRAINER' and enabled ='1'
 </select>
 
 <!-- 선택된 트레이너 보여주기 -->
 <select id="trainerlistSelect"
-	parameterType="String"
-	resultType="global.dto.MemberDTO">
-	select * from member where authority='ROLE_TRAINER' and enabled ='1' and gym_code=#{gym_code}
+   parameterType="String"
+   resultType="global.dto.MemberDTO">
+   select * from member where authority='ROLE_TRAINER' and enabled ='1' and gym_code=#{gym_code}
 </select>
 
 <!-- 트레이너 상세 정보 보여주기 -->
 <select id="trainerInfoSelect"
-	parameterType="String"
-	resultType="global.dto.MemberDTO">
-	select * from member 
-		where authority='ROLE_TRAINER' and mem_id=#{mem_id}
+   parameterType="String"
+   resultType="global.dto.MemberDTO">
+   select * from member 
+      where authority='ROLE_TRAINER' and mem_id=#{mem_id}
 </select>
 
 <!-- 트레이너 상세 정보중 지점명 보여주기(지점코드로 받아서 지점명으로 변환하는 과정) -->
 <select id="gymInfoSelect"
-	parameterType="String"
-	resultType="String">
-	select mem_name from member 
-		where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
-		and enabled ='1'
+   parameterType="String"
+   resultType="String">
+   select mem_name from member 
+      where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
+      and enabled ='1'
 </select>
 
 <!-- 트레이너에 대한 평점 보여주기 -->
 <select id="gradeSelete"
-	parameterType="String"
-	resultType="int">
-	select ceil(avg(review_grade)) from review 
-		where review_type='TRAINER' and review_subject =#{review_subject}
+   parameterType="String"
+   resultType="int">
+   select ceil(avg(review_grade)) from review 
+      where review_type='TRAINER' and review_subject =#{review_subject}
 </select>
 
 <!-- 트레이너에 대한 후기 보여주기 -->
 <select id="reviewSelect"
-	parameterType="String"
-	resultType="global.dto.ReviewDTO">
-	select * from review 
-		where review_type='TRAINER' and review_subject=#{review_subject}
-		order by review_regidate desc
+   parameterType="String"
+   resultType="global.dto.ReviewDTO">
+   select * from review 
+      where review_type='TRAINER' and review_subject=#{review_subject}
+      order by review_regidate desc
 </select>
 
 <!-- 트레이너 후기 등록 -->
 <insert id="reviewInsert"
-	parameterType="global.dto.ReviewDTO">
-	insert into REVIEW (review_idx, review_type, review_subject, review_comment, mem_id, review_grade)
-    	values(bodycoding_seq.nextval, 'TRAINER', #{review_subject}
-    	, #{review_comment}, #{mem_id}, #{review_grade})
+   parameterType="global.dto.ReviewDTO">
+   insert into REVIEW (review_idx, review_type, review_subject, review_comment, mem_id, review_grade)
+       values(bodycoding_seq.nextval, 'TRAINER', #{review_subject}
+       , #{review_comment}, #{mem_id}, #{review_grade})
 
 </insert>
 
 <!-- 모든 유형 상품 보여주기 -->
 <select id="product_categoryALLSelect"
-	parameterType="global.dto.ProductDTO"
-	resultType="global.dto.ProductDTO">
-	select * from product where product_type='일반상품'
+   parameterType="global.dto.ProductDTO"
+   resultType="global.dto.ProductDTO">
+   select * from product where product_type='일반상품'
 </select>
 
 <!-- 선택된 유형 상품 보여주기 -->
 <select id="product_categorySelect"
-	parameterType="String"
-	resultType="global.dto.ProductDTO">
-	select * from product where product_type='일반상품' and product_category=#{product_category}
+   parameterType="String"
+   resultType="global.dto.ProductDTO">
+   select * from product where product_type='일반상품' and product_category=#{product_category}
 </select> 
 
 <!-- 상품 상세 정보 보여주기 -->
 <select id="productInfoSelect"
-	parameterType="int"
-	resultType="global.dto.ProductDTO">
-	select * from product where product_idx = #{product_idx}
+   parameterType="int"
+   resultType="global.dto.ProductDTO">
+   select * from product where product_idx = #{product_idx}
 </select>
 
 
@@ -124,7 +163,8 @@
 <select id="cartList"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
-	select C.mem_id, C.product_idx, product_img, product_name, product_description, product_count, (product_count*product_price) product_price  
+	select C.mem_id, C.product_idx, product_img, product_name, product_description, 
+		product_count, (product_count*product_price) product_price, cart_idx
 		from cart C
 			inner join product P on C.product_idx = P.product_idx
 			inner join member M on C.mem_id = M.mem_id 
@@ -174,6 +214,20 @@
 			inner join member M on C.mem_id = M.mem_id 
 		where
 			lower(C.mem_id) = #{mem_id}
+</select>
+
+<update id="cartStatusUpdate" parameterType="global.dto.ProductDTO">
+	UPDATE cart SET cart_status=1 
+		WHERE cart_idx=#{cart_idx}
+</update>
+
+<select id="pExpectSelect"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+	SELECT m.mem_point, p.*, c.product_count FROM cart c
+	    INNER JOIN member m ON m.mem_id = c.mem_id
+	    INNER JOIN product p ON c.product_idx = p.product_idx
+	WHERE c.mem_id=#{mem_id} and cart_status=1
 </select>
 
 </mapper>

@@ -52,8 +52,8 @@ console.log(ss); */
 							        <td>${row.mem_name }</td>
 							        <td>${row.mem_gender }</td>
 							        <td>${row.mem_birth }</td>
-							        <td>${row.membership_type }</td>
-							        <td>${row.membership_name }</td>
+							        <td>${row.product_type }</td>
+							        <td>${row.product_name }</td>
 							        <td>${row.mem_phone }</td>
 							        <td>${row.mem_regidate }</td>
 							        <td>

@@ -38,19 +38,21 @@
 	<select id="selectFT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		SELECT m.*, ms.membership_type, ms.trainer_id, ms.membership_name
+		SELECT m.*, product_type, ms.trainer_id, product_name
 		FROM member m
 		INNER JOIN membership ms ON m.mem_id = ms.user_id
-		WHERE ms.trainer_id = #{mem_id}
+        INNER JOIN product p ON p.product_idx = ms.product_idx
+		WHERE ms.trainer_id = #{mem_id};
 	</select>
 	
 	<select id="selectDT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		SELECT m.*, ms.membership_type, ms.membership_name
+		SELECT m.*, product_type, product_name
 		FROM member m
 		INNER JOIN membership ms ON m.mem_id = ms.user_id
-		WHERE mem_id = #{mem_id}
+        INNER JOIN product p ON p.product_idx = ms.product_idx
+		WHERE ms.trainer_id = #{mem_id};
 	</select>
 </mapper>	
 	

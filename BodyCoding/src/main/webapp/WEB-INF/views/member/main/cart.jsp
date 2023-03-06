@@ -140,9 +140,9 @@ function errCallBack(errData) {
 			<!-- 상품별 루프 시작 -->
 			<c:set var="totalPrice" value="0" />
 			<c:forEach items="${myCartList }" var="myCartList">
-				<tr id="gggg">
+				<tr>
 					<td style="vertical-align: middle; text-align: center;">
-					<input type="checkbox" name="selected_product" value="${myCartList.product_idx }" checked></td>
+					<input type="checkbox" name="selected_product" value="${myCartList.cart_idx }" checked></td>
 					<td width="10%"><img src="static/uploads/product/${myCartList.product_img}" style="width: 100px;"></td>
 					<td style="vertical-align: top;">
 						<div>

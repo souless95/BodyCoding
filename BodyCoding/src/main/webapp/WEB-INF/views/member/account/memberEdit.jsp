@@ -224,7 +224,7 @@
 					</div>
 
 					<button type="submit" class="btn btn-primary btn-lg btn-block">수정하기</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block">탈퇴하기</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='delete'">탈퇴하기</button>
 				</form>
 			</div>
 		</div>

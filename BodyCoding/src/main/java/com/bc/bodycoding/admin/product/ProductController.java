@@ -1,10 +1,13 @@
 package com.bc.bodycoding.admin.product;
 
 import java.io.File;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,7 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -42,46 +49,45 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/productRegist.do", method = RequestMethod.POST)
-	public String regiAction(HttpServletRequest req) {
-		
-		int size = 1024 * 1024 * 10;
+	public String regiAction(MultipartFile product_img, Model model, MultipartHttpServletRequest req) throws IOException, Exception {
 		
 		ProductDTO productDTO = new ProductDTO();
 		
-		try {
+		if(product_img.isEmpty()) {
+			productDTO.setProduct_img("");
+		}		
+		
+		else {
+			String origName = product_img.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			String extension = origName.substring(origName.lastIndexOf("."));
+			String savedName = uuid + extension;
 			String path = ResourceUtils
 					.getFile("classpath:static/uploads/product/")
 					.toPath().toString();
-			MultipartRequest multi = new MultipartRequest(req, path, 
-					size, "UTF-8", new DefaultFileRenamePolicy());
 			
-			Enumeration files = multi.getFileNames();
-				
-			String str = (String)files.nextElement();
-	           
-			if(str == null) {
-				str = multi.getOriginalFileName(str);
-			}
-			else {
-				str = "";
+			File fileInfo = new File(path, savedName);
+			
+			try {
+				product_img.transferTo(fileInfo);
+			}     
+			catch (Exception e) {
+				e.printStackTrace();
 			}
 			
-			productDTO.setProduct_img(str);
-			productDTO.setProduct_type(multi.getParameter("product_type"));
-			productDTO.setProduct_category(multi.getParameter("product_category"));
-			productDTO.setMembership_period(Integer.parseInt(multi.getParameter("membership_period")));
-			productDTO.setMembership_count(Integer.parseInt(multi.getParameter("membership_count")));
-			productDTO.setProduct_name(multi.getParameter("product_name"));
-			productDTO.setProduct_description(multi.getParameter("product_description"));
-			productDTO.setProduct_price(Integer.parseInt(multi.getParameter("product_price")));
-			
-			int result = productdao.insert(productDTO);
-			System.out.println("실행완료");
-			
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
+			productDTO.setProduct_img(savedName);
 		}
+		
+		productDTO.setProduct_type(req.getParameter("product_type"));
+		productDTO.setProduct_category(req.getParameter("product_category"));
+		productDTO.setMembership_period(Integer.parseInt(req.getParameter("membership_period")));
+		productDTO.setMembership_count(Integer.parseInt(req.getParameter("membership_count")));
+		productDTO.setProduct_name(req.getParameter("product_name"));
+		productDTO.setProduct_description(req.getParameter("product_description"));
+		productDTO.setProduct_price(Integer.parseInt(req.getParameter("product_price")));
+		
+		int result = productdao.insert(productDTO);
+		System.out.println("실행완료");
 		
 		return "redirect:productList.do";
 	}
@@ -95,55 +101,52 @@ public class ProductController {
 	}
 	
 	@PostMapping("/productEdit.do") 
-	public String editAction(HttpServletRequest req) {
-		
-		int size = 1024 * 1024 * 10;
-		
-		ProductDTO productDTO = new ProductDTO();
+	public String editAction(MultipartFile product_img, Model model, MultipartHttpServletRequest req) {
+			
+		String path ="";
 		
 		try {
-			String path = ResourceUtils
+			path = ResourceUtils
 					.getFile("classpath:static/uploads/product/")
 					.toPath().toString();
-			
-			//기존에 업로드된 이미지 파일 있는지 확인 후 삭제
-			String oPath = path+"/"+req.getParameter("o_product_img");
-			File file = new File(oPath);
-			if(file.exists()) {
-				file.delete();
-			}
-			
-			//파일 등록 로직과 동일
-			MultipartRequest multi = new MultipartRequest(req, path, 
-					size, "UTF-8", new DefaultFileRenamePolicy());
-			
-			Enumeration files = multi.getFileNames();
-				
-			String str = (String)files.nextElement();
-			
-			if(str == null) {
-				str = multi.getOriginalFileName(str);
-			}
-			else {
-				str = "";
-			}
-			
-			productDTO.setProduct_img(str);
-			productDTO.setProduct_type(multi.getParameter("product_type"));
-			productDTO.setProduct_category(multi.getParameter("product_category"));
-			productDTO.setMembership_period(Integer.parseInt(multi.getParameter("membership_period")));
-			productDTO.setMembership_count(Integer.parseInt(multi.getParameter("membership_count")));
-			productDTO.setProduct_name(multi.getParameter("product_name"));
-			productDTO.setProduct_description(multi.getParameter("product_description"));
-			productDTO.setProduct_price(Integer.parseInt(multi.getParameter("product_price")));
-			
-			int result = productdao.update(productDTO);
-			System.out.println("실행완료");
-			
+		} 
+		catch (Exception e) {}
+		
+		//기존에 업로드된 이미지 파일 있는지 확인 후 삭제
+		String oPath = path+"/"+req.getParameter("o_product_img");
+		File file = new File(oPath);
+		
+		if(file.exists()) {
+			file.delete();
+		}
+		
+		String origName = product_img.getOriginalFilename();
+		String uuid = UUID.randomUUID().toString();
+		String extension = origName.substring(origName.lastIndexOf("."));
+		String savedName = uuid + extension;
+		
+		File fileInfo = new File(path, savedName);
+		
+		try {
+			product_img.transferTo(fileInfo);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		ProductDTO productDTO = new ProductDTO();
+		
+		productDTO.setProduct_img(savedName);
+		productDTO.setProduct_type(req.getParameter("product_type"));
+		productDTO.setProduct_category(req.getParameter("product_category"));
+		productDTO.setMembership_period(Integer.parseInt(req.getParameter("membership_period")));
+		productDTO.setMembership_count(Integer.parseInt(req.getParameter("membership_count")));
+		productDTO.setProduct_name(req.getParameter("product_name"));
+		productDTO.setProduct_description(req.getParameter("product_description"));
+		productDTO.setProduct_price(Integer.parseInt(req.getParameter("product_price")));
+		
+		int result = productdao.update(productDTO);
+		System.out.println("실행완료");
 		
 		return "redirect:productList.do";
 	}

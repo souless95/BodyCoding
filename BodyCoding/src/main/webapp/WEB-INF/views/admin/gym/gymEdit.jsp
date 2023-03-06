@@ -61,20 +61,6 @@
 					<h2>${memList.mem_name } 수정 페이지</h2>
 	        	</div>
 				<div class="card-body" style="width: 80%">
-					<h4>메인사진</h4>
-					<%-- <div><img src="static/uploads/trainer/${memList.mem_img }" style="width:200px; height:200px;">
-		        			<input type="hidden" name="mem_img" value="${memList.mem_img }">
-		        			<input class="form-control" id="mem_img" name="mem_img" type="file" style="display:inline;" />
-		        	</div> --%>
-					<%-- <c:forEach items="${fileMap }" var="file" varStatus="vs">
-						<tr>
-							<td><img src="uploads/${file.key }" width="200" 
-									height="150" /></td>
-							<td>${file.key }</td>
-							<td>${file.value }Kb</td>
-						</tr>
-					</c:forEach> --%>
-					<%-- <div>${dto.gym_dtail_img }</div> --%>	
 					<h4>기본정보</h4>
 					<table class="table" border=2>
 						<tr>
@@ -170,7 +156,7 @@
 					</table>
 					<div id="previewContainer"></div>
 					<script>
-					$(document).ready(function() {
+					/* $(document).ready(function() {
 						  function modifyFile() {
 						    var filename = '11.jpg';
 						    $.ajax({
@@ -190,7 +176,7 @@
 						  }
 
 						  modifyFile();
-						});
+						}); */
 					
 					const fileInput = document.querySelector('#fileInput');
 					const previewContainer = document.querySelector('#previewContainer');

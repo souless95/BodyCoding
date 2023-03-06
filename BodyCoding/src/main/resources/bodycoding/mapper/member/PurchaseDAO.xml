@@ -36,10 +36,10 @@
 	
 	<insert id="insertMembership" parameterType="global.dto.ProductDTO">
 		INSERT INTO membership 
-    		(membership_idx, order_idx, gym_code, user_id, trainer_id, membership_type, 
-        	membership_name, membership_start, membership_end, membership_count, membership_period)
+    		(membership_idx, order_idx, gym_code, user_id, trainer_id, 
+    			 membership_start, membership_end, product_idx)
     	VALUES (bodycoding_seq.nextval,bodycoding_seq.nextval, #{gym_code}, #{mem_id},
-    		#{trainer_id}, #{product_type}, #{product_name}, sysdate, sysdate, #{membership_count}, #{membership_period})
+    		#{trainer_id}, sysdate, sysdate, #{product_idx})
 	</insert>	
 	
 </mapper>

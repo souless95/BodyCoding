@@ -6,9 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="/static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<!-- top메뉴  -->
@@ -44,23 +41,24 @@
 										<td>${pItem.product_price}</td>
 										<td>${pItem.product_regidate}</td>
 										<td>
+										<s:authorize access="hasRole('ROLE_ADMIN_SUPER')">
 											<a href="productEdit.do?product_idx=${pItem.product_idx}">수정</a>
 											<a href="productDelete.do?product_idx=${pItem.product_idx}">삭제</a>
+										</s:authorize>
 										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-						<a href="/admin/product/productReigst">상품등록</a>
+						<s:authorize access="hasRole('ROLE_ADMIN_SUPER')">
+							<a href="/admin/product/productReigst">상품등록</a>
+						</s:authorize>
 					</div>
+				</div>
 			</main>
 			<!-- bottom -->
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>	
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script src="/static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-	<script src="/static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

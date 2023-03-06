@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +80,7 @@
 								aria-labelledby="headingOne"
 								data-bs-parent="#sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="../productList.do">상품관리</a> 
+									<a class="nav-link" href="/productList.do">상품관리</a> 
 									<a class="nav-link" href="/admin/product/stockList">재고관리</a>
 								</nav>
 							</div>
@@ -98,7 +100,7 @@
 			</div>
 			<div class="sb-sidenav-footer">
 				<div class="small">Logged in as:</div>
-				${mem_id } 접속.
+				<s:authentication property="name"/>
 			</div>
 		</nav>
 	</div>

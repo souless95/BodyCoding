@@ -14,4 +14,5 @@ public interface TrainerService {
 	public int update(MemberDTO memberDTO);
 	public int deleteT(MemberDTO memberDTO);
 	public MemberDTO selectOneT(MemberDTO memberDTO);
+	public MemberDTO selectAdmin(String Admin1);
 }

@@ -38,6 +38,9 @@
 	<ul>
 		<li><a href="delete">탈퇴</a></li>
 	</ul>
+	<ul>
+		<li><a href="chart">차트</a></li>
+	</ul>
 	
 </body>
 </html>

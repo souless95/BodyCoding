@@ -73,5 +73,14 @@ public class MypageController {
 		return "member/trainer/trainermypage";
 	}
 	
+	//차트보기
+	@RequestMapping("chart")
+	public String chart(Model model, HttpSession session) {
+		String mem_id = (String)session.getAttribute("UserEmail");
+		System.out.println(mem_id);
+		model.addAttribute("weight",mydao.weightchart(mem_id));
+		System.out.println(mydao.weightchart(mem_id));
+		return "member/chart";
+	}
 
 } 

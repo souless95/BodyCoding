@@ -104,13 +104,6 @@ public class MainController {
 		return "admin/auth/denied";
 	}
 	
-	//챗봇실행
-	@RequestMapping("chatbot")
-	public String chatbot() {
-		return "member/chatbot";
-	}
-	
-	
 	//json불러오기 실험
 	/*
 	 * @ResponseBody

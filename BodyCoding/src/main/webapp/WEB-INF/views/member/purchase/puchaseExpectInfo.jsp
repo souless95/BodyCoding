@@ -5,7 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>결제 예정 정보</title>
+<script type="text/javascript">
+$(function(){
+	
+	
+});
+</script>
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp"%>
@@ -77,8 +84,8 @@
 				<td>
 					<div align="center">
 						<strong style="font-size: 26px;">
-						<span>(보유포인트 :<c:out value="${totalPoint}" />)</span>
-						<input type="number">
+						<span id="tPoint">(보유포인트 :<c:out value="${totalPoint}" />)</span>
+						<input type="number" min="0">
 						<input type="checkbox">전체 사용
 						</strong>
 					</div>

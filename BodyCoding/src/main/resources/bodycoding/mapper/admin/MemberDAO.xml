@@ -52,6 +52,17 @@
 		INNER JOIN membership ms ON m.mem_id = ms.user_id
 		WHERE mem_id = #{mem_id}
 	</select>
+	
+	<insert id="insertexrecord" parameterType="global.dto.ExDTO">
+		INSERT INTO TRAINING_LOG (
+			TRAINING_LOG_IDX, TRAINER_ID, USER_ID, TRAINING_COMMENT, TRAINING_DATE)
+		VALUES 
+			(bodycoding_seq.nextval, #{TRAINER_ID}, #{USER_ID}, #{TRAINING_COMMENT}, 
+			#{TRAINING_DATE})
+	</insert> 
+	
+	
+	
 </mapper>	
 	
 	

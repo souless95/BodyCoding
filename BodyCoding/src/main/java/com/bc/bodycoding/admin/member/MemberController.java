@@ -7,9 +7,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import global.dto.ExDTO;
 import global.dto.MemberDTO;
 
 @Controller
@@ -73,4 +76,43 @@ public class MemberController {
 		return "member/trainer/memberdetailT";
 	}
 	
+	
+	//운동기록 리스트 페이지
+	@RequestMapping(value="exrecordlists.do", method=RequestMethod.GET)
+	public String exrecordlists() {
+		
+		return "member/trainer/exrecordlists";
+	}
+	
+	//운동기록 리스트 페이지 
+	@RequestMapping(value="exerecordlists.do", method=RequestMethod.POST)
+	public String exrecordlist(Model model, HttpSession session, MemberDTO memberDTO, ExDTO exDTO) {
+		String trainer_id = (String)(session.getAttribute("UserEmail").toString());
+		memberDTO.setMem_id(trainer_id);
+		model.addAttribute("exrecordlist", memberdao.selectDT(memberDTO));
+		return "member/trainer/exrecordlists";
+	}
+	
+	
+	//운동기록 등록 페이지로 이동
+	@RequestMapping(value="exrecord.do", method= RequestMethod.GET)
+	public String exrecord() {
+		
+		return "member/trainer/exrecord";
+	}
+	
+	//운동기록 입력
+	@RequestMapping(value="exrecord.do", method=RequestMethod.POST)
+	public String insertexrecord(ExDTO exDTO) {
+		
+		
+		System.out.println(exDTO);
+		int result = memberdao.insertexrecord(exDTO);
+		if(result==1)
+			
+		System.out.println("운동기록 등록이 완료되었습니다.");
+		
+		return "redirect:exrecordlists.do";
+		
+	}
 }

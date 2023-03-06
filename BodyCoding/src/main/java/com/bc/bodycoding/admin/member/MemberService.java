@@ -1,8 +1,10 @@
 package com.bc.bodycoding.admin.member;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
+import global.dto.ExDTO;
 import global.dto.MemberDTO;
 
 @Mapper
@@ -15,4 +17,10 @@ public interface MemberService {
 	public int pointUpdate(MemberDTO memberDTO);
 	public String selectPoint(String mem_id);
 	public int delete(MemberDTO memberDTO);
+	
+	public int insertexrecord(ExDTO exDTO);
+	
+	public MemberDTO selectrecord(MemberDTO memberDTO);
+	
+	
 }

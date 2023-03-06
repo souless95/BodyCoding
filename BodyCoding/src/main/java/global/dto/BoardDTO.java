@@ -16,4 +16,7 @@ public class BoardDTO {
 	private String board_sfile;
 	private int board_visitcount;
 	private Date board_postdate;
+	
+	
+	
 }

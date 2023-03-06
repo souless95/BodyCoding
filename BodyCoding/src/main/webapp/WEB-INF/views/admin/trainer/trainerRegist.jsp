@@ -35,7 +35,7 @@
 							    							<input type="hidden" id="authority" name="authority" value="ROLE_TRAINER">
 			                                                <!-- 로그인한 ADMIN의 지점코드가 자동으로 삽입되게 만들기 -->
 		                                                    <div class="form-floating">
-		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" required/>
+		                                                        <input class="form-control" id="gym_code" name="gym_code" type="number" placeholder="Enter your last name" required/>
 		                                                        <label for="gym_code">지점 선택</label>
 		                                                    </div>
 		                                                </div>

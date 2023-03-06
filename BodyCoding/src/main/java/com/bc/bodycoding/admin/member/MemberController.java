@@ -47,6 +47,13 @@ public class MemberController {
 		return point;
 	}
 	
+	@RequestMapping("/memberDelete.do")
+	public String delete(MemberDTO memberDTO) {
+		int result = memberdao.delete(memberDTO);
+		if(result==1)
+			System.out.println("삭제되었습니다.");
+		return "redirect:/memberList.do";
+	}
 	
 	//trainer계정으로 로그인했을때 회원목록 보여주기
 	@RequestMapping("/memberlistT.do")
@@ -65,11 +72,5 @@ public class MemberController {
 		model.addAttribute("dto", memberdao.selectDT(memberDTO));
 		return "member/trainer/memberdetailT";
 	}
-	
-	
-	
-	
-	
-	
 	
 }

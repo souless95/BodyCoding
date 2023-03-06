@@ -34,6 +34,9 @@ public class AccountController {
 	// @PostMapping("/signup.do")
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String signupM2(MemberDTO memberDTO) {
+		if(!(memberDTO.getMem_gender().equals(""))) {
+			memberDTO.setMem_gender(memberDTO.getMem_gender().substring(0, 1));
+		}
 		System.out.println(memberDTO);
 		
 		int result = accountdao.insertMember(memberDTO); 
@@ -42,7 +45,7 @@ public class AccountController {
 
 		return "member/main";
 	}
-	
+
 	// ajax 회원아이디 중복검사
 	@ResponseBody
 	@RequestMapping("/checkIdDuplicate")
@@ -127,12 +130,12 @@ public class AccountController {
 			session.invalidate();
 			System.out.println("탈퇴 성공");
 			return "redirect:main";
-		}
-		else {
+		} else {
 			System.out.println("탈퇴 실패");
 			return "delete";
 		}
 	}
+
 	
 	//아이디찾기 창으로 넘어가기
 	@RequestMapping(value="findid", method=RequestMethod.GET)

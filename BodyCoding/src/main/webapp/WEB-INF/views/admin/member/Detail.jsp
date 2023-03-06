@@ -116,10 +116,7 @@ function errCallBack(errData){
 					       	 	<td>${dto.enabled }</td>
 					       	</tr>
 					    </table>
-	        			<button type="button" class="btn btn-primary" onclick="location.href='gymedit.do?gym_code=${dto.gym_code }'">
-							수정
-						</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
+						<button type="button" class="btn btn-primary" onclick="location.href='memberDelete.do?mem_id=${dto.mem_id }'">
 							삭제
 						</button>
 						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button> 

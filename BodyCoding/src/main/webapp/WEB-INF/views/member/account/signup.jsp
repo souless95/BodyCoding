@@ -110,13 +110,12 @@
             </div>
 
             <div class="mb-4">
-                   <span id="redStar">*</span>&nbsp;<label for="mem_name">이름</label>
+               <span id="redStar">*</span>&nbsp;<label for="mem_name">이름</label>
                <input type="text" class="form-control" id="mem_name" name="mem_name" required>
             </div>
 
             <div class="mb-3">
                  <label for="mem_gender">성별</label> &nbsp;&nbsp;
-                 
                   <input type="hidden" name="mem_gender" value="">
                   <input type="radio" name="mem_gender" value="M">&nbsp;남자&nbsp;
                   <input type="radio" name="mem_gender" value="F">&nbsp;여자<br>

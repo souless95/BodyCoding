@@ -126,7 +126,6 @@ function logoutcheck(){
 						    </c:choose>
 						</c:if>
 			            
-			            
 			            <c:if test="${empty UserName}">
 						<li>
 			                    <a href="/login.do">로그인</a>

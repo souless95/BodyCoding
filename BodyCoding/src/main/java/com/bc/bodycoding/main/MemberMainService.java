@@ -41,5 +41,6 @@ public interface MemberMainService {
 	public int cartAddPlus(ProductDTO productDTO); //장바구니에 갯수 추가
 	public int cartDelete(ProductDTO productDTO); //장바구니 삭제
 	public int plusMinus(ProductDTO productDTO); //장바구니 수량 증감
-	public ProductDTO selectPlusMinus(ProductDTO productDTO); //증감된 거 보여주는 노무쉐끼
+	public int cartStatusUpdate(ProductDTO productDTO); // 장바구니 > 구매 예정으로 상태 변경
+	public List<ProductDTO> pExpectSelect(ProductDTO productDTO); // 장바구니 > 구매 예정으로 상태 변경
 }

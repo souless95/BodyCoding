@@ -52,6 +52,8 @@ public class ProductDTO {
 	private int cart_idx;
 	//카트 물건 갯수
 	private int product_count;
+	//회원 보유 포인트
+	private int mem_point;
 	
 }
 

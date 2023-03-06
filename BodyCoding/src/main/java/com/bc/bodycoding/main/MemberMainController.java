@@ -3,6 +3,7 @@ package com.bc.bodycoding.main;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -317,6 +319,27 @@ public class MemberMainController {
 		}
 		
 		return "";
+	}
+	
+	@GetMapping("/puchaseExpectInfo.do")
+	public String puchaseExpect(HttpServletRequest req, HttpSession session, Model model) {
+		
+		String chk = req.getParameter("chkArray");
+		String chkArray[] = chk.split(",");
+		
+		ProductDTO productDTO = new ProductDTO();
+		
+		for(int i=0; i<chkArray.length; i++) {
+			productDTO.setCart_idx(Integer.parseInt(chkArray[i]));
+			maindao.cartStatusUpdate(productDTO);
+		}
+		
+		productDTO.setMem_id(session.getAttribute("UserEmail").toString());
+		List<ProductDTO> pList = maindao.pExpectSelect(productDTO);
+		
+		model.addAttribute("pList", pList);
+		
+		return "/member/purchase/puchaseExpectInfo";
 	}
 	
 }

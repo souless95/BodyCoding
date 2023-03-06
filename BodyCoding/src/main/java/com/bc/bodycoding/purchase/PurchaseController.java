@@ -174,13 +174,8 @@ public class PurchaseController {
 		   productDTO.setTrainer_id(trainer_id);
 		   productDTO.setProduct_idx(Integer.parseInt(product_idx));
 		   productDTO.setGym_code(gym_code);
-		   productDTO.setProduct_name(product_name);
 		   
 		   ProductDTO pDTO = purchaseDao.payProductSelect(productDTO);
-		   
-		   productDTO.setMembership_count(pDTO.getMembership_count());
-		   productDTO.setMembership_period(pDTO.getMembership_period());
-		   productDTO.setProduct_type(pDTO.getProduct_type());
 		   
 		   int result1 = purchaseDao.insertOrder(productDTO);
 		   int result2 = purchaseDao.insertMembership(productDTO);
@@ -205,12 +200,6 @@ public class PurchaseController {
    @RequestMapping("/purchaseCancel.do")
    public String purchaseCancel() {
       return "/member/purchase/purchaseCancel";
-   }
-   
-   @GetMapping("/puchaseExpectInfo.do")
-   public String puchaseExpect(HttpServletRequest req) {
-	   System.out.println(req.getParameter("chkArray"));
-	   return "/member/purchase/puchaseExpectInfo";
    }
    
    

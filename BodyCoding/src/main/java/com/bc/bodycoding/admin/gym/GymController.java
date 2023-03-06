@@ -1,6 +1,7 @@
 package com.bc.bodycoding.admin.gym;
 
 import java.io.File;
+import java.security.Principal;
 import java.util.Enumeration;
 import java.util.UUID;
 
@@ -39,9 +40,13 @@ public class GymController {
 
 	// 상세보기
 	@RequestMapping("/gymdetail.do")
-	public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
-		gymDTO = gymdao.selectOnegym(gymDTO);
+	public String gym7(GymDTO gymDTO, Model model, MemberDTO memberDTO, Principal principal) {
 		memberDTO = gymdao.selectOneMember(memberDTO);
+		gymDTO = gymdao.selectOnegym(gymDTO);
+		
+		String userIdG = principal.getName();		
+		model.addAttribute("userIdG", userIdG);
+		
 		model.addAttribute("memList", memberDTO);
 		model.addAttribute("dto", gymDTO);
 
@@ -51,6 +56,7 @@ public class GymController {
 	// 지점 등록페이지로 이동
 	@RequestMapping("/admin/gym/gymRegist")
 	public String registASUB(Model model) {
+		
 		return "admin/gym/gymRegist";
 	}
 
@@ -77,7 +83,8 @@ public class GymController {
 			if (count == 1) {
 				System.out.println("이미 등록된 지점입니다.");
 				return "admin/gym/gymRegist";
-			} else {
+			} 
+			else {
 
 				System.out.println(multi.getParameter("mem_pass"));
 				String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()

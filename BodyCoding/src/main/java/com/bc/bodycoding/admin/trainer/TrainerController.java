@@ -1,8 +1,11 @@
 package com.bc.bodycoding.admin.trainer;
 
 import java.io.File;
+import java.security.Principal;
 import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Controller;
@@ -45,13 +48,13 @@ public class TrainerController {
 			Enumeration files = multi.getFileNames();
 			String str = (String)files.nextElement();
 			
-			System.out.println(multi.getParameter("mem_pass"));
-			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
-					.encode(multi.getParameter("mem_pass"));
-			System.out.println(passwd);
+//			System.out.println(multi.getParameter("mem_pass"));
+//			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
+//					.encode(multi.getParameter("mem_pass"));
+//			System.out.println(passwd);
 			
 			memberDTO.setMem_id(multi.getParameter("mem_id"));
-			memberDTO.setMem_pass(passwd);
+			memberDTO.setMem_pass(multi.getParameter("mem_pass"));
 			memberDTO.setMem_name(multi.getParameter("mem_name"));
 			memberDTO.setMem_gender(multi.getParameter("mem_gender"));
 			memberDTO.setMem_birth(multi.getParameter("mem_birth"));
@@ -87,10 +90,25 @@ public class TrainerController {
 		return "admin/trainer/trainerList";
 	}
 	
+	//트레이너 상세보기
 	@RequestMapping("/trainerDetail.do")
-	public String detailT(Model model, MemberDTO memberDTO, HttpServletRequest req) {
+	public String detailT(Model model, MemberDTO memberDTO, HttpServletRequest req, Principal principal, HttpSession session) {
 		memberDTO = trainerdao.selectOneT(memberDTO);
-		model.addAttribute("trainerList",memberDTO);
+		model.addAttribute("trainerList", memberDTO);
+		
+		
+		//시큐리티 로그인한 아이디 받아오기
+		String userIdT = principal.getName();
+		model.addAttribute("userIdT", userIdT);
+		
+//		admin.getGym_code();
+		
+		MemberDTO admin = trainerdao.selectAdmin(userIdT);
+		System.out.println("잘 받아오는 지 확인해보자 "+ admin.getGym_code());
+		
+		model.addAttribute("adminGym", admin.getGym_code());
+		
+		
 		return "admin/trainer/trainerDetail";
 	}
 
@@ -153,12 +171,9 @@ public class TrainerController {
 	@RequestMapping("/trainerdelete.do")
 	public String deleteT(MemberDTO memberDTO) {
 		int result = trainerdao.deleteT(memberDTO);
-		if(result==1) System.out.println("삭제되었습니다.");
+	
+			if(result==1) System.out.println("삭제되었습니다.");
+
 		return "redirect:trainerList.do";
 	}
-	
-	
-	
-	
-	
 }

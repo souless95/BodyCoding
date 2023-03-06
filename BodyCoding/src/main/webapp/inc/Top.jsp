@@ -116,7 +116,7 @@ function logoutcheck(){
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
 						                    <li><a href="exinfo">운동정보</a></li>
-						                    <li><a href="myinfo">내 정보관리</a></li>
+						                    <li><a href="/exrecord.do">내 정보관리</a></li>
 						                </ul>
 						            </li>
 						            <li>

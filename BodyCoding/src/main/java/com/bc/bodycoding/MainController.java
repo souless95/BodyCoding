@@ -104,8 +104,6 @@ public class MainController {
 		return "admin/auth/denied";
 	}
 	
-	
-	
 	//json불러오기 실험
 	/*
 	 * @ResponseBody

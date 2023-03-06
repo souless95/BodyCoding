@@ -51,26 +51,33 @@ public class ProductController {
 	@RequestMapping(value = "/productRegist.do", method = RequestMethod.POST)
 	public String regiAction(MultipartFile product_img, Model model, MultipartHttpServletRequest req) throws IOException, Exception {
 		
-		String origName = product_img.getOriginalFilename();
-		String uuid = UUID.randomUUID().toString();
-		String extension = origName.substring(origName.lastIndexOf("."));
-		String savedName = uuid + extension;
-		String path = ResourceUtils
-				.getFile("classpath:static/uploads/product/")
-				.toPath().toString();
-		
-		File fileInfo = new File(path, savedName);
-		
-		try {
-			product_img.transferTo(fileInfo);
-		}     
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 		ProductDTO productDTO = new ProductDTO();
 		
-		productDTO.setProduct_img(savedName);
+		if(product_img.isEmpty()) {
+			productDTO.setProduct_img("");
+		}		
+		
+		else {
+			String origName = product_img.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			String extension = origName.substring(origName.lastIndexOf("."));
+			String savedName = uuid + extension;
+			String path = ResourceUtils
+					.getFile("classpath:static/uploads/product/")
+					.toPath().toString();
+			
+			File fileInfo = new File(path, savedName);
+			
+			try {
+				product_img.transferTo(fileInfo);
+			}     
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			productDTO.setProduct_img(savedName);
+		}
+		
 		productDTO.setProduct_type(req.getParameter("product_type"));
 		productDTO.setProduct_category(req.getParameter("product_category"));
 		productDTO.setMembership_period(Integer.parseInt(req.getParameter("membership_period")));

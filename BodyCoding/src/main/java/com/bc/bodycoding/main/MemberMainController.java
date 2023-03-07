@@ -277,7 +277,7 @@ public class MemberMainController {
 		
 		//리스트 확인
 		ProductDTO result = maindao.cartAddSelect(productDTO);
-		productDTO.setProduct_count(1);
+		productDTO.setProduct_count("1");
 		
 		//상품이 있을경우
 		if (result != null) {
@@ -324,14 +324,16 @@ public class MemberMainController {
 	@GetMapping("/puchaseExpectInfo.do")
 	public String puchaseExpect(HttpServletRequest req, HttpSession session, Model model) {
 		
-		String chk = req.getParameter("chkArray");
-		String chkArray[] = chk.split(",");
-		
 		ProductDTO productDTO = new ProductDTO();
+		String chk = req.getParameter("chkArray");
 		
-		for(int i=0; i<chkArray.length; i++) {
-			productDTO.setCart_idx(Integer.parseInt(chkArray[i]));
-			maindao.cartStatusUpdate(productDTO);
+		if(chk!=null) {
+			String chkArray[] = chk.split(",");
+			
+			for(int i=0; i<chkArray.length; i++) {
+				productDTO.setCart_idx(Integer.parseInt(chkArray[i]));
+				maindao.cartStatusUpdate(productDTO);
+			}
 		}
 		
 		productDTO.setMem_id(session.getAttribute("UserEmail").toString());

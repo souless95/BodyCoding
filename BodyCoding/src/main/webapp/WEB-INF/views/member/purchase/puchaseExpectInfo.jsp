@@ -8,9 +8,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>결제 예정 정보</title>
 <script type="text/javascript">
-
+var uPoint;
 function cal(){
-	var uPoint = $('#uPoint').val();
+	uPoint = document.getElementById('uPoint').value;
 	let price = $('#price').text();
 	let tPrice = eval('Number(price)-Number(uPoint)');
 	$('#totalP').text(tPrice);
@@ -30,12 +30,30 @@ $(function(){
 		cal();
 	});
 	$('#purchase').click(function(){
-		let sPoint = $('#sPoint').val();
+		
+		let sPoint = $('#sPoint').text();
 		if (sPoint < uPoint){
-			alert("보유 포인트 보다 사용 포인트가 많습니다.");
+			alert("보유포인트보다 숫자가 큽니다.");
 			$('#uPoint').val(0);
 			cal();
+			return false;
 		}
+		else{
+			const payInfo = $('#payFrm').serialize();
+	       $.ajax({
+	           url: 'kakaoPay.do',
+	           data : payInfo,
+	           dataType:"json",
+	           success:function(data){
+	  	            console.log("페이성공"+data);
+	  				location.href = data.next_redirect_pc_url;
+	           },
+	           error:function(error){
+	              alert(error);
+	           }
+	        });
+		}
+		
 	});
 	
 });
@@ -47,7 +65,7 @@ $(function(){
 	<div>
 		<h2>결제 정보</h2>
 	</div>
-	<form action="">
+	<form id="payFrm">
 		<table style="border: 5px solid #cdd0d4;">
 			<tbody>
 				<tr>
@@ -67,14 +85,15 @@ $(function(){
 						<td style="vertical-align: top;">
 							<div>
 								<strong>${pList.product_name }</strong>
+								<input type="hidden" name="product_name" value="${pList.product_name }">
+								<input type="hidden" name="product_idx" value="${pList.product_idx }"> 
+								<input type="hidden" name="product_count" value="${pList.product_count }"> 
 							</div>
 							<div>${pList.product_description }</div>
 						</td>
 						<td>
-							<!-- 상품수량 증감 부분 -->
 						</td>
 						<td style="vertical-align: middle; text-align: center;">
-							<input type="hidden" class="pIdx" value="${pList.product_idx }" /> 
 							<span class="pCount">${pList.product_count }</span>개 
 						</td>
 						<td style="vertical-align: middle; text-align: center;"><span class="product-price">${pList.product_price }</span>원
@@ -99,6 +118,9 @@ $(function(){
 						<div align="center">
 							<strong style="font-size: 26px;"><span id="price"><c:out
 									value="${totalPrice }" /></span>원</strong>
+							<input type="hidden" name="product_price" value="${totalPrice }">
+<%-- 							<input type="hidden" name="product_count" value="${totalCount }"> --%>
+							<input type="hidden" name="type" value="상품">
 						</div>
 					</td>
 				</tr>
@@ -112,7 +134,7 @@ $(function(){
 						<div align="center">
 							<strong style="font-size: 26px;">
 							(보유포인트 :<span id="sPoint"><c:out value="${totalPoint}" /></span>)
-							<input type="number" min="0" id="uPoint">
+							<input type="number" min="0" id="uPoint" name="use_point">
 							<input type="checkbox">전체 사용
 							</strong>
 						</div>
@@ -134,11 +156,11 @@ $(function(){
 				</tr>
 			</tbody>
 		</table>
-		<div style="text-align: center; text-decoration:">
-			<button id="purchase">구매하기(결제)</button>
-			<button type="button" onclick="location.href='product'">목록으로</button>
-		</div>
 	</form>
+	<div style="text-align: center; text-decoration:">
+		<button id="purchase">구매하기(결제)</button>
+		<button type="button" onclick="location.href='product'">목록으로</button>
+	</div>
 </div>
 
 <!-- bottom -->

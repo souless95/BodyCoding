@@ -10,10 +10,11 @@
 <body>
 <%@ include file="../../../../inc/Top.jsp" %>
 <div class="container">
+<br>
 	<h2>상품 정보</h2>
 	<table id="datatablesSimple" >
 		<tr>
-			<td rowspan="3"><img src="static/uploads/product/${productInfo.product_img}" style="width:100%;height:180px;"></td>
+			<td rowspan="3"><img src="static/uploads/product/${productInfo.product_img}" style="width: 200px; height: 250px;"></td>
 			<td>상품명: ${productInfo.product_name}</td>
 		</tr>
 		<tr>

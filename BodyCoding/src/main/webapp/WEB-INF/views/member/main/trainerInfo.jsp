@@ -17,16 +17,16 @@ function login(){
 }
 </script>
 <div class="container">
-<br />
+<br>
 	<h2>트레이너 정보</h2>
-	<br />
+	<br>
 	<table class="table" style="border: 3px solid gray;">
 		<tr style="border: 2px solid gray;">
-			<td style="text-align:center; border: 2px solid gray;"rowspan="4"><img src="static/uploads/trainer/${trainerInfo.mem_img}" style="width:100%;height:100%;"></td>
+			<td style="border: 2px solid gray; width: 300px; height: 360px;" rowspan="4"><img src="/static/uploads/trainer/${trainerInfo.mem_img}" style="width:100%;height:100%; margin-bottom: -55px;"></td>
 			<td style="vertical-align: middle; padding-left: 10px;"><strong>한마디 : </strong> ${trainerInfo.mem_comment }</td>  
 		</tr>
 		<tr style="border: 2px solid gray;">
-			<td colspan="2" style="padding-left: 10px;"><strong>이름 : </strong>${trainerInfo.mem_name}</td>
+			<td style="padding-left: 10px;"><strong>이름 : </strong>${trainerInfo.mem_name}</td>
 			<td><strong>지점명 : </strong> ${gymInfo }</td>
 		</tr>
 		<tr>

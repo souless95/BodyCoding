@@ -43,7 +43,7 @@ body{
 						<h4>편의시설</h4>
 					<table class="table" border=2>
 						<tr align="center">
-							<th><img src="../static/admin/images/0002.png"/><img src="../static/admin/images/0001.png"/></th>
+							<th><img src="../static/admin/images/0001.png"/></th>
 							<th><img src="../static/admin/images/0004.png"></th>
 							<th><img src="../static/admin/images/0005.png"></th>
 							<th><img src="../static/admin/images/0007.png"></th>

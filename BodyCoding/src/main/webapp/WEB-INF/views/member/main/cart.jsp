@@ -193,6 +193,7 @@ function errCallBack(errData) {
 	<div style="text-align: center; text-decoration:">
 		<button id="purchase">구매하기(결제)</button>
 		<button type="button" onclick="location.href='product'">목록으로</button>
+		<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
 	</div>
 </div>
 

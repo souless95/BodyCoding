@@ -81,11 +81,14 @@ window.onload = function() {
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
 					<div><img id="img" src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
-					<form id="imgedit" method="post" action="/mimgedit.do" enctype="multipart/form-data">
-						<input type="hidden" name="o_mem_img" value="${memList.mem_img }" />
-						<input type="hidden" name="mem_id" id="mem_id" value="${memList.mem_id }" />
-						<input type="file" name="mem_img" id="imgupdate" />
-					</form>
+					
+					<c:if test="${userIdG eq memList.mem_id }">
+						<form id="imgedit" method="post" action="/mimgedit.do" enctype="multipart/form-data">
+							<input type="hidden" name="o_mem_img" value="${memList.mem_img }" />
+							<input type="hidden" name="mem_id" id="mem_id" value="${memList.mem_id }" />
+							<input type="file" name="mem_img" id="imgupdate" />
+						</form>
+					</c:if>
 					
 					<h4>기본정보</h4>
 					<table class="table" border=2>
@@ -195,6 +198,9 @@ window.onload = function() {
 					<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
 						메인으로
 					</button>
+					<button type="button" class="btn btn-primary" onclick="history.back()">
+		            	뒤로가기
+		            </button>
 				</div>
 			</div>
 			<!-- bottom -->

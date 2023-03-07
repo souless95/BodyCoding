@@ -42,7 +42,7 @@
 		FROM member m
 		INNER JOIN membership ms ON m.mem_id = ms.user_id
         INNER JOIN product p ON p.product_idx = ms.product_idx
-		WHERE ms.trainer_id = #{mem_id};
+		WHERE ms.trainer_id = #{mem_id}
 	</select>
 	
 	<select id="selectDT"
@@ -52,18 +52,49 @@
 		FROM member m
 		INNER JOIN membership ms ON m.mem_id = ms.user_id
         INNER JOIN product p ON p.product_idx = ms.product_idx
-		WHERE ms.trainer_id = #{mem_id};
+		WHERE ms.user_id = #{mem_id}
 	</select>
 	
 	<insert id="insertexrecord" parameterType="global.dto.ExDTO">
 		INSERT INTO TRAINING_LOG (
-			TRAINING_LOG_IDX, TRAINER_ID, USER_ID, TRAINING_COMMENT, TRAINING_DATE)
+			TRAINING_LOG_IDX, training_date, user_id, training_comment, trainer_id)
 		VALUES 
-			(bodycoding_seq.nextval, #{TRAINER_ID}, #{USER_ID}, #{TRAINING_COMMENT}, 
-			#{TRAINING_DATE})
+			(bodycoding_seq.nextval, #{training_date}, #{user_id},
+			#{training_comment}, #{trainer_id})
 	</insert> 
 	
+	<select id="selectexrecord"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+	SELECT m.*, tl.training_comment, tl.training_log_idx, tl.training_date, p.product_name, p.product_description
+		FROM member m
+		INNER JOIN training_log tl ON m.mem_id = tl.user_id
+		INNER JOIN membership ms ON ms.user_id = tl.user_id
+		INNER JOIN product p ON p.product_idx = ms.product_idx
+		WHERE tl.trainer_id = #{trainer_id}
+	</select>
 	
+	<select id="selectone" parameterType="String"
+		resultType="global.dto.MemberDTO">
+		
+		SELECT m.*, tl.training_comment, tl.training_log_idx, tl.training_date, p.product_name, p.product_description
+		FROM member m                                          
+		INNER JOIN training_log tl ON m.mem_id = tl.user_id
+		INNER JOIN membership ms ON ms.user_id = tl.user_id
+		INNER JOIN product p ON p.product_idx = ms.product_idx
+		WHERE tl.training_log_idx = #{training_log_idx}
+		
+	</select>
+	
+	<update id="editexrecord" parameterType="global.dto.MemberDTO" >
+		
+		update training_log set training_comment = #{training_comment} where training_log_idx= #{training_log_idx}
+		
+	</update>      
+
+	<delete id="deleteexrecord" parameterType="global.dto.MemberDTO">
+		delete from training_log where training_log_idx= #{training_log_idx}
+	</delete>                                                                                      
 	
 </mapper>	
 	

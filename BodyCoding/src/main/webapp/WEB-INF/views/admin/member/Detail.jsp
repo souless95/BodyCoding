@@ -119,7 +119,8 @@ function errCallBack(errData){
 						<button type="button" class="btn btn-primary" onclick="location.href='memberDelete.do?mem_id=${dto.mem_id }'">
 							삭제
 						</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button> 
+						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
+						<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button> 
 	        		</div>
 				</div>
 			</main>

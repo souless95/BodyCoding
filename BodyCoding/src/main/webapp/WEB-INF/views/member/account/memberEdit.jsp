@@ -143,7 +143,7 @@
 					<div class="mb-1">
 						<label for="gym_code">지점선택</label>&nbsp; 
 						<select class="custom-select d-block w-100" name="gym_code" onchange="chk();">
-		                     <option value="" selected>지점을 선택해 주세요</option>
+		                     <option value="1" selected>지점을 선택해 주세요</option>
 		                     <option id="code" name="gym_code" value="종로">종로</option>
 		                     <option id="code2" name="gym_code" value="일산">일산</option>
 		                     <option id="code3" name="gym_code" value="성북">성북</option>
@@ -184,12 +184,12 @@
 						 <input type="hidden" class="checkStyle" name="mem_disease" value="">
 					</div>
 
-					<div class="mb-1">
+
+					<div class="purpose">
 		                <label for="mem_purpose">운동목적</label>&nbsp;&nbsp;
 		            </div>
 		            
 					<div class=purpose_detail>
-
 						<input type="checkbox" class="checkStyle" id="purpose1" name="mem_purpose" value="diet"> 
 						<label for="diet">다이어트</label>&nbsp;&nbsp;
 						
@@ -198,6 +198,15 @@
 						
 						<input type="checkbox" class="checkStyle" id="purpose3" name="mem_purpose" value="healthcare"> 
 						<label for="healthcare">체력관리</label>&nbsp;&nbsp;
+
+						<input type="checkbox" class="checkStyle" id="purpose4" name="mem_purpose" value="etc">
+						<label for="etc">그 외</label>&nbsp;&nbsp;
+						
+						<input type="hidden" class="checkStyle" name="mem_purpose" value="">
+					</div>
+					
+					<label for="mem_interest">관심사항</label>
+					<div class="interest">
 
 						<input type="checkbox" class="checkStyle" id="purpose4" name="mem_purpose" value="etc">
 						<label for="etc">그 외</label>&nbsp;&nbsp;

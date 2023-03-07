@@ -1,4 +1,4 @@
-package com.bc.bodycoding.chatting;
+package com.bc.bodycoding.main.chatting;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class ChattingController {
+public class MChattingController {
 
-	@RequestMapping(value="/Chat/WebSocket.do", method=RequestMethod.GET)
+	@RequestMapping(value="WebSocketM.do", method=RequestMethod.GET)
 	public String websocket(HttpServletRequest req, Model model) {
 		model.addAttribute("member", req.getParameter("mem_id"));
-		return "Chat/WebSocket";
+		return "member/ChatM/WebSocketM";
 	}
 	
-	@RequestMapping(value="/Chat/WebChat.do", method=RequestMethod.GET)
+	@RequestMapping(value="WebChatM.do", method=RequestMethod.GET)
 	public String chatting(HttpServletRequest req, Model model) {
 		model.addAttribute("member", req.getParameter("mem_id"));
-		return "Chat/WebChat";
+		return "member/ChatM/WebChatM";
 	}
 	
-	@RequestMapping(value="/Chat/02WebChatUI.do", method=RequestMethod.GET)
+	@RequestMapping(value="/ChaMt/02WebChatUIM.do", method=RequestMethod.GET)
 	public String chatUI() {
-		return "Chat/02WebChatUI";
+		return "ChatM/02WebChatUIM";
 	}
 }

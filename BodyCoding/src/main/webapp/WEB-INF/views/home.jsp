@@ -14,12 +14,12 @@
 	</ul>
 
 	<!-- 어드민 로그인 하려면 main/admin으로 접속할 것 -->
-	<!-- <ul>
+	<ul>
 		<li><a href="main/admin">admin 메인페이지</a></li>
 	</ul>
 	<ul>
 		<li><a href="/adminLogin.do">admin 로그인</a></li>
-	</ul> -->
+	</ul>
 	<ul>
 		<li><a href="main">member 메인페이지</a></li>
 	</ul>
@@ -38,16 +38,12 @@
 	<ul>
 		<li><a href="delete">탈퇴</a></li>
 	</ul>
-<<<<<<< HEAD
 	<!-- 임시. 작업이후 삭제 예정 -->
 	<ul>
 		<li><a href="routine.do">운동루틴등록</a></li>
 	</ul>
-=======
 	<ul>
 		<li><a href="chart">차트</a></li>
 	</ul>
-	
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 </body>
 </html>

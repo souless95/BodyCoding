@@ -22,7 +22,7 @@ body{
 	        	<div class="card-header">
 					<h2>등록된 지점</h2>
 					
-					
+					<h3>왜 안나와</h3>
 	        	</div>
 			</div>
 		</div>

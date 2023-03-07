@@ -65,7 +65,6 @@ div{
 	<div class="location_wrap" style="width:">
 		<div class="contain">
 		
-		
 		</div>
 	</div>
 	<div class="contain mt-3">
@@ -98,8 +97,8 @@ div{
 					<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 						<div class="card-body">
                             <ul>
-                                <li><a class="btn" href="exroutine.do">운동루틴 등록</a></li>
-                                <li><a class="btn" href="exrecord.do">운동기록 등록</a></li>
+                                <li><a class="btn" href="exroutine.do">운동루틴</a></li>
+                                <li><a class="btn" href="exrecord.do">운동기록</a></li>
                             </ul>
                         </div>
 					</div>
@@ -113,8 +112,7 @@ div{
 						data-bs-parent="#accordion">
 						<div class="card-body">
                             <ul>
-                                <li><a class="btn" href="#">내 정보수정</a></li>
-                                <li><a class="btn" href="#">탈퇴하기 </a></li>
+                                <li><a class="btn" href="career.do">트레이너경력</a></li>
                             </ul>
                         </div>
 					</div>

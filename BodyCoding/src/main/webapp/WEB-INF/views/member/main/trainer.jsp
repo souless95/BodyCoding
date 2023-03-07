@@ -43,12 +43,12 @@ function sucCallBack(resData) {
 	console.log(resData);
 	let tableData = "";
 	$(resData).each(function(index, data) {
-		tableData += "<div style='width:150px; margin:30px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
+		tableData += "<div style='width:200px; margin:30px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
 		+"<img class='card-img-top mt-2' src='static/uploads/trainer/"+data.mem_img+"' "
-		+" style='width:100%; height:180px;'>"
+		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
 		+"<b>"+data.mem_name+"<b><br>"
-		+data.mem_comm + "</div></a></div>";
+		+data.mem_comment + "</div></a></div>";
 	});
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);
@@ -59,6 +59,7 @@ function errCallBack(errData){
 }
 </script> 
 <div class="container">
+<br>
 	 <h2>트레이너 목록</h2>
 	<h5>
 	<select id="gym_code" required>

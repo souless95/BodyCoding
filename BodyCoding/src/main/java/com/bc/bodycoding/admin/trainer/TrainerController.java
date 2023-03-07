@@ -42,7 +42,7 @@ public class TrainerController {
 	@PostMapping("/trainerRegist.do")
 	public String signupT2(MultipartFile mem_img, MultipartHttpServletRequest req) throws IOException, Exception {
 		
-		 MemberDTO memberDTO = new MemberDTO();
+		MemberDTO memberDTO = new MemberDTO();
 		
 		if(mem_img.isEmpty()) {
 			memberDTO.setMem_img("");
@@ -135,14 +135,25 @@ public class TrainerController {
 	}
 	
 	@RequestMapping(value="/trainerEdit.do", method=RequestMethod.POST)
-	public String editT(MultipartFile mem_img, MemberDTO memberDTO, MultipartHttpServletRequest req) {
-		try {
-			String path = ResourceUtils.getFile("classpath:static/uploads/trainer").toPath().toString();
-			System.out.println("트레이너 사진 저장 경로:"+ path);
+	public String editT(MultipartFile mem_img, MultipartHttpServletRequest req) {
+		
+		MemberDTO memberDTO = new MemberDTO();
+		if(mem_img.isEmpty()) {
+			memberDTO.setMem_img("");
+		}
+		else {
+			String path="";
+			
+			try {
+				path = ResourceUtils.getFile("classpath:static/uploads/trainer").toPath().toString();
+				System.out.println("트레이너 사진 저장 경로:"+ path);
+			}
+			catch (Exception e) {}
 			
 			//기존에 있던값 삭제
 			String fpath = path + "/"+ req.getParameter("mem_img");
 			File file = new File(fpath);
+			
 			if(file.exists()) {
 				file.delete();
 			}
@@ -154,6 +165,7 @@ public class TrainerController {
 			
 			File fileInfo = new File(path, savedName);
 			
+<<<<<<< HEAD
 			/*
 			 * System.out.println(req.getParameter("mem_pass")); String passwd =
 			 * PasswordEncoderFactories.createDelegatingPasswordEncoder()
@@ -162,7 +174,17 @@ public class TrainerController {
 			
 			mem_img.transferTo(fileInfo);
 			System.out.println("파일 업로드 성공");
+=======
+			try {
+				mem_img.transferTo(fileInfo);
+				System.out.println("파일 업로드 성공");
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 			memberDTO.setMem_img(savedName);
+<<<<<<< HEAD
 			memberDTO.setMem_id(req.getParameter("mem_id"));
 			memberDTO.setMem_pass(req.getParameter("mem_pass"));
 //			memberDTO.setMem_pass(passwd);
@@ -179,8 +201,20 @@ public class TrainerController {
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("파일 업로드 실패");
+=======
+>>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 		}
-		
+		memberDTO.setMem_id(req.getParameter("mem_id"));
+		memberDTO.setMem_pass(req.getParameter("mem_pass"));
+		memberDTO.setMem_name(req.getParameter("mem_name"));
+		memberDTO.setMem_gender(req.getParameter("mem_gender"));
+		memberDTO.setMem_birth(req.getParameter("mem_birth"));
+		memberDTO.setMem_phone(req.getParameter("mem_phone"));
+		memberDTO.setMem_address(req.getParameter("mem_address"));
+		memberDTO.setEnabled(req.getParameter("enabled"));
+		memberDTO.setGym_code(req.getParameter("gym_code"));
+		memberDTO.setMem_career(req.getParameter("mem_career"));
+		memberDTO.setMem_comment(req.getParameter("mem_comment"));
 		
 		int result = trainerdao.update(memberDTO);
 		System.out.println(result);

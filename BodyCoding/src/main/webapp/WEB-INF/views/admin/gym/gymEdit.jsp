@@ -117,7 +117,7 @@ window.onload = function() {
 							<th>지점 주소</th>
 							<td><input type="text" name="mem_address" value="${memList.mem_address}" style="width: 80%;"/></td>
 							<th>비밀번호</th>
-							<td><input type="text" name="mem_address" value="${memList.mem_pass}" style="width: 80%;"/></td>
+							<td><input type="text" name="mem_pass" value="${memList.mem_pass}" style="width: 80%;"/></td>
 						</tr>
 					</table>
 				

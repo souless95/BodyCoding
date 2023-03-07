@@ -87,6 +87,7 @@ div{
                                 <li><a class="btn" href="calendar.do">예약스케줄</a></li>
                                 <li><a class="btn" href="#">트레이너기록</a></li>
                                 <li><a class="btn" href="#">회원기록</a></li>
+                                <li><a class="btn" href="chart">체중그래프</a></li>
                             </ul>
                         </div>
 					</div>

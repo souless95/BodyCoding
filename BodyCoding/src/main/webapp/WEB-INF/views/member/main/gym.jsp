@@ -100,9 +100,10 @@ function errCallBack(errData){
 </script>
 
 <div class="container">
+<br>
 <h2>지점 정보</h2>
-<div class="main_left" style="width: 70%;float: left;">
-	<div id="map" style="width:100%;height:350px;"></div>
+<div class="main_left" style="width: 65%; float: left;">
+	<div id="map" style="width:100%; height:650px;"></div>
 
 <script type="text/javascript">
    var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
@@ -202,7 +203,7 @@ function errCallBack(errData){
 </script>
 
 </div>
-<div class="main_right"  style="width: 30%; float: left;">
+<div class="main_right"  style="width: 35%; float: left;">
 
    <form name="gymCheck" id="gymCheck">
        <ul style="list-style-type: none; width: 50%; height:50%; float: left;">

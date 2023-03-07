@@ -165,7 +165,7 @@
 					<div class="mb-1">
 		            	<label for="mem_disease">질병</label>
 		            </div>
-					<div class="disease">
+					<div class="disease_detail">
 						<input type="checkbox" class="checkStyle" id="mem_disease1" name="mem_disease" value="shoulder">
 						<label for="shoulder">어깨부상</label>&nbsp;&nbsp;
 						
@@ -180,14 +180,16 @@
 						
 						<input type="checkbox" class="checkStyle" id="mem_disease5" name="mem_disease" value="none"> 
 						<label for="none">선택사항 없음</label>
+						
+						 <input type="hidden" class="checkStyle" name="mem_disease" value="">
 					</div>
+
 
 					<div class="purpose">
 		                <label for="mem_purpose">운동목적</label>&nbsp;&nbsp;
 		            </div>
 		            
 					<div class=purpose_detail>
-
 						<input type="checkbox" class="checkStyle" id="purpose1" name="mem_purpose" value="diet"> 
 						<label for="diet">다이어트</label>&nbsp;&nbsp;
 						
@@ -196,6 +198,15 @@
 						
 						<input type="checkbox" class="checkStyle" id="purpose3" name="mem_purpose" value="healthcare"> 
 						<label for="healthcare">체력관리</label>&nbsp;&nbsp;
+
+						<input type="checkbox" class="checkStyle" id="purpose4" name="mem_purpose" value="etc">
+						<label for="etc">그 외</label>&nbsp;&nbsp;
+						
+						<input type="hidden" class="checkStyle" name="mem_purpose" value="">
+					</div>
+					
+					<label for="mem_interest">관심사항</label>
+					<div class="interest">
 
 						<input type="checkbox" class="checkStyle" id="purpose4" name="mem_purpose" value="etc">
 						<label for="etc">그 외</label>&nbsp;&nbsp;
@@ -356,14 +367,14 @@
 	 		if($('#mem_height').val()=="" || $('#mem_height').val()==null){
 				$('#mem_height').val(0);
 			}
-	 		if($('input:checkbox[name=mem_disease]:checked').length=0){
-	 			$('input:checkbox[name=mem_disease]').val(null);
+	 		if($('input:checkbox[name=mem_disease]:checked').length==0){
+	 			$('input:checkbox[name=mem_disease]').val("");
 	 		}
-	 		if($('input:checkbox[name=mem_purpose]:checked').length=0){
-	 			$('input:checkbox[name=mem_purpose]').val(null);
+	 		if($('input:checkbox[name=mem_purpose]:checked').length==0){
+	 			$('input:checkbox[name=mem_purpose]').val("");
 	 		}
-	 		if($('input:checkbox[name=mem_interest]:checked').length=0){
-	 			$('input:checkbox[name=mem_interest]').val(null);
+	 		if($('input:checkbox[name=mem_interest]:checked').length==0){
+	 			$('input:checkbox[name=mem_interest]').val("");
 	 		}
 	 		if($('input:radio[name=mem_gender]:checked').val()==null || $('input:radio[name=mem_gender]:checked').val()=="" ){
 	 			$('input:radio[name=mem_gender]:checked').val("");

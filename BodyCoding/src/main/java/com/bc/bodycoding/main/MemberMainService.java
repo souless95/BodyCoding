@@ -26,7 +26,9 @@ public interface MemberMainService {
 	public List<ProductDTO> product_categoryALLSelect();
 	public List<ProductDTO> product_categorySelect(String product_type);
 	public ProductDTO productInfoSelect(int product_idx);
-	
+	public Integer gradeSeleteP(String review_subject);
+	public List<ReviewDTO> reviewSelectP(String review_subject);
+	public int reviewInsertP(ReviewDTO reviewDTO);
 	
 	//장바구니
 	public List<ProductDTO> cartList(ProductDTO productDTO);

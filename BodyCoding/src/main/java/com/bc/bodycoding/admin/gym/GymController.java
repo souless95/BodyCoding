@@ -1,12 +1,7 @@
 package com.bc.bodycoding.admin.gym;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -135,9 +128,12 @@ public class GymController {
 		
 		try {
 			int result1 = gymdao.updateM(memberDTO);
+			int result;
 			
 			String GYM_DTAIL_IMG = "";
-			if(uploadfiles[0].isEmpty()) {}
+			if(uploadfiles[0].isEmpty()) {
+				result = gymdao.update2(gymDTO);
+			}
 			else {
 				for(MultipartFile f: uploadfiles) {
 					System.out.println("파일 이름(uploadfile.getOriginalFilename()) : "+ f.getOriginalFilename());
@@ -145,9 +141,9 @@ public class GymController {
 					GYM_DTAIL_IMG += saveFile(f) + ",";
 				}
 				GYM_DTAIL_IMG = GYM_DTAIL_IMG.substring(0, GYM_DTAIL_IMG.length()-1);
+				gymDTO.setGym_dtail_img(GYM_DTAIL_IMG);
+				result = gymdao.update(gymDTO);
 			}
-			gymDTO.setGym_dtail_img(GYM_DTAIL_IMG);
-			int result = gymdao.update(gymDTO);
 			
 			if (result == 1 && result1 == 1)
 				System.out.println("수정되었습니다.");
@@ -169,6 +165,7 @@ public class GymController {
 		try {
 			path = ResourceUtils
 				.getFile("classpath:static/uploads/gym/").toPath().toString();
+			System.out.println("물리적경로2:"+path);
 			File fileInfo = new File(path, saveName); // 저장할 폴더 경로, 저장할 파일 이름
 			file.transferTo(fileInfo); // 업로드 파일에 fileInfo이라는 정보를 추가하여 파일을 저장한다.
 		} 
@@ -178,7 +175,7 @@ public class GymController {
 		}
 		return saveName;
 	} 
-	
+		
 	//메인 이미지 수정
 	@RequestMapping("/mimgedit.do")
 	@ResponseBody

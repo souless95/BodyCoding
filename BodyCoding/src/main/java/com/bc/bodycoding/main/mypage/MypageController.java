@@ -37,13 +37,19 @@ public class MypageController {
 	}
 	@RequestMapping(value="memberEdit.do", method=RequestMethod.POST)
 	public String memberedit1(HttpSession session, MemberDTO memberDTO) {
-		if(!(memberDTO.getMem_gender().equals(""))||!(memberDTO.getMem_purpose().equals(""))||!(memberDTO.getMem_interest().equals(""))) {
+		if(!(memberDTO.getMem_gender().equals(""))) {
 			memberDTO.setMem_gender(memberDTO.getMem_gender().substring(0, 1));
-			//여기 마지막을 자르면 널이 안들어감 이거 수정해야해
-			memberDTO.setMem_purpose(memberDTO.getMem_purpose().substring(0, memberDTO.getMem_purpose().length()-1));
-			memberDTO.setMem_interest(memberDTO.getMem_interest().substring(0, memberDTO.getMem_interest().length()-1));
 		}
-		System.out.println("여기가"+memberDTO);
+		else if(memberDTO.getMem_disease()!=null||memberDTO.getMem_purpose()!=null||memberDTO.getMem_interest()!=null) {
+			memberDTO.setMem_disease(memberDTO.getMem_disease().replace(",", ""));
+			memberDTO.setMem_purpose(memberDTO.getMem_purpose().replace(",", ""));
+			memberDTO.setMem_interest(memberDTO.getMem_interest().replace(",", ""));
+		}
+		else {
+			memberDTO.setMem_disease("");
+	        memberDTO.setMem_purpose("");
+	        memberDTO.setMem_interest("");
+		}
 		int result = mydao.update(memberDTO);
 		if(result==1) {
 			session.setAttribute("UserInfo", memberDTO);
@@ -53,6 +59,17 @@ public class MypageController {
 			System.out.println("수정되었습니다.");
 		}
 		return "redirect:main";
+	}
+	
+	
+	//트레이너계정으로 로그인했을때 트레이너의 마이페이지로 이동
+	@RequestMapping("trainermypage.do")
+	public String trainermypage(GymDTO gymDTO, MemberDTO memberDTO,Model model) {
+		gymDTO = mydao.basicListG(gymDTO);
+		memberDTO = mydao.basicListM(memberDTO);
+		model.addAttribute("basicListG", gymDTO);
+		model.addAttribute("basicListM", memberDTO);
+		return "member/trainer/trainermypage";
 	}
 	
 

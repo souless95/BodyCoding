@@ -2,7 +2,6 @@ package com.bc.bodycoding.account;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Mapper;
 

@@ -58,7 +58,7 @@ function login(){
 	<form method="post" action="trainerReview">
 		<table>
 		<input type="hidden" name="review_subject" value="${trainerInfo.mem_id }"/>
-		<input type="hidden" name="gym_code" value="${trainerInfo.gym_code }"/>
+		<input type="hid-den" name="gym_code" value="${trainerInfo.gym_code }"/>
 		<tr>
 			<td>이메일(아이디)</td>
 			<td><input type="text" name="mem_id" value="${UserEmail}" readonly/></td>

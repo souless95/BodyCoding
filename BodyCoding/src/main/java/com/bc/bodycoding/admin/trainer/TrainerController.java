@@ -165,7 +165,6 @@ public class TrainerController {
 			
 			File fileInfo = new File(path, savedName);
 			
-<<<<<<< HEAD
 			/*
 			 * System.out.println(req.getParameter("mem_pass")); String passwd =
 			 * PasswordEncoderFactories.createDelegatingPasswordEncoder()
@@ -174,7 +173,6 @@ public class TrainerController {
 			
 			mem_img.transferTo(fileInfo);
 			System.out.println("파일 업로드 성공");
-=======
 			try {
 				mem_img.transferTo(fileInfo);
 				System.out.println("파일 업로드 성공");
@@ -182,9 +180,7 @@ public class TrainerController {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 			memberDTO.setMem_img(savedName);
-<<<<<<< HEAD
 			memberDTO.setMem_id(req.getParameter("mem_id"));
 			memberDTO.setMem_pass(req.getParameter("mem_pass"));
 //			memberDTO.setMem_pass(passwd);
@@ -201,8 +197,6 @@ public class TrainerController {
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("파일 업로드 실패");
-=======
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 		}
 		memberDTO.setMem_id(req.getParameter("mem_id"));
 		memberDTO.setMem_pass(req.getParameter("mem_pass"));

@@ -23,6 +23,7 @@ public interface MypageService {
 	
 	//몸무게 차트 시각화
 	public List<WeightDTO> weightchart(String mem_id);
+	public int insertWeight(WeightDTO weightDTO);
 	
 	
 }

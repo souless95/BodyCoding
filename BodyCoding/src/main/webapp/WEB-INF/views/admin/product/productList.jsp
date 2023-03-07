@@ -53,6 +53,7 @@
 						<s:authorize access="hasRole('ROLE_ADMIN_SUPER')">
 							<a href="/admin/product/productReigst">상품등록</a>
 						</s:authorize>
+						<button type="button" onclick="location.href='productList.do'">목록</button>
 					</div>
 				</div>
 			</main>

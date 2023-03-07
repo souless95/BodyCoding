@@ -33,7 +33,6 @@ public interface MemberMainService {
    public List<ProductDTO> product_categorySelect(String product_type);
    public ProductDTO productInfoSelect(int product_idx);
 	
-	
 	//장바구니
 	public List<ProductDTO> cartList(ProductDTO productDTO);
 	public ProductDTO cartAddSelect(ProductDTO productDTO); //장바구니에 추가 전 확인용select문

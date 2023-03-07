@@ -10,6 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 </head>
 <body>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -19,7 +20,9 @@
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group"></div>
+            <div class="input-group" style="color: white;">
+            	<s:authentication property="name"/>님 환영합니다.
+            </div>
         </form>
         
         <!-- Navbar-->
@@ -29,7 +32,7 @@
                 <c:if test="${not loginResult }">
 	                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 	                	<li><a class="dropdown-item" href="#!"><s:authentication property="name"/>님</a></li>
-	                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+	                    <li><a class="dropdown-item" href="/admin/auth/updatePwd">Settings</a></li>
 	                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
 	                    <li><hr class="dropdown-divider" /></li>
 	                    <li><a class="dropdown-item" href="/adminLogout.do">Logout</a></li>

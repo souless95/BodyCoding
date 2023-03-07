@@ -253,8 +253,6 @@ public class MemberMainController {
 	      return "member/main/productInfo";
 	   }
 
-	
-	
 	//장바구니로 상품목록 
 	@RequestMapping("/cartList.do")
 	public String cartList(HttpSession session, ProductDTO productDTO, Model model) {

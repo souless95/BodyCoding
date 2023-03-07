@@ -160,7 +160,7 @@ function errCallBack(errData) {
 						<input class="cButton" type="button" value="-" onclick="chgCount('-',this);" style="width: 20px; float: left;" />
 					</td>
 					<td style="vertical-align: middle; text-align: center;"><span class="product-price">${myCartList.product_price }</span>원
-						<form action="cartDelete.do" method="post">
+						<form style="float: right;" action="cartDelete.do" method="post">
 							<button type="submit">x</button>
 							<input type="hidden" id="mem_id" name="mem_id" value="${myCartList.mem_id }" />
 							<input type="hidden" name="product_idx" value="${myCartList.product_idx }" />

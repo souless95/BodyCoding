@@ -81,19 +81,21 @@ public class PurchaseController {
    public String purchase(HttpServletRequest req, Model model) {
       
 	  String type = req.getParameter("type");
+	  String product_name = "";
+	  String product_price = "";
+	  String quantity = "";
 	  
-	  if(type.equals("멤버쉽")) {
+	  if(type.equals("멤버쉽")) {		  
+		  product_name = req.getParameter("product_name");
+		  product_price = req.getParameter("product_price");
 		  
+		  model.addAttribute("mem_id", req.getParameter("mem_id"));
+		  model.addAttribute("trainer_id", req.getParameter("trainer_id"));
+		  model.addAttribute("product_idx", req.getParameter("product_idx"));
+		  model.addAttribute("gym_code", req.getParameter("gym_code"));
+		  model.addAttribute("product_name", req.getParameter("product_name"));
 	  }
 	   
-      String product_name = req.getParameter("product_name");
-      String product_price = req.getParameter("product_price");
-      
-      model.addAttribute("mem_id", req.getParameter("mem_id"));
-      model.addAttribute("trainer_id", req.getParameter("trainer_id"));
-      model.addAttribute("product_idx", req.getParameter("product_idx"));
-      model.addAttribute("gym_code", req.getParameter("gym_code"));
-      model.addAttribute("product_name", req.getParameter("product_name"));
       
       try {         
          //요청 url 생성

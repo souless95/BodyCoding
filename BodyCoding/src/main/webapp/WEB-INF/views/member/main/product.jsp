@@ -35,9 +35,9 @@ function sucCallBack(resData) {
 	console.log(resData);
 	let tableData = "";
 	$(resData).each(function(index, data) {
-		tableData += "<div style='width:150px; margin:30px; float:left;'><a href='productInfo?product_idx="+data.product_idx+"'>"
+		tableData += "<div style='width:200px; margin:30px; float:left;'><a href='productInfo?product_idx="+data.product_idx+"'>"
 		+"<img class='card-img-top mt-2' src='static/uploads/product/"+data.product_img+"' "
-		+" style='width:100%; height:180px;'>"
+		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
 		+"<b>"+data.product_name+"<b><br>"
 		+data.product_price + "</div></a></div>";
@@ -51,6 +51,7 @@ function errCallBack(errData){
 }
 </script> 
 <div class="container">
+<br>
 	<h2>상품 목록</h2>
 	<h5>
 	<select id="product_type" required>

@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-	
+	  a{border:0;}
 	</style>
 <script type="text/javascript">
 function logoutcheck(){

@@ -18,13 +18,10 @@
 	.basic td{
 		border:0;
 	}
-	#img{
-		width: 170px; height: 200px;
-	}
 </style>
 <br>
 	<h2>${memList.mem_name } 상세보기</h2>
-	<img src="/static/uploads/gym/${memList.mem_img }" style="width: 200px; height: 250px;">
+	<img src="/static/uploads/gym/${memList.mem_img }" style="width: 300px; height: 360px;">
 	<table class="basic">
 		<tr>
 			<td><strong>지점명 : </strong> ${memList.mem_name }</td>  

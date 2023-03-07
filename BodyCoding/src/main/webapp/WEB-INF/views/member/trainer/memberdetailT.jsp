@@ -12,32 +12,64 @@
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-<script type="text/javascript">
-$(function(){
-	//해당 버튼을 클릭하면 ajax() 함수를 선택한다
-	$('#addpoint').click(function(){
+<script>
+$(document).ready(function() {
+	var aa= '${mem_id}';
+	console.log(aa);
+	$("#yoil").change(function() {
 		$.ajax({
-			type: 'get',
-			url: '../addpoint.do',
-			data: {
-				mem_id: $('#mem_id').val(),
-				mem_point: $('#mem_point').val()
-			},
-			contentType: "text/html;charset:utf-8",
-			dataType: "text",
-			success: sucCallBack,
-			error: errCallBack
-		});
-	});	
-	 $('#addpoint').trigger('click'); 
+    	    url: '/changeYoil',
+    	    contentType: "application/json; charset=utf-8",
+    	    data: {
+    	    	mem_id: '${mem_id}',
+    	    	yoil: $('#yoil').val()
+    	    },
+    	    dataType: 'json',
+    	    success: function(response) {
+    	    	console.log("success", response);
+    	    	if(response.mem_id == "error_id"){
+    	    		$("#registeredRoutine").children("div").remove();
+    	    	}
+    	    	else {
+	    	    	var listMem_Id = response.mem_id;
+	    	    	var listYoil = response.yoil;
+	    	    	var listActname = response.actname.split(",").map(String);
+	    	    	var listAtime = response.atime.split(",").map(String);
+	    	    	var listAset = response.aset.split(",").map(String);
+	    	    	
+	    	    	$("#registeredRoutine").children("div").remove();
+	    	    	
+	    	    	for (var i = 0; i < listActname.length; i++) {
+	    	    	    var newDiv = document.createElement('div');
+	    	    	    newDiv.setAttribute('id', 'counts' + (i+1));
+	    	    	    newDiv.innerHTML = '<img src="' + listActname[i] + '" style="width:75px; height:85px;">' +
+	     	    	    				   '<span style="margin-right:10px; margin-left:25px;">'+ listAtime[i] +'</span>' +
+	     	    	    				   '<span style="margin-right:30px;">회</span>' +
+	     	    	    				   '<span style="margin-right:30px;">X</span>' +
+	    	    	                       '<span style="margin-right:10px;">' + listAset[i] + '</span>' +
+	    	    	                       '<span style="margin-right:50px;">세트</span>';
+	 	    	        newDiv.style.display = 'flex';
+	 	    	        newDiv.style.alignItems = 'center';
+	 	    	        newDiv.style.width = '80%';
+	 	    	        newDiv.style.marginLeft = '82px';
+	    	    	                       
+	    	    	    registeredRoutine.appendChild(newDiv);
+	    	    	}
+    	    	}
+    	    },
+    	    error: function(xhr, status, error) {
+    	    	console.log("error", status);
+     	    }
+    	});
+	}).trigger('change');
 });
-function sucCallBack(resData){
-	let tableData = resData;
-	$('#show_data').html(tableData);
-	$('#mem_point').val(0);
-}
-function errCallBack(errData){
-	console.log(errData.status+":"+errData.statusText);
+
+function routine(){
+	open("routine.do?mem_id=${dto.mem_id}",
+            "routineRegist",
+            "width=935, height=800, left=500, top=100, "
+            + "location=no, toolbar=no, menubar=no, "
+            + "scrollbars=yes, resize=no");
 }
 </script>
 <!-- top메뉴  -->
@@ -104,12 +136,25 @@ function errCallBack(errData){
 					       	 	<td>${dto.mem_inflow }</td>
 					       	</tr>
 					    </table>
-						<button type="button" class="btn btn-primary" onclick="location.href='main'">홈으로</button> 
-	        		</div>
-				</div>
-			</main>
+						<button type="button" class="btn btn-primary" onclick="location.href='main'">홈으로</button> &nbsp;&nbsp; 
+						<button type="button" class="btn btn-primary" onclick="routine();">운동루틴 등록</button>
+						<br /><br /><br />
+						<select name="yoil" id="yoil" style="width:100px;">
+								<option value="월요일">월요일
+								<option value="화요일">화요일
+								<option value="수요일">수요일
+								<option value="목요일">목요일
+								<option value="금요일">금요일
+								<option value="토요일">토요일
+								<option value="일요일">일요일
+						</select>
+						<div id="registeredRoutine"></div>
 			<!-- bottom -->
 			<%@ include file="../inc/Bottom.jsp" %>
+	        		</div>
+				</div>
+			</main><br />
+			
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

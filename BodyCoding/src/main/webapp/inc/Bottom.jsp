@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
 	<!-- CTA -->
 	<!-- <section id="cta" class="wrapper style3">
 		<div class="container">
@@ -17,6 +9,30 @@
 			</header>
 		</div>
 	</section> -->
+	
+		<style>
+		/*플로팅 버튼*/
+		.floating-button {
+		  display: flex;
+		  position: fixed;
+		  right: 10px;
+		  bottom: 15px;
+		  z-index: 999;
+		  border-bottom: none;
+		} 
+		.chat_bot :hover{cursor: pointer;}
+		</style>
+	
+	<!--하단 플로팅 버튼 시작-->
+		<div class="floating-button">
+		 	<span class="chatbot">
+		    <!--  <a class="chat_bot" href="https://bot.dialogflow.com/99601361-7f7a-481e-8a8c-322cb8198841"> -->
+		     <a class="chat_bot" onclick="window.open('https://console.dialogflow.com/api-client/demo/embedded/99601361-7f7a-481e-8a8c-322cb8198841','chat','width=450px, height=650px, location=no, status=no, scrollbars=yes')">
+		     	<img src="static/member/images/챗봇.png" style="width: 50px; height: 50px;" ></a>
+  			</span>
+		</div>
+		
+		
 	<!-- Footer -->
 	<div id="footer">
 		<div class="container">
@@ -41,6 +57,3 @@
 			</ul>
 		</div>
 	</div>
-	
-</body>
-</html>

@@ -7,11 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.dto.GymDTO;
 import global.dto.MemberDTO;
+import global.dto.WeightDTO;
 
 @Controller
 public class MypageController {
@@ -72,5 +75,20 @@ public class MypageController {
 		return "member/trainer/trainermypage";
 	}
 	
+	//차트보기
+	@GetMapping("chart")
+	public String chart(Model model, HttpSession session) {
+		String mem_id = (String)session.getAttribute("UserEmail");
+		model.addAttribute("mem_id",mem_id);
+		model.addAttribute("weight",mydao.weightchart(mem_id));
+		return "member/mypage/weightChart";
+	}
+	
+	@PostMapping("chart")
+	public String chart1(Model model, WeightDTO weightDTO, String mem_id) {
+		System.out.println(mem_id);
+		mydao.insertWeight(weightDTO);
+		return "redirect:chart";
+	}
 
 } 

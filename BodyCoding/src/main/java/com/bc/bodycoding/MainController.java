@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import global.dto.MemberDTO;
+
 
 @Controller
 public class MainController {
@@ -72,19 +74,21 @@ public class MainController {
 	
 	//시큐리티 로그인용
 	@RequestMapping("/adminLogin.do")
-	public String adminLogin(Principal principal, Model model, HttpSession session) {
+	public String adminLogin(Principal principal, Model model) {
+		
 		
 		String page = "";
-		
 		try {
 			String mem_id = principal.getName();
 			model.addAttribute("mem_id", mem_id);
+			
 			System.out.println(mem_id);
+			
 			page = "main/admin";
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("로그인X");
+			System.out.println("로그인하셔야 합니다.");
 			page = "admin/auth/login";
 		}
 		return page;

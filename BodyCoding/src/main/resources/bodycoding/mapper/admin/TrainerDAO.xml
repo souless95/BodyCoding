@@ -32,6 +32,11 @@
 		resultType="global.dto.MemberDTO">
 		select * from member where authority='ROLE_TRAINER' and mem_id=#{mem_id}
 	</select>
+	<select id="selectAdmin"
+		parameterType="String"
+		resultType="global.dto.MemberDTO">
+		select * from member where mem_id=#{mem_id}
+	</select>
 	
 	<update id="update"
 		parameterType="global.dto.MemberDTO">

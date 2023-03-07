@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import global.dto.GymDTO;
 import global.dto.MemberDTO;
+import global.dto.WeightDTO;
 
 @Mapper
 public interface MypageService {
@@ -19,6 +20,10 @@ public interface MypageService {
 	public GymDTO basicListG(GymDTO gymDTO);
 	public MemberDTO selectOneMember(MemberDTO memberDTO);
 	public int update(MemberDTO memberDTO);
+	
+	//몸무게 차트 시각화
+	public List<WeightDTO> weightchart(String mem_id);
+	public int insertWeight(WeightDTO weightDTO);
 	
 	
 }

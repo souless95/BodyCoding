@@ -98,8 +98,8 @@ div{
 					<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 						<div class="card-body">
                             <ul>
-                                <li><a class="btn" href="#">운동루틴 등록</a></li>
-                                <li><a class="btn" href="#">운동기록 등록</a></li>
+                                <li><a class="btn" href="exroutine.do">운동루틴 등록</a></li>
+                                <li><a class="btn" href="exrecord.do">운동기록 등록</a></li>
                             </ul>
                         </div>
 					</div>

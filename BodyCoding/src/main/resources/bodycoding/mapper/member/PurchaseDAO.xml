@@ -40,7 +40,7 @@
     		#{trainer_id}, sysdate, sysdate, #{product_idx})
 	</insert>	
 	
-		<insert id="insertOrderDetail" parameterType="global.dto.ProductDTO">
+	<insert id="insertOrderDetail" parameterType="global.dto.ProductDTO">
 		INSERT INTO order_log_detail 
     		(order_detail_idx, order_idx, product_idx, product_count, product_serial_num, 
     			 receive_check)

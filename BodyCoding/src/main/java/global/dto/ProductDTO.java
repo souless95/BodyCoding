@@ -56,7 +56,8 @@ public class ProductDTO {
 	private int mem_point;
 	//결제 시, 사용 포인트
 	private int use_point;
-	
+	//기프트콘 번호
+	private String product_serial_num;
 }
 
 

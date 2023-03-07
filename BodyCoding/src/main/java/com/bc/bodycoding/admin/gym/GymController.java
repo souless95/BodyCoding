@@ -63,57 +63,68 @@ public class GymController {
 	// 지점 등록 폼 받아서 등록
 	@RequestMapping(value = "/gymRegist.do", method = RequestMethod.POST)
 	@Transactional
-	public String registASUB2(MemberDTO memberDTO, GymDTO gymDTO, HttpServletRequest req) {
-		try {
-			int size = 1024 * 1024 * 10;
-			String path = ResourceUtils.getFile("classpath:static/uploads/gym").toPath().toString();
-			System.out.println("지점 상세이미지 저장경로 :" + path);
-			MultipartRequest multi = new MultipartRequest(req, path, size, "UTF-8", new DefaultFileRenamePolicy());
-
-			Enumeration files = multi.getFileNames();
-			String str = (String)files.nextElement();
-
-			if (str != null) {
-				str = multi.getOriginalFileName(str);
-			} else {
-				str = "";
+	public String registASUB2(MultipartFile mem_img, MultipartHttpServletRequest req) {
+		
+		int count = gymdao.codeCheck(req.getParameter("gym_code"));
+		MemberDTO memberDTO = new MemberDTO();
+		if (count == 1) {
+			System.out.println("이미 등록된 지점입니다.");
+			return "admin/gym/gymRegist";
+		} 
+		else {
+			if(mem_img.isEmpty()) {
+				memberDTO.setMem_img("");
 			}
-
-			int count = gymdao.codeCheck(multi.getParameter("gym_code"));
-			if (count == 1) {
-				System.out.println("이미 등록된 지점입니다.");
-				return "admin/gym/gymRegist";
-			} 
 			else {
-
-				System.out.println(multi.getParameter("mem_pass"));
-				String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
-						.encode(multi.getParameter("mem_pass"));
-				System.out.println(passwd);
-
-				memberDTO.setMem_id(multi.getParameter("mem_id"));
-				memberDTO.setMem_pass(passwd);
-				memberDTO.setMem_name(multi.getParameter("mem_name"));
-				memberDTO.setMem_phone(multi.getParameter("mem_phone"));
-				memberDTO.setMem_address(multi.getParameter("mem_address"));
-				memberDTO.setGym_code(multi.getParameter("gym_code"));
-				memberDTO.setAuthority(multi.getParameter("authority"));
-				memberDTO.setEnabled(multi.getParameter("enabled"));
-				memberDTO.setMem_comment(multi.getParameter("mem_comment"));
-				memberDTO.setMem_img(str);
-				System.out.println("파일 업로드 성공");
-				System.out.println(str);
-				int result1 = gymdao.insertMember1(memberDTO);
-				int result = gymdao.insertMemberASUB(memberDTO);
-				if (result == 1)
-					System.out.println("등록이 완료되었습니다.");
+				try {
+					String origName = mem_img.getOriginalFilename();
+					String uuid = UUID.randomUUID().toString();
+					String extension = origName.substring(origName.lastIndexOf("."));
+					String savedName = uuid + extension;
+					String path = ResourceUtils
+							.getFile("classpath:static/uploads/trainer")
+							.toPath().toString();
+					
+					System.out.println("트레이너 사진 저장 경로:"+ path);
+					
+					File fileInfo = new File(path, savedName);
+				
+					mem_img.transferTo(fileInfo);
+					memberDTO.setMem_img(savedName);
+					System.out.println("파일 업로드 성공");
+				} 
+				catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("등록 실패했습니다.");
+					return "redirect:/gymRegist.do";
+				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("등록 실패했습니다.");
-			return "redirect:/gymRegist.do";
+			
+			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
+					.encode(req.getParameter("mem_pass"));
+			memberDTO.setMem_pass(passwd);
+			memberDTO.setMem_id(req.getParameter("mem_id"));
+			memberDTO.setMem_name(req.getParameter("mem_name"));
+			memberDTO.setMem_phone(req.getParameter("mem_phone"));
+			memberDTO.setMem_address(req.getParameter("mem_address"));
+			memberDTO.setGym_code(req.getParameter("gym_code"));
+			memberDTO.setAuthority(req.getParameter("authority"));
+			memberDTO.setEnabled(req.getParameter("enabled"));
+			memberDTO.setMem_comment(req.getParameter("mem_comment"));
+			
+			//gym_detail에 gym_code등록
+			int result1 = gymdao.insertMember1(memberDTO);
+			//member에 정보 등록
+			int result = gymdao.insertMemberASUB(memberDTO);
+			if (result == 1) {
+				System.out.println("지점등록 완료");
+				return "redirect:/gymadminlist.do";
+			}
+			else {
+				System.out.println("지점등록 실패");
+				return "redirect:/gymRegist.do";
+			}
 		}
-		return "redirect:/gymadminlist.do";
 	}
 
 	// 수정하기
@@ -186,37 +197,72 @@ public class GymController {
 	//메인 이미지 수정
 	@RequestMapping("/mimgedit.do")
 	@ResponseBody
-	public String imgedit(Model model, MemberDTO memberDTO, HttpServletRequest req) {
-		String str;
+	public String imgedit(MultipartFile mem_img, MultipartHttpServletRequest req) {
+		
+		String str="";
+		String path="";
+		MemberDTO memberDTO = new MemberDTO();
 		try {
-			int size = 1024 * 1024 * 10;
-			String path = ResourceUtils.getFile("classpath:static/uploads/gym").toPath().toString();
-			System.out.println("지점 상세이미지 저장경로 :" + path);
-			MultipartRequest multi = new MultipartRequest(req, path, size, "UTF-8", new DefaultFileRenamePolicy());
-			String oPath = path + "/" + multi.getParameter("o_mem_img");
-			File file = new File(oPath);
+			System.out.println(req.getParameter("o_mem_img"));
+			//기존에 있던값 삭제
+			path = ResourceUtils.getFile("classpath:static/uploads/gym").toPath().toString();
+			System.out.println("지점 상세이미지 저장경로:"+ path);
+			String fpath = path + "/"+ req.getParameter("o_mem_img");
+			File file = new File(fpath);
+			
 			if(file.exists()) {
 				file.delete();
 			}
-			Enumeration files = multi.getFileNames();
-			str = (String)files.nextElement();
-
-			if (str != null) {
-				str = multi.getOriginalFileName(str);
-			} else {
-				str = "";
-			}
-			memberDTO.setMem_id(multi.getParameter("mem_id"));
-			memberDTO.setMem_img(str);
-			System.out.println("파일 업로드 성공");
-			System.out.println(str);
-		} 
+			String origName = mem_img.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			String extension = origName.substring(origName.lastIndexOf("."));
+			String savedName = uuid + extension;
+			
+			File fileInfo = new File(path, savedName);
+			mem_img.transferTo(fileInfo);
+			memberDTO.setMem_img(savedName);
+			memberDTO.setMem_id(req.getParameter("mem_id"));
+			str = savedName;
+			System.out.println("파일업로드 성공");
+			
+		}
 		catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("수정 실패했습니다.");
-			return "redirect:/gymDetail.do";
+			str = req.getParameter("o_mem_img");
+			System.out.println("파일업로드 실패");
 		}
-		System.out.println(memberDTO);
+			
+		
+		//		String str;
+//		try {
+//			int size = 1024 * 1024 * 10;
+//			String path = ResourceUtils.getFile("classpath:static/uploads/gym").toPath().toString();
+//			System.out.println("지점 상세이미지 저장경로 :" + path);
+//			MultipartRequest multi = new MultipartRequest(req, path, size, "UTF-8", new DefaultFileRenamePolicy());
+//			String oPath = path + "/" + multi.getParameter("o_mem_img");
+//			File file = new File(oPath);
+//			if(file.exists()) {
+//				file.delete();
+//			}
+//			Enumeration files = multi.getFileNames();
+//			str = (String)files.nextElement();
+//
+//			if (str != null) {
+//				str = multi.getOriginalFileName(str);
+//			} else {
+//				str = "";
+//			}
+//			memberDTO.setMem_id(multi.getParameter("mem_id"));
+//			memberDTO.setMem_img(str);
+//			System.out.println("파일 업로드 성공");
+//			System.out.println(str);
+//		} 
+//		catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("수정 실패했습니다.");
+//			return "redirect:/gymDetail.do";
+//		}
+//		System.out.println(memberDTO);
 		int result = gymdao.updateImg(memberDTO);
 		if(result==1) System.out.println("수정되었습니다.");
 		return str;

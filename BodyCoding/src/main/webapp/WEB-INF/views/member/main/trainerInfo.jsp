@@ -26,7 +26,7 @@ function login(){
 			<td style="vertical-align: middle; padding-left: 10px;"><strong>한마디 : </strong> ${trainerInfo.mem_comment }</td>  
 		</tr>
 		<tr style="border: 2px solid gray;">
-			<td colspan="2" style="padding-left: 10px;"><strong>이름 : </strong>${trainerInfo.mem_name}</td>
+			<td style="padding-left: 10px;"><strong>이름 : </strong>${trainerInfo.mem_name}</td>
 			<td><strong>지점명 : </strong> ${gymInfo }</td>
 		</tr>
 		<tr>

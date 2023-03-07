@@ -7,20 +7,25 @@
 	
 <mapper namespace="com.bc.bodycoding.admin.board.boardService">
 
+	<!-- 게시글 목록 -->
 	<select id="select"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
 		select * from freeboard
 	</select>
-	
+	<!-- 게시글 상세보기 -->
 	<select id="selectOneBoard"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
 		select * from freeboard where board_idx=#{board_idx}
 	</select>
-	
+	<!-- 게시글 삭제하기 -->
 	<delete id="delete"
 		parameterType="global.dto.BoardDTO">
 		delete from freeboard where board_idx=#{board_idx}
 	</delete>
+	<!-- (공지사항, 이벤트)게시글 등록하기 -->
+	<insert id="insert" parameterType="global.dto.BoardDTO">
+		insert into freeboard where board_idx=#{board_idx} and category=#{category} 
+	</insert>
 </mapper>

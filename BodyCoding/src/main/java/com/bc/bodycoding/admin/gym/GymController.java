@@ -7,12 +7,16 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -115,8 +119,16 @@ public class GymController {
 		}
 		return "redirect:/gymadminlist.do";
 	}
+	
+	@RequestMapping(value = "/admin/auth/updatePwd", method = RequestMethod.GET)
+	public String adminPwd(Model model, MemberDTO memberDTO) {
+		memberDTO = gymdao.selectOneAdmin(memberDTO);
+		model.addAttribute("memList", memberDTO);
+		System.out.println(memberDTO);
+		return "admin/auth/updatePwd";
+	}
 
-	// 수정하기
+	// 지점 내용 수정하기 접근
 	@RequestMapping(value = "/admin/gym/gymEdit", method = RequestMethod.GET)
 	public String gym4(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
 		gymDTO = gymdao.selectOnegym(gymDTO);
@@ -128,6 +140,7 @@ public class GymController {
 		return "admin/gym/gymEdit";
 	}
 
+	//지점 내용 수정
 	@Transactional
 	@RequestMapping(value = "/gymedit.do", method = RequestMethod.POST)
 	public String gym5(MultipartFile[] uploadfiles, Model model, MultipartHttpServletRequest req,

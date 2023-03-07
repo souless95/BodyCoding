@@ -67,6 +67,7 @@
 							</table>
 								<input type="submit" value="전송하기" />
 								<button type="button" class="btn btn-primary" onclick="location.href='/main/admin'">홈으로</button> 
+								<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
 		        		</div>
 					</div>
 				</form>

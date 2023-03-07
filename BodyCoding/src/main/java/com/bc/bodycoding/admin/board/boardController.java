@@ -26,8 +26,10 @@ public class boardController {
 	@RequestMapping("/boardDetail.do")
 	public String board2(BoardDTO boardDTO, Model model) {
 		boardDTO = boarddao.selectOneBoard(boardDTO);
+		
 		model.addAttribute("dto", boardDTO);
-		System.out.println(boardDTO);
+		
+		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
 		return "admin/board/boardDetail";
 	}
 	

@@ -72,13 +72,14 @@ public class TrainerController {
 		}
 			
 		
-		System.out.println(req.getParameter("mem_pass"));
-		String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
-				.encode(req.getParameter("mem_pass"));
-		System.out.println(passwd);
+		/*
+		 * System.out.println(req.getParameter("mem_pass")); String passwd =
+		 * PasswordEncoderFactories.createDelegatingPasswordEncoder()
+		 * .encode(req.getParameter("mem_pass")); System.out.println(passwd);
+		 */
 		
 		memberDTO.setMem_id(req.getParameter("mem_id"));
-		memberDTO.setMem_pass(passwd);
+		memberDTO.setMem_pass(req.getParameter("mem_pass"));
 		memberDTO.setMem_name(req.getParameter("mem_name"));
 		memberDTO.setMem_gender(req.getParameter("mem_gender"));
 		memberDTO.setMem_birth(req.getParameter("mem_birth"));
@@ -153,11 +154,18 @@ public class TrainerController {
 			
 			File fileInfo = new File(path, savedName);
 			
+			/*
+			 * System.out.println(req.getParameter("mem_pass")); String passwd =
+			 * PasswordEncoderFactories.createDelegatingPasswordEncoder()
+			 * .encode(req.getParameter("mem_pass")); System.out.println(passwd);
+			 */
+			
 			mem_img.transferTo(fileInfo);
 			System.out.println("파일 업로드 성공");
 			memberDTO.setMem_img(savedName);
 			memberDTO.setMem_id(req.getParameter("mem_id"));
 			memberDTO.setMem_pass(req.getParameter("mem_pass"));
+//			memberDTO.setMem_pass(passwd);
 			memberDTO.setMem_name(req.getParameter("mem_name"));
 			memberDTO.setMem_gender(req.getParameter("mem_gender"));
 			memberDTO.setMem_birth(req.getParameter("mem_birth"));

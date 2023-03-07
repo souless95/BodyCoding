@@ -34,7 +34,8 @@
 									<th>제목</th>
 									<th>작성일</th>
 									<th>업로드 파일</th>
-									<th></th>
+									<th>신고여부</th>
+									<th>비공개여부</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -45,8 +46,14 @@
 										<td>${row.board_category }</td>
 										<td><a href="boardDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>
 										<td>${row.board_postdate }</td>
-										<td>${row.board_sfile }</td>
-										<td></td>
+										<td>
+											<c:if test="${not empty row.board_sfile }">
+												<i class="bi bi-files"></i>
+											</c:if>
+										</td>
+										<td>신고횟수 : 0</td>
+										<td>비공개 : N</td>
+										
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -13,12 +13,13 @@
 		<li><a href="/">홈</a></li>
 	</ul>
 
-	<ul>
+	<!-- 어드민 로그인 하려면 main/admin으로 접속할 것 -->
+	<!-- <ul>
 		<li><a href="main/admin">admin 메인페이지</a></li>
 	</ul>
 	<ul>
 		<li><a href="/adminLogin.do">admin 로그인</a></li>
-	</ul>
+	</ul> -->
 	<ul>
 		<li><a href="main">member 메인페이지</a></li>
 	</ul>

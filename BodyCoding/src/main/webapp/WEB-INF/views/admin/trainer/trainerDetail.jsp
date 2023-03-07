@@ -73,6 +73,7 @@
 								</button>
 							</c:if>
 								<button id="homeBtn" type="button" class="btn btn-primary" onclick="location.href='/main/admin'">홈으로</button> 
+								<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
 	        		</div>
 				</div>
 			</main>

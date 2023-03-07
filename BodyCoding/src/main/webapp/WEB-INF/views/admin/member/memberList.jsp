@@ -58,7 +58,7 @@
 						    </c:forEach>
 							</tbody>
 							</table>
-							<button type="button" onclick="location.href='main/admin'">홈으로</button> 
+							<button type="button" onclick="location.href='main/admin'">홈으로</button>
 		        		</div>
 					</div>
 				</main>

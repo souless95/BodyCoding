@@ -1,19 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<%@ include file="../../../../inc/Top.jsp" %>
 <body>
-<h1>차트</h1>
-<hr>
-<div>
-  <canvas id="myChart" style="width:500px; height:400px;"></canvas>
+<div class="container">
+	<%@ include file ="../../../../inc/mypageside.jsp" %>
+        <div id="layoutSidenav_content">
+	        <div class="card mb-5" style="border-bottom: none;">
+	        	<div class="card-header">
+					<h2>체중 그래프</h2>
+					  	<canvas id="myChart" style="width:850px; height:450px;"></canvas>
+					  	<p>
+					  	<form method="post" action="chart">
+					  		오늘의 체중 : 
+						  	<input type="hidden" name="mem_id" value=${mem_id }>
+						  	<input type="number" name="mem_weight">
+						  	<input type="submit" value="입력">
+						</form>
+				</div>
+			</div>
+		</div>
 </div>
+<!-- 차트 관련 script는 아래로 내려가야함 -->
 <script>
 const labels = [];
 	 <c:forEach  items="${weight }" var="row1">
@@ -61,5 +78,7 @@ const config = {
    config
  );
 </script>
+	
 </body>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

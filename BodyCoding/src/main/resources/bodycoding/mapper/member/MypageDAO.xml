@@ -43,6 +43,11 @@
 		parameterType="String"
 		resultType="global.dto.WeightDTO">
 		select * from mem_weight where mem_id=#{mem_id}
-	
 	</select>
+	
+	<insert id="insertWeight"
+	parameterType="global.dto.WeightDTO">
+  	insert into mem_weight(mem_id, mem_weight)
+    	values (#{mem_id}, #{mem_weight})
+</insert>
 </mapper>

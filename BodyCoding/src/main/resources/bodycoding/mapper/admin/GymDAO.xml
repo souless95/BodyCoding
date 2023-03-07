@@ -25,6 +25,12 @@
 		select * from MEMBER where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
 	</select>
 	
+	<select id="selectOneAdmin"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		select * from MEMBER where authority='ROLE_ADMIN_SUB' and gym_code=#{gym_code}
+	</select>
+		
 	<update id="update"
 		parameterType="global.dto.GymDTO">
 		update GYM_DETAIL set gym_scale=#{gym_scale},
@@ -45,7 +51,7 @@
 	</update>
 	<update id="updateM"
 		parameterType="global.dto.MemberDTO">
-		update MEMBER set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address=#{mem_address}			
+		update MEMBER set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address=#{mem_address}, mem_pass=#{mem_pass}			
 		where gym_code=#{gym_code} and authority='ROLE_ADMIN_SUB'
 	</update>
 	

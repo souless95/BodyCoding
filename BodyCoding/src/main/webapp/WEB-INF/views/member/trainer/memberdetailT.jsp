@@ -105,9 +105,9 @@ function routine(){
 					    <table class="table" border=2>
 					      	<tr>
 					      		<th>이용권 유형</th>
-					      		<td>${dto.membership_type }</td>
+					      		<td>${dto.product_type }</td>
 					      		<th>이용권 이름</th>
-					      		<td>${dto.membership_name }</td>
+					      		<td>${dto.product_name }</td>
 					       	 	<th>전화번호</th>
 					       	 	<td>${dto.mem_phone }</td>
 					       	 	<th>주소</th>

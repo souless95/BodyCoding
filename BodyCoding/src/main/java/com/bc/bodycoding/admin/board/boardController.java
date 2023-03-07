@@ -22,15 +22,22 @@ public class boardController {
 		return "admin/board/boardList";
 	}
 	
+	//게시글 상세보기
 	@RequestMapping("/boardDetail.do")
 	public String board2(BoardDTO boardDTO, Model model) {
 		boardDTO = boarddao.selectOneBoard(boardDTO);
-		model.addAttribute("dto", boardDTO);
-		System.out.println(boardDTO);
 		
+		model.addAttribute("dto", boardDTO);
+		
+		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
 		return "admin/board/boardDetail";
 	}
 	
+	//게시글에 답변달기
+	
+	//게시글 수정하기
+	
+	//게시글 삭제하기
 	@RequestMapping("/boardDelete.do")
 	public String delete(BoardDTO boardDTO) {
 		int result = boarddao.delete(boardDTO);

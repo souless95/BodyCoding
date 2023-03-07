@@ -32,7 +32,7 @@
 	<update id="update" parameterType="global.dto.ProductDTO">
 		UPDATE product SET product_type=#{product_type}, product_category=#{product_category}, 
 			membership_count=#{membership_count}, membership_period=#{membership_period},
-			product_name=#{product_name}, product_description={product_description},
+			product_name=#{product_name}, product_description=#{product_description},
 			product_img=#{product_img}, product_price=#{product_price}
 		WHERE product_idx=#{product_idx}
 	</update>

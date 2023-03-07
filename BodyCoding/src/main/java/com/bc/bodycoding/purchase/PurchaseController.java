@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -79,6 +80,12 @@ public class PurchaseController {
    @RequestMapping("/kakaoPay.do")
    public String purchase(HttpServletRequest req, Model model) {
       
+	  String type = req.getParameter("type");
+	  
+	  if(type.equals("멤버쉽")) {
+		  
+	  }
+	   
       String product_name = req.getParameter("product_name");
       String product_price = req.getParameter("product_price");
       
@@ -167,13 +174,8 @@ public class PurchaseController {
 		   productDTO.setTrainer_id(trainer_id);
 		   productDTO.setProduct_idx(Integer.parseInt(product_idx));
 		   productDTO.setGym_code(gym_code);
-		   productDTO.setProduct_name(product_name);
 		   
 		   ProductDTO pDTO = purchaseDao.payProductSelect(productDTO);
-		   
-		   productDTO.setMembership_count(pDTO.getMembership_count());
-		   productDTO.setMembership_period(pDTO.getMembership_period());
-		   productDTO.setProduct_type(pDTO.getProduct_type());
 		   
 		   int result1 = purchaseDao.insertOrder(productDTO);
 		   int result2 = purchaseDao.insertMembership(productDTO);
@@ -199,5 +201,6 @@ public class PurchaseController {
    public String purchaseCancel() {
       return "/member/purchase/purchaseCancel";
    }
+   
    
 }

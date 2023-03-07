@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8" />
@@ -14,12 +15,6 @@
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	</style>
-</head>
-	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="static/assets/css/main.css" />
-</head>
 <body class="is-preload">
 	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
@@ -69,7 +64,6 @@
 				</div>
 			</div>
 		</section>
-			
 		
 		<!-- Scripts -->
 		<script src="static/assets/js/jquery.min.js"></script>

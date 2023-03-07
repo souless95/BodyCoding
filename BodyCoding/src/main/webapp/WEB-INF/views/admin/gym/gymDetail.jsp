@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="/static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <style type="text/css">
 .table-bordered{font-family: Verdana, Geneva, Tahoma, sans-serif;}
 </style>
@@ -85,11 +81,14 @@ window.onload = function() {
 				<div class="card-body" style="width: 80%">
 					<h4>메인사진</h4>
 					<div><img id="img" src="static/uploads/gym/${memList.mem_img }" style="width:200px; height:200px;"></div>
-					<form id="imgedit" method="post" action="/mimgedit.do" enctype="multipart/form-data">
-						<input type="hidden" name="o_mem_img" value="${memList.mem_img }" />
-						<input type="hidden" name="mem_id" id="mem_id" value="${memList.mem_id }" />
-						<input type="file" name="mem_img" id="imgupdate" />
-					</form>
+					
+					<c:if test="${userIdG eq memList.mem_id }">
+						<form id="imgedit" method="post" action="/mimgedit.do" enctype="multipart/form-data">
+							<input type="hidden" name="o_mem_img" value="${memList.mem_img }" />
+							<input type="hidden" name="mem_id" id="mem_id" value="${memList.mem_id }" />
+							<input type="file" name="mem_img" id="imgupdate" />
+						</form>
+					</c:if>
 					
 					<h4>기본정보</h4>
 					<table class="table" border=2>
@@ -187,18 +186,21 @@ window.onload = function() {
 						</tr>
 					</table>
 					<s:authorize access="hasRole('ROLE_ADMIN_SUB')">
-						<s:authentication property="name" var="name">
+						<c:if test="${userIdG eq memList.mem_id }">
 							<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
 								수정
 							</button>
 							<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
 								삭제
 							</button>
-						</s:authentication>
+						</c:if>
 					</s:authorize>
 					<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
 						메인으로
 					</button>
+					<button type="button" class="btn btn-primary" onclick="history.back()">
+		            	뒤로가기
+		            </button>
 				</div>
 			</div>
 			<!-- bottom -->

@@ -3,14 +3,22 @@ package com.bc.bodycoding;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.bc.bodycoding.admin.gym.GymService;
+
+import global.dto.MemberDTO;
 
 
 @Controller
@@ -27,15 +35,16 @@ public class MainController {
 	}	
 	
 	//adimin메인창으로 넘어가기
-	@GetMapping("/main/admin")
-	public String adminmain(HttpSession session) {
-		return "admin/main";
-	}
-//	//admin Login 창으로 먼저 슝
-//	@RequestMapping("login")
-//	public String adminLogin(HttpSession session) {
-//		return "admin/login";
+//	@GetMapping("/main/admin")
+//	public String adminmain(HttpSession session) {
+//		return "admin/main";
 //	}
+	
+//	//admin Login 창으로 먼저 슝
+	@RequestMapping("login")
+	public String adminLogin(HttpSession session) {
+		return "admin/login";
+	}
 	
 	//회원메인창으로 넘어가기
 	@GetMapping("main")
@@ -70,26 +79,26 @@ public class MainController {
 	}
 	
 	//시큐리티 로그인용
-	@RequestMapping("/adminLogin.do")
-	public String adminLogin(Principal principal, Model model, HttpSession session) {
+	@RequestMapping("/main/admin")
+	public String adminLogin(Principal principal, Model model, MemberDTO memberDTO) {
 		
 		String page = "";
 		
-		try {
-			String mem_id = principal.getName();
-			model.addAttribute("mem_id", mem_id);
-			System.out.println(mem_id);
-			page = "main/admin";
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("로그인X");
-			page = "admin/auth/login";
-		}
+			try {
+				String mem_id = principal.getName();
+				model.addAttribute("mem_id", mem_id);
+				
+				System.out.println(mem_id);
+				
+				page = "admin/main";
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("로그인하셔야 합니다.");
+				page = "admin/auth/login";
+			}
 		return page;
 	}
-	
-
 	
 	//로그인 실패한 경우 출력할 메세지
 	@RequestMapping("/adminLoginError.do")
@@ -104,8 +113,15 @@ public class MainController {
 		return "admin/auth/denied";
 	}
 	
-	
-	
+//	@RequestMapping(value = "admin/auth/updatePwd", method = RequestMethod.GET)
+//	public String updatePwd(Principal principal, MemberDTO memberDTO, Model model) {
+//		memberDTO = gymdao.selectUpdatePwd(model);
+//		
+//		System.out.println(memberDTO);
+//		
+//		return "admin/auth/updatePwd";
+//	}
+		
 	//json불러오기 실험
 	/*
 	 * @ResponseBody
@@ -123,4 +139,7 @@ public class MainController {
 	 * 
 	 * return obj.toString(); }
 	 */
+	
+	
+	
 }

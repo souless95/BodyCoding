@@ -21,7 +21,7 @@ body{
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
 	        	<div class="card-header">
-					<h2>등록된 지점</h2>
+					<h2> ${UserName}님의 마이페이지 입니다.</h2>
 	        	</div>
 			</div>
 		</div>

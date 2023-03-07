@@ -73,7 +73,8 @@ $(function(){
     		 product_idx : product_idx,
     		 gym_code : gym_code,
              product_name : product_name,
-             product_price : product_price
+             product_price : product_price,
+             type : "멤버쉽"
        }
        
        $.ajax({

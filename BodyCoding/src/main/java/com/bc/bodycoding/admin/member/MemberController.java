@@ -1,15 +1,20 @@
 package com.bc.bodycoding.admin.member;
 
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import global.dto.ExDTO;
 import global.dto.MemberDTO;
 import global.dto.RoutineDTO;
 
@@ -48,13 +53,22 @@ public class MemberController {
 		return point;
 	}
 	
+	@RequestMapping("/memberDelete.do")
+	public String delete(MemberDTO memberDTO) {
+		int result = memberdao.delete(memberDTO);
+		if(result==1)
+			System.out.println("삭제되었습니다.");
+		return "redirect:/memberList.do";
+	}
 	
 	//trainer계정으로 로그인했을때 회원목록 보여주기
 	@RequestMapping("/memberlistT.do")
 	public String trainerml(Model model, HttpSession session, MemberDTO memberDTO) {
 		String trainer_id = (String)(session.getAttribute("UserEmail").toString());
+		System.out.println(trainer_id);
 		memberDTO.setMem_id(trainer_id);
 		model.addAttribute("memberList", memberdao.selectFT(memberDTO));
+		
 		return "member/trainer/memberlistT";
 	}
 
@@ -64,7 +78,6 @@ public class MemberController {
 			HttpServletRequest req) {
 		String uDetail = req.getParameter("mem_id");
 		model.addAttribute("mem_id", uDetail);
-		
 		memberDTO.setMem_id(uDetail);
 		model.addAttribute("dto", memberdao.selectDT(memberDTO));
 		
@@ -111,6 +124,20 @@ public class MemberController {
 			return nowRoutine;
 		}
 	}
+		
+	//운동기록 리스트
+	@RequestMapping(value="exrecord.do", method= RequestMethod.GET)
+	public String exrecord(MemberDTO memberDTO, Model model, HttpSession session) {
+		
+		String trainer_id = (String)(session.getAttribute("UserEmail").toString());
+		System.out.println(trainer_id);
+		System.out.println("리스트불러옴");
+		memberDTO.setTrainer_id(trainer_id);
+		
+		model.addAttribute("memberList", memberdao.selectexrecord(memberDTO));
+		
+		return "member/trainer/exrecord";
+	}
 	
 	@ResponseBody
 	@RequestMapping("/changeYoil")
@@ -135,4 +162,79 @@ public class MemberController {
 		System.out.println(nowRoutine);
 		return nowRoutine;
 	}
+	
+	@RequestMapping(value="addexrecord.do", method=RequestMethod.GET)
+	public String shoexrecord(ExDTO exDTO) {
+		
+		return "/member/trainer/addexrecord";
+	}
+	
+	//운동기록 등록
+	@RequestMapping(value="addexrecord.do", method=RequestMethod.POST)
+	public String insertexrecord1(ExDTO exDTO, MemberDTO memberDTO, HttpServletRequest req, HttpSession session) {
+		
+		String trainer_id = (String)(session.getAttribute("UserEmail").toString());
+		String user_id = req.getParameter("user_id");
+		
+		System.out.println(trainer_id);
+		System.out.println(user_id);
+		System.out.println(memberDTO);
+		
+		int result = memberdao.insertexrecord(exDTO);
+		if(result==1)
+			
+		System.out.println("운동기록 등록이 완료되었습니다.");
+		
+		return "redirect:exrecord.do";
+		
+	}
+	
+	//운동기록 수정 페이지 진입
+	@RequestMapping(value="editexrecord.do", method=RequestMethod.GET)
+	public String editrecord(Model model, HttpServletRequest req) {
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberdao.selectone(req.getParameter("training_log_idx"));
+		
+		model.addAttribute("memberList", memberDTO);
+				
+		return "member/trainer/editexrecord";
+		
+	}
+	
+	//운동기록 수정
+	@RequestMapping(value="editexrecord.do", method=RequestMethod.POST)
+	public String editrecord2(MemberDTO memberDTO) {
+		
+		
+		System.out.println(memberDTO);
+		
+		int result = memberdao.editexrecord(memberDTO);
+		System.out.println(result);
+		
+		if(result==1)
+		System.out.println("특이사항 정보가 수정되었습니다.");
+		System.out.println(result);
+		
+		return "redirect:exrecord.do";
+	}
+	
+	//운동기록삭제
+	@RequestMapping("/deleteexrecord.do")
+	public void delete2(MemberDTO memberDTO, HttpServletResponse response) throws IOException {
+		
+	    int result = memberdao.deleteexrecord(memberDTO);
+	    if(result == 1) {
+	        System.out.println("정보가 삭제되었습니다.");
+	    }
+	    response.sendRedirect("exrecord.do");
+	}
+	
+	@RequestMapping("career.do")
+	public String career() {
+		
+		return "member/trainer/career";
+	}
+	
+	
 }

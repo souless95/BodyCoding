@@ -6,11 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="/static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style type="text/css">
 .table-bordered {
@@ -78,6 +73,17 @@ window.onload = function() {
 	fileInput.addEventListener('change', previewImages);
 }
 </script>
+<!-- <script type="text/javascript">
+	$(function(){
+		$('input:checkbox').click(function(){
+			if(this.checked == true){
+				$(this).val('Y');
+				
+				console.log(this.value);
+			}
+		});
+	});
+</script> -->
 <body class="sb-nav-fixed">
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
@@ -93,24 +99,25 @@ window.onload = function() {
 					<h2>${memList.mem_name } 수정 페이지</h2>
 	        	</div>
 				<div class="card-body" style="width: 80%">
-					
 					<h4>기본정보</h4>
 					<table class="table" border=2>
 						<tr>
 							<th>지점명</th>
-							<td><input type="text" name="mem_name" value="${memList.mem_name}" style="width: 100px;"/></td>
+							<td><input type="text" name="mem_name" value="${memList.mem_name}" style="width: 50%;"/></td>
 							<th>지점코드</th>
 							<td><input type="text" name="gym_code" value="${dto.gym_code}" readonly style="width: 100px; border: none;"/></td>
 						</tr>
 						<tr>
 							<th>평수</th>
-							<td><input type="text" name="gym_scale" value="${dto.gym_scale}" style="width: 100px;"/></td>
+							<td><input type="text" name="gym_scale" value="${dto.gym_scale}" style="width: 100px;"/>평(㎡)</td>
 							<th>지점 전화번호</th>
-							<td><input type="text" name="mem_phone" value="${memList.mem_phone}" style="width: 100px;"/></td>
+							<td><input type="text" name="mem_phone" value="${memList.mem_phone}" style="width: 120px;"/></td>
 						</tr>
 						<tr>
 							<th>지점 주소</th>
-							<td><input type="text" name="mem_address" value="${memList.mem_address}" style="width: 100px;"/></td>
+							<td><input type="text" name="mem_address" value="${memList.mem_address}" style="width: 80%;"/></td>
+							<th>비밀번호</th>
+							<td><input type="text" name="mem_pass" value="${memList.mem_pass}" style="width: 80%;"/></td>
 						</tr>
 					</table>
 				
@@ -141,7 +148,11 @@ window.onload = function() {
 							<th>락커</th>
 						</tr>
 						<tr align="center">
-							<td><input type="text" name="facility_parking" value="${dto.facility_parking}" style="width: 100px;" placeholder="Y or N" /></td>
+							<td>
+							<!-- checkbox y n 서로 꺼지고 켜지게 하는 거 each문으로 하는 거 -->
+								<%-- <input type="checkbox" name="facility_parking" value="${dto.facility_parking}"> --%>
+								<input type="text" name="facility_parking" value="${dto.facility_parking}" style="width: 100px;" placeholder="Y or N" />
+							</td>
 							<td><input type="text" name="facility_health" value="${dto.facility_health}" style="width: 100px;" placeholder="Y or N" /></td>
 							<td><input type="text" name="facility_yoga" value="${dto.facility_yoga}" style="width: 100px;" placeholder="Y or N" /></td>
 							<td><input type="text" name="facility_gx" value="${dto.facility_gx}" style="width: 100px;" placeholder="Y or N" /></td>
@@ -189,6 +200,31 @@ window.onload = function() {
 					</table>
 					<div id="previewContainer"></div>
 					<script>
+					/* $(document).ready(function() {
+						  function modifyFile() {
+						    var filename = '11.jpg';
+						    $.ajax({
+						      url: '/files?filename=' + filename +'&filepath=/static/uploads/gym' ,
+						      type: 'GET',
+						      dataType: 'json',
+						      success: function(data) {
+						        var formData = new FormData();
+						        formData.append('file', data.file);
+
+						        var input = document.getElementById('fileInput');
+						        input.files = formData;
+						      },
+						      error: function(xhr, status, error) {
+						      }
+						    });
+						  }
+
+						  modifyFile();
+						}); */
+					
+					const fileInput = document.querySelector('#fileInput');
+					const previewContainer = document.querySelector('#previewContainer');
+
 				    function previewImages() {
 					    const files = fileInput.files;
 					    previewContainer.innerHTML = '';
@@ -221,6 +257,8 @@ window.onload = function() {
 				    fileInput.addEventListener('change', previewImages);
 					</script>
 					<input type="submit" value="전송하기"/>
+					<button type="button" class="btn btn-primary" onclick="location.href='/main/admin'">홈으로</button>
+					<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
 				</div>
 			</form>
 			</div>

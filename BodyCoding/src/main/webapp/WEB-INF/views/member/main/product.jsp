@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp" %>
@@ -32,12 +35,12 @@ function sucCallBack(resData) {
 	console.log(resData);
 	let tableData = "";
 	$(resData).each(function(index, data) {
-		tableData += "<a href='productInfo?product_idx="+data.product_idx+"'>"
+		tableData += "<div style='width:200px; margin:30px; float:left;'><a href='productInfo?product_idx="+data.product_idx+"'>"
 		+"<img class='card-img-top mt-2' src='static/uploads/product/"+data.product_img+"' "
-		+" style='width:100%; height:180px;'>"
+		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
 		+"<b>"+data.product_name+"<b><br>"
-		+data.product_price + "</div></a>";
+		+data.product_price + "</div></a></div>";
 	}); 
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);
@@ -48,8 +51,8 @@ function errCallBack(errData){
 }
 </script> 
 <div class="container">
+<br>
 	<h2>상품 목록</h2>
-	<hr>
 	<h5>
 	<select id="product_type" required>
 	    <option value="-">상품유형</option>
@@ -63,8 +66,8 @@ function errCallBack(errData){
 		<input type="hidden" id="product_idx" name="product_idx">
 	</form>
 	
-	<div id="show_data" class="card m-2" style="width:150px" >
-	</div> 
+	<div id="show_data">
+	</div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </body>

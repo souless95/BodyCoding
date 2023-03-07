@@ -15,28 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.devtools.remote.server.HttpHeaderAccessManager;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.client.RestTemplate;
 
-import global.dto.MemberDTO;
 import global.dto.ProductDTO;
 
 @Controller
-@SessionAttributes({"mem_id","trainer_id","product_idx","gym_code","product_name"})
+@SessionAttributes({"mem_id","trainer_id","product_idx","gym_code","product_name","use_point","product_count","type"})
 public class PurchaseController {
    
    @Autowired
@@ -78,23 +69,54 @@ public class PurchaseController {
    
    @ResponseBody
    @RequestMapping("/kakaoPay.do")
-   public String purchase(HttpServletRequest req, Model model) {
+   public String purchase(HttpServletRequest req, Model model, HttpSession session, ProductDTO productDTO) {
       
+	  System.out.println(productDTO);
+	   
+	  //멤버쉽과 상품 공통 변수 정의
 	  String type = req.getParameter("type");
+	  String product_name = productDTO.getProduct_name();
+	  int product_price = productDTO.getProduct_price();
+	  String mem_id = session.getAttribute("UserEmail").toString();
+	  String product_count;
 	  
-	  if(type.equals("멤버쉽")) {
+	  //멤버쉽과 상품 공통으로 저장할 데이터 세팅
+	  model.addAttribute("type", type);
+	  model.addAttribute("mem_id", mem_id);
+	  model.addAttribute("product_idx", productDTO.getProduct_idx());
+	  model.addAttribute("product_price", product_price);
+	  
+	  //멤버쉽일 경우 저장할 데이터 세팅
+	  if(type.equals("멤버쉽")) {		  
+		  model.addAttribute("trainer_id", productDTO.getTrainer_id());
+		  model.addAttribute("gym_code", productDTO.getGym_code());
+		  model.addAttribute("use_point", "");
+		  model.addAttribute("product_count", ""); 
+		  product_count="1";
+
+	  }
+	  //상품일 경우 저장할 데이터 세팅
+	  else {
+		  model.addAttribute("trainer_id", "");
+		  model.addAttribute("gym_code", "");
+		  model.addAttribute("use_point",productDTO.getUse_point());
+		  model.addAttribute("product_count", productDTO.getProduct_count());
+		  
+		  product_count = productDTO.getProduct_count();
+		  
+		  //구매 상품 종류 2개 이상인 경우, 이름 "00외 N건"으로 처리
+		  int pInt = product_name.indexOf(",");
+		  if(!(pInt==-1)) {
+			  String pList[] = product_name.split(",");
+			  product_name = pList[0]+"외 "+(pList.length-1)+"건";
+			  System.out.println("현재 상품 이름:"+product_name);
+		  }
 		  
 	  }
-	   
-      String product_name = req.getParameter("product_name");
-      String product_price = req.getParameter("product_price");
-      
-      model.addAttribute("mem_id", req.getParameter("mem_id"));
-      model.addAttribute("trainer_id", req.getParameter("trainer_id"));
-      model.addAttribute("product_idx", req.getParameter("product_idx"));
-      model.addAttribute("gym_code", req.getParameter("gym_code"));
-      model.addAttribute("product_name", req.getParameter("product_name"));
-      
+	  
+	  model.addAttribute("product_count", product_count);
+	  model.addAttribute("product_name", product_name);
+	  
       try {         
          //요청 url 생성
          URL payUrl = new URL("https://kapi.kakao.com/v1/payment/ready");
@@ -117,13 +139,12 @@ public class PurchaseController {
                + "&partner_order_id=partner_order_id"
                + "&partner_user_id=partner_user_id"
                + "&item_name="+product_name
-               + "&quantity=1"
+               + "&quantity="+product_count
                + "&total_amount="+product_price
                + "&tax_free_amount=0"
                + "&approval_url=http://localhost:8586/purchaseApproval.do"
                + "&fail_url=http://localhost:8586/purchaseFail.do"
                + "&cancel_url=http://localhost:8586/purchaseFail.do";
-         
          
          OutputStream oStream = payUrlCon.getOutputStream();
          DataOutputStream dataStream = new DataOutputStream(oStream);
@@ -143,8 +164,8 @@ public class PurchaseController {
          
          InputStreamReader reader = new InputStreamReader(iStream);
          
-         
          BufferedReader bReader = new BufferedReader(reader);
+   	  	
          return bReader.readLine();
       } 
       catch (MalformedURLException e) {
@@ -158,27 +179,44 @@ public class PurchaseController {
    
    @Transactional
    @RequestMapping("/purchaseApproval.do")
-   public String purchaseApproval(@ModelAttribute("mem_id")String mem_id, 
+   public String purchaseApproval(
+		   @ModelAttribute("mem_id")String mem_id, 
 		   @ModelAttribute("trainer_id") String trainer_id, 
 		   @ModelAttribute("product_idx") String product_idx,
 		   @ModelAttribute("gym_code") String gym_code,
-		   @ModelAttribute("product_name") String product_name) {
+		   @ModelAttribute("product_name") String product_name,
+		   @ModelAttribute("use_point") String use_point,
+		   @ModelAttribute("product_count") String product_count,
+		   @ModelAttribute("type") String type) {
 	   
 	   try {
-		   
-		   System.out.println("성공진입");
-		   
 		   ProductDTO productDTO = new ProductDTO();
 		   
 		   productDTO.setMem_id(mem_id);
-		   productDTO.setTrainer_id(trainer_id);
-		   productDTO.setProduct_idx(Integer.parseInt(product_idx));
-		   productDTO.setGym_code(gym_code);
 		   
-		   ProductDTO pDTO = purchaseDao.payProductSelect(productDTO);
+		   int result1 = 0;
+		   int result2 = 0;
 		   
-		   int result1 = purchaseDao.insertOrder(productDTO);
-		   int result2 = purchaseDao.insertMembership(productDTO);
+		   if(type.equals("멤버쉽")) {
+			   
+			   System.out.println("멤버쉽 성공 후 DB 처리 단계 진입");
+			   
+			   productDTO.setTrainer_id(trainer_id);
+			   productDTO.setProduct_idx(product_idx);
+			   productDTO.setGym_code(gym_code);
+			   
+			   result1 = purchaseDao.insertOrder(productDTO);
+			   result2 = purchaseDao.insertMembership(productDTO);
+		   }
+		   else {
+			   
+			   System.out.println("상품 성공 후 DB 처리 단계 진입");
+			   
+			   productDTO.setUse_point(Integer.parseInt(use_point));
+			   
+			   
+		   }
+		   
 		   
 		   if(result1==1 && result2==1) {
 			   System.out.println("주문성공");

@@ -7,32 +7,46 @@
 	
 <mapper namespace="com.bc.bodycoding.admin.board.boardService">
 
-	<!-- 게시글 목록 -->
+	<!-- 게시글 목록 (자게, 공지, 이벤트) -->
 	<select id="select"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
-		select * from freeboard
+		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(R.closed_chk) AS closed_chk
+			FROM freeboard FB
+			LEFT JOIN report R ON FB.board_idx = R.board_idx
+			GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, 
+					FB.board_contents, FB.board_ofile, FB.board_sfile, FB.board_visitcount, FB.board_postdate
 	</select>
-	<!-- 게시글 상세보기 -->
+	<!-- 게시글 상세보기 (자게, 공지, 이벤트) -->
 	<select id="selectOneBoard"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
-		select * from freeboard where board_idx=#{board_idx}
+		<!-- select * from freeboard where board_idx=#{board_idx} -->
+		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(R.closed_chk) AS closed_chk
+			FROM freeboard FB
+			LEFT JOIN report R ON FB.board_idx = R.board_idx
+			WHERE FB.board_idx = #{board_idx}
+			GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, 
+					FB.board_contents, FB.board_ofile, FB.board_sfile, FB.board_visitcount, FB.board_postdate
 	</select>
-	<!-- 게시글 삭제하기 -->
+	<!-- 신고내용 보여주기(board_idx가 같은 번호의 신고내용 전부 foreach 출력 -->
+	<select id="reportList"
+		parameterType="global.dto.BoardDTO"
+		resultType="global.dto.BoardDTO">
+		select * from report where board_idx=#{board_idx}
+	</select>
+	
+	<!-- 게시글 삭제하기 (자게, 공지, 이벤트) -->
 	<delete id="delete"
 		parameterType="global.dto.BoardDTO">
 		delete from freeboard where board_idx=#{board_idx}
 	</delete>
-	<!-- (공지사항, 이벤트)게시글 등록하기 -->
+	
+	<!-- (공지사항, 이벤트)게시글 등록하기 (다중파일업로드) -->
 	<insert id="insert" parameterType="global.dto.BoardDTO">
 		insert into freeboard where board_idx=#{board_idx} and category=#{category} 
 	</insert>
 	
-	<!-- 공지사항 게시글 리스트 보기 -->
-	<select id="selectNotice"
-		parameterType="global.dto.BoardDTO"
-		resultType="global.dto.BoardDTO">
-		select * from freeboard
-	</select>
+	<!-- 게시글 수정하기 (자게, 공지, 이벤트)-->
+	
 </mapper>

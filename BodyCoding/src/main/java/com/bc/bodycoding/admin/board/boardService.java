@@ -17,4 +17,6 @@ public interface boardService {
 	
 	public List<BoardDTO> selectNotice(); //공지사항 리스트
 	
+	public List<BoardDTO> reportList(BoardDTO boardDTO); //신고내용 리스트
+	
 }

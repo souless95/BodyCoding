@@ -18,7 +18,7 @@
 			<main>
 				<div class="card mb-4">
 					<div class="card-header">
-						<h2>자유게시판 게시글 리스트</h2>
+						<h2>자유게시판 관리</h2>
 					</div>
 						<div class="card-body">
 							<table id="datatablesSimple">
@@ -48,8 +48,8 @@
 														<i class="bi bi-files"></i>
 													</c:if>
 												</td>
-												<td>신고횟수 : 0</td>
-												<td>비공개 : N</td>
+												<td>신고횟수 : ${row.count }</td>
+												<td>비공개 : ${row.closed_chk }</td>
 												
 											</tr>
 										</c:if>
@@ -57,8 +57,6 @@
 								</tbody>
 							</table>
 							<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
-							<!-- 신고게시판 관리로 이동 -->
-							<button type="button" class="btn btn-danger" onclick="location.href=''">신고게시판</button>
 						</div>
 				</div>
 			</main>

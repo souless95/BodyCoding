@@ -57,7 +57,7 @@
                            <div class="card bg-warning text-white mb-4">
                                <div class="card-body">Success Card</div>
                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                   <a class="small text-white stretched-link" href="#!">공지사항 관리</a>
+                                   <a class="small text-white stretched-link" href="/noticeList.do">공지사항 관리</a>
                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                </div>
                            </div>
@@ -112,27 +112,36 @@
 	             
                </div>
                
-               <!-- 데이터 차트 보여주는 부분 -->
-               <div class="row">
-                       <div class="col-xl-6">
-                           <div class="card mb-4">
-                               <div class="card-header">
-                                   <i class="fas fa-chart-area me-1"></i>
-                                   Area Chart Example
-                               </div>
-                               <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                           </div>
-                       </div>
-                       <div class="col-xl-6">
-                           <div class="card mb-4">
-                               <div class="card-header">
-                                   <i class="fas fa-chart-bar me-1"></i>
-                                   Bar Chart Example
-                               </div>
-                               <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                           </div>
-                       </div>
-                   </div>
+                <!-- 데이터 차트 보여주는 부분 -->
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area me-1"></i>
+                                Area Chart Example
+                            </div>
+                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-bar me-1"></i>
+                                Bar Chart Example
+                            </div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-bar me-1"></i>
+                                Bar Chart Example
+                            </div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                        </div>
+                    </div>
+                </div>
            </main>
         <!-- bottom -->
 		<%@ include file ="../admin/inc/bottom.jsp" %>

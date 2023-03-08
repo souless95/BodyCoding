@@ -64,7 +64,7 @@
 	<insert id="saveRoutine"
 	parameterType="global.dto.RoutineDTO">
 		INSERT INTO ROUTINE 
-    	VALUES (file_seq.nextval, #{mem_id}, #{yoil}, #{actname}, #{atime}, #{aset})
+    	VALUES (bodycoding_seq.nextval, #{mem_id}, #{yoil}, #{actname}, #{atime}, #{aset})
 	</insert>
 	
 	<update id="updateRoutine"

@@ -18,12 +18,13 @@
 			<main>
 			
 				<div class="card-header">
-					<h2>${dto.mem_id }작성글 상세보기</h2>
+					<h2>공지사항 상세보기</h2>
         		</div>
 				<form name="writeFrm">
 				<!-- idx숨겨놓기 -->
 				<input type="hid-en" name="idx" value="${dto.board_idx }" /> 
 				<input type="hid-den" name="category" value="${dto.board_category }" /> 
+				<input type="hid-den" name="category" value="${dto.mem_id }" /> 
 					<div class="card-body" style="width: 80%">
 					    <table style="border: 2px solid black; border-left:0px; border-right:0px; width: 90%;">
 					        <tr style="border-bottom: 3px solid black;">
@@ -37,8 +38,6 @@
 					        <tr style="border-bottom: 1px solid gray;">
 					            <th>제목</th>
 					            <td colspan="3" style="padding-top: 5px; padding-bottom: 5px;">${dto.board_title }</td>
-					        	<th>조회수</th>
-					        	<td>${dto.board_visitcount }</td>
 					        </tr>
 					        <tr style="border-bottom: 1px solid gray;">
 					            <th>내용</th>
@@ -51,10 +50,6 @@
 					        	<td>${dto.board_ofile }</td>
 					        	<th>Sfile</th>
 					        	<td>${dto.board_sfile }</td>
-				            	<th>신고횟수</th>
-				            	<td>${dto.count }</td>
-				            	<th>비공개여부 </th>
-				            	<td>${dto.closed_chk }</td>
 					        </tr>
 					    </table>
 					    <br />
@@ -65,46 +60,11 @@
 							수정
 						</button>
 						<button type="button" class="btn btn-primary" onclick="history.back()">
-			            	뒤로가기
+			            	이전 페이지
 			            </button>
 			            <button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
 			            	홈으로
 			            </button>
-			            
-			            <br /><br />
-			            <h3>신고내용</h3>
-						<table style="border: 2px solid black; border-left:0px; border-right:0px; width: 90%;">
-					   			<thead>
-					        	<tr style="border-bottom: 1px solid gray;">
-									<th width="5%">번호</th>
-									<th width="20%">신고자</th>
-									<th width="60%" style="text-align: center">내용</th>
-									<th width="*">작성일</th>
-					   			</tr>
-								</thead>
-								<tbody>
-								<c:choose>
-										<c:when test="${ empty reportList }">
-											<!-- 게시물을 저장하고 있는 boardLists 컬렉션에 내용이 없다면 아래부분을 출력한다. -->
-											<tr>
-												<td colspan="6" align="center">등록된 게시물이 없습니다.^^</td>
-											</tr>
-										</c:when>
-										<c:otherwise>
-											<c:forEach items="${reportList }" var="row" varStatus="loop">
-												<c:if test="${row.board_idx eq dto.board_idx  }">
-													<tr>
-														<td>${row.report_idx }</td>
-														<td>${row.reporter }</td>
-														<td>${row.report_content }</td>
-														<td>${row.report_date }</td>
-													</tr>
-												</c:if>
-											</c:forEach>
-										</c:otherwise>
-									</c:choose>
-								</tbody>
-					   	</table>
 					</div>
 				</form>
 			</main>
@@ -112,5 +72,6 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>
 	</div>
+
 </body>
 </html>

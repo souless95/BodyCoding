@@ -150,14 +150,14 @@ function writeResponse(text){
        <div>상대가보낸거</div>
     </div>
     <table class="table table-bordered">
-       <%-- <tr>
+       <tr>
           <td>방명:</td>
           <td>${param.chat_room }</td>
        </tr>
        <tr>
           <td>닉네임:</td>
           <td>${param.chat_id }</td>
-       </tr> --%>
+       </tr>
        <tr>
           <td>메시지:</td>
           <td>

@@ -23,16 +23,16 @@
          return;
       }
       //선택된 채팅방을 읽어온다.
-      var roomName = id.value+"-Room";
+   	  var roomName = id.value+"-Room";
       var memberChatURL = "WebChatM.do?chat_id="+id.value+"&chat_room="+roomName;
       window.open(memberChatURL, roomName+"-"+id.value, "width=500,height=700");
    }
 </script>
 <div class="container">   
-   <h2>짜자잔~ 절거운 운영자와의 1대1 맞짱 서비스입니다.</h2>
+   <h2>절거운 운영자와의 1대1 문의입니다.</h2>
    <table border=1 cellpadding="10" cellspacing="0">
-      <%-- <input type="hidden" id="chat_room" value="${member }-Room" /> --%>
-      <input type="hidden" id="chat_id" value="${member }" />
+     <%-- <input type="hidden" id="chat_room" value="${member }-Room" /> --%>
+     <input type="hidden" id="chat_id" value="${member }" />
       <tr>
          <td colspan="2" style="text-align:center;">
             <button type="button" onclick="openChat();" 

@@ -3,7 +3,6 @@ package com.bc.bodycoding.admin.trainer;
 import java.io.File;
 import java.security.Principal;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import global.dto.MemberDTO;
 
 @Controller
@@ -72,14 +69,13 @@ public class TrainerController {
 		}
 			
 		
-		/*
-		 * System.out.println(req.getParameter("mem_pass")); String passwd =
-		 * PasswordEncoderFactories.createDelegatingPasswordEncoder()
-		 * .encode(req.getParameter("mem_pass")); System.out.println(passwd);
-		 */
+		System.out.println(req.getParameter("mem_pass"));
+		String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
+				.encode(req.getParameter("mem_pass"));
+		System.out.println(passwd);
 		
 		memberDTO.setMem_id(req.getParameter("mem_id"));
-		memberDTO.setMem_pass(req.getParameter("mem_pass"));
+		memberDTO.setMem_pass(passwd);
 		memberDTO.setMem_name(req.getParameter("mem_name"));
 		memberDTO.setMem_gender(req.getParameter("mem_gender"));
 		memberDTO.setMem_birth(req.getParameter("mem_birth"));
@@ -165,16 +161,6 @@ public class TrainerController {
 			
 			File fileInfo = new File(path, savedName);
 			
-<<<<<<< HEAD
-			/*
-			 * System.out.println(req.getParameter("mem_pass")); String passwd =
-			 * PasswordEncoderFactories.createDelegatingPasswordEncoder()
-			 * .encode(req.getParameter("mem_pass")); System.out.println(passwd);
-			 */
-			
-			mem_img.transferTo(fileInfo);
-			System.out.println("파일 업로드 성공");
-=======
 			try {
 				mem_img.transferTo(fileInfo);
 				System.out.println("파일 업로드 성공");
@@ -182,27 +168,7 @@ public class TrainerController {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 			memberDTO.setMem_img(savedName);
-<<<<<<< HEAD
-			memberDTO.setMem_id(req.getParameter("mem_id"));
-			memberDTO.setMem_pass(req.getParameter("mem_pass"));
-//			memberDTO.setMem_pass(passwd);
-			memberDTO.setMem_name(req.getParameter("mem_name"));
-			memberDTO.setMem_gender(req.getParameter("mem_gender"));
-			memberDTO.setMem_birth(req.getParameter("mem_birth"));
-			memberDTO.setMem_phone(req.getParameter("mem_phone"));
-			memberDTO.setMem_address(req.getParameter("mem_address"));
-			memberDTO.setEnabled(req.getParameter("enabled"));
-			memberDTO.setGym_code(req.getParameter("gym_code"));
-			memberDTO.setMem_career(req.getParameter("mem_career"));
-			memberDTO.setMem_comment(req.getParameter("mem_comment"));
-		}	
-		catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("파일 업로드 실패");
-=======
->>>>>>> branch 'main' of https://github.com/souless95/BodyCoding.git
 		}
 		memberDTO.setMem_id(req.getParameter("mem_id"));
 		memberDTO.setMem_pass(req.getParameter("mem_pass"));

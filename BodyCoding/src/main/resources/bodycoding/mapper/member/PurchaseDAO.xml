@@ -25,13 +25,11 @@
     	ON M.mem_id=L.trainer_id
 	</select>
 	
-	<select id="payProductSelect" parameterType="global.dto.ProductDTO"
-		resultType="global.dto.ProductDTO">
-		SELECT * FROM product WHERE product_idx=#{product_idx}
-	</select>
-	
  	<insert id="insertOrder" parameterType="global.dto.ProductDTO">
+ 		<if test="use_point!='' ">
 		INSERT INTO order_log VALUES (bodycoding_seq.nextval,#{mem_id},0,'결제완료',sysdate,'Y')
+ 		</if>
+		INSERT INTO order_log VALUES (bodycoding_seq.nextval,#{mem_id},#{use_point},'결제완료',sysdate,'Y')
 	</insert>
 	
 	<insert id="insertMembership" parameterType="global.dto.ProductDTO">
@@ -40,6 +38,14 @@
     			 membership_start, membership_end, product_idx)
     	VALUES (bodycoding_seq.nextval,bodycoding_seq.nextval, #{gym_code}, #{mem_id},
     		#{trainer_id}, sysdate, sysdate, #{product_idx})
+	</insert>	
+	
+	<insert id="insertOrderDetail" parameterType="global.dto.ProductDTO">
+		INSERT INTO order_log_detail 
+    		(order_detail_idx, order_idx, product_idx, product_count, product_serial_num, 
+    			 receive_check)
+    	VALUES (bodycoding_seq.nextval,bodycoding_seq.nextval, #{product_idx}, #{product_count},
+    		#{product_serial_num}, #{receive_check})
 	</insert>	
 	
 </mapper>

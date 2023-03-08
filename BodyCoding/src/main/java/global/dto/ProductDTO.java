@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class ProductDTO {
 	//상품 일련번호
-	private int product_idx;
+	private String product_idx;
 	//상품 유형
 	private String product_type;
 	//상품 분류
@@ -51,10 +51,13 @@ public class ProductDTO {
 	//카트 일련번호
 	private int cart_idx;
 	//카트 물건 갯수
-	private int product_count;
+	private String product_count;
 	//회원 보유 포인트
 	private int mem_point;
-	
+	//결제 시, 사용 포인트
+	private int use_point;
+	//기프트콘 번호
+	private String product_serial_num;
 }
 
 

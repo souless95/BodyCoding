@@ -9,11 +9,12 @@ import lombok.Data;
 @Data
 public class ExDTO {
 	
-	private String TRAINER_ID;
-	private String USER_ID;
-	private String TRAINING_COMMENT;
+	private String trainer_id;
+	private String user_id;
+	private String training_comment;
+	private String product_name;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date TRAINING_DATE;
+	private Date training_date;
 	
 }

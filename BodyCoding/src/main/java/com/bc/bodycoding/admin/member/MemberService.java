@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import global.dto.ExDTO;
 import global.dto.MemberDTO;
+import global.dto.RoutineDTO;
 
 @Mapper
 public interface MemberService {
@@ -16,11 +17,21 @@ public interface MemberService {
 	public MemberDTO selectDT(MemberDTO memberDTO);
 	public int pointUpdate(MemberDTO memberDTO);
 	public String selectPoint(String mem_id);
+	
+	public int selectRoutine(RoutineDTO routineDTO);
+	public int saveRoutine(RoutineDTO routineDTO);
+	public RoutineDTO getRoutine(RoutineDTO routineDTO);
+	public int updateRoutine(RoutineDTO routineDTO);
+	public int deleteRoutine(RoutineDTO routineDTO);
+
 	public int delete(MemberDTO memberDTO);
-	
+	public List<MemberDTO> selectexrecord(MemberDTO memberDTO);
+	//운동기록등록 
 	public int insertexrecord(ExDTO exDTO);
-	
-	public MemberDTO selectrecord(MemberDTO memberDTO);
-	
-	
+	//운동기록조회
+	public MemberDTO selectone(String traing_log_idx);
+	//운동기록수정
+	public int editexrecord(MemberDTO memberDTO);
+	//운동기록 삭제
+	public int deleteexrecord(MemberDTO memberDTO);
 }

@@ -64,9 +64,10 @@
 								aria-labelledby="headingOne"
 								data-bs-parent="#sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="/noticeList.do">공지사항 관리</a> <a
-										class="nav-link" href="register.html">이벤트 관리</a> <a
-										class="nav-link" href="/boardList.do">자유게시판 관리</a>
+									<a class="nav-link" href="/noticeList.do">공지사항 관리</a> 
+									<a class="nav-link" href="register.html">이벤트 관리</a> 
+									<a class="nav-link" href="/boardList.do">자유게시판 관리</a>
+									<a class="nav-link" href="/WebSocketA.do">1대1 문의</a>
 								</nav>
 							</div>
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

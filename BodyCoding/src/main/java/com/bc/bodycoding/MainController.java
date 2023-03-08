@@ -113,6 +113,24 @@ public class MainController {
 		return "admin/auth/denied";
 	}
 	
+	//차트보기
+	@GetMapping("chart1")
+	public String chart() {
+		return "member/chart1";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	@RequestMapping(value = "admin/auth/updatePwd", method = RequestMethod.GET)
 //	public String updatePwd(Principal principal, MemberDTO memberDTO, Model model) {
 //		memberDTO = gymdao.selectUpdatePwd(model);

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bc.bodycoding.admin.chart.SalesChartService">
+
+<select id="totalgym_totalsales"
+		parameterType="String"
+		resultType="global.dto.SalesChartDTO">
+
+select chart_order_date as order_date, sum(chart_product_price) as sales
+	from 
+	    (select order_log.order_status as chart_order_status, 
+	           to_char(order_log.order_date,'YYYY-MM') as chart_order_date,
+	           order_log.order_idx as chart_order_idx,
+	           membership.gym_code as chart_gym_code,
+	           membership.product_idx as chart_product_idx,
+	           product.product_category as chart_product_category,
+	           product.product_price as chart_product_price
+	        from  
+	            order_log inner join membership on order_log.order_idx = membership.order_idx
+	            inner join product on membership.product_idx=product.product_idx
+	        where order_log.order_status in ('결제완료','수령완료') 
+	            and product.product_category in('GX','헬스','필라테스','PT','요가'))
+	group by chart_order_date
+
+</select>
+
+
+</mapper>

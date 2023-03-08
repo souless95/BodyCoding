@@ -58,6 +58,14 @@ public class ProductDTO {
 	private int use_point;
 	//기프트콘 번호
 	private String product_serial_num;
+	//수령여부 체크
+	private String receive_check;
+	//환불가능 여부 체크
+	private String refund_check;
+	//주문 일련번호
+	private String order_idx;
+	//주문 상세 일련번호
+	private String order_detail_idx;
 }
 
 

@@ -158,7 +158,7 @@ public class GymController {
 			int result1 = gymdao.updateM(memberDTO);
 			int result;
 			
-			String GYM_DTAIL_IMG = "";
+			String gym_detail_img = "";
 			if(uploadfiles[0].isEmpty()) {
 				result = gymdao.update2(gymDTO);
 			}
@@ -166,10 +166,10 @@ public class GymController {
 				for(MultipartFile f: uploadfiles) {
 					System.out.println("파일 이름(uploadfile.getOriginalFilename()) : "+ f.getOriginalFilename());
 					System.out.println("파일 크기(uploadfile.getSize()) : "+ f.getSize());
-					GYM_DTAIL_IMG += saveFile(f) + ",";
+					gym_detail_img += saveFile(f) + ",";
 				}
-				GYM_DTAIL_IMG = GYM_DTAIL_IMG.substring(0, GYM_DTAIL_IMG.length()-1);
-				gymDTO.setGym_dtail_img(GYM_DTAIL_IMG);
+				gym_detail_img = gym_detail_img.substring(0, gym_detail_img.length()-1);
+				gymDTO.setGym_detail_img(gym_detail_img);
 				result = gymdao.update(gymDTO);
 			}
 			

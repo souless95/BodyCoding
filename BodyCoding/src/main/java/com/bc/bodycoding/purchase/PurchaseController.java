@@ -197,7 +197,7 @@ public class PurchaseController {
 				result2 = purchaseDao.insertMembership(productDTO);
 			} 
 			else {
-
+				
 				System.out.println("상품 성공 후 DB 처리 단계 진입");
 
 				productDTO.setUse_point(Integer.parseInt(use_point));
@@ -210,7 +210,7 @@ public class PurchaseController {
 					productDTO.setProduct_count(p_count[i]);
 					productDTO.setProduct_serial_num(randomNum());
 					result1 = purchaseDao.insertOrder(productDTO);
-					result2 = purchaseDao.insertOrderDetail(productDTO);
+					result2 = purchaseDao.insertOrderDetail(productDTO); 
 				}
 
 			}

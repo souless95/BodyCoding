@@ -5,10 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
 	<!-- top메뉴  -->
@@ -22,53 +18,51 @@
 			<main>
 				<div class="card mb-4">
 					<div class="card-header">
-						<h2>자유게시판 게시글 리스트</h2>
+						<h2>자유게시판 관리</h2>
 					</div>
-					<div class="card-body">
-						<table id="datatablesSimple">
-							<thead>
-								<tr>
-									<th>번호</th>
-									<th>작성자</th>
-									<th>카테고리</th>
-									<th>제목</th>
-									<th>작성일</th>
-									<th>업로드 파일</th>
-									<th>신고여부</th>
-									<th>비공개여부</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${boardList }" var="row" varStatus="loop">
+						<div class="card-body">
+							<table id="datatablesSimple">
+								<thead>
 									<tr>
-										<td>${row.board_idx }</td>
-										<td>${row.mem_id }</td>
-										<td>${row.board_category }</td>
-										<td><a href="boardDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>
-										<td>${row.board_postdate }</td>
-										<td>
-											<c:if test="${not empty row.board_sfile }">
-												<i class="bi bi-files"></i>
-											</c:if>
-										</td>
-										<td>신고횟수 : 0</td>
-										<td>비공개 : N</td>
-										
+										<th>번호</th>
+										<th>작성자</th>
+										<th>카테고리</th>
+										<th>제목</th>
+										<th>작성일</th>
+										<th>업로드 파일</th>
+										<th>신고여부</th>
+										<th>비공개여부</th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
-					</div>
+								</thead>
+								<tbody>
+									<c:forEach items="${boardList }" var="row" varStatus="loop">
+										<c:if test="${row.board_category eq '자유' }">
+											<tr>
+												<td>${row.board_idx }</td>
+												<td>${row.mem_id }</td>
+												<td>${row.board_category }</td>
+												<td><a href="boardDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>
+												<td>${row.board_postdate }</td>
+												<td>
+													<c:if test="${not empty row.board_sfile }">
+														<i class="bi bi-files"></i>
+													</c:if>
+												</td>
+												<td>신고횟수 : ${row.count }</td>
+												<td>비공개 : ${row.closed_chk }</td>
+												
+											</tr>
+										</c:if>
+									</c:forEach>
+								</tbody>
+							</table>
+							<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
+						</div>
 				</div>
 			</main>
 			<!-- bottom -->
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

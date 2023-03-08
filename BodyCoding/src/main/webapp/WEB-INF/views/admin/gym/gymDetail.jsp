@@ -43,7 +43,7 @@ function errCallBack(errData){
 window.onload = function() {
 	const previewContainer = document.querySelector('#previewContainer');
 	
-	var imageArray = '${ dto.gym_dtail_img}';
+	var imageArray = '${ dto.gym_detail_img}';
 	var fileNames = imageArray.split(","); 
 	
 	for (let i = 0; i < fileNames.length; i++) {

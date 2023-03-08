@@ -44,4 +44,30 @@ public class boardController {
 		if(result==1) System.out.println("삭제되었습니다.");
 		return "redirect:boardList.do";
 	}
+	
+	//신고게시판 이동
+	
+	//신고 내용확인 (상세보기) --> 신고된 글 상세페이지로 이동하는 버튼 필요
+	
+	
+	
+	//공지사항 리스트
+	@RequestMapping("/noticeList.do")
+	public String noticeList(Model model) {
+		model.addAttribute("noticeList", boarddao.selectNotice());
+		
+		return "admin/board/noticeList";
+	}
+	
+	//공지사항 상세보기
+	
+	//공지사항 작성
+	
+	//공지사항 수정
+	
+	//공지사항 삭제
+	
+	
+	
+
 }

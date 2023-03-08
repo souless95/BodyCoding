@@ -28,4 +28,11 @@
 	<insert id="insert" parameterType="global.dto.BoardDTO">
 		insert into freeboard where board_idx=#{board_idx} and category=#{category} 
 	</insert>
+	
+	<!-- 공지사항 게시글 리스트 보기 -->
+	<select id="selectNotice"
+		parameterType="global.dto.BoardDTO"
+		resultType="global.dto.BoardDTO">
+		select * from freeboard
+	</select>
 </mapper>

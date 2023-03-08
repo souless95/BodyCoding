@@ -12,33 +12,29 @@
 
 	<div id="layoutSidenav">
 		<!-- side -->
-	<%@ include file="../../admin/inc/side.jsp"%>
-	
+		<%@ include file="../../admin/inc/side.jsp"%>
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="card mb-4">
 					<div class="card-header">
-						<h2>자유게시판 게시글 리스트</h2>
+						<h2>공지사항 관리</h2>
 					</div>
 						<div class="card-body">
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>번호</th>
+										<th>공지 노출여부</th>
+										<th>공지 제목</th>
 										<th>작성자</th>
-										<th>카테고리</th>
-										<th>제목</th>
 										<th>작성일</th>
 										<th>업로드 파일</th>
-										<th>신고여부</th>
-										<th>비공개여부</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${boardList }" var="row" varStatus="loop">
-										<c:if test="${row.board_category eq '자유' }">
+									<c:forEach items="${noticeList }" var="row" varStatus="loop">
+										<c:if test="${row.board_category eq '공지' }">
 											<tr>
-												<td>${row.board_idx }</td>
+												<td><input type="checkbox" name="노출여부" value="노출여부"></td>
 												<td>${row.mem_id }</td>
 												<td>${row.board_category }</td>
 												<td><a href="boardDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>
@@ -66,5 +62,7 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>
 	</div>
+	<!-- bottom -->
+	<%@ include file ="../../admin/inc/bottom.jsp" %>
 </body>
 </html>

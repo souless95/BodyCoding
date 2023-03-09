@@ -21,6 +21,7 @@
 .chat_ui .chating{/* 여기 뭔가이상해 수정해봐 */
 	height: calc(100% - 72px);
 	font-size: 12px;
+	overflow-y: scroll;
 }
 .chat_ui .chating .time{
 	font-size: 10px;
@@ -47,16 +48,71 @@
 }
 .chat_ui .chating .me .b{
 	float: right;
+	position: relative;
+	width: 8px;
+	height: 22px;
+	background: url(/static/uploads/img/chat_balloon_yellow.right.png) no-repeat;
+	z-index: 1;
 }
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
+.chat_ui .chating .others{
+	float: left;
+	width: 100%;
+}
+.chat_ui .chating .others .box{
+	float: left;
+	width: calc(100% - 48px);
+}
+.chat_ui .chating .others .box .profile_name{
+	font-size: 12px;
+}
+.chat_ui .chating .others .box .a{
+	float: left;
+	position: relative;
+	width: 8px;
+	height: 22px;
+	background: url(/static/uploads/img/chat_balloon_white.left.png) no-repeat;
+	z-index: 1;
+}
+.chat_ui .chating .others .box .b{
+	float: left;
+	position: relative;
+	min-height: 24px;
+	max-width: calc(100% - 64px);
+	left: -2px;
+	background-color: #ffffff;
+	border-radius: 3px;
+	z-index: 2;
+	padding: 0px 4px 0px 4px;
+	word-break: break-all;
+}
+.chat_ui .chating .others .box .time{
+	float: left;
+}
+.chat_ui .yourMsg .textarea{
+	float: left;
+	width: calc(100% - 68px);
+	height: 64px;
+	border-radius: 8px 0px 0px 8px;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 2px 2px 2px;
+	resize: none;
+}
+.chat_ui .yourMsg .button{
+	float: right;
+	width: 62px;
+	height: 68px;
+	background-color: #ffec42;
+	border-radius: 0px 8px 8px 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: center;
+	display: table;
+	cursor: pointer;
+}
+.chat_ui .yourMsg .button p{
+	display: table-cell;
+ 	vertical-align: middle;
+}
 .chat_ui 
 .chat_ui 
 .chat_ui 

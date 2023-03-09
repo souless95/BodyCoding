@@ -43,7 +43,7 @@
 		<li><a href="routine.do">운동루틴등록</a></li>
 	</ul>
 	<ul>
-		<li><a href="chart1">차트</a></li>
+		<li><a href="sup_chart1">sup차트</a></li>
 	</ul>
 </body>
 </html>

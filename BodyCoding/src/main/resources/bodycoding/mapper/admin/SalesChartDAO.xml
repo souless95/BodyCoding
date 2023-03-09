@@ -7,10 +7,10 @@
 	
 <mapper namespace="com.bc.bodycoding.admin.chart.SalesChartService">
 
+<!-- 전지점 월별 매출액 -->
 <select id="totalgym_totalsales"
-		parameterType="String"
-		resultType="global.dto.SalesChartDTO">
-
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
 select chart_order_date as order_date, sum(chart_product_price) as sales
 	from 
 	    (select order_log.order_status as chart_order_status, 
@@ -26,8 +26,50 @@ select chart_order_date as order_date, sum(chart_product_price) as sales
 	        where order_log.order_status in ('결제완료','수령완료') 
 	            and product.product_category in('GX','헬스','필라테스','PT','요가'))
 	group by chart_order_date
-
+	order by chart_order_date
 </select>
+
+<!-- 현재 활성화되어있는 지점코드 -->
+<select id="enabledGym"
+	parameterType="String"
+	resultType="String">
+select gym_code from member
+    where authority like 'ROLE_ADMIN_SUB' 
+    	and enabled = 1
+    order by gym_code
+</select>
+
+<select id="gym_sales"
+	parameterType="String"
+	resultType="global.dto.ProductDTO">
+select chart_order_date as order_date, sum(chart_product_price) as sales, chart_gym_name as mem_id
+from
+    (select order_log.order_status as chart_order_status, 
+        to_char(order_log.order_date,'YYYY-MM') as chart_order_date,
+        order_log.order_idx as chart_order_idx,
+        membership.gym_code as chart_gym_code,
+        membership.product_idx as chart_product_idx,
+        product.product_category as chart_product_category,
+        product.product_price as chart_product_price,
+        member.mem_name as chart_gym_name
+    from  
+        order_log inner join membership on order_log.order_idx = membership.order_idx
+        inner join product on membership.product_idx=product.product_idx
+        inner join member on membership.gym_code=member.gym_code
+    where order_log.order_status in ('결제완료','수령완료') 
+        and product.product_category in('GX','헬스','필라테스','PT','요가')
+        and member.authority like 'ROLE_ADMIN_SUB' 
+        and member.enabled = 1)
+where chart_gym_code = #{gym_code}
+group by chart_order_date,chart_gym_name
+order by chart_order_date
+</select>
+
+
+
+
+
+
 
 
 </mapper>

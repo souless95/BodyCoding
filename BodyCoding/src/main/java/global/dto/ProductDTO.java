@@ -66,6 +66,11 @@ public class ProductDTO {
 	private String order_idx;
 	//주문 상세 일련번호
 	private String order_detail_idx;
+	
+	//결제 날짜
+	private String order_date;
+	//총 매출
+	private int sales;
 }
 
 

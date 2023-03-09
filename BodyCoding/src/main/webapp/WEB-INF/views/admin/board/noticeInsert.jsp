@@ -20,34 +20,31 @@
 	       		</div>
 				<form action="/noticeInsert.do" method="post" enctype="multipart/form-data">
 					<!-- idx숨겨놓기 -->
-					<%-- <input type="hid-den" name="category" value="${dto.board_category }" />  --%>
-					<input type="hidden" name="category" value="${board_category }" />
-					<input type="hidden" name="board_postdate" value="${board_postdate }" />
-					<input type="hidden" name="board_idx" value="${board_idx }" />
+					<!-- <input type="hid-den" name="board_category" id="board_category" value="공지" /> -->
 					<div class="card-body" style="width: 80%">
 					    <table style="border: 2px solid black; border-left:0px; border-right:0px; width: 90%;">
 					        <tr style="border-bottom: 3px solid black;">
 					            <th width="20%">작성자</th>
 					            <td width="20%">
-					            	<input type="text" id="mem_id"value="${mem_id }" style="width: 130px; border: none;" readonly>
+					            	<input type="text" name="mem_id" id="mem_id" value="${mem_id }" style="width: 100px; border: none;" readonly>
 					            </td>
 					        </tr>
 					        <tr style="border-bottom: 1px solid gray;">
 					            <th>제목</th>
 					            <td colspan="3" style="padding-top: 5px; padding-bottom: 5px;">
-									<input type="text" id="board_title" style="width: 600px;" placeholder="제목을 작성하세요">
+									<input type="text" name="board_title" id="board_title" style="width: 600px;" placeholder="제목을 작성하세요">
 								</td>
 					        </tr>
 					        <tr style="border-bottom: 1px solid gray;">
 					            <th>내용</th>
 					            <td colspan="4" style=" vertical-align: top; padding-top: 10px; padding-bottom: 10px; ">
-						            <textarea id="board_contents"rows="15" cols="100" placeholder="내용을 작성하세요"></textarea>
+						            <textarea name="board_contents" id="board_contents"rows="15" cols="100" placeholder="내용을 작성하세요"></textarea>
 					            </td> 
 					        </tr>
 					        <tr>
 					        	<th colspan="2">
 									<!-- multiple 속성추가 -->
-								    <input type="file" name="board_ofile" placeholder="파일 선택"/>
+								   <input type="file" id="board_file" name="board_file" value="" /> 
 					        	</th>
 					        </tr>
 					    </table>

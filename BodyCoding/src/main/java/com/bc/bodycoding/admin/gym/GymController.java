@@ -94,8 +94,9 @@ public class GymController {
 				}
 			}
 			
-			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
-					.encode(req.getParameter("mem_pass"));
+			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(req.getParameter("mem_pass"));
+			System.out.println(passwd);
+			
 			memberDTO.setMem_pass(passwd);
 			memberDTO.setMem_id(req.getParameter("mem_id"));
 			memberDTO.setMem_name(req.getParameter("mem_name"));

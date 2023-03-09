@@ -7,14 +7,14 @@ import lombok.Data;
 @Data
 public class BoardDTO {
 
-	private int board_idx;
+	private String board_idx;
 	private String board_category;
 	private String mem_id;
 	private String board_title;
 	private String board_contents;
 	private String board_file;
 	private int board_visitcount;
-	private Date board_postdate;
+	private String board_postdate;
 	
 	//신고용
 	private int count; //신고횟수

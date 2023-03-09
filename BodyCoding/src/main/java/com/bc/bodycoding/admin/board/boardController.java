@@ -3,6 +3,7 @@ package com.bc.bodycoding.admin.board;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import global.dto.BoardDTO;
+import global.dto.GymDTO;
 import global.dto.MemberDTO;
 
 @Controller
@@ -80,26 +82,109 @@ public class boardController {
 	
 	//공지사항 작성 페이지로 이동
 	@RequestMapping(value = "admin/board/noticeInsert", method = RequestMethod.GET)
-	public String noticeIn(Model model, BoardDTO boardDTO, Principal principal) throws Exception {
+	public String noticeIn(Model model, Principal principal) throws Exception {
 		
 		//작성할 놈 이름 받아오기!
 		
 		String mem_id = principal.getName();
 		model.addAttribute("mem_id", mem_id);
 		
-		System.out.println("공지작성하기 위해 받아온 이름 : " + mem_id);
+		System.out.println("공지작성하기 위해 받아온 이름1 : " + mem_id);
 		
 		return "admin/board/noticeInsert";
 	}
 	
 	//공지사항 작성
-	@RequestMapping(value = "/noticeInsert.do", method = RequestMethod.POST)
-	public String noticeInsert(MultipartFile board_file, MultipartHttpServletRequest req) throws IOException, Exception {
-		
-		
-		return "redirect:/noticeList.do";
+	@RequestMapping(value="/noticeInsert.do", method=RequestMethod.POST)
+	public String noticeInsert(BoardDTO boardDTO, Principal principal) {
+	      
+	    String mem_id = principal.getName();
+	    System.out.println(mem_id);
+	    boardDTO.setMem_id(mem_id);
+	      
+	    int result = boarddao.noticeInsert(boardDTO);
+	    if(result==1)
+	            
+	    System.out.println("게시글 등록이 완료되었습니다.");
+	         
+	    return "redirect:Freeboard.do";
 	}
+//	@RequestMapping(value = "/noticeInsert.do", method = RequestMethod.POST)
+//	public String noticeInsert(
+//			BoardDTO boardDTO, Model model, Principal principal) throws IOException, Exception {
+//		
+//		
+//		String mem_id = principal.getName();
+//		System.out.println("공지작성하기 위해 받아온 이름2 : " + mem_id);
+//		boardDTO.setMem_id(mem_id);
+//		
+//		int result = boarddao.noticeInsert(boardDTO);
+//		
+//		System.out.println("result " + result);
+//		
+//		System.out.println("DTO" + boardDTO);
+//		
+//		boardDTO.setBoard_idx(req.getParameter("board_idx"));
+//		boardDTO.setBoard_category(req.getParameter("board_category"));
+//		boardDTO.setMem_id(mem_id);
+//		boardDTO.setBoard_title(req.getParameter("board_title"));
+//		boardDTO.setBoard_category(req.getParameter("board_contents"));
+//		boardDTO.setBoard_file(req.getParameter("board_file"));
+//		boardDTO.setBoard_postdate(req.getParameter("board_postdate"));
+//		System.out.println(boardDTO); 
+//		
+//		try {
+//			int result;
+//			
+//			String board_img = "";
+//			if (uploadfiles[0].isEmpty()) {
+//				result = boarddao.noticeInsert(boardDTO);
+//			}
+//			else {
+//				for (MultipartFile f : uploadfiles) {
+//					System.out.println("파일 이름(uploadfile.getOriginalFilename()) : "+ f.getOriginalFilename());
+//					System.out.println("파일 크기(uploadfile.getSize()) : "+ f.getSize());
+//					board_img = saveFile(f) + ",";
+//				}
+//				board_img = board_img.substring(0, board_img.length()-1);
+//				boardDTO.setBoard_file(board_img);
+//				result = boarddao.noticeInsert(boardDTO);
+//			}
+//			
+//			if (result == 1) {
+//				System.out.println("공지사항이 작성되었습니다.");
+//			}
+//			else {
+//				System.out.println("공지사항 작성에 문제가 생겼습니다.");
+//			}
+//		} 
+//		catch (Exception e) {
+//			System.out.println("1");
+//			e.printStackTrace();
+//		}
+//		
+//		return "redirect:/noticeList.do";
+//	}
 	
+//	public String saveFile(MultipartFile file) {
+//		UUID uuid = UUID.randomUUID();
+//		String saveName = uuid + "_" + file.getOriginalFilename();
+//		
+//		String path = "";
+//		try {
+//			path = ResourceUtils
+//				.getFile("classpath:static/uploads/board/").toPath().toString();
+//			System.out.println("물리적경로2:"+path);
+//			File fileInfo = new File(path, saveName); // 저장할 폴더 경로, 저장할 파일 이름
+//			file.transferTo(fileInfo); // 업로드 파일에 fileInfo이라는 정보를 추가하여 파일을 저장한다.
+//		} 
+//		catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("1111");
+//			return null;
+//		}
+//		return saveName;
+//	} 
 	
 	//공지사항 수정
 	

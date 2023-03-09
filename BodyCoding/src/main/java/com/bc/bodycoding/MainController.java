@@ -106,6 +106,8 @@ public class MainController {
 		return "admin/auth/denied";
 	}
 	
+	
+	
 //	@RequestMapping(value = "admin/auth/updatePwd", method = RequestMethod.GET)
 //	public String updatePwd(Principal principal, MemberDTO memberDTO, Model model) {
 //		memberDTO = gymdao.selectUpdatePwd(model);

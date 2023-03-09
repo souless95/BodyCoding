@@ -30,7 +30,16 @@ public class TrainerController {
 	
 	//트레이너 등록 페이지로 이동
 	@GetMapping("/admin/trainer/trainerRegist")
-	public String signupT(Model model) {
+	public String signupT(Model model, Principal principal) {
+		
+		//시큐리티 로그인한 아이디 받아오기
+		String userIdT = principal.getName();
+		model.addAttribute("userIdT", userIdT);
+		
+		MemberDTO admin = trainerdao.selectAdmin(userIdT);
+		System.out.println("잘 받아오는 지 확인해보자 "+ admin.getGym_code());
+		
+		model.addAttribute("adminGym", admin.getGym_code());
 		model.addAttribute("authority","trainer");
 		return "admin/trainer/trainerRegist";
 	}
@@ -68,14 +77,8 @@ public class TrainerController {
 			memberDTO.setMem_img(savedName);
 		}
 			
-		
-		System.out.println(req.getParameter("mem_pass"));
-		String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
-				.encode(req.getParameter("mem_pass"));
-		System.out.println(passwd);
-		
 		memberDTO.setMem_id(req.getParameter("mem_id"));
-		memberDTO.setMem_pass(passwd);
+		memberDTO.setMem_pass(req.getParameter("mem_pass"));
 		memberDTO.setMem_name(req.getParameter("mem_name"));
 		memberDTO.setMem_gender(req.getParameter("mem_gender"));
 		memberDTO.setMem_birth(req.getParameter("mem_birth"));
@@ -85,7 +88,7 @@ public class TrainerController {
 		memberDTO.setMem_career(req.getParameter("mem_career"));
 		memberDTO.setMem_comment(req.getParameter("mem_comment"));
 			
-		
+			
 		int result = trainerdao.insertMemberT(memberDTO);
 		if(result==1) System.out.println("회원가입이 완료되었습니다.");
 		

@@ -11,23 +11,23 @@
 	<select id="select"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
-		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(R.closed_chk) AS closed_chk
+		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(FB.closed_chk) AS closed_chk
 			FROM freeboard FB
 			LEFT JOIN report R ON FB.board_idx = R.board_idx
 			GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, 
-					FB.board_contents, FB.board_ofile, FB.board_sfile, FB.board_visitcount, FB.board_postdate
+					FB.board_contents, FB.board_file, FB.board_visitcount, FB.board_postdate, FB.closed_chk
 	</select>
 	<!-- 게시글 상세보기 (자게, 공지, 이벤트) -->
 	<select id="selectOneBoard"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
 		<!-- select * from freeboard where board_idx=#{board_idx} -->
-		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(R.closed_chk) AS closed_chk
+		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(FB.closed_chk) AS closed_chk
 			FROM freeboard FB
 			LEFT JOIN report R ON FB.board_idx = R.board_idx
 			WHERE FB.board_idx = #{board_idx}
 			GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, 
-					FB.board_contents, FB.board_ofile, FB.board_sfile, FB.board_visitcount, FB.board_postdate
+					FB.board_contents, FB.board_file, FB.board_visitcount, FB.board_postdate, FB.closed_chk
 	</select>
 	<!-- 신고내용 보여주기(board_idx가 같은 번호의 신고내용 전부 foreach 출력 -->
 	<select id="reportList"
@@ -43,8 +43,19 @@
 	</delete>
 	
 	<!-- (공지사항, 이벤트)게시글 등록하기 (다중파일업로드) -->
-	<insert id="insert" parameterType="global.dto.BoardDTO">
-		insert into freeboard where board_idx=#{board_idx} and category=#{category} 
+	<insert id="noticeInsert" 
+		parameterType="global.dto.BoardDTO">
+		insert into freeboard (	board_idx, 
+							    board_category, 
+							    mem_id, 
+							    board_title, 
+							    board_contents,
+							    board_file,               
+							    board_visitcount,       
+							    board_postdate ) 
+		values (bodycoding_seq.nextval, #{board_category}, #{mem_id}, 
+				#{board_title}, #{board_contents},#{board_file},
+				#{board_visitcount}, sysdate)
 	</insert>
 	
 	<!-- 게시글 수정하기 (자게, 공지, 이벤트)-->

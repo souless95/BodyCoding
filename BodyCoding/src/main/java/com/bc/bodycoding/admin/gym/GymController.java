@@ -148,7 +148,6 @@ public class GymController {
 			GymDTO gymDTO, MemberDTO memberDTO) throws Exception {
 		
 		try {
-			
 //			암호화된 비밀번호 변경용 
 			System.out.println(req.getParameter("mem_pass")); 
 			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
@@ -169,7 +168,7 @@ public class GymController {
 					GYM_DTAIL_IMG += saveFile(f) + ",";
 				}
 				GYM_DTAIL_IMG = GYM_DTAIL_IMG.substring(0, GYM_DTAIL_IMG.length()-1);
-				gymDTO.setGym_dtail_img(GYM_DTAIL_IMG);
+				gymDTO.setGym_detail_img(GYM_DTAIL_IMG);
 				result = gymdao.update(gymDTO);
 			}
 			

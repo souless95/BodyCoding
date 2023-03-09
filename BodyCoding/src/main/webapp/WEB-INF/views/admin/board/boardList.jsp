@@ -44,7 +44,7 @@
 												<td><a href="boardDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>
 												<td>${row.board_postdate }</td>
 												<td>
-													<c:if test="${not empty row.board_sfile }">
+													<c:if test="${not empty row.board_file }">
 														<i class="bi bi-files"></i>
 													</c:if>
 												</td>

@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import global.dto.ChatRoomDTO;
 
@@ -17,42 +19,30 @@ import global.dto.ChatRoomDTO;
 public class MChattingController {
 		
 	List<ChatRoomDTO> roomList = new ArrayList<ChatRoomDTO>();
+	/*for(ChatRoomDTO a : roomList) {
+		a.getRoomName();
+		a.getContent();
+		a.getRoomNumber();
+		a.getRegidate();
+	}*/
+	
 	static int roomNumber = 0;
 	
-//		@RequestMapping(value="WebSocketM.do", method=RequestMethod.GET)
-//		public String websocket(HttpServletRequest req, Model model) {
-//			model.addAttribute("member", req.getParameter("mem_id"));
-//			return "member/ChatM/WebSocketM";
-//		}
-//	
-//		@RequestMapping(value="WebChatM.do", method=RequestMethod.GET)
-//		public String chatting(HttpServletRequest req, Model model) {
-//			model.addAttribute("member", req.getParameter("mem_id"));
-//			return "member/ChatM/WebChatM";
-//		}
+	
 	@RequestMapping("/chat")
-	public ModelAndView chat() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("chat");
-		return mv;
+	public String chat(Model model, HttpServletRequest req) {
+		model.addAttribute("membername", req.getParameter("mem_name"));
+		return "chat";
 	}
 	
-	/**
-	 * 방 페이지
-	 * @return
-	 */
+	/*방 페이지*/
 	@RequestMapping("/room")
-	public ModelAndView room() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("room");
-		return mv;
+	public String room(Model model, HttpServletRequest req) {
+		model.addAttribute("membername", req.getParameter("mem_name"));
+		return "room";
 	}
 	
-	/**
-	 * 방 생성하기
-	 * @param params
-	 * @return
-	 */
+	/*방 생성하기*/
 	@RequestMapping("/createRoom")
 	public @ResponseBody List<ChatRoomDTO> createRoom(@RequestParam HashMap<Object, Object> params){
 		String roomName = (String) params.get("roomName");
@@ -65,33 +55,23 @@ public class MChattingController {
 		return roomList;
 	}
 	
-	/**
-	 * 방 정보가져오기
-	 * @param params
-	 * @return
-	 */
+	/*방 정보가져오기*/
 	@RequestMapping("/getRoom")
 	public @ResponseBody List<ChatRoomDTO> getRoom(@RequestParam HashMap<Object, Object> params){
 		return roomList;
 	}
 	
-	/**
-	 * 채팅방
-	 * @return
-	 */
+	/*채팅방*/
 	@RequestMapping("/moveChating")
-	public ModelAndView chating(@RequestParam HashMap<Object, Object> params) {
-		ModelAndView mv = new ModelAndView();
+	public String chating(@RequestParam HashMap<Object, Object> params, Model model) {
 		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
-		
-		List<ChatRoomDTO> new_list = roomList.stream().filter(o->o.getRoomNumber()==roomNumber).collect(Collectors.toList());
-		if(new_list != null && new_list.size() > 0) {
-			mv.addObject("roomName", params.get("roomName"));
-			mv.addObject("roomNumber", params.get("roomNumber"));
-			mv.setViewName("chat");
-		}else {
-			mv.setViewName("room");
+		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomNumber() == roomNumber).collect(Collectors.toList());
+		if (new_list != null && new_list.size() > 0) {
+		    model.addAttribute("roomName", params.get("roomName"));
+		    model.addAttribute("roomNumber", params.get("roomNumber"));
+		    return "chat";
+		} else {
+	    return "room";
 		}
-		return mv;
 	}
 }

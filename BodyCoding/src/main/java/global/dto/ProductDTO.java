@@ -67,6 +67,17 @@ public class ProductDTO {
 	//주문 상세 일련번호
 	private String order_detail_idx;
 	
+	//주문 총액
+	private String pay_method;
+	//주문 총액
+	private int total_price;
+	//적립 포인트
+	private int save_point;
+	//포인트 적용 후 최종 결제 금액
+	private int final_price;
+	//결제 처리 시, 확인용 상품 유형(멤버쉽,상품)
+	private String type;
+	
 	//결제 날짜
 	private String order_date;
 	//총 매출

@@ -14,15 +14,27 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AChattingController {
 
+//	@RequestMapping(value="WebSocketA.do", method=RequestMethod.GET)
+//	public String websocket() {
+//		return "admin/ChatA/WebSocketA";
+//	}
+//	
+//	@RequestMapping(value="WebChatA.do")
+//	public ModelAndView chatting(HttpServletRequest req, HttpServletResponse res) throws Exception {
+//		ModelAndView mav = new ModelAndView("/admin/ChatA/WebChatA");
+//		return mav;
+//	}
+	
 	@RequestMapping(value="WebSocketA.do", method=RequestMethod.GET)
-	public String websocket() {
+	public String websocket(HttpServletRequest req, Model model) {
+		model.addAttribute("member", req.getParameter("mem_id"));
 		return "admin/ChatA/WebSocketA";
 	}
 	
-	@RequestMapping(value="WebChatA.do")
-	public ModelAndView chatting(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		ModelAndView mav = new ModelAndView("/admin/ChatA/WebChatA");
-		return mav;
+	@RequestMapping(value="WebChatA.do", method=RequestMethod.GET)
+	public String chatting(HttpServletRequest req, Model model) {
+		model.addAttribute("member", req.getParameter("mem_id"));
+		return "admin/ChatA/WebChatA";
 	}
 	
 }

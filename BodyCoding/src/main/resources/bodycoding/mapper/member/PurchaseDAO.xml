@@ -46,7 +46,7 @@
 			sysdate, sysdate, #{product_idx})
 	</insert>
 
-	<insert id="insertOrderDetail"
+ 	<insert id="insertOrderDetail"
 		parameterType="global.dto.ProductDTO">
 		<selectKey keyProperty="order_idx" resultType="java.lang.String"
 			order="BEFORE">
@@ -58,4 +58,24 @@
 			#{product_count}, #{product_serial_num}, 'N')
 	</insert>
 
+	<insert id="insertPayAndUpdatePoint"
+		parameterType="global.dto.ProductDTO" statementType="CALLABLE">
+		<selectKey keyProperty="order_idx" resultType="int"
+			order="BEFORE">
+			select bodycoding_seq.currval-1 as order_idx from dual
+		</selectKey>
+		{ CALL 
+			PAY_AND_POINT_PROCESS (
+                 IN_TYPE 		 => #{type}
+                ,IN_MEM_ID 		 => #{mem_id}
+                ,IN_ORDER_IDX    => #{order_idx}
+                ,IN_TOTAL_PRICE  => #{total_price}
+                ,IN_USE_POINT    => #{use_point}
+                ,IN_FINAL_PRICE  => #{final_price}
+                ,IN_SAVE_POINT   => #{save_point}
+                ,IN_PAY_METHOD   => #{pay_method}
+            )
+		 }
+	</insert>
+	
 </mapper>

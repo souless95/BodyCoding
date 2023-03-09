@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.dto.ExDTO;
 import global.dto.MemberDTO;
+import global.dto.RoutineDTO;
 
 @Controller
 public class MemberController {
@@ -73,17 +74,57 @@ public class MemberController {
 
 	//상세보기 ml = memberlist
 	@RequestMapping("/memberdetailT.do")
-	public String trainermldeatil(Model model, HttpSession session, MemberDTO memberDTO, HttpServletRequest req) {
+	public String trainermldeatil(Model model, MemberDTO memberDTO,
+			HttpServletRequest req) {
 		String uDetail = req.getParameter("mem_id");
-		System.out.println(uDetail);
-		
+		model.addAttribute("mem_id", uDetail);
 		memberDTO.setMem_id(uDetail);
 		model.addAttribute("dto", memberdao.selectDT(memberDTO));
-		System.out.println(memberdao.selectDT(memberDTO));
+		
 		return "member/trainer/memberdetailT";
 	}
 	
+	@RequestMapping("/routine.do")
+	public String routine(Model model, HttpServletRequest req) {
+		String mem_id = req.getParameter("mem_id");
+		model.addAttribute("mem_id", mem_id);
+		return "member/trainer/routine";
+	}
 	
+	//새테이블 및 dto 추가된것 확인받기
+	@ResponseBody
+	@RequestMapping("/saveRoutine")
+	public RoutineDTO saveRoutine(RoutineDTO routineDTO) {
+
+		System.out.println(routineDTO);
+		String gumjng = routineDTO.getActname();
+		if(gumjng.equals(null) || gumjng.equals("")) {
+			memberdao.deleteRoutine(routineDTO);
+			RoutineDTO routineDTO2 = new RoutineDTO(); 
+			routineDTO2.setMem_id("error_id");
+			return routineDTO2;
+		}
+		else {
+			RoutineDTO nowRoutine = null;
+			int result = memberdao.selectRoutine(routineDTO);
+			System.out.println(result);
+			System.out.println(routineDTO);
+			
+			if(result == 0) {
+				memberdao.saveRoutine(routineDTO);
+				nowRoutine = memberdao.getRoutine(routineDTO);
+			}
+			else if(result == 1) {
+				memberdao.updateRoutine(routineDTO);
+				nowRoutine = memberdao.getRoutine(routineDTO);
+			}
+			else {
+				System.out.println("routine 테이블에 문제발생 의심됨.");
+			}
+			return nowRoutine;
+		}
+	}
+		
 	//운동기록 리스트
 	@RequestMapping(value="exrecord.do", method= RequestMethod.GET)
 	public String exrecord(MemberDTO memberDTO, Model model, HttpSession session) {
@@ -98,6 +139,29 @@ public class MemberController {
 		return "member/trainer/exrecord";
 	}
 	
+	@ResponseBody
+	@RequestMapping("/changeYoil")
+	public RoutineDTO changeYoil(RoutineDTO routineDTO) {
+		
+		RoutineDTO nowRoutine = memberdao.getRoutine(routineDTO);
+		
+		if(nowRoutine == null) {
+			RoutineDTO routineDTO2 = new RoutineDTO(); 
+			routineDTO2.setMem_id("error_id");
+			return routineDTO2;
+		}		
+		return nowRoutine;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/updateRoutine")
+	public RoutineDTO updateRoutine(RoutineDTO routineDTO) {
+		
+		memberdao.updateRoutine(routineDTO);
+		RoutineDTO nowRoutine = memberdao.getRoutine(routineDTO);
+		System.out.println(nowRoutine);
+		return nowRoutine;
+	}
 	
 	@RequestMapping(value="addexrecord.do", method=RequestMethod.GET)
 	public String shoexrecord(ExDTO exDTO) {

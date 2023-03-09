@@ -83,7 +83,7 @@ function logoutcheck(){
 							<ul> 
 									<li><a href="#">자유게시판</a></li>
 								<li><a href="#">Q&A</a></li>
-								<li><a href="./Chat/WebSocket.do?mem_id=${UserInfo.mem_id}">1:1문의(웹소켓 채팅)</a></li>
+								<li><a href="../../room">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
 						

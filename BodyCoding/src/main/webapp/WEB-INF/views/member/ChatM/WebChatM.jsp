@@ -53,7 +53,7 @@ window.onload = function() {
 }
 //클라이언트가 접속하면 로그윈도우에 메세지를 출력한다.
 function wsOpen(event){
-   wirteResponse("연결성공");
+   writeResponse("연결성공");
 }
 //서버로 메세지가 도착했을때 호출
 function wsMessage(event){
@@ -98,13 +98,13 @@ function wsMessage(event){
    }
 }
 //접속이 종료되었을때 호출
-function wsClose(evnet){
-   wirteResponse("대화 종료");
+function wsClose(event){
+   writeResponse("대화 종료");
 }
 //에러가 발생했을때 호출
-function wsError(evnet){
-   wirteResponse("에러 발생");
-   wirteResponse(event.data);
+function wsError(event){
+   writeResponse("에러 발생");
+   writeResponse(event.data);
 }
 //메세지 출력시 디자인을 적용하기 위한 함수. 메세지를 div태그로 감싸준다.
 function makeBalloon(id, cont){
@@ -150,14 +150,14 @@ function writeResponse(text){
        <div>상대가보낸거</div>
     </div>
     <table class="table table-bordered">
-       <%-- <tr>
+       <tr>
           <td>방명:</td>
           <td>${param.chat_room }</td>
        </tr>
        <tr>
           <td>닉네임:</td>
           <td>${param.chat_id }</td>
-       </tr> --%>
+       </tr>
        <tr>
           <td>메시지:</td>
           <td>
@@ -174,7 +174,7 @@ function writeResponse(text){
 
        
     <!-- 전송된 모든 내역이 그대로 디스플레이 되는 부분 -->
-   <div id="logWindow" class="border border-danger" style="/*히든처리용 display:none; */ height:130px; overflow:auto;"></div>
+   <div id="logWindow" class="border border-danger" style=" height:130px; overflow:auto;"></div>
 </div>
 </body>
 </html>

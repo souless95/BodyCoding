@@ -38,9 +38,15 @@
 	<ul>
 		<li><a href="delete">탈퇴</a></li>
 	</ul>
+	<!-- 임시. 작업이후 삭제 예정 -->
+	<ul>
+		<li><a href="routine.do">운동루틴등록</a></li>
+	</ul>
 	<ul>
 		<li><a href="chart">차트</a></li>
 	</ul>
-	
+	<ul>
+		<li><a href="room">채팅</a></li>
+	</ul>
 </body>
 </html>

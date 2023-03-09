@@ -15,4 +15,8 @@ public interface boardService {
 	public int update(BoardDTO boardDTO); //게시글 수정하기
 	public int delete(BoardDTO boardDTO); //게시글 삭제하기
 	
+	public List<BoardDTO> selectNotice(); //공지사항 리스트
+	
+	public List<BoardDTO> reportList(BoardDTO boardDTO); //신고내용 리스트
+	
 }

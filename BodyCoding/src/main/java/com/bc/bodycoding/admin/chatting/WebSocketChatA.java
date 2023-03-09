@@ -1,4 +1,4 @@
-package com.bc.bodycoding.chatting;
+package com.bc.bodycoding.admin.chatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @ServerEndpoint("/EchoServer.do")
-public class WebSocketChat {
+public class WebSocketChatA {
 private static final List<Session> sessionList = new ArrayList<Session>();
 	
 	//생성자 메서드
-	public WebSocketChat() {
+	public WebSocketChatA() {
 		System.out.println("웹소켓(서버) 객체생성");
 	}
 	
@@ -48,7 +48,7 @@ private static final List<Session> sessionList = new ArrayList<Session>();
 	private void sendAllSessionToMessage(Session self, String message) {
 		try {
 			//접속된 클라이언트의 정보가 저장된 List컬렉션을 통해 반복한다.
-			for(Session session : WebSocketChat.sessionList) {
+			for(Session session : WebSocketChatA.sessionList) {
 				//매개변수로 전송된 Session객체와의 비교를 통해 자신을 제외한
 				//나머지 클라이언트에게만 메세지를 전송한다.
 				if(!self.getId().equals(session.getId())) {

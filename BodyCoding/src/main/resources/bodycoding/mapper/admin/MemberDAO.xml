@@ -55,6 +55,36 @@
 		WHERE ms.user_id = #{mem_id}
 	</select>
 	
+	<select id="selectRoutine"
+		parameterType="global.dto.RoutineDTO"
+		resultType="int">
+		SELECT count(*) FROM ROUTINE WHERE mem_id = #{mem_id} and yoil = #{yoil}
+	</select>
+	
+	<insert id="saveRoutine"
+	parameterType="global.dto.RoutineDTO">
+		INSERT INTO ROUTINE 
+    	VALUES (bodycoding_seq.nextval, #{mem_id}, #{yoil}, #{actname}, #{atime}, #{aset})
+	</insert>
+	
+	<update id="updateRoutine"
+		parameterType="global.dto.RoutineDTO">
+		UPDATE ROUTINE SET actname = #{actname}, atime = #{atime}, aset = #{aset}
+		WHERE mem_id=#{mem_id} and yoil=#{yoil}
+	</update>
+	
+	<select id="getRoutine"
+		parameterType="global.dto.RoutineDTO"
+		resultType="global.dto.RoutineDTO">
+		SELECT * FROM ROUTINE WHERE mem_id = #{mem_id} and yoil = #{yoil}
+	</select>
+	
+	<delete id="deleteRoutine"
+		parameterType="global.dto.RoutineDTO">
+		DELETE FROM ROUTINE
+		WHERE mem_id=#{mem_id} and yoil=#{yoil}
+	</delete>
+	
 	<insert id="insertexrecord" parameterType="global.dto.ExDTO">
 		INSERT INTO TRAINING_LOG (
 			TRAINING_LOG_IDX, training_date, user_id, training_comment, trainer_id)

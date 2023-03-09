@@ -9,8 +9,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h2>날짜별 매출 현황</h2>
-<canvas id="myChart" style="width:50%; height:50%;"></canvas>
+<h2>sup_날짜별 매출 현황</h2>
+<canvas id="myChart_supmain" style="width:50%; height:50%;"></canvas>
 
 <script>
 const labels = ['1월', '2월', '3월', '4월', '5월', '6월'
@@ -93,7 +93,7 @@ const config = {
 	} 
 };
 
-const myChart = new Chart(document.getElementById('myChart'),config); 
+const myChart = new Chart(document.getElementById('myChart_supmain'),config); 
 </script>
 </body>
 </html>

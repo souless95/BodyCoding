@@ -7,6 +7,7 @@
 	
 <mapper namespace="com.bc.bodycoding.admin.chart.SalesChartService">
 
+<!-- sup차트 -->
 <!-- 전지점 월별 매출액 -->
 <select id="totalgym_totalsales"
 	parameterType="global.dto.ProductDTO"
@@ -39,6 +40,7 @@ select gym_code from member
     order by gym_code
 </select>
 
+<!-- 각지점의 월별 매출액 -->
 <select id="gym_sales"
 	parameterType="String"
 	resultType="global.dto.ProductDTO">
@@ -66,10 +68,68 @@ order by chart_order_date
 </select>
 
 
+<!--sub차트  -->
+<!-- mem_id이용하여 지점코드 구하기 -->
+<select id="gym_code"
+	parameterType="String"
+	resultType="global.dto.MemberDTO">
+select gym_code, mem_name from member
+    where authority like 'ROLE_ADMIN_SUB' 
+    	and enabled = 1 and mem_id =#{mem_id}
+</select> 
 
+<!-- 모든상품에 대한 월별 총매출액 -->
+<select id="totalcategory_totalsales"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+select chart_order_date as order_date, sum(chart_product_price) as sales, chart_gym_name as mem_name
+from
+    (select order_log.order_status as chart_order_status, 
+           to_char(order_log.order_date,'YYYY-MM') as chart_order_date,
+           order_log.order_idx as chart_order_idx,
+           membership.gym_code as chart_gym_code,
+           membership.product_idx as chart_product_idx,
+           product.product_category as chart_product_category,
+           product.product_price as chart_product_price,
+           member.mem_name as chart_gym_name
+        from  
+            order_log inner join membership on order_log.order_idx = membership.order_idx
+            inner join product on membership.product_idx=product.product_idx
+            inner join member on membership.gym_code=member.gym_code
+        where order_log.order_status in ('결제완료','수령완료') 
+            and product.product_category in('GX','헬스','필라테스','PT','요가')
+            and member.authority like 'ROLE_ADMIN_SUB' 
+            and member.enabled = 1
+            and membership.gym_code = #{gym_code})
+group by chart_order_date,chart_gym_name
+order by chart_order_date
+</select> 
 
-
-
-
+<!-- 상품에 대한 월별 총매출액 -->
+<select id="category_sales"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+select chart_order_date as order_date, sum(chart_product_price) as sales, chart_gym_name as mem_name
+from
+    (select order_log.order_status as chart_order_status, 
+           to_char(order_log.order_date,'YYYY-MM') as chart_order_date,
+           order_log.order_idx as chart_order_idx,
+           membership.gym_code as chart_gym_code,
+           membership.product_idx as chart_product_idx,
+           product.product_category as chart_product_category,
+           product.product_price as chart_product_price,
+           member.mem_name as chart_gym_name
+        from  
+            order_log inner join membership on order_log.order_idx = membership.order_idx
+            inner join product on membership.product_idx=product.product_idx
+            inner join member on membership.gym_code=member.gym_code
+        where order_log.order_status in ('결제완료','수령완료') 
+            and product.product_category like #{product_category}
+            and member.authority like 'ROLE_ADMIN_SUB' 
+            and member.enabled = 1
+            and membership.gym_code = #{gym_code})
+group by chart_order_date,chart_gym_name
+order by chart_order_date
+</select>
 
 </mapper>

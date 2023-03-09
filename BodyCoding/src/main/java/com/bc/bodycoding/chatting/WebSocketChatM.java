@@ -1,4 +1,4 @@
-package com.bc.bodycoding.main.chatting;
+package com.bc.bodycoding.chatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,4 +85,5 @@ private static final List<Session> sessionList = new ArrayList<Session>();
 		sessionList.remove(session);
 		System.out.println("접속종료:"+session.getId());
 	}
+	
 }

@@ -28,7 +28,7 @@ import global.dto.ProductDTO;
 
 @Controller
 @SessionAttributes({ "mem_id", "trainer_id", "product_idx", "gym_code", "product_name", "use_point", "product_count",
-		"type" })
+		"type","product_price" })
 public class PurchaseController {
 
 	@Autowired
@@ -80,6 +80,7 @@ public class PurchaseController {
 		int product_price = productDTO.getProduct_price();
 		String mem_id = session.getAttribute("UserEmail").toString();
 		String product_count;
+		int tCount = 0;
 
 		// 멤버쉽과 상품 공통으로 저장할 데이터 세팅
 		model.addAttribute("type", type);
@@ -110,7 +111,13 @@ public class PurchaseController {
 			if (!(pInt == -1)) {
 				String pList[] = product_name.split(",");
 				product_name = pList[0] + "외 " + (pList.length - 1) + "건";
+				String cList[] = product_count.split(",");
+				for(int i=0; i<cList.length; i++) {
+					tCount += Integer.parseInt(cList[i]);
+				}
+				
 				System.out.println("현재 상품 이름:" + product_name);
+				
 			}
 
 		}
@@ -120,6 +127,7 @@ public class PurchaseController {
 
 		try {
 			// 요청 url 생성
+
 			URL payUrl = new URL("https://kapi.kakao.com/v1/payment/ready");
 
 			// 커넥션 객체 생성
@@ -135,12 +143,19 @@ public class PurchaseController {
 			payUrlCon.setDoOutput(true);
 
 			// 전송할 파라미터 정의
-			String kParam = "cid=TC0ONETIME" + "&partner_order_id=partner_order_id" + "&partner_user_id=partner_user_id"
-					+ "&item_name=" + product_name + "&quantity=" + product_count + "&total_amount=" + product_price
-					+ "&tax_free_amount=0" + "&approval_url=http://localhost:8586/purchaseApproval.do"
+			String kParam = "cid=TC0ONETIME" 
+					+ "&partner_order_id=partner_order_id" 
+					+ "&partner_user_id=partner_user_id"
+					+ "&item_name=" + product_name 
+					+ "&quantity=" + tCount 
+					+ "&total_amount=" + product_price
+					+ "&tax_free_amount=0" 
+					+ "&approval_url=http://localhost:8586/purchaseApproval.do"
 					+ "&fail_url=http://localhost:8586/purchaseFail.do"
 					+ "&cancel_url=http://localhost:8586/purchaseFail.do";
-
+			
+			System.out.println(kParam);
+			
 			OutputStream oStream = payUrlCon.getOutputStream();
 			DataOutputStream dataStream = new DataOutputStream(oStream);
 			dataStream.writeBytes(kParam);
@@ -175,15 +190,19 @@ public class PurchaseController {
 			@ModelAttribute("trainer_id") String trainer_id, @ModelAttribute("product_idx") String product_idx,
 			@ModelAttribute("gym_code") String gym_code, @ModelAttribute("product_name") String product_name,
 			@ModelAttribute("use_point") String use_point, @ModelAttribute("product_count") String product_count,
-			@ModelAttribute("type") String type) {
-
+			@ModelAttribute("type") String type, @ModelAttribute("product_price") String product_price) {
+		
+		
 		try {
 			ProductDTO productDTO = new ProductDTO();
 
 			productDTO.setMem_id(mem_id);
+			productDTO.setType(type);
+			productDTO.setPay_method("카카오페이");
 
 			int result1 = 0;
 			int result2 = 0;
+			int result3 = 0;
 
 			if (type.equals("멤버쉽")) {
 
@@ -192,30 +211,57 @@ public class PurchaseController {
 				productDTO.setTrainer_id(trainer_id);
 				productDTO.setProduct_idx(product_idx);
 				productDTO.setGym_code(gym_code);
-
+				
 				result1 = purchaseDao.insertOrder(productDTO);
 				result2 = purchaseDao.insertMembership(productDTO);
 			} 
 			else {
-
+				
 				System.out.println("상품 성공 후 DB 처리 단계 진입");
 
 				productDTO.setUse_point(Integer.parseInt(use_point));
-
+				
+				System.out.println("여기1");
+				
 				String p_idx[] = product_idx.split(",");
 				String p_count[] = product_count.split(",");
-
+				
+				System.out.println("여기255");
+				
+				result1 = purchaseDao.insertOrder(productDTO);
+				
+				System.out.println("여기2");
+				
 				for (int i = 0; i < p_idx.length; i++) {
 					productDTO.setProduct_idx(p_idx[i]);
 					productDTO.setProduct_count(p_count[i]);
 					productDTO.setProduct_serial_num(randomNum());
-					result1 = purchaseDao.insertOrder(productDTO);
-					result2 = purchaseDao.insertOrderDetail(productDTO);
-				}
-
+					result2 = purchaseDao.insertOrderDetail(productDTO); 
+					System.out.println("for문");
+				}		
+				
+				
+				
 			}
+			
 
-			if (result1 == 1 && result2 == 1) {
+			System.out.println("여어어어");
+			int final_price = Integer.parseInt(product_price)-Integer.parseInt(use_point);
+			System.out.println("여어어어3333");
+			int save_point = (int)Math.floor((double)final_price / 0.05);
+			productDTO.setTotal_price(Integer.parseInt(product_price));
+			System.out.println("여기3");
+			productDTO.setFinal_price(final_price);
+			System.out.println("여기4");
+			productDTO.setSave_point(save_point);
+			System.out.println("적립포인트는"+save_point);
+			System.out.println("여기5");
+			System.out.println(productDTO);
+			result3 = purchaseDao.insertPayAndUpdatePoint(productDTO);
+			System.out.println("여기6");
+			
+			
+			if (result1 == 1 && result2 == 1 && result3 == 1) {
 				System.out.println("주문성공");
 			}
 		} 

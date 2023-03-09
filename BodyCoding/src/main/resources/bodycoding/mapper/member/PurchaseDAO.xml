@@ -4,48 +4,78 @@
 <!DOCTYPE mapper 
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+
 <mapper namespace="com.bc.bodycoding.purchase.IPurchaseService">
 
 	<select id="gymSelect" parameterType="global.dto.MemberDTO"
-		resultType="global.dto.MemberDTO">
+		resultType="global.dto.MemberDTO"> 
 		SELECT gym_code, mem_name FROM member WHERE authority='ROLE_ADMIN_SUB'
 	</select>
-	
+
 	<select id="productSelect" parameterType="global.dto.ProductDTO"
 		resultType="global.dto.ProductDTO">
 		SELECT * FROM product WHERE product_category=#{product_category}
 	</select>
-	
+
 	<select id="trainerSelect" parameterType="global.dto.ProductDTO"
 		resultType="global.dto.ProductDTO">
 		SELECT mem_name, mem_img ,mem_id
-    		FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
-    	INNER JOIN (SELECT * FROM lesson WHERE lesson_category=#{lesson_category}) L
-    	ON M.mem_id=L.trainer_id
+			FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
+		INNER JOIN (SELECT * FROM lesson WHERE lesson_category=#{lesson_category}) L
+			ON M.mem_id=L.trainer_id
 	</select>
-	
- 	<insert id="insertOrder" parameterType="global.dto.ProductDTO">
- 		<if test="use_point!='' ">
-		INSERT INTO order_log VALUES (bodycoding_seq.nextval,#{mem_id},0,'결제완료',sysdate,'Y')
- 		</if>
-		INSERT INTO order_log VALUES (bodycoding_seq.nextval,#{mem_id},#{use_point},'결제완료',sysdate,'Y')
+
+	<insert id="insertOrder" parameterType="global.dto.ProductDTO">
+		<if test="use_point!='' ">
+		INSERT INTO order_log VALUES
+			(bodycoding_seq.nextval,#{mem_id},0,'결제완료',sysdate,'Y')
+		</if>
+		INSERT INTO order_log VALUES
+			(bodycoding_seq.nextval,#{mem_id},#{use_point},'결제완료',sysdate,'Y')
 	</insert>
-	
-	<insert id="insertMembership" parameterType="global.dto.ProductDTO">
-		INSERT INTO membership 
-    		(membership_idx, order_idx, gym_code, user_id, trainer_id, 
-    			 membership_start, membership_end, product_idx)
-    	VALUES (bodycoding_seq.nextval,bodycoding_seq.nextval, #{gym_code}, #{mem_id},
-    		#{trainer_id}, sysdate, sysdate, #{product_idx})
-	</insert>	
-	
-	<insert id="insertOrderDetail" parameterType="global.dto.ProductDTO">
-		INSERT INTO order_log_detail 
-    		(order_detail_idx, order_idx, product_idx, product_count, product_serial_num, 
-    			 receive_check)
-    	VALUES (bodycoding_seq.nextval,bodycoding_seq.nextval, #{product_idx}, #{product_count},
-    		#{product_serial_num}, #{receive_check})
-	</insert>	
+
+	<insert id="insertMembership"
+		parameterType="global.dto.ProductDTO">
+		<selectKey keyProperty="order_idx" resultType="java.lang.String"
+			order="BEFORE">
+			select bodycoding_seq.currval as order_idx from dual
+		</selectKey>
+		INSERT INTO membership
+			(membership_idx, order_idx, gym_code, user_id, trainer_id, membership_start, membership_end, product_idx)
+		VALUES (bodycoding_seq.nextval,#{order_idx}, #{gym_code}, #{mem_id}, #{trainer_id}, 
+			sysdate, sysdate, #{product_idx})
+	</insert>
+
+ 	<insert id="insertOrderDetail"
+		parameterType="global.dto.ProductDTO">
+		<selectKey keyProperty="order_idx" resultType="java.lang.String"
+			order="BEFORE">
+			select bodycoding_seq.currval as order_idx from dual
+		</selectKey>
+		INSERT INTO order_log_detail
+			(order_detail_idx, order_idx, product_idx, product_count, product_serial_num, receive_check)
+		VALUES (bodycoding_seq.nextval,#{order_idx}, #{product_idx}, 
+			#{product_count}, #{product_serial_num}, 'N')
+	</insert>
+
+	<insert id="insertPayAndUpdatePoint"
+		parameterType="global.dto.ProductDTO" statementType="CALLABLE">
+		<selectKey keyProperty="order_idx" resultType="int"
+			order="BEFORE">
+			select bodycoding_seq.currval-1 as order_idx from dual
+		</selectKey>
+		{ CALL 
+			PAY_AND_POINT_PROCESS (
+                 IN_TYPE 		 => #{type}
+                ,IN_MEM_ID 		 => #{mem_id}
+                ,IN_ORDER_IDX    => #{order_idx}
+                ,IN_TOTAL_PRICE  => #{total_price}
+                ,IN_USE_POINT    => #{use_point}
+                ,IN_FINAL_PRICE  => #{final_price}
+                ,IN_SAVE_POINT   => #{save_point}
+                ,IN_PAY_METHOD   => #{pay_method}
+            )
+		 }
+	</insert>
 	
 </mapper>

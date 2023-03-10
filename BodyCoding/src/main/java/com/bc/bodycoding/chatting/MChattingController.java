@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,17 +18,21 @@ import global.dto.ChatRoomDTO;
 
 @Controller
 public class MChattingController {
-		
+	
+	@Autowired
+	chatService chattingdao;
+	
 	List<ChatRoomDTO> roomList = new ArrayList<ChatRoomDTO>();
-	/*for(ChatRoomDTO a : roomList) {
-		a.getRoomName();
-		a.getContent();
-		a.getRoomNumber();
-		a.getRegidate();
-	}*/
 	
 	static int roomNumber = 0;
 	
+	@ResponseBody
+	@RequestMapping("/saveChatLog")
+	public String savedb(HttpServletRequest req) {
+		
+//		chattingdao.insertchat();
+		return "";
+	}
 	
 	@RequestMapping("/chat")
 	public String chat(Model model, HttpServletRequest req) {

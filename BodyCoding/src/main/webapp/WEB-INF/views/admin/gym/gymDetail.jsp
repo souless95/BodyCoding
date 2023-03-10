@@ -176,12 +176,12 @@ window.onload = function() {
 							<td align="center">${dto.rtime_holy_end }</td>
 						</tr>
 					</table>
-					
-					<h4>운영시간</h4>
+					<!-- 이건 뭐야? -->
+					<h4>지점 사진</h4>
 					<table class="table" border=2>
 						<tr>
 							<td>
-							<span id="previewContainer" style="padding:10px;"></span>
+								<span id="previewContainer" style="padding:10px;"></span>
 							</td>
 						</tr>
 					</table>

@@ -206,7 +206,6 @@ public class MemberController {
 	@RequestMapping(value="editexrecord.do", method=RequestMethod.POST)
 	public String editrecord2(MemberDTO memberDTO) {
 		
-		
 		System.out.println(memberDTO);
 		
 		int result = memberdao.editexrecord(memberDTO);

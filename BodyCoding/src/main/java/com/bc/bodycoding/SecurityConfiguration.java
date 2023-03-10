@@ -27,22 +27,28 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
-		//권한 부족할 경우
 		http.authorizeRequests()
 			.antMatchers("/").permitAll()
 			.antMatchers("/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
-			.antMatchers("/admin/gym/gymRegist").hasRole("ADMIN_SUPER")
-			.antMatchers("/admin/gym/gymEdit").hasRole("ADMIN_SUB")
-			.antMatchers("/admin/trainer/trainerRegist").hasRole("ADMIN_SUB")
-         	.antMatchers("/admin/trainer/trainerEdit").hasRole("ADMIN_SUB")
-			.antMatchers("/admin/product/productReigst").hasRole("ADMIN_SUPER")
-         	.antMatchers("/admin/product/productEdit").hasRole("ADMIN_SUPER")
-			.antMatchers("/admin/product/stockList").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER")
+			.antMatchers("/gymadminlist.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 		//지점리스트 접근
+			.antMatchers("/admin/gym/gymRegist").hasRole("ADMIN_SUPER") 					//지점 등록 접근
+			.antMatchers("/admin/gym/gymEdit").hasRole("ADMIN_SUB") 						//지점 수정 접근 ( + 본인의 지점만 수정가능)
+			.antMatchers("/admin/trainer/trainerRegist").hasRole("ADMIN_SUB") 				//트레이너 등록 접근
+         	.antMatchers("/admin/trainer/trainerEdit").hasRole("ADMIN_SUB") 				// 트레이너 수정 접근( + 본인 소속만 수정가능)
+			.antMatchers("/admin/product/productReigst").hasRole("ADMIN_SUPER") 			//상품 등록 접근
+         	.antMatchers("/admin/product/productEdit").hasRole("ADMIN_SUPER") 				// 상품 수정 접근
+			.antMatchers("/admin/product/stockList").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") //재고 리스트 접근
+			.antMatchers("/boardList.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 			//게시판 리스트 접근
+			.antMatchers("/boardDetail.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 			//게시판 상세페이지 접근
+			//게시글 수정 페이지 접근
+			.antMatchers("/noticeList.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 			//공지사항 리스트 접근
+			.antMatchers("/noticeDetail.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 		//공지사항 상세페이지 접근
+			//공지사항 작성 페이지 접근
+			//공지사항 수정 페이지 접근
+			.antMatchers("/admin/**").hasAnyRole("ADMIN_SUPER", "ADMIN_SUB") 
+			.antMatchers("/**").permitAll()
 //         	.antMatchers("/admin/매출관리/**").hasRole("ADMIN_SUPER")
 //         	.antMatchers("/admin/Q&A/qnaAnswer").hasRole("ADMIN_SUB")
-//			.antMatchers("/admin/board/**").hasAnyRole("ADMIN_SUPER", "ADMIN_SUB")
-			.antMatchers("/admin/**").hasAnyRole("ADMIN_SUPER", "ADMIN_SUB")
-			.antMatchers("/**").permitAll()
 			.anyRequest().authenticated();
 
 		// 로그인 페이지 커스터마이징

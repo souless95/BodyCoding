@@ -50,9 +50,8 @@ public class boardController {
 	}
 	//게시글에 답변달기
 	
-	//게시글 수정하기
 	
-	//게시글 삭제하기(자유게시판, 공지사항, 이벤트)
+	//자유게시판 삭제하기
 	@RequestMapping("/boardDelete.do")
 	public String delete(BoardDTO boardDTO) {
 		int result = boarddao.delete(boardDTO);
@@ -80,8 +79,16 @@ public class boardController {
 		return "admin/board/noticeDetail";
 	}
 	
+	//공지사항 삭제하기
+		@RequestMapping("/noticeDelete.do")
+		public String noticeDelete(BoardDTO boardDTO) {
+			int result = boarddao.delete(boardDTO);
+			if(result==1) System.out.println("삭제되었습니다.");
+			return "redirect:noticeList.do";
+		}
+	
 	//공지사항 작성 페이지로 이동
-	@RequestMapping(value = "admin/board/noticeInsert", method = RequestMethod.GET)
+	@RequestMapping(value = "/noticeInsert.do", method = RequestMethod.GET)
 	public String noticeIn(Model model, Principal principal) throws Exception {
 		
 		//작성할 놈 이름 받아오기!
@@ -95,46 +102,56 @@ public class boardController {
 	}
 	
 	//공지사항 작성
+//	@RequestMapping(value="/noticeInsert.do", method=RequestMethod.POST)
+//	public String noticeInsert(BoardDTO boardDTO, Principal principal, MultipartFile board_file, MultipartHttpServletRequest req) {
+//	      
+//	    String mem_id = principal.getName();
+//	    boardDTO.setMem_id(mem_id);
+//	    
+//	    System.out.println("작성하는 곳에서 받는 이름2 : "+ mem_id);
+//	      
+//	    int result = boarddao.noticeInsert(boardDTO);
+//	    if(result==1)
+//	    
+//		System.out.println("DTO" + boardDTO);
+//	    System.out.println("게시글 등록이 완료되었습니다.");
+//	         
+//	    return "redirect:/noticeList.do";
+//	}
+//	//공지사항 작성
 	@RequestMapping(value="/noticeInsert.do", method=RequestMethod.POST)
 	public String noticeInsert(BoardDTO boardDTO, Principal principal) {
-	      
-	    String mem_id = principal.getName();
-	    System.out.println(mem_id);
-	    boardDTO.setMem_id(mem_id);
-	      
-	    int result = boarddao.noticeInsert(boardDTO);
-	    if(result==1)
-	            
-	    System.out.println("게시글 등록이 완료되었습니다.");
-	         
-	    return "redirect:Freeboard.do";
+		
+		String mem_id = principal.getName();
+		boardDTO.setMem_id(mem_id);
+		
+		System.out.println("작성하는 곳에서 받는 이름2 : "+ mem_id);
+		
+		int result = boarddao.noticeInsert(boardDTO);
+		if(result==1)
+			
+			System.out.println("DTO" + boardDTO);
+		System.out.println("게시글 등록이 완료되었습니다.");
+		
+		return "redirect:/noticeList.do";
 	}
+	
 //	@RequestMapping(value = "/noticeInsert.do", method = RequestMethod.POST)
-//	public String noticeInsert(
-//			BoardDTO boardDTO, Model model, Principal principal) throws IOException, Exception {
-//		
+//	public String noticeInsert(MultipartFile[] uploadfiles, Model model, MultipartHttpServletRequest req, 
+//								BoardDTO boardDTO, Principal principal) throws IOException, Exception {
 //		
 //		String mem_id = principal.getName();
-//		System.out.println("공지작성하기 위해 받아온 이름2 : " + mem_id);
 //		boardDTO.setMem_id(mem_id);
 //		
-//		int result = boarddao.noticeInsert(boardDTO);
+//		System.out.println("공지작성하기 위해 받아온 이름2 : " + mem_id);
 //		
-//		System.out.println("result " + result);
+//		
 //		
 //		System.out.println("DTO" + boardDTO);
 //		
-//		boardDTO.setBoard_idx(req.getParameter("board_idx"));
-//		boardDTO.setBoard_category(req.getParameter("board_category"));
-//		boardDTO.setMem_id(mem_id);
-//		boardDTO.setBoard_title(req.getParameter("board_title"));
-//		boardDTO.setBoard_category(req.getParameter("board_contents"));
-//		boardDTO.setBoard_file(req.getParameter("board_file"));
-//		boardDTO.setBoard_postdate(req.getParameter("board_postdate"));
-//		System.out.println(boardDTO); 
-//		
 //		try {
-//			int result;
+//			
+//			int result = boarddao.noticeInsert(boardDTO);
 //			
 //			String board_img = "";
 //			if (uploadfiles[0].isEmpty()) {
@@ -165,7 +182,7 @@ public class boardController {
 //		
 //		return "redirect:/noticeList.do";
 //	}
-	
+//	
 //	public String saveFile(MultipartFile file) {
 //		UUID uuid = UUID.randomUUID();
 //		String saveName = uuid + "_" + file.getOriginalFilename();

@@ -50,7 +50,7 @@
 				        </tr>
 				    </table>
 				    <br />
-		            <button type="button" class="btn btn-primary" onclick="location.href='boardDelete.do?board_idx=${dto.board_idx }'">
+		            <button type="button" class="btn btn-primary" onclick="location.href='noticeDelete.do?board_idx=${dto.board_idx }'">
 						삭제
 					</button>
 		            <button type="button" class="btn btn-primary" onclick="location.href='boardEdit.do?board_idx=${dto.board_idx }'">

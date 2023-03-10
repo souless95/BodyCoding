@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+	체크박스가 체크된 것만 공지사항이 보이도록  처리 
+	closed_chk --> Y인 것만 보이도록 c:if하면 되려나	
+	*/
+</script>
 </head>
 <body>
 	<!-- top메뉴  -->
@@ -52,7 +58,7 @@
 							</tbody>
 						</table>
 						
-						<button type="button" class="btn btn-primary" onclick="location.href='admin/board/noticeInsert'">공지 작성</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='/noticeInsert.do'">공지 작성</button>
 						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
 					</div>
 				</div>

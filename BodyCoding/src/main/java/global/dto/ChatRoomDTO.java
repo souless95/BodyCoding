@@ -1,22 +1,17 @@
 package global.dto;
 
+import java.util.Date;
+
+import lombok.Data;
+
+@Data
 public class ChatRoomDTO {
 
-	int roomNumber;
-	String roomName;
-	
-	public int getRoomNumber() {
-		return roomNumber;
-	}
-	public void setRoomNumber(int roomNumber) {
-		this.roomNumber = roomNumber;
-	}
-	public String getRoomName() {
-		return roomName;
-	}
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
+	private int roomNumber;
+	private String roomName;
+	private String mem_name;
+	private String content;
+	private Date regidate;
 	
 	@Override
 	public String toString() {

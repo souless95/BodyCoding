@@ -15,6 +15,7 @@ public class BoardDTO {
 	private String board_file;
 	private int board_visitcount; //조회수
 	private Date board_postdate;
+	private String closed_chk; //비공개 여부
 	
 	//신고용
 	private int count; //신고횟수
@@ -22,7 +23,6 @@ public class BoardDTO {
 	private int report_idx; //신고번호
 	private String reporter; //신고자
 	private String report_content; //신고내용
-	private String closed_chk; //비공개 여부
 	private Date report_date; //신고일
 	
 	

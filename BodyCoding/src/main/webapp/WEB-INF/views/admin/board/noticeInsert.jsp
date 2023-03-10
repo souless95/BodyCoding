@@ -44,9 +44,7 @@
 					        <tr>
 					        	<th colspan="2">
 									<!-- multiple 속성추가 -->
-									<!-- 
 								   <input type="file" id="board_file" name="board_file"/>
-								    -->
 					        	</th>
 					        </tr>
 					    </table>

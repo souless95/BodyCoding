@@ -103,39 +103,72 @@ public class boardController {
 	}
 	
 	//공지사항 작성
-//	@RequestMapping(value="/noticeInsert.do", method=RequestMethod.POST)
-//	public String noticeInsert(BoardDTO boardDTO, Principal principal, MultipartFile board_file, MultipartHttpServletRequest req) {
-//	      
-//	    String mem_id = principal.getName();
-//	    boardDTO.setMem_id(mem_id);
-//	    
-//	    System.out.println("작성하는 곳에서 받는 이름2 : "+ mem_id);
-//	      
-//	    int result = boarddao.noticeInsert(boardDTO);
-//	    if(result==1)
-//	    
-//		System.out.println("DTO" + boardDTO);
-//	    System.out.println("게시글 등록이 완료되었습니다.");
-//	         
-//	    return "redirect:/noticeList.do";
-//	}
-//	//공지사항 작성
 	@RequestMapping(value="/noticeInsert.do", method=RequestMethod.POST)
-	public String noticeInsert(BoardDTO boardDTO, Principal principal) {
+	public String noticeInsert(Principal principal, MultipartFile board_file, MultipartHttpServletRequest req) {
+	    
+		BoardDTO boardDTO = new BoardDTO();
 		
-		String mem_id = principal.getName();
-		boardDTO.setMem_id(mem_id);
-		
-		System.out.println("작성하는 곳에서 받는 이름2 : "+ mem_id);
-		
-		int result = boarddao.noticeInsert(boardDTO);
-		if(result==1)
+	    String mem_id = principal.getName();
+//	    boardDTO.setMem_id(mem_id);
+	    
+	    System.out.println("작성하는 곳에서 받는 이름2 : "+ mem_id);
+	      
+	    if (board_file.isEmpty()) {
+			boardDTO.setBoard_file("");
+		}
+	    else {
+	    	try {
+	    		String origName = board_file.getOriginalFilename();
+				String uuid = UUID.randomUUID().toString();
+				String extension = origName.substring(origName.lastIndexOf("."));
+				String savedName = uuid + extension;
+				String path = ResourceUtils
+						.getFile("classpath:static/uploads/board")
+						.toPath().toString();
+				
+				System.out.println("파일업로드 경로:"+ path);
+				
+				File fileInfo = new File(path, savedName);
 			
-			System.out.println("DTO" + boardDTO);
-		System.out.println("게시글 등록이 완료되었습니다.");
-		
-		return "redirect:/noticeList.do";
+				board_file.transferTo(fileInfo);
+				boardDTO.setBoard_file(savedName);
+				System.out.println("파일 업로드 성공");
+			} 
+	    	catch (Exception e) {
+	    		e.printStackTrace();
+				System.out.println("등록 실패했습니다.");
+				return "redirect:/noticeInsert.do";
+			}
+	    }
+	    
+	    boardDTO.setMem_id(mem_id);
+	    boardDTO.setBoard_title(req.getParameter("board_title"));
+	    boardDTO.setBoard_contents(req.getParameter("board_contents"));
+	    
+	    int result = boarddao.noticeInsert(boardDTO);
+	    
+	    if(result==1)
+	    System.out.println("게시글 등록이 완료되었습니다.");
+	         
+	    return "redirect:/noticeList.do";
 	}
+//	//공지사항 작성
+//	@RequestMapping(value="/noticeInsert.do", method=RequestMethod.POST)
+//	public String noticeInsert(BoardDTO boardDTO, Principal principal) {
+//		
+//		String mem_id = principal.getName();
+//		boardDTO.setMem_id(mem_id);
+//		
+//		System.out.println("작성하는 곳에서 받는 이름2 : "+ mem_id);
+//		
+//		int result = boarddao.noticeInsert(boardDTO);
+//		if(result==1)
+//			
+//			System.out.println("DTO" + boardDTO);
+//		System.out.println("게시글 등록이 완료되었습니다.");
+//		
+//		return "redirect:/noticeList.do";
+//	}
 	
 //	@RequestMapping(value = "/noticeInsert.do", method = RequestMethod.POST)
 //	public String noticeInsert(MultipartFile[] uploadfiles, Model model, MultipartHttpServletRequest req, 

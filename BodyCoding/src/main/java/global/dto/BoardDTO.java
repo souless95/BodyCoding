@@ -12,9 +12,8 @@ public class BoardDTO {
 	private String mem_id;
 	private String board_title;
 	private String board_contents;
-	private String board_ofile;
-	private String board_sfile;
-	private int board_visitcount;
+	private String board_file;
+	private int board_visitcount; //조회수
 	private Date board_postdate;
 	
 	//신고용
@@ -25,8 +24,6 @@ public class BoardDTO {
 	private String report_content; //신고내용
 	private String closed_chk; //비공개 여부
 	private Date report_date; //신고일
-	
-	
 	
 	
 }

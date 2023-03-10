@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-	
+	  a{border:0;}
 	</style>
 <script type="text/javascript">
 function logoutcheck(){
@@ -22,8 +22,6 @@ function logoutcheck(){
 	}
 }
 </script>
-
-
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
@@ -80,9 +78,9 @@ function logoutcheck(){
 						<li>
 							<a href="#">게시판</a>
 							<ul> 
-									<li><a href="#">자유게시판</a></li>
+									<li><a href="/Freeboard.do">자유게시판</a></li>
 								<li><a href="#">Q&A</a></li>
-								<li><a href="#">1:1문의(웹소켓 채팅)</a></li>
+								<li><a href="../../room">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
 						
@@ -115,7 +113,7 @@ function logoutcheck(){
 						                <a href="${mypageUrl}">마이페이지</a>
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
-						                    <li><a href="/exrecordView.do">운동정보</a></li>
+						                    <li><a href="exinfo">운동정보</a></li>
 						                    <li><a href="/exrecord.do">내 정보관리</a></li>
 						                </ul>
 						            </li>
@@ -125,7 +123,6 @@ function logoutcheck(){
 						        </c:otherwise>
 						    </c:choose>
 						</c:if>
-			            
 			            
 			            <c:if test="${empty UserName}">
 						<li>

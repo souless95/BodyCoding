@@ -33,8 +33,6 @@ public class boardController {
 		model.addAttribute("dto", boardDTO);
 		model.addAttribute("reportList", boarddao.reportList(boardDTO));
 		
-		
-		
 		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
 		System.out.println("신고내용이 뜨냐" + boarddao.reportList(boardDTO));
 		
@@ -59,15 +57,14 @@ public class boardController {
 	@RequestMapping("/boardDelete.do")
 	public String delete(BoardDTO boardDTO) {
 		int result = boarddao.delete(boardDTO);
-		if(result==1) System.out.println("삭제되었습니다.");
+		if(result==1)
+		System.out.println("삭제되었습니다.");
 		return "redirect:boardList.do";
 	}
 	
 	//신고게시판 이동
-	
 	//신고 내용확인 (상세보기) --> 신고된 글 상세페이지로 이동하는 버튼 필요
-	
-	
+		
 	
 	//공지사항 리스트
 	@RequestMapping("/noticeList.do")

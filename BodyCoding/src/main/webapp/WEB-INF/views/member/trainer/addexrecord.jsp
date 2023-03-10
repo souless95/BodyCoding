@@ -27,12 +27,6 @@
 								<input type="text" class="form-control" id="training_date" name="training_date" required>
 							</div>
 							
-							<!-- 
-							<div>
-								<label for="membership_name">이용권 입력</label>
-								<input type="text" class="form-control" id="membership_name" name="membership_name" required>
-							</div>
-							 --> 
 
 							<div>
 								<label for="user_id">회원아이디 입력</label>

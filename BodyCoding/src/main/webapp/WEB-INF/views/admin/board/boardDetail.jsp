@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,10 +45,8 @@
 					            </td> 
 					        </tr>
 					        <tr style="text-align: center">
-					        	<th>Ofile</th>
-					        	<td>${dto.board_ofile }</td>
-					        	<th>Sfile</th>
-					        	<td>${dto.board_sfile }</td>
+					        	<th>파일첨부</th>
+					        	<td>${dto.board_file }</td>
 				            	<th>신고횟수</th>
 				            	<td>${dto.count }</td>
 				            	<th>비공개여부 </th>

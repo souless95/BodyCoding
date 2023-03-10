@@ -75,6 +75,7 @@
 
 <script type="text/javascript">
 	var ws;
+	
 	window.onload = function(){
 		getRoom();
 		createRoom();
@@ -98,8 +99,9 @@
 		});
 	}
 
-	function goRoom(number, name){
-		location.href="/moveChating?roomName="+name+"&"+"roomNumber="+number;
+	function goRoom(number, name, mname){
+		var url ="/moveChating?roomName="+name+"&"+"roomNumber="+number+"&"+"mem_name="+mname;
+		window.open(url, "name", "width=600,height=700");
 	}
 
 	function createChatingRoom(res){
@@ -108,10 +110,11 @@
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
 				var roomNumber = d.roomNumber;
+				var memName = d.membername;
 				tag += "<tr>"+
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
-							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\")'>참여</button></td>" +
+							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\", \""+memName+"\")'>참여</button></td>" +
 						"</tr>";	
 			});
 			$("#roomList").empty().append(tag);
@@ -144,7 +147,7 @@
 			<table class="inputTable">
 				<tr>
 					<th>방 제목</th>
-					<th><input type="text" name="roomName" id="roomName"></th>
+					<th><input type="text" name="roomName" id="roomName" value="${membername }"></th>
 					<th><button id="createRoom">방 만들기</button></th>
 				</tr>
 			</table>

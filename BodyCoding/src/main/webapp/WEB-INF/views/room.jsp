@@ -99,9 +99,9 @@
 		});
 	}
 
-	function goRoom(number, name, mname){
-		var url ="/moveChating?roomName="+name+"&"+"roomNumber="+number+"&"+"mem_name="+mname;
-		window.open(url, "name", "width=340,height=560");
+	function goRoom(idx, rname, memid){
+		var url ="/moveChating?roomName="+rname+"&"+"roomidx="+idx+"&"+"mem_id="+memid;
+		window.open(url, "rname", "width=340,height=560");
 	}
 
 	function createChatingRoom(res){
@@ -109,12 +109,13 @@
 			var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
-				var roomNumber = d.roomNumber;
-				var memName = d.membername;
+				var roomidx = d.roomidx;
+				var memid = "${memberid}";
+				console.log("이거맞아?"+memid);
 				tag += "<tr>"+
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
-							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\", \""+memName+"\")'>참여</button></td>" +
+							"<td class='go'><button type='button' onclick='goRoom(\""+roomidx+"\", \""+rn+"\", \""+memid+"\")'>참여</button></td>" +
 						"</tr>";	
 			});
 			$("#roomList").empty().append(tag);
@@ -147,7 +148,7 @@
 			<table class="inputTable">
 				<tr>
 					<th>방 제목</th>
-					<th><input type="text" name="roomName" id="roomName" value="${membername }"></th>
+					<th><input type="text" name="roomName" id="roomName" value="${memberid}-admin_super1"></th>
 					<th><button id="createRoom">방 만들기</button></th>
 				</tr>
 			</table>

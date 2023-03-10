@@ -1,5 +1,6 @@
 package com.bc.bodycoding.chatting;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,26 +25,35 @@ public class MChattingController {
 	
 	List<ChatRoomDTO> roomList = new ArrayList<ChatRoomDTO>();
 	
-	static int roomNumber = 0;
+	static int roomidx = 0;
 	
 	@ResponseBody
 	@RequestMapping("/saveChatLog")
-	public String savedb(HttpServletRequest req) {
-		
-//		chattingdao.insertchat();
+	public String savedb(ChatRoomDTO chatRoomDTO) {
+		chattingdao.insertchat(chatRoomDTO);
+		System.out.println("성공성공?");
 		return "";
 	}
 	
 	@RequestMapping("/chat")
 	public String chat(Model model, HttpServletRequest req) {
-		model.addAttribute("membername", req.getParameter("mem_name"));
+		model.addAttribute("memberid", req.getParameter("mem_id"));
+		model.addAttribute("roomName", req.getParameter("roomName"));
+		model.addAttribute("roomidx", req.getParameter("roomidx"));
 		return "chat";
 	}
 	
 	/*방 페이지*/
 	@RequestMapping("/room")
-	public String room(Model model, HttpServletRequest req) {
-		model.addAttribute("membername", req.getParameter("mem_name"));
+	public String room(Model model, HttpServletRequest req, Principal principal) {
+		
+		if(req.getParameter("mtype")!=null) {			
+			String mem_id = principal.getName();
+			model.addAttribute("memberid", mem_id);
+		}
+		else {			
+			model.addAttribute("memberid", req.getParameter("mem_id"));
+		}
 		return "room";
 	}
 	
@@ -53,7 +63,7 @@ public class MChattingController {
 		String roomName = (String) params.get("roomName");
 		if(roomName != null && !roomName.trim().equals("")) {
 			ChatRoomDTO room = new ChatRoomDTO();
-			room.setRoomNumber(++roomNumber);
+			room.setRoomidx(++roomidx);
 			room.setRoomName(roomName);
 			roomList.add(room);
 		}
@@ -69,11 +79,13 @@ public class MChattingController {
 	/*채팅방*/
 	@RequestMapping("/moveChating")
 	public String chating(@RequestParam HashMap<Object, Object> params, Model model) {
-		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
-		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomNumber() == roomNumber).collect(Collectors.toList());
+		int roomidx = Integer.parseInt((String) params.get("roomidx"));
+		System.out.println(roomidx);
+		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomidx() == roomidx).collect(Collectors.toList());
 		if (new_list != null && new_list.size() > 0) {
 		    model.addAttribute("roomName", params.get("roomName"));
-		    model.addAttribute("roomNumber", params.get("roomNumber"));
+		    model.addAttribute("roomidx", params.get("roomidx"));
+		    model.addAttribute("memberid", params.get("mem_id"));
 		    return "chat";
 		} else {
 	    return "room";

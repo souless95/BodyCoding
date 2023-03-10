@@ -67,7 +67,7 @@
 									<a class="nav-link" href="/noticeList.do">공지사항 관리</a> 
 									<a class="nav-link" href="register.html">이벤트 관리</a> 
 									<a class="nav-link" href="/boardList.do">자유게시판 관리</a>
-									<a class="nav-link" href="/room">1대1 문의</a>
+									<a class="nav-link" href="/room?mtype=admin">1대1 문의</a>
 								</nav>
 							</div>
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

@@ -4,11 +4,13 @@
 <%
 pageContext.setAttribute("replaceChar", "\n");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<!-- top메뉴  -->
@@ -75,12 +77,11 @@ pageContext.setAttribute("replaceChar", "\n");
 
 <script>
 function openReportForm(id, idx) {
-  const width = 1000;
-  const height = 800;
-  const left = (window.screen.width - width) / 2;
-  const top = (window.screen.height - height) / 2;
-  const url = 'report.do?mem_id='+id+'&board_idx='+idx;
-  window.open(url, 'report.do', `width=${width}, height=${height}, left=${left}, top=${top}`);
+	open('report.do?mem_id='+id+'&board_idx='+idx,
+       	"calendarUpdate",
+        "width=650, height=600, left=500, top=100, "
+   	    + "location=no, toolbar=no, menubar=no, "
+        + "scrollbars=yes, resize=no");
 }
 </script>
 </body>

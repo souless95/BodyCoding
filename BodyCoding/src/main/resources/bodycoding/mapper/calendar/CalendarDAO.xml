@@ -8,16 +8,18 @@
 <mapper namespace="com.bc.bodycoding.calendar.CalendarService">
 
 <insert id="insertSchedule" parameterType="com.bc.bodycoding.calendar.CalendarDTO">
-  <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
-    select calendar_seq.nextval as id from dual
+  <selectKey keyProperty="lesson_idx" resultType="java.lang.String" order="BEFORE">
+    select bodycoding_seq.nextval as lesson_idx from dual
   </selectKey>
-  insert into calendar (id, title, start1, end)
-  values (#{id}, #{title}, #{start1}, #{end})
+  insert into lesson (lesson_idx, trainer_id, lesson_category, lesson_name,
+  	lesson_day, lesson_start_time, lesson_end_time, lesson_capacity)
+  values (#{lesson_idx}, #{trainer_id}, #{lesson_category}, #{lesson_name},
+  	#{lesson_day}, #{lesson_start_time}, #{lesson_end_time}, #{lesson_capacity})
 </insert>
 
 <delete id="deleteSchedule"
 	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
-	delete from calendar where id=#{id}
+	delete from lesson where lesson_idx=#{lesson_idx}
 </delete>
 
 <update id="updateSchedule"
@@ -27,13 +29,13 @@
 
 <update id="updateSchedule2"
 	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
-	update calendar set end=#{end} where id=#{id}
+	update lesson set lesson_idx=#{lesson_idx} where lesson_idx=#{lesson_idx}
 </update>
 
 <select id="loadCList"
 	parameterType="com.bc.bodycoding.calendar.CalendarDTO"
 	resultType="com.bc.bodycoding.calendar.CalendarDTO">
-	select * from calendar
+	select * from lesson
 </select>
 
 </mapper>

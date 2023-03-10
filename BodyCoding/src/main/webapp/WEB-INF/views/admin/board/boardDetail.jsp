@@ -54,10 +54,10 @@
 					        </tr>
 					    </table>
 					    <br />
-			            <button type="button" class="btn btn-primary" onclick="location.href='boardDelete.do?board_idx=${dto.board_idx }'">
+			            <button type="button" class="btn btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?')) location.href='boardDelete.do?board_idx=${dto.board_idx }'">
 							삭제
 						</button>
-			            <button type="button" class="btn btn-primary" onclick="location.href='boardEdit.do?board_idx=${dto.board_idx }'">
+			            <button type="button" class="btn btn-primary" onclick="location.href='admin/board/boardEdit?board_idx=${dto.board_idx }'">
 							수정
 						</button>
 						<button type="button" class="btn btn-primary" onclick="history.back()">

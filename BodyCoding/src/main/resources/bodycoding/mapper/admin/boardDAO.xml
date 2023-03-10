@@ -42,7 +42,7 @@
 		delete from freeboard where board_idx=#{board_idx}
 	</delete>
 	
-	<!-- (공지사항, 이벤트)게시글 등록하기 (다중파일업로드) -->
+	<!-- (공지사항, 이벤트)게시글 등록하기 (파일첨부) -->
 	<!--  
 	<insert id="noticeInsert" 
 		parameterType="global.dto.BoardDTO">
@@ -52,10 +52,19 @@
 	 -->
 	<insert id="noticeInsert" 
 		parameterType="global.dto.BoardDTO">
-		insert into freeboard (board_idx, board_category, mem_id, board_title,  board_contents, board_file) 
+		insert into freeboard (board_idx, board_category, mem_id, board_title, board_contents, board_file) 
 					values (bodycoding_seq.nextval, '공지', #{mem_id}, #{board_title}, #{board_contents}, #{board_file})
 	</insert>
 	 
-	<!-- 게시글 수정하기 (자게, 공지, 이벤트)-->
-	
+	<!-- 게시글 수정하기 공지-->
+	<update id="noticeEdit"
+		parameterType="global.dto.BoardDTO"> 
+		update freeboard set board_title=#{board_title}, board_contents=#{board_contents}, board_file=#{board_file}
+			where board_idx = #{board_idx}
+	</update>
+	<!-- closed_chk 위치  -->
+	<update id="updateNoticeStatus" 
+		parameterType="global.dto.BoardDTO"> 
+		update freeboard set closed_chk = #{closed_chk} where board_idx = #{board_idx} 
+	</update>
 </mapper>

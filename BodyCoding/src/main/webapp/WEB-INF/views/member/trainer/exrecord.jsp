@@ -61,7 +61,6 @@ function deleteRecord(training_log_idx) {
 							        <button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
 									<button type="button" onclick="deleteRecord(${row.training_log_idx})">삭제</button>
 							        </td>
-							       
 							    </tr>
 						    </c:forEach>
 							</tbody>

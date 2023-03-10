@@ -23,8 +23,6 @@ function logoutcheck(){
 }
 
 </script>
-
-
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
@@ -81,7 +79,7 @@ function logoutcheck(){
 						<li>
 							<a href="#">게시판</a>
 							<ul> 
-									<li><a href="#">자유게시판</a></li>
+									<li><a href="/Freeboard.do">자유게시판</a></li>
 								<li><a href="#">Q&A</a></li>
 								<li><a href="../../room?mem_name=${UserName }">1:1문의(웹소켓 채팅)</a></li>
 							</ul>

@@ -55,7 +55,8 @@ public class boardController {
 	@RequestMapping("/boardDelete.do")
 	public String delete(BoardDTO boardDTO) {
 		int result = boarddao.delete(boardDTO);
-		if(result==1) System.out.println("삭제되었습니다.");
+		if(result==1)
+		System.out.println("삭제되었습니다.");
 		return "redirect:boardList.do";
 	}
 	

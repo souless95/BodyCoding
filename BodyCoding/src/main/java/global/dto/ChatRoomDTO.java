@@ -1,6 +1,5 @@
 package global.dto;
 
-import java.util.Date;
 
 import lombok.Data;
 
@@ -10,8 +9,8 @@ public class ChatRoomDTO {
 	private int roomNumber;
 	private String roomName;
 	private String mem_name;
+	private String admin_name;
 	private String content;
-	private Date regidate;
 	
 	@Override
 	public String toString() {

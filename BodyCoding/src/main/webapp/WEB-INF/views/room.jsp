@@ -101,7 +101,7 @@
 
 	function goRoom(number, name, mname){
 		var url ="/moveChating?roomName="+name+"&"+"roomNumber="+number+"&"+"mem_name="+mname;
-		window.open(url, "name", "width=600,height=700");
+		window.open(url, "name", "width=340,height=560");
 	}
 
 	function createChatingRoom(res){

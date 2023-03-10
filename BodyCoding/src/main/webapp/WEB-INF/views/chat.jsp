@@ -13,7 +13,6 @@
 .chat_ui{
 	background-color: #9bbad8;
 	padding: 4px 4px 0px 4px;
-	overflow-y: scroll;
 }
 .chat_ui .clear{
 	clear: both;
@@ -88,40 +87,30 @@
 .chat_ui .chating .others .box .time{
 	float: left;
 }
-.chat_ui .yourMsg .textarea{
+.textarea{
 	float: left;
 	width: calc(100% - 68px);
-	height: 64px;
+	height: 60px;
 	border-radius: 8px 0px 0px 8px;
 	margin: 0px 0px 0px 0px;
 	padding: 2px 2px 2px 2px;
 	resize: none;
 }
-.chat_ui .yourMsg .button{
-	float: right;
+.button{
+ 	float: right;
 	width: 62px;
-	height: 68px;
+	height: 66px;
 	background-color: #ffec42;
 	border-radius: 0px 8px 8px 0px;
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	text-align: center;
 	display: table;
-	cursor: pointer;
+	cursor: pointer; 
 }
-.chat_ui .yourMsg .button p{
-	display: table-cell;
- 	vertical-align: middle;
-}
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
 </style>
 </head>
-
+<body>
 <script type="text/javascript">
 	
 	var ws;
@@ -223,31 +212,54 @@
 		
 		return ampm+" "+h+":"+m;
 	}
+	window.addEventListener('beforeunload', function(){
+		
+		/* var userName = $("#mem_name").val();
+		var isAdmin = userName.includes("관리자");
+		
+		if(isAdmin){ */
+			$.ajax({
+			  url: '/saveChatLog',
+			  contentType: "application/json; charset=utf-8",
+			  data: {
+				/* mem_name: $("#mem_name").val(),
+				adminName: userName, */
+			    chatLog: $("#chating").html()
+			  },
+			  dataType: 'json'
+			  async: false,
+			  success: function(data) {
+			    console.log("성공");
+			  },
+			  error: function(xhr, status, error) {
+			    // 저장 실패 시 에러 메시지를 출력합니다.
+			    console.log(error);
+			  }
+			});
+		/* } */
+	});
 </script>
-<body>
-	<h1>${roomName}의 채팅방</h1>
 	<input type="hidden" id="sessionId" value="">
 	<input type="hidden" id="roomNumber" value="${roomNumber}">
-		
-	<div class="chat_ui" id="chat_ui" style="width: 320px; height: 480px;">
+	<input type="hidden" id="roomName" value="${roomName }" />
+	<div class="chat_ui" id="chat_ui" style="width: 320px; height: 557px;">
 		<div id="chating" class="chating">
 		</div>
-		
 		<div id="yourName">
 			<table class="inputTable">
 				<tr>
 					<th>사용자명</th>
 					<th><input class="textarea1" type="text" name="mem_name" id="mem_name" value=""></th>
-					<th><button class="button" onclick="chatName()" id="startBtn">이름 등록</button></th>
+					<th><button class="button" onclick="chatName()">이름 등록</button></th>
 				</tr>
 			</table>
 		</div>
 		<div id="yourMsg">
 			<div class="inputTable">
 			    <textarea class="textarea" id="content"></textarea>
-			    <div class="button" id="sendBtn" onclick="send();">
-			 	   <p>전송</p>
-			    </div>
+			    <button class="button" id="sendBtn" onclick="send();">
+			    	전송
+			    </button>
 			    <div class="clear"></div>
 			</div>
 		</div>

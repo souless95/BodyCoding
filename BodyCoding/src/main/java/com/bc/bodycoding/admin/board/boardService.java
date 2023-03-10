@@ -17,7 +17,12 @@ public interface boardService {
 	
 	public List<BoardDTO> selectNotice(); //공지사항 리스트
 	public int noticeInsert(BoardDTO boardDTO); //공지사항 작성
+	public int noticeEdit(BoardDTO boardDTO);
 	
 	public List<BoardDTO> reportList(BoardDTO boardDTO); //신고내용 리스트
+	
+	
+	public int updateNoticeStatus(BoardDTO boardDTO); //closed_chk 변경 Y <-> N
+	
 	
 }

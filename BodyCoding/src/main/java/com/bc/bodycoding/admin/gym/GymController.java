@@ -117,7 +117,7 @@ public class GymController {
 			}
 			else {
 				System.out.println("지점등록 실패");
-				return "redirect:/gymRegist.do";
+				return "redirect:/gymadminlist.do";
 			}
 		}
 	}

@@ -39,21 +39,27 @@
 				        </tr>
 				        <tr style="border-bottom: 1px solid gray;">
 				            <th>내용</th>
-				            <td colspan="4" style="height: 300px; vertical-align: top; padding-top: 10px; padding-bottom: 10px; ">
-					            ${fn:replace(dto.board_contents, replaceChar, "<br/>")}
-					            
-				            </td> 
+							<td colspan="4" style="height: 300px; vertical-align: top; padding-top: 10px; padding-bottom: 10px; ">
+							    ${fn:replace(dto.board_contents, replaceChar, "<br/>")}
+							    <c:set var="board_file" value="${not empty dto.board_file}" />
+							    <c:if test="${board_file}">
+							    	<div>
+							        	<img src="../static/uploads/board/${dto.board_file}"/>
+							    	</div>
+							    </c:if>
+							</td>
 				        </tr>
 				        <tr style="text-align: center">
-				        	<th>Ofile</th>
+				        	<th>첨부된 파일명</th>
 				        	<td>${dto.board_file }</td>
 				        </tr>
 				    </table>
 				    <br />
-		            <button type="button" class="btn btn-primary" onclick="location.href='noticeDelete.do?board_idx=${dto.board_idx }'">
+		            <button type="button" class="btn btn-primary" 
+		            	onclick="if(confirm('정말로 삭제하시겠습니까?')) location.href='noticeDelete.do?board_idx=${dto.board_idx }'">
 						삭제
 					</button>
-		            <button type="button" class="btn btn-primary" onclick="location.href='boardEdit.do?board_idx=${dto.board_idx }'">
+		            <button type="button" class="btn btn-primary" onclick="location.href='admin/board/noticeEdit?board_idx=${dto.board_idx }'">
 						수정
 					</button>
 					<button type="button" class="btn btn-primary" onclick="history.back()">

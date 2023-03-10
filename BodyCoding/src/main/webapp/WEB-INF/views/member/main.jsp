@@ -19,11 +19,12 @@
 	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
 		<!-- Posts -->
-		
+		<img src="static/assets/images/main1.jpg">
 		<!-- 컨텐츠영역 -->
 			<div class="container">
 				<div class="row">
 					<section class="col-6 col-12-narrower">
+						
 						<div class="box post">
 							<a href="#" class="image left"><img src="static/assets/images/pic01.jpg" alt="" /></a>
 							<div class="inner">

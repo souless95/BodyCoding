@@ -132,7 +132,6 @@ function errCallBackT(errData){
 </script>
 <title>Insert title here</title>
 </head>
-<%@ include file="../../../../inc/Top.jsp"%>
 <body>
 <div class="container">
 <table>
@@ -178,6 +177,5 @@ function errCallBackT(errData){
    </tr>
 </table>
 </div>
-<%@ include file="../../../../inc/Bottom.jsp"%>
 </body>
 </html>

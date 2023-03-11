@@ -51,5 +51,8 @@
 	<ul>
 		<li><a href="room">채팅</a></li>
 	</ul>
+	<ul>
+		<li><a href="star">별</a></li>
+	</ul>
 </body>
 </html>

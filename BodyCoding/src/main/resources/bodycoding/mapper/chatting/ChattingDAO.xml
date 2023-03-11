@@ -9,8 +9,8 @@
 
 	<insert id="insertchat" 
 		parameterType="global.dto.ChatRoomDTO">
-	 	insert into chatroom (roonNumber, mem_name, admin_name, content)
-	 	values (chatroom_seq.nextval, #{mem_name}, #{admin_name}, #{content})
+	 	insert into chatroom (roomidx, send_id, roomname, content)
+	 	values (chatroom_seq.nextval, #{send_id}, #{roomName}, #{content})
 	</insert>
 
 </mapper>

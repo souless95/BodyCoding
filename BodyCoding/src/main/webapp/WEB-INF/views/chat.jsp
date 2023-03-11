@@ -112,12 +112,15 @@
 </head>
 <body>
 <script type="text/javascript">
+	window.onload = function() {
+		chatName();
+	};
 	
 	var ws;
 
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomidx").val());
 		wsEvt();
 	}
 		
@@ -137,9 +140,12 @@
 					var si = d.sessionId != null ? d.sessionId : "";
 					if(si != ''){
 						$("#sessionId").val(si); 
+						console.log("나는getId에 잇수다");
+						console.log('${memberid}');					
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
+						console.log("나는getI1d에 잇수다");
 						$("#chating").append("<div class='me' style='margin-top:10px;'>" + 
 						"<div class=\"b\">\n"+
 						"</div>\n"+
@@ -153,7 +159,7 @@
 					}else{
 						$("#chating").append("<div class='others' style='margin-top:10px;'>" + 
 						"<div class=\"box\">"+
-						"<div class=\"profile_name\">"+d.mem_name+"\n"+
+						"<div class=\"profile_name\">"+d.mem_id+"\n"+
 						"</div>\n"+
 						"<div class=\"a\">"+
 						"</div>\n"+
@@ -179,25 +185,20 @@
 			}
 		});
 	}
-
+	
 	function chatName(){
-		var mem_name = $("#mem_name").val();
-		if(mem_name == null || mem_name.trim() == ""){
-			alert("사용자 이름을 입력해주세요.");
-			$("#mem_name").focus();
-		}else{
-			wsOpen();
-			$("#yourName").hide();
-			$("#yourMsg").show();
-		}
+		var userName = $("#mem_id").val();
+		wsOpen();
+		$("#yourName").hide();
+		$("#yourMsg").show();
 	}
 
 	function send() {
 		var option ={
 			type: "message",
-			roomNumber: $("#roomNumber").val(),
+			roomNumber: $("#roomidx").val(),
 			sessionId : $("#sessionId").val(),
-			mem_name : $("#mem_name").val(),
+			mem_id : $("#mem_id").val(),
 			msg : $("#content").val()
 		}
 		ws.send(JSON.stringify(option))
@@ -212,36 +213,44 @@
 		
 		return ampm+" "+h+":"+m;
 	}
-	window.addEventListener('beforeunload', function(){
-		
-		/* var userName = $("#mem_name").val();
-		var isAdmin = userName.includes("관리자");
-		
-		if(isAdmin){ */
-			$.ajax({
+	/*웹 페이지가 언로드(unload)되기 전에 발생하는 이벤트
+	페이지를 닫을 때, 뒤로 가기 버튼을 눌렀을 때, 
+	주소 표시줄에 URL을 입력하고 엔터 키를 눌렀을 때 등과 같은 상황에서 발생
+	*/
+	//window.addEventListener('beforeunload', function(){
+	$(function(){
+			$('#sendBtn').on('click', function(){
+			
+			var m_id = $("#mem_id").val();
+	 		var roomName = $("#roomName").val();
+			var content= $("#content").val();
+			console.log(m_id+"룸이름"+roomName+"내용"+content);
+			
+	 		$.ajax({
 			  url: '/saveChatLog',
 			  contentType: "application/json; charset=utf-8",
 			  data: {
-				/* mem_name: $("#mem_name").val(),
-				adminName: userName, */
-			    chatLog: $("#chating").html()
+				send_id: m_id,
+				roomName: roomName,
+				content: content
 			  },
-			  dataType: 'json'
+			  dataType: 'text',
 			  async: false,
 			  success: function(data) {
 			    console.log("성공");
+			    send();
 			  },
 			  error: function(xhr, status, error) {
 			    // 저장 실패 시 에러 메시지를 출력합니다.
 			    console.log(error);
 			  }
 			});
-		/* } */
+		});
 	});
 </script>
 	<input type="hidden" id="sessionId" value="">
-	<input type="hidden" id="roomNumber" value="${roomNumber}">
-	<input type="hidden" id="roomName" value="${roomName }" />
+	<input type="hidden" id="roomidx" name="roomidx" value="${roomidx}">
+	<input type="hidden" id="roomName" name="roomName" value="${roomName }" />
 	<div class="chat_ui" id="chat_ui" style="width: 320px; height: 557px;">
 		<div id="chating" class="chating">
 		</div>
@@ -249,15 +258,15 @@
 			<table class="inputTable">
 				<tr>
 					<th>사용자명</th>
-					<th><input class="textarea1" type="text" name="mem_name" id="mem_name" value=""></th>
-					<th><button class="button" onclick="chatName()">이름 등록</button></th>
+					<th><input class="textarea1" type="text" name="mem_id" id="mem_id" value="${memberid }"></th>
+					<th><button class="button" id="reginame" onclick="chatName()">이름 등록</button></th>
 				</tr>
 			</table>
 		</div>
 		<div id="yourMsg">
 			<div class="inputTable">
-			    <textarea class="textarea" id="content"></textarea>
-			    <button class="button" id="sendBtn" onclick="send();">
+			    <textarea class="textarea" id="content" name="content"></textarea>
+			    <button class="button" id="sendBtn">
 			    	전송
 			    </button>
 			    <div class="clear"></div>

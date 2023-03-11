@@ -114,6 +114,8 @@
 <script type="text/javascript">
 	window.onload = function() {
 		chatName();
+		
+		
 	};
 	
 	var ws;
@@ -133,6 +135,7 @@
 		ws.onmessage = function(data) {
 			//메시지를 받으면 동작
 			var msg = data.data;
+			console.log(msg);
 			if(msg != null && msg.trim() != ''){
 				var d = JSON.parse(msg);
 				var time = nowTime();
@@ -196,7 +199,7 @@
 	function send() {
 		var option ={
 			type: "message",
-			roomNumber: $("#roomidx").val(),
+			roomidx: $("#roomidx").val(),
 			sessionId : $("#sessionId").val(),
 			mem_id : $("#mem_id").val(),
 			msg : $("#content").val()
@@ -232,7 +235,7 @@
 			  data: {
 				send_id: m_id,
 				roomName: roomName,
-				content: content
+				content: content,
 			  },
 			  dataType: 'text',
 			  async: false,

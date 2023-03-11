@@ -31,6 +31,7 @@ public class MChattingController {
 	@RequestMapping("/saveChatLog")
 	public String savedb(ChatRoomDTO chatRoomDTO) {
 		chattingdao.insertchat(chatRoomDTO);
+		System.out.println("1"+chattingdao.insertchat(chatRoomDTO));
 		System.out.println("성공성공?");
 		return "";
 	}
@@ -72,7 +73,9 @@ public class MChattingController {
 	
 	/*방 정보가져오기*/
 	@RequestMapping("/getRoom")
-	public @ResponseBody List<ChatRoomDTO> getRoom(@RequestParam HashMap<Object, Object> params){
+	public @ResponseBody List<ChatRoomDTO> getRoom(@RequestParam HashMap<Object, Object> params, Model model){
+		System.out.println(params.get("mem_id"));
+		roomList = chattingdao.selectmemid(params.get("mem_id").toString());
 		return roomList;
 	}
 	

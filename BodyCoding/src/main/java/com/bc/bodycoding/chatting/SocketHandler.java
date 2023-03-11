@@ -8,6 +8,7 @@ import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -18,22 +19,23 @@ import global.dto.ChatRoomDTO;
 
 @Component
 public class SocketHandler extends TextWebSocketHandler {
-	
+	@Autowired
+	chatService chattingdao;
 	//HashMap<String, WebSocketSession> sessionMap = new HashMap<>(); //웹소켓 세션을 담아둘 맵
-	List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트 ---roomListSessions
+	//List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트 ---roomListSessions
+	List<HashMap<String, Object>> rls = new ArrayList<>();
 	
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message) {
 		//메시지 발송
 		String msg = message.getPayload();
 		JSONObject obj = jsonToObjectParser(msg);
-		
-		String rN = (String) obj.get("roomNumber");
+		String rN = (String) obj.get("roomidx");
 		HashMap<String, Object> temp = new HashMap<String, Object>();
 		if(rls.size() > 0) {
 			for(int i=0; i<rls.size(); i++) {
-				String roomNumber = (String) rls.get(i).get("roomNumber"); //세션리스트의 저장된 방번호를 가져와서
-				if(roomNumber.equals(rN)) { //같은값의 방이 존재한다면
+				String roomidx = (String) rls.get(i).get("roomidx"); //세션리스트의 저장된 방번호를 가져와서
+				if(roomidx.equals(rN)) { //같은값의 방이 존재한다면
 					temp = rls.get(i); //해당 방번호의 세션리스트의 존재하는 모든 object값을 가져온다.
 					break;
 				}
@@ -41,7 +43,7 @@ public class SocketHandler extends TextWebSocketHandler {
 			
 			//해당 방의 세션들만 찾아서 메시지를 발송해준다.
 			for(String k : temp.keySet()) { 
-				if(k.equals("roomNumber")) { //다만 방번호일 경우에는 건너뛴다.
+				if(k.equals("roomidx")) { //다만 방번호일 경우에는 건너뛴다.
 					continue;
 				}
 				
@@ -65,12 +67,12 @@ public class SocketHandler extends TextWebSocketHandler {
 		boolean flag = false;
 		String url = session.getUri().toString();
 		System.out.println(url);
-		String roomNumber = url.split("/chating/")[1];
+		String roomidx = url.split("/chating/")[1];
 		int idx = rls.size(); //방의 사이즈를 조사한다.
 		if(rls.size() > 0) {
 			for(int i=0; i<rls.size(); i++) {
-				String rN = (String) rls.get(i).get("roomNumber");
-				if(rN.equals(roomNumber)) {
+				String rN = (String) rls.get(i).get("roomidx");
+				if(rN.equals(roomidx)) {
 					flag = true;
 					idx = i;
 					break;
@@ -83,7 +85,7 @@ public class SocketHandler extends TextWebSocketHandler {
 			map.put(session.getId(), session);
 		}else { //최초 생성하는 방이라면 방번호와 세션을 추가한다.
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("roomNumber", roomNumber);
+			map.put("roomidx", roomidx);
 			map.put(session.getId(), session);
 			rls.add(map);
 		}
@@ -95,16 +97,16 @@ public class SocketHandler extends TextWebSocketHandler {
 		session.sendMessage(new TextMessage(obj.toJSONString()));
 	}
 	
-	@Override
-	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		//소켓 종료
-		if(rls.size() > 0) { //소켓이 종료되면 해당 세션값들을 찾아서 지운다.
-			for(int i=0; i<rls.size(); i++) {
-				rls.get(i).remove(session.getId());
-			}
-		}
-		super.afterConnectionClosed(session, status);
-	}
+//	@Override
+//	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+//		//소켓 종료
+//		if(rls.size() > 0) { //소켓이 종료되면 해당 세션값들을 찾아서 지운다.
+//			for(int i=0; i<rls.size(); i++) {
+//				rls.get(i).remove(session.getId());
+//			}
+//		}
+//		super.afterConnectionClosed(session, status);
+//	}
 	
 	private static JSONObject jsonToObjectParser(String jsonStr) {
 		JSONParser parser = new JSONParser();

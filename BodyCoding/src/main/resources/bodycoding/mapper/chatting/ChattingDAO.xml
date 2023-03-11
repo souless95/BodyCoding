@@ -19,6 +19,12 @@
 		select roomname from chatroom group by roomname
 	</select>
 	
+	<select id="selectroom"
+		parameterType="String"
+		resultType="global.dto.ChatRoomDTO">
+		select roomname from chatroom where roomname=#{roomname}
+	</select>
+	
 	<select id="selectALL"
 		parameterType="global.dto.ChatRoomDTO">
 		select * from chatroom

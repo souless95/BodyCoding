@@ -31,7 +31,6 @@ public class MChattingController {
 	@RequestMapping("/saveChatLog")
 	public String savedb(ChatRoomDTO chatRoomDTO) {
 		chattingdao.insertchat(chatRoomDTO);
-		System.out.println("1"+chattingdao.insertchat(chatRoomDTO));
 		System.out.println("성공성공?");
 		return "";
 	}
@@ -82,6 +81,7 @@ public class MChattingController {
 	/*채팅방*/
 	@RequestMapping("/moveChating")
 	public String chating(@RequestParam HashMap<Object, Object> params, Model model) {
+		System.out.println("채팅방 DB 여기서 불러옴?");
 		int roomidx = Integer.parseInt((String) params.get("roomidx"));
 		System.out.println(roomidx);
 		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomidx() == roomidx).collect(Collectors.toList());

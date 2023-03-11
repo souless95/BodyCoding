@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bc.bodycoding.chatting.chatService">
+
+	<insert id="insertchat" 
+		parameterType="global.dto.ChatRoomDTO">
+	 	insert into chatroom (roomidx, send_id, roomname, content)
+	 	values (chatroom_seq.nextval, #{send_id}, #{roomName}, #{content})
+	</insert>
+	
+	<select id="selectmemid"
+		parameterType="String"
+		resultType="global.dto.ChatRoomDTO">
+		select roomname from chatroom group by roomname
+	</select>
+	
+	<select id="selectroom"
+		parameterType="String"
+		resultType="global.dto.ChatRoomDTO">
+		select roomname from chatroom where roomname=#{roomname}
+	</select>
+	
+	<select id="selectALL"
+		parameterType="global.dto.ChatRoomDTO">
+		select * from chatroom
+	</select>
+	
+	<select id="selectchat" parameterType="int" resultType="global.dto.ChatRoomDTO">
+	    select roomidx, send_id, roomname, content, TO_CHAR(REGIDATE, 'FMHH12:MI AM') as regidate
+	    from chatroom where roomname like '%' || ${send_id} ||'-%';
+	</select>
+</mapper>

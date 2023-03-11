@@ -1,25 +1,18 @@
 package global.dto;
 
+import lombok.Data;
+
+@Data
 public class ChatRoomDTO {
 
-	int roomNumber;
-	String roomName;
-	
-	public int getRoomNumber() {
-		return roomNumber;
-	}
-	public void setRoomNumber(int roomNumber) {
-		this.roomNumber = roomNumber;
-	}
-	public String getRoomName() {
-		return roomName;
-	}
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
+	private int roomidx;
+	private String roomName;
+	private String send_id;
+	private String content;
+	private String regidate;
 	
 	@Override
 	public String toString() {
-		return "Room [roomNumber=" + roomNumber + ", roomName=" + roomName + "]";
+		return "Room [roomidx=" + roomidx + ", roomName=" + roomName + "]";
 	}
 }

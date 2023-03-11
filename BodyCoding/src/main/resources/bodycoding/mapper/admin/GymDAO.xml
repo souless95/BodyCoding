@@ -34,7 +34,7 @@
 	<update id="update"
 		parameterType="global.dto.GymDTO">
 		update GYM_DETAIL set gym_scale=#{gym_scale},
-			facility_parking=#{facility_parking}, gym_dtail_img=#{gym_dtail_img}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
+			facility_parking=#{facility_parking}, gym_detail_img=#{gym_detail_img}, facility_health=#{facility_health}, facility_yoga=#{facility_yoga}, facility_gx=#{facility_gx}, 
 			facility_pilates=#{facility_pilates}, facility_pt=#{facility_pt}, facility_24hour=#{facility_24hour}, facility_shower=#{facility_shower}, 
 			facility_wear=#{facility_wear}, facility_locker=#{facility_locker}, rtime_week_start=#{rtime_week_start}, rtime_week_end=#{rtime_week_end}, 
 			rtime_sat_start=#{rtime_sat_start}, rtime_sat_end=#{rtime_sat_end}, rtime_holy_start=#{rtime_holy_start}, rtime_holy_end=#{rtime_holy_end} 
@@ -97,6 +97,6 @@
 	<select id="loadImage"
 		parameterType="global.dto.MemberDTO"
 		resultType="String">
-		select gym_dtail_img from GYM_DETAIL where gym_code=#{gym_code}
+		select gym_detail_img from GYM_DETAIL where gym_code=#{gym_code}
 	</select>
 </mapper>

@@ -94,10 +94,11 @@ public class GymController {
 				}
 			}
 			
-			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()
-					.encode(req.getParameter("mem_pass"));
-			memberDTO.setMem_pass(passwd);
+			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(req.getParameter("mem_pass"));
+			System.out.println(passwd);
+			
 			memberDTO.setMem_id(req.getParameter("mem_id"));
+			memberDTO.setMem_pass(passwd);
 			memberDTO.setMem_name(req.getParameter("mem_name"));
 			memberDTO.setMem_phone(req.getParameter("mem_phone"));
 			memberDTO.setMem_address(req.getParameter("mem_address"));
@@ -116,7 +117,7 @@ public class GymController {
 			}
 			else {
 				System.out.println("지점등록 실패");
-				return "redirect:/gymRegist.do";
+				return "redirect:/gymadminlist.do";
 			}
 		}
 	}
@@ -148,7 +149,6 @@ public class GymController {
 			GymDTO gymDTO, MemberDTO memberDTO) throws Exception {
 		
 		try {
-			
 //			암호화된 비밀번호 변경용 
 			System.out.println(req.getParameter("mem_pass")); 
 			String passwd = PasswordEncoderFactories.createDelegatingPasswordEncoder()

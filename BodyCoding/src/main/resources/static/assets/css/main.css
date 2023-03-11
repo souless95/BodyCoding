@@ -2436,7 +2436,7 @@ input[type="checkbox"]{
 		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 		background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-		background-color: rgb(255, 128, 128);
+		background-color: rgb(0,0,0);
 		border-radius: 5px;
 		border: 0;
 		color: #fff;
@@ -2736,9 +2736,9 @@ input[type="checkbox"]{
 			}
 
 /* Wrapper */
-
+	/*padding: 5em 0 3em 0;*/
 	.wrapper {
-		padding: 5em 0 3em 0;
+		
 	}
 
 		.wrapper.style1 {

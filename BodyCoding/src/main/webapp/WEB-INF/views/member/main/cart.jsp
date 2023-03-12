@@ -102,12 +102,7 @@ $(function() {
 	
 	$('#purchase').click(function(){
 		
-		console.log('gg'+'${myCartList eq null}');
-		if('${myCartList eq null}'=='false'){
-			alert("장바구니에 상품을 추가해주세요");
-		}
-		
-		else if($('input:checkbox[name=selected_product]:checked').val()==null) {
+		if($('input:checkbox[name=selected_product]:checked').val()==null) {
 			alert("구매할 상품을 선택해주세요");
 		}
 		

@@ -40,7 +40,6 @@ $(function(){
 		}
 		
 		else{
-			console.log("홧니/.?");
 			const payInfo = $('#payFrm').serialize();
 	       $.ajax({
 	           url: 'kakaoPay.do',
@@ -68,7 +67,8 @@ $(function(){
 		<h2>결제 정보</h2>
 	</div>
 	<form id="payFrm">
-		<input type="hid-den" name="cart_idx" value=${cart_arr }>
+		<!-- 결제 상품을 장바구니에서 삭제하기 위해 결제 시, cart_idx를 파라미터로 전달 -->
+		<input type="hidden" name="cart_idx" value=${cart_arr }>
 		<table style="border: 5px solid #cdd0d4;">
 			<tbody>
 				<tr>

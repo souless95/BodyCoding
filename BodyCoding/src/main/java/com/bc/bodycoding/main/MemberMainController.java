@@ -1,6 +1,5 @@
 package com.bc.bodycoding.main;
 
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,188 +46,206 @@ public class MemberMainController {
          return gymList;
       }
 
+	// 회원창에서 지점 정보보기
+	@RequestMapping("gym")
+	public String gym(Model model) {
+		model.addAttribute("gymList", maindao.gymlistSelect());
+		model.addAttribute("gymMarker", maindao.mapmarkerSelect());
+		return "member/main/gym";
+	}
 
-      //회원창에서 지점 정보보기
-      @RequestMapping("gym")
-      public String gym(Model model) {
-         model.addAttribute("gymList",maindao.gymlistSelect());
-         model.addAttribute("gymMarker",maindao.mapmarkerSelect());
-         return "member/main/gym";
-      }
+	// 회원창에서 검색된 지점 정보보기
+	@RequestMapping("/gymSearch.do")
+	@ResponseBody
+	public List<MemberDTO> gymSearch(String searchWord) {
+		List<MemberDTO> gymList;
+		gymList = maindao.gymlistSearch(searchWord);
+		System.out.println(gymList);
+		return gymList;
+	}
 
-      //회원창에서 검색된 지점 정보보기
-      @RequestMapping("/gymSearch.do")
-      @ResponseBody
-      public List<MemberDTO> gymSearch(String searchWord) {
-         List<MemberDTO> gymList;
-         gymList = maindao.gymlistSearch(searchWord);
-         System.out.println(gymList);
-         return gymList;
-      }
+	//회원창에서 체크된 지점 정보보기
+    @RequestMapping("/gymCheck.do")
+    @ResponseBody
+    public List<MemberDTO> gymCheck(HttpServletRequest req) {
+       List<MemberDTO> checkmemList;
+       //선택된 값들 순서대로 list에 넣기
+       List<List<String>> checkgymList = new ArrayList<>();
+       //dao에서 이름과,'Y'으로 뽑기위해 map 이용하여 값 넣어주기
+       Map<String, String> checkFacility = new HashMap<>();
+       //ajax로 전달한 checkboxVal인 data값 받기
+       String checkboxVal = req.getParameter("checkboxVal");
+       System.out.println(checkboxVal);
+       //전달받은 checkboxVal에서 "&"와 "="를 이용하여 나눠준후 map에다가 넣어서 dao로 값 구하기
+       String[] checkval = checkboxVal.split("&");
+       for(int i=0 ; i< checkval.length ; i++) {
+          String[] mapval = checkval[i].split("=");
+          checkFacility.put("facility", mapval[0].toString());
 
-      //회원창에서 체크된 지점 정보보기
-      @RequestMapping("/gymCheck.do")
-      @ResponseBody
-      public List<MemberDTO> gymCheck(HttpServletRequest req) {
-         List<MemberDTO> checkmemList;
-         //선택된 값들 순서대로 list에 넣기
-         List<List<String>> checkgymList = new ArrayList<>();
-         //dao에서 이름과,'Y'으로 뽑기위해 map 이용하여 값 넣어주기
-         Map<String, String> checkFacility = new HashMap<>();
-         //ajax로 전달한 checkboxVal인 data값 받기
-         String checkboxVal = req.getParameter("checkboxVal");
-         System.out.println(checkboxVal);
-         //전달받은 checkboxVal에서 "&"와 "="를 이용하여 나눠준후 map에다가 넣어서 dao로 값 구하기
-         String[] checkval = checkboxVal.split("&");
-         for(int i=0 ; i< checkval.length ; i++) {
-            String[] mapval = checkval[i].split("=");
-            checkFacility.put("facility", mapval[0].toString());
+          System.out.println("선택된 값"+checkFacility);
+          if(mapval[0].toString().equals("facility_parking")) {
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_health")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_yoga")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_gx")){
+             checkgymList.add(maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_pilates")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_pt")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_24hour")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_shower")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_wear")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+          else if(mapval[0].toString().equals("facility_locker")){
+             checkgymList.add( maindao.gymcodelistCheck(checkFacility));
+          }
+       }
+       System.out.println(checkgymList);
+       List<String> checkgymtemp = new ArrayList<>();
+       //전체 gym리스트 뽑아서 선택된 gym이랑 교집합 구하기
+       checkgymtemp = maindao.gymlisttemp();
+       System.out.println("전체 gym 리스트"+checkgymtemp);
+       for(int i=0 ; i<checkgymList.size();i++) {
+          checkgymtemp.retainAll(checkgymList.get(i));
+       }
+       System.out.println("교집합"+checkgymtemp);
 
-            System.out.println("선택된 값"+checkFacility);
-            if(mapval[0].toString().equals("facility_parking")) {
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_health")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_yoga")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_gx")){
-               checkgymList.add(maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_pilates")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_pt")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_24hour")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_shower")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_wear")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-            else if(mapval[0].toString().equals("facility_locker")){
-               checkgymList.add( maindao.gymcodelistCheck(checkFacility));
-            }
-         }
-         System.out.println(checkgymList);
-         List<String> checkgymtemp = new ArrayList<>();
-         //전체 gym리스트 뽑아서 선택된 gym이랑 교집합 구하기
-         checkgymtemp = maindao.gymlisttemp();
-         System.out.println("전체 gym 리스트"+checkgymtemp);
-         for(int i=0 ; i<checkgymList.size();i++) {
-            checkgymtemp.retainAll(checkgymList.get(i));
-         }
-         System.out.println("교집합"+checkgymtemp);
+       //교집합인 checkgymtemp(list)를 이용해서 지점 찾기(memberDTO)
+       checkmemList = maindao.gymlistCheck(checkgymtemp);
 
-         //교집합인 checkgymtemp(list)를 이용해서 지점 찾기(memberDTO)
-         checkmemList = maindao.gymlistCheck(checkgymtemp);
+       return checkmemList;
+    }
+    
+    //gym상세보기
+    @RequestMapping("gymInfo.do")
+    public String gymInfo(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
+       gymDTO = maindao.selectOnegym(gymDTO);
+       memberDTO = maindao.selectOneMember(memberDTO);
+       model.addAttribute("memList", memberDTO);
+       model.addAttribute("dto", gymDTO);
+       return "member/main/gymInfo";
+    }
 
-         return checkmemList;
-      }
-
-      //gym상세보기
-      @RequestMapping("gymInfo.do")
-      public String gymInfo(GymDTO gymDTO, Model model, MemberDTO memberDTO) {
-         gymDTO = maindao.selectOnegym(gymDTO);
-         memberDTO = maindao.selectOneMember(memberDTO);
-         model.addAttribute("memList", memberDTO);
-         model.addAttribute("dto", gymDTO);
-         return "member/main/gymInfo";
-      }
-
+    //회원창에서 트레이너 목록 페이지로 가기(지점선택 select박스관련)
+    @RequestMapping("trainer")
+    public String trainerpage(Model model) {
+       model.addAttribute("gymList",maindao.gymlistSelect());
+       return "member/main/trainer";
+    }
 
 
-      //회원창에서 트레이너 목록 페이지로 가기(지점선택 select박스관련)
-      @RequestMapping("trainer")
-      public String trainerpage(Model model) {
-         model.addAttribute("gymList",maindao.gymlistSelect());
-         return "member/main/trainer";
-      }
-      //회원창에서 트레이너 목록 보여주기
-      @RequestMapping("/trainer.do")
-      @ResponseBody
-      public List<MemberDTO> trainer(String gym_code) {
-         List<MemberDTO> trainerList;
-         //지점 value가 - 이면 모든 트레이너 보여주기
-         if(gym_code.equals("-")) {
-            trainerList = maindao.trainerALLlistSelect();
-         }
-         //지점에 맞는 트레이너 보여주기
-         else {
-            trainerList = maindao.trainerlistSelect(gym_code);
-         }
-         return trainerList;
-      }   
+	// 회원창에서 트레이너 목록 보여주기
+	@RequestMapping("/trainer.do")
+	@ResponseBody
+	public List<MemberDTO> trainer(String gym_code) {
+		List<MemberDTO> trainerList;
+		// 지점 value가 - 이면 모든 트레이너 보여주기
+		if (gym_code.equals("-")) {
+			trainerList = maindao.trainerALLlistSelect();
+		}
+		// 지점에 맞는 트레이너 보여주기
+		else {
+			trainerList = maindao.trainerlistSelect(gym_code);
+		}
+		return trainerList;
+	}
 
-      //회원창에서 트레이너 상세정보 보여주기
-      @RequestMapping("trainerInfo")
-      public String trainerInfo(Model model, MemberDTO memberDTO) {
-         //트레이너 지점이름
-         model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO.getGym_code()));
-         //트레이너 정보
-         model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO.getMem_id()));
+	// 회원창에서 트레이너 상세정보 보여주기
+	@RequestMapping("trainerInfo")
+	public String trainerInfo(Model model, MemberDTO memberDTO) {
+		// 트레이너 지점이름
+		model.addAttribute("gymInfo", maindao.gymInfoSelect(memberDTO.getGym_code()));
+		// 트레이너 정보
+		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO.getMem_id()));
+		// 트레이너 평점
+		String avg_grade = maindao.gradeSelete(memberDTO.getMem_id());
+		System.out.println("평점 평균: " + avg_grade);
+		model.addAttribute("avg_grade", maindao.gradeSelete(memberDTO.getMem_id()));
 
-         //트레이너 평점
-         Integer avg_grade = 0;
-         if(maindao.gradeSelete(memberDTO.getMem_id())!= null) {
-            avg_grade = maindao.gradeSelete(memberDTO.getMem_id());
-         }
-         model.addAttribute("avg_grade", avg_grade);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		Date now = new Date();
+		String now_dt = format.format(now);
+		System.out.println(now_dt);
+		model.addAttribute("nowdate", now_dt);
+		// 리뷰
+		model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
+		return "member/main/trainerInfo";
+	}
+	
+	// 트레이너 후기 작성
+	@RequestMapping("trainerReview")
+	public String trainerReview(Model model, MemberDTO memberDTO, ReviewDTO reviewDTO) {
+		System.out.println(reviewDTO);
+		int result = maindao.reviewInsert(reviewDTO);
+		if (result == 1) {
+			System.out.println("리뷰 등록 완료");
+		} else {
+			System.out.println("리뷰 등록 실패");
+		}
+		String gym_code = memberDTO.getGym_code();
+		System.out.println(gym_code);
+		String mem_id = reviewDTO.getReview_subject();
+		return "redirect:trainerInfo?gym_code=" + gym_code + "&mem_id=" + mem_id;
+	}
+	
 
-         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+	// 회원창에서 상품 목록 페이지로 가기
+	@RequestMapping("product")
+	public String productpage() {
+		return "member/main/product";
+	}
+
+	// 회원창에서 상품 상세정보 보여주기
+	@RequestMapping("productInfo")
+	public String productInfo(Model model, HttpServletRequest req, ProductDTO productDTO) {
+		int product_idx = Integer.parseInt(req.getParameter("product_idx"));
+		model.addAttribute("productInfo", maindao.productInfoSelect(product_idx));
+		// 상품 평점
+		String avg_grade = maindao.gradeSeleteP(String.valueOf(productDTO.getProduct_idx()));
+		System.out.println("평점:" + avg_grade);
+		model.addAttribute("avg_grade", maindao.gradeSeleteP(String.valueOf(productDTO.getProduct_idx())));
+
+		 SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
          Date now = new Date();
          String now_dt = format.format(now);
-         System.out.println(now_dt);
+         System.out.println("현재날짜"+now_dt);
          model.addAttribute("nowdate",now_dt);
+
          //리뷰
-         model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
-         return "member/main/trainerInfo";
+         model.addAttribute("reviewInfo", maindao.reviewSelectP(String.valueOf(productDTO.getProduct_idx())));
+         return "member/main/productInfo";
       }
 
-      //트레이너 후기 작성
-      @RequestMapping("trainerReview")
-      public String trainerReview(Model model, MemberDTO memberDTO, ReviewDTO reviewDTO) {
-         int result = maindao.reviewInsert(reviewDTO);
-         if(result==1){
-            System.out.println("리뷰 등록 완료");
-         }
-         else {
-            System.out.println("리뷰 등록 실패");
-         }
-         //트레이너 지점이름
-         model.addAttribute("gymInfo",maindao.gymInfoSelect(memberDTO.getGym_code()));
-         //트레이너 정보
-         model.addAttribute("trainerInfo", maindao.trainerInfoSelect(reviewDTO.getReview_subject()));
-
-         //트레이너 평점
-         Integer avg_grade = 0;
-         if(maindao.gradeSelete(reviewDTO.getReview_subject())!= null) {
-            avg_grade = maindao.gradeSelete(reviewDTO.getReview_subject());
-         }
-         model.addAttribute("avg_grade", avg_grade);
-
-         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-         Date now = new Date();
-         String now_dt = format.format(now);
-         System.out.println(now_dt);
-         model.addAttribute("nowdate",now_dt);
-         //리뷰
-         model.addAttribute("reviewInfo", maindao.reviewSelect(reviewDTO.getReview_subject()));
-         return "member/main/trainerInfo";
-      }
-
-      //회원창에서 상품 목록 페이지로 가기
-      @RequestMapping("product")
-      public String productpage() {
-         return "member/main/product";
-      }
-
+	// 상품 후기 작성
+	@RequestMapping("productReview")
+	public String productReview(Model model, ProductDTO productDTO, ReviewDTO reviewDTO) {
+		int result = maindao.reviewInsertP(reviewDTO);
+		if (result == 1) {
+			System.out.println("리뷰 등록 완료");
+		} else {
+			System.out.println("리뷰 등록 실패");
+		}
+		String product_idx = reviewDTO.getReview_subject();
+		System.out.println(product_idx);
+		
+		return "redirect:productInfo?product_idx=" + product_idx;
+	}
+	
+	
       //회원창에서 상품 목록 보여주기
       @RequestMapping("product.do")
       @ResponseBody
@@ -244,7 +261,7 @@ public class MemberMainController {
          }
          return productlist;
       }
-
+      
       //회원창에서 상품 상세정보 보여주기
       @RequestMapping("productInfo")
       public String productInfo(Model model, HttpServletRequest req) {

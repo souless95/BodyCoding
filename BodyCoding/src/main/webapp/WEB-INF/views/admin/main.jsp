@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,7 +121,11 @@
                                 <i class="fas fa-chart-area me-1"></i>
                                 Area Chart Example
                             </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body">
+                            	<jsp:include page="../admin/chart/subMainChart.jsp"/>
+                            	<%-- <c:import url="../admin/chart/subMainChart.jsp"/> --%>
+                            	<%-- <%@ include file="../admin/chart/subMainChart.jsp" %> --%>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-4">
@@ -129,7 +134,11 @@
                                 <i class="fas fa-chart-bar me-1"></i>
                                 Bar Chart Example
                             </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body">
+                            	<%-- <jsp:include page="../admin/chart/supMainChart.jsp"/> --%>
+                            	<%-- <c:import url="../admin/chart/supMainChart.jsp"/> --%>
+                            	<%-- <%@ include file="../admin/chart/supMainChart.jsp" %> --%>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-4">

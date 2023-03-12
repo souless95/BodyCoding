@@ -347,7 +347,6 @@ public class MemberMainController {
       List<ProductDTO> pList = maindao.pExpectSelect(productDTO);
       
       model.addAttribute("pList", pList);
-      
       return "/member/purchase/puchaseExpectInfo";
    }
    

@@ -25,7 +25,7 @@ function logoutcheck(){
 /* 1대1문의 윈도우창 생성 */
 function openChatRoom(event, mem_id){
     event.preventDefault(); // 기본 동작(링크 이동) 방지
-    var url = "../../room?mem_id=" + mem_id;
+    var url = "../chatting/room?mem_id=" + mem_id;
     var win = window.open(url, "chatRoom", "width=340,height=560");
     if (win) {
         win.focus();

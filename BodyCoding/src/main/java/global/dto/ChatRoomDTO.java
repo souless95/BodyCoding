@@ -1,5 +1,6 @@
 package global.dto;
 
+
 import lombok.Data;
 
 @Data
@@ -10,9 +11,4 @@ public class ChatRoomDTO {
 	private String send_id;
 	private String content;
 	private String regidate;
-	
-	@Override
-	public String toString() {
-		return "Room [roomidx=" + roomidx + ", roomName=" + roomName + "]";
-	}
 }

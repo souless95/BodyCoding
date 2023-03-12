@@ -75,6 +75,7 @@ public class MChattingController {
 	public @ResponseBody List<ChatRoomDTO> getRoom(@RequestParam HashMap<Object, Object> params, Model model){
 		System.out.println(params.get("mem_id"));
 		roomList = chattingdao.selectmemid(params.get("mem_id").toString());
+		
 		return roomList;
 	}
 	
@@ -85,10 +86,16 @@ public class MChattingController {
 		int roomidx = Integer.parseInt((String) params.get("roomidx"));
 		System.out.println(roomidx);
 		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomidx() == roomidx).collect(Collectors.toList());
+		
+		List<ChatRoomDTO> cList = new ArrayList<>();
+		cList = chattingdao.selectroom(params.get("roomName").toString());
+		System.out.println("방 내용"+cList);
 		if (new_list != null && new_list.size() > 0) {
 		    model.addAttribute("roomName", params.get("roomName"));
 		    model.addAttribute("roomidx", params.get("roomidx"));
 		    model.addAttribute("memberid", params.get("mem_id"));
+		    System.err.println("현재 나의 id?"+params.get("mem_id"));
+		    model.addAttribute("cList",cList);
 		    return "chat";
 		} else {
 	    return "room";

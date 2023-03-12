@@ -22,7 +22,8 @@
 	<select id="selectroom"
 		parameterType="String"
 		resultType="global.dto.ChatRoomDTO">
-		select roomname from chatroom where roomname=#{roomname}
+		select roomidx, send_id, roomname, content, TO_CHAR(REGIDATE, 'FMHH12:MI AM') as regidate
+		from chatroom where roomname=#{roomname} order by regidate
 	</select>
 	
 	<select id="selectALL"

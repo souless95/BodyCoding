@@ -83,8 +83,8 @@
 
 	function getRoom(){
 		commonAjax('/getRoom', "mem_id=${memberid}", 'post', function(result){
-			var roomid = "${memberid}-admin_super1";
-			console.log("0"+roomid);
+			var roomid = $('#roomName').val();
+			console.log("roomid="+roomid);
 			var targetRoom = null;
 			
 			for(var i = 0; i < result.length; i++){
@@ -92,20 +92,20 @@
 					targetRoom = result[i];
 					break;
 				}
-				console.log("1"+result);
 			}
-			
-			if(targetRoom){
-				goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
-				console.log("2"+targetRoom);
+			console.log("targetRoom="+targetRoom);
+			if(targetRoom == null){
+				var msg = {roomName: roomid};
+				console.log("msg="+msg);
+				commonAjax('/createRoom', msg, 'post', function(createRoom){
+					console.log("createChatingRoom(result)"+createChatingRoom(result));
+					goRoom(createRoom[createRoom.length-1].roomidx, createRoom[createRoom.length-1].roomName, "${memberid}");
+					console.log("여기가 createRoom="+createRoom[createRoom.length-1]);
+				});
 			}
 			else{
-				var msg = {roomName: roomid};
-				
-				commonAjax('/createRoom', msg, 'post', function(createRoom){
-					goRoom(createRoom.roomidx, createRoom.roomName, "${memberid}");
-					console.log(createRoom);
-				});
+				goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
+				console.log("2"+targetRoom);
 			}
 			/* createChatingRoom(result); */
 		});

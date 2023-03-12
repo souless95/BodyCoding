@@ -82,33 +82,40 @@
 	}
 
 	function getRoom(){
-		commonAjax('/getRoom', "mem_id=${memberid}", 'post', function(result){
-			var roomid = $('#roomName').val();
-			console.log("roomid="+roomid);
-			var targetRoom = null;
-			
-			for(var i = 0; i < result.length; i++){
-				if(result[i].roomName == roomid){
-					targetRoom = result[i];
-					break;
+		/* 어드민일때 방 리스트만 보여주게 바꾸고 시펑욤 */
+		if('${memberid}'!='admin_super1'){
+			commonAjax('/getRoom', "mem_id=${memberid}", 'post', function(result){
+				var roomid = $('#roomName').val();
+				console.log("roomid="+roomid);
+				var targetRoom = null;
+				
+				for(var i = 0; i < result.length; i++){
+					if(result[i].roomName == roomid){
+						targetRoom = result[i];
+						break;
+					}
 				}
-			}
-			console.log("targetRoom="+targetRoom);
-			if(targetRoom == null){
-				var msg = {roomName: roomid};
-				console.log("msg="+msg);
-				commonAjax('/createRoom', msg, 'post', function(createRoom){
-					console.log("createChatingRoom(result)"+createChatingRoom(result));
-					goRoom(createRoom[createRoom.length-1].roomidx, createRoom[createRoom.length-1].roomName, "${memberid}");
-					console.log("여기가 createRoom="+createRoom[createRoom.length-1]);
-				});
-			}
-			else{
-				goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
-				console.log("2"+targetRoom);
-			}
-			/* createChatingRoom(result); */
-		});
+				console.log("targetRoom="+targetRoom);
+				if(targetRoom == null){
+					var msg = {roomName: roomid};
+					console.log("msg="+msg);
+					commonAjax('/createRoom', msg, 'post', function(createRoom){
+						console.log("createChatingRoom(result)"+createChatingRoom(result));
+						goRoom(createRoom[createRoom.length-1].roomidx, createRoom[createRoom.length-1].roomName, "${memberid}");
+						console.log("여기가 createRoom="+createRoom[createRoom.length-1]);
+					});
+				}
+				else{
+					goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
+					console.log("2"+targetRoom);
+				}
+			});
+		}
+		else{
+			commonAjax('/getRoom', "", 'post', function(result){
+				createChatingRoom(result);
+			});
+		}
 	}
 	
 	/* function createRoom(){

@@ -38,7 +38,9 @@ $(function(){
 			cal();
 			return false;
 		}
+		
 		else{
+			console.log("홧니/.?");
 			const payInfo = $('#payFrm').serialize();
 	       $.ajax({
 	           url: 'kakaoPay.do',
@@ -66,6 +68,7 @@ $(function(){
 		<h2>결제 정보</h2>
 	</div>
 	<form id="payFrm">
+		<input type="hid-den" name="cart_idx" value=${cart_arr }>
 		<table style="border: 5px solid #cdd0d4;">
 			<tbody>
 				<tr>
@@ -134,7 +137,7 @@ $(function(){
 						<div align="center">
 							<strong style="font-size: 26px;">
 							(보유포인트 :<span id="sPoint"><c:out value="${totalPoint}" /></span>)
-							<input type="number" min="0" id="uPoint" name="use_point">
+							<input type="number" value="0" min="0" id="uPoint" name="use_point">
 							<input type="checkbox">전체 사용
 							</strong>
 						</div>

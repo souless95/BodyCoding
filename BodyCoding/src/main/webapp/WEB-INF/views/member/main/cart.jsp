@@ -101,12 +101,24 @@ $(function() {
 	});
 	
 	$('#purchase').click(function(){
-		 var chkArray = new Array(); // 배열 선언
-		 
-        $('input:checkbox[name=selected_product]:checked').each(function() {
-            chkArray.push(this.value);
-        });
-		 location.href="puchaseExpectInfo.do?chkArray="+chkArray;
+		
+		console.log('gg'+'${myCartList eq null}');
+		if('${myCartList eq null}'=='false'){
+			alert("장바구니에 상품을 추가해주세요");
+		}
+		
+		else if($('input:checkbox[name=selected_product]:checked').val()==null) {
+			alert("구매할 상품을 선택해주세요");
+		}
+		
+		else{			
+			 var chkArray = new Array(); // 배열 선언
+			 
+	        $('input:checkbox[name=selected_product]:checked').each(function() {
+	            chkArray.push(this.value);
+	        });
+			 location.href="puchaseExpectInfo.do?chkArray="+chkArray;
+		}
 	});
 });
 
@@ -193,7 +205,6 @@ function errCallBack(errData) {
 	<div style="text-align: center; text-decoration:">
 		<button id="purchase">구매하기(결제)</button>
 		<button type="button" onclick="location.href='product'">목록으로</button>
-		<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
 	</div>
 </div>
 

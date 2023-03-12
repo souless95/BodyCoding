@@ -254,12 +254,8 @@ public class MemberMainController {
    public String cartList(HttpSession session, ProductDTO productDTO, Model model) {
       
       String user = session.getAttribute("UserEmail").toString();
-      
       productDTO.setMem_id(user);
-      
-      System.out.println(user);
-      System.out.println(maindao.cartList(productDTO));
-      
+      maindao.cartStatusInicialize(productDTO);
       model.addAttribute("myCartList", maindao.cartList(productDTO));
       
       return "member/main/cart";
@@ -269,6 +265,7 @@ public class MemberMainController {
    @RequestMapping("cartAddSelect.do")
    public String cartAddSelect(ProductDTO productDTO) {
       
+	   
       //리스트 확인
       ProductDTO result = maindao.cartAddSelect(productDTO);
       productDTO.setProduct_count("1");
@@ -315,6 +312,7 @@ public class MemberMainController {
       return "";
    }
    
+   //구매 예정 화면으로 이동
    @GetMapping("/puchaseExpectInfo.do")
    public String puchaseExpect(HttpServletRequest req, HttpSession session, Model model) {
       
@@ -325,15 +323,21 @@ public class MemberMainController {
          String chkArray[] = chk.split(",");
          
          for(int i=0; i<chkArray.length; i++) {
-            productDTO.setCart_idx(Integer.parseInt(chkArray[i]));
+            productDTO.setCart_idx(chkArray[i]);
             maindao.cartStatusUpdate(productDTO);
          }
       }
       
+      System.out.println("오잉1");
       productDTO.setMem_id(session.getAttribute("UserEmail").toString());
       List<ProductDTO> pList = maindao.pExpectSelect(productDTO);
       
+      System.out.println("오잉22");
       model.addAttribute("pList", pList);
+      model.addAttribute("cart_arr", req.getParameter("chkArray"));
+      
+      System.out.println("오잉333");
+      
       return "/member/purchase/puchaseExpectInfo";
    }
    

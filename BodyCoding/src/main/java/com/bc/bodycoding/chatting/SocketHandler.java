@@ -8,19 +8,15 @@ import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import global.dto.ChatRoomDTO;
 
 @Component
 public class SocketHandler extends TextWebSocketHandler {
-	@Autowired
-	chatService chattingdao;
 	//HashMap<String, WebSocketSession> sessionMap = new HashMap<>(); //웹소켓 세션을 담아둘 맵
 	//List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트 ---roomListSessions
 	List<HashMap<String, Object>> rls = new ArrayList<>();
@@ -97,16 +93,16 @@ public class SocketHandler extends TextWebSocketHandler {
 		session.sendMessage(new TextMessage(obj.toJSONString()));
 	}
 	
-//	@Override
-//	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-//		//소켓 종료
-//		if(rls.size() > 0) { //소켓이 종료되면 해당 세션값들을 찾아서 지운다.
-//			for(int i=0; i<rls.size(); i++) {
-//				rls.get(i).remove(session.getId());
-//			}
-//		}
-//		super.afterConnectionClosed(session, status);
-//	}
+	@Override
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		//소켓 종료
+		if(rls.size() > 0) { //소켓이 종료되면 해당 세션값들을 찾아서 지운다.
+			for(int i=0; i<rls.size(); i++) {
+				rls.get(i).remove(session.getId());
+			}
+		}
+		super.afterConnectionClosed(session, status);
+	}
 	
 	private static JSONObject jsonToObjectParser(String jsonStr) {
 		JSONParser parser = new JSONParser();

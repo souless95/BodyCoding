@@ -245,9 +245,54 @@ public class MemberMainController {
 
 	   //회원창에서 상품 상세정보 보여주기
 	   @RequestMapping("productInfo")
-	   public String productInfo(Model model, HttpServletRequest req) {
+	   public String productInfo(Model model, HttpServletRequest req, ProductDTO productDTO) {
 	      int product_idx = Integer.parseInt(req.getParameter("product_idx"));
 	      model.addAttribute("productInfo",maindao.productInfoSelect(product_idx));
+	    //상품 평점
+			Integer avg_grade = 0;
+			if(maindao.gradeSeleteP(String.valueOf(productDTO.getProduct_idx()))!=null) {
+				avg_grade = maindao.gradeSeleteP(String.valueOf(productDTO.getProduct_idx()));
+			}
+			model.addAttribute("avg_grade", avg_grade);
+
+			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+			Date now = new Date();
+			String now_dt = format.format(now);
+			System.out.println("현재날짜"+now_dt);
+			model.addAttribute("nowdate",now_dt);
+
+			//리뷰
+			model.addAttribute("reviewInfo", maindao.reviewSelectP(String.valueOf(productDTO.getProduct_idx())));
+			return "member/main/productInfo";
+		}
+		//상품 후기 작성
+		@RequestMapping("productReview")
+		public String productReview(Model model, ProductDTO productDTO, ReviewDTO reviewDTO) {
+			int result = maindao.reviewInsertP(reviewDTO);
+			if(result==1) {
+				System.out.println("리뷰 등록 완료");
+			}
+			else {
+				System.out.println("리뷰 등록 실패");
+			}
+//			//상품 이름
+//			model.addAttribute("productInfo", maindao.productInfoSelect(productDTO.getProduct_idx()));
+
+			//상품 평점
+			Integer avg_grade = 0;
+			if(maindao.gradeSeleteP(reviewDTO.getReview_subject())!= null) {
+				avg_grade = maindao.gradeSeleteP(reviewDTO.getReview_subject());
+			}
+			model.addAttribute("avg_grade", avg_grade);
+
+			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+			Date now = new Date();
+			String now_dt = format.format(now);
+			System.out.println("현재날짜"+now_dt);
+			model.addAttribute("nowdate",now_dt);
+
+			//리뷰
+			model.addAttribute("reviewInfo", maindao.reviewSelectP(reviewDTO.getReview_subject()));
 	      return "member/main/productInfo";
 	   }
 

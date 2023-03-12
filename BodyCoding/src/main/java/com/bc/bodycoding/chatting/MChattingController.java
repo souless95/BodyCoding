@@ -82,6 +82,7 @@ public class MChattingController {
 	/*채팅방*/
 	@RequestMapping("/moveChating")
 	public String chating(@RequestParam HashMap<Object, Object> params, Model model) {
+		System.out.println("여기가 채팅 DB?");
 		int roomidx = Integer.parseInt((String) params.get("roomidx"));
 		System.out.println(roomidx);
 		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomidx() == roomidx).collect(Collectors.toList());

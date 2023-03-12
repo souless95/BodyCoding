@@ -199,7 +199,7 @@
 	function send() {
 		var option ={
 			type: "message",
-			roomidx: $("#roomidx").val(),
+			roomNumber: $("#roomidx").val(),
 			sessionId : $("#sessionId").val(),
 			mem_id : $("#mem_id").val(),
 			msg : $("#content").val()

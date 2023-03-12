@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,8 +115,6 @@
 <script type="text/javascript">
 	window.onload = function() {
 		chatName();
-		
-		
 	};
 	
 	var ws;
@@ -199,7 +198,7 @@
 	function send() {
 		var option ={
 			type: "message",
-			roomidx: $("#roomidx").val(),
+			roomname: $("#roomName").val(),
 			sessionId : $("#sessionId").val(),
 			mem_id : $("#mem_id").val(),
 			msg : $("#content").val()
@@ -256,6 +255,32 @@
 	<input type="hidden" id="roomName" name="roomName" value="${roomName }" />
 	<div class="chat_ui" id="chat_ui" style="width: 320px; height: 557px;">
 		<div id="chating" class="chating">
+		<c:forEach var="c" items="${cList }">
+			<c:choose>
+				<c:when test="${c.send_id eq memberid}">
+					<div class="me" style="margin-top:10px;"><div class="b">
+						</div>
+						<div class="a" style="padding:6px 8px 0px 5px;">
+						${c.content }
+						</div>
+						<div class="time">
+						${c.regidate }
+						</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="others" style="margin-top:10px;"><div class="box"><div class="profile_name">${c.send_id}
+						</div>
+						<div class="a"></div>
+						<div class="b" style="padding:6px 8px 0px 5px;">${c.content }
+						</div>
+						<div class="time">${c.regidate }
+						</div>
+						</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
 		</div>
 		<div id="yourName">
 			<table class="inputTable">

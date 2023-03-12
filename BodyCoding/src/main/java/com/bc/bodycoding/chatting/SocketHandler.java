@@ -8,26 +8,41 @@ import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import global.dto.ChatRoomDTO;
+
 
 @Component
 public class SocketHandler extends TextWebSocketHandler {
-	//HashMap<String, WebSocketSession> sessionMap = new HashMap<>(); //웹소켓 세션을 담아둘 맵
-	//List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트 ---roomListSessions
-	List<HashMap<String, Object>> rls = new ArrayList<>();
+	@Autowired
+	chatService chattingdao;
+	HashMap<String, WebSocketSession> sessionMap = new HashMap<>(); //웹소켓 세션을 담아둘 맵
+	List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트 ---roomListSessions
+	//List<HashMap<String, Object>> rls = new ArrayList<>();
 	
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message) {
 		//메시지 발송
 		String msg = message.getPayload();
 		JSONObject obj = jsonToObjectParser(msg);
-		String rN = (String) obj.get("roomidx");
+		String rN = (String) obj.get("roomname");
+		System.out.println(rN);
 		HashMap<String, Object> temp = new HashMap<String, Object>();
+		System.out.println("왜 안되고 나닝");
+			
+		List<ChatRoomDTO> cList = new ArrayList<>();
+		System.out.println("왜 안되고 나닝");
+		System.out.println(rN);
+		cList = chattingdao.selectroom(rN);
+		
+		System.out.println("해당 방 메세지들"+cList);
+		
 		if(rls.size() > 0) {
 			for(int i=0; i<rls.size(); i++) {
 				String roomidx = (String) rls.get(i).get("roomidx"); //세션리스트의 저장된 방번호를 가져와서

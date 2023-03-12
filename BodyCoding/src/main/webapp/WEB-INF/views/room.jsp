@@ -78,16 +78,40 @@
 	
 	window.onload = function(){
 		getRoom();
-		createRoom();
+		/* createRoom(); */
 	}
 
 	function getRoom(){
 		commonAjax('/getRoom', "mem_id=${memberid}", 'post', function(result){
-			createChatingRoom(result);
+			var roomid = "${memberid}-admin_super1";
+			console.log("0"+roomid);
+			var targetRoom = null;
+			
+			for(var i = 0; i < result.length; i++){
+				if(result[i].roomName == roomid){
+					targetRoom = result[i];
+					break;
+				}
+				console.log("1"+result);
+			}
+			
+			if(targetRoom){
+				goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
+				console.log("2"+targetRoom);
+			}
+			else{
+				var msg = {roomName: roomid};
+				
+				commonAjax('/createRoom', msg, 'post', function(createRoom){
+					goRoom(createRoom.roomidx, createRoom.roomName, "${memberid}");
+					console.log(createRoom);
+				});
+			}
+			/* createChatingRoom(result); */
 		});
 	}
 	
-	function createRoom(){
+	/* function createRoom(){
 		$("#createRoom").click(function(){
 			var msg = {	roomName : $('#roomName').val()	};
 
@@ -97,7 +121,7 @@
 
 			$("#roomName").val("");
 		});
-	}
+	} */
 
 	function goRoom(idx, rname, memid){
 		var url ="/moveChating?roomName="+rname+"&"+"roomidx="+idx+"&"+"mem_id="+memid;

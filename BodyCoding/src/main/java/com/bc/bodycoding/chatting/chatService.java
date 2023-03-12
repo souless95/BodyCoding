@@ -12,4 +12,5 @@ public interface chatService {
 	public int insertchat(ChatRoomDTO chatRoomDTO);
 	public List<ChatRoomDTO> selectmemid(String send_id);
 	public List<ChatRoomDTO> selectALL();
+	public List<ChatRoomDTO> selectroom(String roomname);
 }

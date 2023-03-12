@@ -105,6 +105,11 @@ public class MainController {
 	public String adminLogin3() {
 		return "admin/auth/denied";
 	}
+	//권한이 부족한 경우 출력할 메세지
+	@RequestMapping("star")
+	public String star() {
+		return "member/star";
+	}
 	
 	
 	

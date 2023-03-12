@@ -78,57 +78,36 @@
 	
 	window.onload = function(){
 		getRoom();
-		/* createRoom(); */
 	}
 
 	function getRoom(){
-		/* 어드민일때 방 리스트만 보여주게 바꾸고 시펑욤 */
-		if('${memberid}'!='admin_super1'){
-			commonAjax('/getRoom', "mem_id=${memberid}", 'post', function(result){
-				var roomid = $('#roomName').val();
-				console.log("roomid="+roomid);
-				var targetRoom = null;
-				
-				for(var i = 0; i < result.length; i++){
-					if(result[i].roomName == roomid){
-						targetRoom = result[i];
-						break;
-					}
+		commonAjax('/getRoom', "mem_id=${memberid}", 'post', function(result){
+			var roomid = $('#roomName').val();
+			var targetRoom = null;
+			
+			for(var i = 0; i < result.length; i++){
+				if(result[i].roomName == roomid){
+					targetRoom = result[i];
+					break;
 				}
-				console.log("targetRoom="+targetRoom);
-				if(targetRoom == null){
-					var msg = {roomName: roomid};
-					console.log("msg="+msg);
+			}
+			if(targetRoom == null){
+				var msg = {roomName: roomid};
+				/* 어드민이 아니고 기존에 생성된 채팅방이 없으면 생성후 입장 */
+				if('${memberid}'!='admin_super1'){
 					commonAjax('/createRoom', msg, 'post', function(createRoom){
-						console.log("createChatingRoom(result)"+createChatingRoom(result));
 						goRoom(createRoom[createRoom.length-1].roomidx, createRoom[createRoom.length-1].roomName, "${memberid}");
-						console.log("여기가 createRoom="+createRoom[createRoom.length-1]);
 					});
 				}
-				else{
-					goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
-					console.log("2"+targetRoom);
-				}
-			});
-		}
-		else{
-			commonAjax('/getRoom', "", 'post', function(result){
-				createChatingRoom(result);
-			});
-		}
-	}
-	
-	/* function createRoom(){
-		$("#createRoom").click(function(){
-			var msg = {	roomName : $('#roomName').val()	};
-
-			commonAjax('/createRoom', msg, 'post', function(result){
-				createChatingRoom(result);
-			});
-
-			$("#roomName").val("");
+			}
+			/* 기존에 생성된 방이 있다면 입장 */
+			else{
+				goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
+			}
+			/* 방 리스트 보여주기 */
+			createChatingRoom(result);
 		});
-	} */
+	}
 
 	function goRoom(idx, rname, memid){
 		var url ="/moveChating?roomName="+rname+"&"+"roomidx="+idx+"&"+"mem_id="+memid;
@@ -136,14 +115,12 @@
 	}
 
 	function createChatingRoom(res){
-		console.log(res);
 		if(res != null){
 			var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
 				var roomidx = d.roomidx;
 				var memid = "${memberid}";
-				console.log("이거맞아?"+memid);
 				tag += "<tr>"+
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
@@ -179,9 +156,7 @@
 		<div>
 			<table class="inputTable">
 				<tr>
-					<th>방 제목</th>
-					<th><input type="text" name="roomName" id="roomName" value="${memberid}-admin_super1"></th>
-					<th><button id="createRoom">방 만들기</button></th>
+					<th><input type="hidden" name="roomName" id="roomName" value="${memberid}-admin_super1"></th>
 				</tr>
 			</table>
 		</div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +17,9 @@ var newCount;
 function totalP(){
     var total = 0;
     $('input[name=selected_product]:checked').each(function() {
-        total += parseInt($(this).closest('tr').find('.product-price').text());
+        total += parseInt($(this).closest('tr').find('.product-price').text().replace(',', '').trim());
     });
-    $('#totalP').text(total);
+    $('#totalP').text(total.toLocaleString());
 }
 
 function chgCount(symbol, f) {
@@ -26,7 +27,8 @@ function chgCount(symbol, f) {
 	var parentId = $(f).closest("td").attr('id');
 	var pCount = $('#' + parentId).children('span').text();
 	pIdx = $('#' + parentId).children('.pIdx').val();
-	var pPrice = $('#' + parentId + '+td').children('span').text();
+	var pPrice = $('#' + parentId + '+td').children('span').text().replace(',', '').trim();
+	console.log("오우쒭"+pPrice);
 	var uPrice = eval("Number(pPrice)/Number(pCount)");
 
 	console.log("단가:" + uPrice);
@@ -42,7 +44,7 @@ function chgCount(symbol, f) {
 	}
 	if (eval("Number(newCount) < 1") == false) {
 		$('#' + parentId).children('span').text(newCount);
-		$('#' + parentId + '+td').children('span').text(newPrice);
+		$('#' + parentId + '+td').children('span').text(newPrice.toLocaleString());
 	}
 	
 	totalP();
@@ -166,7 +168,10 @@ function errCallBack(errData) {
 						<span class="pCount">${myCartList.product_count }</span>개 
 						<input class="cButton" type="button" value="-" onclick="chgCount('-',this);" style="width: 20px; float: left;" />
 					</td>
-					<td style="vertical-align: middle; text-align: center;"><span class="product-price">${myCartList.product_price }</span>원
+					<td style="vertical-align: middle; text-align: center;">
+						<span class="product-price">
+							<fmt:formatNumber value="${myCartList.product_price }" pattern="###,###,###" />
+						</span>원
 						<form style="float: right;" action="cartDelete.do" method="post">
 							<button type="submit">x</button>
 							<input type="hidden" id="mem_id" name="mem_id" value="${myCartList.mem_id }" />
@@ -190,8 +195,8 @@ function errCallBack(errData) {
 			<tr>
 				<td>
 					<div align="center">
-						<strong style="font-size: 26px;"><span id="totalP"><c:out
-								value="${totalPrice }" /></span>원</strong>
+						<strong style="font-size: 26px;"><span id="totalP">
+						<fmt:formatNumber value="${totalPrice }" pattern="###,###,###" /></span>원</strong>
 					</div>
 				</td>
 			</tr>

@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-	  a{border:0;}
+	  	a{border:0;}
 	</style>
 <script type="text/javascript">
 function logoutcheck(){
@@ -28,11 +28,9 @@ function logoutcheck(){
 		<div id="page-wrapper">
 			<!-- Header -->
 			<div id="header">
-
 					<!-- Logo -->
 						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif';">
 						Body Coding</span></a></h1>
-
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
@@ -70,7 +68,6 @@ function logoutcheck(){
 								<li><a href="trainer">트레이너정보</a></li>
 							</ul>
 						</li>
-						
 						
 						<li>
 							<a href="product">상품몰</a>

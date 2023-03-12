@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원제 게시판</title>
-	<link rel="stylesheet" href="../bootstrap5.2.3/css/bootstrap.css">
-    <script src="../bootstrap5.2.3/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../bootstrap5.2.3/css/bootstrap.css">
+<script src="../bootstrap5.2.3/js/bootstrap.bundle.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 <%@ include file="../inc/Top.jsp"%>
 </head>
 <body>

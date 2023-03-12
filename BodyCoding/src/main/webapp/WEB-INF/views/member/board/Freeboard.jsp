@@ -12,8 +12,6 @@
 <body>
 	<!-- Header -->
 	<%@ include file="../../../../inc/Top.jsp" %>
-	<!-- body부분 -->
-	<!-- 자유게시판 리스트가 나와야 하는 부분임 -->
 	<div class="container">
 		<button type="button" onclick="location.href='main'">홈으로</button> 
 		<button type="button" onclick="location.href='insertboard.do'">글쓰기</button>

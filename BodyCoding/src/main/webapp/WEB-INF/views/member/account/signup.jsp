@@ -6,11 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+<%@ include file="../../../../inc/style.jsp"%>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-<style>
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'> -->
+<!-- <style>
     body {
        min-height: 100vh;
        background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
@@ -83,10 +84,10 @@
    #redStar {
       color:red;
    }
-   </style>
+   </style> -->
 </head>
 <body>
- <%-- <%@ include file="../../../../inc/Top.jsp"%>--%> 
+<%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
 	<div class="input-form-backgroud row"> <!-- class="input-form-backgroud row" -->
 		<div class="input-form col-md-12 mx-auto" >

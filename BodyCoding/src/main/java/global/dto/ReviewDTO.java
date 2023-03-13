@@ -10,7 +10,7 @@ public class ReviewDTO {
 	private String review_subject;
 	private String review_comment;
 	private String mem_id;
-	private int review_grade;
+	private double review_grade;
 	private Date review_regidate;
-
+	private double avg_grade;
 }

@@ -2056,13 +2056,13 @@ input[type="checkbox"]{
 		line-height: 1em;
 	}
 
-	label {
+/* 	label {
 		display: block;
 		color: inherit;
 		font-weight: 600;
 		line-height: 1.75em;
 		margin-bottom: 0.5em;
-	}
+	} */
 
 	::-webkit-input-placeholder {
 		color: #999;

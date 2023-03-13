@@ -49,7 +49,7 @@ public class ProductDTO {
 	private String trainer_id;
 	
 	//카트 일련번호
-	private int cart_idx;
+	private String cart_idx;
 	//카트 물건 갯수
 	private String product_count;
 	//회원 보유 포인트

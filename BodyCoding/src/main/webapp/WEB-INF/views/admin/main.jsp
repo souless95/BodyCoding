@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +12,12 @@
     <title>BodyCoding - Admin</title>
 </head>
 <body class="sb-nav-fixed">
-	<!-- top -->
+   <!-- top -->
 <%@ include file ="../admin/inc/top.jsp" %>
    
    <div id="layoutSidenav">
-   	<!-- side -->
-   	<%@ include file ="../admin/inc/side.jsp" %>
+      <!-- side -->
+      <%@ include file ="../admin/inc/side.jsp" %>
        
        <div id="layoutSidenav_content">
            <main>
@@ -109,35 +110,38 @@
                        </div>
                    </div>
                    
-	             
+                
                </div>
                
                 <!-- 데이터 차트 보여주는 부분 -->
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-4">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
                                 Area Chart Example
                             </div>
                             <div class="card-body">
-                            	<%@ include file="../admin/chart/subMainChart.jsp" %>
+                               <jsp:include page="../admin/chart/subMainChart.jsp"/>
+                               <%-- <c:import url="../admin/chart/subMainChart.jsp"/> --%>
+                               <%-- <%@ include file="../admin/chart/subMainChart.jsp" %> --%>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-4">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-bar me-1"></i>
                                 Bar Chart Example
                             </div>
                             <div class="card-body">
-                            	<%@ include file="../admin/chart/supMainChart.jsp" %>
-                            	<!-- <canvas id="myBarChart" width="100%" height="40"></canvas> -->
+                               <%-- <jsp:include page="../admin/chart/supMainChart.jsp"/> --%>
+                               <%-- <c:import url="../admin/chart/supMainChart.jsp"/> --%>
+                               <%-- <%@ include file="../admin/chart/supMainChart.jsp" %> --%>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-xl-4">
+                    <div class="col-xl-4">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-bar me-1"></i>
@@ -145,13 +149,12 @@
                             </div>
                             <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
            </main>
         <!-- bottom -->
-		<%@ include file ="../admin/inc/bottom.jsp" %>
+      <%@ include file ="../admin/inc/bottom.jsp" %>
         </div>
     </div>
 </body>
 </html>
-

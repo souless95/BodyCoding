@@ -44,7 +44,7 @@
 							    <c:set var="board_file" value="${not empty dto.board_file}" />
 							    <c:if test="${board_file}">
 							    	<div>
-							        	<img src="../static/uploads/board/${dto.board_file}"/>
+							        	<img src="../static/uploads/board/${dto.board_file}" style="width: 100%"/>
 							    	</div>
 							    </c:if>
 							</td>

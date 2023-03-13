@@ -39,7 +39,8 @@ public class SalesChartController {
 		System.out.println(gym_sales);
 		return "admin/chart/supMainChart";
 	}
-	//subMain차트보기
+	
+	//subMainChart
 	@GetMapping("subMainChart")
 	public String subMainChart(String mem_id, Model model){
 		//로그인된 아이디 가져오기

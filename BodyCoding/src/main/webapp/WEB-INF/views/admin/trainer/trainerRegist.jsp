@@ -116,9 +116,9 @@
 		                                                </div>
 		                                            </div>
 		                                            <div class="mt-4 mb-0">
-		                                                <button class="btn btn-primary" type="submit">등록하기</button>
-		                                                <button class="btn btn-primary" type="reset">reset</button>        
-      													<button class="btn btn-primary" type="button" onclick="location.href='/trainerList.do'">트레이너 리스트 목록</button>
+		                                                <button class="custom-btn btn-7" type="submit">등록하기</button>
+		                                                <button class="custom-btn btn-7" type="reset">reset</button>        
+      													<button class="custom-btn btn-7" type="button" onclick="location.href='/trainerList.do'">트레이너 리스트 목록</button>
 		                                            </div>
 		                                        </form>
 		                                    </div>

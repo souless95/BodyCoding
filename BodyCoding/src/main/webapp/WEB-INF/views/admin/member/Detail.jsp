@@ -83,10 +83,12 @@ function errCallBack(errData){
 					      	<tr>
 					       	 	<th>보유포인트</th>
 					       	 	<td>
-					       	 	<div  id="show_data"></div>
-					       	 	<input type="number" id="mem_point" value="0" style="width: 80px;"/>
-					       	 	<input type="hid-den"  id="mem_id" value="${dto.mem_id }"/>
-					       	 	<input type="button" value="포인트추가" id="addpoint" />
+					       	 		<div  id="show_data"></div>
+					       	 	</td>
+					       	 	<td>
+						       	 	<input type="hidden"  id="mem_id" value="${dto.mem_id }"/>
+						       	 	<input type="number" id="mem_point" value="0" style="width: 80px;"/>
+						       	 	<input type="button" value="포인트추가" id="addpoint" />
 					       	 	</td>
 					      	</tr>
 					    </table>
@@ -116,21 +118,17 @@ function errCallBack(errData){
 					       	 	<td>${dto.enabled }</td>
 					       	</tr>
 					    </table>
-						<button type="button" class="btn btn-primary" onclick="location.href='memberDelete.do?mem_id=${dto.mem_id }'">
+						<button type="button" class="custom-btn btn-7" onclick="location.href='memberDelete.do?mem_id=${dto.mem_id }'">
 							삭제
 						</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
-						<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button> 
+						<button type="button" class="custom-btn btn-7" onclick="location.href='main/admin'">홈으로</button>
+						<button type="button" class="custom-btn btn-7" onclick="history.back()">뒤로가기</button> 
 	        		</div>
 				</div>
 			</main>
 			<!-- bottom -->
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/datatables-simple-demo.js"></script>   
+	</div>   
 </body>
 </html>

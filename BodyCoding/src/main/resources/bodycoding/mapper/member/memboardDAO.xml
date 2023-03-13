@@ -6,8 +6,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.bc.bodycoding.board.memboardService">
-
-	<!-- 게시글 목록 (자유게시판+신고) -->
+	<!-- 게시글 목록 (자유게시판+신고) 
 	<select id="memselect"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
@@ -18,7 +17,36 @@
 		 				FB.board_file,  FB.board_visitcount, FB.board_postdate, FB.closed_chk
 		 		order by FB.board_postdate desc 
 	</select>
-	
+	-->
+			 
+			<select id="boardListCnt" resultType="int">
+		  	select count(*) from freeboard WHERE 
+				  	(board_title LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR
+				 	(board_contents LIKE '%'||#{searcKeyword, jdbcType=VARCHAR}||'%') OR
+				  	(mem_id LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') or closed_chk='N'
+				  	
+			</select>  
+		
+		<select id="memselect" resultType="global.dto.BoardDTO" parameterType="global.dto.BoardDTO">
+		 <![CDATA[
+		  SELECT *
+		  FROM (
+		      SELECT ROWNUM AS RNUM, fb.*
+		      FROM (
+		          SELECT * 
+		          FROM freeboard fb
+		          WHERE 
+		            (board_title LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR
+		            (board_contents LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR
+		            (mem_id LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%')
+		          ORDER BY board_category, board_idx DESC 
+		      ) fb
+		      WHERE ROWNUM <= #{pageStart} + #{perPageNum}
+		  ) 
+		  WHERE RNUM >= #{pageStart} + 1 
+		  ]]>
+		</select>
+
 	<!-- 게시글 상세보기 (자게, 공지, 이벤트) -->
 	<select id="memselectOneBoard"
 		parameterType="global.dto.BoardDTO"
@@ -68,8 +96,7 @@
 	</insert> 
 	
 	<!-- 게시글 수정하기전에 등록된 데이터 가져오기 -->
-	<select id="selectone" parameterType="String"
-		resultType="global.dto.BoardDTO">
+	<select id="selectone" parameterType="String" resultType="global.dto.BoardDTO">
 		SELECT * from freeboard               
 		WHERE board_idx = #{board_idx}
 	</select>
@@ -81,4 +108,29 @@
 		where board_idx= #{board_idx}
 	</update> 
 	
+	<!-- 댓글 조회 -->
+	<select id="selectreply" parameterType="String" resultType="global.dto.ReplyDTO">
+		select * from reply where board_idx=#{board_idx}
+	</select>
+	<!-- 댓글 수정하기-->
+	<update id="updatereply" parameterType="global.dto.ReplyDTO" >
+		update reply set reply_cont = #{reply_cont}
+		where reply_idx= #{reply_idx}
+	</update>
+	
+	<!-- 댓글 작성 -->
+	<insert id="insertreply" parameterType="global.dto.ReplyDTO">
+		INSERT INTO reply (
+			reply_idx, board_idx,  mem_id, reply_cont)
+		VALUES 
+			(bodycoding_seq.nextval, #{board_idx}, #{mem_id}, #{reply_cont})
+	</insert> 
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deletereply" parameterType="global.dto.ReplyDTO">
+		delete from reply where reply_idx=#{reply_idx}
+	</delete>
+	
 </mapper>
+
+

@@ -19,11 +19,16 @@ public class BoardDTO {
 	
 	//신고용
 	private int count; //신고횟수
-	
 	private int report_idx; //신고번호
 	private String reporter; //신고자
 	private String report_content; //신고내용
 	private Date report_date; //신고일
 	
+	private int reply_idx; //댓글번호
+	private String reply_cont; // 댓글내용
+	
+	//검색필터
+    private String type; //검색타입
+    private String searchkeyword; //검색내용
 	
 }

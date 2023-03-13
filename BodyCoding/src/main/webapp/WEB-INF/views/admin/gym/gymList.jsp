@@ -41,16 +41,16 @@
 										<td>${row.mem_phone }</td>
 										<td>${row.mem_address }</td>
 										<td>
-												<a href="gymdetail.do?gym_code=${row.gym_code }">상세보기</a>
+											<a href="gymdetail.do?gym_code=${row.gym_code }">상세보기</a>
 										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 						<s:authorize access="hasRole('ROLE_ADMIN_SUPER')">
-							<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymRegist'">지점 등록</button>
+							<button type="button" class="custom-btn btn-7" onclick="location.href='/admin/gym/gymRegist'">지점 등록</button>
 						</s:authorize>
-							<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
+							<button type="button" class="custom-btn btn-7" onclick="location.href='main/admin'">홈으로</button>
 					</div>
 				</div>
 			</main>

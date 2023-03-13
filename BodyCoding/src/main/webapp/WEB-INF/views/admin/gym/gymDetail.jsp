@@ -187,18 +187,18 @@ window.onload = function() {
 					</table>
 					<s:authorize access="hasRole('ROLE_ADMIN_SUB')">
 						<c:if test="${userIdG eq memList.mem_id }">
-							<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
+							<button type="button" class="custom-btn btn-7" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
 								수정
 							</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
+							<button type="button" class="custom-btn btn-7" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
 								삭제
 							</button>
 						</c:if>
 					</s:authorize>
-					<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
+					<button type="button" class="custom-btn btn-7" onclick="location.href='main/admin'">
 						메인으로
 					</button>
-					<button type="button" class="btn btn-primary" onclick="history.back()">
+					<button type="button" class="custom-btn btn-7" onclick="history.back()">
 		            	뒤로가기
 		            </button>
 				</div>

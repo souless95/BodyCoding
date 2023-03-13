@@ -20,9 +20,9 @@
 					<h2>공지사항 상세보기</h2>
         		</div>
 				<!-- idx숨겨놓기 -->
-				<input type="hid-en" name="idx" value="${dto.board_idx }" /> 
-				<input type="hid-den" name="category" value="${dto.board_category }" /> 
-				<input type="hid-den" name="category" value="${dto.mem_id }" /> 
+				<input type="hidden" name="idx" value="${dto.board_idx }" /> 
+				<input type="hidden" name="category" value="${dto.board_category }" /> 
+				<input type="hidden" name="category" value="${dto.mem_id }" /> 
 				<div class="card-body" style="width: 80%">
 				    <table style="border: 2px solid black; border-left:0px; border-right:0px; width: 90%;">
 				        <tr style="border-bottom: 3px solid black;">
@@ -55,17 +55,17 @@
 				        </tr>
 				    </table>
 				    <br />
-		            <button type="button" class="btn btn-primary" 
+		            <button type="button" class="custom-btn btn-2" 
 		            	onclick="if(confirm('정말로 삭제하시겠습니까?')) location.href='noticeDelete.do?board_idx=${dto.board_idx }'">
 						삭제
 					</button>
-		            <button type="button" class="btn btn-primary" onclick="location.href='admin/board/noticeEdit?board_idx=${dto.board_idx }'">
+		            <button type="button" class="custom-btn btn-2" onclick="location.href='admin/board/noticeEdit?board_idx=${dto.board_idx }'">
 						수정
 					</button>
-					<button type="button" class="btn btn-primary" onclick="history.back()">
-		            	이전 페이지
+					<button type="button" class="custom-btn btn-2" onclick="history.back()">
+		            	이전으로
 		            </button>
-		            <button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
+		            <button type="button" class="custom-btn btn-2" onclick="location.href='main/admin'">
 		            	홈으로
 		            </button>
 				</div>

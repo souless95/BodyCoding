@@ -6,11 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+<%@ include file="../../../../inc/style.jsp"%>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-<style>
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'> -->
+<!-- <style>
     body {
        min-height: 100vh;
        background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
@@ -60,11 +61,11 @@
       margin-top:5px;
       margin-right:7px;
       background: #fff;
-       -webkit-border-radius: 10px;
-       -moz-border-radius: 10px;
-       border-radius: 10px;
-       -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-       -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
    }
    
@@ -83,12 +84,13 @@
    #redStar {
       color:red;
    }
-   </style>
+   </style> -->
 </head>
 <body>
+<%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
-	<div class="input-form-backgroud row">
-		<div class="input-form col-md-12 mx-auto">
+	<div class="input-form-backgroud row"> <!-- class="input-form-backgroud row" -->
+		<div class="input-form col-md-12 mx-auto" >
 			<div style="text-align:center;">
 				<h2 class="mb-1">회원가입</h2>
 			</div><br />
@@ -242,6 +244,10 @@
             </div> -->
             <br> 
             <button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
+            <button type="button" style="border: none;"
+               onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'";>
+				<img src="static/member/images/kakao_signup.png">
+			</button>
          </form>
       </div>
    </div>

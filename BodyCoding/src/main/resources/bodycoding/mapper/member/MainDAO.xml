@@ -79,7 +79,6 @@
 </select>
 
 
-
 <!-- 모든 지점 트레이너 보여주기 -->
 <select id="trainerALLlistSelect"
    parameterType="global.dto.MemberDTO"
@@ -95,9 +94,7 @@
 </select>
 
 <!-- 트레이너 상세 정보 보여주기 -->
-<select id="trainerInfoSelect"
-   parameterType="String"
-   resultType="global.dto.MemberDTO">
+<select id="trainerInfoSelect"   parameterType="String"   resultType="global.dto.MemberDTO">
    select * from member 
       where authority='ROLE_TRAINER' and mem_id=#{mem_id}
 </select>

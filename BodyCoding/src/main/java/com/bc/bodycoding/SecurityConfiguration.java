@@ -37,18 +37,16 @@ public class SecurityConfiguration {
          	.antMatchers("/admin/trainer/trainerEdit").hasRole("ADMIN_SUB") 				// 트레이너 수정 접근( + 본인 소속만 수정가능)
 			.antMatchers("/admin/product/productReigst").hasRole("ADMIN_SUPER") 			//상품 등록 접근
          	.antMatchers("/admin/product/productEdit").hasRole("ADMIN_SUPER") 				// 상품 수정 접근
-			.antMatchers("/admin/product/stockList").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") //재고 리스트 접근
+			.antMatchers("/admin/product/stockList").hasRole("ADMIN_SUB") 					//재고 리스트 접근
 			.antMatchers("/boardList.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 			//게시판 리스트 접근
 			.antMatchers("/boardDetail.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 			//게시판 상세페이지 접근
-			//게시글 수정 페이지 접근
+			.antMatchers("boardEdit").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER")				//게시글 수정 페이지 접근
 			.antMatchers("/noticeList.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 			//공지사항 리스트 접근
 			.antMatchers("/noticeDetail.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 		//공지사항 상세페이지 접근
-			//공지사항 작성 페이지 접근
-			//공지사항 수정 페이지 접근
+			.antMatchers("noticeInsert.do").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 			//공지사항 작성 페이지 접근
+			.antMatchers("noticeEdit").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 				//공지사항 수정 페이지 접근
 			.antMatchers("/admin/**").hasAnyRole("ADMIN_SUPER", "ADMIN_SUB") 
 			.antMatchers("/**").permitAll()
-//         	.antMatchers("/admin/매출관리/**").hasRole("ADMIN_SUPER")
-//         	.antMatchers("/admin/Q&A/qnaAnswer").hasRole("ADMIN_SUB")
 			.anyRequest().authenticated();
 
 		// 로그인 페이지 커스터마이징

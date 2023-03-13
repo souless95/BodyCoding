@@ -73,7 +73,6 @@
 	</form>
 <script>
 	function submitForm() {
-		
 		// 폼을 제출하지 않도록 기본 이벤트를 취소합니다.
 		event.preventDefault();
 		// Ajax를 사용하여 폼을 제출합니다.

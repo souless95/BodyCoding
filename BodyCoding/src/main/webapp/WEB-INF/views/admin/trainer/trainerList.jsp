@@ -60,8 +60,8 @@ window.onload = msg;
 								</c:forEach>
 							</tbody>
 							</table>
-							<button type="button" onclick="location.href='/admin/trainer/trainerRegist'">트레이너 등록</button> 
-							<button type="button" onclick="location.href='main/admin'">홈으로</button> 
+							<button type="button" class="custom-btn btn-7" onclick="location.href='/admin/trainer/trainerRegist'">트레이너 등록</button> 
+							<button type="button" class="custom-btn btn-7" onclick="location.href='main/admin'">홈으로</button> 
 		        		</div>
 					</div>
 				</main>

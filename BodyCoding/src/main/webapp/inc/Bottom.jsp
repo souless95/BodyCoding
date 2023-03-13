@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<!-- CTA -->
-	<!-- <section id="cta" class="wrapper style3">
-		<div class="container">
-			<header>
-				<h2>Are you ready to continue your quest?</h2>
-				<a href="#" class="button">Insert Coin</a>
-			</header>
-		</div>
-	</section> -->
 	
 		<style>
 		/*플로팅 버튼*/

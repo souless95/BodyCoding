@@ -2,16 +2,23 @@ package com.bc.bodycoding;
 
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bc.bodycoding.admin.chart.SalesChartController;
+import com.bc.bodycoding.admin.chart.SalesChartService;
 
 import global.dto.MemberDTO;
+import global.dto.ProductDTO;
 
 
 @Controller
@@ -71,28 +78,67 @@ public class MainController {
 		return "member/menu/yoga";
 	}
 	
+	@Autowired
+	SalesChartService salesChartdao;
 	//시큐리티 로그인용
 	@RequestMapping("/main/admin")
 	public String adminLogin(Principal principal, Model model, MemberDTO memberDTO) {
-		
-		String page = "";
+		SalesChartController controller = new SalesChartController();
+//		String page = "";
 		
 			try {
 				String mem_id = principal.getName();
 				model.addAttribute("mem_id", mem_id);
 				
-				System.out.println(mem_id);
+				//sup 보여주기
+				model.addAttribute("totalgym_totalsales",salesChartdao.totalgym_totalsales());
+//				System.out.println(salesChartdao.totalgym_totalsales());
+				//현재 활성화되어있는 지점코드
+				List<String> gymList = salesChartdao.enabledGym();
+				//모든 지점에 대해 월별 매출액 구하기
+				Map<String, List<ProductDTO>> gym_sales = new TreeMap<>();
+				for(int i=0; i<gymList.size() ; i++) {
+					gym_sales.put("gym_code"+ i, salesChartdao.gym_sales(gymList.get(i)));
+				}
+				model.addAttribute("gym_sales", gym_sales);
+				System.out.println(gym_sales);
 				
-				page = "admin/main";
+				//sub 보여주기
+				System.out.println(mem_id);
+				MemberDTO gymInfo = salesChartdao.gym_code(mem_id);
+				if(gymInfo != null) {
+					System.out.println(gymInfo);
+					String gym_code =gymInfo.getGym_code();
+					System.out.println("222");
+					String mem_name = gymInfo.getMem_name();
+					System.out.println("33");
+					model.addAttribute("mem_name", mem_name);
+					System.out.println("지점코드: "+gym_code);
+					//로그인된 아이디의 지점에 대한 정보: 모든 상품에 대한 월별 매출
+					model.addAttribute("totalcategory_totalsales", salesChartdao.totalcategory_totalsales(gym_code));
+					//로그인된 아이디의 지점에 대한 정보: 각 상품에 대한 월별 매출
+					ProductDTO productDTO = new ProductDTO();
+					String[] product_category_name = {"GX","헬스","필라테스","PT","요가"};
+					String[] product_category = {"gx","health","pilates","pt","yoga"};
+					System.out.println(product_category_name.length);
+					for(int i=0; i<product_category_name.length ; i++) {
+						productDTO.setProduct_category(product_category_name[i]);
+						productDTO.setGym_code(gym_code);
+						model.addAttribute(product_category[i]+"_sales", salesChartdao.category_sales(productDTO));
+					}
+				}
+				
+				return "admin/main";
 			} 
 			catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("로그인하셔야 합니다.");
-				page = "admin/auth/login";
+				return "admin/auth/login";
 			}
-		return page;
+//		return page;
 	}
 	
+
 	//로그인 실패한 경우 출력할 메세지
 	@RequestMapping("/adminLoginError.do")
 	public String adminLogin2(Model model) {

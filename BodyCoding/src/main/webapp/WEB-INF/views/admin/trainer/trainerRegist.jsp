@@ -31,7 +31,7 @@
 							    							<input type="hidden" id="authority" name="authority" value="ROLE_TRAINER">
 			                                                <!-- 로그인한 ADMIN의 지점코드가 자동으로 삽입되게 만들기 -->
 		                                                    <div class="form-floating">
-		                                                        <input class="form-control" id="gym_code" name="gym_code" type="number" value="${adminGym }" readonly/>
+		                                                        <input class="form-control" id="gym_code" name="gym_code" type="number" value="${adminGym }" readonly style="padding-top: 10px;"/>
 		                                                    </div>
 		                                                </div>
 		                                                
@@ -94,9 +94,24 @@
 		                                                        <label for="mem_comment">자기소개</label>
 		                                                    </div>
 		                                                </div>
+	                                                </div>
+		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_img" name="mem_img" type="file" />
+		                                                        <label for="mem_interest"></label>
+		                                                        <select class="form-control" name="mem_interest" style="padding-top: 10px; padding-top: 10px;">
+		                                                        	<option value="" selected> 대표단어를 선택해 주세요</option>
+												                     <option value="친절">친절</option>
+												                     <option value="열정">열정</option>
+												                     <option value="재미">재미</option>
+												                     <option value="정확">정확</option>
+												                     <option value="칭찬">칭찬</option>
+												                </select>
+		                                                    </div>
+		                                                </div>
+		                                                <div class="col-md-6">
+		                                                    <div class="form-floating mb-3 mb-md-0">
+		                                                        <input class="form-control" id="mem_img" name="mem_img" type="file" style="padding-top: 18px;"/>
 		                                                    </div>
 		                                                </div>
 		                                            </div>

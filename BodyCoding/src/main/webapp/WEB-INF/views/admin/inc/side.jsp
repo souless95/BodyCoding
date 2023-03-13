@@ -92,7 +92,7 @@
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-chart-area"></i>
 						</div> 전체 매출 현황 Charts
-					</a> <a class="nav-link" href="tables.html">
+					</a> <a class="nav-link" href="../subMainChart">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-table"></i>
 						</div> Tables

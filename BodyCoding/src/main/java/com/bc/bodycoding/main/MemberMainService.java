@@ -48,5 +48,6 @@ public interface MemberMainService {
 	public int cartDelete(ProductDTO productDTO); //장바구니 삭제
 	public int plusMinus(ProductDTO productDTO); //장바구니 수량 증감
 	public int cartStatusUpdate(ProductDTO productDTO); // 장바구니 > 구매 예정으로 상태 변경
+	public int cartStatusInicialize(ProductDTO productDTO); // 장바구니 진입 시, status 초기화
 	public List<ProductDTO> pExpectSelect(ProductDTO productDTO); // 장바구니 > 구매 예정으로 상태 변경
 }

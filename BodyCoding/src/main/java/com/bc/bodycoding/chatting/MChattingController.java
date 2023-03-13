@@ -40,7 +40,7 @@ public class MChattingController {
 		model.addAttribute("memberid", req.getParameter("mem_id"));
 		model.addAttribute("roomName", req.getParameter("roomName"));
 		model.addAttribute("roomidx", req.getParameter("roomidx"));
-		return "chat";
+		return "chatting/chat";
 	}
 	
 	/*방 페이지*/
@@ -54,7 +54,7 @@ public class MChattingController {
 		else {			
 			model.addAttribute("memberid", req.getParameter("mem_id"));
 		}
-		return "room";
+		return "chatting/room";
 	}
 	
 	/*방 생성하기*/
@@ -75,7 +75,6 @@ public class MChattingController {
 	public @ResponseBody List<ChatRoomDTO> getRoom(@RequestParam HashMap<Object, Object> params, Model model){
 		System.out.println(params.get("mem_id"));
 		roomList = chattingdao.selectmemid(params.get("mem_id").toString());
-		
 		return roomList;
 	}
 	
@@ -84,7 +83,6 @@ public class MChattingController {
 	public String chating(@RequestParam HashMap<Object, Object> params, Model model) {
 		System.out.println("채팅방 DB 여기서 불러옴?");
 		int roomidx = Integer.parseInt((String) params.get("roomidx"));
-		System.out.println(roomidx);
 		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomidx() == roomidx).collect(Collectors.toList());
 		
 		List<ChatRoomDTO> cList = new ArrayList<>();
@@ -96,9 +94,9 @@ public class MChattingController {
 		    model.addAttribute("memberid", params.get("mem_id"));
 		    System.err.println("현재 나의 id?"+params.get("mem_id"));
 		    model.addAttribute("cList",cList);
-		    return "chat";
+		    return "chatting/chat";
 		} else {
-	    return "room";
+	    return "chatting/room";
 		}
 	}
 }

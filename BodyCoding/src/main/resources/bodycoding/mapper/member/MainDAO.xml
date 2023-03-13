@@ -242,6 +242,11 @@
 		WHERE cart_idx=#{cart_idx}
 </update>
 
+<update id="cartStatusInicialize" parameterType="global.dto.ProductDTO">
+	UPDATE cart SET cart_status=0 
+		WHERE mem_id=#{mem_id}
+</update>
+
 <select id="pExpectSelect"
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">

@@ -72,7 +72,7 @@ public class PurchaseController {
 	@ResponseBody
 	@RequestMapping("/kakaoPay.do")
 	public String purchase(HttpServletRequest req, Model model, HttpSession session, ProductDTO productDTO) {
-
+		
 		System.out.println(productDTO);
 
 		// 멤버쉽과 상품 공통 변수 정의

@@ -78,24 +78,34 @@
 	
 	window.onload = function(){
 		getRoom();
-		createRoom();
 	}
 
 	function getRoom(){
 		commonAjax('/getRoom', "mem_id=${memberid}", 'post', function(result){
+			var roomid = $('#roomName').val();
+			var targetRoom = null;
+			
+			for(var i = 0; i < result.length; i++){
+				if(result[i].roomName == roomid){
+					targetRoom = result[i];
+					break;
+				}
+			}
+			if(targetRoom == null){
+				var msg = {roomName: roomid};
+				/* 어드민이 아니고 기존에 생성된 채팅방이 없으면 생성후 입장 */
+				if('${memberid}'!='admin_super1'){
+					commonAjax('/createRoom', msg, 'post', function(createRoom){
+						goRoom(createRoom[createRoom.length-1].roomidx, createRoom[createRoom.length-1].roomName, "${memberid}");
+					});
+				}
+			}
+			/* 기존에 생성된 방이 있다면 입장 */
+			else{
+				goRoom(targetRoom.roomidx, targetRoom.roomName, "${memberid}");
+			}
+			/* 방 리스트 보여주기 */
 			createChatingRoom(result);
-		});
-	}
-	
-	function createRoom(){
-		$("#createRoom").click(function(){
-			var msg = {	roomName : $('#roomName').val()	};
-
-			commonAjax('/createRoom', msg, 'post', function(result){
-				createChatingRoom(result);
-			});
-
-			$("#roomName").val("");
 		});
 	}
 
@@ -105,14 +115,12 @@
 	}
 
 	function createChatingRoom(res){
-		console.log(res);
 		if(res != null){
 			var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
 				var roomidx = d.roomidx;
 				var memid = "${memberid}";
-				console.log("이거맞아?"+memid);
 				tag += "<tr>"+
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
@@ -148,9 +156,7 @@
 		<div>
 			<table class="inputTable">
 				<tr>
-					<th>방 제목</th>
-					<th><input type="text" name="roomName" id="roomName" value="${memberid}-admin_super1"></th>
-					<th><button id="createRoom">방 만들기</button></th>
+					<th><input type="hidden" name="roomName" id="roomName" value="${memberid}-admin_super1"></th>
 				</tr>
 			</table>
 		</div>

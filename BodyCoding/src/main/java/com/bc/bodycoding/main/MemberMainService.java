@@ -50,4 +50,6 @@ public interface MemberMainService {
 	public int cartStatusUpdate(ProductDTO productDTO); // 장바구니 > 구매 예정으로 상태 변경
 	public int cartStatusInicialize(ProductDTO productDTO); // 장바구니 진입 시, status 초기화
 	public List<ProductDTO> pExpectSelect(ProductDTO productDTO); // 장바구니 > 구매 예정으로 상태 변경
+	public ProductDTO memPointSelect(String mem_point); // 바로 결제 시, 회원 포인트 불러오기
+	public ProductDTO productSelect(String product_idx); // 바로 결제 시, 상품 정보 불러오기
 }

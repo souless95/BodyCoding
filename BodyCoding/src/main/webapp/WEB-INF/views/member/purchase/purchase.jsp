@@ -36,28 +36,30 @@ $(function(){
    });
      
    $(document).on('click','input[name=product_idx]',function(){
-      $('#tTitle').css("display","inline");
       
       const gym_code = $('#gymSelect').val();
-      const lesson_category = $('input[name=product_category]').val();
-            
+      const lesson_category = $('input[name=product_category]:checked').val();
       
-       const trainer = {
-            gym_code : gym_code,
-            lesson_category : lesson_category
-      };
-      
-       console.log(trainer);
-       
-      $.ajax({
-         type:'get',
-         url: '/trainerLoad.do',
-          data: trainer,
-         contentType: "application/json;charset:utf-8",
-         dataType:"json",
-         success:sucCallBackT,
-         error: errCallBackT
-      });
+      if(lesson_category!='헬스'){
+         $('#tTitle').css("display","inline");
+         
+          const trainer = {
+               gym_code : gym_code,
+               lesson_category : lesson_category
+         };
+         
+          console.log(trainer);
+          
+         $.ajax({
+            type:'get',
+            url: '/trainerLoad.do',
+             data: trainer,
+            contentType: "application/json;charset:utf-8",
+            dataType:"json",
+            success:sucCallBackT,
+            error: errCallBackT
+         });
+      }
    });
    
     $('#kPayBtn').click(function(){
@@ -69,9 +71,9 @@ $(function(){
        let gym_code = $('#gymSelect').val();
        
        const payInfo = {
-    		 trainer_id : trainer_id,
-    		 product_idx : product_idx,
-    		 gym_code : gym_code,
+           trainer_id : trainer_id,
+           product_idx : product_idx,
+           gym_code : gym_code,
              product_name : product_name,
              product_price : product_price,
              type : "멤버쉽"
@@ -82,14 +84,14 @@ $(function(){
          data : payInfo,
          dataType:"json",
          success:function(data){
- 			if(data.status === 500){
-				alert("카카오페이결제를 실패하였습니다.")
-			} 
- 			else{
- 				console.log("페이 진입");
-	            console.log(data);
-				location.href = data.next_redirect_pc_url;
-			}
+          if(data.status === 500){
+            alert("카카오페이결제를 실패하였습니다.")
+         } 
+          else{
+             console.log("페이 진입");
+               console.log(data);
+            location.href = data.next_redirect_pc_url;
+         }
          },
          error:function(error){
             alert(error);
@@ -116,6 +118,9 @@ function errCallBackP(errData){
 function sucCallBackT(resData) {
    let tData = "";
    console.log(resData);
+   if(resData==""){
+      tData = "<td><span>트레이너가 없습니다.</span></td>"
+   }
    $(resData).each(function(index, data){
       tData += ""
       +"<td><input type='radio' name='trainer_id' value='" +data.mem_id+ "'>"
@@ -130,9 +135,7 @@ function errCallBackT(errData){
    console.log(errData.status+":"+errData.statusText);
 }
 </script>
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="../../../../inc/Top.jsp" %>
 <div class="container">
 <table>
    <tr>
@@ -154,10 +157,10 @@ function errCallBackT(errData){
    <tr>
       <td> 
          <input type="radio" name="product_category" value="헬스">헬스
-         <input type="radio"name="product_category" value="GX">GX
-         <input type="radio"name="product_category" value="요가">요가
-         <input type="radio"name="product_category" value="필라테스">필라테스
-         <input type="radio"name="product_category" value="PT">PT
+         <input type="radio" name="product_category" value="GX">GX
+         <input type="radio" name="product_category" value="요가">요가
+         <input type="radio" name="product_category" value="필라테스">필라테스
+         <input type="radio" name="product_category" value="PT">PT
       </td>      
    </tr>
    <tr>
@@ -177,5 +180,7 @@ function errCallBackT(errData){
    </tr>
 </table>
 </div>
+<!-- bottom -->
+<%@ include file="../../../../inc/Bottom.jsp"%>
 </body>
 </html>

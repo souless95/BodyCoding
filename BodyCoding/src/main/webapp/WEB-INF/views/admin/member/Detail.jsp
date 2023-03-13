@@ -84,9 +84,11 @@ function errCallBack(errData){
 					       	 	<th>보유포인트</th>
 					       	 	<td>
 					       	 	<div  id="show_data"></div>
-					       	 	<input type="number" id="mem_point" value="0" style="width: 80px;"/>
-					       	 	<input type="hid-den"  id="mem_id" value="${dto.mem_id }"/>
-					       	 	<input type="button" value="포인트추가" id="addpoint" />
+					       	 	<c:if test="${fn:contains(adminName, 'sub')}">
+						       	 	<input type="number" id="mem_point" value="0" style="width: 80px;"/>
+						       	 	<input type="hidden"  id="mem_id" value="${dto.mem_id }"/>
+						       	 	<input type="button" value="포인트추가" id="addpoint" />
+					       	 	</c:if>
 					       	 	</td>
 					      	</tr>
 					    </table>
@@ -116,9 +118,6 @@ function errCallBack(errData){
 					       	 	<td>${dto.enabled }</td>
 					       	</tr>
 					    </table>
-						<button type="button" class="btn btn-primary" onclick="location.href='memberDelete.do?mem_id=${dto.mem_id }'">
-							삭제
-						</button>
 						<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button>
 						<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button> 
 	        		</div>

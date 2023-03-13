@@ -252,7 +252,7 @@
    <input type="hidden" id="sessionId" value="">
    <input type="hidden" id="roomidx" name="roomidx" value="${roomidx}">
    <input type="hidden" id="roomName" name="roomName" value="${roomName }" />
-   <div class="chat_ui" id="chat_ui" style="width: 320px; height: 557px;">
+   <div class="chat_ui" id="chat_ui" style="width: 430px; height: 590px;">
       <div id="chating" class="chating">
       <c:forEach var="c" items="${cList }">
          <c:choose>

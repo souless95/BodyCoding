@@ -281,7 +281,6 @@ public class GymController {
 	// 삭제
 	@RequestMapping("/gymdelete.do")
 	public String gym6(GymDTO gymDTO, MemberDTO memberDTO) {
-		int result1 = gymdao.deleteM(memberDTO);
 		int result = gymdao.delete(gymDTO);
 		if (result == 1)
 			System.out.println("삭제되었습니다.");

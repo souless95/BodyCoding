@@ -25,7 +25,7 @@
 		        		<div class="card-body" style="width: 80%">
 		        			<h4>프로필 사진</h4>
 		        			<img src="/static/uploads/trainer/${trainer.mem_img}" style="width:200px; height:200px;">
-		        			<input type="hi-dden" name="mem_img" value="${trainer.mem_img }">
+		        			<input type="hidden" name="mem_img" value="${trainer.mem_img }">
 		        			<input class="form-control" id="mem_img" name="mem_img" type="file" style="display:inline;" />
 		        			<table class="table" border="2">
 								<tr>
@@ -65,7 +65,7 @@
 							        <td><input type="text" name="mem_comment" value="${trainer.mem_comment}"/></td>
 						      	</tr>
 							</table>
-								<input type="submit" value="전송하기" />
+								<button type="submit" class="btn btn-primary" value="전송하기">전송하기</button>
 								<button type="button" class="btn btn-primary" onclick="location.href='/main/admin'">홈으로</button> 
 								<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
 		        		</div>

@@ -2,6 +2,7 @@ package com.bc.bodycoding.admin.member;
 
 
 import java.io.IOException;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +35,10 @@ public class MemberController {
 
 	//상세보기
 	@RequestMapping("/detail.do")
-	public String detailM(Model model, MemberDTO memberDTO) {
+	public String detailM(Model model, MemberDTO memberDTO, Principal principal) {
+		String userIdA = principal.getName();
+		model.addAttribute("adminName", userIdA);
+		
 		memberDTO = memberdao.selectOneMember(memberDTO);
 		model.addAttribute("dto", memberDTO);
 		System.out.println(memberDTO);

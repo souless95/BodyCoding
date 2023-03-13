@@ -25,13 +25,19 @@ function logoutcheck(){
 /* 1대1문의 윈도우창 생성 */
 function openChatRoom(event, mem_id){
     event.preventDefault(); // 기본 동작(링크 이동) 방지
-    var url = "../chatting/room?mem_id=" + mem_id;
-    var win = window.open(url, "chatRoom", "width=340,height=560");
-    if (win) {
-        win.focus();
-        win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&roomidx=0&mem_id=" + mem_id;
-    } else {
-        alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
+    if(mem_id==null||mem_id==""){
+    	alert("로그인 후 이용해 주세요.");
+        window.location.href = "/login.do";
+    }
+    else{
+	    var url = "../chatting/room?mem_id=" + mem_id;
+	    var win = window.open(url, "chatRoom", "width=450,height=600, left=600, top=200");
+	    if (win) {
+	        win.focus();
+	        win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&mem_id=" + mem_id;
+	    } else {
+	        alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
+	    }
     }
 }
 </script>

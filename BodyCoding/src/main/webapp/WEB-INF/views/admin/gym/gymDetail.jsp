@@ -65,6 +65,15 @@ window.onload = function() {
 	  previewContainer.appendChild(span);
 	}
 }
+
+function deletchack(){
+	var deleteGym = confirm("정말 삭제하실건가요?");
+	if(deleteGym){
+		var deleteGym2 = confirm("정말 정말 삭제하실건가요?");
+		if(deleteGym2)
+		location.href='gymdelete.do?gym_code=${dto.gym_code }'
+	}
+}
 </script>
 <!-- top메뉴  -->
 <%@ include file ="../../admin/inc/top.jsp" %>
@@ -190,11 +199,13 @@ window.onload = function() {
 							<button type="button" class="btn btn-primary" onclick="location.href='/admin/gym/gymEdit?gym_code=${dto.gym_code }'">
 								수정
 							</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='gymdelete.do?gym_code=${dto.gym_code }'">
-								삭제
-							</button>
 						</c:if>
 					</s:authorize>
+					<c:if test="${userIdG eq 'admin_super1'}">
+						<button type="button" class="btn btn-primary" onclick="deletchack()">
+									삭제
+						</button>
+		            </c:if>	
 					<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
 						메인으로
 					</button>

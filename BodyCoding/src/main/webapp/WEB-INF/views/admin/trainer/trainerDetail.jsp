@@ -24,9 +24,9 @@
 	        		<div class="card-body" style="width: 80%">
 	        			<h4>프로필 사진</h4>
 	        			<div><img src="static/uploads/trainer/${trainerList.mem_img }" style="width:200px; height:200px;"></div>
-	        			<input type="hid-den" name="mem_id" id="mem_id" value="${userIdT}" />
-	        			<input type="hid-den" name="mem_id" id="mem_id" value="${adminGym}" />
-	        			<input type="hid-den" name="mem_id" id="mem_id" value="${trainerList.gym_code}" />
+	        			<input type="hidden" name="mem_id" id="mem_id" value="${userIdT}" />
+	        			<input type="hidden" name="mem_id" id="mem_id" value="${adminGym}" />
+	        			<input type="hidden" name="mem_id" id="mem_id" value="${trainerList.gym_code}" />
 	        			<table class="table" border="2">
 							<tr>
 					         	<th>센터코드</th>

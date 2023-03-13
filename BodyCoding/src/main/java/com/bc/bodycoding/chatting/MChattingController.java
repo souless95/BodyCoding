@@ -4,7 +4,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -82,21 +81,15 @@ public class MChattingController {
 	@RequestMapping("/moveChating")
 	public String chating(@RequestParam HashMap<Object, Object> params, Model model) {
 		System.out.println("채팅방 DB 여기서 불러옴?");
-		int roomidx = Integer.parseInt((String) params.get("roomidx"));
-		List<ChatRoomDTO> new_list = roomList.stream().filter(o -> o.getRoomidx() == roomidx).collect(Collectors.toList());
 		
 		List<ChatRoomDTO> cList = new ArrayList<>();
 		cList = chattingdao.selectroom(params.get("roomName").toString());
 		System.out.println("방 내용"+cList);
-		if (new_list != null && new_list.size() > 0) {
-		    model.addAttribute("roomName", params.get("roomName"));
-		    model.addAttribute("roomidx", params.get("roomidx"));
-		    model.addAttribute("memberid", params.get("mem_id"));
-		    System.err.println("현재 나의 id?"+params.get("mem_id"));
-		    model.addAttribute("cList",cList);
-		    return "chatting/chat";
-		} else {
-	    return "chatting/room";
-		}
+	    model.addAttribute("roomName", params.get("roomName"));
+	    model.addAttribute("roomidx", params.get("roomidx"));
+	    model.addAttribute("memberid", params.get("mem_id"));
+	    System.err.println("현재 나의 id?"+params.get("mem_id"));
+	    model.addAttribute("cList",cList);
+	    return "chatting/chat";
 	}
 }

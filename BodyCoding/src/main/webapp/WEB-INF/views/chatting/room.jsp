@@ -111,7 +111,7 @@
 
 	function goRoom(idx, rname, memid){
 		var url ="/moveChating?roomName="+rname+"&"+"roomidx="+idx+"&"+"mem_id="+memid;
-		window.open(url, "rname", "width=340,height=560");
+		window.open(url, "rname", "width=450,height=600, left=800, top=200");
 	}
 
 	function createChatingRoom(res){
@@ -147,19 +147,30 @@
 		});
 	}
 </script>
-<body>
-	<div class="container">
-		<h1>채팅방</h1>
-		<div id="roomContainer" class="roomContainer">
-			<table id="roomList" class="roomList"></table>
-		</div>
-		<div>
-			<table class="inputTable">
-				<tr>
-					<th><input type="hidden" name="roomName" id="roomName" value="${memberid}-admin_super1"></th>
-				</tr>
-			</table>
-		</div>
+<body class="sb-nav-fixed">
+
+<%@ include file ="../admin/inc/top.jsp" %>
+
+<div id="layoutSidenav">
+<%@ include file ="../admin/inc/side.jsp" %>
+	<div id="layoutSidenav_content">
+          <main>
+              <div class="container-fluid px-4">
+				<h1>채팅방</h1>
+				<div id="roomContainer" class="roomContainer">
+					<table id="roomList" class="roomList"></table>
+				</div>
+				<div>
+					<table class="inputTable">
+						<tr>
+							<th><input type="hidden" name="roomName" id="roomName" value="${memberid}-admin_super1"></th>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</main>
 	</div>
+</div>
+<%@ include file ="../admin/inc/bottom.jsp" %>
 </body>
 </html>

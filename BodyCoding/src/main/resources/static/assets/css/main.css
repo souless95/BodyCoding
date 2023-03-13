@@ -55,7 +55,7 @@ mark {
 	color: inherit;
 }
 
-input::-moz-focus-inner {
+/* input::-moz-focus-inner {
 	border: 0;
 	padding: 0;
 }
@@ -65,7 +65,7 @@ input, select, textarea {
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
-}
+} */
 
 /* checkbox css 변경시 참고할 것 */
 input[type="checkbox"]{

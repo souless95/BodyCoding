@@ -152,12 +152,12 @@
 		<div class="row">
 			<div class="col-lg-3 col-md-2"></div>
 			<div class="col-lg-6 col-md-8 login-box">
-				<div class="col-lg-12 login-title">ADMIN PANEL</div>
+				<div class="col-lg-12 login-title">ADMIN LOGIN</div>
 				<div class="col-lg-12 login-form">
 					<div class="col-lg-12 login-form">
 						<c:if test="${empty mem_id }" var="loginResult">
 							<c:if test="${errorMsg != null}">
-								<p>
+								<p style="color: white;">
 									Login Error! <br /> ${errorMsg}
 								</p>
 							</c:if>
@@ -187,6 +187,5 @@
 			</div>
 		</div>
 	</div>
-	<!-- bottom -->
 </body>
 </html>

@@ -97,7 +97,7 @@ public class boardController {
 			}
 	    }
 	    
-	    boardDTO.setBoard_idx(req.getParameter("board_idx")); //idx
+	    boardDTO.setBoard_idx(Integer.parseInt(req.getParameter("board_idx"))); //idx
 	    boardDTO.setMem_id(mem_id); //작성자
 	    boardDTO.setBoard_title(req.getParameter("board_title")); //제목
 	    boardDTO.setBoard_contents(req.getParameter("board_contents")); //내용
@@ -216,7 +216,7 @@ public class boardController {
 	@RequestMapping("/updateNoticeStatus.do")
 	@ResponseBody
 	public String updateNoticeStatus(BoardDTO boardDTO, HttpServletRequest req) {
-		String board_idx = req.getParameter("board_idx");
+		int board_idx = Integer.parseInt(req.getParameter("board_idx"));
 		String closed_chk = req.getParameter("closed_chk");
 		
 		boardDTO.setBoard_idx(board_idx);
@@ -276,7 +276,7 @@ public class boardController {
 			}
 	    }
 	    
-	    boardDTO.setBoard_idx(req.getParameter("board_idx")); //idx
+	    boardDTO.setBoard_idx(Integer.parseInt(req.getParameter("board_idx"))); //idx
 	    boardDTO.setMem_id(mem_id); //작성자
 	    boardDTO.setBoard_title(req.getParameter("board_title")); //제목
 	    boardDTO.setBoard_contents(req.getParameter("board_contents")); //내용

@@ -20,8 +20,7 @@
 	       		</div>
 				<form action="/noticeEdit.do" method="post" enctype="multipart/form-data">
 					<!-- idx숨겨놓기 -->
-					<!-- <input type="hid-den" name="board_category" id="board_category" value="공지" /> -->
-					<input type="hid-den" name="board_idx" id="board_idx" value="${board.board_idx }" />
+					<input type="hidden" name="board_idx" id="board_idx" value="${board.board_idx }" />
 					<div class="card-body" style="width: 80%">
 					    <table style="border: 2px solid black; border-left:0px; border-right:0px; width: 90%;">
 					        <tr style="border-bottom: 3px solid black;">
@@ -50,15 +49,15 @@
 								    첨부된 파일
 								    <c:if test="${board_file}">
 								        <img src="../static/uploads/board/${board.board_file}" />
-								    	<input type="hid-den" id="board_file" name="board_file" value="${board.board_file }">
+								    	<input type="hidden" id="board_file" name="board_file" value="${board.board_file }">
 								    </c:if>
 					        	</th>
 					        </tr>
 					    </table>
 					    <br />
-			            <button type="submit" value="uploads" class="btn btn-primary">작성</button>
-			            <button type="reset" class="btn btn-primary">리셋</button>
-						<button type="button" class="btn btn-primary" onclick="history.back()">
+			            <button type="submit" value="uploads" class="custom-btn btn-2">작성</button>
+			            <button type="reset" class="custom-btn btn-2">리셋</button>
+						<button type="button" class="custom-btn btn-2" onclick="history.back()">
 			            	작성취소
 			            </button>
 					</div>

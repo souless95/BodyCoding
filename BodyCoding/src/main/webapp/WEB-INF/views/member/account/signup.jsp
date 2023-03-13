@@ -60,11 +60,11 @@
       margin-top:5px;
       margin-right:7px;
       background: #fff;
-       -webkit-border-radius: 10px;
-       -moz-border-radius: 10px;
-       border-radius: 10px;
-       -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-       -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
    }
    
@@ -86,9 +86,10 @@
    </style>
 </head>
 <body>
+ <%-- <%@ include file="../../../../inc/Top.jsp"%>--%> 
 <div class="container">
-	<div class="input-form-backgroud row">
-		<div class="input-form col-md-12 mx-auto">
+	<div class="input-form-backgroud row"> <!-- class="input-form-backgroud row" -->
+		<div class="input-form col-md-12 mx-auto" >
 			<div style="text-align:center;">
 				<h2 class="mb-1">회원가입</h2>
 			</div><br />

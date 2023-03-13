@@ -1,7 +1,7 @@
 package com.bc.bodycoding.board;
 
-import java.net.http.HttpRequest;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import global.dto.BoardDTO;
 import global.dto.ReplyDTO;
@@ -23,19 +24,78 @@ public class memboardController {
 	@Autowired
 	memboardService memboarddao;
 	
-	//멤버 게시글 리스트
+	//멤버 게시글 리스트 페이징X
+	/*
 	@RequestMapping("/Freeboard.do")
 	public String board1(Model model) {
 		model.addAttribute("Freeboard", memboarddao.memselect());
 		
 		return "member/board/Freeboard";
 	}
+	*/
+	//게시글 리스트 페이징 
+	@RequestMapping("/Freeboard.do")
+	public String board1(Criteria cri, Model model) {
+		
+		//model.addAttribute("Freeboard", memboarddao.memselect());
+		// 전체 글 개수
+        int boardListCnt = memboarddao.boardListCnt();
+        // 페이징 객체
+        Paging paging = new Paging();
+        paging.setCri(cri);
+        paging.setTotalCount(boardListCnt);    
+        
+        List<Map<String, Object>> list = memboarddao.memselect(cri);
+        
+        model.addAttribute("list", list);    
+        model.addAttribute("paging", paging);  
+		return "member/board/Freeboard";
+	}
+	
+	//검색기능
+	/*
+	@RequestMapping("/searchmemberboard.do")
+	public String searchBoard(@ModelAttribute("cri") Criteria cri, Model model) {
+	    int boardListCnt = memboarddao.searchBoardCnt(cri);
+	    Paging paging = new Paging();
+	    paging.setCri(cri);
+	    paging.setTotalCount(boardListCnt);    
+	    List<Map<String, Object>> list = memboarddao.searchBoard(cri);
+	    model.addAttribute("list", list);    
+	    model.addAttribute("paging", paging);  
+	    return "member/board/Freeboard";
+	}	*/
+	
+	@RequestMapping(value = "/searchmemberboard.do", method = RequestMethod.GET)
+	public String searchMemberBoard(@RequestParam("searchType") String searchType,
+	                                      @RequestParam("searchKeyword") String searchKeyword,
+	                                      Criteria cri, Model model) throws Exception {
+			
+			int boardListCnt = memboarddao.boardListCnt();
+	        // 페이징 객체
+	        Paging paging = new Paging();
+	        // 검색 조건을 Criteria 객체에 설정
+	        cri.setSearchType(searchType);
+	        cri.setSearchKeyword(searchKeyword);
+	        
+	        paging.setCri(cri);
+	        paging.setTotalCount(boardListCnt);    
+
+		    // 게시글 리스트를 가져오는 코드 등
+		    List<Map<String, Object>> list = memboarddao.memselect(cri);
+	        model.addAttribute("list", list);    
+	        model.addAttribute("paging", paging); 
+			return "member/board/Freeboard";
+		
+	}
+
 	
 	//게시글 상세보기
 	@RequestMapping("/detailmemberboard.do")
 	public String board2(HttpServletRequest req, Model model, HttpSession session) {
 		//게시글상세보기 값저장
 		BoardDTO boardDTO = new BoardDTO();
+		
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		System.out.println(boardDTO);
 		//view페이지에서 쓰기위해서 dto이름에 boardDTO정보저장
@@ -190,7 +250,7 @@ public class memboardController {
 		
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
-		int board_idx = boardDTO.getBoard_idx();
+		String board_idx = boardDTO.getBoard_idx();
 		System.out.println(board_idx);
 		
 		List<ReplyDTO> replyDTOList = memboarddao.selectreply(replyDTO);
@@ -203,7 +263,7 @@ public class memboardController {
 		model.addAttribute("dto", boardDTO);
 		
 		//;
-		return "redirect:detailmemberboard.do?board_idx="+Integer.toString(board_idx);
+		return "redirect:detailmemberboard.do?board_idx="+ board_idx;
 	}
 			
 	//댓글 수정
@@ -213,11 +273,11 @@ public class memboardController {
 		System.out.println("dddd");
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
-		int board_idx = boardDTO.getBoard_idx();
+		String board_idx = boardDTO.getBoard_idx();
 		System.out.println(board_idx);
 		
 		replyDTO.setBoard_idx(boardDTO.getBoard_idx());
-		replyDTO.setReply_idx(Integer.parseInt(req.getParameter("reply_idx")));
+		replyDTO.setReply_idx(req.getParameter("reply_idx"));
 		replyDTO.setBoard_idx(board_idx);
 		System.out.println(board_idx);
 		
@@ -225,8 +285,6 @@ public class memboardController {
 				
 		return "redirect:/detailmemberboard.do?board_idx="+board_idx;
 	}
-	
-	
 
-
+	
 }

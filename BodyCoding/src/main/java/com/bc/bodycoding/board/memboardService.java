@@ -1,6 +1,7 @@
 package com.bc.bodycoding.board;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,6 +15,11 @@ public interface memboardService {
 	public List<BoardDTO> memselect();
 	//페이징 처리 글쓰기
 	//public List<BoardDTO> memselectpage(BoardDTO boardDTO);
+	
+	
+	public int boardListCnt();
+	
+	public List<Map<String, Object>> memselect(Criteria cri); 
 	
 	public BoardDTO memselectOneBoard(BoardDTO boardDTO); //게시글 상세보기
 	public int updateboard(BoardDTO boardDTO); //게시글 수정하기
@@ -44,6 +50,9 @@ public interface memboardService {
 	public int updatereply(ReplyDTO replyDTO);
 	//기존 댓글 가져오기
 	public ReplyDTO selectreply(String reply_idx);
+
+	public List<Map<String, Object>> searchBoard(Criteria cri);
+//	public int searchBoardCnt(Criteria cri);
 	
 	
 	

@@ -41,24 +41,24 @@ $(function(){
       const lesson_category = $('input[name=product_category]:checked').val();
       
       if(lesson_category!='헬스'){
-	      $('#tTitle').css("display","inline");
-	      
-	       const trainer = {
-	            gym_code : gym_code,
-	            lesson_category : lesson_category
-	      };
-	      
-	       console.log(trainer);
-	       
-	      $.ajax({
-	         type:'get',
-	         url: '/trainerLoad.do',
-	          data: trainer,
-	         contentType: "application/json;charset:utf-8",
-	         dataType:"json",
-	         success:sucCallBackT,
-	         error: errCallBackT
-	      });
+         $('#tTitle').css("display","inline");
+         
+          const trainer = {
+               gym_code : gym_code,
+               lesson_category : lesson_category
+         };
+         
+          console.log(trainer);
+          
+         $.ajax({
+            type:'get',
+            url: '/trainerLoad.do',
+             data: trainer,
+            contentType: "application/json;charset:utf-8",
+            dataType:"json",
+            success:sucCallBackT,
+            error: errCallBackT
+         });
       }
    });
    
@@ -71,9 +71,9 @@ $(function(){
        let gym_code = $('#gymSelect').val();
        
        const payInfo = {
-    		 trainer_id : trainer_id,
-    		 product_idx : product_idx,
-    		 gym_code : gym_code,
+           trainer_id : trainer_id,
+           product_idx : product_idx,
+           gym_code : gym_code,
              product_name : product_name,
              product_price : product_price,
              type : "멤버쉽"
@@ -84,14 +84,14 @@ $(function(){
          data : payInfo,
          dataType:"json",
          success:function(data){
- 			if(data.status === 500){
-				alert("카카오페이결제를 실패하였습니다.")
-			} 
- 			else{
- 				console.log("페이 진입");
-	            console.log(data);
-				location.href = data.next_redirect_pc_url;
-			}
+          if(data.status === 500){
+            alert("카카오페이결제를 실패하였습니다.")
+         } 
+          else{
+             console.log("페이 진입");
+               console.log(data);
+            location.href = data.next_redirect_pc_url;
+         }
          },
          error:function(error){
             alert(error);
@@ -119,7 +119,7 @@ function sucCallBackT(resData) {
    let tData = "";
    console.log(resData);
    if(resData==""){
-	   tData = "<td><span>트레이너가 없습니다.</span></td>"
+      tData = "<td><span>트레이너가 없습니다.</span></td>"
    }
    $(resData).each(function(index, data){
       tData += ""

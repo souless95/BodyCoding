@@ -13,7 +13,7 @@ public interface memboardService {
 	//멤버게시판의 게시글 리스트
 	public List<BoardDTO> memselect();
 	//페이징 처리 글쓰기
-	public List<BoardDTO> memselectpage(BoardDTO cri);
+	//public List<BoardDTO> memselectpage(BoardDTO boardDTO);
 	
 	public BoardDTO memselectOneBoard(BoardDTO boardDTO); //게시글 상세보기
 	public int updateboard(BoardDTO boardDTO); //게시글 수정하기

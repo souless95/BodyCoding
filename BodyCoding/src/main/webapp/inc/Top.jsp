@@ -14,16 +14,16 @@
 	</style>
 <script type="text/javascript">
 function logoutcheck(){
-	
-	var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
-	
-	if(confirmed){
-		location.href="logout.do"
-	}
+   
+   var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
+   
+   if(confirmed){
+      location.href="logout.do"
+   }
 }
 
 </script>
-	</head>
+</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
 			<!-- Header -->
@@ -145,5 +145,5 @@ function logoutcheck(){
 		<script src="../static/assets/js/util.js"></script>
 		<script src="../static/assets/js/main.js"></script>
 
-	</body>
+   </body>
 </html>

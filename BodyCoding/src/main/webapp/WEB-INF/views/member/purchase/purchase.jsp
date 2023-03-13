@@ -133,6 +133,7 @@ function errCallBackT(errData){
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
 <table>
    <tr>
       <th>지점 선택</th>
@@ -175,5 +176,6 @@ function errCallBackT(errData){
       <td><button id="kPayBtn">카카오페이 결제!!!</button> </td>
    </tr>
 </table>
+</div>
 </body>
 </html>

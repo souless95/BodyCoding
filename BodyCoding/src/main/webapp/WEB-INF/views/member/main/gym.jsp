@@ -103,7 +103,7 @@ function errCallBack(errData){
 <br>
 <h2>지점 정보</h2>
 <div class="main_left" style="width: 65%; float: left;">
-	<div id="map" style="width:100%; height:650px;"></div>
+   <div id="map" style="width:100%; height:650px;"></div>
 
 <script type="text/javascript">
    var mapContainer = document.getElementById('map'), // 지도를 표시할 div  

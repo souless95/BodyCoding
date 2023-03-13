@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%>
+    <!-- 줄바꿈 처리용 -->
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>

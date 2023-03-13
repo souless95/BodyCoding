@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,6 @@
 .chat_ui{
 	background-color: #9bbad8;
 	padding: 4px 4px 0px 4px;
-	overflow-y: scroll;
 }
 .chat_ui .clear{
 	clear: both;
@@ -88,47 +88,40 @@
 .chat_ui .chating .others .box .time{
 	float: left;
 }
-.chat_ui .yourMsg .textarea{
+.textarea{
 	float: left;
 	width: calc(100% - 68px);
-	height: 64px;
+	height: 60px;
 	border-radius: 8px 0px 0px 8px;
 	margin: 0px 0px 0px 0px;
 	padding: 2px 2px 2px 2px;
 	resize: none;
 }
-.chat_ui .yourMsg .button{
-	float: right;
+.button{
+ 	float: right;
 	width: 62px;
-	height: 68px;
+	height: 66px;
 	background-color: #ffec42;
 	border-radius: 0px 8px 8px 0px;
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	text-align: center;
 	display: table;
-	cursor: pointer;
+	cursor: pointer; 
 }
-.chat_ui .yourMsg .button p{
-	display: table-cell;
- 	vertical-align: middle;
-}
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
-.chat_ui 
 </style>
 </head>
-
+<body>
 <script type="text/javascript">
+	window.onload = function() {
+		chatName();
+	};
 	
 	var ws;
 
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomName").val());
 		wsEvt();
 	}
 		
@@ -141,6 +134,7 @@
 		ws.onmessage = function(data) {
 			//메시지를 받으면 동작
 			var msg = data.data;
+			console.log(msg);
 			if(msg != null && msg.trim() != ''){
 				var d = JSON.parse(msg);
 				var time = nowTime();
@@ -148,9 +142,12 @@
 					var si = d.sessionId != null ? d.sessionId : "";
 					if(si != ''){
 						$("#sessionId").val(si); 
+						console.log("나는getId에 잇수다");
+						console.log('${memberid}');					
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
+						console.log("나는getI1d에 잇수다");
 						$("#chating").append("<div class='me' style='margin-top:10px;'>" + 
 						"<div class=\"b\">\n"+
 						"</div>\n"+
@@ -164,7 +161,7 @@
 					}else{
 						$("#chating").append("<div class='others' style='margin-top:10px;'>" + 
 						"<div class=\"box\">"+
-						"<div class=\"profile_name\">"+d.mem_name+"\n"+
+						"<div class=\"profile_name\">"+d.mem_id+"\n"+
 						"</div>\n"+
 						"<div class=\"a\">"+
 						"</div>\n"+
@@ -190,25 +187,20 @@
 			}
 		});
 	}
-
+	
 	function chatName(){
-		var mem_name = $("#mem_name").val();
-		if(mem_name == null || mem_name.trim() == ""){
-			alert("사용자 이름을 입력해주세요.");
-			$("#mem_name").focus();
-		}else{
-			wsOpen();
-			$("#yourName").hide();
-			$("#yourMsg").show();
-		}
+		var userName = $("#mem_id").val();
+		wsOpen();
+		$("#yourName").hide();
+		$("#yourMsg").show();
 	}
 
 	function send() {
 		var option ={
 			type: "message",
-			roomNumber: $("#roomNumber").val(),
+			roomname: $("#roomName").val(),
 			sessionId : $("#sessionId").val(),
-			mem_name : $("#mem_name").val(),
+			mem_id : $("#mem_id").val(),
 			msg : $("#content").val()
 		}
 		ws.send(JSON.stringify(option))
@@ -223,31 +215,88 @@
 		
 		return ampm+" "+h+":"+m;
 	}
+	/*웹 페이지가 언로드(unload)되기 전에 발생하는 이벤트
+	페이지를 닫을 때, 뒤로 가기 버튼을 눌렀을 때, 
+	주소 표시줄에 URL을 입력하고 엔터 키를 눌렀을 때 등과 같은 상황에서 발생
+	*/
+	//window.addEventListener('beforeunload', function(){
+	$(function(){
+			$('#sendBtn').on('click', function(){
+			
+			var m_id = $("#mem_id").val();
+	 		var roomName = $("#roomName").val();
+			var content= $("#content").val();
+			console.log(m_id+"룸이름"+roomName+"내용"+content);
+			
+	 		$.ajax({
+			  url: '/saveChatLog',
+			  contentType: "application/json; charset=utf-8",
+			  data: {
+				send_id: m_id,
+				roomName: roomName,
+				content: content,
+			  },
+			  dataType: 'text',
+			  async: false,
+			  success: function(data) {
+			    console.log("성공");
+			    send();
+			  },
+			  error: function(xhr, status, error) {
+			    // 저장 실패 시 에러 메시지를 출력합니다.
+			    console.log(error);
+			  }
+			});
+		});
+	});
 </script>
-<body>
-	<h1>${roomName}의 채팅방</h1>
 	<input type="hidden" id="sessionId" value="">
-	<input type="hidden" id="roomNumber" value="${roomNumber}">
-		
-	<div class="chat_ui" id="chat_ui" style="width: 320px; height: 480px;">
+	<input type="hidden" id="roomidx" name="roomidx" value="${roomidx}">
+	<input type="hidden" id="roomName" name="roomName" value="${roomName }" />
+	<div class="chat_ui" id="chat_ui" style="width: 320px; height: 557px;">
 		<div id="chating" class="chating">
+		<c:forEach var="c" items="${cList }">
+			<c:choose>
+				<c:when test="${c.send_id eq memberid}">
+					<div class="me" style="margin-top:10px;"><div class="b">
+						</div>
+						<div class="a" style="padding:6px 8px 0px 5px;">
+						${c.content }
+						</div>
+						<div class="time">
+						${c.regidate }
+						</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="others" style="margin-top:10px;"><div class="box"><div class="profile_name">${c.send_id}
+						</div>
+						<div class="a"></div>
+						<div class="b" style="padding:6px 8px 0px 5px;">${c.content }
+						</div>
+						<div class="time">${c.regidate }
+						</div>
+						</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
 		</div>
-		
 		<div id="yourName">
 			<table class="inputTable">
 				<tr>
 					<th>사용자명</th>
-					<th><input class="textarea1" type="text" name="mem_name" id="mem_name" value=""></th>
-					<th><button class="button" onclick="chatName()" id="startBtn">이름 등록</button></th>
+					<th><input class="textarea1" type="text" name="mem_id" id="mem_id" value="${memberid }"></th>
+					<th><button class="button" id="reginame" onclick="chatName()">이름 등록</button></th>
 				</tr>
 			</table>
 		</div>
 		<div id="yourMsg">
 			<div class="inputTable">
-			    <textarea class="textarea" id="content"></textarea>
-			    <div class="button" id="sendBtn" onclick="send();">
-			 	   <p>전송</p>
-			    </div>
+			    <textarea class="textarea" id="content" name="content"></textarea>
+			    <button class="button" id="sendBtn">
+			    	전송
+			    </button>
 			    <div class="clear"></div>
 			</div>
 		</div>

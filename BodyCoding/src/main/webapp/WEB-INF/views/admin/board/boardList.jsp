@@ -30,7 +30,7 @@
 										<th>제목</th>
 										<th>작성일</th>
 										<th>업로드 파일</th>
-										<th>신고여부</th>
+										<th>신고횟수</th>
 										<th>비공개여부</th>
 									</tr>
 								</thead>
@@ -44,13 +44,19 @@
 												<td><a href="boardDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>
 												<td>${row.board_postdate }</td>
 												<td>
-													<c:if test="${not empty row.board_sfile }">
+													<c:if test="${not empty row.board_file }">
 														<i class="bi bi-files"></i>
 													</c:if>
 												</td>
-												<td>신고횟수 : ${row.count }</td>
+												<td>
+													<c:if test="${row.count >= 5 }">
+														<span style="color: red;">신고횟수 : ${row.count }</span>
+													</c:if>
+													<c:if test="${row.count < 5 }">
+													  	<span style="color: black;">신고횟수 : ${row.count}</span>
+													</c:if>
+												</td>
 												<td>비공개 : ${row.closed_chk }</td>
-												
 											</tr>
 										</c:if>
 									</c:forEach>

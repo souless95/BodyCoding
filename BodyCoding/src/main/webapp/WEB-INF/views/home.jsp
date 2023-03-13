@@ -13,37 +13,6 @@
       <li><a href="/">홈</a></li>
    </ul>
 
-   <ul>
-      <li><a href="main">member 메인페이지</a></li>
-   </ul>
-   <ul>
-      <li><a href="calendar.do">캘린더</a></li>
-   </ul>
-   <ul>
-      <li><a href="trainer">트레이너 목록보기</a></li>
-   </ul>
-   <ul>
-      <li><a href="product">상품 목록보기</a></li>
-   </ul>
-   <ul>
-      <li><a href="pwcheck">마이페이지</a></li>
-   </ul>
-   <ul>
-      <li><a href="delete">탈퇴</a></li>
-   </ul>
-   <!-- 임시. 작업이후 삭제 예정 -->
-   <ul>
-      <li><a href="routine.do">운동루틴등록</a></li>
-   </ul>
-   <ul>
-      <li><a href="supMainChart">sup차트</a></li>
-   </ul>
-   <ul>
-      <li><a href="subMainChart">sub차트</a></li>
-   </ul>
-   <ul>
-      <li><a href="room">채팅</a></li>
-   </ul>
 	<!-- 어드민 로그인 하려면 main/admin으로 접속할 것 -->
 	<!-- <ul>
 		<li><a href="main/admin">admin 메인페이지</a></li>
@@ -81,6 +50,9 @@
 	</ul>
 	<ul>
 		<li><a href="room">채팅</a></li>
+	</ul>
+	<ul>
+		<li><a href="star">별</a></li>
 	</ul>
 </body>
 </html>

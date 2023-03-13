@@ -1,14 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="/static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 <!-- top메뉴  -->
@@ -35,8 +31,7 @@
 							    							<input type="hidden" id="authority" name="authority" value="ROLE_TRAINER">
 			                                                <!-- 로그인한 ADMIN의 지점코드가 자동으로 삽입되게 만들기 -->
 		                                                    <div class="form-floating">
-		                                                        <input class="form-control" id="gym_code" name="gym_code" type="number" placeholder="Enter your last name" required/>
-		                                                        <label for="gym_code">지점 선택</label>
+		                                                        <input class="form-control" id="gym_code" name="gym_code" type="number" value="${adminGym }" readonly/>
 		                                                    </div>
 		                                                </div>
 		                                                
@@ -123,9 +118,5 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>
 	</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="/static/admin/js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="/static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

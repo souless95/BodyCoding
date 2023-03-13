@@ -111,8 +111,8 @@
 <!-- 트레이너에 대한 평점 보여주기 -->
 <select id="gradeSelete"
    parameterType="String"
-   resultType="int">
-   select ceil(avg(review_grade)) from review 
+   resultType="String">
+   select round(avg(review_grade),1) as avg_grade from review 
       where review_type='TRAINER' and review_subject =#{review_subject}
 </select>
 
@@ -157,27 +157,27 @@
 
 <!-- 상품에 대한 평점 보여주기 -->
 <select id="gradeSeleteP"
-	parameterType="String"
-	resultType="int">
-	select ceil(avg(review_grade)) from review 
-		where review_type='PRODUCT' and review_subject =#{review_subject}
+   parameterType="String"
+   resultType="String">
+   select round(avg(review_grade),1) from review 
+      where review_type='PRODUCT' and review_subject =#{review_subject}
 </select>
 
 <!-- 상품에 대한 후기 보여주기 -->
 <select id="reviewSelectP"
-	parameterType="String"
-	resultType="global.dto.ReviewDTO">
-	select * from review
-	where review_type='PRODUCT' and review_subject=#{review_subject}
-	order by review_regidate desc
+   parameterType="String"
+   resultType="global.dto.ReviewDTO">
+   select * from review
+   where review_type='PRODUCT' and review_subject=#{review_subject}
+   order by review_regidate desc
 </select>
 
 <!-- 상품 후기 등록 -->
 <insert id="reviewInsertP"
-	parameterType="global.dto.ReviewDTO">
-	insert into REVIEW (review_idx, review_type, review_subject, review_comment, mem_id, review_grade)
-		values (bodycoding_seq.nextval, 'PRODUCT', #{review_subject}
-    	, #{review_comment}, #{mem_id}, #{review_grade})
+   parameterType="global.dto.ReviewDTO">
+   insert into REVIEW (review_idx, review_type, review_subject, review_comment, mem_id, review_grade)
+      values (bodycoding_seq.nextval, 'PRODUCT', #{review_subject}
+       , #{review_comment}, #{mem_id}, #{review_grade})
 </insert>
 
 <!-- 장바구니 목록 보기-->

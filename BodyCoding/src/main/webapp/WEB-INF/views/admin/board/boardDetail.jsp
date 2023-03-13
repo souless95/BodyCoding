@@ -42,6 +42,12 @@
 					            <th>내용</th>
 					            <td colspan="4" style="height: 300px; vertical-align: top; padding-top: 10px; padding-bottom: 10px; ">
 						            ${fn:replace(dto.board_contents, replaceChar, "<br/>")}
+						            <c:set var="board_file" value="${not empty dto.board_file}" />
+							   		<c:if test="${board_file}">
+								    	<div>
+								        	<img src="../static/uploads/board/${dto.board_file}" style="width: 100%"/>
+								    	</div>
+							    	</c:if>
 					            </td> 
 					        </tr>
 					        <tr style="text-align: center">
@@ -94,6 +100,10 @@
 														<td>${row.reporter }</td>
 														<td>${row.report_content }</td>
 														<td>${row.report_date }</td>
+														<td>
+															<button>수정</button>
+															<button>삭제</button>
+														</td>
 													</tr>
 												</c:if>
 											</c:forEach>

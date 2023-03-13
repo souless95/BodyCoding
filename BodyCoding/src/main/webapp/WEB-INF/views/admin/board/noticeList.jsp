@@ -34,58 +34,6 @@ $(document).ready(function(){
     });
 });
 </script>
-<style type="text/css">
-input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
-}
-
-label {
-  cursor: pointer;
-  text-indent: -9999px;
-  width: 40px;
-  height: 25px;
-  background: grey;
-  display: block;
-  border-radius: 100px;
-  position: relative;
-}
-
-label:after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 15px;
-  height: 15px;
-  background: #fff;
-  border-radius: 90px;
-  transition: 0.3s;
-}
-
-input:checked + label {
-  background: #bada55;
-}
-
-input:checked + label:after {
-  left: calc(100% - 5px);
-  transform: translateX(-100%);
-}
-
-label:active:after {
-  width: 10px;
-}
-
-
-// centering
-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-</style>
 </head>
 <body>
 	<!-- top메뉴  -->
@@ -116,9 +64,8 @@ body {
 								<c:forEach items="${noticeList }" var="row" varStatus="loop">
 									<c:if test="${row.board_category eq '공지' }">
 										<tr>
-											<td class="switches">
-												<input type="checkbox" id="switch" name="closed_chk" value="closed_chk" data-board-idx="${row.board_idx}" ${row.closed_chk == 'Y' ? 'checked' : ''}>
-												<label for="switch">Toggle</label>
+											<td>
+												<input type="checkbox" name="closed_chk" value="closed_chk" data-board-idx="${row.board_idx}" ${row.closed_chk == 'Y' ? 'checked' : ''}>
 											</td>
 											<td>${row.board_category }</td>
 											<td><a href="noticeDetail.do?board_idx=${row.board_idx }">${row.board_title }</a></td>

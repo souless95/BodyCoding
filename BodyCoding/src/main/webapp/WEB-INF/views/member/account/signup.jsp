@@ -243,6 +243,10 @@
             </div> -->
             <br> 
             <button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
+            <button type="button" style="border: none;"
+               onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'";>
+				<img src="static/member/images/kakao_signup.png">
+			</button>
          </form>
       </div>
    </div>

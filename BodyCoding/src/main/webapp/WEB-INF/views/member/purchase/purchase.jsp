@@ -173,7 +173,7 @@ function errCallBackT(errData){
       <td id="show_trainer"></td>
    </tr>
    <tr>
-      <td><button id="kPayBtn">카카오페이 결제!!!</button> </td>
+      <td><button id="kPayBtn" style="border: none;"><img src="static/member/images/kakao_pay.png"></button> </td>
    </tr>
 </table>
 </div>

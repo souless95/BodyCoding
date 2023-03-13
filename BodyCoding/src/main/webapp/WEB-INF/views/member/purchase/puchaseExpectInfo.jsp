@@ -98,7 +98,9 @@ $(function(){
 						<td>
 						</td>
 						<td style="vertical-align: middle; text-align: center;">
-							<span class="pCount">${pList.product_count }</span>개 
+							<span class="pCount">
+							${pList.product_count }
+							</span>개 
 						</td>
 						<td style="vertical-align: middle; text-align: center;">
 						<span class="product-price">

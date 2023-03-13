@@ -12,9 +12,21 @@
 <%@ include file="../../../../inc/Top.jsp" %>
 <%@ include file="../star.jsp" %>
 <script type="text/javascript">
-function login(){
-	alert("로그인 후 이용가능합니다.")
-	location.href="login.do"
+function login(t){
+	
+ 	if('${UserEmail }'==""){
+		alert("로그인 후 이용가능합니다.")
+		location.href="login.do"
+	}
+
+	else{
+		if(t=="c"){
+			location.href="cartAddSelect.do?product_idx=${productInfo.product_idx}&mem_id=${UserEmail }"
+		}
+		else{
+			location.href="puchaseExpectInfo.do?product_idx=${productInfo.product_idx}&mem_id=${UserEmail }"
+		}
+	}
 }
 </script>
 <div class="container">
@@ -120,10 +132,10 @@ function login(){
 			</table>
 		</form>
 	</c:if>
-	<button type="button" onclick="login();">구매하기(결제)</button>
+	<button type="button" onclick="login('p');">구매하기(결제)</button>
 	<button type="button" onclick="location.href='product'">목록으로</button>
 	<!-- 장바구니로 접근하는 버튼 -->
-	<button type="button" onclick="location.href='cartAddSelect.do?product_idx=${productInfo.product_idx}&mem_id=${UserEmail }'">장바구니</button>
+	<button type="button" onclick="login('c');">장바구니</button>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </body>

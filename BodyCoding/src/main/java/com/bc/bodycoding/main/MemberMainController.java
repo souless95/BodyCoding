@@ -274,13 +274,13 @@ public class MemberMainController {
 		if (result != null) {
 
 			int resultUpdate = maindao.cartAddPlus(productDTO);
-			System.out.println("장바구니에 상품이 있어서 수량이 추가되었습니다.");
+			System.out.println("장바구니에 수량이 증가되었습니다.");
 		}
 		// 상품이 없을 경우
 		else {
 
 			int resultAdd = maindao.cartAdd(productDTO);
-			System.out.println("장바구니에 상품이 없어서 새로 추가되었습니다.");
+			System.out.println("장바구니에 새로운 상품이 추가되었습니다.");
 		}
 
 		return "redirect:cartList.do";
@@ -317,8 +317,9 @@ public class MemberMainController {
 	public String puchaseExpect(HttpServletRequest req, HttpSession session, Model model) {
 
 		ProductDTO productDTO = new ProductDTO();
+		List<ProductDTO> pList = new ArrayList<>();
 		String chk = req.getParameter("chkArray");
-
+		
 		if (chk != null) {
 			String chkArray[] = chk.split(",");
 
@@ -326,17 +327,23 @@ public class MemberMainController {
 				productDTO.setCart_idx(chkArray[i]);
 				maindao.cartStatusUpdate(productDTO);
 			}
+			productDTO.setMem_id(session.getAttribute("UserEmail").toString());
+			pList = maindao.pExpectSelect(productDTO);
+			
+			model.addAttribute("cart_arr", req.getParameter("chkArray"));
+		}
+		
+		else {
+			ProductDTO pointDTO = new ProductDTO();
+			pointDTO = maindao.memPointSelect(req.getParameter("mem_id"));
+			productDTO = maindao.productSelect(req.getParameter("product_idx"));
+			productDTO.setMem_point(pointDTO.getMem_point());
+			productDTO.setProduct_count("1");
+			System.out.println(productDTO);
+			pList.add(productDTO);
 		}
 
-		System.out.println("오잉1");
-		productDTO.setMem_id(session.getAttribute("UserEmail").toString());
-		List<ProductDTO> pList = maindao.pExpectSelect(productDTO);
-
-		System.out.println("오잉22");
-		model.addAttribute("pList", pList);
-		model.addAttribute("cart_arr", req.getParameter("chkArray"));
-
-		System.out.println("오잉333");
+			model.addAttribute("pList", pList);
 
 		return "/member/purchase/puchaseExpectInfo";
 	}

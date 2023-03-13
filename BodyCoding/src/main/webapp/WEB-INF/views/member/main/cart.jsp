@@ -28,10 +28,7 @@ function chgCount(symbol, f) {
 	var pCount = $('#' + parentId).children('span').text();
 	pIdx = $('#' + parentId).children('.pIdx').val();
 	var pPrice = $('#' + parentId + '+td').children('span').text().replace(',', '').trim();
-	console.log("오우쒭"+pPrice);
 	var uPrice = eval("Number(pPrice)/Number(pCount)");
-
-	console.log("단가:" + uPrice);
 
 	if (symbol == "+") {
 		newCount = eval("Number(pCount)+1");

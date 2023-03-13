@@ -180,12 +180,6 @@
 				}
 			}
 		}
-
-		document.addEventListener("keypress", function(e){
-			if(e.keyCode == 13){ //enter press
-				send();
-			}
-		});
 	}
 	
 	function chatName(){
@@ -222,29 +216,8 @@
 	//window.addEventListener('beforeunload', function(){
 	$(function(){
 		$(document).on('keypress', function(e) {
-			var m_id = $("#mem_id").val();
-	 		var roomName = $("#roomName").val();
-			var content= $("#content").val();
-			console.log(m_id+"룸이름"+roomName+"내용"+content);
-		
 		    if (e.which === 13) {
-		    	$.ajax({
-					  url: '/saveChatLog',
-					  contentType: "application/json; charset=utf-8",
-					  data: {
-						send_id: m_id,
-						roomName: roomName,
-						content: content,
-					  },
-					  dataType: 'text',
-					  success: function(data) {
-					    console.log("성공");
-					  },
-					  error: function(xhr, status, error) {
-					    // 저장 실패 시 에러 메시지를 출력합니다.
-					    console.log(error);
-					  }
-				});
+		    	$('#sendBtn').trigger('click');
 		    }
 		});
 		$('#sendBtn').on('click', function(){

@@ -39,6 +39,7 @@ public class SalesChartController {
 		return "admin/chart/supMainChart";
 	}
 	
+	//subMainChart
 	@GetMapping("subMainChart")
 	public String subMainChart(Model model){
 		//로그인된 아이디 가져오기

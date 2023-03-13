@@ -39,7 +39,7 @@ public class MChattingController {
 		model.addAttribute("memberid", req.getParameter("mem_id"));
 		model.addAttribute("roomName", req.getParameter("roomName"));
 		model.addAttribute("roomidx", req.getParameter("roomidx"));
-		return "chatting/chat";
+		return "chat";
 	}
 	
 	/*방 페이지*/
@@ -53,7 +53,7 @@ public class MChattingController {
 		else {			
 			model.addAttribute("memberid", req.getParameter("mem_id"));
 		}
-		return "chatting/room";
+		return "room";
 	}
 	
 	/*방 생성하기*/
@@ -90,6 +90,6 @@ public class MChattingController {
 	    model.addAttribute("memberid", params.get("mem_id"));
 	    System.err.println("현재 나의 id?"+params.get("mem_id"));
 	    model.addAttribute("cList",cList);
-	    return "chatting/chat";
+	    return "chat";
 	}
 }

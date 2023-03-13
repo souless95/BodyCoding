@@ -60,11 +60,11 @@
       margin-top:5px;
       margin-right:7px;
       background: #fff;
-       -webkit-border-radius: 10px;
-       -moz-border-radius: 10px;
-       border-radius: 10px;
-       -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-       -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
    }
    
@@ -86,9 +86,10 @@
    </style>
 </head>
 <body>
+ <%-- <%@ include file="../../../../inc/Top.jsp"%>--%> 
 <div class="container">
-	<div class="input-form-backgroud row">
-		<div class="input-form col-md-12 mx-auto">
+	<div class="input-form-backgroud row"> <!-- class="input-form-backgroud row" -->
+		<div class="input-form col-md-12 mx-auto" >
 			<div style="text-align:center;">
 				<h2 class="mb-1">회원가입</h2>
 			</div><br />
@@ -242,6 +243,10 @@
             </div> -->
             <br> 
             <button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
+            <button type="button" style="border: none;"
+               onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'";>
+				<img src="static/member/images/kakao_signup.png">
+			</button>
          </form>
       </div>
    </div>

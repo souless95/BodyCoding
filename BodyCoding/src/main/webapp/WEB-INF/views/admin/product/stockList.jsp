@@ -133,7 +133,7 @@
 								        </td>
 								        <s:authorize access="hasRole('ROLE_ADMIN_SUB')">
 									        <td>
-									        	<button type="button" id="sChk">전송</button>
+									        	<button type="button" class="custom-btn btn-2" id="sChk">전송</button>
 									        </td>
 									    </s:authorize>
 									</tr>

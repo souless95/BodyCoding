@@ -23,7 +23,10 @@
 	        		</div>
 	        		<div class="card-body" style="width: 80%">
 	        			<h4>프로필 사진</h4>
-	        			<div><img src="static/uploads/trainer/${trainerList.mem_img }" style="width:200px; height:200px;"></div>
+	        			<div>
+	        				<img src="static/uploads/trainer/${trainerList.mem_img }" style="width:200px; height:200px;">
+	        			</div>
+	        			<br />
 	        			<input type="hidden" name="mem_id" id="mem_id" value="${userIdT}" />
 	        			<input type="hidden" name="mem_id" id="mem_id" value="${adminGym}" />
 	        			<input type="hidden" name="mem_id" id="mem_id" value="${trainerList.gym_code}" />
@@ -65,15 +68,15 @@
 					      	</tr>
 						</table>
 							<c:if test="${trainerList.gym_code eq adminGym }">
-								<button id="editBtn" type="button" class="btn btn-primary" onclick="location.href='/admin/trainer/trainerEdit?mem_id=${trainerList.mem_id }'">
+								<button id="editBtn" type="button" class="custom-btn btn-7" onclick="location.href='/admin/trainer/trainerEdit?mem_id=${trainerList.mem_id }'">
 									수정
 								</button>
-								<button id="deleteBtn" type="button" class="btn btn-primary" onclick="location.href='trainerdelete.do?mem_id=${trainerList.mem_id }'">
+								<button id="deleteBtn" type="button" class="custom-btn btn-7" onclick="location.href='trainerdelete.do?mem_id=${trainerList.mem_id }'">
 									삭제
 								</button>
 							</c:if>
-								<button id="homeBtn" type="button" class="btn btn-primary" onclick="location.href='/main/admin'">홈으로</button> 
-								<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
+								<button type="button" class="custom-btn btn-7" onclick="location.href='/main/admin'">홈으로</button> 
+								<button type="button" class="custom-btn btn-7" onclick="history.back()">뒤로가기</button>
 	        		</div>
 				</div>
 			</main>

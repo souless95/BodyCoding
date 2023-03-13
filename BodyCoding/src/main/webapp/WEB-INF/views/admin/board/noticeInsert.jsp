@@ -49,9 +49,9 @@
 					        </tr>
 					    </table>
 					    <br />
-			            <button type="submit" value="uploads" class="btn btn-primary">작성</button>
-			            <button type="reset" class="btn btn-primary">리셋</button>
-						<button type="button" class="btn btn-primary" onclick="history.back()">
+			            <button type="submit" value="uploads" class="custom-btn btn-2">작성</button>
+			            <button type="reset" class="custom-btn btn-2">리셋</button>
+						<button type="button" class="custom-btn btn-2" onclick="history.back()">
 			            	작성취소
 			            </button>
 					</div>

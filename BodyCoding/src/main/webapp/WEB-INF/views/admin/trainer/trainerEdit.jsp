@@ -65,9 +65,9 @@
 							        <td><input type="text" name="mem_comment" value="${trainer.mem_comment}"/></td>
 						      	</tr>
 							</table>
-								<button type="submit" class="btn btn-primary" value="전송하기">전송하기</button>
-								<button type="button" class="btn btn-primary" onclick="location.href='/main/admin'">홈으로</button> 
-								<button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
+								<button type="submit" class="custom-btn btn-7" value="전송하기">전송하기</button>
+								<button type="button" class="custom-btn btn-7" onclick="location.href='/main/admin'">홈으로</button> 
+								<button type="button" class="custom-btn btn-7" onclick="history.back()">뒤로가기</button>
 		        		</div>
 					</div>
 				</form>

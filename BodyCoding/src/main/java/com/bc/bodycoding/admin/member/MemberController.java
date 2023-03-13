@@ -41,7 +41,6 @@ public class MemberController {
 		
 		memberDTO = memberdao.selectOneMember(memberDTO);
 		model.addAttribute("dto", memberDTO);
-		System.out.println(memberDTO);
 		return "admin/member/Detail";
 	}
 	

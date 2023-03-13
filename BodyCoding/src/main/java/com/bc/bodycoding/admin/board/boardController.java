@@ -64,7 +64,50 @@ public class boardController {
 	@RequestMapping("/boardEdit.do")
 	public String boardEdit(Principal principal, MultipartFile board_file, MultipartHttpServletRequest req) {
 		
-		return "/boardEdit.do";
+		BoardDTO boardDTO = new BoardDTO();
+	    String mem_id = principal.getName();
+	    
+	    System.out.println("수정하는 곳 : "+ mem_id);
+	    
+	    if (board_file.isEmpty()) {
+			boardDTO.setBoard_file("");
+		}
+	    else {
+	    	try {
+	    		String origName = board_file.getOriginalFilename();
+				String uuid = UUID.randomUUID().toString();
+				String extension = origName.substring(origName.lastIndexOf("."));
+				String savedName = uuid + extension;
+				String path = ResourceUtils
+						.getFile("classpath:static/uploads/board")
+						.toPath().toString();
+				
+				System.out.println("파일업로드 경로:"+ path);
+				
+				File fileInfo = new File(path, savedName);
+			
+				board_file.transferTo(fileInfo);
+				boardDTO.setBoard_file(savedName); //파일
+				System.out.println("파일 업로드 성공");
+			} 
+	    	catch (Exception e) {
+	    		e.printStackTrace();
+				System.out.println("등록 실패했습니다.");
+				return "redirect:/noticeInsert.do";
+			}
+	    }
+	    
+	    boardDTO.setBoard_idx(req.getParameter("board_idx")); //idx
+	    boardDTO.setMem_id(mem_id); //작성자
+	    boardDTO.setBoard_title(req.getParameter("board_title")); //제목
+	    boardDTO.setBoard_contents(req.getParameter("board_contents")); //내용
+	    
+	    int result = boarddao.noticeEdit(boardDTO);
+	    
+	    if(result==1)
+	    System.out.println("게시글이 수정되었습니다.");
+	    
+		return "redirect:/boardList.do";
 	}
 	
 	

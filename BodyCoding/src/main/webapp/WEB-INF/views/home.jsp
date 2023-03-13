@@ -12,6 +12,7 @@
    <ul>
       <li><a href="/">홈</a></li>
    </ul>
+
 	<!-- 어드민 로그인 하려면 main/admin으로 접속할 것 -->
 	<!-- <ul>
 		<li><a href="main/admin">admin 메인페이지</a></li>

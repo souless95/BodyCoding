@@ -8,13 +8,8 @@
 <meta charset="UTF-8">
 <title>트레이너의 마이페이지</title>
 <style>
-body{
-	border: 1px;
-}
 </style>
 <script>
-/* var ss = ${memberList};
-console.log(ss); */
 </script>
 <%@ include file="../../../../inc/Top.jsp" %>
 </head>

@@ -122,7 +122,7 @@ public class MemberController {
             nowRoutine = memberdao.getRoutine(routineDTO);
          }
          else {
-            System.out.println("routine 테이블에 문제발생 의심됨.");
+            System.out.println("routine 테이블에 문제발생.");
          }
          return nowRoutine;
       }

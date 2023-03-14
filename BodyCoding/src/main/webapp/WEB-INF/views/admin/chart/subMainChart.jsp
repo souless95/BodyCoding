@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,48 +14,68 @@
 <canvas id="myChart_submain" style="width:50%; height:50%;"></canvas>
 
 <script>
-const labels = ['1월', '2월', '3월', '4월', '5월', '6월'
+const sub_labels = ['1월', '2월', '3월', '4월', '5월', '6월'
 	,'7월', '8월', '9월', '10월', '11월', '12월'];
-console.log("라벨"+labels);
+console.log("라벨"+sub_labels);
 
-const totalsales =[];
+const sub_totalsales =[];
 <c:forEach  items="${totalcategory_totalsales }" var="row">
-	totalsales.push('${row.sales}');
-	console.log("${row.mem_id}지점 ${row.order_date}총 매출 "+totalsales);
+	console.log("${row.mem_id}지점 ${row.order_date}총 매출 "+sub_totalsales);
+	sub_totalsales.push('${row.sales}');
 </c:forEach> 
 
-const gxsales =[];
+const gxsales = [,,,,,,,,,,,];
 <c:forEach  items="${gx_sales }" var="gx_sales">
-	gxsales.push('${gx_sales.sales}');
 	console.log("${gx_sales.order_date} 매출 ${gx_sales.sales}");
+	for(var i=1; i<=12;i++){
+		if(${gx_sales.order_date} === 2023-i){
+			gxsales[i-1]=${gx_sales.sales};
+		}
+	}
 </c:forEach> 
 	console.log("총 매출 "+gxsales);
 
-const healthsales =[];
+const healthsales = [,,,,,,,,,,,];
 <c:forEach  items="${health_sales }" var="health_sales">
-	healthsales.push('${health_sales.sales}');
 	console.log("${health_sales.order_date} 매출 ${health_sales.sales}");
+	for(var i=1; i<=12;i++){
+		if(${health_sales.order_date} === 2023-i){
+			healthsales[i-1]=${health_sales.sales};
+		}
+	}
 </c:forEach> 
 	console.log("총 매출 "+healthsales);
 
-const Pilasales =[];
+const Pilasales = [,,,,,,,,,,,];
 <c:forEach  items="${pilates_sales }" var="pilates_sales">
-	Pilasales.push('${pilates_sales.sales}');
 	console.log("${pilates_sales.order_date} 매출 ${pilates_sales.sales}");
+	for(var i=1; i<=12;i++){
+		if(${pilates_sales.order_date} === 2023-i){
+			Pilasales[i-1]=${pilates_sales.sales};
+		}
+	}
 </c:forEach> 
 	console.log("총 매출 "+Pilasales);
 
-const PTsales =[];
+const PTsales = [,,,,,,,,,,,];
 <c:forEach  items="${pt_sales }" var="pt_sales">
-	PTsales.push('${pt_sales.sales}');
 	console.log("${pt_sales.order_date} 매출 ${pt_sales.sales}");
+	for(var i=1; i<=12;i++){
+		if(${pt_sales.order_date} === 2023-i){
+			PTsales[i-1]=${pt_sales.sales};
+		}
+	}
 </c:forEach> 
 	console.log("총 매출 "+PTsales);
 
-const Yogasales =[];
+const Yogasales = [,,,,,,,,,,,];
 <c:forEach  items="${yoga_sales }" var="yoga_sales">
-	Yogasales.push('${yoga_sales.sales}');
 	console.log("${yoga_sales.order_date}총 매출 ${yoga_sales.sales}");
+	for(var i=1; i<=12;i++){
+		if(${yoga_sales.order_date} === 2023-i){
+			Yogasales[i-1]=${yoga_sales.sales};
+		}
+	}
 </c:forEach> 
 	console.log("총 매출 "+Yogasales);
 
@@ -63,15 +84,15 @@ function getRandomColor() {
 	  return colorCode;
 }
 
-const data = {
+const sub_data = {
 	//모든상품 총매출
-  	labels: labels,
+  	labels: sub_labels,
   	datasets: [{
   		type: 'line',
     	label: '모든상품 총매출',
     	backgroundColor: 'rgb(255, 99, 132)',
     	borderColor: 'rgb(255, 99, 132)',
-    	data: totalsales,
+    	data: sub_totalsales,
     	yAxisID :'y-right'
   	},{
   		type: 'bar',
@@ -100,9 +121,9 @@ const data = {
     	data: Yogasales
   	}]
 };
-const config = {
-  	data,
- 	options: {
+const sub_config = {
+		data:sub_data,
+ 		options: {
 	   	 scales: {
 	   		 y: {
 	   			axis: 'y',
@@ -127,7 +148,7 @@ const config = {
 	} 
 };
 
-const myChart = new Chart(document.getElementById('myChart_submain'),config); 
+const sub_myChart = new Chart(document.getElementById('myChart_submain'),sub_config); 
 </script>
 </body>
 </html>

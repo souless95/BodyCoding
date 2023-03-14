@@ -2,15 +2,120 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%>
+    <!-- 줄바꿈 처리용 -->
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+body {
+  background: #e0e5ec;
+}
+h1 {
+  position: relative;
+  /* text-align: center; */
+  color: #353535;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  font-size: 18px;
+  color: #676767;
+}
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+button {
+  margin: 20px;
+  outline: none;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #212529;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+/* 2 */
+.btn-2 {
+  
+}
+.btn-2:after {
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 6px;
+  width: 90%;
+  height: 70%;
+  border: 1px solid #000;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.btn-2:hover:after {
+  opacity: 1;
+}
+
+
+/* 7 */
+.btn-7 {
+  background: #212529;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  z-index: 1;
+   -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.btn-7:hover {
+  background: transparent;
+  color: #000;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 100%;
+  height: 50%;
+  right: 0;
+  z-index: -1;
+  background: #000;
+  transition: all 0.3s ease;
+}
+.btn-7:before {
+  top: 0;
+}
+.btn-7:after {
+  bottom: 0;
+}
+.btn-7:hover:before,
+.btn-7:hover:after {
+  height: 0;
+  background-color: #000;
+}
+</style>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="/static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">

@@ -19,11 +19,12 @@
 	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
 		<!-- Posts -->
-		
+		<img src="static/assets/images/main1.jpg">
 		<!-- 컨텐츠영역 -->
 			<div class="container">
 				<div class="row">
 					<section class="col-6 col-12-narrower">
+						
 						<div class="box post">
 							<a href="#" class="image left"><img src="static/assets/images/pic01.jpg" alt="" /></a>
 							<div class="inner">
@@ -37,26 +38,6 @@
 							<a href="#" class="image left"><img src="static/assets/images/pic02.jpg" alt="" /></a>
 							<div class="inner">
 								<h3>뭘 넣으면 좋을까??</h3>
-								<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="row">
-					<section class="col-6 col-12-narrower">
-						<div class="box post">
-							<a href="#" class="image left"><img src="static/assets/images/pic03.jpg" alt="" /></a>
-							<div class="inner">
-								<h3>The Third Thing</h3>
-								<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-							</div>
-						</div>
-					</section>
-					<section class="col-6 col-12-narrower">
-						<div class="box post">
-							<a href="#" class="image left"><img src="static/assets/images/pic04.jpg" alt="" /></a>
-							<div class="inner">
-								<h3>메인화면에 무엇을 넣을까요?</h3>
 								<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
 							</div>
 						</div>

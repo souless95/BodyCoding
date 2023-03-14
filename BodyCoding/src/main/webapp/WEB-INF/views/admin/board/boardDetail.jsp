@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,13 +42,17 @@
 					            <th>내용</th>
 					            <td colspan="4" style="height: 300px; vertical-align: top; padding-top: 10px; padding-bottom: 10px; ">
 						            ${fn:replace(dto.board_contents, replaceChar, "<br/>")}
+						            <c:set var="board_file" value="${not empty dto.board_file}" />
+							   		<c:if test="${board_file}">
+								    	<div>
+								        	<img src="../static/uploads/board/${dto.board_file}" style="width: 100%"/>
+								    	</div>
+							    	</c:if>
 					            </td> 
 					        </tr>
 					        <tr style="text-align: center">
-					        	<th>Ofile</th>
-					        	<td>${dto.board_ofile }</td>
-					        	<th>Sfile</th>
-					        	<td>${dto.board_sfile }</td>
+					        	<th>파일첨부</th>
+					        	<td>${dto.board_file }</td>
 				            	<th>신고횟수</th>
 				            	<td>${dto.count }</td>
 				            	<th>비공개여부 </th>
@@ -58,16 +60,16 @@
 					        </tr>
 					    </table>
 					    <br />
-			            <button type="button" class="btn btn-primary" onclick="location.href='boardDelete.do?board_idx=${dto.board_idx }'">
+			            <button type="button" class="custom-btn btn-2" onclick="if(confirm('정말로 삭제하시겠습니까?')) location.href='boardDelete.do?board_idx=${dto.board_idx }'">
 							삭제
 						</button>
-			            <button type="button" class="btn btn-primary" onclick="location.href='boardEdit.do?board_idx=${dto.board_idx }'">
+			            <button type="button" class="custom-btn btn-2" onclick="location.href='admin/board/boardEdit?board_idx=${dto.board_idx }'">
 							수정
 						</button>
-						<button type="button" class="btn btn-primary" onclick="history.back()">
+						<button type="button" class="custom-btn btn-2" onclick="history.back()">
 			            	뒤로가기
 			            </button>
-			            <button type="button" class="btn btn-primary" onclick="location.href='main/admin'">
+			            <button type="button" class="custom-btn btn-2" onclick="location.href='main/admin'">
 			            	홈으로
 			            </button>
 			            

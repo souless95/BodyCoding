@@ -13,15 +13,15 @@
 <canvas id="myChart_supmain" style="width:50%; height:50%;"></canvas>
 
 <script>
-const labels = ['1월', '2월', '3월', '4월', '5월', '6월'
+const sup_labels = ['1월', '2월', '3월', '4월', '5월', '6월'
 	,'7월', '8월', '9월', '10월', '11월', '12월'];
-console.log("라벨"+labels);
+console.log("라벨"+sup_labels);
 
-const totalsales =[];
+const sup_totalsales =[];
 <c:forEach  items="${totalgym_totalsales }" var="row">
-	totalsales.push('${row.sales}');
+	sup_totalsales.push('${row.sales}');
 </c:forEach> 
-console.log("모든지점 총 매출 "+totalsales);
+console.log("모든지점 총 매출 "+sup_totalsales);
 
 <c:forEach  items="${gym_sales }" var="gyms">
 	eval("var ${gyms.key} = [,,,,,,,,,,,];");
@@ -33,24 +33,21 @@ console.log("모든지점 총 매출 "+totalsales);
 		}
 	</c:forEach> 
 </c:forEach> 
-		console.log("0지점 총 매출 "+gym_code0);
-		console.log("1지점 총 매출 "+gym_code1);
-		console.log("2지점 총 매출 "+gym_code2);
 		
 function getRandomColor() {
 	  var colorCode  = '#' + Math.round(Math.random() * 0xffffff).toString(16);
 	  return colorCode;
 }
 
-const data = {
+const sup_data = {
 	//모든지점 총매출
-  	labels: labels,
+  	labels: sup_labels,
   	datasets: [{
   		type: 'line',
     	label: '모든지점 총매출',
     	backgroundColor: 'rgb(255, 99, 132)',
     	borderColor: 'rgb(255, 99, 132)',
-    	data: totalsales,
+    	data: sup_totalsales,
     	yAxisID :'y-right'
   	},
   	//지점별 매출현황
@@ -66,24 +63,24 @@ const data = {
 	</c:forEach> 
   	]
 };
-const config = {
-  	data,
- 	options: {
+const sup_config = {
+		data:sup_data,
+ 		options: {
 	   	 scales: {
 	   		 y: {
 	   			axis: 'y',
 	   	      	display: true,
               	position: 'left',
              	title: {
-                  display: true,
-                  text: '모든지점 총매출액'
+                display: true,
+                text: '모든지점 총매출액'
              	}
 	   	 	 },
 	   		 'y-right': {
 	              position: 'right',
 	              title: {
-	                  display: true,
-	                  text: '지점별 매출액'
+                  display: true,
+                  text: '지점별 매출액'
 	              },
 	              grid: {
 	                  display: false
@@ -93,7 +90,7 @@ const config = {
 	} 
 };
 
-const myChart = new Chart(document.getElementById('myChart_supmain'),config); 
+const sup_myChart = new Chart(document.getElementById('myChart_supmain'),sup_config); 
 </script>
 </body>
 </html>

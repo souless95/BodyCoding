@@ -90,6 +90,7 @@ body {
 
 
 <body>
+<%@ include file="../../../../inc/Top.jsp"%>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -112,9 +113,7 @@ body {
 							<div class="loginbtn">
 								<!-- Host: kauth.kakao.com -->
 								<div style="background-size: cover; background-color: white;">
-									<button type="button" style="border: none;"
-										" 
-               onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'";>
+									<button type="button" style="background-color:transparent;" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'">
 										<img src="static/member/images/kakao_login.png">
 									</button>
 									&nbsp; <br>

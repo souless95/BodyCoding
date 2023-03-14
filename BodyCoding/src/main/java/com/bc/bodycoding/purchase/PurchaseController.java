@@ -14,6 +14,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,7 +63,6 @@ public class PurchaseController {
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setGym_code(req.getParameter("gym_code"));
 		productDTO.setLesson_category(req.getParameter("lesson_category"));
-
 		List<ProductDTO> tList;
 		tList = purchaseDao.trainerSelect(productDTO);
 		return tList;
@@ -71,13 +71,14 @@ public class PurchaseController {
 	@ResponseBody
 	@RequestMapping("/kakaoPay.do")
 	public String purchase(HttpServletRequest req, Model model, HttpSession session, ProductDTO productDTO) {
-
+		
 		System.out.println(productDTO);
 
 		// 멤버쉽과 상품 공통 변수 정의
 		String type = req.getParameter("type");
 		String product_name = productDTO.getProduct_name();
 		int product_price = productDTO.getProduct_price();
+		System.out.println(product_price);
 		String mem_id = session.getAttribute("UserEmail").toString();
 		String product_count;
 		int tCount = 0;
@@ -90,7 +91,12 @@ public class PurchaseController {
 
 		// 멤버쉽일 경우 저장할 데이터 세팅
 		if (type.equals("멤버쉽")) {
-			model.addAttribute("trainer_id", productDTO.getTrainer_id());
+			if(productDTO.getTrainer_id()==null) {
+				model.addAttribute("trainer_id", "");
+			}
+			else {
+				model.addAttribute("trainer_id", productDTO.getTrainer_id());
+			}
 			model.addAttribute("gym_code", productDTO.getGym_code());
 			model.addAttribute("use_point", "");
 			model.addAttribute("product_count", "");
@@ -190,7 +196,8 @@ public class PurchaseController {
 			@ModelAttribute("trainer_id") String trainer_id, @ModelAttribute("product_idx") String product_idx,
 			@ModelAttribute("gym_code") String gym_code, @ModelAttribute("product_name") String product_name,
 			@ModelAttribute("use_point") String use_point, @ModelAttribute("product_count") String product_count,
-			@ModelAttribute("type") String type, @ModelAttribute("product_price") String product_price) {
+			@ModelAttribute("type") String type, @ModelAttribute("product_price") String product_price,
+			Model model){
 		
 		
 		try {
@@ -203,7 +210,9 @@ public class PurchaseController {
 			int result1 = 0;
 			int result2 = 0;
 			int result3 = 0;
-
+			
+			result1 = purchaseDao.insertOrder(productDTO);
+			
 			if (type.equals("멤버쉽")) {
 
 				System.out.println("멤버쉽 성공 후 DB 처리 단계 진입");
@@ -212,7 +221,6 @@ public class PurchaseController {
 				productDTO.setProduct_idx(product_idx);
 				productDTO.setGym_code(gym_code);
 				
-				result1 = purchaseDao.insertOrder(productDTO);
 				result2 = purchaseDao.insertMembership(productDTO);
 			} 
 			else {
@@ -221,45 +229,33 @@ public class PurchaseController {
 
 				productDTO.setUse_point(Integer.parseInt(use_point));
 				
-				System.out.println("여기1");
-				
 				String p_idx[] = product_idx.split(",");
 				String p_count[] = product_count.split(",");
-				
-				System.out.println("여기255");
-				
-				result1 = purchaseDao.insertOrder(productDTO);
-				
-				System.out.println("여기2");
 				
 				for (int i = 0; i < p_idx.length; i++) {
 					productDTO.setProduct_idx(p_idx[i]);
 					productDTO.setProduct_count(p_count[i]);
 					productDTO.setProduct_serial_num(randomNum());
 					result2 = purchaseDao.insertOrderDetail(productDTO); 
+					
 					System.out.println("for문");
 				}		
 				
-				
-				
 			}
 			
-
-			System.out.println("여어어어");
+			if(use_point=="") {
+				use_point="0";
+			}
 			int final_price = Integer.parseInt(product_price)-Integer.parseInt(use_point);
-			System.out.println("여어어어3333");
-			int save_point = (int)Math.floor((double)final_price / 0.05);
+			int save_point = (int)Math.floor((double)final_price * 0.005);
 			productDTO.setTotal_price(Integer.parseInt(product_price));
-			System.out.println("여기3");
 			productDTO.setFinal_price(final_price);
-			System.out.println("여기4");
 			productDTO.setSave_point(save_point);
-			System.out.println("적립포인트는"+save_point);
-			System.out.println("여기5");
-			System.out.println(productDTO);
+			System.out.println("주문 후 DB 처리 DTO 상태 : "+productDTO);
 			result3 = purchaseDao.insertPayAndUpdatePoint(productDTO);
-			System.out.println("여기6");
 			
+			model.addAttribute("save_point", save_point);
+			model.addAttribute("mem_id", mem_id);
 			
 			if (result1 == 1 && result2 == 1 && result3 == 1) {
 				System.out.println("주문성공");

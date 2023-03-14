@@ -105,7 +105,7 @@ public class AccountController {
       String mem_passCheck = accountdao.pwCheck(req.getParameter("mem_id"));
       String mem_pass = req.getParameter("mem_pass");
       System.out.println(req.getParameter("mem_pass"));
-      System.out.println(mem_pass);
+      System.out.println(mem_passCheck);
       if (mem_pass.equals(mem_passCheck)) {
          return "redirect:memberEdit.do?mem_id=" + req.getParameter("mem_id");
       }
@@ -260,4 +260,3 @@ public class AccountController {
           return "member/account/findpw";
       }
 }
-

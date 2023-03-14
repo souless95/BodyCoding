@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +11,16 @@
 <script type="text/javascript">
 var uPoint;
 function cal(){
-	uPoint = document.getElementById('uPoint').value;
-	let price = $('#price').text();
+	let uPoint = document.getElementById('uPoint').value;
+	let price = parseInt($('#price').text().replace(',', ''));
 	let tPrice = eval('Number(price)-Number(uPoint)');
-	$('#totalP').text(tPrice);
+	$('#totalP').text(tPrice.toLocaleString());
 }
 
 $(function(){
 	$('input:checkbox').click(function(){
 		if(this.checked == true){
-			$('#uPoint').val($('#sPoint').text());
+			$('#uPoint').val($('#sPoint').text().replace(',', '').trim());
 		}
 		else{
 			$('#uPoint').val(0);
@@ -38,6 +39,7 @@ $(function(){
 			cal();
 			return false;
 		}
+		
 		else{
 			const payInfo = $('#payFrm').serialize();
 	       $.ajax({
@@ -66,6 +68,8 @@ $(function(){
 		<h2>결제 정보</h2>
 	</div>
 	<form id="payFrm">
+		<!-- 결제 상품을 장바구니에서 삭제하기 위해 결제 시, cart_idx를 파라미터로 전달 -->
+		<input type="hidden" name="cart_idx" value=${cart_arr }>
 		<table style="border: 5px solid #cdd0d4;">
 			<tbody>
 				<tr>
@@ -94,9 +98,14 @@ $(function(){
 						<td>
 						</td>
 						<td style="vertical-align: middle; text-align: center;">
-							<span class="pCount">${pList.product_count }</span>개 
+							<span class="pCount">
+							${pList.product_count }
+							</span>개 
 						</td>
-						<td style="vertical-align: middle; text-align: center;"><span class="product-price">${pList.product_price }</span>원
+						<td style="vertical-align: middle; text-align: center;">
+						<span class="product-price">
+						<fmt:formatNumber value="${pList.product_price }" pattern="###,###,###" />
+						</span>원
 						</td>
 					</tr>
 					<c:set var="totalPrice"
@@ -116,10 +125,12 @@ $(function(){
 				<tr>
 					<td>
 						<div align="center">
-							<strong style="font-size: 26px;"><span id="price"><c:out
-									value="${totalPrice }" /></span>원</strong>
+							<strong style="font-size: 26px;">
+								<span id="price">
+								<fmt:formatNumber value="${totalPrice }" pattern="###,###,###" />
+								</span>원
+							</strong>
 							<input type="hidden" name="product_price" value="${totalPrice }">
-<%-- 							<input type="hidden" name="product_count" value="${totalCount }"> --%>
 							<input type="hidden" name="type" value="상품">
 						</div>
 					</td>
@@ -133,8 +144,10 @@ $(function(){
 					<td>
 						<div align="center">
 							<strong style="font-size: 26px;">
-							(보유포인트 :<span id="sPoint"><c:out value="${totalPoint}" /></span>)
-							<input type="number" min="0" id="uPoint" name="use_point">
+							(보유포인트 :<span id="sPoint">
+							<fmt:formatNumber value="${totalPoint }" pattern="###,###,###" />
+							</span>)
+							<input type="number" value="0" min="0" id="uPoint" name="use_point">
 							<input type="checkbox">전체 사용
 							</strong>
 						</div>
@@ -149,7 +162,9 @@ $(function(){
 					<td>
 						<div align="center">
 							<strong style="font-size: 26px;">
-							<span id="totalP"><c:out value="${totalPrice }" /></span>원
+							<span id="totalP">
+								<fmt:formatNumber value="${totalPrice }" pattern="###,###,###" />
+							</span>원
 							</strong>
 						</div>
 					</td>

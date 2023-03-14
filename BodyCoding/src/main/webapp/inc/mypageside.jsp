@@ -153,23 +153,13 @@ div{
 								<div class="card-body">
 		                            <ul>
 		                            	<li><a class="btn" href="calendar.do">스케쥴</a></li>	
-		                                <li><a class="btn" href="exrecord.do">운동기록</a></li>
 		                            </ul>
 		                        </div>
 							</div>
 						</div>
 						<div class="card">
 							<div class="card-header">
-								<a class="collapsed btn" data-bs-toggle="collapse"
-									href="#collapseThree"> 내 정보관리 </a>
-							</div>
-							<div id="collapseThree" class="collapse"
-								data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                                <li><a class="btn" href="career.do">트레이너경력</a></li>
-		                            </ul>
-		                        </div>
+								<a class="btn" 	href="career.do"> 내 정보관리 </a>
 							</div>
 						</div>
 					</c:otherwise>

@@ -74,7 +74,6 @@ div{
 						<a>마이페이지 </a>
 					</div>
 				</div>
-				
 				<c:choose>
 					<c:when test="${UserInfo.authority eq 'ROLE_MEMBER' }">
 						<div class="card">
@@ -176,5 +175,10 @@ div{
 			</div>
 		</div>
 	</div>
+<script>
+var jspHeight = document.documentElement.scrollHeight;
+var contain_left = document.querySelector('.contain_left');
+contain_left.style.height = jspHeight + 'px';
+</script>
 </body>
 </html>

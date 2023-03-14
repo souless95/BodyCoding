@@ -12,32 +12,45 @@
 	    display: flex;
 	    align-items: center;
 	}
+	#event-info {
+		display: none;
+		position: absolute;
+		z-index: 9999;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		padding: 10px;
+		max-width: 400px;
+	}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+    	let lastClickTime = null;
     	let tempArray = [
 			<c:forEach items="${cList}" var="c">
 			{
 				id : "<c:out value="${c.id}" />",
 				title: "<c:out value="${c.title}" />",
 			  	start: "<c:out value="${c.start}" />",
-			  	end: "<c:out value="${c.end}" />"
+			  	end: "<c:out value="${c.end}" />",
+			  	lesson_category: "<c:out value="${c.category}" />",
+			  	lesson_capacity: "<c:out value="${c.capacity}" />",
+			  	rCount: "<c:out value="${c.rCount}" />",
+			  	<c:if test="${c.names != null}">
+			    	names: "<c:out value="${c.names}" />"
+			    </c:if>
 			},
 			</c:forEach>
   		];
-    	console.log(tempArray);
     	
      	var calendarEl = document.getElementById('calendar');
     	var calendar = new FullCalendar.Calendar(calendarEl, {
        		initialView: 'dayGridMonth', //초기화면 설정(디폴트 월별로 설정됨. 바꾸고 싶으면 timeGridWeek timeGridDay)
         	locale: 'ko', //언어설정
         	navLinks: true,
+        	selectOverlap: false,
         	selectable: true, //날짜 클릭 가능
-        	selectOverlap: function(event) {
-        	    return event.rendering === 'background';
-        	},
 	        eventAllow: function(info) {
 	            var start = info.start;
 	            var end = info.end;
@@ -87,18 +100,25 @@
 	    		            "width=500, height=300, left=500, top=100, "
 	     		            + "location=no, toolbar=no, menubar=no, "
 	      		            + "scrollbars=yes, resize=no");
-			      		
-		      			
-		      				
 		            }
 		            else {}
 	      		}
 	      	},
-	      	eventClick: function(info){
-	      		var eventId = info.event.id;
-	      		console.log(eventId);
+	      	eventClick: function(info) {
+	      		window.calendarRef = calendar;
+	      	    let clickTime = new Date().getTime();
+	      	 	var eventId = info.event.id;
+	      	 	console.log(eventId);
 	      		localStorage.setItem('lastClickedEventId', eventId);
-	      	},
+	      	    if (lastClickTime != null && clickTime - lastClickTime <= 500) {
+	      	    	window.open("/selectCalendar.do?eventId="+eventId,
+	   		            	"calendarUpdate",
+	    		            "width=500, height=300, left=500, top=100, "
+	     		            + "location=no, toolbar=no, menubar=no, "
+	      		            + "scrollbars=yes, resize=no");
+	      	    }
+	      	    lastClickTime = clickTime;
+	     	},
 	      	eventDrop: function(info) {
 	      		var event = info.event;
 	      		var start = new Date(Date.parse(event.start.toISOString()) + 9 * 60 * 60 * 1000).toISOString().replace(".000Z", "+09:00");
@@ -140,42 +160,90 @@
 	        	      alert('일정 업데이트에 실패했습니다.');
 	        	    }
         	 	});
-        	},
+        	} ,
+        	eventMouseEnter: function(info) {
+        		var event = info.event;
+        		var title = event.title;
+        		var category = event.extendedProps['lesson_category'];
+        		var capacity = event.extendedProps['lesson_capacity'];
+        		var rCount = event.extendedProps['rCount'];
+        		var names = event.extendedProps['names'];
+
+        		var eventInfo = document.getElementById('event-info');
+        		var eventTitle = document.getElementById('event-title');
+        		var eventDescription = document.getElementById('event-description');
+
+        		eventDescription.innerHTML = "일정 : " + title 
+        			+ "<br>분류 : " + category + "<br>정원 : " + rCount + " / " + capacity;
+        		if (parseInt(rCount) >= parseInt(capacity)) {
+       			    eventDescription.innerHTML += "<span style='color:red;'>&nbsp;(마감)</span>";
+       			};
+       			if(names.length > 2){
+	       			eventDescription.innerHTML += "<br>참여자 : " + names.substring(1, names.length-1);
+       			}
+        	}
       	});
       	calendar.render();
       
-      //이벤트를 클릭한 후 delete를 누르면 가장 최근 클릭한 이벤트를 삭제함
+    	//이벤트를 클릭한 후 delete를 누르면 가장 최근 클릭한 이벤트를 삭제함
       	document.addEventListener('keydown', function(e) {
-	      	if (event.key == 'Delete') {
+	      	if(event.key == 'Delete') {
 	      		var lastClickedEventId = localStorage.getItem('lastClickedEventId');
-	      		const eventObj = calendar.getEventById(lastClickedEventId);
-	      		var dConfirm = confirm("일정 "+ eventObj.title +"을 삭제하시겠습니까?");
-	      		if(!dConfirm) {}
-	      		else {
-	      			$.ajax({
-		  				url: "/deleteCalendar",
-		  				contentType: "application/json; charset=utf-8",
-		  				data: {lastClickedEventId : localStorage.getItem('lastClickedEventId') },
-		  				dataType: 'text',
-		  				success: function(){
-		  					eventObj.remove();
-		  					localStorage.removeItem('lastClickedEventId');
-		  				},
-		  				error: function(){
-		  					alert('일정 삭제에 실패했습니다.');
-		  				}
-		  			});
+	      		if(lastClickedEventId != null){
+		      		const eventObj = calendar.getEventById(lastClickedEventId);
+		      		var dConfirm = confirm("일정 "+ eventObj.title +"을 삭제하시겠습니까?");
+		      		if(dConfirm){
+		      			$.ajax({
+			  				url: "/deleteCalendar",
+			  				contentType: "application/json; charset=utf-8",
+			  				data: {lastClickedEventId : localStorage.getItem('lastClickedEventId') },
+			  				dataType: 'text',
+			  				success: function(){
+			  					eventObj.remove();
+			  					localStorage.removeItem('lastClickedEventId');
+			  				},
+			  				error: function(){
+			  					alert('일정 삭제에 실패했습니다.');
+			  				}
+			  			});
+		      			localStorage.removeItem('lastClickedEventId');
+		      		}
+		      		else{}
 	      		}
       		}
     	});
+    });
+    
+    $(document).on('mouseenter', '.fc-event', function(e) {
+    	var eventInfo = $('#event-info');
+    	eventInfo.css({
+    		display: 'inline-block',
+    	    top: e.pageY + 10,
+    	    left: e.pageX + 10,
+    	    textAlign: 'left',
+    	    /* width: 'auto', */
+    	    height: 'auto',
+    	    verticalAlign: 'middle'
+    	});
+    });
+
+    $(document).on('mouseleave', '.fc-event', function() {
+    	$('#event-info').hide();
     });
 </script>
 <title>MyCalendar</title>
 </head>
 <body>
-<%-- <%@ include file ="../../../inc/mypageside.jsp" %> --%>
-  <h1>MyCalendar</h1>
-  <div id='calendar' style="width:800px;"></div>
-<%-- <%@ include file="../../../inc/Bottom.jsp" %> --%>
+	<%@ include file ="../../../inc/Top.jsp" %>
+	<%@ include file ="../../../inc/mypageside.jsp" %>
+	<br />
+    <h1>일정관리</h1>
+  	<br /><br />
+	<div id="event-info">
+  		<h3 id="event-title"></h3>
+  		<p id="event-description" style="white-space: pre-wrap;"></p>
+	</div>
+	<div id='calendar' style="width:800px; height:1500px;"></div>
+	<%@ include file="../../../inc/Bottom.jsp" %>
 </body>
 </html>

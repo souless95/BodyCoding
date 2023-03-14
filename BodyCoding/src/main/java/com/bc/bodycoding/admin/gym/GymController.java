@@ -243,36 +243,6 @@ public class GymController {
 		}
 			
 		
-		//		String str;
-//		try {
-//			int size = 1024 * 1024 * 10;
-//			String path = ResourceUtils.getFile("classpath:static/uploads/gym").toPath().toString();
-//			System.out.println("지점 상세이미지 저장경로 :" + path);
-//			MultipartRequest multi = new MultipartRequest(req, path, size, "UTF-8", new DefaultFileRenamePolicy());
-//			String oPath = path + "/" + multi.getParameter("o_mem_img");
-//			File file = new File(oPath);
-//			if(file.exists()) {
-//				file.delete();
-//			}
-//			Enumeration files = multi.getFileNames();
-//			str = (String)files.nextElement();
-//
-//			if (str != null) {
-//				str = multi.getOriginalFileName(str);
-//			} else {
-//				str = "";
-//			}
-//			memberDTO.setMem_id(multi.getParameter("mem_id"));
-//			memberDTO.setMem_img(str);
-//			System.out.println("파일 업로드 성공");
-//			System.out.println(str);
-//		} 
-//		catch (Exception e) {
-//			e.printStackTrace();
-//			System.out.println("수정 실패했습니다.");
-//			return "redirect:/gymDetail.do";
-//		}
-//		System.out.println(memberDTO);
 		int result = gymdao.updateImg(memberDTO);
 		if(result==1) System.out.println("수정되었습니다.");
 		return str;
@@ -281,7 +251,6 @@ public class GymController {
 	// 삭제
 	@RequestMapping("/gymdelete.do")
 	public String gym6(GymDTO gymDTO, MemberDTO memberDTO) {
-		int result1 = gymdao.deleteM(memberDTO);
 		int result = gymdao.delete(gymDTO);
 		if (result == 1)
 			System.out.println("삭제되었습니다.");

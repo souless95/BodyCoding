@@ -13,6 +13,7 @@
 	  	a{border:0;}
 	</style>
 <script type="text/javascript">
+
 function logoutcheck(){
    
    var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
@@ -25,13 +26,19 @@ function logoutcheck(){
 /* 1대1문의 윈도우창 생성 */
 function openChatRoom(event, mem_id){
     event.preventDefault(); // 기본 동작(링크 이동) 방지
-    var url = "../chatting/room?mem_id=" + mem_id;
-    var win = window.open(url, "chatRoom", "width=340,height=560");
-    if (win) {
-        win.focus();
-        win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&roomidx=0&mem_id=" + mem_id;
-    } else {
-        alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
+    if(mem_id==null||mem_id==""){
+    	alert("로그인 후 이용해 주세요.");
+        window.location.href = "/login.do";
+    }
+    else{
+	    var url = "../chatting/room?mem_id=" + mem_id;
+	    var win = window.open(url, "chatRoom", "width=450,height=600, left=600, top=200");
+	    if (win) {
+	        win.focus();
+	        win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&mem_id=" + mem_id;
+	    } else {
+	        alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
+	    }
     }
 }
 </script>
@@ -88,9 +95,9 @@ function openChatRoom(event, mem_id){
 						<li>
 							<a href="#">게시판</a>
 							<ul> 
-									<li><a href="/Freeboard.do">자유게시판</a></li>
+								<li><a href="/Freeboard.do">자유게시판</a></li>
 								<li><a href="#">Q&A</a></li>
-								<li><a href="../../room?mem_name=${UserName }">1:1문의(웹소켓 채팅)</a></li>
+								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
 						
@@ -108,7 +115,7 @@ function openChatRoom(event, mem_id){
 						                    <li><a href="#">이용내역</a></li>
 						                    <li><a href="#">활동내역</a></li>
 						                    <li><a href="#">운동관리</a></li>
-						                    <li><a href="#">정보수정</a></li>
+						                    <li><a href="pwcheck">정보수정</a></li>
 						                    <li><a href="/cartList.do">장바구니</a></li>
 						                </ul>
 						            </li>

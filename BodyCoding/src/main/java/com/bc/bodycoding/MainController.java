@@ -97,7 +97,12 @@ public class MainController {
 				//모든 지점에 대해 월별 매출액 구하기
 				Map<String, List<ProductDTO>> gym_sales = new TreeMap<>();
 				for(int i=0; i<gymList.size() ; i++) {
-					gym_sales.put("gym_code"+ i, salesChartdao.gym_sales(gymList.get(i)));
+					System.out.println(gymList.get(i));
+					List<ProductDTO> selectgymList = salesChartdao.gym_sales(gymList.get(i));
+					System.out.println(selectgymList.toString());
+					if(selectgymList.toString().length() != 2) {
+						gym_sales.put(selectgymList.get(0).getMem_id(), salesChartdao.gym_sales(gymList.get(i)));
+					}
 				}
 				model.addAttribute("gym_sales", gym_sales);
 				System.out.println(gym_sales);

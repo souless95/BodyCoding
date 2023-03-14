@@ -19,15 +19,15 @@
 	</select>
 	-->
 			 
-			<select id="boardListCnt" resultType="int">
-		  	select count(*) from freeboard WHERE 
-				  	(board_title LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR
-				 	(board_contents LIKE '%'||#{searcKeyword, jdbcType=VARCHAR}||'%') OR
-				  	(mem_id LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') or closed_chk='N'
-				  	
-			</select>  
-		
-		<select id="memselect" resultType="global.dto.BoardDTO" parameterType="global.dto.BoardDTO">
+	<select id="boardListCnt" resultType="int">
+	  	select count(*) from freeboard WHERE 
+			  	(board_title LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR
+			 	(board_contents LIKE '%'||#{searcKeyword, jdbcType=VARCHAR}||'%') OR
+			  	(mem_id LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') or closed_chk='N'
+		  	
+	</select>  
+	
+	<select id="memselect" resultType="global.dto.BoardDTO" parameterType="global.dto.BoardDTO">
 		 <![CDATA[
 		  SELECT *
 		  FROM (
@@ -45,7 +45,7 @@
 		  ) 
 		  WHERE RNUM >= #{pageStart} + 1 
 		  ]]>
-		</select>
+	</select>
 
 	<!-- 게시글 상세보기 (자게, 공지, 이벤트) -->
 	<select id="memselectOneBoard"

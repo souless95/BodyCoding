@@ -10,7 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h2>${mem_name}지점 날짜별 매출 현황</h2>
+<h2>${mem_name} 날짜별 매출 현황</h2>
 <canvas id="myChart_submain" style="width:50%; height:50%;"></canvas>
 
 <script>

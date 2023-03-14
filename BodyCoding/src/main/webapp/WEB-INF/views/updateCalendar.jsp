@@ -26,6 +26,17 @@
 <button type="button" onclick="validate();">확인</button>
 
 <script>
+onload = function() {
+	
+	document.getElementById("lesson_name").value = "${sSchedule.lesson_name}";
+	document.getElementById("lesson_category").value = `${sSchedule.lesson_category}`;
+	document.getElementById("lesson_capacity").value = "${sSchedule.lesson_capacity}";
+	
+	var lesson_name = document.getElementById("lesson_name").value;
+	var lesson_category = document.getElementById("lesson_category").value;
+	var lesson_capacity = document.getElementById("lesson_capacity").value;
+}
+
 function validate() {
 	
 	var lesson_name = document.getElementById("lesson_name").value;
@@ -42,29 +53,29 @@ function validate() {
 		return false;
 	}
 	
-	var start = localStorage.getItem("start", start);
-	var end = localStorage.getItem("end", end);
-	
 	var data = {
+				id: "${sSchedule.lesson_idx}",
 				title: lesson_name,
-				start: start,
-				end: end,
 				lesson_category: lesson_category,
 				lesson_capacity: lesson_capacity
 	};
 	$.ajax({
-		url: "/addCalendar2.do",
+		url: "/updateCalendar4.do",
 		contentType: "application/json; charset=utf-8",
 		data: data,
 		dataType: 'text',
-		success: function(resData){	
-			data.id = resData;
-			window.opener.calendarRef.addEvent(data);
-			window.opener.calendarRef.refetchEvents();
-		    window.close();
+		success: function(resData){
+			var event = window.opener.calendarRef.getEventById(data.id);
+			if (event) {
+			  event.setProp('title', data.title);
+			  event.setExtendedProp('lesson_category', data.lesson_category);
+			  event.setExtendedProp('lesson_capacity', data.lesson_capacity);
+			  window.opener.calendarRef.refetchEvents();
+			}
+			window.close();
 		},
 		error: function(){
-			alert('일정 추가에 실패했습니다.');
+			alert('일정 수정에 실패했습니다.');
 		}
 	});
 }

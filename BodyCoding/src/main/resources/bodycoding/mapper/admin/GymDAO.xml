@@ -64,10 +64,6 @@
 		parameterType="global.dto.GymDTO">
 		delete from GYM_DETAIL where gym_code=#{gym_code}
 	</delete>
-	<delete id="deleteM"
-		parameterType="global.dto.GymDTO">
-		delete from MEMBER where gym_code=#{gym_code}
-	</delete>
 	
 	<!-- 지점 등록 -->
 	<insert id="insertMemberASUB"

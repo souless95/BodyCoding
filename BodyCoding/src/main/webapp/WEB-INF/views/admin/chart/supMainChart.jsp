@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h2>sup_날짜별 매출 현황</h2>
+<h2>전체지점 날짜별 매출 현황</h2>
 <canvas id="myChart_supmain" style="width:50%; height:50%;"></canvas>
 
 <script>
@@ -55,7 +55,7 @@ const sup_data = {
 		<c:forEach  items="${gyms.key }" var="gym">
 		  	{
 		  		type: 'bar',
-		  		label: '${gyms.key}지점 총매출',
+		  		label: '${gyms.key} 총매출',
 		    	backgroundColor: getRandomColor(),
 		    	data: ${gyms.key}
 		  	},

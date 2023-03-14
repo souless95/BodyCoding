@@ -212,7 +212,7 @@ public class boardController {
 	    return "redirect:/noticeList.do";
 	}
 	
-	//공지사항 상태 변경(Ajax)
+	//공개 or 비공개 상태 변경
 	@RequestMapping("/updateNoticeStatus.do")
 	@ResponseBody
 	public String updateNoticeStatus(BoardDTO boardDTO, HttpServletRequest req) {

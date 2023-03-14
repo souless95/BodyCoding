@@ -37,17 +37,20 @@ public class ProductController {
 	@Autowired
 	IProductService productdao;
 
+	//상품 목록
 	@RequestMapping("/productList.do")
 	public String plist(Model model) {
 		model.addAttribute("pList", productdao.select());
 		return "/admin/product/productList";
 	}
 
+	//상품 등록 접근
 	@RequestMapping(value = "/admin/product/productReigst", method = RequestMethod.GET)
 	public String regiForm() {
 		return "/admin/product/productRegist";
 	}
 
+	//상품 등록 
 	@RequestMapping(value = "/productRegist.do", method = RequestMethod.POST)
 	public String regiAction(MultipartFile product_img, Model model, MultipartHttpServletRequest req) throws IOException, Exception {
 		
@@ -92,7 +95,7 @@ public class ProductController {
 		return "redirect:productList.do";
 	}
 	
-	
+	//상품 수정 접근
 	@GetMapping("/productEdit.do") 
 	public String editForm(ProductDTO productDTO, Model model) {
 		productDTO = productdao.selectOne(productDTO);
@@ -100,6 +103,7 @@ public class ProductController {
 		return "/admin/product/productEdit";
 	}
 	
+	//상품 수정
 	@PostMapping("/productEdit.do") 
 	public String editAction(MultipartFile product_img, Model model, MultipartHttpServletRequest req) {
 			
@@ -158,6 +162,7 @@ public class ProductController {
 		return "/admin/product/stockList";
 	}
 	
+	//재고 수정
 	@ResponseBody
 	@RequestMapping(value="/stockUpdate.do", method = RequestMethod.POST)
 	public String sUpdate(@RequestBody ProductDTO productDTO, Model model) {
@@ -169,6 +174,7 @@ public class ProductController {
 		return "";
 	}       
 	
+	//재고 등록
 	@ResponseBody
 	@RequestMapping(value="/stockInsert.do", method = RequestMethod.POST)
 	public String sInsert(@RequestBody ProductDTO productDTO) {

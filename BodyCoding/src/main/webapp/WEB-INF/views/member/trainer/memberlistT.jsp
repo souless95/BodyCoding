@@ -11,10 +11,11 @@
 body{
 	border: 1px;
 }
+#dataTablesSimple th {
+	text-align: center;
+}
 </style>
 <script>
-/* var ss = ${memberList};
-console.log(ss); */
 </script>
 <%@ include file="../../../../inc/Top.jsp" %>
 </head>

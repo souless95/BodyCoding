@@ -24,15 +24,7 @@ public class memboardController {
 	@Autowired
 	memboardService memboarddao;
 	
-	//멤버 게시글 리스트 페이징X
-	/*
-	@RequestMapping("/Freeboard.do")
-	public String board1(Model model) {
-		model.addAttribute("Freeboard", memboarddao.memselect());
-		
-		return "member/board/Freeboard";
-	}
-	*/
+
 	//게시글 리스트 페이징 
 	@RequestMapping("/Freeboard.do")
 	public String board1(Criteria cri, Model model) {

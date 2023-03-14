@@ -14,4 +14,7 @@ public class CalendarDTO {
 	private String lesson_end_time;
 	private String lesson_capacity;
 	private String lesson_availability;
+	
+	private String trainer_name;
+	private int rcount;
 }

@@ -58,7 +58,6 @@ div{
     max-width: 1800px;
     margin: 0 auto;
 }
-
 </style>
 </head>
 <body>
@@ -84,7 +83,8 @@ div{
 						data-bs-parent="#accordion">
 						<div class="card-body">
                             <ul>
-                                <li><a class="btn" href="calendar.do">예약스케줄</a></li>
+                                <li><a class="btn" href="reservation.do">스케줄예약</a></li>
+                                <li><a class="btn" href="reservated.do">예약확인</a></li>
                                 <li><a class="btn" href="#">트레이너기록</a></li>
                                 <li><a class="btn" href="#">회원기록</a></li>
                                 <li><a class="btn" href="chart">체중그래프</a></li>
@@ -130,5 +130,10 @@ div{
 			</div>
 		</div>
 	</div>
+<script>
+var jspHeight = document.documentElement.scrollHeight;
+var contain_left = document.querySelector('.contain_left');
+contain_left.style.height = jspHeight + 'px';
+</script>
 </body>
 </html>

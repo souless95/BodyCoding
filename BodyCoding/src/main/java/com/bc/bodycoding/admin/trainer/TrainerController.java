@@ -114,8 +114,6 @@ public class TrainerController {
 		String userIdT = principal.getName();
 		model.addAttribute("userIdT", userIdT);
 		
-//		admin.getGym_code();
-		
 		MemberDTO admin = trainerdao.selectAdmin(userIdT);
 		System.out.println("잘 받아오는 지 확인해보자 "+ admin.getGym_code());
 		

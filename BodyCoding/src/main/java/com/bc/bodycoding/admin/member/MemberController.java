@@ -64,6 +64,15 @@ public class MemberController {
       return "redirect:/memberList.do";
    }
    
+   @RequestMapping("/routineForMem.do")
+   public String routineForMem(Model model, MemberDTO memberDTO, HttpSession session) {
+	    String mem_id = (String)(session.getAttribute("UserEmail"));
+	    System.out.println(mem_id);
+        model.addAttribute("mem_id", mem_id);
+       
+       return "member/mypage/routineForMem";
+   }
+   
    //trainer계정으로 로그인했을때 회원목록 보여주기
    @RequestMapping("/memberlistT.do")
    public String trainerml(Model model, HttpSession session, MemberDTO memberDTO) {
@@ -122,7 +131,7 @@ public class MemberController {
             nowRoutine = memberdao.getRoutine(routineDTO);
          }
          else {
-            System.out.println("routine 테이블에 문제발생 의심됨.");
+            System.out.println("routine 테이블에 문제발생.");
          }
          return nowRoutine;
       }

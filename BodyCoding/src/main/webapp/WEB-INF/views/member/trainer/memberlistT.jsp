@@ -8,21 +8,20 @@
 <meta charset="UTF-8">
 <title>트레이너의 마이페이지</title>
 <style>
+<<<<<<< HEAD
 body{
 	border: 1px;
 }
 
 </style>
 <script>
-/* var ss = ${memberList};
-console.log(ss); */
 </script>
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 </head>
 <body>
 	<div id="layoutSidenav">
 		<!-- side -->
-       <%@ include file ="../inc/mypageside.jsp" %>
+       <%@ include file ="../../../../inc/mypageside.jsp" %>
 			<div id="layoutSidenav_content">
 		        <main>
 		        	<div class="card mb-4" style="width:80%;">
@@ -72,6 +71,6 @@ console.log(ss); */
 			</div>
 		</div>
 
-<%@ include file="../inc/Bottom.jsp" %>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

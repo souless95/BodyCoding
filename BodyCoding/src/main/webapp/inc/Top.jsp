@@ -13,6 +13,7 @@
 	  	a{border:0;}
 	</style>
 <script type="text/javascript">
+
 function logoutcheck(){
    
    var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
@@ -94,7 +95,7 @@ function openChatRoom(event, mem_id){
 						<li>
 							<a href="#">게시판</a>
 							<ul> 
-									<li><a href="/Freeboard.do">자유게시판</a></li>
+								<li><a href="/Freeboard.do">자유게시판</a></li>
 								<li><a href="#">Q&A</a></li>
 								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
@@ -106,7 +107,7 @@ function openChatRoom(event, mem_id){
 						        ${UserName}님 환영합니다.
 						    </li>
 						    <c:choose>
-						        <c:when test="${UserInfo.authority eq 'ROLE_MEMBER' }">
+						        <c:when test="${Authority eq 'ROLE_MEMBER' }">
 						            <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}" />
 						            <li>
 						                <a href="${mypageUrl}">마이페이지</a>

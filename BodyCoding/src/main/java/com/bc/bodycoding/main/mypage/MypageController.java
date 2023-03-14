@@ -1,7 +1,5 @@
 package com.bc.bodycoding.main.mypage;
 
-
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +62,6 @@ public class MypageController {
 		return "redirect:main";
 	}
 	
-	
 	//트레이너계정으로 로그인했을때 트레이너의 마이페이지로 이동
 	@RequestMapping("trainermypage.do")
 	public String trainermypage(GymDTO gymDTO, MemberDTO memberDTO,Model model) {
@@ -90,5 +87,4 @@ public class MypageController {
 		mydao.insertWeight(weightDTO);
 		return "redirect:chart";
 	}
-
 } 

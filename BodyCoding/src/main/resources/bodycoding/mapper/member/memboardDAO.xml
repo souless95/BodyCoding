@@ -16,14 +16,18 @@
 				 		order by FB.board_postdate desc 
 			</select>
 			-->
-			 
-		<select id="boardListCnt" resultType="int">
-	  	select count(*) from freeboard WHERE 
-			  	(board_title LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR
-			 	(board_contents LIKE '%'||#{searcKeyword, jdbcType=VARCHAR}||'%') OR
-			  	(mem_id LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR closed_chk='N'
-			  	
-		</select>  
+	    <!-- <select id="memselect"
+		parameterType="global.dto.BoardDTO"
+		resultType="global.dto.BoardDTO">
+		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(closed_chk) AS closed_chk
+			FROM freeboard FB
+			LEFT JOIN report R ON FB.board_idx = R.board_idx
+			WHERE closed_chk = 'N'
+			GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, FB.board_contents,
+		 				FB.board_file, FB.board_visitcount, FB.board_postdate, FB.closed_chk
+		 		order by FB.board_postdate desc 
+	</select>
+	 -->
 	<!--  잘되던거
 	<select id="memselect" resultType="global.dto.BoardDTO" parameterType="global.dto.BoardDTO">
 	 <![CDATA[
@@ -68,6 +72,14 @@
 	</select>
 
 
+	<select id="boardListCnt" resultType="int">
+	  	select count(*) from freeboard WHERE 
+			  	(board_title LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%') OR
+			 	(board_contents LIKE '%'||#{searcKeyword, jdbcType=VARCHAR}||'%') OR
+			  	(mem_id LIKE '%'||#{searchKeyword, jdbcType=VARCHAR}||'%')
+		  	
+	</select>  
+	
 
 	<!-- 게시글 상세보기 (자게, 공지, 이벤트) -->
 	<select id="memselectOneBoard"

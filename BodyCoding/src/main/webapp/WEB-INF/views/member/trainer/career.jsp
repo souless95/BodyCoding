@@ -15,11 +15,11 @@ body {
 	border: 1px;
 }
 </style>
-<%@ include file="../inc/Top.jsp"%>
+<%@ include file="../../../../inc/Top.jsp"%>
 </head>
 <body>
 	<div class="container">
-		<%@ include file="../inc/mypageside.jsp"%>
+		<%@ include file="../../../../inc/mypageside.jsp"%>
 		<div id="layoutSidenav_content">
 			<div class="card mb-5" style="border-bottom: none;">
 				<div class="card-header">
@@ -42,7 +42,7 @@ body {
 											class="trainer_star_total">1건</span>
 									</div>
 									<br>
-								<div><a class="btn-line" href="trainerInfo">
+								<div><a class="btn-line" href="../main/trainerInfo">
 								<i class="fas fa-search-plus"></i> 트레이너 상세 보기</a></div>	
 								</div>
 						</div>
@@ -51,6 +51,6 @@ body {
 			</div>
 		</div>
 	</div>
-	<%@ include file="../inc/Bottom.jsp"%>
+	<%@ include file="../../../../inc/Bottom.jsp"%>
 </body>
 </html>

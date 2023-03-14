@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../inc/Top.jsp"%>
+<%@ include file="../../../../inc/Top.jsp"%>
 </head>
 <body>
 	
 	<div id="container">
 		<!-- side -->
-		<%@ include file="../inc/mypageside.jsp"%>
+		<%@ include file="../../../../inc/mypageside.jsp"%>
 
 		<div id="layoutSidenav_content">
 			<div id="layoutSidenav_content">
@@ -52,14 +52,11 @@
 			</div>
 		</div>
 		<!-- bottom -->
-		<%@ include file="../inc/Bottom.jsp"%>
+		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

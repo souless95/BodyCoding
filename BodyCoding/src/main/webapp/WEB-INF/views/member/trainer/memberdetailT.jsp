@@ -14,8 +14,6 @@
 <body class="sb-nav-fixed">
 <script>
 $(document).ready(function() {
-	var aa= '${mem_id}';
-	console.log(aa);
 	$("#yoil").change(function() {
 		$.ajax({
     	    url: '/changeYoil',
@@ -73,10 +71,10 @@ function routine(){
 }
 </script>
 <!-- top메뉴  -->
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 	<div id="container">
 	<!-- side -->
-	<%@ include file ="../inc/mypageside.jsp" %>
+	<%@ include file ="../../../../inc/mypageside.jsp" %>
        
 		<div id="layoutSidenav_content">
 	        <main>
@@ -151,7 +149,7 @@ function routine(){
 						</select>
 						<div id="registeredRoutine"></div>
 			<!-- bottom -->
-			<%@ include file="../inc/Bottom.jsp" %>
+			<%@ include file="../../../../inc/Bottom.jsp" %>
 	        		</div>
 				</div>
 			</main><br />

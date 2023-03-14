@@ -84,7 +84,6 @@ public class MainController {
 	@RequestMapping("/main/admin")
 	public String adminLogin(Principal principal, Model model, MemberDTO memberDTO) {
 		SalesChartController controller = new SalesChartController();
-//		String page = "";
 		
 			try {
 				String mem_id = principal.getName();
@@ -98,8 +97,11 @@ public class MainController {
 				//모든 지점에 대해 월별 매출액 구하기
 				Map<String, List<ProductDTO>> gym_sales = new TreeMap<>();
 				for(int i=0; i<gymList.size() ; i++) {
-					if(salesChartdao.gym_sales(gymList.get(i))!= null) {
-						gym_sales.put("gym_code"+ i, salesChartdao.gym_sales(gymList.get(i)));
+					System.out.println(gymList.get(i));
+					List<ProductDTO> selectgymList = salesChartdao.gym_sales(gymList.get(i));
+					System.out.println(selectgymList.toString());
+					if(selectgymList.toString().length() != 2) {
+						gym_sales.put(selectgymList.get(0).getMem_id(), salesChartdao.gym_sales(gymList.get(i)));
 					}
 				}
 				model.addAttribute("gym_sales", gym_sales);
@@ -137,10 +139,8 @@ public class MainController {
 				System.out.println("로그인하셔야 합니다.");
 				return "admin/auth/login";
 			}
-//		return page;
 	}
 	
-
 	//로그인 실패한 경우 출력할 메세지
 	@RequestMapping("/adminLoginError.do")
 	public String adminLogin2(Model model) {
@@ -158,37 +158,4 @@ public class MainController {
 	public String star() {
 		return "member/star";
 	}
-	
-	
-	
-//	@RequestMapping(value = "admin/auth/updatePwd", method = RequestMethod.GET)
-//	public String updatePwd(Principal principal, MemberDTO memberDTO, Model model) {
-//		memberDTO = gymdao.selectUpdatePwd(model);
-//		
-//		System.out.println(memberDTO);
-//		
-//		return "admin/auth/updatePwd";
-//	}
-		
-	//json불러오기 실험
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping("/test3") public String test3(){ JsonObject obj =new
-	 * JsonObject();
-	 * 
-	 * obj.addProperty("title", "테스트3"); obj.addProperty("content", "테스트3 내용");
-	 * 
-	 * JsonObject data = new JsonObject();
-	 * 
-	 * data.addProperty("time", "12:00");,
-	 * 
-	 * obj.add("data", data);
-	 * 
-	 * return obj.toString(); }
-	 */
-	
-	
-	
-	
 }

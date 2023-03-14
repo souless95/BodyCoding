@@ -133,8 +133,7 @@ function errCallBack(errData) {
 	</div>
 	<table style="border: 5px solid #cdd0d4;">
 		<tbody>
-			<input type="checkbox" id="selected_all_product"
-				onclick="checkAll();" checked>전체선택
+			<input type="checkbox" id="selected_all_product" onclick="checkAll();" checked>전체선택
 			<tr>
 				<th><strong>선택</strong></th>
 				<th colspan="2" width="70%"><strong>상품정보</strong></th>

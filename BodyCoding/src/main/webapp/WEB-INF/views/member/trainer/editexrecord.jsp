@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title></title>
 </head>
-<%@ include file="../inc/Top.jsp"%>
+<%@ include file="../../../../inc/Top.jsp"%>
 <script type="text/javascript">
 function editRecord(training_log_idx) {
 	  if (confirm("게시글을 수정하시겠습니까?")) {
@@ -25,7 +25,7 @@ function editRecord(training_log_idx) {
 <body>
 	<div id="container">
 		<!-- side -->
-		<%@ include file="../inc/mypageside.jsp"%>
+		<%@ include file="../../../../inc/mypageside.jsp"%>
 
 		<div id="layoutSidenav_content">
 			<div id="layoutSidenav_content">
@@ -78,14 +78,11 @@ function editRecord(training_log_idx) {
 			</div>
 		</div>
 		<!-- bottom -->
-		<%@ include file="../inc/Bottom.jsp"%>
+		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

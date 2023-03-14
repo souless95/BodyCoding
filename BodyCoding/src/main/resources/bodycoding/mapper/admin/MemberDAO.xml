@@ -48,7 +48,7 @@
 	<select id="selectDT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		SELECT m.*, product_type, product_name
+		SELECT distinct m.*, product_type, product_name
 		FROM member m
 		INNER JOIN membership ms ON m.mem_id = ms.user_id
         INNER JOIN product p ON p.product_idx = ms.product_idx

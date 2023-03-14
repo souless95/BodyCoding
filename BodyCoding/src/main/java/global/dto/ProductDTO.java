@@ -1,10 +1,7 @@
 package global.dto;
 
+import java.util.Date;
 
-import java.io.File;
-import java.sql.Date;
-
-import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -19,6 +16,8 @@ public class ProductDTO {
 	private int membership_count;
 	//멤버쉽 기간
 	private int membership_period;
+	//멤버쉽 종료일
+	private Date membership_end;
 	//상품명
 	private String product_name;
 	//상품 설명
@@ -45,8 +44,11 @@ public class ProductDTO {
 	private String mem_img;
 	//회원 아이디
 	private String mem_id;
+	//mem_id랑 같은 용도! DTO받을 수 있도록
+	private String user_id;
 	//트레이너 아이디
 	private String trainer_id;
+	private String trainer_name;
 	
 	//카트 일련번호
 	private String cart_idx;

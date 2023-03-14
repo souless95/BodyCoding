@@ -112,6 +112,7 @@ div{
 						data-bs-parent="#accordion">
 						<div class="card-body">
                             <ul>
+                                <li><a class="btn" href="calendar.do">스케쥴 관리</a></li>
                                 <li><a class="btn" href="career.do">트레이너경력</a></li>
                             </ul>
                         </div>

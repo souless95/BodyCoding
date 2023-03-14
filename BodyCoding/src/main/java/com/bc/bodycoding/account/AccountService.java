@@ -14,7 +14,8 @@ public interface AccountService{
 	public String checkIdDuplicate(MemberDTO memberDTO);
 	public MemberDTO login(MemberDTO memberDTO);
 	public int kakaoinsert(Map<String, String> map);
-	public MemberDTO kakaoselect(String mem_id);
+	public String kakaoselect(String mem_id);
+	public MemberDTO kakaoUserInfo(String mem_id);
 	public int kakaoupdate(MemberDTO memberDTO);
 	
 	public String pwCheck(String mem_id);

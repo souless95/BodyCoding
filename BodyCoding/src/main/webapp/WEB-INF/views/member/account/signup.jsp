@@ -7,10 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../../../../inc/style.jsp"%>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'> -->
 <!-- <style>
     body {
        min-height: 100vh;
@@ -20,7 +16,6 @@
        background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
        background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
     }
-
     .input-form {
        max-width: 720px;
        margin-top: 80px;
@@ -33,63 +28,12 @@
        -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
-    
-    * {   
-       font-weight:bold;
-       font-size:20px; 
-       font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-    
-    #phone{
-      display : flex;
-   }
-   
-   .disease{
-      display : flex;
-   }
-   
-   .interest{
-      display : flex;
-   }
-   
-   .purpose_detail{
-      display : flex;
-   }
-   
-   .checkStyle{
-      width:20px;
-      height:20px;
-      margin-top:5px;
-      margin-right:7px;
-      background: #fff;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-   }
-   
-   .purpose{
-      display :flex;
-   }
-   
-   select option[value=""][disabled]{
-      display: none;
-   }
-   
-   select:invalid{
-      color: #c0c0c0;
-   }
-   
-   #redStar {
-      color:red;
-   }
    </style> -->
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
-	<div class="input-form-backgroud row"> <!-- class="input-form-backgroud row" -->
+	<div class="input-form-backgroud row"> 
 		<div class="input-form col-md-12 mx-auto" >
 			<div style="text-align:center;">
 				<h2 class="mb-1">회원가입</h2>

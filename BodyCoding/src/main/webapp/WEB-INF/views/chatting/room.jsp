@@ -87,11 +87,11 @@
 </script>
 <body class="sb-nav-fixed">
 <input type="hidden" name="roomName" id="roomName" value="${memberid}-admin_super1">
-<%@ include file ="./admin/inc/top.jsp" %>
+<%@ include file ="../admin/inc/top.jsp" %>
 
 	<div id="layoutSidenav">
 	
-		<%@ include file ="./admin/inc/side.jsp" %>
+		<%@ include file ="../admin/inc/side.jsp" %>
 		
 		<div id="layoutSidenav_content">
 			<main>
@@ -115,7 +115,7 @@
 				</div>
 			</main>
 		</div>
-		<%@ include file ="./admin/inc/bottom.jsp" %>
+		<%@ include file ="../admin/inc/bottom.jsp" %>
 	</div>
 </body>
 </html>

@@ -30,7 +30,7 @@ function openChatRoom(event, mem_id){
         window.location.href = "/login.do";
     }
     else{
-	    var url = "../../room?mem_id=" + mem_id;
+	    var url = "../chatting/room?mem_id=" + mem_id;
 	    var win = window.open(url, "chatRoom", "width=450,height=600, left=600, top=200");
 	    if (win) {
 	        win.focus();

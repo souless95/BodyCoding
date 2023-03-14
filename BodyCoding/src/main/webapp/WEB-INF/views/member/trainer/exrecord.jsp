@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../inc/Top.jsp"%>
+<%@ include file="../../../../inc/Top.jsp"%>
 <script>
 function editRecord(training_log_idx) {
   if (confirm("게시글을 수정하시겠습니까?")) {
@@ -25,7 +25,7 @@ function deleteRecord(training_log_idx) {
 	
 	<div id="container">
 		<!-- side -->
-		<%@ include file="../inc/mypageside.jsp"%>
+		<%@ include file="../../../../inc/mypageside.jsp"%>
 
 		<div id="layoutSidenav_content">
 			<div id="layoutSidenav_content">
@@ -33,13 +33,9 @@ function deleteRecord(training_log_idx) {
 					<div class="card-header">
 						<h2>운동기록 리스트</h2>
 					</div>
-					<div class="container">
-					<button type="button" onclick="location.href='main'">홈으로</button> 
-					<button type="button" onclick="location.href='addexrecord.do'">등록하기</button>
-					</div>
 					<br>
 					<div class="container">
-							<table>
+						<table>
 							<thead>
 								<tr>
 						         	<th>일자</th>
@@ -50,34 +46,33 @@ function deleteRecord(training_log_idx) {
 						      	</tr>
 							</thead>
 							<tbody>
-					     	<c:forEach items="${memberList }" var="row" varStatus="loop">
-						      	<tr>
-							        <td>${row.training_date }</td>
-							        <td>${row.product_name }</td>
-							        <td>${row.product_description }
-							        <td>${row.mem_name}</td>
-							        <td>${row.training_comment }</td>
-							        <td>
-							        <button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
-									<button type="button" onclick="deleteRecord(${row.training_log_idx})">삭제</button>
-							        </td>
-							    </tr>
-						    </c:forEach>
+						     	<c:forEach items="${memberList }" var="row" varStatus="loop">
+							      	<tr>
+								        <td>${row.training_date }</td>
+								        <td>${row.product_name }</td>
+								        <td>${row.product_description }
+								        <td>${row.mem_name}</td>
+								        <td>${row.training_comment }</td>
+								        <td>
+								        <button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
+										<button type="button" onclick="deleteRecord(${row.training_log_idx})">삭제</button>
+								        </td>
+								    </tr>
+							    </c:forEach>
 							</tbody>
-							</table>
-		        		</div>	
+						</table>
+							<button type="button" onclick="location.href='main'">홈으로</button> 
+							<button type="button" onclick="location.href='addexrecord.do'">등록하기</button>
+	        		</div>	
 				</div>
 			</div>
 		</div>
 		<!-- bottom -->
-		<%@ include file="../inc/Bottom.jsp"%>
+		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="../static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

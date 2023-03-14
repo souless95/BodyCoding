@@ -13,6 +13,7 @@
 	  	a{border:0;}
 	</style>
 <script type="text/javascript">
+
 function logoutcheck(){
    
    var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
@@ -94,7 +95,7 @@ function openChatRoom(event, mem_id){
 						<li>
 							<a href="#">게시판</a>
 							<ul> 
-									<li><a href="/Freeboard.do">자유게시판</a></li>
+								<li><a href="/Freeboard.do">자유게시판</a></li>
 								<li><a href="#">Q&A</a></li>
 								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
 							</ul>

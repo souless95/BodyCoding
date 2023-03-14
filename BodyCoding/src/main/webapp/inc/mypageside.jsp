@@ -58,7 +58,6 @@ div{
     max-width: 1800px;
     margin: 0 auto;
 }
-
 </style>
 </head>
 <body>
@@ -75,58 +74,105 @@ div{
 						<a>마이페이지 </a>
 					</div>
 				</div>
-				<div class="card">
-					<div class="card-header">
-						<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-							운동관리 </a>
-					</div>
-					<div id="collapseOne" class="collapse show"
-						data-bs-parent="#accordion">
-						<div class="card-body">
-                            <ul>
-                                <li><a class="btn" href="calendar.do">예약스케줄</a></li>
-                                <li><a class="btn" href="#">트레이너기록</a></li>
-                                <li><a class="btn" href="#">회원기록</a></li>
-                                <li><a class="btn" href="chart">체중그래프</a></li>
-                            </ul>
-                        </div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<a class="collapsed btn" data-bs-toggle="collapse"
-							href="#collapseTwo"> 이용내역 </a>
-					</div>
-					<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-						<div class="card-body">
-                            <ul>
-                                <li><a class="btn" href="#">결제내역</a></li>
-                                <li><a class="btn" href="#">이용권차감</a></li>
-                            </ul>
-                        </div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<a class="collapsed btn" data-bs-toggle="collapse"
-							href="#collapseThree"> 활동내역 </a>
-					</div>
-					<div id="collapseThree" class="collapse"
-						data-bs-parent="#accordion">
-						<div class="card-body">
-                            <ul>
-                                <li><a class="btn" href="#">게시물</a></li>
-                                <li><a class="btn" href="#">Q&A</a></li>
-                            </ul>
-                        </div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<%-- <a class="btn" href="memberEdit.do?mem_id=${UserInfo.mem_id }"> 정보수정 </a> --%>
-						<a class="btn" href="pwcheck"> 정보수정 </a> 
-					</div>
-				</div>
+				
+				<c:choose>
+					<c:when test="${UserInfo.authority eq 'ROLE_MEMBER' }">
+						<div class="card">
+							<div class="card-header">
+								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+									운동관리 </a>
+							</div>
+							<div id="collapseOne" class="collapse show"
+								data-bs-parent="#accordion">
+								<div class="card-body">
+		                            <ul>
+		                                <li><a class="btn" href="calendar.do">예약스케줄</a></li>
+		                                <li><a class="btn" href="#">트레이너기록</a></li>
+		                                <li><a class="btn" href="#">회원기록</a></li>
+		                                <li><a class="btn" href="chart">체중그래프</a></li>
+		                            </ul>
+		                        </div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<a class="collapsed btn" data-bs-toggle="collapse"
+									href="#collapseTwo"> 이용내역 </a>
+							</div>
+							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+								<div class="card-body">
+		                            <ul>
+		                                <li><a class="btn" href="#">결제내역</a></li>
+		                                <li><a class="btn" href="#">이용권차감</a></li>
+		                            </ul>
+		                        </div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<a class="collapsed btn" data-bs-toggle="collapse"
+									href="#collapseThree"> 활동내역 </a>
+							</div>
+							<div id="collapseThree" class="collapse"
+								data-bs-parent="#accordion">
+								<div class="card-body">
+		                            <ul>
+		                                <li><a class="btn" href="#">게시물</a></li>
+		                                <li><a class="btn" href="#">Q&A</a></li>
+		                            </ul>
+		                        </div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<a class="btn" href="pwcheck"> 정보수정 </a> 
+							</div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="card">
+							<div class="card-header">
+								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+									회원목록 </a>
+							</div>
+							<div id="collapseOne" class="collapse show"
+								data-bs-parent="#accordion">
+								<div class="card-body" >
+		                            <ul>
+		                                <li><a class="btn" style="padding-top:10px;" href="memberlistT.do">회원목록 보기</a></li>
+		                            </ul>
+		                        </div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<a class="collapsed btn" data-bs-toggle="collapse"
+									href="#collapseTwo"> 운동정보 </a>
+							</div>
+							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+								<div class="card-body">
+		                            <ul>
+		                                <li><a class="btn" href="exrecord.do">운동기록</a></li>
+		                            </ul>
+		                        </div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<a class="collapsed btn" data-bs-toggle="collapse"
+									href="#collapseThree"> 내 정보관리 </a>
+							</div>
+							<div id="collapseThree" class="collapse"
+								data-bs-parent="#accordion">
+								<div class="card-body">
+		                            <ul>
+		                                <li><a class="btn" href="career.do">트레이너경력</a></li>
+		                            </ul>
+		                        </div>
+							</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

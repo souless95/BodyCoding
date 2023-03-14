@@ -84,8 +84,6 @@ body {
 }
 </style>
 </head>
-
-
 <body>
 <%@ include file="../../../../inc/Top.jsp"%>
 	<div class="container">

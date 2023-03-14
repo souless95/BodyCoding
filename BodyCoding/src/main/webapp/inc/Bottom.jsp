@@ -14,14 +14,15 @@
 .chat_bot :hover{cursor: pointer;}
 </style>
 	
-<!--하단 플로팅 버튼 시작-->
+<!--하단 채팅플로팅 버튼 시작-->
 <div class="floating-button">
  	<span class="chatbot">
-	     <a class="chat_bot" onclick="window.open('https://console.dialogflow.com/api-client/demo/embedded/99601361-7f7a-481e-8a8c-322cb8198841','chat','width=450px, height=650px, location=no, status=no, scrollbars=yes')">
-	    	<img src="static/member/images/챗봇.png" style="width: 50px; height: 50px;" >
-	    </a>
-	</span>
+    <!--  <a class="chat_bot" href="https://bot.dialogflow.com/99601361-7f7a-481e-8a8c-322cb8198841"> -->
+     <a class="chat_bot" onclick="window.open('https://console.dialogflow.com/api-client/demo/embedded/99601361-7f7a-481e-8a8c-322cb8198841','chat','width=450px, height=650px, location=no, status=no, scrollbars=yes')">
+     	<img src="static/member/images/챗봇.png" style="width: 50px; height: 50px;" ></a>
+			</span>
 </div>
+<!--하단 채팅플로팅 버튼 끝-->
 		
 		
 <!-- Footer -->

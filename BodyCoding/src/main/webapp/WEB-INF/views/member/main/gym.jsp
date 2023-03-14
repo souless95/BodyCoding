@@ -9,28 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c796ac3987193df71da7fe2b18943f1&libraries=services,clusterer,drawing"></script>
 
-<style type="text/css">
-input[type="checkbox"]{
-        display: none;
-      }
-input[type="checkbox"] + label{
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border:3px solid #707070;
-        position: relative;
-      }
-input[class="facility"]:checked + label::after{
-        content:'✔';
-        font-size: 20px;
-        width: 20px;
-        height: 20px;
-        text-align: center;
-        position: absolute;
-        left: -2px;
-        top:-8px;
-      }
-</style>
+
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp" %>
@@ -201,87 +180,116 @@ function errCallBack(errData){
          });
      }
 </script>
-
 </div>
+<style type="text/css">
+input[type="checkbox"]{
+        display: none;
+      }
+input[type="checkbox"] + label{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border:3px solid #707070;
+        position: relative;
+      }
+input[class="facility"]:checked + label::after{
+        content:'✔';
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        position: absolute;
+        left: -2px;
+        top:-8px;
+      }
+#fac li {
+	height: 30px; 
+	widows: 150px;
+}
+</style>
 <div class="main_right"  style="width: 35%; float: left;">
-
-   <form name="gymCheck" id="gymCheck">
-       <ul style="list-style-type: none; width: 50%; height:50%; float: left;">
-            <li>
-              <input type="checkbox" name="facility_health" value="Y" class="facility" id="facility_health">
-              <label for="facility_health"></label><img src="../static/admin/images/0004.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">헬스</span>
-            </li>
-            <li>
-              <input type="checkbox" name="facility_yoga" value="Y" class="facility" id="facility_yoga">
-              <label for="facility_yoga"></label> <img src="../static/admin/images/0005.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">요가</span>
-            </li>
-            <li>
-              <input type="checkbox" name="facility_gx" value="Y" class="facility" id="facility_gx">
-              <label for="facility_gx"></label> <img src="../static/admin/images/0007.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">G.X</span>
-            </li>
-            <li>
-              <input type="checkbox" name="facility_pilates" value="Y" class="facility" id="facility_pilates">
-              <label for="facility_pilates"></label> <img src="../static/admin/images/0010.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">필라테스 </span>
-            </li>
-            <li>
-              <input type="checkbox" name="facility_pt" value="Y" class="facility" id="facility_pt">
-              <label for="facility_pt"></label> <img src="../static/admin/images/0011.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">P.T</span>
-            </li>
-       </ul>
-       <ul style="list-style-type: none; width: 50%; height:50%; float: left;">
-            <li>
-              <input type="checkbox" name="facility_parking" value="Y" class="facility" id="facility_parking"
-              style="border: 1px solid black; width: 5px; height: 5px;">
-              <label for="facility_parking"></label><img src="../static/admin/images/0001.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">주차</span>       
-           </li>
-            <li>
-              <input type="checkbox" name=facility_24hour value="Y" class="facility" id="facility_24hour">
-              <label for="facility_24hour"></label> <img src="../static/admin/images/0014.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">24시간</span>  
-            </li>
-            <li>
-              <input type="checkbox" name="facility_shower" value="Y" class="facility" id="facility_shower">
-              <label for="facility_shower"></label> <img src="../static/admin/images/0017.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">샤워시설</span>  
-            </li>
-            <li>
-              <input type="checkbox" name="facility_wear" value="Y" class="facility" id="facility_wear">
-              <label for="facility_wear"></label> <img src="../static/admin/images/0018.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">운동복</span>  
-            </li>
-            <li>
-              <input type="checkbox" name="facility_locker" value="Y" class="facility" id="facility_locker">
-              <label for="facility_locker"></label><img src="../static/admin/images/0020.png" width="30" height="30" align="absmiddle">
-              <span style="font-size: 15px;">락커</span>
-            </li>
-       </ul>
-   </form>
-   
-   
-   <div style="width:300px;">
-      <input id="searchWord" type="text"  placeholder="검색어 입력" style="width:204px;">
-      <input type="button" value="전체지점" id="search">
+	<div style="height: 300px;">
+	   	<h5>&nbsp;상세정보</h5>
+	   	<form name="gymCheck" id="gymCheck">
+	       <ul style="list-style-type: none; width: 50%; height:50%; float: left;">
+	            <li>
+	              <input type="checkbox" name="facility_health" value="Y" class="facility" id="facility_health">
+	              <label for="facility_health"></label><img src="../static/admin/images/0004.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">헬스</span>
+	            </li>
+	            <li>
+	              <input type="checkbox" name="facility_yoga" value="Y" class="facility" id="facility_yoga">
+	              <label for="facility_yoga"></label> <img src="../static/admin/images/0005.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">요가</span>
+	            </li>
+	            <li>
+	              <input type="checkbox" name="facility_gx" value="Y" class="facility" id="facility_gx">
+	              <label for="facility_gx"></label> <img src="../static/admin/images/0007.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">G.X</span>
+	            </li>
+	            <li>
+	              <input type="checkbox" name="facility_pilates" value="Y" class="facility" id="facility_pilates">
+	              <label for="facility_pilates"></label> <img src="../static/admin/images/0010.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">필라테스 </span>
+	            </li>
+	            <li>
+	              <input type="checkbox" name="facility_pt" value="Y" class="facility" id="facility_pt">
+	              <label for="facility_pt"></label> <img src="../static/admin/images/0011.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">P.T</span>
+	            </li>
+	            <li>
+			      <input id="searchWord" type="text"  placeholder="검색어 입력" style="width:210px;">
+	       		</li>
+	       </ul>
+	       <ul style="list-style-type: none; width: 50%; height:50%; float: left; padding-left: 0;">
+	            <li>
+	              <input type="checkbox" name="facility_parking" value="Y" class="facility" id="facility_parking"
+	              style="border: 1px solid black; width: 5px; height: 5px;">
+	              <label for="facility_parking"></label><img src="../static/admin/images/0001.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">주차</span>       
+	           </li>
+	            <li>
+	              <input type="checkbox" name=facility_24hour value="Y" class="facility" id="facility_24hour">
+	              <label for="facility_24hour"></label> <img src="../static/admin/images/0014.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">24시간</span>  
+	            </li>
+	            <li>
+	              <input type="checkbox" name="facility_shower" value="Y" class="facility" id="facility_shower">
+	              <label for="facility_shower"></label> <img src="../static/admin/images/0017.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">샤워시설</span>  
+	            </li>
+	            <li>
+	              <input type="checkbox" name="facility_wear" value="Y" class="facility" id="facility_wear">
+	              <label for="facility_wear"></label> <img src="../static/admin/images/0018.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">운동복</span>  
+	            </li>
+	            <li>
+	              <input type="checkbox" name="facility_locker" value="Y" class="facility" id="facility_locker">
+	              <label for="facility_locker"></label><img src="../static/admin/images/0020.png" width="30" height="30" align="absmiddle">
+	              <span style="font-size: 15px;">락커</span>
+	            </li>
+	       		<li>
+			      <input type="button" value="전체지점" id="search" style="margin-left: 35px;">
+		      	</li>
+	       </ul>
+	   </form>
+   </div>
+   <div style="height: 450px; width: 210px;">
+	   <ul style="list-style-type: none; overflow: auto; height: calc(100vh-230px);">
+	      <div id="show_data">
+		      <c:forEach items="${gymList }" var="row" varStatus="loop">
+		         <a href="#" style="color: black;">
+			         <li>
+			            <div> ${row.mem_name} <button onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button></div>
+			            <div> ${row.mem_address}</div>
+			            <div> ${row.mem_phone}</div>
+			         </li>
+		         </a>
+		      </c:forEach>
+	      </div>
+	   </ul>
    </div>
    
-   <ul style="list-style-type: none;">
-      <div id="show_data">
-      <c:forEach items="${gymList }" var="row" varStatus="loop">
-         <a href="#">
-         <li>
-            <div> ${row.mem_name} <button onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button></div>
-            <div> ${row.mem_address}</div>
-            <div> ${row.mem_phone}</div>
-         </li>
-         </a>
-      </c:forEach>
-      </div>
-   </ul>
 </div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>

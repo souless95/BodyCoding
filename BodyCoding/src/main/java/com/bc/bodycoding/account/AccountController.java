@@ -68,16 +68,12 @@ public class AccountController {
       
       MemberDTO UserInfo = accountdao.login(memberDTO);
       
-      System.out.println(memberDTO.getMem_id());
-      System.out.println(memberDTO.getMem_pass());
-      
-      System.out.println(UserInfo.getAuthority());
-      System.out.println(UserInfo);
-      
       try {
          session.setAttribute("UserInfo", UserInfo);
          session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
          session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
+         session.setAttribute("Authority", accountdao.login(memberDTO).getAuthority());
+         
          return "redirect:main";
       } 
       catch (Exception e) {

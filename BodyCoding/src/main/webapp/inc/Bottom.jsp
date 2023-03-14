@@ -13,7 +13,11 @@
 } 
 .chat_bot :hover{cursor: pointer;}
 </style>
-	
+<script>
+var jspHeight = document.documentElement.scrollHeight;
+var contain_left = document.querySelector('.contain_left');
+contain_left.style.height = jspHeight + 'px';
+</script>	
 <!--하단 채팅플로팅 버튼 시작-->
 <div class="floating-button">
  	<span class="chatbot">

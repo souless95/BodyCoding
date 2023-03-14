@@ -8,12 +8,6 @@
 <meta charset="UTF-8">
 <title>트레이너의 마이페이지</title>
 <style>
-body{
-	border: 1px;
-}
-#dataTablesSimple th {
-	text-align: center;
-}
 </style>
 <script>
 </script>

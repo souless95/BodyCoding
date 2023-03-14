@@ -70,7 +70,6 @@
   }
 </style>
 <script>
-
 function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 	
 	var reservating = confirm("일정 "+lesson_name+"을 예약하시겠습니까?");

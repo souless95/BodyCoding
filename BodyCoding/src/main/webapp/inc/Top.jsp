@@ -106,7 +106,7 @@ function openChatRoom(event, mem_id){
 						        ${UserName}님 환영합니다.
 						    </li>
 						    <c:choose>
-						        <c:when test="${UserInfo.authority eq 'ROLE_MEMBER' }">
+						        <c:when test="${Authority eq 'ROLE_MEMBER' }">
 						            <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}" />
 						            <li>
 						                <a href="${mypageUrl}">마이페이지</a>

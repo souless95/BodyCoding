@@ -114,7 +114,7 @@ function openChatRoom(event, mem_id){
 						                    <li><a href="#">이용내역</a></li>
 						                    <li><a href="#">활동내역</a></li>
 						                    <li><a href="#">운동관리</a></li>
-						                    <li><a href="#">정보수정</a></li>
+						                    <li><a href="pwcheck">정보수정</a></li>
 						                    <li><a href="/cartList.do">장바구니</a></li>
 						                </ul>
 						            </li>

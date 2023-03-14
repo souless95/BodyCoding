@@ -63,7 +63,6 @@ public class PurchaseController {
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setGym_code(req.getParameter("gym_code"));
 		productDTO.setLesson_category(req.getParameter("lesson_category"));
-
 		List<ProductDTO> tList;
 		tList = purchaseDao.trainerSelect(productDTO);
 		return tList;
@@ -79,6 +78,7 @@ public class PurchaseController {
 		String type = req.getParameter("type");
 		String product_name = productDTO.getProduct_name();
 		int product_price = productDTO.getProduct_price();
+		System.out.println(product_price);
 		String mem_id = session.getAttribute("UserEmail").toString();
 		String product_count;
 		int tCount = 0;
@@ -91,7 +91,12 @@ public class PurchaseController {
 
 		// 멤버쉽일 경우 저장할 데이터 세팅
 		if (type.equals("멤버쉽")) {
-			model.addAttribute("trainer_id", productDTO.getTrainer_id());
+			if(productDTO.getTrainer_id()==null) {
+				model.addAttribute("trainer_id", "");
+			}
+			else {
+				model.addAttribute("trainer_id", productDTO.getTrainer_id());
+			}
 			model.addAttribute("gym_code", productDTO.getGym_code());
 			model.addAttribute("use_point", "");
 			model.addAttribute("product_count", "");
@@ -237,7 +242,10 @@ public class PurchaseController {
 				}		
 				
 			}
-
+			
+			if(use_point=="") {
+				use_point="0";
+			}
 			int final_price = Integer.parseInt(product_price)-Integer.parseInt(use_point);
 			int save_point = (int)Math.floor((double)final_price * 0.005);
 			productDTO.setTotal_price(Integer.parseInt(product_price));

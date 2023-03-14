@@ -14,8 +14,6 @@
 <body class="sb-nav-fixed">
 <script>
 $(document).ready(function() {
-	var aa= '${mem_id}';
-	console.log(aa);
 	$("#yoil").change(function() {
 		$.ajax({
     	    url: '/changeYoil',

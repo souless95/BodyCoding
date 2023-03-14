@@ -146,6 +146,7 @@ public class SocialAccountController {
 			MemberDTO UserInfo = socialdao.kakaoselect(mem_id);
 			System.out.println(UserInfo);
 			String mem_name = UserInfo.getMem_name();
+			System.out.println(mem_name);
 			if(mem_name==null) {
 				System.out.println("회원이 아니므로 회원가입을 진행합니다.");
 				//카카오톡 회원가입

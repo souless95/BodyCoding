@@ -34,7 +34,7 @@ public class SecurityConfiguration {
 			.antMatchers("/admin/gym/gymRegist").hasRole("ADMIN_SUPER") 					//지점 등록 접근
 			.antMatchers("/admin/gym/gymEdit").hasRole("ADMIN_SUB") 						//지점 수정 접근 ( + 본인의 지점만 수정가능)
 			.antMatchers("/admin/trainer/trainerRegist").hasRole("ADMIN_SUB") 				//트레이너 등록 접근
-         	.antMatchers("/admin/trainer/trainerEdit").hasRole("ADMIN_SUB") 				// 트레이너 수정 접근( + 본인 소속만 수정가능)
+//         	.antMatchers("/admin/trainer/trainerEdit").hasAnyRole("ADMIN_SUB", "ADMIN_SUPER") 				// 트레이너 수정 접근( + 본인 소속만 수정가능)
 			.antMatchers("/admin/product/productReigst").hasRole("ADMIN_SUPER") 			//상품 등록 접근
          	.antMatchers("/admin/product/productEdit").hasRole("ADMIN_SUPER") 				// 상품 수정 접근
 			.antMatchers("/admin/product/stockList").hasRole("ADMIN_SUB") 					//재고 리스트 접근

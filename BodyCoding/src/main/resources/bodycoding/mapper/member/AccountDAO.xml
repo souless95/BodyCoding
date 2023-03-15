@@ -109,4 +109,18 @@
 	update member set mem_pass=#{mem_pass} where mem_id=#{mem_id} 
 </update>
 
+<select id="getMInfo" parameterType="global.dto.ProductDTO" resultType="global.dto.ProductDTO">
+	SELECT mb.TRAINER_ID, m.mem_NAME "trainer_name", p.PRODUCT_category, SUM(p.MEMBERSHIP_COUNT) "MEMBERSHIP_COUNT"
+	FROM MEMBERSHIP mb 
+	INNER JOIN PRODUCT p ON mb.PRODUCT_IDX = p.PRODUCT_IDX 
+	INNER JOIN member m ON mb.trainer_id = m.mem_id 
+	WHERE p.MEMBERSHIP_COUNT != 0 AND mb.USER_ID = #{user_id}
+	GROUP BY mb.TRAINER_ID, m.mem_NAME, p.PRODUCT_category
+</select>
+
+<select id="getTLog" parameterType="global.dto.ProductDTO" resultType="int">
+	SELECT COUNT(*) FROM TRAINING_LOG
+	WHERE user_id=#{user_id} AND trainer_id=#{trainer_id} and exercise_type=#{product_category}
+</select>
+
 </mapper>

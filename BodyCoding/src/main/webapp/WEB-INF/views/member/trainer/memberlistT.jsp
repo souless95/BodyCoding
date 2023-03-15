@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>트레이너의 마이페이지</title>
 <style>
-<<<<<<< HEAD
 body{
 	border: 1px;
 }

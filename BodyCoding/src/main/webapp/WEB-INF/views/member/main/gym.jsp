@@ -8,6 +8,50 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c796ac3987193df71da7fe2b18943f1&libraries=services,clusterer,drawing"></script>
+<style type="text/css">
+
+.info-title {
+    display: block;
+    background: #50627F;
+    color: #fff;
+    text-align: center;
+    height: 24px;
+    line-height:22px;
+    border-radius:4px;
+    padding:0px 10px;
+}
+div{
+	border: 1px solid red;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+input[type="checkbox"]+label {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 3px solid #707070;
+	position: relative;
+}
+
+input[class="facility"]:checked+label::after {
+	content: '✔';
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	position: absolute;
+	left: -2px;
+	top: -8px;
+}
+
+#fac li {
+	height: 30px;
+	widows: 150px;
+}
+</style>
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp"%>
@@ -63,10 +107,10 @@ function sucCallBack(resData) {
    	$(resData).each(function(index, data) {
       	tableData +=
       	"<li style='border-bottom: 1px solid gray; color: black;'><div>" +data.mem_name
-      	+"<button onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
+      	+"<button style='float: right; width: 100px; height: 50px; margin: 10px;' onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
       	+"<div>" +data.mem_address+ "</div>"
       	+"<div>" +data.mem_phone+ "</div></li>";
-   	}); 
+   }); 
    	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
    	$('#show_data').html(tableData);
    	/* $('#searchWord').val(''); */
@@ -104,23 +148,26 @@ function errCallBack(errData){
                 lon = position.coords.longitude; // 경도
              
             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = '<div style="padding:5px;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
-             
+                message = ''; // 인포윈도우에 표시될 내용입니다
+                
+            //인포윈도우용 위치
+            var infoPosition = new kakao.maps.LatLng(locPosition.getLat() + 0.0005, locPosition.getLng());
+                
             // 마커와 인포윈도우를 표시합니다
-            displayMarker(locPosition, message);
+            displayMarker(locPosition, message, infoPosition);
             
         });
          
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
          
-        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        var locPosition = new kakao.maps.LatLng(lat, lon),    
             message = 'geolocation을 사용할수 없어요..'
             
         displayMarker(locPosition, message);
     }
      
   	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-    function displayMarker(locPosition, message) {
+    function displayMarker(locPosition, message, infoPosition) {
 
         // 마커를 생성합니다
         var marker = new kakao.maps.Marker({  
@@ -128,33 +175,40 @@ function errCallBack(errData){
             position: locPosition
         }); 
          
-        var iwContent = message, // 인포윈도우에 표시할 내용
+        var iwContent = '<span class="info-title">현위치</span>', // 인포윈도우에 표시할 내용
             iwRemoveable = true;
 
         // 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({
+ 		/* var infowindow = new kakao.maps.InfoWindow({
             content : iwContent,
             removable : iwRemoveable
+        }); */
+        
+        var customOverlay = new kakao.maps.CustomOverlay({
+            position: infoPosition,
+            content: iwContent   
         });
-         
+        
         // 인포윈도우를 마커위에 표시합니다 
-        infowindow.open(map, marker);
+        /* infowindow.open(map, marker); */
+       	customOverlay.setMap(map, marker);
          
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);      
     }    
      
      
-     
      // 마커를 표시할 위치와 title 객체 배열입니다 
      var positions = [
         <c:forEach  items="${gymMarker }" var="row">
         {
-           title: '바디코딩', 
-             latlng: new kakao.maps.LatLng(${row.gym_lat }, ${row.gym_lng })
+            title: '${row.mem_name }', 
+            latlng: new kakao.maps.LatLng(${row.gym_lat }, ${row.gym_lng })
         },
         </c:forEach>
     ];
+     
+     
      
      // 마커 이미지의 이미지 주소
     var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -175,43 +229,12 @@ function errCallBack(errData){
             image : markerImage // 마커 이미지 
         });
     }
+    
 </script>
 <!-- 지도관련 코드: 위치 고정되야 함(지도 끝) -->
 
 		
-<style type="text/css">
-div{
-	border: 1px solid red;
-}
 
-input[type="checkbox"] {
-	display: none;
-}
-
-input[type="checkbox"]+label {
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border: 3px solid #707070;
-	position: relative;
-}
-
-input[class="facility"]:checked+label::after {
-	content: '✔';
-	font-size: 20px;
-	width: 20px;
-	height: 20px;
-	text-align: center;
-	position: absolute;
-	left: -2px;
-	top: -8px;
-}
-
-#fac li {
-	height: 30px;
-	widows: 150px;
-}
-</style>
 	<!-- 상세정보 체크박스 부분 -->
 	<div class="main_right" style="width: 35%; float: left;">
 		<div style="height: 300px;">
@@ -290,7 +313,7 @@ input[class="facility"]:checked+label::after {
 		<ul style="text-align: center;">
 			<li>
 				<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
-				<input type="button" value="전체지점" id="search" style="margin-left: 35px;">
+				<input type="button" value="검색하기" id="search" style="margin-left: 35px; height: 35px;">
 			</li>
 		</ul>
 	</div>
@@ -303,8 +326,7 @@ input[class="facility"]:checked+label::after {
 							<li style="border-bottom: 1px solid gray; color: black;">
 								<div>
 									${row.mem_name}
-									<button
-										onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
+									<button style="float: right; width: 100px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
 								</div>
 								<div>${row.mem_address}</div>
 								<div>${row.mem_phone}</div>

@@ -495,8 +495,6 @@ input[type="checkbox"]{
 						bottom: -0.5em;
 						left: 50%;
 						margin-left: -0.375em;
-						background-color: #37c0fb;
-						background-image: url("images/bg01.png");
 					}
 
 					#nav > ul > li.current a {
@@ -562,7 +560,8 @@ input[type="checkbox"]{
 /* Footer */
 
 	#footer {
-		padding: 4em 0 8em 0;
+		padding: 4em 0 2em 0;
+		background-color: #2D2D2D;
 	}
 
 		#footer a {

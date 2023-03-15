@@ -18,6 +18,10 @@ var jspHeight = document.documentElement.scrollHeight;
 var contain_left = document.querySelector('.contain_left');
 contain_left.style.height = jspHeight + 'px';
 </script>	
+
+<hr />		
+<!-- Footer -->
+<div id="footer" >
 <!--하단 채팅플로팅 버튼 시작-->
 <div class="floating-button">
  	<span class="chatbot">
@@ -27,29 +31,14 @@ contain_left.style.height = jspHeight + 'px';
 			</span>
 </div>
 <!--하단 채팅플로팅 버튼 끝-->
-		
-		
-<!-- Footer -->
-<div id="footer">
-	<div class="container">
-		<div class="row">
-			여러분의 의견을 받습니다 Bottom을 무엇을 추가하면 좋을까아
-		</div>
-	</div>
-
-	<!-- Icons -->
-	<ul class="icons">
-		<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-		<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-		<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-		<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-		<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
-	</ul>
-
 <!-- Copyright -->
 	<div class="copyright">
-		<ul class="menu">
-			<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="/main">바디코딩</a></li>
-		</ul>
+		<p>상호명 : 바디코딩 
+			<span>ㅣ</span> 대표 : 정은솔, 한세영, 천희수, 김도형, 백용현, 이재필 
+			<span>ㅣ</span> 사업자등록번호 : 488-28-01014 
+			<span>ㅣ</span> 주소 : 서울시 종로구 우정국로2길 21 대왕빌딩 7층 702호
+			<span>ㅣ</span> E-mail : yj6807@gmail.com 
+		</p>
+		<p>Copyright ⓒ (주)바디코딩, All rights reserved</p>
 	</div>
 </div>

@@ -7,8 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+
 </head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="static/assets/css/main.css" />
@@ -18,7 +20,6 @@
 <body class="is-preload">
 	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
-		<!-- Posts -->
 		<img src="static/assets/images/main1.jpg">
 		<!-- 컨텐츠영역 -->
 			<div class="container">

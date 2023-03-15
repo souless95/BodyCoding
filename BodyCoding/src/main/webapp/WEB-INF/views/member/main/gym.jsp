@@ -124,7 +124,7 @@ function errCallBack(errData){
 <!-- 지도관련 코드: 위치 고정되야 함(지도 시작) -->
 <div class="container">
 	<br>
-	<h2>지점 정보</h2>
+	<h2 >지점 정보</h2>
 	<div class="main_left" style="width: 65%; float: left;">
 		<div id="map" style="width: 98%; height: 730px;"></div>
 	</div>
@@ -309,7 +309,7 @@ function errCallBack(errData){
 		</div>
 	</div>
 	<!-- 검색 & 지점리스트 -->
-	<div >
+	<div>
 		<ul style="text-align: center;">
 			<li>
 				<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 

@@ -21,7 +21,7 @@ function login(){
 <br>
 	<h2>트레이너 정보</h2>
 	<br>
-	<table class="table" style="border: 3px solid gray;">
+	<table class="table" style="border: 3px solid gray; width:60%;">
 		<tr style="border: 2px solid gray;">
 			<td style="border: 2px solid gray; width: 300px; height: 360px;" rowspan="4"><img src="/static/uploads/trainer/${trainerInfo.mem_img}" style="width:100%;height:100%; margin-bottom: -55px;"></td>
 			<td style="vertical-align: middle; padding-left: 10px;"><strong>한마디 : </strong> ${trainerInfo.mem_comment }</td>  
@@ -78,7 +78,7 @@ function login(){
 	</c:if>
 	
 	
-	<c:if test="${not empty UserName }">
+	<c:if test="${not empty UserName && UserName ne trainerInfo.mem_name }">
 	<h3>후기작성</h3>
 		<form method="post" action="trainerReview">
 			<table style="border: 1px solid black;">
@@ -127,11 +127,11 @@ function login(){
 		</form>
 	</c:if>
 	
-	<c:if test="${not empty UserName }">
-	<button type="button" onclick="location.href='membershipPurchase.do'">pt 등록하기(결제)</button>
+	<c:if test="${not empty UserName && UserName ne trainerInfo.mem_name }">
+		<button type="button" onclick="location.href='membershipPurchase.do'">pt 등록하기(결제)</button>
 	</c:if>
-	<c:if test="${empty UserName }">
-	<button type="button" onclick="login();">pt 등록하기(로그인하러 가기)</button>
+	<c:if test="${empty UserName && UserName ne trainerInfo.mem_name }">
+		<button type="button" onclick="login();">pt 등록하기(로그인하러 가기)</button>
 	</c:if>
 	<button type="button" onclick="location.href='trainer'">목록으로</button>
 </div>

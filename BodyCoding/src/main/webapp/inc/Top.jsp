@@ -130,8 +130,8 @@ function openChatRoom(event, mem_id){
 						                <a href="${mypageUrl}">마이페이지</a>
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
-						                    <li><a href="exinfo">운동정보</a></li>
-						                    <li><a href="/exrecord.do">내 정보관리</a></li>
+						                    <li><a href="calendar.do">운동정보</a></li>
+							   				<li><a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a></li>
 						                </ul>
 						            </li>
 						            <li>

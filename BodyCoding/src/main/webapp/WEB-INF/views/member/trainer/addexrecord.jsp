@@ -38,11 +38,6 @@
 								<input type="text" class="form-control" id="training_comment" name="training_comment" required>
 							</div>
 							
-							<%-- 
-							<div>
-								<label for="trainer_id">담당 트레이너 입력</label>
-								<input type="text" class="form-control" id="trainer_id" name="trainer_id" required>
-							</div> --%>
 							
 							<input type="submit" value="운동기록 등록">
 							<button type="button" onclick="location.href='exrecord.do'">리스트</button>

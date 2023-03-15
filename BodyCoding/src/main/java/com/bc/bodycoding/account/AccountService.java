@@ -1,15 +1,18 @@
 package com.bc.bodycoding.account;
 
+import java.util.List;
 import java.util.Map;
 
 
 import org.apache.ibatis.annotations.Mapper;
 
 import global.dto.MemberDTO;
+import global.dto.ProductDTO;
 
 @Mapper
 public interface AccountService{
 
+	public List<MemberDTO> gymlistSelect();
 	public int insertMember(MemberDTO memberDTO);
 	public String checkIdDuplicate(MemberDTO memberDTO);
 	public MemberDTO login(MemberDTO memberDTO);
@@ -35,5 +38,11 @@ public interface AccountService{
 	
 	//디비에 임시비밀번호 업데이트
 	public int updateuserPass(MemberDTO memberDTO);
+	
+	public List<ProductDTO> getMInfo(ProductDTO productDTO);
+	
+	public int getTLog(ProductDTO productDTO);
+	
+	
 	
 }

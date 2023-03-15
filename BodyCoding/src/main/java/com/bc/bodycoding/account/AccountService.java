@@ -1,5 +1,6 @@
 package com.bc.bodycoding.account;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -10,6 +11,7 @@ import global.dto.MemberDTO;
 @Mapper
 public interface AccountService{
 
+	public List<MemberDTO> gymlistSelect();
 	public int insertMember(MemberDTO memberDTO);
 	public String checkIdDuplicate(MemberDTO memberDTO);
 	public MemberDTO login(MemberDTO memberDTO);

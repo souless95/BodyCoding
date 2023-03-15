@@ -17,6 +17,7 @@
 <%@ include file="../../../../inc/Top.jsp" %>
 <script type="text/javascript">
 function trainerInfo(mem_id, gym_code){
+	console.log("ㅇ왜");
 	let f = document.frm;
 	f.mem_id.value = mem_id;
 	f.gym_code.value = gym_code;
@@ -61,7 +62,7 @@ function sucCallBack(resData) {
 	console.log(resData);
 	let tableData = "";
 	$(resData).each(function(index, data) {
-		tableData += "<div style='width:200px; margin:30px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
+		tableData += "<div style='width:200px; margin:36px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
 		+"<img class='card-img-top mt-2' src='static/uploads/trainer/"+data.mem_img+"' "
 		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
@@ -78,8 +79,27 @@ function errCallBack(errData){
 }
 </script> 
 <div class="container">
-<br>
-	 <h2>트레이너 목록</h2>
+<style>
+.input{
+	text-align:center;
+	width:90px;
+	padding: 2px;
+	border: 1.5px solid #37C0FB;
+	background: white;
+	border-radius: 67px;
+	color: #37C0FB;
+}
+h5 .input:hover{
+	text-align:center;
+	width:90px;
+	padding: 2px;
+	border: 1.5px solid white;
+	background: #37C0FB;
+	border-radius: 67px;
+	color: white;
+}
+</style>
+	<h2 style="margin-bottom: 0;">트레이너 목록</h2>
 	<h5>
 	<select id="gym_code" required>
 	    <option value="-">지점</option>
@@ -87,18 +107,18 @@ function errCallBack(errData){
 	    <option value="${gym.gym_code }">${gym.mem_name }</option>
 		</c:forEach>
 	</select>
-	<input type="button" value="지점선택" id="gymchoice"> </h5>
-	<h5>키워드 추천:  
-		<button value="친절" name="interest"> #친절</button>
-		<button value="열정" name="interest"> #열정</button>
-		<button value="재미" name="interest"> #재미</button>
-		<button value="정확" name="interest"> #정확</button>
-		<button value="칭찬" name="interest"> #칭찬</button>
+	<input type="button" value="지점선택" id="gymchoice"> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;키워드 추천:&nbsp;&nbsp;
+		<button value="친절" name="interest" class="input"> #친절</button>
+		<button value="열정" name="interest" class="input"> #열정</button>
+		<button value="재미" name="interest" class="input"> #재미</button>
+		<button value="정확" name="interest" class="input"> #정확</button>
+		<button value="칭찬" name="interest" class="input"> #칭찬</button>
 	</h5>
 	<style>
 	.trainer-card {
 	  width: 200px;
-	  margin: 30px;
+	  margin: 20px;
 	  float: left;
 	  height: 310px; /* 일정한 높이 설정 */
 	}
@@ -111,11 +131,11 @@ function errCallBack(errData){
 	}
 	</style>
 	<c:if test="${not empty UserName}">
-	<strong>회원님의 키워드에 맞는 트레이너 추천</strong>
-	<div class="trainer-container">
+	<strong>회원님의&nbsp; 키워드&nbsp;<span class="input">&nbsp;#${interest}&nbsp;</span>&nbsp;에 &nbsp;맞는&nbsp; 트레이너 &nbsp;추천</strong>
+	<div class="trainer-container" style="margin-top: 5px;">
 		<c:forEach items="${recomtrainerList }" var="rec" varStatus="loop">
 			<div class="trainer-card">
-			<a href="javascript:void(0);" onclick="trainerInfo(data.mem_id,data.gym_code);">
+			<a href="javascript:void(0);" onclick="trainerInfo('${rec.mem_id}','${rec.gym_code}');">
 				<img class="card-img-top mt-2" src="static/uploads/trainer/${rec.mem_img}" style="width:100%; height:240px;">
 				<div class='card-body'>
 				<b>${rec.mem_name}</b><Br>

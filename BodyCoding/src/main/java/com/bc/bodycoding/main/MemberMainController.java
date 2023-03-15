@@ -151,6 +151,7 @@ public class MemberMainController {
 					recomtrainerList.add(interestlistSelect.get(i));
 				}
 			}
+			model.addAttribute("interest", interest);
 			model.addAttribute("recomtrainerList", recomtrainerList);
 		}
 		model.addAttribute("gymList", maindao.gymlistSelect());

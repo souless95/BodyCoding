@@ -7,6 +7,13 @@
 	
 <mapper namespace="com.bc.bodycoding.account.AccountService">
 
+<!-- 모든 지점 선택 -->
+<select id="gymlistSelect"
+   parameterType="global.dto.MemberDTO"
+   resultType="global.dto.MemberDTO">
+   select * from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
+</select>
+
 <insert id="insertMember"
 	parameterType="global.dto.MemberDTO">
   	insert 

@@ -92,14 +92,20 @@
             <br>
             <div class="mb-1">
                 <label for="gym_code">지점선택</label>&nbsp;
-                <select class="custom-select d-block w-100" name="gym_code">
+                <!-- <select class="custom-select d-block w-100" name="gym_code">
                      <option value="" selected>지점을 선택해 주세요</option>
                      <option value="1">종로</option>
                      <option value="일산">일산</option>
                      <option value="성북">성북</option>
                      <option value="사당">사당</option>
                      <option value="오금">오금</option>
-                </select>
+                </select> -->
+                <select id="gym_code" class="custom-select d-block w-100">
+				    <option value="-">지점</option>
+					<c:forEach items="${gymList }" var="gym" varStatus="loop">
+				    <option value="${gym.gym_code }">${gym.mem_name }</option>
+					</c:forEach>
+				</select>
             </div>
 
             <div class="mb-1">
@@ -156,17 +162,20 @@
             <label for="mem_interest">관심사항</label>
             <div class="interest">
             
-               <input type="checkbox" class="checkStyle" name="mem_interest" value="PT">
-               <label for="PT">개인PT</label>&nbsp;&nbsp;
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="친절">
+               <label for="친절">친절&nbsp;&nbsp;</label>
                              
-               <input type="checkbox" class="checkStyle" name="mem_interest" value="pila">
-               <label for="pila">필라테스</label>&nbsp;&nbsp;
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="열정">
+               <label for="열정">열정</label>&nbsp;&nbsp;
                        
-               <input type="checkbox"  class="checkStyle" name="mem_interest" value="gx">   
-               <label for="gx">GX</label>&nbsp;&nbsp;
+               <input type="checkbox"  class="checkStyle" name="mem_interest" value="재미">   
+               <label for="재미">재미</label>&nbsp;&nbsp;
                
-               <input type="checkbox" class="checkStyle" name="mem_interest" value="health">
-               <label for="yoga">헬스</label>
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="정확">
+               <label for="정확">정확</label>
+               
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="칭찬">
+               <label for="칭찬">칭찬</label>
                
                <input type="hidden" class="checkStyle" name="mem_interest" value="">
             </div>

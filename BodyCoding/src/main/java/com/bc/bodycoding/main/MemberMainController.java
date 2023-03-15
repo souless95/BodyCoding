@@ -7,10 +7,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +31,6 @@ public class MemberMainController {
 
 	@Autowired
 	MemberMainService maindao;
-
-	@RequestMapping("gymmap")
-	public String gymmap(Model model) {
-		model.addAttribute("gymMarker", maindao.mapmarkerSelect());
-		System.out.println(maindao.mapmarkerSelect());
-		return "member/main/gymMap";
-	}
 
 	// 선택된 지점 지도보기
 	@RequestMapping("/gymMap.do")
@@ -133,7 +129,30 @@ public class MemberMainController {
 
 	// 회원창에서 트레이너 목록 페이지로 가기(지점선택 select박스관련)
 	@RequestMapping("trainer")
-	public String trainerpage(Model model) {
+	public String trainerpage(Model model, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String mem_id = (String)session.getAttribute("UserEmail");
+		if(mem_id != null) {
+			String interest = maindao.interestSelect(mem_id);
+			List<MemberDTO> interestlistSelect = maindao.interestlistSelect(interest);
+			List<MemberDTO> recomtrainerList = new ArrayList<>();
+			if(interestlistSelect.size()>3) {
+				Random random = new Random();
+				
+				// interestlistSelect 에서 무작위로 3개를 선택하여 recomtrainerList에 추가
+				for (int i = 0; i < 3; i++) {
+					int randomIndex = random.nextInt(interestlistSelect.size());
+					recomtrainerList.add(interestlistSelect.get(randomIndex));
+					interestlistSelect.remove(randomIndex);
+				}
+			}
+			else {
+				for(int i=0; i<interestlistSelect.size();i++) {
+					recomtrainerList.add(interestlistSelect.get(i));
+				}
+			}
+			model.addAttribute("recomtrainerList", maindao.interestlistSelect(interest));
+		}
 		model.addAttribute("gymList", maindao.gymlistSelect());
 		return "member/main/trainer";
 	}
@@ -151,6 +170,16 @@ public class MemberMainController {
 		else {
 			trainerList = maindao.trainerlistSelect(gym_code);
 		}
+		return trainerList;
+	}
+	
+	// 회원창에서 관심사항에 맞는 트레이너 목록 보여주기
+	@RequestMapping("/interest.do")
+	@ResponseBody
+	public List<MemberDTO> interest(String interest) {
+		List<MemberDTO> trainerList;
+		// 관심사항 선택된 트레이너 보여주기
+		trainerList = maindao.interestlistSelect(interest);
 		return trainerList;
 	}
 

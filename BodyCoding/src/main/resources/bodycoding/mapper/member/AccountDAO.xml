@@ -36,6 +36,13 @@
 <!-- 카카오로 회원가입 되어있는지 확인 -->
 <select id="kakaoselect"
 	parameterType="global.dto.MemberDTO"
+	resultType="String">
+	select mem_name from member
+    	where mem_id=#{mem_id}
+</select> 
+
+<select id="kakaoUserInfo"
+	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
 	select * from member
     	where mem_id=#{mem_id}

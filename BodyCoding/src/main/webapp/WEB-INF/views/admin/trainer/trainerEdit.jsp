@@ -8,6 +8,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+onload = function(){
+	   var obj1 = document.getElementById('mem_interest');
+	    var type = '<c:out value="${trainer.mem_interest}"/>';
+	    
+	    for(var i=0 ; i<6 ; i++){
+	        if(obj1.options[i].value==type){ 
+	           obj1.options[i].selected=true;
+	        }
+	    }
+	}
+</script>
 <body class="sb-nav-fixed">
 	<!-- top메뉴  -->
 	<%@ include file ="../../admin/inc/top.jsp" %>
@@ -58,9 +70,22 @@
 							    </tr>
 							</table>
 							<table class="table" border="2">	
-						      	<tr>
+								<tr>
 						       	 	<th>경력</th>
 							        <td><input type="text" name="mem_career" value="${trainer.mem_career}"/></td>
+						       	 	<th>키워드</th>
+							        <td>
+								        <select class="form-control" id="mem_interest" name="mem_interest" style="padding-top: 10px; padding-top: 10px;" required>
+	                                         <option value="" selected> 대표단어를 선택해 주세요</option>
+						                     <option value="친절">친절</option>
+						                     <option value="열정">열정</option>
+						                     <option value="재미">재미</option>
+						                     <option value="정확">정확</option>
+						                     <option value="칭찬">칭찬</option>
+						                </select>
+						            </td>
+						      	</tr>
+						      	<tr>
 						       	 	<th>자기소개</th>
 							        <td><input type="text" name="mem_comment" value="${trainer.mem_comment}"/></td>
 						      	</tr>

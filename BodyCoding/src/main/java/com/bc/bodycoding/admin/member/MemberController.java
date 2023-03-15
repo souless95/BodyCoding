@@ -3,6 +3,7 @@ package com.bc.bodycoding.admin.member;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -136,21 +137,7 @@ public class MemberController {
          return nowRoutine;
       }
    }
-      
-   //운동기록 리스트
-   @RequestMapping(value="exrecord.do", method= RequestMethod.GET)
-   public String exrecord(MemberDTO memberDTO, Model model, HttpSession session) {
-      
-      String trainer_id = (String)(session.getAttribute("UserEmail").toString());
-      System.out.println(trainer_id);
-      System.out.println("리스트불러옴");
-      memberDTO.setTrainer_id(trainer_id);
-      
-      model.addAttribute("memberList", memberdao.selectexrecord(memberDTO));
-      
-      return "member/trainer/exrecord";
-   }
-   
+  
    @ResponseBody
    @RequestMapping("/changeYoil")
    public RoutineDTO changeYoil(RoutineDTO routineDTO) {
@@ -173,6 +160,21 @@ public class MemberController {
       RoutineDTO nowRoutine = memberdao.getRoutine(routineDTO);
       System.out.println(nowRoutine);
       return nowRoutine;
+   }
+   
+   //운동기록 리스트
+   @RequestMapping(value="exrecord.do", method= RequestMethod.GET)
+   public String exrecord( Model model, HttpSession session) {
+      
+      String trainer_id = (String)(session.getAttribute("UserEmail"));
+      System.out.println(trainer_id);
+      MemberDTO memberDTO = new MemberDTO();
+      memberDTO.setTrainer_id(trainer_id);
+      List<MemberDTO> memberList = memberdao.selectexrecord(memberDTO);
+      model.addAttribute("memberList", memberList);
+      
+      System.out.println(memberdao.selectexrecord(memberDTO));
+      return "member/trainer/exrecord";
    }
    
    @RequestMapping(value="addexrecord.do", method=RequestMethod.GET)
@@ -207,7 +209,7 @@ public class MemberController {
       
       MemberDTO memberDTO = new MemberDTO();
       memberDTO = memberdao.selectone(req.getParameter("training_log_idx"));
-      
+      System.out.println(memberDTO);
       model.addAttribute("memberList", memberDTO);
             
       return "member/trainer/editexrecord";
@@ -239,12 +241,6 @@ public class MemberController {
            System.out.println("정보가 삭제되었습니다.");
        }
        response.sendRedirect("exrecord.do");
-   }
-   
-   @RequestMapping("career.do")
-   public String career() {
-      
-      return "member/trainer/career";
    }
    
    

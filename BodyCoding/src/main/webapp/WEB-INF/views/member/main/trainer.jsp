@@ -75,7 +75,6 @@ function errCallBack(errData){
 		<input type="hidden" id="mem_id" name="mem_id">
 		<input type="hidden" id="gym_code" name="gym_code">
 	</form>
-	
 	<div id="show_data">
 	</div>
 </div>

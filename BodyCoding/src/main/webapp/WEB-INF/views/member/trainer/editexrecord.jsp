@@ -35,13 +35,14 @@ function editRecord(training_log_idx) {
 					</div>
 
 					<div class="container">
-						<table>
+						<table style="width:70%;">
 							<thead>
 								<tr>
 									<th>일자</th>
-									<th>이용권</th>
-									<th>상세</th>
+									<th>이용권 유형</th>
+									<th>이름</th>
 									<th>회원이름</th>
+									<th>특이사항</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -50,7 +51,7 @@ function editRecord(training_log_idx) {
 									<td>${memberList.product_name }</td>
 									<td>${memberList.product_description }
 									<td>${memberList.mem_name}</td>
-									<td></td>
+									<td>${memberList.training_comment }</td>
 								</tr>
 							</tbody>
 						</table>
@@ -67,10 +68,11 @@ function editRecord(training_log_idx) {
 									name="training_comment" value="${memberList.training_comment }"
 									required>
 							</div>
-							<button type="button" onclick="location.href='main'">홈으로</button>
+							
 							<button type="submit" onclick="return confirm('게시글을 수정하시겠습니까?')">수정</button>
-							<button type="button"
-								onclick="deleteRecord(${memberList.training_log_idx})">삭제</button>
+							
+							<%-- <button type="button"
+								onclick="deleteRecord(${memberList.training_log_idx})">삭제</button>--%>
 							<button type="button" onclick="location.href='exrecord.do'">리스트</button>
 						</div>
 					</form>

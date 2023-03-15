@@ -73,6 +73,7 @@ public class AccountController {
          session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
          session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
          session.setAttribute("Authority", accountdao.login(memberDTO).getAuthority());
+         session.setAttribute("UserGymCode", accountdao.login(memberDTO).getGym_code());
          
          return "redirect:main";
       } 

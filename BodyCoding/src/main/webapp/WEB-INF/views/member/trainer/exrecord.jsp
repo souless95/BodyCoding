@@ -35,14 +35,14 @@ function deleteRecord(training_log_idx) {
 					</div>
 					<br>
 					<div class="container">
-						<table>
+						<table style="width:80%;">
 							<thead>
 								<tr>
 						         	<th>일자</th>
-						         	<th>이용권</th>
-						         	<th>상세</th>
+						         	<th>이용권 유형</th>
+						         	<th>이용권 이름</th>
 						         	<th>회원이름</th>
-						         	<th>비고</th>
+						         	<th>특이사항</th>
 						      	</tr>
 							</thead>
 							<tbody>
@@ -54,15 +54,14 @@ function deleteRecord(training_log_idx) {
 								        <td>${row.mem_name}</td>
 								        <td>${row.training_comment }</td>
 								        <td>
-								        <button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
-										<button type="button" onclick="deleteRecord(${row.training_log_idx})">삭제</button>
+								        	<button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
 								        </td>
 								    </tr>
 							    </c:forEach>
 							</tbody>
 						</table>
-							<button type="button" onclick="location.href='main'">홈으로</button> 
-							<button type="button" onclick="location.href='addexrecord.do'">등록하기</button>
+							<button type="button" onclick="location.href='addexrecord.do'">등록</button>
+							
 	        		</div>	
 				</div>
 			</div>

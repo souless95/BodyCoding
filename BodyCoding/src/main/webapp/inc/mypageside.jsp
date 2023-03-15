@@ -57,123 +57,119 @@ div{
     border-bottom: 1px solid #ddd;
 }
 .contain {
-    max-width: 1800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 </style>
 </head>
 <body>
 	<div class="location_wrap">
-		<div class="contain">
-			<a>회원전용</a> <a class="active">마이페이지</a>
-		</div>
-	</div>
-	<div class="contain mt-3">
-		<div class="contain_left">
-			<div class="accordion" id="accordion">
-				<div class="card">
-					<div class="left_h2">
-						<a>마이페이지 </a>
+		<div class="contain mt-3">
+			<div class="contain_left">
+				<div class="accordion" id="accordion">
+					<div class="card">
+						<div class="left_h2">
+							<a>마이페이지 </a>
+						</div>
 					</div>
+					<c:choose>
+						<c:when test="${Authority eq 'ROLE_MEMBER' }">
+							<div class="card">
+								<div class="card-header">
+									<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+										운동관리 </a>
+								</div>
+								<div id="collapseOne" class="collapse show"
+									data-bs-parent="#accordion">
+									<div class="card-body">
+			                            <ul>
+			                                <li><a class="btn" href="reservation.do">스케쥴예약</a></li>
+			                                <li><a class="btn" href="reservated.do">스케쥴확인</a></li>
+			                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
+			                                <li><a class="btn" href="#">운동기록</a></li>
+			                                <li><a class="btn" href="chart">체중그래프</a></li>
+			                            </ul>
+			                        </div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<a class="collapsed btn" data-bs-toggle="collapse"
+										href="#collapseTwo"> 이용내역 </a>
+								</div>
+								<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+									<div class="card-body">
+			                            <ul>
+			                                <li><a class="btn" href="#">결제내역</a></li>
+			                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
+			                            </ul>
+			                        </div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<a class="collapsed btn" data-bs-toggle="collapse"
+										href="#collapseThree"> 활동내역 </a>
+								</div>
+								<div id="collapseThree" class="collapse"
+									data-bs-parent="#accordion">
+									<div class="card-body">
+			                            <ul>
+			                                <li><a class="btn" href="#">게시물</a></li>
+			                            </ul>
+			                        </div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<a class="btn" href="pwcheck"> 정보수정 </a> 
+								</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="card">
+								<div class="card-header">
+									<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+										회원목록 </a>
+								</div>
+								<div id="collapseOne" class="collapse show"
+									data-bs-parent="#accordion">
+									<div class="card-body" >
+			                            <ul>
+			                                <li><a class="btn" style="padding-top:10px;" href="memberlistT.do">회원목록</a></li>
+			                            </ul>
+			                            <ul>
+			                            	<li><a class="btn" style="padding-top:10px;" href="exrecord.do">운동기록목록</a></li>
+			                            </ul>
+			                        </div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<a class="collapsed btn" data-bs-toggle="collapse"
+										href="#collapseTwo"> 운동정보 </a>
+								</div>
+								<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+									<div class="card-body">
+			                            <ul>
+			                            	<li><a class="btn" href="calendar.do">스케쥴</a></li>	
+			                            </ul>
+			                        </div>
+								</div>
+							</div>
+													
+							<div class="card">
+							    <div class="card-header">
+								    <a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a>
+								</div>
+							</div>
+													
+						</c:otherwise>
+					</c:choose>
 				</div>
-				<c:choose>
-					<c:when test="${Authority eq 'ROLE_MEMBER' }">
-						<div class="card">
-							<div class="card-header">
-								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-									운동관리 </a>
-							</div>
-							<div id="collapseOne" class="collapse show"
-								data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                                <li><a class="btn" href="reservation.do">스케쥴예약</a></li>
-		                                <li><a class="btn" href="reservated.do">스케쥴확인</a></li>
-		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
-		                                <li><a class="btn" href="#">운동기록</a></li>
-		                                <li><a class="btn" href="chart">체중그래프</a></li>
-		                            </ul>
-		                        </div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								<a class="collapsed btn" data-bs-toggle="collapse"
-									href="#collapseTwo"> 이용내역 </a>
-							</div>
-							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                                <li><a class="btn" href="#">결제내역</a></li>
-		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
-		                            </ul>
-		                        </div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								<a class="collapsed btn" data-bs-toggle="collapse"
-									href="#collapseThree"> 활동내역 </a>
-							</div>
-							<div id="collapseThree" class="collapse"
-								data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                                <li><a class="btn" href="#">게시물</a></li>
-		                            </ul>
-		                        </div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								<a class="btn" href="pwcheck"> 정보수정 </a> 
-							</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="card">
-							<div class="card-header">
-								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-									회원목록 </a>
-							</div>
-							<div id="collapseOne" class="collapse show"
-								data-bs-parent="#accordion">
-								<div class="card-body" >
-		                            <ul>
-		                                <li><a class="btn" style="padding-top:10px;" href="memberlistT.do">회원목록</a></li>
-		                            </ul>
-		                            <ul>
-		                            	<li><a class="btn" style="padding-top:10px;" href="exrecord.do">운동기록목록</a></li>
-		                            </ul>
-		                        </div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								<a class="collapsed btn" data-bs-toggle="collapse"
-									href="#collapseTwo"> 운동정보 </a>
-							</div>
-							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                            	<li><a class="btn" href="calendar.do">스케쥴</a></li>	
-		                            </ul>
-		                        </div>
-							</div>
-						</div>
-												
-						<div class="card">
-						    <div class="card-header">
-							    <a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a>
-							</div>
-						</div>
-												
-					</c:otherwise>
-				</c:choose>
 			</div>
 		</div>
 	</div>
-
 <form name="frm" method="post" >
 	<input type="hidden" id="mem_id" name="mem_id">
 	<input type="hidden" id="gym_code" name="gym_code">

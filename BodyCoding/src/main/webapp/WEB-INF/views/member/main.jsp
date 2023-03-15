@@ -20,31 +20,10 @@
 <body class="is-preload">
 	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
-		<img src="static/assets/images/main1.jpg">
+		<img src="static/assets/images/으뜸언니 최종.png">
 		<!-- 컨텐츠영역 -->
-			<div class="container">
-				<div class="row">
-					<section class="col-6 col-12-narrower">
-						
-						<div class="box post">
-							<a href="#" class="image left"><img src="static/assets/images/pic01.jpg" alt="" /></a>
-							<div class="inner">
-								<h3>몸 좋은 사람의 사진?</h3>
-								<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-							</div>
-						</div>
-					</section>
-					<section class="col-6 col-12-narrower">
-						<div class="box post">
-							<a href="#" class="image left"><img src="static/assets/images/pic02.jpg" alt="" /></a>
-							<div class="inner">
-								<h3>뭘 넣으면 좋을까??</h3>
-								<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
+		
+		
 		</section>
 		
 		<!-- Scripts -->

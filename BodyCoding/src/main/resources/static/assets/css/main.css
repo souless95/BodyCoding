@@ -132,7 +132,7 @@ input[type="checkbox"]{
 	}
 
 		a:hover {
-			color: #37c0fb;
+			color: rgb(0, 64, 128);
 			border-bottom-color: transparent;
 		}
 
@@ -560,6 +560,7 @@ input[type="checkbox"]{
 /* Footer */
 
 	#footer {
+		bottom:0;
 		width: 100%;
 		padding: 4em 0 2em 0;
 		background-color: #2D2D2D;

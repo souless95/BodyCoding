@@ -136,11 +136,11 @@ public class MemberMainController {
 			String interest = maindao.interestSelect(mem_id);
 			List<MemberDTO> interestlistSelect = maindao.interestlistSelect(interest);
 			List<MemberDTO> recomtrainerList = new ArrayList<>();
-			if(interestlistSelect.size()>3) {
+			if(interestlistSelect.size()>5) {
 				Random random = new Random();
 				
-				// interestlistSelect 에서 무작위로 3개를 선택하여 recomtrainerList에 추가
-				for (int i = 0; i < 3; i++) {
+				// interestlistSelect 에서 무작위로 4개를 선택하여 recomtrainerList에 추가
+				for (int i = 0; i < 5; i++) {
 					int randomIndex = random.nextInt(interestlistSelect.size());
 					recomtrainerList.add(interestlistSelect.get(randomIndex));
 					interestlistSelect.remove(randomIndex);
@@ -151,7 +151,7 @@ public class MemberMainController {
 					recomtrainerList.add(interestlistSelect.get(i));
 				}
 			}
-			model.addAttribute("recomtrainerList", maindao.interestlistSelect(interest));
+			model.addAttribute("recomtrainerList", recomtrainerList);
 		}
 		model.addAttribute("gymList", maindao.gymlistSelect());
 		return "member/main/trainer";

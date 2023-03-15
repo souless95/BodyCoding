@@ -95,18 +95,31 @@ function errCallBack(errData){
 		<button value="정확" name="interest"> #정확</button>
 		<button value="칭찬" name="interest"> #칭찬</button>
 	</h5>
-	
+	<style>
+	.trainer-card {
+	  width: 200px;
+	  margin: 30px;
+	  float: left;
+	  height: 310px; /* 일정한 높이 설정 */
+	}
+	.trainer-container {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: space-between;
+	  border-top: 1px solid gray;
+	  border-bottom: 1px solid gray;
+	}
+	</style>
 	<c:if test="${not empty UserName}">
-	<div>
-		회원님의 키워드에 맞는 트레이너 추천
+	<strong>회원님의 키워드에 맞는 트레이너 추천</strong>
+	<div class="trainer-container">
 		<c:forEach items="${recomtrainerList }" var="rec" varStatus="loop">
-			<div style="width:200px; margin:30px; float:left;">
+			<div class="trainer-card">
 			<a href="javascript:void(0);" onclick="trainerInfo(data.mem_id,data.gym_code);">
-				<img class="card-img-top mt-2" src="static/uploads/trainer/${rec.mem_img}" style="width:100%; height:250px;">
+				<img class="card-img-top mt-2" src="static/uploads/trainer/${rec.mem_img}" style="width:100%; height:240px;">
 				<div class='card-body'>
-				<b>#${rec.mem_name}</b><br>
-				#${rec.mem_comment}<br>
-				#${rec.mem_interest}</div></a></div>
+				<b>${rec.mem_name}</b><Br>
+				${rec.mem_comment}</div></a></div>
 		</c:forEach>
 	</div>
 	</c:if>

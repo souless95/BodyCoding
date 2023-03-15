@@ -12,6 +12,7 @@ import global.dto.ProductDTO;
 @Mapper
 public interface AccountService{
 
+	public List<MemberDTO> gymlistSelect();
 	public int insertMember(MemberDTO memberDTO);
 	public String checkIdDuplicate(MemberDTO memberDTO);
 	public MemberDTO login(MemberDTO memberDTO);

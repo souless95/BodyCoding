@@ -88,18 +88,18 @@
    select * from member where authority='ROLE_TRAINER' and enabled ='1'
 </select>
 
-<!-- 해당 회원에 관심사항 뽑기 -->
-<select id="interestSelect"
-   parameterType="String"
-   resultType="String">
-   select mem_interest from member where mem_id = #{mem_id}
-</select>
-
 <!-- 선택된 트레이너 보여주기 -->
 <select id="trainerlistSelect"
    parameterType="String"
    resultType="global.dto.MemberDTO">
    select * from member where authority='ROLE_TRAINER' and enabled ='1' and gym_code=#{gym_code}
+</select>
+
+<!-- 해당 회원에 관심사항 뽑기 -->
+<select id="interestSelect"
+   parameterType="String"
+   resultType="String">
+   select mem_interest from member where mem_id = #{mem_id}
 </select>
 
 <!-- 관심사항에 맞게 선택된 트레이너 보여주기 -->

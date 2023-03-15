@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  -->
 
 <style>
 a{
@@ -56,15 +56,21 @@ div{
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
+.contain1 {
+    width: 1800px;
+    margin: 0 auto;
+}
 .contain {
-    max-width: 1000px;
+    width: 1800px;
+    height:1000px;
     margin: 0 auto;
 }
 </style>
 </head>
 <body>
 	<div class="location_wrap">
-		<div class="contain mt-3">
+	
+		<div class="contain1 mt-3">
 			<div class="contain_left">
 				<div class="accordion" id="accordion">
 					<div class="card">

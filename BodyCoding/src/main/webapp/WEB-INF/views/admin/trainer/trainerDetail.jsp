@@ -63,6 +63,10 @@
 					      	<tr>
 					       	 	<th>경력</th>
 						        <td>${trainerList.mem_career }</td>
+					       	 	<th>키워드</th>
+						        <td>${trainerList.mem_interest }</td>
+					      	</tr>
+					      	<tr>
 					       	 	<th>자기소개</th>
 						        <td>${trainerList.mem_comment }</td>
 					      	</tr>

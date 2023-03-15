@@ -29,4 +29,5 @@ public class GymDTO {
 	private String rtime_holy_end;
 	private String gym_lat;
 	private String gym_lng;
+	private String mem_name;
 }

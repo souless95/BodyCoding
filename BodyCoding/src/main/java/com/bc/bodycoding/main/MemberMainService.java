@@ -24,8 +24,10 @@ public interface MemberMainService {
    	
    	//트레이너
    	public MemberDTO selectOneMember(MemberDTO memberDTO);
+   	public String interestSelect(String mem_id);
    	public List<MemberDTO> trainerALLlistSelect();
    	public List<MemberDTO> trainerlistSelect(String gym_code);
+   	public List<MemberDTO> interestlistSelect(String interest);
    	public MemberDTO trainerInfoSelect(String mem_id);
    	public String gymInfoSelect(String gym_code);
    	public String gradeSelete(String review_subject);

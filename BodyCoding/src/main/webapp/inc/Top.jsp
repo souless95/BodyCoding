@@ -75,17 +75,17 @@ function openChatRoom(event, mem_id){
 						</li>
 						
 						<li>
-							<a href="#">지점정보</a>
-							<ul>
+							<a href="gym">지점정보</a>
+						<!-- 	<ul>
 								<li><a href="gym">지점확인</a></li>
-							</ul>
+							</ul> -->
 						</li>
 						
 						<li>
 							<a href="trainer">트레이너</a>
-							<ul>
+						<!-- 	<ul>
 								<li><a href="trainer">트레이너정보</a></li>
-							</ul>
+							</ul> -->
 						</li>
 						
 						<li>
@@ -93,21 +93,20 @@ function openChatRoom(event, mem_id){
 						</li>
 						
 						<li>
-							<a href="#">게시판</a>
+							<a href="/Freeboard.do">게시판</a>
 							<ul> 
 								<li><a href="/Freeboard.do">자유게시판</a></li>
-								<li><a href="#">Q&A</a></li>
 								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
 						
 						
 						<c:if test="${not empty UserName}">
-						    <li>
-						        ${UserName}님 환영합니다.
+						    <li style="color: white;">
+						        [ ${UserName} ]님 환영합니다.
 						    </li>
 						    <c:choose>
-						        <c:when test="${UserInfo.authority eq 'ROLE_MEMBER' }">
+						        <c:when test="${Authority eq 'ROLE_MEMBER' }">
 						            <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}" />
 						            <li>
 						                <a href="${mypageUrl}">마이페이지</a>
@@ -130,8 +129,8 @@ function openChatRoom(event, mem_id){
 						                <a href="${mypageUrl}">마이페이지</a>
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
-						                    <li><a href="exinfo">운동정보</a></li>
-						                    <li><a href="/exrecord.do">내 정보관리</a></li>
+						                    <li><a href="calendar.do">운동정보</a></li>
+							   				<li><a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a></li>
 						                </ul>
 						            </li>
 						            <li>

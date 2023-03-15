@@ -99,7 +99,7 @@
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
 		                                                        <label for="mem_interest"></label>
-		                                                        <select class="form-control" name="mem_interest" style="padding-top: 10px; padding-top: 10px;">
+		                                                        <select class="form-control" name="mem_interest" style="padding-top: 10px; padding-top: 10px;" required>
 		                                                        	<option value="" selected> 대표단어를 선택해 주세요</option>
 												                     <option value="친절">친절</option>
 												                     <option value="열정">열정</option>
@@ -118,7 +118,7 @@
 		                                            <div class="mt-4 mb-0">
 		                                                <button class="custom-btn btn-7" type="submit">등록하기</button>
 		                                                <button class="custom-btn btn-7" type="reset">reset</button>        
-      													<button class="custom-btn btn-7" type="button" onclick="location.href='/trainerList.do'">트레이너 리스트 목록</button>
+      													<button class="custom-btn btn-7" type="button" onclick="location.href='/trainerList.do'">트레이너 목록</button>
 		                                            </div>
 		                                        </form>
 		                                    </div>

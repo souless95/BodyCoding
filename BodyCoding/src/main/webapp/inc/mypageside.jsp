@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <style>
 a{
     text-decoration-line: none;
@@ -75,7 +77,7 @@ div{
 					</div>
 				</div>
 				<c:choose>
-					<c:when test="${UserInfo.authority eq 'ROLE_MEMBER' }">
+					<c:when test="${Authority eq 'ROLE_MEMBER' }">
 						<div class="card">
 							<div class="card-header">
 								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
@@ -87,8 +89,8 @@ div{
 		                            <ul>
 		                                <li><a class="btn" href="reservation.do">스케쥴예약</a></li>
 		                                <li><a class="btn" href="reservated.do">스케쥴확인</a></li>
-		                                <li><a class="btn" href="#">트레이너기록</a></li>
-		                                <li><a class="btn" href="#">회원기록</a></li>
+		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
+		                                <li><a class="btn" href="#">운동기록</a></li>
 		                                <li><a class="btn" href="chart">체중그래프</a></li>
 		                            </ul>
 		                        </div>
@@ -103,7 +105,7 @@ div{
 								<div class="card-body">
 		                            <ul>
 		                                <li><a class="btn" href="#">결제내역</a></li>
-		                                <li><a class="btn" href="#">이용권차감</a></li>
+		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
 		                            </ul>
 		                        </div>
 							</div>
@@ -118,7 +120,6 @@ div{
 								<div class="card-body">
 		                            <ul>
 		                                <li><a class="btn" href="#">게시물</a></li>
-		                                <li><a class="btn" href="#">Q&A</a></li>
 		                            </ul>
 		                        </div>
 							</div>
@@ -139,7 +140,10 @@ div{
 								data-bs-parent="#accordion">
 								<div class="card-body" >
 		                            <ul>
-		                                <li><a class="btn" style="padding-top:10px;" href="memberlistT.do">회원목록 보기</a></li>
+		                                <li><a class="btn" style="padding-top:10px;" href="memberlistT.do">회원목록</a></li>
+		                            </ul>
+		                            <ul>
+		                            	<li><a class="btn" style="padding-top:10px;" href="exrecord.do">운동기록목록</a></li>
 		                            </ul>
 		                        </div>
 							</div>
@@ -153,30 +157,36 @@ div{
 								<div class="card-body">
 		                            <ul>
 		                            	<li><a class="btn" href="calendar.do">스케쥴</a></li>	
-		                                <li><a class="btn" href="exrecord.do">운동기록</a></li>
 		                            </ul>
 		                        </div>
 							</div>
 						</div>
+												
 						<div class="card">
-							<div class="card-header">
-								<a class="collapsed btn" data-bs-toggle="collapse"
-									href="#collapseThree"> 내 정보관리 </a>
-							</div>
-							<div id="collapseThree" class="collapse"
-								data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                                <li><a class="btn" href="career.do">트레이너경력</a></li>
-		                            </ul>
-		                        </div>
+						    <div class="card-header">
+							    <a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a>
 							</div>
 						</div>
+												
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
 	</div>
 
+<form name="frm" method="post" >
+	<input type="hidden" id="mem_id" name="mem_id">
+	<input type="hidden" id="gym_code" name="gym_code">
+</form>
+<script>
+function trainerInfo(mem_id, gym_code){
+	let f = document.frm;
+	f.mem_id.value = mem_id;
+	f.gym_code.value = gym_code;
+	
+	f.action ="trainerInfo";
+	f.submit();
+}
+</script>
 </body>
 </html>

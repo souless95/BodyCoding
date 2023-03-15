@@ -79,6 +79,6 @@ const config = {
  );
 </script>
 	
-</body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
+</body>
 </html>

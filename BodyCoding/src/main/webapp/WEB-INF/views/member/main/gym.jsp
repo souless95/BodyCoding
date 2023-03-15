@@ -20,9 +20,6 @@
     border-radius:4px;
     padding:0px 10px;
 }
-div{
-	border: 1px solid red;
-}
 
 input[type="checkbox"] {
 	display: none;

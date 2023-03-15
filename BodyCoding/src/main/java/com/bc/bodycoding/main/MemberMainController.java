@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -130,9 +132,28 @@ public class MemberMainController {
 	public String trainerpage(Model model, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String mem_id = (String)session.getAttribute("UserEmail");
-		String interest = maindao.interestSelect(mem_id);
+		if(mem_id != null) {
+			String interest = maindao.interestSelect(mem_id);
+			List<MemberDTO> interestlistSelect = maindao.interestlistSelect(interest);
+			List<MemberDTO> recomtrainerList = new ArrayList<>();
+			if(interestlistSelect.size()>3) {
+				Random random = new Random();
+				
+				// interestlistSelect 에서 무작위로 3개를 선택하여 recomtrainerList에 추가
+				for (int i = 0; i < 3; i++) {
+					int randomIndex = random.nextInt(interestlistSelect.size());
+					recomtrainerList.add(interestlistSelect.get(randomIndex));
+					interestlistSelect.remove(randomIndex);
+				}
+			}
+			else {
+				for(int i=0; i<interestlistSelect.size();i++) {
+					recomtrainerList.add(interestlistSelect.get(i));
+				}
+			}
+			model.addAttribute("recomtrainerList", maindao.interestlistSelect(interest));
+		}
 		model.addAttribute("gymList", maindao.gymlistSelect());
-		model.addAttribute("recomtrainerList", maindao.interestlistSelect(interest));
 		return "member/main/trainer";
 	}
 

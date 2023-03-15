@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,32 +96,20 @@ function errCallBack(errData){
 		<button value="칭찬" name="interest"> #칭찬</button>
 	</h5>
 	
-	<c:if test="${not empty UserInfo.mem_interest}">
+	<c:if test="${not empty UserName}">
+	<div>
 		회원님의 키워드에 맞는 트레이너 추천
-		<c:set var="randomList" value="${recomtrainerList}" />
-		<c:forEach varStatus="loop" begin="1" end="3">
-			<c:set var="randomIndex" value="${fn:length(randomList) > 0 ? fn:random(0, fn:length(randomList)-1) : -1}" />
-		  	<c:if test="${randomIndex ne -1}">
-				<div style="width:200px; margin:30px; float:left;">
-				<a href="javascript:void(0);" onclick="trainerInfo(data.mem_id,data.gym_code);">
-					<img class="card-img-top mt-2" src="static/uploads/trainer/'+${randomList[randomIndex].mem_img}+'" style="width:100%; height:250px;">
-					<div class='card-body'>
-					<b>#${randomList[randomIndex].mem_name}</b><br>
-					#${randomList[randomIndex].mem_comment}<br>
-					#${randomList[randomIndex].mem_interest}</div></a></div>
-			<c:set var="randomList" value="${fn:remove(randomList, randomIndex)}" />
-	  		</c:if>
+		<c:forEach items="${recomtrainerList }" var="rec" varStatus="loop">
+			<div style="width:200px; margin:30px; float:left;">
+			<a href="javascript:void(0);" onclick="trainerInfo(data.mem_id,data.gym_code);">
+				<img class="card-img-top mt-2" src="static/uploads/trainer/${rec.mem_img}" style="width:100%; height:250px;">
+				<div class='card-body'>
+				<b>#${rec.mem_name}</b><br>
+				#${rec.mem_comment}<br>
+				#${rec.mem_interest}</div></a></div>
 		</c:forEach>
+	</div>
 	</c:if>
-	
-	<%-- <c:set var="randomList" value="${gymList}" />
-	<c:forEach varStatus="loop" begin="1" end="3">
-	  <c:set var="randomIndex" value="${fn:length(randomList) > 0 ? fn:random(0, fn:length(randomList)-1) : -1}" />
-	  <c:if test="${randomIndex ne -1}">
-	    <li>${randomList[randomIndex].mem_name}</li>
-	    <c:set var="randomList" value="${fn:remove(randomList, randomIndex)}" />
-	  </c:if>
-	</c:forEach>  --%>
 	
 	<form name="frm" method="post" >
 		<input type="hidden" id="mem_id" name="mem_id">

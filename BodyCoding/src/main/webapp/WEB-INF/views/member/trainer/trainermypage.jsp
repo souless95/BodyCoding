@@ -17,7 +17,7 @@ body{
 </style>
 </head>
 <%@ include file="../../../../inc/Top.jsp" %>
-<body>
+<body class="is-preload">
 	 <div class="container">
 	 	<%@ include file ="../../../../inc/mypageside.jsp" %>
         <div id="layoutSidenav_content">
@@ -33,6 +33,6 @@ body{
 	        	</div>
 			</div>
 		</div>
-</body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
+</body>
 </html>

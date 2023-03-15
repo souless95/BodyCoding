@@ -21,6 +21,7 @@ contain_left.style.height = jspHeight + 'px';
 
 <hr />		
 <!-- Footer -->
+
 <div id="footer" >
 <!--하단 채팅플로팅 버튼 시작-->
 <div class="floating-button">

@@ -560,6 +560,7 @@ input[type="checkbox"]{
 /* Footer */
 
 	#footer {
+		width: 100%;
 		padding: 4em 0 2em 0;
 		background-color: #2D2D2D;
 	}

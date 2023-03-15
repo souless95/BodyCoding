@@ -5,12 +5,16 @@
 <html>
 	<head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	  	a{border:0;}
+	  	.container {
+	  		min-height:650px;
+		}
 	</style>
 <script type="text/javascript">
 
@@ -48,10 +52,10 @@ function openChatRoom(event, mem_id){
 			<!-- Header -->
 			<div id="header">
 					<!-- Logo -->
-						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif';">
+						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Myriad Pro', 'sans-serif';">
 						Body Coding</span></a></h1>
 					<!-- Nav -->
-						<nav id="nav">
+						<nav id="nav" style="border: 1px solid red;" >
 							<ul>
 								<li class="current"><a href="/main">Home</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
@@ -75,17 +79,17 @@ function openChatRoom(event, mem_id){
 						</li>
 						
 						<li>
-							<a href="#">지점정보</a>
-							<ul>
+							<a href="gym">지점정보</a>
+						<!-- 	<ul>
 								<li><a href="gym">지점확인</a></li>
-							</ul>
+							</ul> -->
 						</li>
 						
 						<li>
 							<a href="trainer">트레이너</a>
-							<ul>
+						<!-- 	<ul>
 								<li><a href="trainer">트레이너정보</a></li>
-							</ul>
+							</ul> -->
 						</li>
 						
 						<li>
@@ -102,8 +106,8 @@ function openChatRoom(event, mem_id){
 						
 						
 						<c:if test="${not empty UserName}">
-						    <li>
-						        ${UserName}님 환영합니다.
+						    <li style="color: white;">
+						        [ ${UserName} ]님 환영합니다.
 						    </li>
 						    <c:choose>
 						        <c:when test="${Authority eq 'ROLE_MEMBER' }">
@@ -129,8 +133,8 @@ function openChatRoom(event, mem_id){
 						                <a href="${mypageUrl}">마이페이지</a>
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
-						                    <li><a href="exinfo">운동정보</a></li>
-						                    <li><a href="/exrecord.do">내 정보관리</a></li>
+						                    <li><a href="calendar.do">운동정보</a></li>
+							   				<li><a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a></li>
 						                </ul>
 						            </li>
 						            <li>

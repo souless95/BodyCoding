@@ -1,6 +1,12 @@
 package com.bc.bodycoding.account;
 
 
+import java.nio.channels.MembershipKey;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bc.bodycoding.calendar.CalendarDTO;
+
 import global.dto.MemberDTO;
+import global.dto.ProductDTO;
+import global.dto.TrainingLogDTO;
 
 
 @Controller
@@ -26,7 +36,8 @@ public class AccountController {
    private MailService mailService;
 
    @RequestMapping(value = "/signup.do", method = RequestMethod.GET)
-   public String signupM() {
+   public String signupM(Model model) {
+	  model.addAttribute("gymList", accountdao.gymlistSelect());
       return "member/account/signup";
    }
 
@@ -73,6 +84,7 @@ public class AccountController {
          session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
          session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
          session.setAttribute("Authority", accountdao.login(memberDTO).getAuthority());
+         session.setAttribute("UserGymCode", accountdao.login(memberDTO).getGym_code());
          
          return "redirect:main";
       } 
@@ -112,6 +124,41 @@ public class AccountController {
    @GetMapping("delete")
    public String delete() {
       return "member/mypage/delete";
+   }
+   
+   //회원권 남은 횟수 확인
+   @GetMapping("vdCounting.do")
+   public String vdCounting(Model model, HttpSession session, ProductDTO productDTO) {
+	   
+	   String user_id = (String)session.getAttribute("UserEmail");
+	   String user_name = (String)session.getAttribute("UserName");
+	   productDTO.setUser_id(user_id);
+	   List<ProductDTO> totalVD = accountdao.getMInfo(productDTO);
+	   System.out.println(totalVD);
+	   
+	   List<Map<String, Object>> newVD = new ArrayList<Map<String, Object>>();
+	   for (ProductDTO tVD : totalVD) {
+		    Map<String, Object> event = new HashMap<String, Object>();
+		    
+		    event.put("tName", tVD.getTrainer_name());
+		    event.put("category", tVD.getProduct_category());
+		    tVD.setUser_id(user_id);
+		    event.put("count", tVD.getMembership_count()-accountdao.getTLog(tVD));
+		    System.out.println(event);
+		    newVD.add(event);
+	   }
+	   model.addAttribute("user_name", user_name);
+	   model.addAttribute("newVD", newVD);
+	   
+      return "member/mypage/vdCounting";
+   }
+   
+   //트레이닝 로그에 기록하기 위한 코멘트작성
+   @GetMapping("??")
+   public String writeComment() {
+	  
+	   
+      return "member/mypage/??";
    }
 
    // 탈퇴하기

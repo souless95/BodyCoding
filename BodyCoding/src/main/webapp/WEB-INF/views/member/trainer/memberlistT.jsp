@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>트레이너의 마이페이지</title>
 <style>
-<<<<<<< HEAD
 body{
 	border: 1px;
 }
@@ -19,6 +18,7 @@ body{
 <%@ include file="../../../../inc/Top.jsp" %>
 </head>
 <body>
+<div class="container">
 	<div id="layoutSidenav">
 		<!-- side -->
        <%@ include file ="../../../../inc/mypageside.jsp" %>
@@ -70,7 +70,7 @@ body{
 			<!-- bottom -->
 			</div>
 		</div>
-
+</div>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

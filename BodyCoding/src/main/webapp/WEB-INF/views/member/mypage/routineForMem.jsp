@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script>
 $(document).ready(function() {
 	$("#yoil").change(function() {
@@ -58,7 +59,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<%@ include file ="../../../../inc/Top.jsp" %>
+<%@ include file ="../../../../inc/Top.jsp" %>
+<div class="container">
 	<%@ include file ="../../../../inc/mypageside.jsp" %>
 	<br />
 	<h3>금주의 루틴</h3>
@@ -74,6 +76,7 @@ $(document).ready(function() {
 	</select>
 	<br /><br />
 	<div id="registeredRoutine"></div>
-	<%@ include file="../../../../inc/Bottom.jsp" %>	
+</div>
+<%@ include file="../../../../inc/Bottom.jsp" %>	
 </body>
 </html>

@@ -234,7 +234,8 @@
 <title>MyCalendar</title>
 </head>
 <body>
-	<%@ include file ="../../../inc/Top.jsp" %>
+<%@ include file ="../../../inc/Top.jsp" %>
+<div class="container">
 	<%@ include file ="../../../inc/mypageside.jsp" %>
 	<br />
     <h1>일정관리</h1>
@@ -244,6 +245,7 @@
   		<p id="event-description" style="white-space: pre-wrap;"></p>
 	</div>
 	<div id='calendar' style="width:800px; height:1500px;"></div>
-	<%@ include file="../../../inc/Bottom.jsp" %>
+</div>
+<%@ include file="../../../inc/Bottom.jsp" %>
 </body>
 </html>

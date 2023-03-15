@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../../../../inc/Top.jsp"%>
+
 <script>
 function editRecord(training_log_idx) {
   if (confirm("게시글을 수정하시겠습니까?")) {
@@ -22,7 +22,8 @@ function deleteRecord(training_log_idx) {
 </script>
 </head>
 <body>
-	
+<%@ include file="../../../../inc/Top.jsp"%>
+<div class="container">
 	<div id="container">
 		<!-- side -->
 		<%@ include file="../../../../inc/mypageside.jsp"%>
@@ -35,14 +36,14 @@ function deleteRecord(training_log_idx) {
 					</div>
 					<br>
 					<div class="container">
-						<table>
+						<table style="width:80%;">
 							<thead>
 								<tr>
 						         	<th>일자</th>
-						         	<th>이용권</th>
-						         	<th>상세</th>
+						         	<th>이용권 유형</th>
+						         	<th>이용권 이름</th>
 						         	<th>회원이름</th>
-						         	<th>비고</th>
+						         	<th>특이사항</th>
 						      	</tr>
 							</thead>
 							<tbody>
@@ -54,25 +55,21 @@ function deleteRecord(training_log_idx) {
 								        <td>${row.mem_name}</td>
 								        <td>${row.training_comment }</td>
 								        <td>
-								        <button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
-										<button type="button" onclick="deleteRecord(${row.training_log_idx})">삭제</button>
+								        	<button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
 								        </td>
 								    </tr>
 							    </c:forEach>
 							</tbody>
 						</table>
-							<button type="button" onclick="location.href='main'">홈으로</button> 
-							<button type="button" onclick="location.href='addexrecord.do'">등록하기</button>
+							<button type="button" onclick="location.href='addexrecord.do'">등록</button>
+							
 	        		</div>	
 				</div>
 			</div>
 		</div>
+		</div>
 		<!-- bottom -->
 		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

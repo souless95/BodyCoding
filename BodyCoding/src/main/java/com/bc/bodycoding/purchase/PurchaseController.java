@@ -37,11 +37,11 @@ public class PurchaseController {
 
 	@RequestMapping("/membershipPurchase.do")
 	public String purchaseHome(HttpServletRequest req, Model model) {
-
+		
 		HttpSession session = req.getSession();
 
 		String mem_id = (String) session.getAttribute("UserEmail");
-
+		
 		model.addAttribute("mem_id", mem_id);
 		System.out.println(mem_id);
 		model.addAttribute("gymList", purchaseDao.gymSelect());
@@ -220,13 +220,13 @@ public class PurchaseController {
 				productDTO.setTrainer_id(trainer_id);
 				productDTO.setProduct_idx(product_idx);
 				productDTO.setGym_code(gym_code);
-				
+				System.out.println(trainer_id);
 				result2 = purchaseDao.insertMembership(productDTO);
 			} 
 			else {
 				
 				System.out.println("상품 성공 후 DB 처리 단계 진입");
-
+				
 				productDTO.setUse_point(Integer.parseInt(use_point));
 				
 				String p_idx[] = product_idx.split(",");

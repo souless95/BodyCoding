@@ -23,7 +23,7 @@ public interface IProductService {
 	//상품 삭제
 	public int delete(ProductDTO productDTO);
 	//재고 조회
-	public List<ProductDTO> stockSelect();
+	public List<ProductDTO> stockSelect(String mem_id);
 	//재고 등록
 	public int stockInsert(ProductDTO productDTO);
 	//재고 수정

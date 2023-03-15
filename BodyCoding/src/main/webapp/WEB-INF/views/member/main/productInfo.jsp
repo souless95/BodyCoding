@@ -43,7 +43,7 @@ function login(t){
 		</tr>
 		<tr style="border: 2px solid gray;">
 			<td style="padding-left: 10px;"><strong>상품 가격: </strong>
-			<fmt:formatNumber value="${productInfo.product_price }" pattern="###,###,###" /></td>
+			<fmt:formatNumber value="${productInfo.product_price }" pattern="###,###,###" /><span>원</span></td>
 		</tr>
 	</table>
 	

@@ -33,18 +33,9 @@ contain_left.style.height = jspHeight + 'px';
 <div id="footer">
 	<div class="container">
 		<div class="row">
-			여러분의 의견을 받습니다 Bottom을 무엇을 추가하면 좋을까아
 		</div>
 	</div>
 
-	<!-- Icons -->
-	<ul class="icons">
-		<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-		<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-		<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-		<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-		<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
-	</ul>
 
 <!-- Copyright -->
 	<div class="copyright">

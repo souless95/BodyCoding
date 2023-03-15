@@ -11,14 +11,20 @@
 $(function(){
    
    $('#gymSelect').change(function(){
-      if($('#gymSelect').val()==""){
-         $('input[name=product_category]').is(':checked')=false;
-         $('input[name=product_idx]').css("display","none");
-      }
+	  console.log("잘돼?");
+      $('input[name=product_category]').prop('checked',false);
+      $('#pTitle').css("display","none");
+      $('#tTitle').css("display","none");
+      $('#show_product').empty();
+      $('#show_trainer').empty();
+         
    });  
    
    $('input[name=product_category]').click(function(){
-
+	  
+	  $('#tTitle').css("display","none"); 
+	  $('#show_trainer').empty();
+	  
       $('#pTitle').css("display","inline");
       let ctgVar = $('input[name=product_category]:checked').val();
       
@@ -66,37 +72,43 @@ $(function(){
        
        let trainer_id = $('input:radio[name=trainer_id]:checked').val();
        let product_idx = $('input:radio[name=product_idx]:checked').val();
+       let product_category = $('input[name=product_category]:checked').val();
        let product_name = $("label[for='"+product_idx+"']").text();
        let product_price = $("label[for='"+product_name+"']").text();
        let gym_code = $('#gymSelect').val();
        
-       const payInfo = {
-           trainer_id : trainer_id,
-           product_idx : product_idx,
-           gym_code : gym_code,
-             product_name : product_name,
-             product_price : product_price,
-             type : "멤버쉽"
+       if(product_category!='헬스'&&trainer_id==null){
+    	   alert('트레이너를 선택해주세요');
        }
-       
-       $.ajax({
-         url: 'kakaoPay.do',
-         data : payInfo,
-         dataType:"json",
-         success:function(data){
-          if(data.status === 500){
-            alert("카카오페이결제를 실패하였습니다.")
-         } 
-          else{
-             console.log("페이 진입");
-               console.log(data);
-            location.href = data.next_redirect_pc_url;
-         }
-         },
-         error:function(error){
-            alert(error);
-         }
-      });
+       else{
+	       const payInfo = {
+	           trainer_id : trainer_id,
+	           product_idx : product_idx,
+	           gym_code : gym_code,
+	             product_name : product_name,
+	             product_price : product_price,
+	             type : "멤버쉽"
+	       }
+	       
+	       $.ajax({
+	         url: 'kakaoPay.do',
+	         data : payInfo,
+	         dataType:"json",
+	         success:function(data){
+	          if(data.status === 500){
+	            alert("카카오페이결제를 실패하였습니다.")
+	         } 
+	          else{
+	             console.log("페이 진입");
+	               console.log(data);
+	            location.href = data.next_redirect_pc_url;
+	         }
+	         },
+	         error:function(error){
+	            alert(error);
+	         }
+	      });
+       }
    });
 });
 function sucCallBackP(resData) {
@@ -119,7 +131,7 @@ function sucCallBackT(resData) {
    let tData = "";
    console.log(resData);
    if(resData==""){
-      tData = "<td><span>트레이너가 없습니다.</span></td>"
+      tData = "<td id><span>트레이너가 없습니다.</span></td>"
    }
    $(resData).each(function(index, data){
       tData += ""

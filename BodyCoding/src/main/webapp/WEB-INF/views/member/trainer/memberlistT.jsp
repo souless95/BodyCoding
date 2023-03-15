@@ -18,6 +18,7 @@ body{
 <%@ include file="../../../../inc/Top.jsp" %>
 </head>
 <body>
+<div class="container">
 	<div id="layoutSidenav">
 		<!-- side -->
        <%@ include file ="../../../../inc/mypageside.jsp" %>
@@ -69,7 +70,7 @@ body{
 			<!-- bottom -->
 			</div>
 		</div>
-
+</div>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

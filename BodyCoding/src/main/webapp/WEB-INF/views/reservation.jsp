@@ -94,6 +94,7 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 </head>
 <body>
 <%@ include file ="../../../inc/Top.jsp" %>
+<div class="container">
 <%@ include file ="../../../inc/mypageside.jsp" %>
 <br />
 <h3>예약 가능한 일정</h3>
@@ -151,6 +152,7 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 		</p>
 	</div>
 </c:forEach>
+</div>
 <%@ include file="../../../inc/Bottom.jsp" %>
 </body>
 </html>

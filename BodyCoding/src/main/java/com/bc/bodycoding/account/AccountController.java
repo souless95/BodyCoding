@@ -36,7 +36,8 @@ public class AccountController {
    private MailService mailService;
 
    @RequestMapping(value = "/signup.do", method = RequestMethod.GET)
-   public String signupM() {
+   public String signupM(Model model) {
+	  model.addAttribute("gymList", accountdao.gymlistSelect());
       return "member/account/signup";
    }
 
@@ -156,6 +157,7 @@ public class AccountController {
    @GetMapping("??")
    public String writeComment() {
 	  
+	   
       return "member/mypage/??";
    }
 

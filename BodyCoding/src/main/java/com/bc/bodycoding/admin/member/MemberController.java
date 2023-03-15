@@ -164,10 +164,9 @@ public class MemberController {
    
    //운동기록 리스트
    @RequestMapping(value="exrecord.do", method= RequestMethod.GET)
-   public String exrecord( Model model, HttpSession session) {
+   public String exrecord(Model model, HttpSession session) {
       
       String trainer_id = (String)(session.getAttribute("UserEmail"));
-      System.out.println(trainer_id);
       MemberDTO memberDTO = new MemberDTO();
       memberDTO.setTrainer_id(trainer_id);
       List<MemberDTO> memberList = memberdao.selectexrecord(memberDTO);
@@ -208,6 +207,7 @@ public class MemberController {
    public String editrecord(Model model, HttpServletRequest req) {
       
       MemberDTO memberDTO = new MemberDTO();
+      System.out.println("11" + req.getParameter("training_log_idx"));
       memberDTO = memberdao.selectone(req.getParameter("training_log_idx"));
       System.out.println(memberDTO);
       model.addAttribute("memberList", memberDTO);

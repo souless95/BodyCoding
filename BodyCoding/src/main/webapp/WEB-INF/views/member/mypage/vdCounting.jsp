@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file ="../../../../inc/Top.jsp" %>
+<%@ include file ="../../../../inc/Top.jsp" %>
+<div class="container">
 	<%@ include file ="../../../../inc/mypageside.jsp" %>
 	<br /><br />
 	${user_name}님의 남은 멤버쉽은 <br />
@@ -20,7 +21,7 @@
 	    	&nbsp;&nbsp;&nbsp;&nbsp;${vd.tName} 트레이너의 ${vd.category} ${vd.count}회입니다.
   		</c:if>
 	</c:forEach>
-	
-	<%@ include file="../../../../inc/Bottom.jsp" %>	
+</div>
+<%@ include file="../../../../inc/Bottom.jsp" %>	
 </body>
 </html>

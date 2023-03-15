@@ -76,17 +76,17 @@ function openChatRoom(event, mem_id){
 						</li>
 						
 						<li>
-							<a href="#">지점정보</a>
-							<ul>
+							<a href="gym">지점정보</a>
+						<!-- 	<ul>
 								<li><a href="gym">지점확인</a></li>
-							</ul>
+							</ul> -->
 						</li>
 						
 						<li>
 							<a href="trainer">트레이너</a>
-							<ul>
+						<!-- 	<ul>
 								<li><a href="trainer">트레이너정보</a></li>
-							</ul>
+							</ul> -->
 						</li>
 						
 						<li>
@@ -103,8 +103,8 @@ function openChatRoom(event, mem_id){
 						
 						
 						<c:if test="${not empty UserName}">
-						    <li>
-						        ${UserName}님 환영합니다.
+						    <li style="color: white;">
+						        [ ${UserName} ]님 환영합니다.
 						    </li>
 						    <c:choose>
 						        <c:when test="${Authority eq 'ROLE_MEMBER' }">

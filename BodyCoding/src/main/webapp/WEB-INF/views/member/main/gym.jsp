@@ -104,7 +104,7 @@ function errCallBack(errData){
                 lon = position.coords.longitude; // 경도
              
             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = '<div style="padding:5px;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
+                message = '<span class="info-title">현위치</span>'; // 인포윈도우에 표시될 내용입니다
              
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);
@@ -155,7 +155,7 @@ function errCallBack(errData){
         
     <c:forEach  items="${gymMarker }" var="row">
         ,{
-           	title: '바디코딩', 
+           	title: ${row.gym_code }, 
             latlng: new kakao.maps.LatLng(${row.gym_lat }, ${row.gym_lng })
         }
         </c:forEach>
@@ -185,6 +185,17 @@ function errCallBack(errData){
 
 		
 <style type="text/css">
+
+.info-title {
+    display: block;
+    background: #50627F;
+    color: #fff;
+    text-align: center;
+    height: 24px;
+    line-height:22px;
+    border-radius:4px;
+    padding:0px 10px;
+}
 div{
 	border: 1px solid red;
 }

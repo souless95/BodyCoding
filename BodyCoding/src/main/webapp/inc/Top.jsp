@@ -12,6 +12,9 @@
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	  	a{border:0;}
+	  	.container {
+	  		min-height:580px;
+		}
 	</style>
 <script type="text/javascript">
 

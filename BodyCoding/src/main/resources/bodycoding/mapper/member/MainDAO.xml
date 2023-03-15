@@ -11,7 +11,9 @@
 <select id="mapmarkerSelect"
    parameterType="String"
    resultType="global.dto.GymDTO">
-   select * from gym_detail
+   select member.mem_name, gym_detail.* from  gym_detail
+    inner join member on member.gym_code=gym_detail.gym_code
+    where member.authority ='ROLE_ADMIN_SUB'
 </select> 
 
 <!-- 모든 지점 위도 경도 선택 -->
@@ -86,11 +88,25 @@
    select * from member where authority='ROLE_TRAINER' and enabled ='1'
 </select>
 
+<!-- 해당 회원에 관심사항 뽑기 -->
+<select id="interestSelect"
+   parameterType="String"
+   resultType="String">
+   select mem_interest from member where mem_id = #{mem_id}
+</select>
+
 <!-- 선택된 트레이너 보여주기 -->
 <select id="trainerlistSelect"
    parameterType="String"
    resultType="global.dto.MemberDTO">
    select * from member where authority='ROLE_TRAINER' and enabled ='1' and gym_code=#{gym_code}
+</select>
+
+<!-- 관심사항에 맞게 선택된 트레이너 보여주기 -->
+<select id="interestlistSelect"
+   parameterType="String"
+   resultType="global.dto.MemberDTO">
+   select * from member where authority='ROLE_TRAINER' and enabled ='1' and mem_interest=#{mem_interest}
 </select>
 
 <!-- 트레이너 상세 정보 보여주기 -->

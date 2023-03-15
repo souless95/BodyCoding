@@ -149,16 +149,11 @@ function errCallBack(errData){
      
      // 마커를 표시할 위치와 title 객체 배열입니다 
      var positions = [
+        <c:forEach  items="${gymMarker }" var="row">
         {
            title: '바디코딩', 
-            latlng: new kakao.maps.LatLng(37.5690886, 126.9846525)
-        }
-        
-        <c:forEach  items="${gymMarker }" var="row">
-        ,{
-           title: '바디코딩', 
              latlng: new kakao.maps.LatLng(${row.gym_lat }, ${row.gym_lng })
-        }
+        },
         </c:forEach>
      ];
      

@@ -120,7 +120,6 @@ div{
 								<div class="card-body">
 		                            <ul>
 		                                <li><a class="btn" href="#">게시물</a></li>
-		                                <li><a class="btn" href="#">Q&A</a></li>
 		                            </ul>
 		                        </div>
 							</div>

@@ -93,10 +93,9 @@ function openChatRoom(event, mem_id){
 						</li>
 						
 						<li>
-							<a href="#">게시판</a>
+							<a href="/Freeboard.do">게시판</a>
 							<ul> 
 								<li><a href="/Freeboard.do">자유게시판</a></li>
-								<li><a href="#">Q&A</a></li>
 								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>

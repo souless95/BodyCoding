@@ -87,7 +87,7 @@ public class TrainerController {
 		memberDTO.setGym_code(req.getParameter("gym_code"));
 		memberDTO.setMem_career(req.getParameter("mem_career"));
 		memberDTO.setMem_comment(req.getParameter("mem_comment"));
-			
+		memberDTO.setMem_interest(req.getParameter("mem_interest"));
 			
 		int result = trainerdao.insertMemberT(memberDTO);
 		if(result==1) System.out.println("회원가입이 완료되었습니다.");
@@ -182,6 +182,7 @@ public class TrainerController {
 		memberDTO.setGym_code(req.getParameter("gym_code"));
 		memberDTO.setMem_career(req.getParameter("mem_career"));
 		memberDTO.setMem_comment(req.getParameter("mem_comment"));
+		memberDTO.setMem_interest(req.getParameter("mem_interest"));
 		
 		int result = trainerdao.update(memberDTO);
 		System.out.println(result);

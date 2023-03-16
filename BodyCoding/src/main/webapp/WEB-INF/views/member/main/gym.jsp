@@ -16,9 +16,10 @@
     color: #fff;
     text-align: center;
     height: 24px;
-    line-height:22px;
+    line-height:24px;
     border-radius:4px;
     padding:0px 10px;
+    font-size: 16px;
 }
 
 input[type="checkbox"] {
@@ -104,7 +105,7 @@ function sucCallBack(resData) {
    	$(resData).each(function(index, data) {
       	tableData +=
       	"<li style='border-bottom: 1px solid gray; color: black;'><div>" +data.mem_name
-      	+"<button style='float: right; width: 100px; height: 50px; margin: 10px;' onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
+      	+"<button class='custom-btn btn-1' style='float: right; width: 110px; height: 50px; margin: 10px;' onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
       	+"<div>" +data.mem_address+ "</div>"
       	+"<div>" +data.mem_phone+ "</div></li>";
    }); 
@@ -310,7 +311,7 @@ function errCallBack(errData){
 		<ul style="text-align: center;">
 			<li>
 				<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
-				<input type="button" value="검색하기" id="search" style="margin-left: 35px; height: 35px;">
+				<button type="button" id="search" class="custom-btn btn-1" style="margin-left: 35px;">검색하기</button>
 			</li>
 		</ul>
 	</div>
@@ -323,7 +324,7 @@ function errCallBack(errData){
 							<li style="border-bottom: 1px solid gray; color: black;">
 								<div>
 									${row.mem_name}
-									<button style="float: right; width: 100px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
+									<button class="custom-btn btn-1" style="float: right; width: 110px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
 								</div>
 								<div>${row.mem_address}</div>
 								<div>${row.mem_phone}</div>

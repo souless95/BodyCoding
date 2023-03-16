@@ -60,16 +60,16 @@
 					        </tr>
 					    </table>
 					    <br />
-			            <button type="button" class="custom-btn btn-2" onclick="if(confirm('정말로 삭제하시겠습니까?')) location.href='boardDelete.do?board_idx=${dto.board_idx }'">
+			            <button type="button" class="custom-btn btn-1" onclick="if(confirm('정말로 삭제하시겠습니까?')) location.href='boardDelete.do?board_idx=${dto.board_idx }'">
 							삭제
 						</button>
-			            <button type="button" class="custom-btn btn-2" onclick="location.href='admin/board/boardEdit?board_idx=${dto.board_idx }'">
+			            <button type="button" class="custom-btn btn-1" onclick="location.href='admin/board/boardEdit?board_idx=${dto.board_idx }'">
 							수정
 						</button>
-						<button type="button" class="custom-btn btn-2" onclick="history.back()">
+						<button type="button" class="custom-btn btn-1" onclick="history.back()">
 			            	뒤로가기
 			            </button>
-			            <button type="button" class="custom-btn btn-2" onclick="location.href='main/admin'">
+			            <button type="button" class="custom-btn btn-1" onclick="location.href='main/admin'">
 			            	홈으로
 			            </button>
 			            

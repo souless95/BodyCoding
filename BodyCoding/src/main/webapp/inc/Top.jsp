@@ -5,12 +5,16 @@
 <html>
 	<head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<style type="text/css">
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	  	a{border:0;}
+	  	.container {
+	  		min-height:650px;
+		}
 	</style>
 <script type="text/javascript">
 
@@ -48,10 +52,10 @@ function openChatRoom(event, mem_id){
 			<!-- Header -->
 			<div id="header">
 					<!-- Logo -->
-						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif';">
+						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Myriad Pro', 'sans-serif';">
 						Body Coding</span></a></h1>
 					<!-- Nav -->
-						<nav id="nav">
+						<nav id="nav" style="border: 1px solid red;" >
 							<ul>
 								<li class="current"><a href="/main">Home</a></li>
 								<!-- 드롭다운의 시작 li ->a태그로 감싸야 드롭다운됨  -->
@@ -153,7 +157,6 @@ function openChatRoom(event, mem_id){
 				</nav>
 			</div>
 		</div>
-		
 		
 		<!-- Scripts -->
 		<script src="../static/assets/js/jquery.min.js"></script>

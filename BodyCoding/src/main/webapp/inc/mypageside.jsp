@@ -199,7 +199,6 @@ function mytrainerInfo(mem_id, gym_code){
     f.submit();
 }
 
-
 </script>
 </body>
 </html>

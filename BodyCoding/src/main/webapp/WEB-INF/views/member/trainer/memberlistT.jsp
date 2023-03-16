@@ -17,7 +17,7 @@ body{
 </script>
 <%@ include file="../../../../inc/Top.jsp" %>
 </head>
-<body>
+<body class="sb-nav-fixed">
 <div class="container">
 	<div id="layoutSidenav">
 		<!-- side -->
@@ -40,10 +40,9 @@ body{
 						         	<th style="text-align:center">이용권 이름</th>
 						       	 	<th style="text-align:center">전화번호</th>
 						       	  	<th style="text-align:center">가입일자</th>
-						       	  	<th></th>
 						      	</tr>
 							</thead>
-							<tbody >
+							<tbody>
 					     	<c:forEach items="${memberList }" var="row" varStatus="loop">
 						      	<tr style="padding-top: 10px; padding-bottom: 10px;">
 							        <td style="text-align:center;">
@@ -63,13 +62,12 @@ body{
 							    </tr>
 						    </c:forEach>
 							</tbody>
-							</table>
-		        		</div>
-					</div>
-				</main>
-			<!-- bottom -->
-			</div>
+						</table>
+	        		</div>
+				</div>
+			</main>
 		</div>
+	</div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </body>

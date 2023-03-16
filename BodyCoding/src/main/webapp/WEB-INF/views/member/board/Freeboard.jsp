@@ -17,7 +17,7 @@
 	
 	<div class="container" style="margin-top:25px;">
 	
-	<div class="container" style="background-color:#F0F0F0; width:80%; text-align:left; padding-left:15px;" >
+	<div class="container" style="width:80%; text-align:left; padding-left:15px;" >
 	 	<div class="container" style="text-align: left;">
 	    <form method="get" action="searchmemberboard.do" style=" display: flex;">
 	        <div class="form-group" style="flex; margin-top:4px;">

@@ -205,6 +205,34 @@ public class MemberMainController {
 		model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
 		return "member/main/trainerInfo";
 	}
+	
+	//트레이너로 로그인했을떄 본인 상세정보 
+	
+	
+	// 회원창에서 트레이너 상세정보 보여주기
+		@RequestMapping("mytrainerInfo")
+		public String mytrainerInfo(Model model, MemberDTO memberDTO) {
+			// 트레이너 지점이름
+			model.addAttribute("gymInfo", maindao.gymInfoSelect(memberDTO.getGym_code()));
+			// 트레이너 정보
+			model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO.getMem_id()));
+			// 트레이너 평점
+			String avg_grade = maindao.gradeSelete(memberDTO.getMem_id());
+			System.out.println("평점 평균: " + avg_grade);
+			model.addAttribute("avg_grade", maindao.gradeSelete(memberDTO.getMem_id()));
+
+			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+			Date now = new Date();
+			String now_dt = format.format(now);
+			System.out.println(now_dt);
+			model.addAttribute("nowdate", now_dt);
+			// 리뷰
+			model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
+			return "member/trainer/mytrainerInfo";
+		}
+	
+	
+	
 
 	// 트레이너 후기 작성
 	@RequestMapping("trainerReview")

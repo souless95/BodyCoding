@@ -164,10 +164,9 @@ div{
 												
 						<div class="card">
 						    <div class="card-header">
-							    <a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a>
+							    <a class="btn" href='javascript:void(0);' onclick='mytrainerInfo("${UserEmail}","${UserGymCode}");'>내 정보</a>
 							</div>
 						</div>
-												
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -179,12 +178,12 @@ div{
 	<input type="hidden" id="gym_code" name="gym_code">
 </form>
 <script>
-function trainerInfo(mem_id, gym_code){
+function mytrainerInfo(mem_id, gym_code){
 	let f = document.frm;
 	f.mem_id.value = mem_id;
 	f.gym_code.value = gym_code;
 	
-	f.action ="trainerInfo";
+	f.action ="mytrainerInfo";
 	f.submit();
 }
 </script>

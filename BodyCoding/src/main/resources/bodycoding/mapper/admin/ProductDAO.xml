@@ -40,11 +40,11 @@
 	<delete id="delete" parameterType="global.dto.ProductDTO">
 	</delete>
 	
-	<select id="stockSelect" parameterType="global.dto.ProductDTO" 
+	<select id="stockSelect" parameterType="String" 
 		resultType="global.dto.ProductDTO">
 		SELECT product_detail_idx,PD.gym_code, PD.product_idx,product_type,product_category,product_name, product_status,product_stock,product_price
  		FROM (SELECT * FROM product WHERE product_type='일반상품') P 
-        	LEFT OUTER JOIN (SELECT * FROM product_detail WHERE gym_code=(SELECT gym_code FROM member WHERE mem_id='admin_sub1')) PD 
+        	LEFT OUTER JOIN (SELECT * FROM product_detail WHERE gym_code=(SELECT gym_code FROM member WHERE mem_id=#{mem_id})) PD 
         	ON PD.product_idx=P.product_idx
 	</select>
 	

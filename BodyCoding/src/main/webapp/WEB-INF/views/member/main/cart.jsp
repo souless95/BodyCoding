@@ -56,7 +56,7 @@
 	width: 100%;
 	height: 150px;
     display: inline-block;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #f4f4f4;
 }
 .cell_all{
 	width: 100%;
@@ -105,7 +105,7 @@
     line-height: 22px;
     font-weight: bold;
     text-align: left;
-    padding-left: 150px;
+    padding-left: 100px;
     letter-spacing: 0;
     color: #222222;
     text-overflow: ellipsis;
@@ -124,7 +124,7 @@
     letter-spacing: 0;
     color: #222222;
     text-align: left;
-    padding-left: 150px;
+    padding-left: 100px;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -133,12 +133,12 @@
     word-break: break-all;
     overflow: hidden;
 }
-.product_price{
+.products_price{
 	margin-top: 4px;
     font-family: tahoma,"나눔고딕","Nanum Gothic","맑은고딕","Malgun Gothic","돋움",dotum,helvetica,"Apple SD Gothic Neo",sans-serif;
     font-size: 14px;
     text-align: left;
-    padding-left: 150px;
+    padding-left: 100px;
     font-weight: bold;
     line-height: 17px;
     color: #222222;
@@ -163,18 +163,43 @@
 .option_controller{
     position: relative;
     display: inline-block;
+    border: 1px solid #dfe4ec;
     background-color: #ffffff;
     border-radius: 3px;
     height: 28px;
     vertical-align: top;
 }
-.cButton{
+button{
+	outline: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+#minus_btn{
 	width: 27px;
-	font-size: 20px;
+	border-right: 1px solid #dfe4ec;
+    height: 100%;
+    vertical-align: top;
+    position: relative;	
+}
+#plus_btn{
+	width: 27px;
+	border-left: 1px solid #dfe4ec;
+    height: 100%;
+    vertical-align: top;
+    position: relative;	
 }
 .pCount{
-	width: 35px;
-	font-size: 15px;
+	width: 41px;
+	font-size: 14px;
+    display: inline-block;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    text-align: center;
+    color: #111111;
+    font-weight: bold;
+    vertical-align: top;
 }
 .product-price{
 	font-size: 14px;
@@ -183,6 +208,22 @@
     text-align: right;
     font-weight: bold;
     color: black;
+}
+.buy_link{
+	display: inline-block;
+    width: 150px;
+    max-width: none;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 48px;
+    vertical-align: top;
+    border: 1.5px solid #37C0FB;
+}
+.go_product{
+	border: 1.5px solid #37C0FB;
+	width: 100px;
+	border-radius: 6px;
+	font-size: 16px;
 }
 
 </style>
@@ -195,19 +236,22 @@ var newCount;
 function totalP(){
     var total = 0;
     $('input[name=selected_product]:checked').each(function() {
-        total += parseInt($(this).closest('tr').find('.product-price').text().replace(',', '').trim());
+    	var t = $(this).closest('.checkbox_inner').find('.product-price').text().replace(',', '').trim();
+    	total += parseInt(t.substring(0,t.length-1));
     });
     $('#totalP').text(total.toLocaleString());
 }
 
 function chgCount(symbol, f) {
 
-	var parentId = $(f).closest("td").attr('id');
+	var parentId = $(f).closest("div").attr('id');
 	var pCount = $('#' + parentId).children('span').text();
 	pIdx = $('#' + parentId).children('.pIdx').val();
-	var pPrice = $('#' + parentId + '+td').children('span').text().replace(',', '').trim();
+	var tempPrice = $('#' + parentId).parent().parent().find('.product-price').text().replace(',', '').trim();
+	var pPrice = tempPrice.substring(0,tempPrice.length-1);
 	var uPrice = eval("Number(pPrice)/Number(pCount)");
-
+	console.log(pPrice);
+	console.log(parentId,pCount,pIdx,pPrice,uPrice);
 	if (symbol == "+") {
 		newCount = eval("Number(pCount)+1");
 		var newPrice = eval("Number(pPrice)+Number(uPrice)");
@@ -219,7 +263,7 @@ function chgCount(symbol, f) {
 	}
 	if (eval("Number(newCount) < 1") == false) {
 		$('#' + parentId).children('span').text(newCount);
-		$('#' + parentId + '+td').children('span').text(newPrice.toLocaleString());
+		$('#' + parentId).parent().parent().find('.product-price').text(newPrice.toLocaleString()+'원');
 	}
 	
 	totalP();
@@ -342,8 +386,8 @@ function errCallBack(errData) {
 															<div class="product_content">
 																${myCartList.product_description }
 															</div>
-															<div class="product_price">
-																<fmt:formatNumber value="${myCartList.product_price }" pattern="###,###,###원" />
+															<div class="products_price">
+																<fmt:formatNumber value="${myCartList.unit_price }" pattern="###,###,###원" />
 															</div>
 														</div>
 														<div>
@@ -354,16 +398,14 @@ function errCallBack(errData) {
 															</form>
 														</div>
 														<!-- 상품수량 증감 부분 -->
-														<div class="items" id="product_${myCartList.product_idx }">
+														<div class="items">
 															<div  class="option">상품 주문 수량</div>
 															<div class="option_price">
-																<div class="option_controller">
+																<div class="option_controller" id="product_${myCartList.product_idx }">
 																	<input type="hidden" class="pIdx" value="${myCartList.product_idx }" /> 
-																	<!-- <input class="cButton" type="button" value="-" onclick="chgCount('-',this);"/> -->
-																	<button class="cButton" onclick="chgCount('-',this);">-</button>
-																	<input class="pCount" value="${myCartList.product_count }"/>
-																	<!-- <input class="cButton" type="button" value="+" onclick="chgCount('+',this);"/> -->
-																	<button class="cButton" onclick="chgCount('+',this);"/>+</button>
+																	<button class="cButton" id="minus_btn" onclick="chgCount('-',this);">-</button>
+																	<span class="pCount">${myCartList.product_count }</span>
+																	<button class="cButton" id="plus_btn" onclick="chgCount('+',this);">+</button>
 																</div>
 															</div>
 															<span class="product-price">
@@ -390,9 +432,11 @@ function errCallBack(errData) {
 						<strong style="font-size: 26px;"><span id="totalP">
 						<fmt:formatNumber value="${totalPrice }" pattern="###,###,###" /></span>원</strong>
 					</div>
-					<div style="text-align: center; text-decoration:">
-						<button id="purchase">구매하기(결제)</button>
-						<button type="button" onclick="location.href='product'">목록으로</button>
+					<div align="center">
+						<button type="button" class="buy_link" id="purchase">구매하기(결제)</button>
+					</div>
+					<div align="right">
+						<button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
 					</div>
 				</div>
 			</div>

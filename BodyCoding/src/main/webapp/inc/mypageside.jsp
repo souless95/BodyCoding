@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- 마이페이지 탑쪽 문제발생 -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 <style>
 a{
@@ -18,12 +19,9 @@ ul{
     list-style: none;
     padding: 0;
 }
-div{
-    display: block;
-}
-.contain_left{
-	width:230px;
-	float: left;
+.contain_left1{
+   width:230px;
+   float: left;
 }
 .right_body{
     width: 970px;
@@ -34,11 +32,11 @@ div{
     margin: 0 auto;
 }
 .left_h2{
-	text-align:center;
-	background: #666;
-	color: #fff;
-	font-size: 21px;
-	padding: 25px 0;
+   text-align:center;
+   background: #666;
+   color: #fff;
+   font-size: 21px;
+   padding: 25px 0;
     border-radius: 5px;
 }
 .left_ul1{
@@ -48,8 +46,8 @@ div{
 }
 .accordion{
     width:180px;
-	text-align:center;
-	font-size: 21px;
+   text-align:center;
+   font-size: 21px;
     float: left;
 }
 .location_wrap {
@@ -69,7 +67,7 @@ div{
 		</div>
 	</div>
 	<div class="contain mt-3">
-		<div class="contain_left">
+		<div class="contain_left1" style="height:580px;">
 			<div class="accordion" id="accordion">
 				<div class="card">
 					<div class="left_h2">
@@ -104,7 +102,7 @@ div{
 							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="#">결제내역</a></li>
+		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
 		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
 		                            </ul>
 		                        </div>
@@ -174,18 +172,34 @@ div{
 	</div>
 
 <form name="frm" method="post" >
-	<input type="hidden" id="mem_id" name="mem_id">
-	<input type="hidden" id="gym_code" name="gym_code">
+   <input type="hidden" id="mem_id" name="mem_id">
+   <input type="hidden" id="gym_code" name="gym_code">
 </form>
 <script>
+
 function mytrainerInfo(mem_id, gym_code){
-	let f = document.frm;
-	f.mem_id.value = mem_id;
-	f.gym_code.value = gym_code;
-	
-	f.action ="mytrainerInfo";
-	f.submit();
+    let f = document.createElement("form");
+    f.setAttribute("method", "post");
+    f.setAttribute("action", "mytrainerInfo");
+    
+    let memIdInput = document.createElement("input");
+    memIdInput.setAttribute("type", "hidden");
+    memIdInput.setAttribute("name", "mem_id");
+    memIdInput.setAttribute("value", mem_id);
+    
+    let gymCodeInput = document.createElement("input");
+    gymCodeInput.setAttribute("type", "hidden");
+    gymCodeInput.setAttribute("name", "gym_code");
+    gymCodeInput.setAttribute("value", gym_code);
+    
+    f.appendChild(memIdInput);
+    f.appendChild(gymCodeInput);
+    
+    document.body.appendChild(f);
+    f.submit();
 }
+
+
 </script>
 </body>
 </html>

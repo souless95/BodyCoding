@@ -8,7 +8,6 @@ import lombok.ToString;
 
 @Mapper
 @Controller
-@Data
 public class Criteria {
     
     // 특정 페이지 조회를 위한 클래스
@@ -66,7 +65,6 @@ public class Criteria {
 //    }
     
     
-    
     @Override
     public String toString() {
     	return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", searchType=" + searchType
@@ -81,6 +79,11 @@ public class Criteria {
         this.searchKeyword = searchKeyword;
     }
 
-    
-	
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
 }

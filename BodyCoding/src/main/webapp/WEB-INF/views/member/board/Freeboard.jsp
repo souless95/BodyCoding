@@ -41,21 +41,20 @@
 	<div style="display: flex; justify-content: center;  margin-top:20px;">
 		<table style="width:80%; height:300px;">
 		    <thead>
-		        <tr style="border-bottom:1px solid #ccc; height:50px;">
+		        <tr style="border-bottom:1px solid #ccc; height:50px; vertical-align: middle;">
 		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">번호</td>
 		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">제목</td>
 		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">작성자</td>
 		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">작성일</td>
 		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">조회수</td>
-		            <%-- 첨부보류 <td>첨부</td>--%>
 		        </tr>
 		    </thead>
     	<tbody>
         <c:forEach items="${list}" var="row" varStatus="loop">
             <c:if test="${row.board_category eq '공지'}">
-                <tr style=" width:100%; border-bottom:1px solid #ccc; height:45px;">
-                    <td style="display:flex; align-items:center; justify-content:center; height:45px; margin-top:5px; margin-bottom:5px; ">
-  					      <span style="width:50px; background-color: #FFE3E4; color: red;  text-align:center; border: 1px solid red; border-radius:10px;">공지</span>
+                <tr style="width:100%; height:45px; border-bottom:1px solid #ccc; vertical-align: middle;">
+                    <td style="vertical-align:middle; text-align:center; justify-content:center;  height:45px; margin-top:5px; margin-bottom:5px; ">
+  					      <span style="display: inline-block; width:60px; background-color: #FFE3E4; color: red;  text-align:center; border: 1px solid red; border-radius:10px;">공지</span>
 					</td>
 
                    	<td style="vertical-align:middle; padding-left:60px; text-align:left;">
@@ -66,7 +65,6 @@
                     <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_id}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_postdate}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_visitcount}</td>
-                    <%-- 첨부보류 <td class="text-center"><i class="bi bi-pin-angle-fill"></i></td> --%>
                 </tr>
             </c:if>
         </c:forEach>

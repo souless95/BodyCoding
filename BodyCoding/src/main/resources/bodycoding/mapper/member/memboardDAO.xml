@@ -6,28 +6,17 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.bc.bodycoding.board.memboardService">
-			<!-- 게시글 목록 (자유게시판+신고) 
-			<select id="memselect" parameterType="global.dto.BoardDTO" resultType="global.dto.BoardDTO">
-				SELECT FB.*, COUNT(R.board_idx) AS count, MAX(closed_chk) AS closed_chk
-					FROM freeboard FB
-					LEFT JOIN report R ON FB.board_idx = R.board_idx
-					GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, FB.board_contents,
-				 				FB.board_file,  FB.board_visitcount, FB.board_postdate, FB.closed_chk
-				 		order by FB.board_postdate desc 
-			</select>
-			-->
-	    <!-- <select id="memselect"
-		parameterType="global.dto.BoardDTO"
-		resultType="global.dto.BoardDTO">
+	<!-- 게시글 목록 (자유게시판+신고) 
+	<select id="memselect" parameterType="global.dto.BoardDTO" resultType="global.dto.BoardDTO">
 		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(closed_chk) AS closed_chk
 			FROM freeboard FB
 			LEFT JOIN report R ON FB.board_idx = R.board_idx
-			WHERE closed_chk = 'N'
 			GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, FB.board_contents,
-		 				FB.board_file, FB.board_visitcount, FB.board_postdate, FB.closed_chk
+		 				FB.board_file,  FB.board_visitcount, FB.board_postdate, FB.closed_chk
 		 		order by FB.board_postdate desc 
 	</select>
-	 -->
+			-->
+	   
 	<!--  잘되던거
 	<select id="memselect" resultType="global.dto.BoardDTO" parameterType="global.dto.BoardDTO">
 	 <![CDATA[
@@ -76,8 +65,8 @@
 	  	select count(*) from freeboard WHERE 
 			  	${searchType} LIKE '%'||#{searchKeyword}||'%'
 	</select>
-
 	
+	<!-- 게시글 상세보기 -->
  	<select id="memselect1" resultType="global.dto.BoardDTO" parameterType="com.bc.bodycoding.board.Criteria">
         <![CDATA[
        SELECT *
@@ -160,8 +149,9 @@
 	
 	<!-- 댓글 조회 -->
 	<select id="selectreply" parameterType="String" resultType="global.dto.ReplyDTO">
-		select * from reply where board_idx=#{board_idx}
+		select * from reply where board_idx=#{board_idx} ORDER BY reply_idx DESC
 	</select>
+	
 	<!-- 댓글 수정하기-->
 	<update id="updatereply" parameterType="global.dto.ReplyDTO" >
 		update reply set reply_cont = #{reply_cont}

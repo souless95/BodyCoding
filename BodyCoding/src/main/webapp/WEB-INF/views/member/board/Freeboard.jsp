@@ -17,8 +17,8 @@
 	
 	<div class="container" style="margin-top:25px;">
 	
-	<div class="container" style="width:80%; text-align:left; padding-left:15px;" >
-	 	<div class="container" style="text-align: left;">
+	<div class="container-fluid" style="width:80%; text-align:left; padding-left:15px;" >
+	 	<div style="margin-left:145px;">
 	    <form method="get" action="searchmemberboard.do" style=" display: flex;">
 	        <div class="form-group" style="flex; margin-top:4px;">
 	            <label for="searchType">검색 종류</label>
@@ -38,7 +38,7 @@
 		</div><!-- 검색끝 -->
 	 </div>		
 	
-	<div style="display: flex; justify-content: center; margin-top:20px;">
+	<div style="display: flex; justify-content: center;  margin-top:20px;">
 		<table style="width:80%; height:300px;">
 		    <thead>
 		        <tr style="border-bottom:1px solid #ccc; height:50px;">
@@ -106,8 +106,6 @@
 			    </c:if>
 			</ul>
 		</div>
-	
-		
 	</div>
 	<!-- footer -->
 	<%@ include file="../../../../inc/Bottom.jsp" %>

@@ -27,12 +27,14 @@ body{
 					<div>
 						<div id="layoutSidenav">
 						
+							
 						</div>
 					</div>
 				</div>
-        	</div>
-		</div>
+			</div>
+       	</div>
 	</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
+</body>
 </html>

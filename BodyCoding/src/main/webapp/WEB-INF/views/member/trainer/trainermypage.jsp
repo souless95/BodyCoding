@@ -17,22 +17,22 @@ body{
 </style>
 </head>
 <%@ include file="../../../../inc/Top.jsp" %>
-<body class="is-preload">
-	 <div class="container">
-	 	<%@ include file ="../../../../inc/mypageside.jsp" %>
-        <div id="layoutSidenav_content">
-	        <div class="card mb-5" style="border-bottom: none;">
-	        	<div class="card-header">
-					<h2> ${UserName}님의 마이페이지 입니다.</h2>
-						<div>
-							<div id="layoutSidenav">
-							
-							</div>
+<body>
+ <div class="container">
+ 	<%@ include file ="../../../../inc/mypageside.jsp" %>
+       <div id="layoutSidenav_content">
+        <div class="card mb-5" style="border-bottom: none;">
+        	<div class="card-header">
+				<h2> ${UserName}님의 마이페이지 입니다.</h2>
+					<div>
+						<div id="layoutSidenav">
+						
 						</div>
 					</div>
-	        	</div>
-			</div>
+				</div>
+        	</div>
 		</div>
-<%@ include file="../../../../inc/Bottom.jsp" %>
+	</div>
 </body>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

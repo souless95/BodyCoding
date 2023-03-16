@@ -13,7 +13,7 @@
 	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 	  	a{border:0;}
 	  	.container {
-	  		min-height:580px;
+	  		min-height:650px;
 		}
 	</style>
 <script type="text/javascript">
@@ -134,7 +134,7 @@ function openChatRoom(event, mem_id){
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
 						                    <li><a href="calendar.do">운동정보</a></li>
-							   				<li><a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a></li>
+							   				<li><a class="btn" href='javascript:void(0);' onclick='mytrainerInfo("${UserEmail}","${UserGymCode}");'>내 정보</a></li>
 						                </ul>
 						            </li>
 						            <li>
@@ -157,7 +157,6 @@ function openChatRoom(event, mem_id){
 				</nav>
 			</div>
 		</div>
-		
 		
 		<!-- Scripts -->
 		<script src="../static/assets/js/jquery.min.js"></script>

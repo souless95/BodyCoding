@@ -121,7 +121,6 @@ public class memboardController {
 		List<ReplyDTO> replyDTOList = memboarddao.selectreply(replyDTO);
 		
 		model.addAttribute("rdto", replyDTOList);
-		System.out.println(replyDTOList);
 		
 		//조회수 증가
 		int result = memboarddao.updateVisitCount(boardDTO);
@@ -132,10 +131,8 @@ public class memboardController {
 		}
 		
 		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
-		System.out.println(replyDTOList);
 		String userEmail = (String) session.getAttribute("UserEmail");
 		model.addAttribute("mem_id", userEmail);
-		System.out.println(userEmail);
 					
 			return "member/board/detailmemboard";
 	}

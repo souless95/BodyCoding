@@ -86,8 +86,4 @@ public class Criteria {
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
 	}
-    
-    
-    
-	
 }

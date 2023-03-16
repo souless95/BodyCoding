@@ -179,4 +179,5 @@ public class SocialAccountController {
 			session.setAttribute("UserEmail", memberDTO.getMem_id());
 			return "redirect:main";
 		}
+		
 }

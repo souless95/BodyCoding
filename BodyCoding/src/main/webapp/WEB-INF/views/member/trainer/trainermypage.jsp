@@ -22,14 +22,11 @@ body{
  	<%@ include file ="../../../../inc/mypageside.jsp" %>
        <div id="layoutSidenav_content">
         <div class="card mb-5" style="border-bottom: none;">
-        	<div class="card-header">
+        	<div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle;">
 				<h2> ${UserName}님의 마이페이지 입니다.</h2>
-					<div>
-						<div id="layoutSidenav">
-						
-							
-						</div>
-					</div>
+			</div>
+				<div>
+				
 				</div>
 			</div>
        	</div>

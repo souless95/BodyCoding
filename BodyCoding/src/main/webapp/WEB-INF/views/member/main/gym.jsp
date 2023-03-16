@@ -316,22 +316,22 @@ function errCallBack(errData){
 	</div>
 	<!-- 지점 리스트 나오는 부분 -->
 	<div style="height: 330px; width: 420px; overflow: auto;">
-				<ul style="list-style-type: none; padding-top: 10px;">
-					<div id="show_data">
-						<c:forEach items="${gymList }" var="row" varStatus="loop">
-						<!-- <a href="#" style="color: black;"> -->
-							<li style="border-bottom: 1px solid gray; color: black;">
-								<div>
-									${row.mem_name}
-									<button style="float: right; width: 100px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
-								</div>
-								<div>${row.mem_address}</div>
-								<div>${row.mem_phone}</div>
-							</li>
-						<!-- </a> -->
-						</c:forEach>
-					</div>
-				</ul>
+		<ul style="list-style-type: none; padding-top: 10px;">
+			<div id="show_data">
+				<c:forEach items="${gymList }" var="row" varStatus="loop">
+				<!-- <a href="#" style="color: black;"> -->
+					<li style="border-bottom: 1px solid gray; color: black;">
+						<div>
+							${row.mem_name}
+							<button style="float: right; width: 100px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
+						</div>
+						<div>${row.mem_address}</div>
+						<div>${row.mem_phone}</div>
+					</li>
+				<!-- </a> -->
+				</c:forEach>
+			</div>
+		</ul>
 	</div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp"%>

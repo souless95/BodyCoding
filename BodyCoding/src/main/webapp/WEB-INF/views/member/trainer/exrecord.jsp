@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script>
 function editRecord(training_log_idx) {
   if (confirm("게시글을 수정하시겠습니까?")) {
@@ -69,7 +70,7 @@ function deleteRecord(training_log_idx) {
 		</div>
 		</div>
 		<!-- bottom -->
-		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
+<%@ include file="../../../../inc/Bottom.jsp"%>
 </body>
 </html>

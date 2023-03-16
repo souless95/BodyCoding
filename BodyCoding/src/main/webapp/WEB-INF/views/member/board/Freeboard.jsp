@@ -23,9 +23,9 @@
 	        <div class="form-group" style="flex; margin-top:4px;">
 	            <label for="searchType">검색 종류</label>
 	            <select name="searchType" id="searchType" class="form-control">
-	                <option value="title">제목</option>
-	                <option value="content">내용</option>
-	                <option value="writer">작성자</option>
+	                <option value="board_title">제목</option>
+	                <option value="board_contents">내용</option>
+	                <option value="mem_id">작성자</option>
 	            </select>
 	        </div>
 	        &nbsp;&nbsp;

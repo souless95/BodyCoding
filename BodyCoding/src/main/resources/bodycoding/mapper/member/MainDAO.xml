@@ -201,7 +201,8 @@
 	parameterType="global.dto.ProductDTO"
 	resultType="global.dto.ProductDTO">
 	select C.mem_id, C.product_idx, product_img, product_name, product_description, 
-		product_count, (product_count*product_price) product_price, cart_idx
+		product_count, (product_count*product_price) product_price, 
+		product_price as unit_price, cart_idx
 		from cart C
 			inner join product P on C.product_idx = P.product_idx
 			inner join member M on C.mem_id = M.mem_id 

@@ -4,10 +4,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Controller;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Mapper
 @Controller
-@Data
 public class Criteria {
     
     // 특정 페이지 조회를 위한 클래스
@@ -59,11 +59,18 @@ public class Criteria {
         }
     }
     
+//    @Override
+//    public String toString() {
+//        return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
+//    }
+    
+    
     @Override
     public String toString() {
-        return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
+    	return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", searchType=" + searchType
+    			+ ", searchKeyword=" + searchKeyword + "]";
     }
-    
+
     public String getSearchKeyword() {
         return searchKeyword;
     }
@@ -71,6 +78,16 @@ public class Criteria {
     public void setSearchKeyword(String searchKeyword) {
         this.searchKeyword = searchKeyword;
     }
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+    
+    
     
 	
 }

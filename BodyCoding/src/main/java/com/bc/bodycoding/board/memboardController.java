@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import global.dto.BoardDTO;
+import global.dto.MemberDTO;
 import global.dto.ReplyDTO;
 
 @Controller
@@ -57,26 +58,49 @@ public class memboardController {
 	    return "member/board/Freeboard";
 	}	*/
 	
+	
+//	@RequestMapping(value = "/searchmemberboard.do", method = RequestMethod.GET)
+//	public String searchMemberBoard(@RequestParam("searchType") String searchType,
+//	                                      @RequestParam("searchKeyword") String searchKeyword,
+//	                                      Criteria cri, Model model) throws Exception {
+//			int boardListCnt = memboarddao.boardListCnt();
+//	        // 페이징 객체
+//	        Paging paging = new Paging();
+//	        // 검색 조건을 Criteria 객체에 설정
+//	        cri.setSearchType(searchType);
+//	        cri.setSearchKeyword(searchKeyword);
+//	        
+//	        paging.setCri(cri);
+//	        paging.setTotalCount(boardListCnt);    
+//	
+//		    // 게시글 리스트를 가져오는 코드 등
+//		    List<Map<String, Object>> list = memboarddao.memselect(cri);
+//	        model.addAttribute("list", list);    
+//	        model.addAttribute("paging", paging); 
+//			return "member/board/Freeboard";
+//		
+//	}
+	
+	//검색어 있을때 처리
 	@RequestMapping(value = "/searchmemberboard.do", method = RequestMethod.GET)
 	public String searchMemberBoard(@RequestParam("searchType") String searchType,
-	                                      @RequestParam("searchKeyword") String searchKeyword,
-	                                      Criteria cri, Model model) throws Exception {
-			
-			int boardListCnt = memboarddao.boardListCnt();
+			@RequestParam("searchKeyword") String searchKeyword,
+			Criteria cri, Model model) throws Exception {
+		if(searchKeyword != null) {
+			int boardListCnt = memboarddao.boardListCnt1(cri);
 	        // 페이징 객체
 	        Paging paging = new Paging();
 	        // 검색 조건을 Criteria 객체에 설정
 	        cri.setSearchType(searchType);
 	        cri.setSearchKeyword(searchKeyword);
-	        
 	        paging.setCri(cri);
 	        paging.setTotalCount(boardListCnt);    
-
 		    // 게시글 리스트를 가져오는 코드 등
-		    List<Map<String, Object>> list = memboarddao.memselect(cri);
+		    List<Map<String, Object>> list = memboarddao.memselect1(cri);
 	        model.addAttribute("list", list);    
-	        model.addAttribute("paging", paging); 
-			return "member/board/Freeboard";
+	        model.addAttribute("paging", paging);
+		}
+		return "member/board/Freeboard";
 		
 	}
 	

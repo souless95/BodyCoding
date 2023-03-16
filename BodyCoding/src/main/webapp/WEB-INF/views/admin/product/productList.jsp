@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,8 +39,8 @@
 										<td>${pItem.product_type}</td>
 										<td>${pItem.product_category}</td>
 										<td>${pItem.product_name}</td>
-										<td>${pItem.product_price}</td>
-										<td>${pItem.product_regidate}</td>
+										<td><fmt:formatNumber value="${pItem.product_price}" pattern="###,###,###" />원</td>
+										<td><fmt:formatDate value="${pItem.product_regidate}" pattern="yyyy-MM-dd" /></td>
 										<td>
 										<s:authorize access="hasRole('ROLE_ADMIN_SUPER')">
 											<a href="productEdit.do?product_idx=${pItem.product_idx}">수정</a>

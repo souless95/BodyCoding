@@ -1,5 +1,8 @@
 package com.bc.bodycoding.main.mypage;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.dto.GymDTO;
 import global.dto.MemberDTO;
+import global.dto.ProductDTO;
 import global.dto.WeightDTO;
 
 @Controller
@@ -87,4 +91,24 @@ public class MypageController {
 		mydao.insertWeight(weightDTO);
 		return "redirect:chart";
 	}
+	
+	@GetMapping("payLog.do")
+	public String payLogView(Model model, HttpSession session) {
+		String mem_id = (String)session.getAttribute("UserEmail");
+		List<ProductDTO> productDTO = mydao.selectPayLog(mem_id);
+		model.addAttribute("oList",productDTO);
+		return "member/mypage/payLog";
+	}
+	
+	@GetMapping("payLogDetail.do")
+	public String payLogDetailView(Model model, HttpServletRequest req) {
+		List<ProductDTO> payListDTO 
+			= mydao.selectPayLogDetail(req.getParameter("order_idx"));
+		ProductDTO payDTO 
+			= mydao.selectPayLogOne(req.getParameter("order_idx"));
+		
+		model.addAttribute("odList",payListDTO);
+		model.addAttribute("payLog",payDTO);
+		return "member/mypage/payLogDetail";
+	}	
 } 

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import global.dto.ChatRoomDTO;
 
 @Controller
-public class MChattingController {
+public class ChattingController {
 	
 	@Autowired
 	chatService chattingdao;
@@ -72,7 +72,6 @@ public class MChattingController {
 	/*방 정보가져오기*/
 	@RequestMapping("/getRoom")
 	public @ResponseBody List<ChatRoomDTO> getRoom(@RequestParam HashMap<Object, Object> params, Model model){
-		System.out.println(params.get("mem_id"));
 		roomList = chattingdao.selectmemid(params.get("mem_id").toString());
 		return roomList;
 	}

@@ -312,7 +312,9 @@ public class MemberMainController {
 		String user = session.getAttribute("UserEmail").toString();
 		productDTO.setMem_id(user);
 		maindao.cartStatusInicialize(productDTO);
-		model.addAttribute("myCartList", maindao.cartList(productDTO));
+		List<ProductDTO> cartList = maindao.cartList(productDTO);
+		System.out.println("에라이"+cartList);
+		model.addAttribute("myCartList",cartList);
 
 		return "member/main/cart";
 	}

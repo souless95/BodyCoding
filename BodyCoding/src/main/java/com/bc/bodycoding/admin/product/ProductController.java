@@ -3,6 +3,7 @@ package com.bc.bodycoding.admin.product;
 import java.io.File;
 import java.io.IOError;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +54,6 @@ public class ProductController {
 	//상품 등록 
 	@RequestMapping(value = "/productRegist.do", method = RequestMethod.POST)
 	public String regiAction(MultipartFile product_img, Model model, MultipartHttpServletRequest req) throws IOException, Exception {
-		
 		ProductDTO productDTO = new ProductDTO();
 		
 		if(product_img.isEmpty()) {
@@ -148,6 +148,7 @@ public class ProductController {
 		productDTO.setProduct_name(req.getParameter("product_name"));
 		productDTO.setProduct_description(req.getParameter("product_description"));
 		productDTO.setProduct_price(Integer.parseInt(req.getParameter("product_price")));
+		productDTO.setProduct_idx(req.getParameter("product_idx"));
 		
 		int result = productdao.update(productDTO);
 		System.out.println("실행완료");
@@ -157,8 +158,9 @@ public class ProductController {
 	
 	//재고관리 리스트
 	@RequestMapping(value="/admin/product/stockList")
-	public String slist(Model model) {
-		model.addAttribute("sList", productdao.stockSelect());
+	public String slist(Model model, Principal principal) {
+		String mem_id = principal.getName(); 
+		model.addAttribute("sList", productdao.stockSelect(mem_id));
 		return "/admin/product/stockList";
 	}
 	
@@ -166,7 +168,6 @@ public class ProductController {
 	@ResponseBody
 	@RequestMapping(value="/stockUpdate.do", method = RequestMethod.POST)
 	public String sUpdate(@RequestBody ProductDTO productDTO, Model model) {
-		System.out.println(productDTO);
 		int result = productdao.stockUpdate(productDTO);
 		if(result==1) {
 			System.out.println("업데이트 성공!");

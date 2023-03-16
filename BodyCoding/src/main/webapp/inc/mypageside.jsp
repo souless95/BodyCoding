@@ -61,11 +61,6 @@ ul{
 </style>
 </head>
 <body>
-	<div class="location_wrap">
-		<div class="contain">
-			<a>회원전용</a> <a class="active">마이페이지</a>
-		</div>
-	</div>
 	<div class="contain mt-3">
 		<div class="contain_left1" style="height:580px;">
 			<div class="accordion" id="accordion">

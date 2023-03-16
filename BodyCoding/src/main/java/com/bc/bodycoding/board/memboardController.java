@@ -24,7 +24,6 @@ public class memboardController {
 	@Autowired
 	memboardService memboarddao;
 	
-
 	//게시글 리스트 페이징 
 	@RequestMapping("/Freeboard.do")
 	public String board1(Criteria cri, Model model) {
@@ -80,7 +79,6 @@ public class memboardController {
 			return "member/board/Freeboard";
 		
 	}
-
 	
 	//게시글 상세보기
 	@RequestMapping("/detailmemberboard.do")
@@ -157,6 +155,7 @@ public class memboardController {
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		model.addAttribute("Freeboard", boardDTO);
+		System.out.println(boardDTO);
 
 		return "member/board/updateboard";
 	}
@@ -164,6 +163,7 @@ public class memboardController {
 	//게시글 실제 수정
 	@RequestMapping(value="updateboard.do", method=RequestMethod.POST)
 	public String editrecord2(BoardDTO boardDTO) {
+		
 		
 		int result = memboarddao.updateboard(boardDTO);
 		System.out.println(result);

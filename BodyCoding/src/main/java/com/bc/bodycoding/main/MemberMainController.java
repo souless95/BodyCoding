@@ -230,8 +230,6 @@ public class MemberMainController {
 		return "member/trainer/mytrainerInfo";
 	}
 	
-	
-	
 
 	// 트레이너 후기 작성
 	@RequestMapping("trainerReview")

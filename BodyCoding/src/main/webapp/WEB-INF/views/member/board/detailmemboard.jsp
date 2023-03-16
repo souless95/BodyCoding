@@ -10,15 +10,17 @@ pageContext.setAttribute("replaceChar", "\n");
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+<style>
 
+</style>
 </head>
 <body>
 	<!-- top메뉴  -->
 	<%@ include file="../../../../inc/Top.jsp"%>
 	<div class="container">
-		<div>
-			<div>
+		<div style="margin-left:200px;">
+			<div style="t">
 				<h2>${dto.mem_id }작성글상세보기</h2>
 			</div>
 			<form name="writeFrm">
@@ -46,11 +48,16 @@ pageContext.setAttribute("replaceChar", "\n");
 							<th>내용</th>
 							<td colspan="4"
 								style="height: 300px; vertical-align: top; padding-top: 10px; padding-bottom: 10px;">
-								${fn:replace(dto.board_contents, replaceChar, "<br/>")}</td>
-						</tr>
-						<tr style="text-align: center">
-							<th>파일첨부</th>
-							<td>${dto.board_file }</td>
+								${fn:replace(dto.board_contents, replaceChar, "<br/>")}
+								
+								<c:set var="board_file" value="${not empty dto.board_file}" />
+						   		<c:if test="${board_file}">
+							    	<div>
+							        	<img src="../static/uploads/board/${dto.board_file}" style="width:80%; height:80%;"/>
+							    	</div>
+						    	</c:if>
+							</td>
+							
 						</tr>
 
 					</table>
@@ -72,63 +79,61 @@ pageContext.setAttribute("replaceChar", "\n");
 						onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
 					<br>
 					<br>
-					<div>
-					<h4>댓글리스트</h4>
-					<div>
-						<c:forEach var="rdto" items="${rdto}">
-							<div id="reply" class="list-group-item" style="width: 90%">
-								<div>작성자: ${rdto.mem_id }&nbsp;</div>
-								
-								<div style="display: flex; justify-content: space-between;" style="width: 90%">
-									<div style="margin-left: 20px;" style="width: 90%">${rdto.reply_cont }</div>
-									<c:if test="${rdto.mem_id eq mem_id}">
-									<div>
-									<input type="hidden" name="board_idx" value="${dto.board_idx }" />
-									<input type="hidden" name="board_idx" value="${rdto.reply_idx }" />
-									<%-- <button type="button" class="btn btn-primary" onclick="openUpdateModal(${rdto.reply_idx})">수정</button> --%>
-									<!--  <button type="button" class="btn btn-primary" onclick="location.href='updatereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">수정</button>-->
-									<button type="button" class="btn btn-primary" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
-										
-										<button type="button" class="btn btn-primary"
-											onclick="location.href='deletereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">삭제</button>
+					<div class="card" style="border: 1px solid #D7D7D7; border-radius:7px; width:90%; padding-bottom:20px;">
+						<h3 style="margin-left:7px; margin-top:5px;">댓글</h3>
+						<div class="last-comment" style="margin-left:15px; width:100%; ">
+							<c:forEach var="rdto" items="${rdto}">
+								<div style="width: 108%; display: flex; justify-content: space-between;">
+									 <div style="display:flex; width:90%; height:40px; border-bottom: 1px solid #D7D7D7; align-items: center;">
+											<span style="font-weight:bold;"> ${rdto.mem_id }</span>&nbsp;
+											<div style="margin-left: 20px; width: 90%;">${rdto.reply_cont }</div>
+											<c:if test="${rdto.mem_id eq mem_id}">
+												<input type="hidden" name="board_idx" value="${dto.board_idx }" />
+												<input type="hidden" name="board_idx" value="${rdto.reply_idx }" />
+											<%-- <button type="button" class="btn btn-primary" onclick="openUpdateModal(${rdto.reply_idx})">수정</button> --%>
+											<!--  <button type="button" class="btn btn-primary" onclick="location.href='updatereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">수정</button>-->
+												<button type="button" style="width:50px; height:30px;" class="btn btn-primary" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
+												<button type="button"  style="width:50px; height:30px;"  class="btn btn-primary"
+													onclick="location.href='deletereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">삭제</button>
+											</c:if>
+										</div>
 									</div>
-								</c:if>
-								</div>
+								</c:forEach>
 							</div>
-						</c:forEach>
+						</div>
 					</div>
-				</div>
-			</div>
-		</form>
+				</form>
+		<div style="margin-top:10px;">
+			<form method="post" action="/updatereply.do" class="update-form" style="display: none;">
+			    <input type="hidden" name="board_idx" value="${dto.board_idx }" />
+			    <input type="hidden" name="mem_id" value="${mem_id }" />
+			    <input type="hidden" id="reply_idx" name="reply_idx"  />
+			    <div>
+			        <div style="width: 90%">
+					    <input type="text" name="reply_cont" id="reply_cont" style="width: 90%; height:50px; border-radius:30px;" >
+					    <textarea name="edited_reply_cont" id="edited_reply_cont"
+					     style="width: 90%; display:none; margin-bottom:10px; border: 1px solid #D7D7D7; border-radius:7px;"></textarea> 
+					</div>
 
-		<form method="post" action="/updatereply.do" class="update-form" style="display: none;">
-		    <input type="hidden" name="board_idx" value="${dto.board_idx }" />
-		    <input type="hidden" name="mem_id" value="${mem_id }" />
-		    <input type="hidden" id="reply_idx" name="reply_idx" value="" />
-		    <div class="card">
-		        <div style="width: 90%">
-		            <textarea rows="1" name="reply_cont" id="reply_cont" style="width: 90%" ></textarea>
-		            <textarea rows="3" name="edited_reply_cont" id="edited_reply_cont" style="width: 90%; display: none;"></textarea> <!-- 추가된 코드 -->
-		        </div>
-		        <div>
-		            <input type="submit" value="등록" class="btn btn-primary" id="reply_submit_button"  onclick="submitUpdatedReply();" /> <!-- 수정된 코드 -->
-		            <input type="button" value="취소" class="btn btn-secondary" onclick="cancelUpdate();" /> <!-- 추가된 코드 -->
-		        </div>
-		    </div>
-		</form>
-
-		<form method="post" action="/insertreply.do">
-			<input type="hidden" name="board_idx" value="${dto.board_idx }" />
-			 <input	type="hidden" name="mem_id" value="${mem_id }" />
-			<div class="card">
-				<div style="width: 90%">
-					<textarea rows="1" name="reply_cont" id="reply_cont" style="width: 90%" ></textarea>
-				</div>
-				<div>
-					<input type="submit" value="등록" class="btn btn-primary" />
-				</div>
-			</div>
-		</form>
+			        <div>
+			            <input type="submit" value="등록" class="btn btn-primary" id="reply_submit_button"  onclick="submitUpdatedReply();" /> <!-- 수정된 코드 -->
+			            <input type="button" value="취소" class="btn btn-secondary" onclick="cancelUpdate();" /> <!-- 추가된 코드 -->
+			        </div>
+			    </div>
+			</form>
+		</div>
+		<div style="width:90%; margin-left:15px;">
+			<form method="post" action="/insertreply.do">
+				<input type="hidden" name="board_idx" value="${dto.board_idx }" />
+				 <input	type="hidden" name="mem_id" value="${mem_id }" />
+				<div style="display: flex; flex-direction: row; width:88%; margin-top:10px;">
+			      <span style="font-weight:bold;">${mem_id }</span>
+			      <input type="text" name="reply_cont" id="reply_cont" placeholder="댓글을 입력해보세요"
+			       style="flex: 1; border-radius: 6px; border: 1px solid #D7D7D7; margin-left:10px;"/>
+			      <button type="submit" class="btn btn-primary" style="width: 65px; margin-left:20px;">등록</button>
+			    </div>
+			</form>
+		</div>
 		
 	</div>
 	<%@ include file="../../../../inc/Bottom.jsp"%>

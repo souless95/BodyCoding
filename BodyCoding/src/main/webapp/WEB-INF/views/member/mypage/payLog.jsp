@@ -26,7 +26,7 @@
 			<td><a href="payLogDetail.do?order_idx=${oList.order_idx}">${oList.order_idx}</a></td>
 			<td>${oList.order_name}</td>
 			<td>${oList.order_status}</td>
-			<td><fmt:formatDate value="${oList.order_date}" pattern="yyyy-MM-dd" /></td>
+			<td>${oList.order_date}</td>
 		</tr>	
 	</c:forEach>
 	</table>

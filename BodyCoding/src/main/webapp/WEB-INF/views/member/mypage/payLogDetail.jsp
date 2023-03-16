@@ -24,7 +24,7 @@
 		</tr>	
 		<tr>
 			<td>${payLog.order_idx}</td>
-			<td><fmt:formatDate value="${payLog.order_date}" pattern="yyyy-MM-dd" /></td>
+			<td>${payLog.order_date}</td>
 			<td>${payLog.order_name}</td>
 			<td>${payLog.total_price}</td>
 			<td>${payLog.use_point}</td>

@@ -20,16 +20,289 @@
     border-radius: 16px;
     box-shadow: 0px 3px 9px rgba(0,0,0,0.05);
 }
-.cell_all{
-	width: 100%;
-	text-align: center; 
-	display: inline-block;
+.store_content{
+   padding-bottom: 53px;
+}
+.products{
+    margin-bottom: 10px;
+    display: flex;
+    min-width: 0;
+}
+.products_info{
+    flex-grow: 1;
+}
+.product_info{
+    display: block;
+    padding-left: 35px;
+    box-sizing: border-box;
 }
 .cell{
 	width: 100%;
 	height: 150px;
     display: inline-block;
     border-bottom: 1px solid #f4f4f4;
+}
+.product_show{
+    padding: 30px 40px 20px 40px;
+}
+.checkbox_inner{
+    position: relative;
+    display: flex;
+}
+.inner_info{
+    height: 100px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    min-width: 0;
+    padding: 30px 0 12px;
+    border-right: 1px solid #e9ecef;
+}
+.product_tittle{
+    max-height: 44px;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 100px;
+    letter-spacing: 0;
+    color: #222222;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+.product_content{
+    max-height: 44px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 100px;
+    letter-spacing: 0;
+    color: #222222;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+.items{
+    margin: 0 20px;
+    padding: 30px 0 12px;
+    background-color: transparent;
+    border-right: 1px solid #e9ecef;
+    align-items: center;
+}
+.Title {
+	max-height: 44px;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0;
+    color: #222222;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    padding-right: 20px;
+}
+.pCount{
+    width: 60px;
+    font-size: 14px;
+    display: inline-block;
+    height: 100%;
+    border: none;
+    text-align: center;
+    color: #111111;
+    font-weight: normal;
+    vertical-align: top;
+}
+.price{
+ 	margin: 0 20px;
+    padding: 30px 0 12px;
+    background-color: transparent;
+    align-items: center;
+}
+.product-price{
+	width: 60px;
+    font-size: 15px;
+    display: inline-block;
+    height: 100%;
+    border: none;
+    text-align: center;
+    color: #1e1e23;
+    font-weight: bold;
+    vertical-align: top;
+}
+.discount{
+    position: relative;
+    padding-bottom: 40px;
+    color: #1e1e23;
+    letter-spacing: -0.5px;
+    zoom: 1;
+}
+.discount_info{
+    position: relative;
+    float: left;
+    padding: 30px 10px 0 160px;
+    border: 1px solid #fff;
+    border-top-color: #f0f0f0;
+    border-right-color: #e9e9e9;
+    border-bottom: 0;
+    width: 800px;
+    height: 100%;
+    background-position: 0 -516px;
+}
+.list_discount{
+    display: table;
+    margin-top: 4px;
+    width: 100%;
+    table-layout: fixed;
+    line-height: 25px;
+}
+.item_discount{
+    display: table-row;
+}
+.label{
+    display: table-cell;
+    width: 103px;
+    padding: 13px 0 0 36px;
+    letter-spacing: -0.5px;
+    vertical-align: top;
+}
+.item_point{
+    padding-top: 13px;
+}
+.input_area{
+   	position: relative;
+    float: left;
+    border-bottom: 1px solid #c8cacc;
+    text-align: right;
+    height: 28px;
+    line-height: 25px;
+    width: 269px;
+    padding-right: 5px;
+    font-weight: bold;
+}
+.list_balance{
+	float: left;
+	font-size:16px;
+    margin-left: 8px;
+}
+.item_amountarea{
+	display: inline-block;
+    line-height: 26px;
+    color: #767678;
+    vertical-align: top;
+    font-size: 14px;
+}
+.use_point{
+	display: table-cell;
+    padding-top: 13px;
+    vertical-align: top;
+}
+.using_point{
+	float: left;
+	width: 243px;	
+    height: 25px;
+    background: none;
+    border: 0;
+    color: #09aa5c;
+    line-height: 25px;
+    font-family: tahoma,geneva,sans-serif;
+    font-size: 16px;
+    text-align: right;
+}
+.won{
+    display: inline-block;
+    vertical-align: top;
+    color: #09aa5c;
+}
+.price_sum{
+    float: right;
+    padding: 38px 0px 0px 70px;
+    border: 1px solid #e9e9e9;
+    border-right-color: #fff;
+    border-bottom: 0;
+    border-left: 0;
+    width: 300px;
+}
+.sum{
+    margin-top: 23px;
+    overflow: hidden;
+    position: relative;
+    color: #444;
+}
+.sum_title{
+    float: left;
+    font-size: 13px;
+    letter-spacing: -0.5px;
+    line-height: 15px;
+    font-weight: bold;
+    color: #222;
+}
+.sum_detail{
+	overflow: hidden;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    line-height: 15px;
+    color: #222;
+    text-align: center;
+}
+.totalprice{
+    display: inline-block;
+    vertical-align: top;
+}
+.calc_list{
+    position: relative;
+    margin-top: 11px;
+    color: #666;
+    list-style:none;
+    padding-left:0px;
+}
+.calc_list::before{
+	position: absolute;
+    top: 1px;
+    bottom: 2px;
+    left: 0;
+    width: 4px;
+    background-color: #dcdee0;
+    content: '';
+}
+.calc_list li{
+	color: #888;
+	font-size: 12px;
+   	overflow: hidden;
+    padding-left: 12px;
+}
+.calc_list strong{
+    float: left;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+}
+.products_price{
+    display: inline-block;
+    vertical-align: top;
+}
+.sum_side{
+	padding-top: 8px;
+	overflow: hidden;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+    line-height: 15px;
+    color: #888;
+    text-align: center;
 }
 .buy_link{
 	display: inline-block;
@@ -38,9 +311,9 @@
     border-radius: 6px;
     font-size: 16px;
     line-height: 48px;
-    background-color: #ffffff;
+    background-color: #ffa500;
     vertical-align: top;
-    border: 1.5px solid #37C0FB;
+    border: none;
 }
 .go_product{
 	border: 1.5px solid #37C0FB;
@@ -48,6 +321,7 @@
 	border-radius: 6px;
 	background-color: #ffffff;
 	font-size: 16px;
+	
 }
 </style>
 <script type="text/javascript">
@@ -114,118 +388,123 @@ $(function(){
 		<input type="hidden" name="cart_idx" value=${cart_arr }>
 		<div class="contents">
 			<div class="store_card">
-				<table>
-					<thead>
-						<tr>
-							<th scope="col"><strong>상품정보</strong></th>
-							<th scope="col"><strong>상품수량</strong></th>
-							<th scope="col"><strong>상품금액</strong></th>
-						</tr>
-						<!-- 상품별 루프 시작 -->
-						<c:set var="totalPrice" value="0" />
-						<c:forEach items="${pList }" var="pList">
-							<tr>
-								<td width="10%"><img src="static/uploads/product/${pList.product_img}" style="width: 100px;"></td>
-								<td></td>
-								<td style="vertical-align: top;">
-									<div>
-										<strong>${pList.product_name }</strong>
-										<input type="hidden" name="product_name" value="${pList.product_name }">
-										<input type="hidden" name="product_idx" value="${pList.product_idx }"> 
-										<input type="hidden" name="product_count" value="${pList.product_count }"> 
+				<div class="store_content">
+					<div class="products">
+	              		<div class="products_info">
+	              			<div class="product_info">
+								<!-- 상품별 루프 시작 -->
+								<c:set var="totalPrice" value="0" />
+								<c:forEach items="${pList }" var="pList">
+									<div class="cell">
+										<div class="product_show">
+											<div class="checkbox_inner">
+												 <div class="inner_img">
+													<img src="static/uploads/product/${pList.product_img}" style="width: 100px;"/>
+												</div>
+												<div class="inner_info">
+													<div class="product_tittle">
+														<strong>${pList.product_name }</strong>
+														<input type="hidden" name="product_name" value="${pList.product_name }">
+														<input type="hidden" name="product_idx" value="${pList.product_idx }"> 
+														<input type="hidden" name="product_count" value="${pList.product_count }"> 
+													</div>
+													<div class="product_content">
+														${pList.product_description }
+													</div>
+												</div>
+												<div class="items">
+													<div class="Title">
+														상품개수
+													</div>
+													<div class="pCount">
+														${pList.product_count }개 
+													</div>
+												</div>
+												<div class="price">
+													<div class="Title">
+														상품금액
+													</div>
+													<div class="product-price">
+														<fmt:formatNumber value="${pList.product_price }" pattern="###,###,###원" />
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div>${pList.product_description }</div>
-								</td>
-								<td></td>
-								<td style="vertical-align: middle; text-align: center;">
-									<span class="pCount">
-										${pList.product_count }
-									</span>개 
-								</td>
-								<td style="vertical-align: middle; text-align: center;">
-									<span class="product-price">
-										<fmt:formatNumber value="${pList.product_price }" pattern="###,###,###" />
-									</span>원
-								</td>
-							</tr>
-							<c:set var="totalPrice" value="${totalPrice + pList.product_price}" />
-							<c:set var="totalPoint" value="${pList.mem_point}" />
-						</c:forEach>
-					</thead>
-				</table>
-				<!-- 결제 예정 금액 : 0000원 // 계속 쇼핑하기, 구매하기 버튼 위치 -->
-				<table style="border: 5px solid none;">
-					<tbody>
-						<tr>
-							<td>
-								<div align="center">
-									<strong style="font-size: 20px;">주문금액</strong>
+									<c:set var="totalPrice" value="${totalPrice + pList.product_price}" />
+									<c:set var="totalPoint" value="${pList.mem_point}" />
+								</c:forEach>
+								
+								<!-- 결제 예정 금액 : 0000원 // 계속 쇼핑하기, 구매하기 버튼 위치 -->
+								<div class="discount">
+									<div class="discount_info">
+										<h4>포인트</h4>
+										<ul class="list_discount">
+											<li class="item_discount">
+												<div class="label">
+													보유
+												</div>
+												<div class="item_point">
+													<div class="input_area" id="sPoint">
+														<fmt:formatNumber value="${totalPoint }" pattern="###,###,###" />
+													</div>
+													<div class="list_balance">
+															포인트 : <fmt:formatNumber value="${totalPoint }" pattern="###,###,###원" />
+													</div>
+												</div>
+											</li>
+											<li class="item_discount">
+												<div class="label">
+													사용
+												</div>
+												<div class="use_point">
+													<div class="input_area">
+														<input type="text" class="using_point" value="0" min="0" id="uPoint" name="use_point">
+														<span class="won">원</span>
+													</div>
+														<input style="width: 19px; height: 18px;" type="checkbox">전액 사용
+												</div>
+											</li>
+										</ul>
+									</div>
+									
+									<div class="price_sum">
+										<h4>결제상세</h4>
+										<div class="sum">
+											<strong class="sum_title">주문금액</strong>
+											<p class="sum_detail">
+												<em class="totalprice" id="totalP">
+													<fmt:formatNumber value="${totalPrice }" pattern="###,###,###원"/>
+												</em>
+											</p>
+										</div>
+										<ul class="calc_list">
+											<li>
+												<strong>상품금액</strong>
+												<p class="sum_side">
+													<em class="products_price" id="price">
+														<fmt:formatNumber value="${totalPrice }" pattern="###,###,###원" />
+														<input type="hidden" name="product_price" value="${totalPrice }">
+														<input type="hidden" name="type" value="상품">
+													</em>
+												</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div align="center">
-									<strong style="font-size: 26px;">
-										<span id="price">
-										<fmt:formatNumber value="${totalPrice }" pattern="###,###,###" />
-										</span>원
-									</strong>
-									<input type="hidden" name="product_price" value="${totalPrice }">
-									<input type="hidden" name="type" value="상품">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div align="center">
-									<strong style="font-size: 20px;">사용 포인트</strong>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div align="center">
-									<strong style="font-size: 26px;">
-										(보유포인트 :
-										<span id="sPoint">
-											<fmt:formatNumber value="${totalPoint }" pattern="###,###,###" />
-										</span>)
-										<input type="number" value="0" min="0" id="uPoint" name="use_point">
-										<input type="checkbox">전체 사용
-									</strong>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div align="center">
-									<strong style="font-size: 20px;">총 주문금액</strong>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div align="center">
-									<strong style="font-size: 26px;">
-										<span id="totalP">
-											<fmt:formatNumber value="${totalPrice }" pattern="###,###,###" />
-										</span>원
-									</strong>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+							</div>
+						</div>
+					</div>
+					<div align="center">
+						<button type="button" class="buy_link"  id="purchase">구매하기(결제)</button>
+					</div>
+					<div align="right" style="padding-right:70px;">
+						<button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>
-	<div align="center">
-		<button type="button" class="buy_link"  id="purchase">구매하기(결제)</button>
-	</div>
-	<div align="right">
-		<button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
-	</div>
 </div>
 
 <!-- bottom -->

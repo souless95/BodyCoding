@@ -236,7 +236,8 @@ var newCount;
 function totalP(){
     var total = 0;
     $('input[name=selected_product]:checked').each(function() {
-        total += parseInt($(this).closest('div').find('.product-price').text().replace(',', '').trim());
+    	var t = $(this).closest('.checkbox_inner').find('.product-price').text().replace(',', '').trim();
+    	total += parseInt(t.substring(0,t.length-1));
     });
     $('#totalP').text(total.toLocaleString());
 }
@@ -246,9 +247,11 @@ function chgCount(symbol, f) {
 	var parentId = $(f).closest("div").attr('id');
 	var pCount = $('#' + parentId).children('span').text();
 	pIdx = $('#' + parentId).children('.pIdx').val();
-	var pPrice = $('#' + parentId + '+div').children('span').text().replace(',', '').trim();
+	var tempPrice = $('#' + parentId).parent().parent().find('.product-price').text().replace(',', '').trim();
+	var pPrice = tempPrice.substring(0,tempPrice.length-1);
 	var uPrice = eval("Number(pPrice)/Number(pCount)");
-
+	console.log(pPrice);
+	console.log(parentId,pCount,pIdx,pPrice,uPrice);
 	if (symbol == "+") {
 		newCount = eval("Number(pCount)+1");
 		var newPrice = eval("Number(pPrice)+Number(uPrice)");
@@ -260,7 +263,7 @@ function chgCount(symbol, f) {
 	}
 	if (eval("Number(newCount) < 1") == false) {
 		$('#' + parentId).children('span').text(newCount);
-		$('#' + parentId + '+div').children('span').text(newPrice.toLocaleString());
+		$('#' + parentId).parent().parent().find('.product-price').text(newPrice.toLocaleString()+'원');
 	}
 	
 	totalP();
@@ -384,7 +387,7 @@ function errCallBack(errData) {
 																${myCartList.product_description }
 															</div>
 															<div class="products_price">
-																<fmt:formatNumber value="${myCartList.product_price }" pattern="###,###,###원" />
+																<fmt:formatNumber value="${myCartList.unit_price }" pattern="###,###,###원" />
 															</div>
 														</div>
 														<div>

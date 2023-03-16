@@ -54,6 +54,8 @@ public class ProductDTO {
 	private String cart_idx;
 	//카트 물건 갯수
 	private String product_count;
+	//장바구니 상품별 주문 총액
+	private int unit_price;
 	//회원 보유 포인트
 	private int mem_point;
 	//결제 시, 사용 포인트
@@ -88,6 +90,7 @@ public class ProductDTO {
 	private String order_name;
 	//주문상태
 	private String order_status;
+	
 }
 
 

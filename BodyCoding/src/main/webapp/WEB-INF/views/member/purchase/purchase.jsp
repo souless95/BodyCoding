@@ -49,6 +49,7 @@ function sel_product(idx,f){
 
 function sel_trainer(id,f){
 	trainer_id = id;
+	console.log(trainer_id);
 	$('.trainer').each(function() {
 		$(this).removeClass('seleted');
 	});  
@@ -88,7 +89,6 @@ $(function(){
    });
    
     $('#kPayBtn').click(function(){
-       let trainer_id = $('input:radio[name=trainer_id]:checked').val();
        let product_category = $('input[name=product_category]:checked').val();
        let product_name = $("label[for='"+product_idx+"']").text();
        let product_price = $("span[id='"+product_idx+"']").text().replace(',', '').trim();

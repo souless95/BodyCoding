@@ -85,7 +85,7 @@ pageContext.setAttribute("replaceChar", "\n");
 							<c:forEach var="rdto" items="${rdto}">
 								<div style="width: 108%; display: flex; justify-content: space-between;">
 									 <div style="display:flex; width:90%; height:40px; border-bottom: 1px solid #D7D7D7; align-items: center;">
-											<span style="font-weight:bold;"> ${rdto.mem_id }</span>&nbsp;
+											<div><div style="font-weight:bold;  width: 200px; height: 20px; display: flex-grow: 0; align-items: center;"> ${rdto.mem_id }</div></div>&nbsp;
 											<div style="margin-left: 20px; width: 90%;">${rdto.reply_cont }</div>
 											<c:if test="${rdto.mem_id eq mem_id}">
 												<input type="hidden" name="board_idx" value="${dto.board_idx }" />
@@ -134,7 +134,6 @@ pageContext.setAttribute("replaceChar", "\n");
 			    </div>
 			</form>
 		</div>
-		
 	</div>
 	<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>

@@ -80,10 +80,14 @@ public class ProductDTO {
 	//결제 처리 시, 확인용 상품 유형(멤버쉽,상품)
 	private String type;
 	
-	//결제 날짜
-	private String order_date;
+	//주문 날짜
+	private Date order_date;
 	//총 매출
 	private int sales;
+	//주문명
+	private String order_name;
+	//주문상태
+	private String order_status;
 }
 
 

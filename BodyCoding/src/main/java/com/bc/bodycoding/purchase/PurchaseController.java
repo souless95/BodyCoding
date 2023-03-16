@@ -205,6 +205,7 @@ public class PurchaseController {
 
 			productDTO.setMem_id(mem_id);
 			productDTO.setType(type);
+			productDTO.setOrder_name(product_name);
 			productDTO.setPay_method("카카오페이");
 
 			int result1 = 0;

@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../static/assets/css/main.css" />
 <style type="text/css">
-h1 {
+/* h1 {
   position: relative;
   text-align: center;
   color: #353535;
@@ -28,7 +28,7 @@ p {
   width: 90%;
   margin: 40px auto;
   text-align: center;
-}
+} */
 button {
   margin: 20px;
   outline: none;
@@ -36,10 +36,11 @@ button {
 .custom-btn {
   width: 130px;
   height: 40px;
-  padding: 10px 25px;
-  border: 2px solid #000;
+  border: 2px solid #99DAEA;
+  border-radius : 10px;
   font-family: 'Lato', sans-serif;
-  background: transparent;
+  background-color:#99DAEA;
+  color:white;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;

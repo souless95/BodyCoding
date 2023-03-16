@@ -8,6 +8,77 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../static/assets/css/Info.css" />
+<style type="text/css">
+element.style {
+    height: auto !important;
+}
+.contain {
+    width: 1080px;
+    margin: 0 auto;
+}
+.rec_view_top{
+	border-top: 1px solid #ececec;
+	padding-top: 60px;
+	border-bottom: 1px solid #ececec;
+	padding-bottom: 60px;
+	height: 620px;
+}
+.rec_view_top .rec_view_img{
+    padding-bottom: 60px;
+    width: 490px;
+}
+.rec_view_top .rec_view_img > img {
+    width: 100%;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.rec_view_top .rec_view_info{
+	width: 555px;
+}
+.rec_view_info .rec_exp{
+	padding: 35px 0;
+	border-bottom:  1px solid #f6f6f6;
+}
+.rec_exp .prod_title{
+    font-size: 30px;
+    color: #383838;
+    font-weight: 500;
+    margin-top: -8px;
+}
+.rec_exp .s_title {
+    font-size: 16px;
+    color: #888;
+    margin-top: 9px;
+}
+.rec_exp .text_box {
+    font-size: 16px;
+    color: #888;
+    line-height: 20px;
+    margin-top: 50px;
+}
+.rec_info .rec_mate {
+    padding-top: 37px;
+}
+.rec_view_top .rec_view_img .like_btn {
+    margin-top: 20px;
+}
+.rec_content {
+    padding-top: 70px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #ececec;
+}
+.xans-board-commentwrite {
+    margin: 30px 0 0;
+    padding: 5px 20px 20px;
+    border: 1px solid #e9e9e9;
+    background-color: #fbfafa;
+    color: #353535;
+}
+</style>
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp" %>
@@ -33,6 +104,19 @@ function login(t){
 <div class="container">
 <br>
 	<h2>상품 정보</h2>
+	<%-- <div class="contain" style="height: auto !important;">
+		<div class="rec_view_top">
+			<div class="fl rec_view_img"> <!-- 사진위치 -->
+				<img src="static/uploads/product/${productInfo.product_img}">
+			</div>
+		</div>	
+		<div class="fr rec_view_info">
+			<div class="rec_exp">
+				<h2 class="prod_title">${productInfo.product_name}</h2>
+				<p class="s_title"><h4>상품 상세정보</h4> ${productInfo.product_description }</p>
+			</div>
+		</div>	
+	</div> --%>
 	<img src="static/uploads/product/${productInfo.product_img}" style="width: 250px; height: 300px; float: left;">
 	<div class="Info">
 		<table class="basic">

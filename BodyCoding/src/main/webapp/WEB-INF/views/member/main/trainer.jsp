@@ -65,7 +65,7 @@ function sucCallBack(resData) {
 		tableData += "<div style='width:200px; margin:36px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
 		+"<img class='card-img-top mt-2' src='static/uploads/trainer/"+data.mem_img+"' "
 		+" style='width:100%; height:250px;'>"
-		+"<div class='card-body'>"
+		+"<div class='card-body'style='overflow: hidden; height: 100px;'>"
 		+"<b>"+data.mem_name+"</b>&nbsp;<span class='input'>&nbsp;#"+data.mem_interest+"&nbsp;&nbsp;</span><br>"
 		+data.mem_comment + "<br></div></a></div>";
 	});
@@ -108,7 +108,7 @@ h5 .input:hover{
 	    <option value="${gym.gym_code }">${gym.mem_name }</option>
 		</c:forEach>
 	</select>
-	<input type="button" value="지점선택" id="gymchoice"> 
+	<button type="button" class="custom-btn btn-1" style="width: 150px;" id="gymchoice">지점선택</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;키워드 추천:&nbsp;&nbsp;
 		<button value="친절" name="interest" class="input"> #친절</button>
 		<button value="열정" name="interest" class="input"> #열정</button>

@@ -230,9 +230,7 @@ function errCallBack(errData){
     
 </script>
 <!-- 지도관련 코드: 위치 고정되야 함(지도 끝) -->
-
 		
-
 	<!-- 상세정보 체크박스 부분 -->
 	<div class="main_right" style="width: 35%; float: left;">
 		<div style="height: 300px;">

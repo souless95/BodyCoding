@@ -18,21 +18,23 @@ body{
 </head>
 <%@ include file="../../../../inc/Top.jsp" %>
 <body>
-	 <div class="container">
-	 	<%@ include file ="../../../../inc/mypageside.jsp" %>
-        <div id="layoutSidenav_content">
-	        <div class="card mb-5" style="border-bottom: none;">
-	        	<div class="card-header">
-					<h2> ${UserName}님의 마이페이지 입니다.</h2>
-						<div>
-							<div id="layoutSidenav">
+ <div class="container">
+ 	<%@ include file ="../../../../inc/mypageside.jsp" %>
+       <div id="layoutSidenav_content">
+        <div class="card mb-5" style="border-bottom: none;">
+        	<div class="card-header">
+				<h2> ${UserName}님의 마이페이지 입니다.</h2>
+					<div>
+						<div id="layoutSidenav">
+						
 							
-							</div>
 						</div>
 					</div>
-	        	</div>
+				</div>
 			</div>
-		</div>
+       	</div>
+	</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
+</body>
 </html>

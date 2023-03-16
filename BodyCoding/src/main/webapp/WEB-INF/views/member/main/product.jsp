@@ -52,7 +52,7 @@ function errCallBack(errData){
 </script> 
 <div class="container">
 <br>
-	<h2>상품 목록</h2>
+	<h2 style="margin-bottom: 0;">상품 목록</h2>
 	<h5>
 	<select id="product_type" required>
 	    <option value="-">상품유형</option>

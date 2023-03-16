@@ -134,25 +134,27 @@ public class MemberMainController {
 		String mem_id = (String)session.getAttribute("UserEmail");
 		if(mem_id != null) {
 			String interest = maindao.interestSelect(mem_id);
-			List<MemberDTO> interestlistSelect = maindao.interestlistSelect(interest);
-			List<MemberDTO> recomtrainerList = new ArrayList<>();
-			if(interestlistSelect.size()>5) {
-				Random random = new Random();
-				
-				// interestlistSelect 에서 무작위로 4개를 선택하여 recomtrainerList에 추가
-				for (int i = 0; i < 5; i++) {
-					int randomIndex = random.nextInt(interestlistSelect.size());
-					recomtrainerList.add(interestlistSelect.get(randomIndex));
-					interestlistSelect.remove(randomIndex);
+			if(interest != null) {
+				List<MemberDTO> interestlistSelect = maindao.interestlistSelect(interest);
+				List<MemberDTO> recomtrainerList = new ArrayList<>();
+				if(interestlistSelect.size()>5) {
+					Random random = new Random();
+					
+					// interestlistSelect 에서 무작위로 4개를 선택하여 recomtrainerList에 추가
+					for (int i = 0; i < 5; i++) {
+						int randomIndex = random.nextInt(interestlistSelect.size());
+						recomtrainerList.add(interestlistSelect.get(randomIndex));
+						interestlistSelect.remove(randomIndex);
+					}
 				}
-			}
-			else {
-				for(int i=0; i<interestlistSelect.size();i++) {
-					recomtrainerList.add(interestlistSelect.get(i));
+				else {
+					for(int i=0; i<interestlistSelect.size();i++) {
+						recomtrainerList.add(interestlistSelect.get(i));
+					}
 				}
+				model.addAttribute("interest", interest);
+				model.addAttribute("recomtrainerList", recomtrainerList);
 			}
-			model.addAttribute("interest", interest);
-			model.addAttribute("recomtrainerList", recomtrainerList);
 		}
 		model.addAttribute("gymList", maindao.gymlistSelect());
 		return "member/main/trainer";
@@ -205,6 +207,31 @@ public class MemberMainController {
 		model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
 		return "member/main/trainerInfo";
 	}
+	
+	//트레이너로 로그인했을떄 본인 상세정보 
+	@RequestMapping("mytrainerInfo")
+	public String mytrainerInfo(Model model, MemberDTO memberDTO) {
+		// 트레이너 지점이름
+		model.addAttribute("gymInfo", maindao.gymInfoSelect(memberDTO.getGym_code()));
+		// 트레이너 정보
+		model.addAttribute("trainerInfo", maindao.trainerInfoSelect(memberDTO.getMem_id()));
+		// 트레이너 평점
+		String avg_grade = maindao.gradeSelete(memberDTO.getMem_id());
+		System.out.println("평점 평균: " + avg_grade);
+		model.addAttribute("avg_grade", maindao.gradeSelete(memberDTO.getMem_id()));
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		Date now = new Date();
+		String now_dt = format.format(now);
+		System.out.println(now_dt);
+		model.addAttribute("nowdate", now_dt);
+		// 리뷰
+		model.addAttribute("reviewInfo", maindao.reviewSelect(memberDTO.getMem_id()));
+		return "member/trainer/mytrainerInfo";
+	}
+	
+	
+	
 
 	// 트레이너 후기 작성
 	@RequestMapping("trainerReview")

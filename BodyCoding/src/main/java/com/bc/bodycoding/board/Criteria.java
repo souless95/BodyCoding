@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Controller;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Mapper
 @Controller
@@ -59,11 +60,18 @@ public class Criteria {
         }
     }
     
+//    @Override
+//    public String toString() {
+//        return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
+//    }
+    
+    
+    
     @Override
     public String toString() {
-        return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
+    	return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", searchType=" + searchType
+    			+ ", searchKeyword=" + searchKeyword + "]";
     }
-    
 
     public String getSearchKeyword() {
         return searchKeyword;
@@ -72,6 +80,7 @@ public class Criteria {
     public void setSearchKeyword(String searchKeyword) {
         this.searchKeyword = searchKeyword;
     }
+
     
 	
 }

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../../../../inc/Top.jsp"%>
+
 <script>
 function editRecord(training_log_idx) {
   if (confirm("게시글을 수정하시겠습니까?")) {
@@ -22,7 +22,8 @@ function deleteRecord(training_log_idx) {
 </script>
 </head>
 <body>
-	
+<%@ include file="../../../../inc/Top.jsp"%>
+<div class="container">
 	<div id="container">
 		<!-- side -->
 		<%@ include file="../../../../inc/mypageside.jsp"%>
@@ -66,12 +67,9 @@ function deleteRecord(training_log_idx) {
 				</div>
 			</div>
 		</div>
+		</div>
 		<!-- bottom -->
 		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

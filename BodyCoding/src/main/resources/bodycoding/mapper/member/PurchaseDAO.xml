@@ -21,17 +21,19 @@
 		resultType="global.dto.ProductDTO">
 		SELECT mem_name, mem_img ,mem_id
 			FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
-		INNER JOIN (SELECT * FROM lesson WHERE lesson_category=#{lesson_category}) L
+		INNER JOIN 
+			(SELECT lesson_name, trainer_id FROM lesson 
+			WHERE lesson_category=#{lesson_category} GROUP BY lesson_name, trainer_id) L
 			ON M.mem_id=L.trainer_id
 	</select>
 
 	<insert id="insertOrder" parameterType="global.dto.ProductDTO">
 		<if test="use_point!='' ">
 		INSERT INTO order_log VALUES
-			(bodycoding_seq.nextval,#{mem_id},0,'결제완료',sysdate,'Y')
+			(bodycoding_seq.nextval,#{order_name},#{mem_id},0,'결제완료',sysdate,'Y')
 		</if>
 		INSERT INTO order_log VALUES
-			(bodycoding_seq.nextval,#{mem_id},#{use_point},'결제완료',sysdate,'Y')
+			(bodycoding_seq.nextval,#{order_name},#{mem_id},#{use_point},'결제완료',sysdate,'Y')
 		<selectKey keyProperty="order_idx" resultType="String"
 			order="AFTER">
 			select bodycoding_seq.currval as order_idx from dual

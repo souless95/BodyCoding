@@ -20,7 +20,7 @@
 <body class="is-preload">
 	<%@ include file="../../../inc/Top.jsp" %> 
 		<section class="wrapper style1">
-		<img src="static/assets/images/으뜸언니 최종.png">
+		<img src="static/assets/images/으뜸언니 최종.png" style="width: 100%;">
 		<!-- 컨텐츠영역 -->
 		
 		

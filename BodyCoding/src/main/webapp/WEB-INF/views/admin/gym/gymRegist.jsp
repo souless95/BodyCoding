@@ -81,8 +81,8 @@
 	                                                </div>
 	                                            </div>
 	                                            <div class="mt-4 mb-0">
-	                                                <button class="custom-btn btn-7" type="submit">가입하기</button>
-	                                                <button type="button" class="custom-btn btn-7" onclick="history.back()">
+	                                                <button class="custom-btn btn-1" type="submit">가입하기</button>
+	                                                <button type="button" class="custom-btn btn-1" onclick="history.back()">
 										            	뒤로가기
 										            </button>
 	                                            </div>

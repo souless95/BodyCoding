@@ -32,7 +32,7 @@ function deleteRecord(training_log_idx) {
 		<div id="layoutSidenav_content">
 			<div id="layoutSidenav_content">
 				<div class="card mb-4">
-					<div class="card-header">
+					<div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle;">
 						<h2>운동기록 리스트</h2>
 					</div>
 					<br>

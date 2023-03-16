@@ -60,7 +60,7 @@ function errCallBack(errData){
 	    <option value="의류">의류</option>
 	    <option value="기구">기구</option>
 	</select>
-	<input type="button" value="유형선택" id="product_typechoice"> </h5>
+	<button type="button" class="custom-btn btn-1" style="width: 150px;" id="product_typechoice">유형선택</button>
 	
 	<form name="frm" method="post" >
 		<input type="hidden" id="product_idx" name="product_idx">

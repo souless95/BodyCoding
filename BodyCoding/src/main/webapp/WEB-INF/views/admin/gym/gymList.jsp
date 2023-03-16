@@ -48,9 +48,9 @@
 							</tbody>
 						</table>
 						<s:authorize access="hasRole('ROLE_ADMIN_SUPER')">
-							<button type="button" class="custom-btn btn-7" onclick="location.href='/admin/gym/gymRegist'">지점 등록</button>
+							<button type="button" class="custom-btn btn-1" onclick="location.href='/admin/gym/gymRegist'">지점 등록</button>
 						</s:authorize>
-							<button type="button" class="custom-btn btn-7" onclick="location.href='main/admin'">홈으로</button>
+							<button type="button" class="custom-btn btn-1" onclick="location.href='main/admin'">홈으로</button>
 					</div>
 				</div>
 			</main>

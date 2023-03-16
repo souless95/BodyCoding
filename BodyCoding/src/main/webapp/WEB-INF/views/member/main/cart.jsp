@@ -16,7 +16,7 @@
     border-top: 1px solid #eaebed;
 }
 .inner_allcheck{
-   display: flex;
+    display: flex;
     min-width: 0;
     padding: 11px 18px;
     align-items: center;
@@ -43,10 +43,6 @@
 .products_info{
     flex-grow: 1;
 }
-.product{
-   border-color: #cacbd4;
-    margin-bottom: 0;
-}
 .product_info{
     display: block;
     padding-left: 35px;
@@ -58,13 +54,12 @@
     display: inline-block;
     border-bottom: 1px solid #f4f4f4;
 }
-.cell_all{
-   width: 100%;
-   text-align: center; 
-   display: inline-block;
-}
 .product_show{
     padding: 20px 20px 20px 0px;
+}
+.checkbox_inner{
+    position: relative;
+    display: flex;
 }
 .checkbox{
     display: flex;
@@ -72,33 +67,17 @@
    align-items: center;
    width:40px;
 }
-.product_delete{
-   background-color: #ffffff;
-   border: none;
-   font-size: 20px;
-   color: gray;
-   font-weight: lighter;
-}
-.input_checkbox{
-    font-size: 16px;
-    line-height: 20px;
-}
-.checkbox_inner{
-    position: relative;
-    display: flex;
-}
 .inner_img{
-   width: 100px;
+    width: 100px;
     height: 100px;
 }
 .inner_info{
-   width: 100px;
+    width: 100px;
     height: 100px;
     -webkit-box-flex: 1;
     flex-grow: 1;
     min-width: 0;
 }
-
 .product_tittle{
     max-height: 44px;
     font-size: 20px;
@@ -117,7 +96,7 @@
     overflow: hidden;
 }
 .product_content{
-   max-height: 44px;
+    max-height: 44px;
     font-size: 14px;
     line-height: 22px;
     font-weight: bold;
@@ -134,7 +113,7 @@
     overflow: hidden;
 }
 .products_price{
-   margin-top: 4px;
+    margin-top: 4px;
     font-family: tahoma,"나눔고딕","Nanum Gothic","맑은고딕","Malgun Gothic","돋움",dotum,helvetica,"Apple SD Gothic Neo",sans-serif;
     font-size: 14px;
     text-align: left;
@@ -143,8 +122,19 @@
     line-height: 17px;
     color: #222222;
 }
+.product_delete{
+   background-color: #ffffff;
+   border: none;
+   font-size: 20px;
+   color: gray;
+   font-weight: lighter;
+}
+.input_checkbox{
+    font-size: 16px;
+    line-height: 20px;
+}
 .items{
-   margin: 0 20px;
+    margin: 0 20px;
     padding: 10px 0 12px;
     background-color: transparent;
     border-bottom: 1px solid #e9ecef;
@@ -170,28 +160,28 @@
     vertical-align: top;
 }
 button{
-   outline: none;
+    outline: none;
     border: 0;
     background: transparent;
     cursor: pointer;
 }
 #minus_btn{
-   width: 27px;
-   border-right: 1px solid #dfe4ec;
+    width: 27px;
+    border-right: 1px solid #dfe4ec;
     height: 100%;
     vertical-align: top;
     position: relative;   
 }
 #plus_btn{
-   width: 27px;
-   border-left: 1px solid #dfe4ec;
+    width: 27px;
+    border-left: 1px solid #dfe4ec;
     height: 100%;
     vertical-align: top;
     position: relative;   
 }
 .pCount{
-   width: 41px;
-   font-size: 14px;
+    width: 41px;
+    font-size: 14px;
     display: inline-block;
     height: 100%;
     border: none;
@@ -202,7 +192,7 @@ button{
     vertical-align: top;
 }
 .product-price{
-   font-size: 14px;
+    font-size: 14px;
     line-height: 18px;
     flex-grow: 1;
     text-align: right;
@@ -210,7 +200,7 @@ button{
     color: black;
 }
 .buy_link{
-   display: inline-block;
+    display: inline-block;
     width: 150px;
     max-width: none;
     border-radius: 6px;
@@ -361,65 +351,59 @@ function errCallBack(errData) {
    <div class="contents">
       <div class="store_card">
          <div class="store_content">
-            <div>
-               <div class="products">
-                  <div class="products_info">
-                     <div class="product">
-                        <div class="product_info">
-                              <!-- 상품별 루프 시작 -->
-                           <c:set var="totalPrice" value="0" />
-                           <div class="cell_all">
-                              <c:forEach items="${myCartList }" var="myCartList">
-                                 <div class="cell">
-                                    <div class="product_show">
-                                       <div class="checkbox_inner">
-                                          <div class="checkbox">
-                                             <input type="checkbox" class="input_checkbox" name="selected_product" value="${myCartList.cart_idx }" checked>
-                                          </div>
-                                          <div class="inner_img">
-                                             <img src="static/uploads/product/${myCartList.product_img}" style="width: 100px;">
-                                          </div>
-                                          <div class="inner_info">
-                                             <div class="product_tittle">
-                                                <strong>${myCartList.product_name }</strong>
-                                             </div>
-                                             <div class="product_content">
-                                                ${myCartList.product_description }
-                                             </div>
-                                             <div class="products_price">
-                                                <fmt:formatNumber value="${myCartList.unit_price }" pattern="###,###,###원" />
-                                             </div>
-                                          </div>
-                                          <div>
-                                             <form class="xbox" style="float: right;" action="cartDelete.do" method="post">
-                                                <button type="submit" class="product_delete">x</button>   
-                                                <input type="hidden" id="mem_id" name="mem_id" value="${myCartList.mem_id }" />
-                                                <input type="hidden" name="product_idx" value="${myCartList.product_idx }" />
-                                             </form>
-                                          </div>
-                                          <!-- 상품수량 증감 부분 -->
-                                          <div class="items">
-                                             <div  class="option">상품 주문 수량</div>
-                                             <div class="option_price">
-                                                <div class="option_controller" id="product_${myCartList.product_idx }">
-                                                   <input type="hidden" class="pIdx" value="${myCartList.product_idx }" /> 
-                                                   <button class="cButton" id="minus_btn" onclick="chgCount('-',this);">-</button>
-                                                   <span class="pCount">${myCartList.product_count }</span>
-                                                   <button class="cButton" id="plus_btn" onclick="chgCount('+',this);">+</button>
-                                                </div>
-                                             </div>
-                                             <span class="product-price">
-                                                <fmt:formatNumber value="${myCartList.product_price }" pattern="###,###,###원" />
-                                             </span>
-                                          </div>
-                                       </div>
+            <div class="products">
+               <div class="products_info">
+                  <div class="product_info">
+                     <!-- 상품별 루프 시작 -->
+                     <c:set var="totalPrice" value="0" />
+                     <c:forEach items="${myCartList }" var="myCartList">
+                        <div class="cell">
+                           <div class="product_show">
+                              <div class="checkbox_inner">
+                                 <div class="checkbox">
+                                    <input type="checkbox" class="input_checkbox" name="selected_product" value="${myCartList.cart_idx }" checked>
+                                 </div>
+                                 <div class="inner_img">
+                                    <img src="static/uploads/product/${myCartList.product_img}" style="width: 100px;">
+                                 </div>
+                                 <div class="inner_info">
+                                    <div class="product_tittle">
+                                       <strong>${myCartList.product_name }</strong>
+                                    </div>
+                                    <div class="product_content">
+                                       ${myCartList.product_description }
+                                    </div>
+                                    <div class="products_price">
+                                       <fmt:formatNumber value="${myCartList.unit_price }" pattern="###,###,###원" />
                                     </div>
                                  </div>
-                                 <c:set var="totalPrice" value="${totalPrice + myCartList.product_price}" />
-                              </c:forEach>
+                                 <div>
+                                    <form style="float: right;" action="cartDelete.do" method="post">
+                                       <button type="submit" class="product_delete">x</button>   
+                                       <input type="hidden" id="mem_id" name="mem_id" value="${myCartList.mem_id }" />
+                                       <input type="hidden" name="product_idx" value="${myCartList.product_idx }" />
+                                    </form>
+                                 </div>
+                                 <!-- 상품수량 증감 부분 -->
+                                 <div class="items">
+                                    <div  class="option">상품 주문 수량</div>
+                                    <div class="option_price">
+                                       <div class="option_controller" id="product_${myCartList.product_idx }">
+                                          <input type="hidden" class="pIdx" value="${myCartList.product_idx }" /> 
+                                          <button class="cButton" id="minus_btn" onclick="chgCount('-',this);">-</button>
+                                          <span class="pCount">${myCartList.product_count }</span>
+                                          <button class="cButton" id="plus_btn" onclick="chgCount('+',this);">+</button>
+                                       </div>
+                                    </div>
+                                    <span class="product-price">
+                                       <fmt:formatNumber value="${myCartList.product_price }" pattern="###,###,###원" />
+                                    </span>
+                                 </div>
+                              </div>
                            </div>
                         </div>
-                     </div>
+                        <c:set var="totalPrice" value="${totalPrice + myCartList.product_price}" />
+                     </c:forEach>
                   </div>
                </div>
             </div>
@@ -435,9 +419,9 @@ function errCallBack(errData) {
                <div align="center">
                   <button type="button" class="buy_link" id="purchase">구매하기(결제)</button>
                </div>
-               <div align="right">
-                  <button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
-               </div>
+               <div align="right" style="padding-right:40px;">
+	              <button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
+              </div>
             </div>
          </div>
       </div>

@@ -104,7 +104,7 @@ div{
 							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="#">결제내역</a></li>
+		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
 		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
 		                            </ul>
 		                        </div>

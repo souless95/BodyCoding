@@ -20,8 +20,8 @@
         		</div>
 				<form name="writeFrm">
 				<!-- idx숨겨놓기 -->
-				<input type="hid-en" name="idx" value="${dto.board_idx }" /> 
-				<input type="hid-den" name="category" value="${dto.board_category }" /> 
+				<input type="hidden" name="idx" value="${dto.board_idx }" /> 
+				<input type="hidden" name="category" value="${dto.board_category }" /> 
 					<div class="card-body" style="width: 80%">
 					    <table style="border: 2px solid black; border-left:0px; border-right:0px; width: 90%;">
 					        <tr style="border-bottom: 3px solid black;">

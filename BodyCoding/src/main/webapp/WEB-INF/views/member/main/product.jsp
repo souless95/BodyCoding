@@ -40,7 +40,7 @@ function sucCallBack(resData) {
 		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
 		+"<b>"+data.product_name+"<b><br>"
-		+data.product_price.toLocaleString() + "</div></a></div>";
+		+data.product_price.toLocaleString() + "원</div></a></div>";
 	}); 
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);

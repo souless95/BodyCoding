@@ -1,14 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="/static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 <!-- top메뉴  -->
@@ -35,8 +31,7 @@
 							    							<input type="hidden" id="authority" name="authority" value="ROLE_TRAINER">
 			                                                <!-- 로그인한 ADMIN의 지점코드가 자동으로 삽입되게 만들기 -->
 		                                                    <div class="form-floating">
-		                                                        <input class="form-control" id="gym_code" name="gym_code" type="text" placeholder="Enter your last name" required/>
-		                                                        <label for="gym_code">지점 선택</label>
+		                                                        <input class="form-control" id="gym_code" name="gym_code" type="number" value="${adminGym }" readonly style="padding-top: 10px;"/>
 		                                                    </div>
 		                                                </div>
 		                                                
@@ -99,16 +94,31 @@
 		                                                        <label for="mem_comment">자기소개</label>
 		                                                    </div>
 		                                                </div>
+	                                                </div>
+		                                            <div class="row mb-3">
 		                                                <div class="col-md-6">
 		                                                    <div class="form-floating mb-3 mb-md-0">
-		                                                        <input class="form-control" id="mem_img" name="mem_img" type="file" />
+		                                                        <label for="mem_interest"></label>
+		                                                        <select class="form-control" name="mem_interest" style="padding-top: 10px; padding-top: 10px;" required>
+		                                                        	<option value="" selected> 대표단어를 선택해 주세요</option>
+												                     <option value="친절">친절</option>
+												                     <option value="열정">열정</option>
+												                     <option value="재미">재미</option>
+												                     <option value="정확">정확</option>
+												                     <option value="칭찬">칭찬</option>
+												                </select>
+		                                                    </div>
+		                                                </div>
+		                                                <div class="col-md-6">
+		                                                    <div class="form-floating mb-3 mb-md-0">
+		                                                        <input class="form-control" id="mem_img" name="mem_img" type="file" style="padding-top: 18px;"/>
 		                                                    </div>
 		                                                </div>
 		                                            </div>
 		                                            <div class="mt-4 mb-0">
-		                                                <button class="btn btn-primary" type="submit">등록하기</button>
-		                                                <button class="btn btn-primary" type="reset">reset</button>        
-      													<button class="btn btn-primary" type="button" onclick="location.href='/trainerList.do'">트레이너 리스트 목록</button>
+		                                                <button class="custom-btn btn-7" type="submit">등록하기</button>
+		                                                <button class="custom-btn btn-7" type="reset">reset</button>        
+      													<button class="custom-btn btn-7" type="button" onclick="location.href='/trainerList.do'">트레이너 목록</button>
 		                                            </div>
 		                                        </form>
 		                                    </div>
@@ -123,9 +133,5 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 		</div>
 	</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="/static/admin/js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="/static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

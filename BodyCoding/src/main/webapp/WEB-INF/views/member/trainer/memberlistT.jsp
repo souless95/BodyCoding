@@ -11,68 +11,64 @@
 body{
 	border: 1px;
 }
+
 </style>
 <script>
-/* var ss = ${memberList};
-console.log(ss); */
 </script>
-<%@ include file="../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp" %>
 </head>
-<body>
+<body class="sb-nav-fixed">
+<div class="container">
 	<div id="layoutSidenav">
 		<!-- side -->
-       <%@ include file ="../inc/mypageside.jsp" %>
+       <%@ include file ="../../../../inc/mypageside.jsp" %>
 			<div id="layoutSidenav_content">
 		        <main>
-		        	<div class="card mb-4">
+		        	<div class="card mb-4" style="width:80%;">
 		        		<div class="card-header">
 							<h2>회원 리스트</h2>
 		        		</div>
-		        		
-					      		
-		        		<div class="card-body">
-							<table id="datatablesSimple">
+		        		<div class="container-fluid" style="width:100%;">
+							<table style="width:100%;">
 							<thead>
 								<tr>
-						         	<th>이메일(아이디)</th>
-						         	<th>이름</th>
-						         	<th>성별</th>
-						         	<th>생년월일</th>
-						         	<th>이용권 유형</th>
-						         	<th>이용권 이름</th>
-						       	 	<th>전화번호</th>
-						       	  	<th>가입일자</th>
-						       	  	<th></th>
+						         	<th style="text-align:center">이메일(아이디)</th>
+						         	<th style="text-align:center">이름</th>
+						         	<th style="text-align:center">성별</th>
+						         	<th style="text-align:center">생년월일</th>
+						         	<th style="text-align:center">이용권 유형</th>
+						         	<th style="text-align:center">이용권 이름</th>
+						       	 	<th style="text-align:center">전화번호</th>
+						       	  	<th style="text-align:center">가입일자</th>
 						      	</tr>
 							</thead>
 							<tbody>
 					     	<c:forEach items="${memberList }" var="row" varStatus="loop">
-						      	<tr>
-							        <td>${row.mem_id }</td>
-							        <td>${row.mem_name }</td>
-							        <td>${row.mem_gender }</td>
-							        <td>${row.mem_birth }</td>
-							        <td>${row.membership_type }</td>
-							        <td>${row.membership_name }</td>
-							        <td>${row.mem_phone }</td>
-							        <td>${row.mem_regidate }</td>
+						      	<tr style="padding-top: 10px; padding-bottom: 10px;">
+							        <td style="text-align:center;">
+							        ${row.mem_id }</td>
+							        <td style="text-align:center">${row.mem_name }</td>
+							        <td style="text-align:center">${row.mem_gender }</td>
+							        <td style="text-align:center">${row.mem_birth }</td>
+							        <td style="text-align:center">${row.product_type }</td>
+							        <td style="text-align:center">${row.product_name }</td>
+							        <td style="text-align:center">${row.mem_phone }</td>
+							        <td style="text-align:center">${row.mem_regidate }</td>
 							        <td>
-							        	<button type="button" class="btn btn-primary"
-												onclick="location.href='memberdetailT.do?mem_id=${row.mem_id }'">
-												상세보기</button>
+							       	<button type="button" 
+										onclick="location.href='memberdetailT.do?mem_id=${row.mem_id }'">
+									상세보기</button>
 							        </td>
 							    </tr>
 						    </c:forEach>
 							</tbody>
-							</table>
-							<button type="button" onclick="location.href='main'">홈으로</button> 
-		        		</div>
-					</div>
-				</main>
-			<!-- bottom -->
-			</div>
+						</table>
+	        		</div>
+				</div>
+			</main>
 		</div>
-
-<%@ include file="../inc/Bottom.jsp" %>
+	</div>
+</div>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

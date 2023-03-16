@@ -7,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<!-- top메뉴  -->
@@ -49,16 +46,13 @@
 							        <td>${row.mem_phone }</td>
 							        <td>${row.mem_regidate }</td>
 							        <td>
-							        	<button type="button" class="btn btn-primary"
-												onclick="location.href='detail.do?mem_id=${row.mem_id }'">
-												상세보기</button>
-							        	<%-- <a href="detail.do?mem_id=${row.mem_id }">상세보기</a> --%>
+							        	<a href="detail.do?mem_id=${row.mem_id }">상세보기</a>
 							        </td>
 							    </tr>
 						    </c:forEach>
 							</tbody>
 							</table>
-							<button type="button" onclick="location.href='main/admin'">홈으로</button> 
+							<button type="button" class="custom-btn btn-7" onclick="location.href='main/admin'">홈으로</button>
 		        		</div>
 					</div>
 				</main>
@@ -66,9 +60,5 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 			</div>
 		</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/datatables-simple-demo.js"></script>   
 </body>
 </html>

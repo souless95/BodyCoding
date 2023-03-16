@@ -138,8 +138,9 @@ $(function(){
 								</tr>
 							
 							</table>
-							<input type="submit" value="등록">
-							<button type="button" onclick="location.href='productList.do'">목록</button>
+							<button type="submit" class="custom-btn btn-7">등록</button>
+							<button type="button" class="custom-btn btn-7"onclick="location.href='productList.do'">목록</button>
+							<button type="button" class="custom-btn btn-7" onclick="history.back()">뒤로가기</button>
 						</form>
 					</div>					
 				</div>

@@ -7,10 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="/static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+<script type="text/javascript">
+onload = function(){
+	   var obj1 = document.getElementById('mem_interest');
+	    var type = '<c:out value="${trainer.mem_interest}"/>';
+	    
+	    for(var i=0 ; i<6 ; i++){
+	        if(obj1.options[i].value==type){ 
+	           obj1.options[i].selected=true;
+	        }
+	    }
+	}
+</script>
 <body class="sb-nav-fixed">
 	<!-- top메뉴  -->
 	<%@ include file ="../../admin/inc/top.jsp" %>
@@ -27,9 +36,9 @@
 		        		</div>
 		        		<div class="card-body" style="width: 80%">
 		        			<h4>프로필 사진</h4>
-		        			<div><img src="static/uploads/trainer/${trainer.mem_img }" style="width:200px; height:200px;">
+		        			<img src="/static/uploads/trainer/${trainer.mem_img}" style="width:200px; height:200px;">
 		        			<input type="hidden" name="mem_img" value="${trainer.mem_img }">
-		        			<input class="form-control" id="mem_img" name="mem_img" type="file" style="display:inline;" /></div>
+		        			<input class="form-control" id="mem_img" name="mem_img" type="file" style="display:inline;" />
 		        			<table class="table" border="2">
 								<tr>
 						         	<th>센터코드</th>
@@ -61,15 +70,29 @@
 							    </tr>
 							</table>
 							<table class="table" border="2">	
-						      	<tr>
+								<tr>
 						       	 	<th>경력</th>
 							        <td><input type="text" name="mem_career" value="${trainer.mem_career}"/></td>
+						       	 	<th>키워드</th>
+							        <td>
+								        <select class="form-control" id="mem_interest" name="mem_interest" style="padding-top: 10px; padding-top: 10px;" required>
+	                                         <option value="" selected> 대표단어를 선택해 주세요</option>
+						                     <option value="친절">친절</option>
+						                     <option value="열정">열정</option>
+						                     <option value="재미">재미</option>
+						                     <option value="정확">정확</option>
+						                     <option value="칭찬">칭찬</option>
+						                </select>
+						            </td>
+						      	</tr>
+						      	<tr>
 						       	 	<th>자기소개</th>
 							        <td><input type="text" name="mem_comment" value="${trainer.mem_comment}"/></td>
 						      	</tr>
 							</table>
-								<input type="submit" value="전송하기" />
-								<button type="button" class="btn btn-primary" onclick="location.href='main/admin'">홈으로</button> 
+								<button type="submit" class="custom-btn btn-7" value="전송하기">전송하기</button>
+								<button type="button" class="custom-btn btn-7" onclick="location.href='/main/admin'">홈으로</button> 
+								<button type="button" class="custom-btn btn-7" onclick="history.back()">뒤로가기</button>
 		        		</div>
 					</div>
 				</form>
@@ -78,9 +101,5 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 			</div>
 		</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="/static/admin/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="/static/admin/js/datatables-simple-demo.js"></script>   
 </body>
 </html>

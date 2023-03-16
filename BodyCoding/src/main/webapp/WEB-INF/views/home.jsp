@@ -7,18 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>바디코딩 프로젝트</h2>
-	
-	<ul>
-		<li><a href="/">홈</a></li>
-	</ul>
+   <h2>바디코딩 프로젝트</h2>
+   
+   <ul>
+      <li><a href="/">홈</a></li>
+   </ul>
 
-	<ul>
+	<!-- 어드민 로그인 하려면 main/admin으로 접속할 것 -->
+	<!-- <ul>
 		<li><a href="main/admin">admin 메인페이지</a></li>
 	</ul>
 	<ul>
 		<li><a href="/adminLogin.do">admin 로그인</a></li>
-	</ul>
+	</ul> -->
 	<ul>
 		<li><a href="main">member 메인페이지</a></li>
 	</ul>
@@ -31,13 +32,21 @@
 	<ul>
 		<li><a href="product">상품 목록보기</a></li>
 	</ul>
-	
 	<ul>
 		<li><a href="pwcheck">마이페이지</a></li>
 	</ul>
 	<ul>
 		<li><a href="delete">탈퇴</a></li>
 	</ul>
-	
+	<!-- 임시. 작업이후 삭제 예정 -->
+	<ul>
+		<li><a href="routine.do">운동루틴등록</a></li>
+	</ul>
+	<ul>
+		<li><a href="supMainChart">sup차트</a></li>
+	</ul>
+	<ul>
+		<li><a href="subMainChart">sub차트</a></li>
+	</ul>
 </body>
 </html>

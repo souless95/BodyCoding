@@ -48,6 +48,9 @@ dependencies {
 	implementation 'commons-io:commons-io:2.11.0'    
     // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
 	implementation 'commons-fileupload:commons-fileupload:1.5'
+	//웹소켓
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }
 
 tasks.named('test') {

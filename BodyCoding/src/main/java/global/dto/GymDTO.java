@@ -10,7 +10,7 @@ public class GymDTO {
 	private String gym_code;
 	private String gym_scale;
 	//다중파일 등록을 위해 리스트로 만듬
-	private String gym_dtail_img;
+	private String gym_detail_img;
 	private String facility_parking;
 	private String facility_health;
 	private String facility_yoga;
@@ -29,4 +29,5 @@ public class GymDTO {
 	private String rtime_holy_end;
 	private String gym_lat;
 	private String gym_lng;
+	private String mem_name;
 }

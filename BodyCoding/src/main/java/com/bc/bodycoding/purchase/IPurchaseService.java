@@ -22,5 +22,10 @@ public interface IPurchaseService {
 	public int insertOrder(ProductDTO productDTO);
 	//멤버쉽 데이터 추가
 	public int insertMembership(ProductDTO productDTO);
-	
+	//상품 주문 데이터 추가
+	public int insertOrderDetail(ProductDTO productDTO);
+
+	//상품 주문 데이터 추가
+	public int insertPayAndUpdatePoint(ProductDTO productDTO);
+
 }

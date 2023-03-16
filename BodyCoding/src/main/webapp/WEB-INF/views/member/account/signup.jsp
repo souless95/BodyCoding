@@ -6,11 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-<style>
+<%@ include file="../../../../inc/style.jsp"%>
+<!-- <style>
     body {
        min-height: 100vh;
        background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
@@ -19,7 +16,6 @@
        background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
        background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
     }
-
     .input-form {
        max-width: 720px;
        margin-top: 80px;
@@ -32,63 +28,13 @@
        -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
-    
-    * {   
-       font-weight:bold;
-       font-size:20px; 
-       font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-    
-    #phone{
-      display : flex;
-   }
-   
-   .disease{
-      display : flex;
-   }
-   
-   .interest{
-      display : flex;
-   }
-   
-   .purpose_detail{
-      display : flex;
-   }
-   
-   .checkStyle{
-      width:20px;
-      height:20px;
-      margin-top:5px;
-      margin-right:7px;
-      background: #fff;
-       -webkit-border-radius: 10px;
-       -moz-border-radius: 10px;
-       border-radius: 10px;
-       -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-       -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-   }
-   
-   .purpose{
-      display :flex;
-   }
-   
-   select option[value=""][disabled]{
-      display: none;
-   }
-   
-   select:invalid{
-      color: #c0c0c0;
-   }
-   
-   #redStar {
-      color:red;
-   }
-   </style>
+   </style> -->
 </head>
 <body>
+<%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
-	<div class="input-form-backgroud row">
-		<div class="input-form col-md-12 mx-auto">
+	<div class="input-form-backgroud row"> 
+		<div class="input-form col-md-12 mx-auto" >
 			<div style="text-align:center;">
 				<h2 class="mb-1">회원가입</h2>
 			</div><br />
@@ -116,9 +62,9 @@
 
             <div class="mb-3">
                  <label for="mem_gender">성별</label> &nbsp;&nbsp;
-                  <input type="hidden" name="mem_gender" value="">
                   <input type="radio" name="mem_gender" value="M">&nbsp;남자&nbsp;
                   <input type="radio" name="mem_gender" value="F">&nbsp;여자<br>
+                  <input type="hidden" name="mem_gender" value="">
             </div>
 
             <!-- 생년월일 -->
@@ -146,14 +92,20 @@
             <br>
             <div class="mb-1">
                 <label for="gym_code">지점선택</label>&nbsp;
-                 <select class="custom-select d-block w-100" name="gym_code">
+                <!-- <select class="custom-select d-block w-100" name="gym_code">
                      <option value="" selected>지점을 선택해 주세요</option>
                      <option value="1">종로</option>
                      <option value="일산">일산</option>
                      <option value="성북">성북</option>
                      <option value="사당">사당</option>
                      <option value="오금">오금</option>
-                 </select>
+                </select> -->
+                <select id="gym_code" class="custom-select d-block w-100">
+				    <option value="-">지점</option>
+					<c:forEach items="${gymList }" var="gym" varStatus="loop">
+				    <option value="${gym.gym_code }">${gym.mem_name }</option>
+					</c:forEach>
+				</select>
             </div>
 
             <div class="mb-1">
@@ -190,37 +142,40 @@
                 <label for="mem_purpose">운동목적</label>&nbsp;&nbsp;
             </div>
                
-              <div class=purpose_detail>
+            <div class=purpose_detail>
+              
+               <input type="checkbox" class="checkStyle" name="mem_purpose" value="diet">
+               <label for="diet">다이어트</label>&nbsp;&nbsp;
+              
+                <label><input type="checkbox" class="checkStyle" name="mem_purpose" value="competition">
+                대회준비</label>&nbsp;&nbsp;
+             
+                <input type="checkbox"  class="checkStyle" name="mem_purpose" value="healthcare">   
+                <label for="healthcare">체력관리</label>&nbsp;&nbsp;
+              
+                <input type="checkbox" class="checkStyle" name="mem_purpose" value="etc">
+                <label for="etc">그 외</label>&nbsp;&nbsp;
                 
-                 <input type="checkbox" class="checkStyle" name="mem_purpose" value="diet">
-                 <label for="diet">다이어트</label>&nbsp;&nbsp;
-                
-                  <label><input type="checkbox" class="checkStyle" name="mem_purpose" value="competition">
-                  대회준비</label>&nbsp;&nbsp;
-               
-                  <input type="checkbox"  class="checkStyle" name="mem_purpose" value="healthcare">   
-                  <label for="healthcare">체력관리</label>&nbsp;&nbsp;
-                
-                  <input type="checkbox" class="checkStyle" name="mem_purpose" value="etc">
-                  <label for="etc">그 외</label>&nbsp;&nbsp;
-                  
-                  <input type="hidden" class="checkStyle" name="mem_purpose" value="">
-                </div>
+                <input type="hidden" class="checkStyle" name="mem_purpose" value="">
+            </div>
 
             <label for="mem_interest">관심사항</label>
             <div class="interest">
             
-               <input type="checkbox" class="checkStyle" name="mem_interest" value="PT">
-               <label for="PT">개인PT</label>&nbsp;&nbsp;
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="친절">
+               <label for="친절">친절&nbsp;&nbsp;</label>
                              
-               <input type="checkbox" class="checkStyle" name="mem_interest" value="pila">
-               <label for="pila">필라테스</label>&nbsp;&nbsp;
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="열정">
+               <label for="열정">열정</label>&nbsp;&nbsp;
                        
-               <input type="checkbox"  class="checkStyle" name="mem_interest" value="gx">   
-               <label for="gx">GX</label>&nbsp;&nbsp;
+               <input type="checkbox"  class="checkStyle" name="mem_interest" value="재미">   
+               <label for="재미">재미</label>&nbsp;&nbsp;
                
-               <input type="checkbox" class="checkStyle" name="mem_interest" value="health">
-               <label for="yoga">헬스</label>
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="정확">
+               <label for="정확">정확</label>
+               
+               <input type="checkbox" class="checkStyle" name="mem_interest" value="칭찬">
+               <label for="칭찬">칭찬</label>
                
                <input type="hidden" class="checkStyle" name="mem_interest" value="">
             </div>
@@ -242,6 +197,10 @@
             </div> -->
             <br> 
             <button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
+            <button type="button" style="border: none;"
+               onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'";>
+				<img src="static/member/images/kakao_signup.png">
+			</button>
          </form>
       </div>
    </div>
@@ -250,6 +209,7 @@
      <p class="mb-1">&copy; 2023 BodyCoding</p>
 </footer>
 <script>
+
    function commonFocusMove(thisObj, numLength, nextObj){
       var obj1 = document.getElementById(thisObj);
       var strLen2 = obj1.value.length;
@@ -297,8 +257,8 @@
  		if($('input:checkbox[name=mem_interest]:checked').length=0){
  			$('input:checkbox[name=mem_interest]').val(null);
  		}
- 		if($('input:radio[name=mem_gender]:checked').length=0){
- 			$('input:radio[name=mem_gender]').val(null);
+ 		if($('input:radio[name=mem_gender]:checked').val()==null || $('input:radio[name=mem_gender]:checked').val()=="" ){
+ 			$('input:radio[name=mem_gender]:checked').val("");
  		}
 	});
  	

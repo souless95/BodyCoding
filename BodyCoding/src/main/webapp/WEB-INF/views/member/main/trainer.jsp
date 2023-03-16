@@ -66,9 +66,8 @@ function sucCallBack(resData) {
 		+"<img class='card-img-top mt-2' src='static/uploads/trainer/"+data.mem_img+"' "
 		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
-		+"<b>"+data.mem_name+"</b><br>"
-		+data.mem_comment + "<br>#"
-		+data.mem_interest+"</div></a></div>";
+		+"<b>"+data.mem_name+"</b>&nbsp;<span class='input'>&nbsp;#"+data.mem_interest+"&nbsp;&nbsp;</span><br>"
+		+data.mem_comment + "<br></div></a></div>";
 	});
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);

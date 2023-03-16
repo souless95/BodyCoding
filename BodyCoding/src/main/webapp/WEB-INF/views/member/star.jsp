@@ -16,7 +16,7 @@
 #star_rates label{
     font-size: 2.5em;
     color: transparent;
-    text-shadow: 0 0 0 white;
+    text-shadow: 0 0 0 #dee0df;
 }
 #star_rates label:hover{
     text-shadow: 0 0 0 #ffea00;

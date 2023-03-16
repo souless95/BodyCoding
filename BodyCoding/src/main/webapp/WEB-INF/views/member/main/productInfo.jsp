@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../static/assets/css/Info.css" />
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp" %>
@@ -32,20 +33,21 @@ function login(t){
 <div class="container">
 <br>
 	<h2>상품 정보</h2>
-	<br>
-	<table class="table" style="border: 3px solid gray;">
-		<tr style="border: 2px solid gray;">
-			<td style="border: 2px solid gray; width: 300px; height: 360px;" rowspan="4"><img src="static/uploads/product/${productInfo.product_img}" style="width:100%;height:100%; margin-bottom: -55px;"></td>
-			<td style="vertical-align: middle; padding-left: 10px;"><strong>상품명: </strong>${productInfo.product_name}</td>
-		</tr>
-		<tr style="border: 2px solid gray;">
-			<td style="padding-left: 10px;"><strong>상품 상세 정보: </strong>${productInfo.product_description }</td>
-		</tr>
-		<tr style="border: 2px solid gray;">
-			<td style="padding-left: 10px;"><strong>상품 가격: </strong>
-			<fmt:formatNumber value="${productInfo.product_price }" pattern="###,###,###" /></td>
-		</tr>
-	</table>
+	<img src="static/uploads/product/${productInfo.product_img}" style="width: 250px; height: 300px; float: left;">
+	<div class="Info">
+		<table class="basic">
+			<tr>
+				<td ><strong>상품명: </strong>${productInfo.product_name}</td>
+			</tr>
+			<tr>
+				<td><strong>상품 상세 정보: </strong>${productInfo.product_description }</td>
+			</tr>
+			<tr>
+				<td><strong>상품 가격: </strong>
+				<fmt:formatNumber value="${productInfo.product_price }" pattern="###,###,###" /></td>
+			</tr>
+		</table>
+	</div>
 	
 	<c:if test="${not empty avg_grade }">
 	<%-- <h5>평점 &nbsp : &nbsp ${avg_grade }/10</h5> --%>
@@ -57,42 +59,46 @@ function login(t){
           	</div>
        	</div>
    	</div>
-	<br />
 	<h3>후기</h3>
-	<table style="border: 3px solid gray;">
+	<table style="width: 92%; border: 3px solid gray; margin: 0;">
 		<tr style="border: 2px solid gray;">
 			<th width="20%"><strong>작성자</strong></th>
-			<th width="60%"><strong>내용</strong></th>
-			<th width="10%"><strong>평점</strong></th>
-			<th width="10%"><strong>작성일</strong></th>
+			<th width="50%"><strong>내용</strong></th>
+			<th width="15%"><strong>평점</strong></th>
+			<th width="15%"><strong>작성일</strong></th>
 		</tr>
-		<tr id="show_data"></tr>
-		<c:forEach items="${reviewInfo }" var="row" varStatus="loop">
-		<tr>
-			<td>${row.mem_id}</td>
-			<td>${row.review_comment}</td>
-			<td><div class="star-ratings">
-		       	<input type="hidden" name="ratevalue" value="${row.review_grade}" step="0.1" min="0" max="5" />
-		       	<div class="rating-wrap" style="height: 100px;">
-		          	<div class="rating">
-		            	<div class="overlay"></div>
-		          	</div>
-		       	</div>
-   			</div></td>
-			<%-- <td>${row.review_grade}</td> --%>
-			<td>${row.review_regidate}</td>
-		</tr>
-		</c:forEach>
 	</table>
+	<div style="max-height:350px; width: 92%; overflow: auto; border: 3px solid gray; border-top: none;">
+		<table style="width:100%;">
+			<tr id="show_data"></tr>
+			<c:forEach items="${reviewInfo }" var="row" varStatus="loop">
+			<tr>
+				<td width="20%" style="text-align: center;">${row.mem_id}</td>
+				<td width="50%" style="text-align: center;">${row.review_comment}</td>
+				<td width="15%" style="text-align: center;"><div class="star-ratings">
+			       	<input type="hidden" name="ratevalue" value="${row.review_grade}" step="0.1" min="0" max="5" />
+			       	<div class="rating-wrap" style="height: 100px;">
+			          	<div class="rating">
+			            	<div class="overlay"></div>
+			          	</div>
+			       	</div>
+	   			</div></td>
+				<%-- <td>${row.review_grade}</td> --%>
+				<td width="15%" style="text-align: center;">${row.review_regidate}</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
 	</c:if>
 	
+	<br>
 	<c:if test="${not empty UserName }">
 	<h3>후기작성</h3>
 		<form method="post" action="productReview">
-			<table style="border: 1px solid black;">
+			<table style="border: 1px solid black; width: 92%;">
 				<input type="hidden" name="review_subject" value="${productInfo.product_idx }" />
 				<tr>
-					<th width="20%"><strong>이메일(아이디)</strong></th>
+					<th width="20%" style="height:60px; padding-top: 15px;"><strong>이메일(아이디)</strong></th>
 					<td>
 						<input type="text" name="mem_id" value="${UserEmail}" style="border: none; background: transparent;" readonly/>
 					</td>
@@ -103,7 +109,7 @@ function login(t){
 				</tr>
 				<tr>
 					<th><strong>평점</strong></th>
-					<td colspan="3">
+					<td colspan="3" style="height: 55px;">
 						<div class="mb-3" name="star_rate" id="star_rates"  style="width: 400px; height: 35px;"> 
 							<fieldset>
 						      	<input type="radio" value="5.0" id="star_rate5" name="review_grade">
@@ -123,8 +129,12 @@ function login(t){
 				</tr>
 				<tr>
 					<th style="vertical-align: middle;"><strong>후기 내용</strong></th>
-					<td colspan="3" style="text-align: right;">
-						<textarea name="review_comment" cols="50" rows="5" placeholder="내용을 입력하세요." required></textarea>
+					<td colspan="3" style="text-align: left;">
+						<textarea name="review_comment" cols="100" rows="5" placeholder="내용을 입력하세요." required></textarea><br>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" style="text-align: center; padding-bottom: 10px;">
 						<input type="submit" value="후기등록">
 						<input type="reset" value="지우기">
 					</td>

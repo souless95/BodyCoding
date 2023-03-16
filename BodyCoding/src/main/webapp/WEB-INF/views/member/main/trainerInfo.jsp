@@ -192,7 +192,7 @@ function login(){
 							</p>
 								<textarea name="review_comment" cols="100" rows="5" placeholder="내용을 입력하세요." required></textarea><br />
 								<button type="submit" class="custom-btn btn-1" style="float: ">후기등록</button>
-								<button type="button" class="custom-btn btn-1">지우기</button>
+								<button type="reset" class="custom-btn btn-1">지우기</button>
 						</fieldset>
 					</div>	
 				</form>

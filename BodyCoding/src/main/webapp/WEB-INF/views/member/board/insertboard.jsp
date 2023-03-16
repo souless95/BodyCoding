@@ -50,7 +50,7 @@
 	<div id="container">
 		<!-- side -->
 		<div id="layoutSidenav_content">
-		    <div id="layoutSidenav_content">
+		    <div>
 		        <div class="container">
 		            <div class="card-header">
 		                <h3>게시글 등록</h3>

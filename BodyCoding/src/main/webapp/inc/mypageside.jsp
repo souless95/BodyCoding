@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+<!-- 마이페이지 탑쪽 문제발생 -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 <style>
 a{
@@ -18,10 +19,7 @@ ul{
     list-style: none;
     padding: 0;
 }
-div{
-    display: block;
-}
-.contain_left{
+.contain_left1{
    width:230px;
    float: left;
 }
@@ -63,13 +61,8 @@ div{
 </style>
 </head>
 <body>
-	<div class="location_wrap">
-		<div class="contain">
-			<a>회원전용</a> <a class="active">마이페이지</a>
-		</div>
-	</div>
 	<div class="contain mt-3">
-		<div class="contain_left">
+		<div class="contain_left1" style="height:580px;">
 			<div class="accordion" id="accordion">
 				<div class="card">
 					<div class="left_h2">
@@ -200,7 +193,6 @@ function mytrainerInfo(mem_id, gym_code){
     document.body.appendChild(f);
     f.submit();
 }
-
 
 </script>
 </body>

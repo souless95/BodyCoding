@@ -17,7 +17,6 @@ public class Paging {
  private boolean next; // 페이징 다음 버튼 활성화 여부
  
  private Criteria cri;
-
  
  public int getTotalCount() {
      return totalCount;

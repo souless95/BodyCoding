@@ -2,6 +2,8 @@ package global.dto;
 
 import java.sql.Date;
 
+import com.bc.bodycoding.board.Criteria;
+
 import lombok.Data;
 
 @Data
@@ -29,6 +31,5 @@ public class BoardDTO {
 	
 	//검색필터
     private String type; //검색타입
-    private String searchkeyword; //검색내용
-	
+    private Criteria cri;
 }

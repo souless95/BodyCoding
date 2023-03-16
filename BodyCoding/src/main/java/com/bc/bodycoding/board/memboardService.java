@@ -18,8 +18,10 @@ public interface memboardService {
 	
 	
 	public int boardListCnt();
+	public int boardListCnt1(Criteria cri);
 	
 	public List<Map<String, Object>> memselect(Criteria cri); 
+	public List<Map<String, Object>> memselect1(Criteria cri); 
 	
 	public BoardDTO memselectOneBoard(BoardDTO boardDTO); //게시글 상세보기
 	public int updateboard(BoardDTO boardDTO); //게시글 수정하기

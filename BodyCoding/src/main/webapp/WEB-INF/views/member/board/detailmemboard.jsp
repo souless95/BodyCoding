@@ -189,7 +189,6 @@ function openReportForm(id, idx) {
    	    + "location=no, toolbar=no, menubar=no, "
         + "scrollbars=yes, resize=no");
 }
-
 </script>
 
 </body>

@@ -120,7 +120,7 @@ function errCallBack(errData){
 </script>
 
 <!-- 지도관련 코드: 위치 고정되야 함(지도 시작) -->
-<div class="container">
+<div class="container" style="height: 930px;">
 	<br>
 	<h2 >지점 정보</h2>
 	<div class="main_left" style="width: 65%; float: left;">
@@ -233,10 +233,10 @@ function errCallBack(errData){
 		
 	<!-- 상세정보 체크박스 부분 -->
 	<div class="main_right" style="width: 35%; float: left;">
-		<div style="height: 300px;">
+		<div style="height: 250px;">
 			<h5>&nbsp;상세정보</h5>
 			<form name="gymCheck" id="gymCheck">
-				<ul style="list-style-type: none; width: 50%; height: 50%; float: left;">
+				<ul style="list-style-type: none; width: 50%; height: 50%; float: left; margin-bottom: 0;">
 					<li><input type="checkbox" name="facility_health" value="Y"
 						class="facility" id="facility_health"> <label
 						for="facility_health"></label><img
@@ -268,7 +268,7 @@ function errCallBack(errData){
 						align="absmiddle"> <span style="font-size: 15px;">P.T</span>
 					</li>
 				</ul>
-				<ul style="list-style-type: none; width: 50%; height: 50%; float: left; padding-left: 0;">
+				<ul style="list-style-type: none; width: 50%; height: 50%; float: left; padding-left: 0; margin-bottom: 0;">
 					<li><input type="checkbox" name="facility_parking" value="Y"
 						class="facility" id="facility_parking"
 						style="border: 1px solid black; width: 5px; height: 5px;">
@@ -305,7 +305,7 @@ function errCallBack(errData){
 		</div>
 	</div>
 	<!-- 검색 & 지점리스트 -->
-	<div>
+	<div style="height: 380px;">
 		<ul style="text-align: center;">
 			<li>
 				<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 

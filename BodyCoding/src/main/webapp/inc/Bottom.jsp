@@ -19,7 +19,6 @@ var contain_left = document.querySelector('.contain_left');
 contain_left.style.height = jspHeight + 'px';
 </script>	
 
-<hr />		
 <!-- Footer -->
 
 <div id="footer" >

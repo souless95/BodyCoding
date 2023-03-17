@@ -25,20 +25,6 @@
 		where gym_code=#{gym_code}
 	</select>
 	
-	<select id="selectOneMember"
-		parameterType="global.dto.MemberDTO"
-		resultType="global.dto.MemberDTO">
-		select * from member where mem_id=#{mem_id}
-	</select>
-	
-	<update id="update"
-		parameterType="global.dto.MemberDTO">
-		update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_gender=#{mem_gender}, mem_phone=#{mem_phone},
-			mem_address=#{mem_address}, gym_code=#{gym_code}, mem_height=#{mem_height}, mem_weight=#{mem_weight}, mem_disease=#{mem_disease},
-			mem_purpose=#{mem_purpose}, mem_interest=#{mem_interest}
-		where mem_id=#{mem_id}
-	</update>
-	
 	<select id="weightchart"
 		parameterType="String"
 		resultType="global.dto.WeightDTO">

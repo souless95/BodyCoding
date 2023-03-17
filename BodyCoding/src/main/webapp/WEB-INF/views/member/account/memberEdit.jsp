@@ -144,14 +144,12 @@
 					<br>
 					<div class="mb-1">
 						<label for="gym_code">지점선택</label>&nbsp; 
-						<select class="custom-select d-block w-100" name="gym_code" onchange="chk();">
-		                     <option value="1" selected>지점을 선택해 주세요</option>
-		                     <option id="code" name="gym_code" value="종로">종로</option>
-		                     <option id="code2" name="gym_code" value="일산">일산</option>
-		                     <option id="code3" name="gym_code" value="성북">성북</option>
-		                     <option id="code4" name="gym_code" value="사당">사당</option>
-		                     <option id="code5" name="gym_code" value="오금">오금</option>
-		                </select>
+						<select id="gym_code" class="custom-select d-block w-100">
+						    <option value="-">지점</option>
+							<c:forEach items="${gymList }" var="gym" varStatus="loop">
+						    <option value="${gym.gym_code }">${gym.mem_name }</option>
+							</c:forEach>
+						</select>
 					</div>
 
 					<div class="mb-1">
@@ -208,31 +206,35 @@
 					</div>
 					
 					<label for="mem_interest">관심사항</label>
-					<div class="interest">
-
-						<input type="checkbox" class="checkStyle" id="purpose4" name="mem_purpose" value="etc">
-						<label for="etc">그 외</label>&nbsp;&nbsp;
-						
-						<input type="hidden" class="checkStyle" name="mem_purpose" value="">
-					</div>
+		            <div class="interest">
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="친절">
+		               <label for="친절">친절&nbsp;&nbsp;</label>
+		                             
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="열정">
+		               <label for="열정">열정</label>&nbsp;&nbsp;
+		                       
+		               <input type="checkbox"  class="checkStyle" name="mem_interest" value="재미">   
+		               <label for="재미">재미</label>&nbsp;&nbsp;
+		               
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="정확">
+		               <label for="정확">정확</label>
+		               
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="칭찬">
+		               <label for="칭찬">칭찬</label>
+		               
+		               <input type="hidden" class="checkStyle" name="mem_interest" value="">
+		            </div>
 					
-					<label for="mem_interest">관심사항</label>
-					<div class="interest">
-
-						<input type="checkbox" class="checkStyle" id="interest1" name="mem_interest" value="PT">
-						<label for="PT">개인PT</label>&nbsp;&nbsp; 
-						
-						<input type="checkbox" class="checkStyle" id="interest2" name="mem_interest" value="pila"> 
-						<label for="pila">필라테스</label>&nbsp;&nbsp; 
-						
-						<input type="checkbox" class="checkStyle" id="interest3" name="mem_interest" value="gx"> 
-						<label for="gx">GX</label>&nbsp;&nbsp;
-
-						<input type="checkbox" class="checkStyle" id="interest4" name="mem_interest" value="health"> 
-						<label for="yoga">헬스</label>
-						
-						<input type="hidden" class="checkStyle" name="mem_interest" value="">
-					</div>
+					<div class="mb-1">
+		                <label for="mem_inflow">유입경로</label>
+		                <select class="custom-select d-block w-100" name="mem_inflow">
+		                     <option value="" selected> 센터를 알게된 경로를 선택해 주세요</option>
+		                     <option value="지인추천">지인추천</option>
+		                     <option value="SNS">SNS</option>
+		                     <option value="인터넷검색">인터넷 검색</option>
+		                     <option value="전단지및홍보물">전단지, 홍보물</option>
+		                 </select>
+		            </div>
 
 					<button type="submit" class="btn btn-primary btn-lg btn-block">수정하기</button>
 					<button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='delete'">탈퇴하기</button>

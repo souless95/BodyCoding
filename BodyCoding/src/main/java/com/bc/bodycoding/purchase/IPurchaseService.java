@@ -27,5 +27,10 @@ public interface IPurchaseService {
 
 	//상품 주문 데이터 추가
 	public int insertPayAndUpdatePoint(ProductDTO productDTO);
+	
+	//주문내역
+	public List<ProductDTO> selectPayLog(String mem_id);
+	public List<ProductDTO> selectPayLogDetail(String order_idx);
+	public ProductDTO selectPayLogOne(String order_idx);
 
 }

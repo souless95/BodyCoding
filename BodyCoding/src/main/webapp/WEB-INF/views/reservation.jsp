@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
   /* 예약 가능한 일정 컨테이너의 스타일 */
   .schedule-container {
@@ -94,13 +95,14 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 </script>
 </head>
 <body>
-<%@ include file ="../../../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
-	<%@ include file ="../../../inc/mypageside.jsp" %>
-	<br />
-	<h3>예약 가능한 일정</h3>
-	<br />
-	<c:if test="${not empty Schedule}">
+	<div class="sub_container">
+		<%@ include file="../../../../inc/mypageside.jsp"%>
+		<br />
+		<h2>예약 가능한 일정</h2>
+		<hr style="border: 1px solid #01538D;">
+		<c:if test="${not empty Schedule}">
 		<c:forEach items="${Schedule}" var="s">
 			<div id="${s.lesson_idx}" class="schedule-container" style="border:1px solid gray; width:30%; display:inline-block; margin:3px;">
 				<p style="font-size:24px;">
@@ -152,6 +154,7 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 	<c:if test="${empty Schedule}">
 		현재 이용가능한 일정이 없습니다.
 	</c:if>
+	</div>
 </div>
 <%@ include file="../../../inc/Bottom.jsp" %>
 </body>

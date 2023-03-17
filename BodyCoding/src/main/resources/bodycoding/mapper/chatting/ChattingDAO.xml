@@ -13,6 +13,12 @@
 	 	values (bodycoding_seq.nextval, #{send_id}, #{roomName}, #{content})
 	</insert>
 	
+	<select id="selectName"
+		parameterType="String"
+		resultType="global.dto.MemberDTO">
+		select mem_name from member where mem_id=#{mem_id}
+	</select>
+	
 	<select id="selectmemid"
 		parameterType="String"
 		resultType="global.dto.ChatRoomDTO">

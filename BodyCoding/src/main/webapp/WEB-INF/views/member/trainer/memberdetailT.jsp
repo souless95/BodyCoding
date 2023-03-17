@@ -14,6 +14,19 @@
 body{
 	border: 1px;
 }
+
+table th, table td {
+  border-bottom: 1px solid #D7D7D7;
+  text-align:center;
+  height:50px;
+  vertical-align:middle;
+}
+
+table th {
+  background-color: #DFE8EA;
+  font-weight:bold;
+  border-bottom: 1px solid #D7D7D7;
+  
 </style>
 </head>
 <%@ include file="../../../../inc/Top.jsp" %>
@@ -77,86 +90,90 @@ function routine(){
 </script>
 <body>
  <div class="container">
+ 	<div class="sub_container">
  	<%@ include file ="../../../../inc/mypageside.jsp" %>
        <div id="layoutSidenav_content">
-        <div class="card mb-5" style="border-bottom: none;">
-        	<div class="card-header">
+       <div class="card mb-5" style="border-radius:10px;">
+        	<div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle; border-radius:10px;">
 				<h2> ${dto.mem_name } 회원 상세보기 </h2>
-					<div>
-						<div id="layoutSidenav">
-							<div class="card-header" style="width: 100%">
-	        			<h4>기본정보</h4>
-						<table class="table" border="2";>
-							<tr>
-					         	<th>이메일(아이디)</th>
-					         	<td>${dto.mem_id }</td>
-					       	  	<th>가입일자</th>
-					       	  	<td>${dto.mem_regidate }</td>
-					      	</tr>
-					      	<tr>
-					         	<th>이름</th>
-					         	<td>${dto.mem_name }</td>
-					         	<th>성별</th>
-					         	<td>${dto.mem_gender }</td>
-					         	<th>생년월일</th>
-					         	<td>${dto.mem_birth }</td>
-					      	</tr>
-						</table>
-					    <table class="table" border=2>
-					      	<tr>
-					      		<th>이용권 유형</th>
-					      		<td>${dto.product_type }</td>
-					      		<th>이용권 이름</th>
-					      		<td>${dto.product_name }</td>
-					       	 	<th>전화번호</th>
-					       	 	<td>${dto.mem_phone }</td>
-					       	 	<th>주소</th>
-						        <td>${dto.mem_address }</td>
-					      	</tr>
-					    </table>
-					    <table class="table" border=2>
-					      	<tr>
-					       	 	<th>키</th>
-					       	 	<th>체중</th>
-					       	 	<th>보유질병</th>
-					       	</tr>
-					       	<tr>
-					       	 	<td>${dto.mem_height }</td>
-					       	 	<td>${dto.mem_weight }</td>
-					       	 	<td>${dto.mem_disease }</td>
-					       	</tr>
-					       	<tr>
-					       	 	<th>운동목적</th>
-					       	 	<th>관심사</th>
-					       	 	<th>방문경로</th>
-					       	</tr>
-					       	<tr>
-					       	 	<td>${dto.mem_purpose }</td>
-					       	 	<td>${dto.mem_interest }</td>
-					       	 	<td>${dto.mem_inflow }</td>
-					       	</tr>
-					    </table>
-						<button type="button" class="btn btn-primary" onclick="location.href='main'">홈으로</button> &nbsp;&nbsp; 
-						<button type="button" class="btn btn-primary" onclick="routine();">운동루틴 등록</button> &nbsp;&nbsp; 
-						<button type="button" class="btn btn-primary"  onclick="location.href='addexrecord.do?mem_id=${dto.mem_id}'">기록등록</button>
-						<br /><br /><br />
-						<select name="yoil" id="yoil" style="width:100px;">
-								<option value="월요일">월요일
-								<option value="화요일">화요일
-								<option value="수요일">수요일
-								<option value="목요일">목요일
-								<option value="금요일">금요일
-								<option value="토요일">토요일
-								<option value="일요일">일요일
-						</select>
-						<div id="registeredRoutine"></div>
-			<!-- bottom -->
-			<%@ include file="../../../../inc/Bottom.jsp" %>
+			</div>
+			<div id="layoutSidenav">
+				<div class="card-header" style="width: 100%">
+					<div style="border:1px solid #D7D7D7; margin-top:15px; margin-bottom:15px; border-radius:7px;">
+	        			<h3 style="margin-top:10px; margin-left:15px; margin-bottom:-2px;">상세정보</h3>
+						<div class="container-fluid">		
+							<table style="width:100%; border:1px solid #D7D7D7; border-radius:7px; border-collapse: separate; margin-bottom:0px;" >
+									<tr>
+										<th>이메일(아이디)</th>
+										<td>${dto.mem_id}</td>
+										<th>가입일자</th>
+										<td>${dto.mem_regidate}</td>
+										<th>생년월일</th>
+										<td>${dto.mem_birth}</td>
+									</tr>
+									<tr>
+										<th>이름</th>
+										<td>${dto.mem_name}</td>
+										<th>성별</th>
+										<td>${dto.mem_gender}</td>
+										<th>전화번호</th>
+										<td>${dto.mem_phone}</td>
+									</tr>
+									<tr>
+										<th>주소</th>
+										<td>${dto.mem_address}</td>
+										<th>이용권 유형</th>
+										<td>${dto.product_type}</td>
+										<th>이용권 이름</th>
+										<td>${dto.product_name}</td>
+									</tr>
+									<tr>
+										<th>키</th>
+										<td>${dto.mem_height}cm</td>
+										<th>체중</th>
+										<td>${dto.mem_weight}kg</td>
+										<th>보유 질병</th>
+										<td>${dto.mem_disease}</td>
+									</tr>
+									<tr>
+										<th>운동 목적</th>
+										<td>${dto.mem_purpose}</td>
+										<th>관심사</th>
+										<td>${dto.mem_interest}</td>
+										<th>방문 경로</th>
+										<td>${dto.mem_inflow}</td>
+									</tr>
+							</table>
+							
+							<div style="margin-top:10px;">
+								<button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
+								  onclick="location.href='main'">홈으로</button>  
+								<button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
+								   onclick="routine();">운동루틴 등록</button>  
+								<button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
+								  onclick="location.href='addexrecord.do'">기록등록</button>
+							</div>
+							<br /><br /><br />
+							<div style="margin-bottom:10px;">
+								<select name="yoil" id="yoil" style="width:100px;">
+										<option value="월요일">월요일
+										<option value="화요일">화요일
+										<option value="수요일">수요일
+										<option value="목요일">목요일
+										<option value="금요일">금요일
+										<option value="토요일">토요일
+										<option value="일요일">일요일
+								</select>
+							</div>
+								<div id="registeredRoutine"></div>
+		        		</div>
 	        		</div>
 				</div>
-        	</div>
+			</div>
+		</div>
 		</div>
 	</div>
+</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

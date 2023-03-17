@@ -144,6 +144,7 @@ public class SocialAccountController {
 			
 			//바디코딩에 이미 회원가입되어있는지 찾기(이미 등록되어있는 아이디의 회원이름 mem_name)
 			String mem_name = socialdao.kakaoselect(mem_id);
+			String authority = socialdao.kakaoautselect(mem_id);
 			System.out.println(mem_name);
 			if(mem_name==null) {
 				System.out.println("회원이 아니므로 회원가입을 진행합니다.");
@@ -153,14 +154,16 @@ public class SocialAccountController {
 				kakaoregister.put("mem_gender", mem_gender);
 				int result_kakao = socialdao.kakaoinsert(kakaoregister);
 				model.addAttribute("UserEmail",mem_id);
+				model.addAttribute("gymList", socialdao.gymlistSelect());
 //				session.setAttribute("UserInfo", UserInfo);
 //				session.setAttribute("UserName", mem_name);
 				return "member/account/kakaoLogin";
 			}
 			
 			else {
+				session.setAttribute("Authority", authority);
 				System.out.println("elese후"+mem_name);
-				session.setAttribute("UserInfo", socialdao.kakaoUserInfo(mem_id));
+//				session.setAttribute("UserInfo", socialdao.kakaoUserInfo(mem_id));
 				session.setAttribute("UserName", mem_name);
 				session.setAttribute("UserEmail", mem_id);
 				return "redirect:main"; 
@@ -177,6 +180,7 @@ public class SocialAccountController {
 			}
 			session.setAttribute("UserName", memberDTO.getMem_name());
 			session.setAttribute("UserEmail", memberDTO.getMem_id());
+			session.setAttribute("UserEmail", memberDTO.getAuthority());
 			return "redirect:main";
 		}
 		

@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
 <script>
 function submitForm(frm){
 	var comment = frm.elements["training_comment"].value;;
@@ -21,7 +23,8 @@ function submitForm(frm){
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp"%>	
-	<div id="container">
+<div class="container">
+	<div class="sub_container">
 		<!-- side -->
 		<%@ include file="../../../../inc/mypageside.jsp"%>
 		<br />
@@ -68,7 +71,8 @@ function submitForm(frm){
 				</c:if>
 			</c:otherwise>
 		</c:choose>
-		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
+</div>	
+<%@ include file="../../../../inc/Bottom.jsp"%>
 </body>
 </html>

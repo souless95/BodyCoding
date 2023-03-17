@@ -72,4 +72,33 @@
 		 }
 	</insert>
 	
+	<select id="selectPayLog" parameterType="String" resultType="global.dto.ProductDTO">
+		SELECT OD.order_idx,O.order_name,O.order_status,O.order_date
+		    FROM pay_log P
+		INNER JOIN (SELECT * FROM order_log WHERE mem_id=#{mem_id}) O
+		    ON P.order_idx=O.order_idx
+		INNER JOIN order_log_detail OD
+		    ON O.order_idx=OD.order_idx
+		GROUP BY OD.order_idx,O.order_name,O.order_status,O.order_date
+	</select>
+	
+	<select id="selectPayLogDetail" parameterType="String" resultType="global.dto.ProductDTO">
+		SELECT product_img, order_status, product_name, product_count
+		    FROM pay_log P
+		INNER JOIN order_log O
+		    ON P.order_idx=O.order_idx
+		INNER JOIN order_log_detail OD
+		    ON O.order_idx=OD.order_idx
+		INNER JOIN product P
+            ON P.product_idx=OD.product_idx
+		WHERE O.order_idx=#{order_idx}
+	</select>
+	
+	<select id="selectPayLogOne" parameterType="String" resultType="global.dto.ProductDTO">
+		SELECT * 
+			FROM pay_log P
+		INNER JOIN order_log O
+			ON P.order_idx=O.order_idx
+		WHERE P.order_idx=#{order_idx}
+	</select>
 </mapper>

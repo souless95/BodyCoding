@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -296,5 +297,26 @@ public class PurchaseController {
       
       return rNum;
    }
+	
+	@GetMapping("payLog.do")
+	public String payLogView(Model model, HttpSession session) {
+		String mem_id = (String)session.getAttribute("UserEmail");
+		List<ProductDTO> productDTO = purchaseDao.selectPayLog(mem_id);
+		model.addAttribute("oList",productDTO);
+		return "member/mypage/payLog";
+	}
+	
+	@GetMapping("payLogDetail.do")
+	public String payLogDetailView(Model model, HttpServletRequest req) {
+		List<ProductDTO> payListDTO 
+			= purchaseDao.selectPayLogDetail(req.getParameter("order_idx"));
+		/*
+		 * ProductDTO payDTO =
+		 * purchaseDao.selectPayLogOne(req.getParameter("order_idx"));
+		 */
+		model.addAttribute("orderList",payListDTO);
+		/* model.addAttribute("payLog",payDTO); */
+		return "member/mypage/payLogDetail";
+	}
    
 }

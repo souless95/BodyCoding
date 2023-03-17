@@ -92,23 +92,4 @@ public class MypageController {
 		return "redirect:chart";
 	}
 	
-	@GetMapping("payLog.do")
-	public String payLogView(Model model, HttpSession session) {
-		String mem_id = (String)session.getAttribute("UserEmail");
-		List<ProductDTO> productDTO = mydao.selectPayLog(mem_id);
-		model.addAttribute("oList",productDTO);
-		return "member/mypage/payLog";
-	}
-	
-	@GetMapping("payLogDetail.do")
-	public String payLogDetailView(Model model, HttpServletRequest req) {
-		List<ProductDTO> payListDTO 
-			= mydao.selectPayLogDetail(req.getParameter("order_idx"));
-		ProductDTO payDTO 
-			= mydao.selectPayLogOne(req.getParameter("order_idx"));
-		
-		model.addAttribute("odList",payListDTO);
-		model.addAttribute("payLog",payDTO);
-		return "member/mypage/payLogDetail";
-	}	
 } 

@@ -94,7 +94,16 @@ $(function(){
        let product_price = $("span[id='"+product_idx+"']").text().replace(',', '').trim();
        let gym_code = $('#gymSelect').val();
        
-       if(product_category!='헬스'&&trainer_id==null){
+       if(gym_code==null||gym_code==""){
+    	   alert('지점을 선택해주세요');
+       }
+       else if(product_category==null||product_category==""){
+    	   alert('프로그램을 선택해주세요');
+       }
+       else if(product_idx==null||product_idx==""){
+    	   alert('이용권을 선택해주세요');
+       }
+       else if(product_category!='헬스'&&trainer_id==""){
     	   alert('트레이너를 선택해주세요');
        }
        else{

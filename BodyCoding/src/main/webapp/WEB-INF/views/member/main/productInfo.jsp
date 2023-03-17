@@ -15,13 +15,14 @@ element.style {
 .contain {
     width: 1080px;
     margin: 0 auto;
+    font-size: 20px;
 }
 .rec_view_top{
 	border-top: 1px solid #ececec;
 	padding-top: 60px;
 	border-bottom: 1px solid #ececec;
 	padding-bottom: 60px;
-	height: 620px;
+	height: 650px;
 }
 .rec_view_top .rec_view_img{
     padding-bottom: 60px;
@@ -103,8 +104,8 @@ function login(t){
 </script>
 <div class="container">
 <br>
-	<h2>상품 정보</h2>
 	<div class="contain" style="height: auto !important;">
+	<h2>상품 정보</h2>
 		<div class="rec_view_top">
 			<div class="fl rec_view_img"> <!-- 사진위치 -->
 				<img src="static/uploads/product/${productInfo.product_img}">
@@ -130,7 +131,7 @@ function login(t){
 					</div>
 				</div>
 				<div class="like_btn">
-					<button type="button" class="custom-btn btn-1" onclick="login('p');">구매하기(결제)</button>
+					<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="login('p');">구매하기(결제)</button>
 					<button type="button" class="custom-btn btn-1" onclick="location.href='product'">목록으로</button>
 					<!-- 장바구니로 접근하는 버튼 -->
 					<button type="button" class="custom-btn btn-1" onclick="login('c');">장바구니</button>
@@ -141,8 +142,8 @@ function login(t){
 	<div class="rec_content">
 		<c:if test="${not empty avg_grade }">
 		<h3>후기</h3>
-			<table  style="width:100%; border-top: 1px solid #99DAEA; border-bottom: 1px solid #99DAEA;">
-				<tr style="background-color:#99DAEA;">
+			<table style="width:100%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
+				<tr style="background-color:#01538D; color: white;">
 					<th width="20%"><strong>작성자</strong></th>
 					<th width="50%"><strong>내용</strong></th>
 					<th width="15%"><strong>평점</strong></th>

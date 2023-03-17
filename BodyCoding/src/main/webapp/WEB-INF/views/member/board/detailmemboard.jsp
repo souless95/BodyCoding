@@ -61,25 +61,26 @@ pageContext.setAttribute("replaceChar", "\n");
 						</tr>
 
 					</table>
-					<c:if test="${dto.mem_id eq mem_id}">
-						<button type="button" class="btn btn-primary"
-							onclick="location.href='updateboard.do?board_idx=${dto.board_idx }'">
-							수정</button>
-						<button type="button" class="btn btn-primary"
-							onclick="location.href='memboardDelete.do?board_idx=${dto.board_idx }'">
-							삭제</button>
-					</c:if>
-					
-					<div style="margin-top:10px;">
-						<button type="button" class="custom-btn btn-1"
-							onclick="location.href='Freeboard.do'" style="margin:0px;">리스트</button>
-						<input type="hidden" value="${dto.board_idx }">
-						<!--  <button type="button" onclick="location.href='report.do?board_idx=' + parseInt('${dto.board_idx}')">신고하기</button>-->
-						
-						<c:if test="${dto.board_category eq '자유' }">
-							<button type="button" style="margin:0px;" class="custom-btn btn-1"
-								onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
+					<div style="display:flex;">
+						<c:if test="${dto.mem_id eq mem_id}">
+							<button type="button" class="custom-btn btn-1" style="margin:0px; margin-top:10px; margin-right:3px; width:70px; border:2px solid #99DAEA;"
+								onclick="location.href='updateboard.do?board_idx=${dto.board_idx }'">
+								수정</button>
+							<button type="button" class="custom-btn btn-1" style="margin:0px; margin-top:10px; margin-right:3px; width:70px; "
+								onclick="location.href='memboardDelete.do?board_idx=${dto.board_idx }'">
+								삭제</button>
 						</c:if>
+						
+						<div style="margin-top:10px;">
+							<button type="button" class="custom-btn btn-1"
+								onclick="location.href='Freeboard.do'" style="margin:0px; width:70px; margin-right:0px;">리스트</button>
+							<input type="hidden" value="${dto.board_idx }">
+							<!--  <button type="button" onclick="location.href='report.do?board_idx=' + parseInt('${dto.board_idx}')">신고하기</button>-->
+							<c:if test="${dto.board_category eq '자유' }">
+								<button type="button" style="margin:0px; width:70px;" class="custom-btn btn-1"
+									onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
+							</c:if>
+						</div>
 					</div>
 					<br>
 					<br>
@@ -97,7 +98,7 @@ pageContext.setAttribute("replaceChar", "\n");
 											<%-- <button type="button" class="btn btn-primary" onclick="openUpdateModal(${rdto.reply_idx})">수정</button> --%>
 											<!--  <button type="button" class="btn btn-primary" onclick="location.href='updatereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">수정</button>-->
 												<button type="button" style="width:90px; height:30px; margin:0px;"
-													 class="custom-btn btn-1" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
+													 class="custom-btn btn-1" style="margin-right:3px;" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>&nbsp;
 												<button type="button"  style="width:90px; height:30px; margin:0px;" 
 												  class="custom-btn btn-1"
 													onclick="location.href='deletereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">삭제</button>

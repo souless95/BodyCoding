@@ -18,9 +18,9 @@
 	<div class="container" style="margin-top:25px;">
 	
 	<div class="container-fluid" style="width:80%; text-align:left; padding-left:15px;" >
-	 	<div style="margin-left:90px; display: flex; margin-top:-15px;">
+	 	<div style="margin-left:147px; display: flex; margin-top:-15px;">
 	    <form method="get" action="searchmemberboard.do" style=" display: flex;">
-	        <div class="form-group" style="margin-top:24px;">
+	        <div class="form-group" style="margin-top:25px;">
 	            <label for="searchType">검색 종류</label>
 	            <select name="searchType" id="searchType" class="form-control">
 	                <option value="board_title">제목</option>
@@ -32,7 +32,7 @@
 	         <div>
 	            <label for="searchKeyword">검색어</label>
 	            <input type="text" name="searchKeyword" id="searchKeyword" class="form-control">
-	            <button type="submit" style="height:34px; margin-left:0px;" class="btn btn-primary" onclick="search()">검색</button>
+	            <button type="submit" style="height:42px; margin-left:0px; width:60px; font-size:20px; font-weight:bold;" class="custom-btn btn-1" onclick="search()">검색</button>
 	        </div>
 	    	</form>
 		</div><!-- 검색끝 -->

@@ -33,7 +33,6 @@
 	  	select count(*) from freeboard
 	</select>  
 
-	
  	<select id="memselect" resultType="global.dto.BoardDTO" parameterType="global.dto.BoardDTO">
 	        <![CDATA[
 	       SELECT *

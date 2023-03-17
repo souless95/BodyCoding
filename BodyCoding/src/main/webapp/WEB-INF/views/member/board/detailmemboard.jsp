@@ -20,16 +20,16 @@ pageContext.setAttribute("replaceChar", "\n");
 	<%@ include file="../../../../inc/Top.jsp"%>
 	<div class="container">
 		<div style="margin-left:200px;">
-			<div style="t">
-				<h2>${dto.mem_id }작성글상세보기</h2>
+			<div style="">
+				<%-- <h2>${dto.mem_id }작성글상세보기</h2>--%>
 			</div>
 			<form name="writeFrm">
 				<!-- idx숨겨놓기 -->
 				<input type="hidden" name="board_idx" value="${dto.board_idx }" />
 				<input type="hidden" name="category" value="${dto.board_category }" />
-				<div class="card-body" style="width: 90%">
+				<div class="card-body" style="width: 100%; margin-top:20px;">
 					<table
-						style="border: 2px solid black; border-left: 0px; border-right: 0px; width: 90%;">
+						style="border: 2px solid black; border-left: 0px; border-right: 0px; width: 90%; margin-bottom:0px;">
 						<tr style="border-bottom: 3px solid black;">
 							<th width="10%">번호</th>
 							<td width="10%">${dto.board_idx }</td>
@@ -68,15 +68,19 @@ pageContext.setAttribute("replaceChar", "\n");
 						<button type="button" class="btn btn-primary"
 							onclick="location.href='memboardDelete.do?board_idx=${dto.board_idx }'">
 							삭제</button>
-						
 					</c:if>
-
-					<button type="button" class="btn btn-primary"
-						onclick="location.href='Freeboard.do'">리스트</button>
-					<input type="hidden" value="${dto.board_idx }">
-					<!--  <button type="button" onclick="location.href='report.do?board_idx=' + parseInt('${dto.board_idx}')">신고하기</button>-->
-					<button type="button"
-						onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
+					
+					<div style="margin-top:10px;">
+						<button type="button" class="custom-btn btn-1"
+							onclick="location.href='Freeboard.do'" style="margin:0px;">리스트</button>
+						<input type="hidden" value="${dto.board_idx }">
+						<!--  <button type="button" onclick="location.href='report.do?board_idx=' + parseInt('${dto.board_idx}')">신고하기</button>-->
+						
+						<c:if test="${dto.board_category eq '자유' }">
+							<button type="button" style="margin:0px;" class="custom-btn btn-1"
+								onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
+						</c:if>
+					</div>
 					<br>
 					<br>
 					<div class="card" style="border: 1px solid #D7D7D7; border-radius:7px; width:90%; padding-bottom:20px;">
@@ -92,8 +96,10 @@ pageContext.setAttribute("replaceChar", "\n");
 												<input type="hidden" name="board_idx" value="${rdto.reply_idx }" />
 											<%-- <button type="button" class="btn btn-primary" onclick="openUpdateModal(${rdto.reply_idx})">수정</button> --%>
 											<!--  <button type="button" class="btn btn-primary" onclick="location.href='updatereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">수정</button>-->
-												<button type="button" style="width:50px; height:30px;" class="btn btn-primary" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
-												<button type="button"  style="width:50px; height:30px;"  class="btn btn-primary"
+												<button type="button" style="width:90px; height:30px; margin:0px;"
+													 class="custom-btn btn-1" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
+												<button type="button"  style="width:90px; height:30px; margin:0px;" 
+												  class="custom-btn btn-1"
 													onclick="location.href='deletereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">삭제</button>
 											</c:if>
 										</div>
@@ -122,15 +128,17 @@ pageContext.setAttribute("replaceChar", "\n");
 			    </div>
 			</form>
 		</div>
-		<div style="width:90%; margin-left:15px;">
+		<div style="width:90%; margin-left:15px; margin-bottom:20px; margin-top:-10px;">
 			<form method="post" action="/insertreply.do">
 				<input type="hidden" name="board_idx" value="${dto.board_idx }" />
-				 <input	type="hidden" name="mem_id" value="${mem_id }" />
-				<div style="display: flex; flex-direction: row; width:88%; margin-top:10px;">
-			      <span style="font-weight:bold;">${mem_id }</span>
-			      <input type="text" name="reply_cont" id="reply_cont" placeholder="댓글을 입력해보세요"
-			       style="flex: 1; border-radius: 6px; border: 1px solid #D7D7D7; margin-left:10px;"/>
-			      <button type="submit" class="btn btn-primary" style="width: 65px; margin-left:20px;">등록</button>
+				<input type="hidden" name="mem_id" value="${mem_id }" />
+				<div style="display: flex; flex-direction: column; width:88%; margin-top:10px;">
+			      <div><span style="font-weight:bold;">${mem_id }</span></div>
+			      <div style="display:flex; width:100%; margin-left:20px;">
+				      <input type="text" name="reply_cont" id="reply_cont" placeholder="댓글을 입력해보세요"
+				       style="width:100%;border-radius: 6px; border: 1px solid #D7D7D7; margin-left:10px;"/>
+				      <button type="submit" class="custom-btn btn-1" style="width: 65px; margin-left:5px; margin-right:0px; margin-bottom:0px; margin-top:0px;">등록</button>
+				  </div>
 			    </div>
 			</form>
 		</div>

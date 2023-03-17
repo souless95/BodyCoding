@@ -29,10 +29,6 @@ p {
   margin: 40px auto;
   text-align: center;
 } */
-button {
-  margin: 20px;
-  outline: none;
-}
 .custom-btn {
   width: 130px;
   height: 40px;
@@ -45,6 +41,8 @@ button {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
+  margin: 20px;
+  outline: none;
 }
 
 /* 1 */

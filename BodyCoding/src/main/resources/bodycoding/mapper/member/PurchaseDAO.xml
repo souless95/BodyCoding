@@ -22,8 +22,8 @@
 		SELECT mem_name, mem_img ,mem_id
 			FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
 		INNER JOIN 
-			(SELECT lesson_name, trainer_id FROM lesson 
-			WHERE lesson_category=#{lesson_category} GROUP BY lesson_name, trainer_id) L
+			(SELECT lesson_category, trainer_id FROM lesson 
+			WHERE lesson_category=#{lesson_category} GROUP BY lesson_category, trainer_id) L
 			ON M.mem_id=L.trainer_id
 	</select>
 

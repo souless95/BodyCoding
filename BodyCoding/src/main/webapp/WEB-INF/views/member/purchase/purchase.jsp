@@ -91,7 +91,7 @@ $(function(){
     $('#kPayBtn').click(function(){
        let product_category = $('input[name=product_category]:checked').val();
        let product_name = $("label[for='"+product_idx+"']").text();
-       let product_price = $("span[id='"+product_idx+"']").text().replace(',', '').trim();
+       let product_price = $("span[id='"+product_idx+"']").text().replace(',', '').replace(',', '').trim();
        let gym_code = $('#gymSelect').val();
        
        if(gym_code==null||gym_code==""){
@@ -111,12 +111,14 @@ $(function(){
 	           trainer_id : trainer_id,
 	           product_idx : product_idx,
 	           gym_code : gym_code,
-	             product_name : product_name,
-	             product_price : product_price,
-	             type : "멤버쉽"
+	           product_name : product_name,
+	           product_price : product_price,
+	           type : "멤버쉽"
 	       }
 	       
-	       $.ajax({
+	       console.log(payInfo);
+	       
+ 	       $.ajax({
 	         url: 'kakaoPay.do',
 	         data : payInfo,
 	         dataType:"json",

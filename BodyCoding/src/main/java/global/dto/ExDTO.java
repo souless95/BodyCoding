@@ -13,5 +13,5 @@ public class ExDTO {
 
 	private String mem_name;
 	private String lesson_start_time;
-	private String reservaction_idx;
+	private String reservation_idx;
 }

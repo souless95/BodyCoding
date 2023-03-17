@@ -72,7 +72,6 @@ public class PurchaseController {
 	@ResponseBody
 	@RequestMapping("/kakaoPay.do")
 	public String purchase(HttpServletRequest req, Model model, HttpSession session, ProductDTO productDTO) {
-		
 		System.out.println(productDTO);
 
 		// 멤버쉽과 상품 공통 변수 정의
@@ -308,14 +307,16 @@ public class PurchaseController {
 	
 	@GetMapping("payLogDetail.do")
 	public String payLogDetailView(Model model, HttpServletRequest req) {
+
 		List<ProductDTO> payListDTO 
 			= purchaseDao.selectPayLogDetail(req.getParameter("order_idx"));
-		/*
-		 * ProductDTO payDTO =
-		 * purchaseDao.selectPayLogOne(req.getParameter("order_idx"));
-		 */
-		model.addAttribute("orderList",payListDTO);
-		/* model.addAttribute("payLog",payDTO); */
+	
+		ProductDTO payDTO 
+			= purchaseDao.selectPayLogOne(req.getParameter("order_idx"));
+		
+		model.addAttribute("orderlist",payListDTO);
+		model.addAttribute("payLog",payDTO);
+		
 		return "member/mypage/payLogDetail";
 	}
    

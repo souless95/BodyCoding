@@ -12,6 +12,7 @@
 .contents{
     padding: 30px 0 44px;
     background-color: #f4f4f4;
+    width:1400px;
 }
 .store_card{
     margin: 0 13px;
@@ -54,7 +55,7 @@
     -webkit-box-flex: 1;
     flex-grow: 1;
     min-width: 0;
-    padding: 30px 0 12px;
+    padding: 20px 0 30px;
     border-right: 1px solid #e9ecef;
 }
 .product_tittle{

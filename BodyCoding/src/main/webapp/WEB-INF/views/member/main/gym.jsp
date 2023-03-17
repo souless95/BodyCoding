@@ -123,10 +123,11 @@ function errCallBack(errData){
 <div class="container">
 	<br>
 	<h2 >지점 정보</h2>
-	<div class="main_left" style="width: 65%; float: left;">
-		<div id="map" style="width: 98%; height: 730px;"></div>
-	</div>
-	
+	<div class="contain">
+		<div class="main_left" style="width: 65%; float: left;">
+			<div id="map" style="width: 800px; height: 800px; float: left;"></div>
+		</div>
+		
 <script type="text/javascript">
    	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
        	mapOption = { 
@@ -232,105 +233,106 @@ function errCallBack(errData){
 <!-- 지도관련 코드: 위치 고정되야 함(지도 끝) -->
 		
 	<!-- 상세정보 체크박스 부분 -->
-	<div class="main_right" style="width: 35%; float: left;">
-		<div style="height: 300px;">
-			<h5>&nbsp;상세정보</h5>
-			<form name="gymCheck" id="gymCheck">
-				<ul style="list-style-type: none; width: 50%; height: 50%; float: left;">
-					<li><input type="checkbox" name="facility_health" value="Y"
-						class="facility" id="facility_health"> <label
-						for="facility_health"></label><img
-						src="../static/admin/images/0004.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">헬스</span>
-					</li>
-					<li><input type="checkbox" name="facility_yoga" value="Y"
-						class="facility" id="facility_yoga"> <label
-						for="facility_yoga"></label> <img
-						src="../static/admin/images/0005.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">요가</span>
-					</li>
-					<li><input type="checkbox" name="facility_gx" value="Y"
-						class="facility" id="facility_gx"> <label
-						for="facility_gx"></label> <img
-						src="../static/admin/images/0007.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">G.X</span>
-					</li>
-					<li><input type="checkbox" name="facility_pilates" value="Y"
-						class="facility" id="facility_pilates"> <label
-						for="facility_pilates"></label> <img
-						src="../static/admin/images/0010.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">필라테스
-					</span></li>
-					<li><input type="checkbox" name="facility_pt" value="Y"
-						class="facility" id="facility_pt"> <label
-						for="facility_pt"></label> <img
-						src="../static/admin/images/0011.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">P.T</span>
-					</li>
-				</ul>
-				<ul style="list-style-type: none; width: 50%; height: 50%; float: left; padding-left: 0;">
-					<li><input type="checkbox" name="facility_parking" value="Y"
-						class="facility" id="facility_parking"
-						style="border: 1px solid black; width: 5px; height: 5px;">
-						<label for="facility_parking"></label><img
-						src="../static/admin/images/0001.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">주차</span>
-					</li>
-					<li><input type="checkbox" name=facility_24hour value="Y"
-						class="facility" id="facility_24hour"> <label
-						for="facility_24hour"></label> <img
-						src="../static/admin/images/0014.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">24시간</span>
-					</li>
-					<li><input type="checkbox" name="facility_shower" value="Y"
-						class="facility" id="facility_shower"> <label
-						for="facility_shower"></label> <img
-						src="../static/admin/images/0017.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">샤워시설</span>
-					</li>
-					<li><input type="checkbox" name="facility_wear" value="Y"
-						class="facility" id="facility_wear"> <label
-						for="facility_wear"></label> <img
-						src="../static/admin/images/0018.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">운동복</span>
-					</li>
-					<li><input type="checkbox" name="facility_locker" value="Y"
-						class="facility" id="facility_locker"> <label
-						for="facility_locker"></label><img
-						src="../static/admin/images/0020.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">락커</span>
-					</li>
-				</ul>
-			</form>
+		<div class="main_right" style="width: 35%; float: left;">
+			<div style="height: 300px;">
+				<h5>&nbsp;상세정보</h5>
+				<form name="gymCheck" id="gymCheck">
+					<ul style="list-style-type: none; width: 50%; height: 50%; float: right;">
+						<li><input type="checkbox" name="facility_health" value="Y"
+							class="facility" id="facility_health"> <label
+							for="facility_health"></label><img
+							src="../static/admin/images/0004.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">헬스</span>
+						</li>
+						<li><input type="checkbox" name="facility_yoga" value="Y"
+							class="facility" id="facility_yoga"> <label
+							for="facility_yoga"></label> <img
+							src="../static/admin/images/0005.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">요가</span>
+						</li>
+						<li><input type="checkbox" name="facility_gx" value="Y"
+							class="facility" id="facility_gx"> <label
+							for="facility_gx"></label> <img
+							src="../static/admin/images/0007.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">G.X</span>
+						</li>
+						<li><input type="checkbox" name="facility_pilates" value="Y"
+							class="facility" id="facility_pilates"> <label
+							for="facility_pilates"></label> <img
+							src="../static/admin/images/0010.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">필라테스
+						</span></li>
+						<li><input type="checkbox" name="facility_pt" value="Y"
+							class="facility" id="facility_pt"> <label
+							for="facility_pt"></label> <img
+							src="../static/admin/images/0011.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">P.T</span>
+						</li>
+					</ul>
+					<ul style="list-style-type: none; width: 50%; height: 50%; float: left; padding-left: 0;">
+						<li><input type="checkbox" name="facility_parking" value="Y"
+							class="facility" id="facility_parking"
+							style="border: 1px solid black; width: 5px; height: 5px;">
+							<label for="facility_parking"></label><img
+							src="../static/admin/images/0001.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">주차</span>
+						</li>
+						<li><input type="checkbox" name=facility_24hour value="Y"
+							class="facility" id="facility_24hour"> <label
+							for="facility_24hour"></label> <img
+							src="../static/admin/images/0014.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">24시간</span>
+						</li>
+						<li><input type="checkbox" name="facility_shower" value="Y"
+							class="facility" id="facility_shower"> <label
+							for="facility_shower"></label> <img
+							src="../static/admin/images/0017.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">샤워시설</span>
+						</li>
+						<li><input type="checkbox" name="facility_wear" value="Y"
+							class="facility" id="facility_wear"> <label
+							for="facility_wear"></label> <img
+							src="../static/admin/images/0018.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">운동복</span>
+						</li>
+						<li><input type="checkbox" name="facility_locker" value="Y"
+							class="facility" id="facility_locker"> <label
+							for="facility_locker"></label><img
+							src="../static/admin/images/0020.png" width="30" height="30"
+							align="absmiddle"> <span style="font-size: 15px;">락커</span>
+						</li>
+					</ul>
+				</form>
+			</div>
 		</div>
-	</div>
-	<!-- 검색 & 지점리스트 -->
-	<div>
-		<ul style="text-align: center;">
-			<li>
-				<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
-				<button type="button" id="search" class="custom-btn btn-1" style="margin-left: 35px;">검색하기</button>
-			</li>
-		</ul>
-	</div>
-	<!-- 지점 리스트 나오는 부분 -->
-	<div style="height: 330px; width: 420px; overflow: auto;">
-				<ul style="list-style-type: none; padding-top: 10px;">
-					<div id="show_data">
-						<c:forEach items="${gymList }" var="row" varStatus="loop">
-						<!-- <a href="#" style="color: black;"> -->
-							<li style="border-bottom: 1px solid gray; color: black;">
-								<div>
-									${row.mem_name}
-									<button class="custom-btn btn-1" style="float: right; width: 110px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
-								</div>
-								<div>${row.mem_address}</div>
-								<div>${row.mem_phone}</div>
-							</li>
-						<!-- </a> -->
-						</c:forEach>
-					</div>
-				</ul>
+		<!-- 검색 & 지점리스트 -->
+		<div>
+			<ul style="text-align: center;">
+				<li>
+					<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
+					<button type="button" id="search" class="custom-btn btn-1" style="margin-left: 35px;">검색하기</button>
+				</li>
+			</ul>
+		</div>
+		<!-- 지점 리스트 나오는 부분 -->
+		<div style="height: 330px; width: 420px; overflow: auto;">
+			<ul style="list-style-type: none; padding-top: 10px;">
+				<div id="show_data">
+					<c:forEach items="${gymList }" var="row" varStatus="loop">
+					<!-- <a href="#" style="color: black;"> -->
+						<li style="border-bottom: 1px solid gray; color: black;">
+							<div>
+								${row.mem_name}
+								<button class="custom-btn btn-1" style="float: right; width: 110px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
+							</div>
+							<div>${row.mem_address}</div>
+							<div>${row.mem_phone}</div>
+						</li>
+					<!-- </a> -->
+					</c:forEach>
+				</div>
+			</ul>
+		</div>
 	</div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp"%>

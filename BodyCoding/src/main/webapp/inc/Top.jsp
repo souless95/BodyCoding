@@ -10,29 +10,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../static/assets/css/main.css" />
 <style type="text/css">
-/* h1 {
-  position: relative;
-  text-align: center;
-  color: #353535;
-  font-size: 50px;
-  font-family: "Cormorant Garamond", serif;
-}
-
-p {
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  color: #676767;
-}
-.frame {
-  width: 90%;
-  margin: 40px auto;
-  text-align: center;
-} */
-button {
-  margin: 20px;
-  outline: none;
-}
 .custom-btn {
   width: 130px;
   height: 40px;
@@ -45,6 +22,8 @@ button {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
+  margin: 20px;
+  outline: none;
 }
 
 /* 1 */
@@ -52,6 +31,33 @@ button {
   transition: all 0.3s ease;
 }
 .btn-1:hover {
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+
+.custom-btn2 {
+  width: 100px;
+  height: 80px;
+  border: 2px solid #99DAEA;
+  border-radius : 10px;
+  font-family: 'Lato', sans-serif;
+  background-color:#99DAEA;
+  color:white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  outline: none;
+}
+/* 2 */
+.btn-2 {
+  transition: all 0.3s ease;
+}
+.btn-2:hover {
    box-shadow:
    -7px -7px 20px 0px #fff9,
    -4px -4px 5px 0px #fff9,

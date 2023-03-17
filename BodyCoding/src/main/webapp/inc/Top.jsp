@@ -108,7 +108,7 @@ function openChatRoom(event, mem_id){
                       
                       <c:choose>
                           <c:when test="${Authority eq 'ROLE_MEMBER' }">
-                              <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}" />
+                              <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}&mem_id=${UserEmail}" />
                               <li>
                                   <a href="${mypageUrl}">MyPage</a>
                                   <ul> 

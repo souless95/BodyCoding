@@ -24,7 +24,7 @@ function setDivHeight(divElement, height, minHeight) {
 	}
 
 var jspHeight = document.documentElement.scrollHeight;
-var contain_left = document.querySelector('.contain_left');
+var contain_left = document.querySelector('.contain_left1');
 
 setDivHeight(contain_left, jspHeight, 580);
 </script>	

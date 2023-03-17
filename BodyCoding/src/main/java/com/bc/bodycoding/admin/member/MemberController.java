@@ -208,7 +208,6 @@ public class MemberController {
    @RequestMapping(value="addexrecord.do", method=RequestMethod.POST)
    public String insertexrecord1(ExDTO exDTO, HttpServletRequest req, HttpSession session) {
       
-      String trainer_id = (String)(session.getAttribute("UserEmail"));
       String user_id = req.getParameter("mem_id");
       
    	  memberdao.insertTL(exDTO);
@@ -227,13 +226,10 @@ public class MemberController {
    public String editrecord(Model model, HttpServletRequest req) {
       
       MemberDTO memberDTO = new MemberDTO();
-      System.out.println("11" + req.getParameter("training_log_idx"));
       memberDTO = memberdao.selectone(req.getParameter("training_log_idx"));
-      System.out.println(memberDTO);
       model.addAttribute("memberList", memberDTO);
             
       return "member/trainer/editexrecord";
-      
    }
    
    //운동기록 수정

@@ -15,7 +15,7 @@ $(document).ready(function() {
     	var lessonIdx = $(this).data('lessonidx');
     	console.log(lessonIdx);
 		var name = $('#'+lessonIdx+' > p:first-child').text().trim();
-		var deletetion = confirm("일정 " + name + "을 삭제하시겠습니까?");
+		var deletetion = confirm(name + " 일정을 취소하시겠습니까?");
 		if(deletetion){
 			$.ajax({
 				url: "reservatedDeletion.do",

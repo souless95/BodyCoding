@@ -40,7 +40,7 @@ body{
 							<h2>회원 리스트</h2>
 		        		</div>
 		        		<div class="container-fluid" style="width:100%;">
-							<table style="width:100%; height:50px; border:1px solid #D7D7D7; margin-top:15px;">
+							<table style="width:100%; height:50px; border:1px solid #D7D7D7; margin-top:15px; border-collapse: separate; border-radius:7px;">
 								<tr style="height:55px;">
 								  <th class="table-header">이메일(아이디)</th>
 								  <th class="table-header">이름</th>

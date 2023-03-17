@@ -240,13 +240,18 @@
 <div class="container">
 	<%@ include file ="../../../inc/mypageside.jsp" %>
 	<br />
-    <h1>일정관리</h1>
-  	<br /><br />
-	<div id="event-info">
-  		<h3 id="event-title"></h3>
-  		<p id="event-description" style="white-space: pre-wrap;"></p>
+	<div class="card mb-4" style="width:83%; margin-top:-35px;">
+	   <div class="card-header"
+	    			 style="height:75px; background-color:#99DFFD; vertical-align:middle;">
+			<h2>일정관리</h2>
+	    </div>
+	  	<br /><br />
+		<div id="event-info" style="text-align:center;">
+	  		<h3 id="event-title"></h3>
+	  		<p id="event-description" style="white-space: pre-wrap;"></p>
+		</div>
+		<div id='calendar' style="width:100%; max-width:800px; height:1500px; margin:0 auto; text-align:center;"></div>
 	</div>
-	<div id='calendar' style="width:800px; height:1500px;"></div>
 </div>
 <%@ include file="../../../inc/Bottom.jsp" %>
 </body>

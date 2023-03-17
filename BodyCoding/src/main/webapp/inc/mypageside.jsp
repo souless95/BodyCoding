@@ -136,6 +136,9 @@ ul{
 		                                <li><a class="btn" style="padding-top:10px;" href="memberlistT.do">회원목록</a></li>
 		                            </ul>
 		                            <ul>
+		                            	<li><a class="btn" style="padding-top:10px;" href="addexrecord.do?mem_id=">운동기록작성</a></li>
+		                            </ul>
+		                            <ul>
 		                            	<li><a class="btn" style="padding-top:10px;" href="exrecord.do">운동기록목록</a></li>
 		                            </ul>
 		                        </div>

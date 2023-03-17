@@ -13,10 +13,10 @@
 .custom-btn {
   width: 130px;
   height: 40px;
-  border: 2px solid #99DAEA;
+  border: 2px solid #01538D;
   border-radius : 10px;
   font-family: 'Lato', sans-serif;
-  background-color:#99DAEA;
+  background-color:#01538D;
   color:white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -65,6 +65,9 @@
    4px 4px 5px 0px #0001;
 }
 	
+.container{
+	min-height: 730px;
+}
 </style>
 <script type="text/javascript">
 
@@ -178,7 +181,7 @@ function openChatRoom(event, mem_id){
 						        </c:when>
 						        
 						        <c:otherwise>
-						            <c:set var="mypageUrl" value="trainermypage.do?gym_code=${UserInfo.gym_code}" />
+						            <c:set var="mypageUrl" value="calendar.do" />
 						            <li>
 						                <a href="${mypageUrl}">마이페이지</a>
 						                <ul> 

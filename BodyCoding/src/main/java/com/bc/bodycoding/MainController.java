@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bc.bodycoding.admin.chart.SalesChartController;
-import com.bc.bodycoding.admin.chart.SalesChartService;
 
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;

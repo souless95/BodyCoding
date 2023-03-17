@@ -18,10 +18,13 @@ public interface AccountService{
 	public MemberDTO login(MemberDTO memberDTO);
 	public int kakaoinsert(Map<String, String> map);
 	public String kakaoselect(String mem_id);
+	public String kakaoautselect(String mem_id);
 	public MemberDTO kakaoUserInfo(String mem_id);
 	public int kakaoupdate(MemberDTO memberDTO);
 	
 	public String pwCheck(String mem_id);
+	public MemberDTO selectOneMember(MemberDTO memberDTO);
+	public int update(MemberDTO memberDTO);
 	public int deleteMember(String mem_id);
 	
 	public MemberDTO gofindid(MemberDTO memberDTO);

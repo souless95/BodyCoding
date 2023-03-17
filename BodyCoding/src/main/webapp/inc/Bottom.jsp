@@ -13,13 +13,22 @@
 } 
 .chat_bot :hover{cursor: pointer;}
 </style>
+
 <script>
+function setDivHeight(divElement, height, minHeight) {
+	  divElement.style.height = height + 'px';
+	  console.log(parseInt(divElement.style.height));
+	  if (parseInt(divElement.style.height) < minHeight) {
+	    divElement.style.height = minHeight + 'px';
+	  }
+	}
+
 var jspHeight = document.documentElement.scrollHeight;
 var contain_left = document.querySelector('.contain_left');
-contain_left.style.height = jspHeight + 'px';
+
+setDivHeight(contain_left, jspHeight, 580);
 </script>	
 
-<hr />		
 <!-- Footer -->
 
 <div id="footer" >

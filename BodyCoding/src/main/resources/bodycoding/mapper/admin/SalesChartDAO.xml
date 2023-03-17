@@ -5,7 +5,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="com.bc.bodycoding.admin.chart.SalesChartService">
+<mapper namespace="com.bc.bodycoding.SalesChartService">
 
 <!-- sup차트 -->
 <!-- 전지점 월별 매출액 -->

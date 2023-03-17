@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -23,31 +23,31 @@
 }
 
 input[type="checkbox"] {
-	display: none;
+   display: none;
 }
 
 input[type="checkbox"]+label {
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border: 3px solid #707070;
-	position: relative;
+   display: inline-block;
+   width: 20px;
+   height: 20px;
+   border: 3px solid #707070;
+   position: relative;
 }
 
 input[class="facility"]:checked+label::after {
-	content: '✔';
-	font-size: 20px;
-	width: 20px;
-	height: 20px;
-	text-align: center;
-	position: absolute;
-	left: -2px;
-	top: -8px;
+   content: '✔';
+   font-size: 20px;
+   width: 20px;
+   height: 20px;
+   text-align: center;
+   position: absolute;
+   left: -2px;
+   top: -8px;
 }
 
 #fac li {
-	height: 30px;
-	widows: 150px;
+   height: 30px;
+   widows: 150px;
 }
 </style>
 </head>
@@ -56,83 +56,83 @@ input[class="facility"]:checked+label::after {
 
 <script type="text/javascript">
 
- 	function mapshow(id){
-   	console.log($('#gym_code').val());
-   	$.ajax({
-      	type:'get',
-      	url: '../gymMap.do',
-      	data: {gym_code: $('#gym_code').val()},
-      	contentType: " text/html;charset:utf-8",
-      	dataType:"json",
-      	success:sucMap,
-      	error: errCallBack
-   	});
+    function mapshow(id){
+      console.log($('#gym_code').val());
+      $.ajax({
+         type:'get',
+         url: '../gymMap.do',
+         data: {gym_code: $('#gym_code').val()},
+         contentType: " text/html;charset:utf-8",
+         dataType:"json",
+         success:sucMap,
+         error: errCallBack
+      });
 } 
 $(function() {
     $(".facility").click(function() {
-      	let checkboxVal = $('#gymCheck').serialize();
+         let checkboxVal = $('#gymCheck').serialize();
       
-      	console.log(checkboxVal);
-      	$.ajax({
-         	type:'get',
-         	url: '../gymCheck.do',
-         	data: {checkboxVal: checkboxVal},
-         	contentType: "text/html;charset:utf-8",
-         	dataType:"json",
-         	success:sucCallBack,
-         	error: errCallBack
-      	});
-   	}); 
+         console.log(checkboxVal);
+         $.ajax({
+            type:'get',
+            url: '../gymCheck.do',
+            data: {checkboxVal: checkboxVal},
+            contentType: "text/html;charset:utf-8",
+            dataType:"json",
+            success:sucCallBack,
+            error: errCallBack
+         });
+      }); 
    
-   	//해당 버튼을 클릭하면 ajax() 함수를 선택한다.
-   	$('#search').click(function() {
-      	$.ajax({
-         	type:'get',
-         	url: '../gymSearch.do',
-         	data: {searchWord: $('#searchWord').val()},
-         	contentType: " text/html;charset:utf-8",
-         	dataType:"json",
-         	success:sucCallBack,
-         	error: errCallBack
-      	});
-   	});
+      //해당 버튼을 클릭하면 ajax() 함수를 선택한다.
+      $('#search').click(function() {
+         $.ajax({
+            type:'get',
+            url: '../gymSearch.do',
+            data: {searchWord: $('#searchWord').val()},
+            contentType: " text/html;charset:utf-8",
+            dataType:"json",
+            success:sucCallBack,
+            error: errCallBack
+         });
+      });
    
 });
 function sucCallBack(resData) {
-   	//콜백데이터는 JSON형식으로 전달된다.
-   	console.log(resData);
-   	let tableData = "";
-   	$(resData).each(function(index, data) {
-      	tableData +=
-      	"<li style='border-bottom: 1px solid gray; color: black;'><div>" +data.mem_name
-      	+"<button class='custom-btn btn-1' style='float: right; width: 110px; height: 50px; margin: 10px;' onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
-      	+"<div>" +data.mem_address+ "</div>"
-      	+"<div>" +data.mem_phone+ "</div></li>";
+      //콜백데이터는 JSON형식으로 전달된다.
+      console.log(resData);
+      let tableData = "";
+      $(resData).each(function(index, data) {
+         tableData +=
+         "<li style='border-bottom: 1px solid gray; color: black;'><div>" +data.mem_name
+         +"<button class='custom-btn btn-1' style='float: right; width: 110px; height: 50px; margin: 10px;' onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
+         +"<div>" +data.mem_address+ "</div>"
+         +"<div>" +data.mem_phone+ "</div></li>";
    }); 
-   	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
-   	$('#show_data').html(tableData);
-   	/* $('#searchWord').val(''); */
+      //해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
+      $('#show_data').html(tableData);
+      /* $('#searchWord').val(''); */
 }
 //에러발생시 호출되는 콜백 함수
 function errCallBack(errData){
-   	console.log(errData.status+":"+errData.statusText);
+      console.log(errData.status+":"+errData.statusText);
 }
 </script>
 
 <!-- 지도관련 코드: 위치 고정되야 함(지도 시작) -->
 <div class="container" style="height: 930px;">
-	<br>
-	<h2 >지점 정보</h2>
-	<div class="main_left" style="width: 65%; float: left;">
-		<div id="map" style="width: 98%; height: 730px;"></div>
-	</div>
-	
+   <br>
+   <h2 >지점 정보</h2>
+   <div class="main_left" style="width: 65%; float: left;">
+      <div id="map" style="width: 98%; height: 730px;"></div>
+   </div>
+   
 <script type="text/javascript">
-   	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-       	mapOption = { 
-           	center: new kakao.maps.LatLng(37.5690886, 126.9846525), // 지도의 중심좌표
-           	level: 3 // 지도의 확대 레벨
-       	};
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+          mapOption = { 
+              center: new kakao.maps.LatLng(37.5690886, 126.9846525), // 지도의 중심좌표
+              level: 3 // 지도의 확대 레벨
+          };
      
     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
      
@@ -164,7 +164,7 @@ function errCallBack(errData){
         displayMarker(locPosition, message);
     }
      
-  	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message, infoPosition) {
 
         // 마커를 생성합니다
@@ -177,7 +177,7 @@ function errCallBack(errData){
             iwRemoveable = true;
 
         // 인포윈도우를 생성합니다
- 		/* var infowindow = new kakao.maps.InfoWindow({
+       /* var infowindow = new kakao.maps.InfoWindow({
             content : iwContent,
             removable : iwRemoveable
         }); */
@@ -189,7 +189,7 @@ function errCallBack(errData){
         
         // 인포윈도우를 마커위에 표시합니다 
         /* infowindow.open(map, marker); */
-       	customOverlay.setMap(map, marker);
+          customOverlay.setMap(map, marker);
          
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);      
@@ -230,108 +230,108 @@ function errCallBack(errData){
     
 </script>
 <!-- 지도관련 코드: 위치 고정되야 함(지도 끝) -->
-		
-	<!-- 상세정보 체크박스 부분 -->
-	<div class="main_right" style="width: 35%; float: left;">
-		<div style="height: 250px;">
-			<h5>&nbsp;상세정보</h5>
-			<form name="gymCheck" id="gymCheck">
-				<ul style="list-style-type: none; width: 50%; height: 50%; float: left; margin-bottom: 0;">
-					<li><input type="checkbox" name="facility_health" value="Y"
-						class="facility" id="facility_health"> <label
-						for="facility_health"></label><img
-						src="../static/admin/images/0004.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">헬스</span>
-					</li>
-					<li><input type="checkbox" name="facility_yoga" value="Y"
-						class="facility" id="facility_yoga"> <label
-						for="facility_yoga"></label> <img
-						src="../static/admin/images/0005.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">요가</span>
-					</li>
-					<li><input type="checkbox" name="facility_gx" value="Y"
-						class="facility" id="facility_gx"> <label
-						for="facility_gx"></label> <img
-						src="../static/admin/images/0007.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">G.X</span>
-					</li>
-					<li><input type="checkbox" name="facility_pilates" value="Y"
-						class="facility" id="facility_pilates"> <label
-						for="facility_pilates"></label> <img
-						src="../static/admin/images/0010.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">필라테스
-					</span></li>
-					<li><input type="checkbox" name="facility_pt" value="Y"
-						class="facility" id="facility_pt"> <label
-						for="facility_pt"></label> <img
-						src="../static/admin/images/0011.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">P.T</span>
-					</li>
-				</ul>
-				<ul style="list-style-type: none; width: 50%; height: 50%; float: left; padding-left: 0; margin-bottom: 0;">
-					<li><input type="checkbox" name="facility_parking" value="Y"
-						class="facility" id="facility_parking"
-						style="border: 1px solid black; width: 5px; height: 5px;">
-						<label for="facility_parking"></label><img
-						src="../static/admin/images/0001.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">주차</span>
-					</li>
-					<li><input type="checkbox" name=facility_24hour value="Y"
-						class="facility" id="facility_24hour"> <label
-						for="facility_24hour"></label> <img
-						src="../static/admin/images/0014.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">24시간</span>
-					</li>
-					<li><input type="checkbox" name="facility_shower" value="Y"
-						class="facility" id="facility_shower"> <label
-						for="facility_shower"></label> <img
-						src="../static/admin/images/0017.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">샤워시설</span>
-					</li>
-					<li><input type="checkbox" name="facility_wear" value="Y"
-						class="facility" id="facility_wear"> <label
-						for="facility_wear"></label> <img
-						src="../static/admin/images/0018.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">운동복</span>
-					</li>
-					<li><input type="checkbox" name="facility_locker" value="Y"
-						class="facility" id="facility_locker"> <label
-						for="facility_locker"></label><img
-						src="../static/admin/images/0020.png" width="30" height="30"
-						align="absmiddle"> <span style="font-size: 15px;">락커</span>
-					</li>
-				</ul>
-			</form>
-		</div>
-	</div>
-	<!-- 검색 & 지점리스트 -->
-	<div style="height: 380px;">
-		<ul style="text-align: center;">
-			<li>
-				<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
-				<button type="button" id="search" class="custom-btn btn-1" style="margin-left: 35px;">검색하기</button>
-			</li>
-		</ul>
-	</div>
-	<!-- 지점 리스트 나오는 부분 -->
-	<div style="height: 330px; width: 420px; overflow: auto;">
-				<ul style="list-style-type: none; padding-top: 10px;">
-					<div id="show_data">
-						<c:forEach items="${gymList }" var="row" varStatus="loop">
-						<!-- <a href="#" style="color: black;"> -->
-							<li style="border-bottom: 1px solid gray; color: black;">
-								<div>
-									${row.mem_name}
-									<button class="custom-btn btn-1" style="float: right; width: 110px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
-								</div>
-								<div>${row.mem_address}</div>
-								<div>${row.mem_phone}</div>
-							</li>
-						<!-- </a> -->
-						</c:forEach>
-					</div>
-				</ul>
-	</div>
+      
+   <!-- 상세정보 체크박스 부분 -->
+   <div class="main_right" style="width: 35%; float: left;">
+      <div style="height: 250px;">
+         <h5>&nbsp;상세정보</h5>
+         <form name="gymCheck" id="gymCheck">
+            <ul style="list-style-type: none; width: 50%; height: 50%; float: left; margin-bottom: 0;">
+               <li><input type="checkbox" name="facility_health" value="Y"
+                  class="facility" id="facility_health"> <label
+                  for="facility_health"></label><img
+                  src="../static/admin/images/0004.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">헬스</span>
+               </li>
+               <li><input type="checkbox" name="facility_yoga" value="Y"
+                  class="facility" id="facility_yoga"> <label
+                  for="facility_yoga"></label> <img
+                  src="../static/admin/images/0005.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">요가</span>
+               </li>
+               <li><input type="checkbox" name="facility_gx" value="Y"
+                  class="facility" id="facility_gx"> <label
+                  for="facility_gx"></label> <img
+                  src="../static/admin/images/0007.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">G.X</span>
+               </li>
+               <li><input type="checkbox" name="facility_pilates" value="Y"
+                  class="facility" id="facility_pilates"> <label
+                  for="facility_pilates"></label> <img
+                  src="../static/admin/images/0010.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">필라테스
+               </span></li>
+               <li><input type="checkbox" name="facility_pt" value="Y"
+                  class="facility" id="facility_pt"> <label
+                  for="facility_pt"></label> <img
+                  src="../static/admin/images/0011.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">P.T</span>
+               </li>
+            </ul>
+            <ul style="list-style-type: none; width: 50%; height: 50%; float: left; padding-left: 0; margin-bottom: 0;">
+               <li><input type="checkbox" name="facility_parking" value="Y"
+                  class="facility" id="facility_parking"
+                  style="border: 1px solid black; width: 5px; height: 5px;">
+                  <label for="facility_parking"></label><img
+                  src="../static/admin/images/0001.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">주차</span>
+               </li>
+               <li><input type="checkbox" name=facility_24hour value="Y"
+                  class="facility" id="facility_24hour"> <label
+                  for="facility_24hour"></label> <img
+                  src="../static/admin/images/0014.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">24시간</span>
+               </li>
+               <li><input type="checkbox" name="facility_shower" value="Y"
+                  class="facility" id="facility_shower"> <label
+                  for="facility_shower"></label> <img
+                  src="../static/admin/images/0017.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">샤워시설</span>
+               </li>
+               <li><input type="checkbox" name="facility_wear" value="Y"
+                  class="facility" id="facility_wear"> <label
+                  for="facility_wear"></label> <img
+                  src="../static/admin/images/0018.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">운동복</span>
+               </li>
+               <li><input type="checkbox" name="facility_locker" value="Y"
+                  class="facility" id="facility_locker"> <label
+                  for="facility_locker"></label><img
+                  src="../static/admin/images/0020.png" width="30" height="30"
+                  align="absmiddle"> <span style="font-size: 15px;">락커</span>
+               </li>
+            </ul>
+         </form>
+      </div>
+   </div>
+   <!-- 검색 & 지점리스트 -->
+   <div style="height: 380px;">
+      <ul style="text-align: center;">
+         <li>
+            <input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
+            <button type="button" id="search" class="custom-btn btn-1" style="margin-left: 35px;">검색하기</button>
+         </li>
+      </ul>
+   </div>
+   <!-- 지점 리스트 나오는 부분 -->
+   <div style="height: 330px; width: 420px; overflow: auto;">
+            <ul style="list-style-type: none; padding-top: 10px;">
+               <div id="show_data">
+                  <c:forEach items="${gymList }" var="row" varStatus="loop">
+                  <!-- <a href="#" style="color: black;"> -->
+                     <li style="border-bottom: 1px solid gray; color: black;">
+                        <div>
+                           ${row.mem_name}
+                           <button class="custom-btn btn-1" style="float: right; width: 110px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
+                        </div>
+                        <div>${row.mem_address}</div>
+                        <div>${row.mem_phone}</div>
+                     </li>
+                  <!-- </a> -->
+                  </c:forEach>
+               </div>
+            </ul>
+   </div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp"%>
 </body>

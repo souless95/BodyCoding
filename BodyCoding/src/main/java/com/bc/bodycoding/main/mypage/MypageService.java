@@ -27,10 +27,4 @@ public interface MypageService {
 	public List<WeightDTO> weightchart(String mem_id);
 	public int insertWeight(WeightDTO weightDTO);
 	
-	//주문내역
-	public List<ProductDTO> selectPayLog(String mem_id);
-	public List<ProductDTO> selectPayLogDetail(String order_idx);
-	public ProductDTO selectPayLogOne(String order_idx);
-	
-	
 }

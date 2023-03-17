@@ -70,7 +70,6 @@
 		<textarea name="report_content" id="report_content" required></textarea>
 	<div>
 		<label for="reporter">신고자 : ${mem_id }</label>
-		<input type="hidden" name="mem_id" value=${mem_id }>
 	</div>
 		<br>
 		<input type="submit" value="등록" onclick="submitForm()">

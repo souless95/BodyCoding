@@ -116,7 +116,7 @@ h5 .input:hover{
 		<button value="정확" name="interest" class="input"> #정확</button>
 		<button value="칭찬" name="interest" class="input"> #칭찬</button>
 	</h5>
-	<style>
+	<style> 
 	.trainer-card {
 	  width: 200px;
 	  margin: 20px;

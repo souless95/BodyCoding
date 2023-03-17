@@ -9,10 +9,11 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
 <style type="text/css">
 .custom-btn {
-  width: 130px;
-  height: 40px;
+  width: 120px;
+  height: 50px;
   border: 2px solid #01538D;
   border-radius : 10px;
   font-family: 'Lato', sans-serif;
@@ -107,7 +108,7 @@ function openChatRoom(event, mem_id){
 					<!-- Logo -->
 						<h1>
 							<a href="main" id="logo">
-								<span style="font-weight:bold; font-size:40px; font-family: 'Myriad Pro', 'sans-serif';">Body Coding</span>
+								<img alt="" src="static/assets/images/bodycoding_logo.png">
 							</a>
 						</h1>
 					<!-- Nav -->
@@ -118,13 +119,13 @@ function openChatRoom(event, mem_id){
 								<li>
 									<a href="introgym">BodyCoding</a>
 									<ul>
-										<li><a href="introgym">바디코딩소개</a></li>
+										<li><a href="introgym">About</a></li>
 																				
 									</ul>
 								</li>
 								
 								<li>
-							<a href="health"> 프로그램</a>
+							<a href="health">Program</a>
 							<ul>
 								<li><a href="health">헬스</a></li>
 								<li><a href="pt">PT</a></li>
@@ -135,27 +136,27 @@ function openChatRoom(event, mem_id){
 						</li>
 						
 						<li>
-							<a href="gym">지점정보</a>
+							<a href="gym">Location</a>
 						<!-- 	<ul>
 								<li><a href="gym">지점확인</a></li>
 							</ul> -->
 						</li>
 						
 						<li>
-							<a href="trainer">트레이너</a>
+							<a href="trainer">Trainer</a>
 						<!-- 	<ul>
 								<li><a href="trainer">트레이너정보</a></li>
 							</ul> -->
 						</li>
 						
 						<li>
-							<a href="product">상품몰</a>
+							<a href="product">Shop</a>
 						</li>
 						
 						<li>
-							<a href="/Freeboard.do">게시판</a>
+							<a href="/Freeboard.do">Board</a>
 							<ul> 
-								<li><a href="/Freeboard.do">자유게시판</a></li>
+								<li><a href="/Freeboard.do">Board</a></li>
 								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
@@ -163,13 +164,14 @@ function openChatRoom(event, mem_id){
 						
 						<c:if test="${not empty UserName}">
 						    <li style="color: white;">
-						        [ ${UserName} ]님 환영합니다.
+						        WelCome! <span class="spoka"> &nbsp&nbsp ${UserName} </span>
 						    </li>
+						    
 						    <c:choose>
 						        <c:when test="${Authority eq 'ROLE_MEMBER' }">
 						            <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}" />
 						            <li>
-						                <a href="${mypageUrl}">마이페이지</a>
+						                <a href="${mypageUrl}">MyPage</a>
 						                <ul> 
 						                    <li><a href="#">이용내역</a></li>
 						                    <li><a href="#">활동내역</a></li>
@@ -179,14 +181,14 @@ function openChatRoom(event, mem_id){
 						                </ul>
 						            </li>
 						            <li>
-						                <a href="#" onclick="logoutcheck()">로그아웃</a>
+						                <a href="#" onclick="logoutcheck()">LogOut</a>
 						            </li>
 						        </c:when>
 						        
 						        <c:otherwise>
 						            <c:set var="mypageUrl" value="calendar.do" />
 						            <li>
-						                <a href="${mypageUrl}">마이페이지</a>
+						                <a href="${mypageUrl}">MyPage</a>
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
 						                    <li><a href="calendar.do">운동정보</a></li>
@@ -194,7 +196,7 @@ function openChatRoom(event, mem_id){
 						                </ul>
 						            </li>
 						            <li>
-						                <a href="#" onclick="logoutcheck()">로그아웃</a>
+						                <a href="#" onclick="logoutcheck()">LogOut</a>
 						            </li>
 						        </c:otherwise>
 						    </c:choose>
@@ -202,11 +204,11 @@ function openChatRoom(event, mem_id){
 			            
 			            <c:if test="${empty UserName}">
 						<li>
-			                    <a href="/login.do">로그인</a>
+			                    <a href="/login.do">Sign-In</a>
 			            </li>
 			           
 			            <li>
-			                    <a href="/signup.do">회원가입</a>
+			                    <a href="/signup.do">Sign-Up</a>
 			            </li>
 			            </c:if>
 					</ul>

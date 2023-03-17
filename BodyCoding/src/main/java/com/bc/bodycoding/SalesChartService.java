@@ -1,4 +1,4 @@
-package com.bc.bodycoding.admin.chart;
+package com.bc.bodycoding;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;

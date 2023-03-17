@@ -19,8 +19,8 @@ public interface MypageService {
 	
 	public MemberDTO basicListM(MemberDTO memberDTO);
 	public GymDTO basicListG(GymDTO gymDTO);
-	public MemberDTO selectOneMember(MemberDTO memberDTO);
-	public int update(MemberDTO memberDTO);
+//	public MemberDTO selectOneMember(MemberDTO memberDTO);
+//	public int update(MemberDTO memberDTO);
 	
 	//몸무게 차트 시각화
 	public List<WeightDTO> weightchart(String mem_id);

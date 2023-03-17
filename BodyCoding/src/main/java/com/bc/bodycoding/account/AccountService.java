@@ -22,6 +22,8 @@ public interface AccountService{
 	public int kakaoupdate(MemberDTO memberDTO);
 	
 	public String pwCheck(String mem_id);
+	public MemberDTO selectOneMember(MemberDTO memberDTO);
+	public int update(MemberDTO memberDTO);
 	public int deleteMember(String mem_id);
 	
 	public MemberDTO gofindid(MemberDTO memberDTO);

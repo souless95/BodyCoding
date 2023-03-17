@@ -3,6 +3,7 @@ package com.bc.bodycoding.admin.member;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -177,29 +178,47 @@ public class MemberController {
    }
    
    @RequestMapping(value="addexrecord.do", method=RequestMethod.GET)
-   public String shoexrecord(ExDTO exDTO) {
+   public String shoexrecord(Model model, HttpServletRequest req, ExDTO exDTO, HttpSession session) {
       
+	  String trainer_id = (String)(session.getAttribute("UserEmail"));
+	  String user_id = req.getParameter("mem_id");
+	  String user_name = "";
+	  	  
+	  List<ExDTO> lists = new ArrayList<ExDTO>();
+	  if(user_id != "") {
+		  exDTO.setTrainer_id(trainer_id);
+		  exDTO.setUser_id(user_id);
+		  
+		  user_name = memberdao.getName(user_id);
+		  
+		  lists = memberdao.getPrevMEx(exDTO);
+	  }
+	  else {
+		  exDTO.setTrainer_id(trainer_id);
+		  
+		  lists = memberdao.getPrevEx(exDTO);
+	  }
+	  model.addAttribute("lists", lists);
+	  model.addAttribute("user_name", user_name);
+	  
       return "/member/trainer/addexrecord";
    }
    
    //운동기록 등록
    @RequestMapping(value="addexrecord.do", method=RequestMethod.POST)
-   public String insertexrecord1(ExDTO exDTO, MemberDTO memberDTO, HttpServletRequest req, HttpSession session) {
+   public String insertexrecord1(ExDTO exDTO, HttpServletRequest req, HttpSession session) {
       
-      String trainer_id = (String)(session.getAttribute("UserEmail").toString());
-      String user_id = req.getParameter("user_id");
+      String user_id = req.getParameter("mem_id");
       
-      System.out.println(trainer_id);
-      System.out.println(user_id);
-      System.out.println(memberDTO);
-      
-      int result = memberdao.insertexrecord(exDTO);
-      if(result==1)
-         
-      System.out.println("운동기록 등록이 완료되었습니다.");
-      
-      return "redirect:exrecord.do";
-      
+   	  memberdao.insertTL(exDTO);
+   	  memberdao.deleteR(exDTO);
+    	  
+      if(user_id != "") {  
+    	  return "redirect:addexrecord.do?mem_id="+ user_id;
+      }
+      else {
+    	  return "redirect:addexrecord.do?mem_id=";
+      }
    }
    
    //운동기록 수정 페이지 진입
@@ -207,13 +226,10 @@ public class MemberController {
    public String editrecord(Model model, HttpServletRequest req) {
       
       MemberDTO memberDTO = new MemberDTO();
-      System.out.println("11" + req.getParameter("training_log_idx"));
       memberDTO = memberdao.selectone(req.getParameter("training_log_idx"));
-      System.out.println(memberDTO);
       model.addAttribute("memberList", memberDTO);
             
       return "member/trainer/editexrecord";
-      
    }
    
    //운동기록 수정
@@ -231,17 +247,5 @@ public class MemberController {
       
       return "redirect:exrecord.do";
    }
-   
-   //운동기록삭제
-   @RequestMapping("/deleteexrecord.do")
-   public void delete2(MemberDTO memberDTO, HttpServletResponse response) throws IOException {
-      
-       int result = memberdao.deleteexrecord(memberDTO);
-       if(result == 1) {
-           System.out.println("정보가 삭제되었습니다.");
-       }
-       response.sendRedirect("exrecord.do");
-   }
-   
    
 }

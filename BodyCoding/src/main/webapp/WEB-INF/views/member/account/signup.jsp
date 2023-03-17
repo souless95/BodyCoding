@@ -161,7 +161,6 @@
 
             <label for="mem_interest">관심사항</label>
             <div class="interest">
-            
                <input type="checkbox" class="checkStyle" name="mem_interest" value="친절">
                <label for="친절">친절&nbsp;&nbsp;</label>
                              

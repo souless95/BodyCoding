@@ -96,7 +96,6 @@ public class CalendarController {
 		String user_id = (String)session.getAttribute("UserEmail");
 		reservationDTO.setUser_id(user_id);
 		List<String> Lessons = calendarDAO.getLesson(reservationDTO);
-		System.out.println(Lessons);
 		List<CalendarDTO> myReservation = calendarDAO.getMyLesson(Lessons);
 		
 		

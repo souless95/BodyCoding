@@ -58,7 +58,9 @@ button {
    7px 7px 20px 0px #0002,
    4px 4px 5px 0px #0001;
 }
-	
+.container{
+	min-height: 730px;
+}
 </style>
 <script type="text/javascript">
 

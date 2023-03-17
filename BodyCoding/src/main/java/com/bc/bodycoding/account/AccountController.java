@@ -120,6 +120,39 @@ public class AccountController {
       return "redirect:pwcheck";
    }
 
+	@RequestMapping(value="memberEdit.do", method=RequestMethod.GET)
+	public String memberedit(MemberDTO memberDTO, Model model) {
+		model.addAttribute("gymList", accountdao.gymlistSelect());
+		memberDTO = accountdao.selectOneMember(memberDTO);
+		model.addAttribute("memList", memberDTO);
+		return "member/account/memberEdit";
+	}
+	@RequestMapping(value="memberEdit.do", method=RequestMethod.POST)
+	public String memberedit1(HttpSession session, MemberDTO memberDTO) {
+		if(!(memberDTO.getMem_gender().equals(""))) {
+			memberDTO.setMem_gender(memberDTO.getMem_gender().substring(0, 1));
+		}
+		else if(memberDTO.getMem_disease()!=null||memberDTO.getMem_purpose()!=null||memberDTO.getMem_interest()!=null) {
+			memberDTO.setMem_disease(memberDTO.getMem_disease().replace(",", ""));
+			memberDTO.setMem_purpose(memberDTO.getMem_purpose().replace(",", ""));
+			memberDTO.setMem_interest(memberDTO.getMem_interest().replace(",", ""));
+		}
+		else {
+			memberDTO.setMem_disease("");
+	        memberDTO.setMem_purpose("");
+	        memberDTO.setMem_interest("");
+		}
+		int result = accountdao.update(memberDTO);
+		if(result==1) {
+			session.setAttribute("UserInfo", memberDTO);
+			session.setAttribute("UserName", memberDTO.getMem_name());
+			session.setAttribute("UserEmail", memberDTO.getMem_id());
+			
+			System.out.println("수정되었습니다.");
+		}
+		return "redirect:main";
+	}
+	
    // 탈퇴페이지 넘어가기
    @GetMapping("delete")
    public String delete() {

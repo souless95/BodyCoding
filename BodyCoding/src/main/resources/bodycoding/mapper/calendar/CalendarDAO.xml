@@ -104,7 +104,7 @@
 	resultType="com.bc.bodycoding.calendar.CalendarDTO">
 	SELECT l.*, mem_name "trainer_name" FROM lesson l
 	inner join member m on m.mem_id=l.trainer_id
-    where lesson_day <![CDATA[>]]> sysdate
+    where lesson_day <![CDATA[>]]> sysdate-1
     <if test="list != null and !list.isEmpty()">
     and lesson_idx in
 		<foreach collection="list" item="lessonId" open="(" separator="," close=")">

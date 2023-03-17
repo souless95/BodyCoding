@@ -34,37 +34,38 @@ public class MypageController {
 		return "member/mypage/mypage";
 	}
 	
-	@RequestMapping(value="memberEdit.do", method=RequestMethod.GET)
-	public String memberedit(MemberDTO memberDTO, Model model) {
-		memberDTO = mydao.selectOneMember(memberDTO);
-		model.addAttribute("memList", memberDTO);
-		return "member/account/memberEdit";
-	}
-	@RequestMapping(value="memberEdit.do", method=RequestMethod.POST)
-	public String memberedit1(HttpSession session, MemberDTO memberDTO) {
-		if(!(memberDTO.getMem_gender().equals(""))) {
-			memberDTO.setMem_gender(memberDTO.getMem_gender().substring(0, 1));
-		}
-		else if(memberDTO.getMem_disease()!=null||memberDTO.getMem_purpose()!=null||memberDTO.getMem_interest()!=null) {
-			memberDTO.setMem_disease(memberDTO.getMem_disease().replace(",", ""));
-			memberDTO.setMem_purpose(memberDTO.getMem_purpose().replace(",", ""));
-			memberDTO.setMem_interest(memberDTO.getMem_interest().replace(",", ""));
-		}
-		else {
-			memberDTO.setMem_disease("");
-	        memberDTO.setMem_purpose("");
-	        memberDTO.setMem_interest("");
-		}
-		int result = mydao.update(memberDTO);
-		if(result==1) {
-			session.setAttribute("UserInfo", memberDTO);
-			session.setAttribute("UserName", memberDTO.getMem_name());
-			session.setAttribute("UserEmail", memberDTO.getMem_id());
-			
-			System.out.println("수정되었습니다.");
-		}
-		return "redirect:main";
-	}
+// acconutcontroller로 옮겼습니다
+//	@RequestMapping(value="memberEdit.do", method=RequestMethod.GET)
+//	public String memberedit(MemberDTO memberDTO, Model model) {
+//		memberDTO = mydao.selectOneMember(memberDTO);
+//		model.addAttribute("memList", memberDTO);
+//		return "member/account/memberEdit";
+//	}
+//	@RequestMapping(value="memberEdit.do", method=RequestMethod.POST)
+//	public String memberedit1(HttpSession session, MemberDTO memberDTO) {
+//		if(!(memberDTO.getMem_gender().equals(""))) {
+//			memberDTO.setMem_gender(memberDTO.getMem_gender().substring(0, 1));
+//		}
+//		else if(memberDTO.getMem_disease()!=null||memberDTO.getMem_purpose()!=null||memberDTO.getMem_interest()!=null) {
+//			memberDTO.setMem_disease(memberDTO.getMem_disease().replace(",", ""));
+//			memberDTO.setMem_purpose(memberDTO.getMem_purpose().replace(",", ""));
+//			memberDTO.setMem_interest(memberDTO.getMem_interest().replace(",", ""));
+//		}
+//		else {
+//			memberDTO.setMem_disease("");
+//	        memberDTO.setMem_purpose("");
+//	        memberDTO.setMem_interest("");
+//		}
+//		int result = mydao.update(memberDTO);
+//		if(result==1) {
+//			session.setAttribute("UserInfo", memberDTO);
+//			session.setAttribute("UserName", memberDTO.getMem_name());
+//			session.setAttribute("UserEmail", memberDTO.getMem_id());
+//			
+//			System.out.println("수정되었습니다.");
+//		}
+//		return "redirect:main";
+//	}
 	
 	//트레이너계정으로 로그인했을때 트레이너의 마이페이지로 이동
 	@RequestMapping("trainermypage.do")

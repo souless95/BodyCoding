@@ -183,7 +183,7 @@ public class AccountController {
 	   
 	   exDTO.setUser_id(user_id);
        List<ExDTO> TlList = new ArrayList<ExDTO>();
-	   TlList = memberdao.selectExrecord2(exDTO);
+	   TlList = memberdao.selectExrecord1(exDTO);
 	   System.out.println(TlList);
    	   model.addAttribute("TlList", TlList);
 	   

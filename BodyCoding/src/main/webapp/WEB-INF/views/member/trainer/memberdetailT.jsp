@@ -136,7 +136,7 @@ function routine(){
 					    </table>
 						<button type="button" class="btn btn-primary" onclick="location.href='main'">홈으로</button> &nbsp;&nbsp; 
 						<button type="button" class="btn btn-primary" onclick="routine();">운동루틴 등록</button> &nbsp;&nbsp; 
-						<button type="button" class="btn btn-primary"  onclick="location.href='addexrecord.do'">기록등록</button>
+						<button type="button" class="btn btn-primary"  onclick="location.href='addexrecord.do?mem_id=${dto.mem_id}'">기록등록</button>
 						<br /><br /><br />
 						<select name="yoil" id="yoil" style="width:100px;">
 								<option value="월요일">월요일

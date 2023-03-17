@@ -105,8 +105,11 @@ function openChatRoom(event, mem_id){
 			<!-- Header -->
 			<div id="header">
 					<!-- Logo -->
-						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Myriad Pro', 'sans-serif';">
-						Body Coding</span></a></h1>
+						<h1>
+							<a href="main" id="logo">
+								<span style="font-weight:bold; font-size:40px; font-family: 'Myriad Pro', 'sans-serif';">Body Coding</span>
+							</a>
+						</h1>
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>

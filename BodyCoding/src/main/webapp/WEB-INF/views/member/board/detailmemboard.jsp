@@ -103,10 +103,15 @@ pageContext.setAttribute("replaceChar", "\n");
 													<%-- <button type="button" class="btn btn-primary" onclick="openUpdateModal(${rdto.reply_idx})">수정</button> --%>
 													<!--  <button type="button" class="btn btn-primary" onclick="location.href='updatereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">수정</button>-->
 													
-														<button type="button" style="margin-bottom:40px; width:60px; height:30px; margin: 2px;" class="custom-btn btn-1" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
-														<button type="button" style="width:60px; height:30px; margin: 2px;"  class="custom-btn btn-1"
-															onclick="location.href='deletereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">삭제</button>
-													
+														<div>
+															<button type="button" style="margin-bottom:40px; width:60px; height:30px; margin: 2px; display: inline-block; margin-top:40px; "
+															 class="custom-btn btn-1" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
+														</div>
+														<div>
+															<button type="button" style="width:60px; height:30px; margin: 2px; display: inline-block; margin-top:40px;"
+															  class="custom-btn btn-1 "
+																onclick="location.href='deletereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">삭제</button>
+														</div>
 													</c:if>
 												</div>
 											</div>

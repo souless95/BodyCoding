@@ -39,13 +39,13 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<%@ include file ="../../../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
 	<div class="sub_container">
-	<%@ include file ="../../../inc/mypageside.jsp" %>
+		<%@ include file="../../../../inc/mypageside.jsp"%>
 		<br />
-		<h3>예약된 일정</h3>
-		<br />
+		<h2>예약된 일정</h2>
+		<hr style="border: 1px solid #01538D;">
 		<c:if test="${not empty myR}">
 			<c:forEach items="${myR}" var="s">
 				<div id="${s.lesson_idx}" style="border:1px solid gray; width:30%; display:inline-block;

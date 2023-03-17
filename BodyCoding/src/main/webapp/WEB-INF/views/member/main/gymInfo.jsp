@@ -8,6 +8,33 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="../static/assets/css/Info.css" />
+<script type="text/javascript">
+window.onload = function() {
+	const previewContainer = document.querySelector('#previewContainer');
+	
+	var imageArray = '${ dto.gym_detail_img}';
+	var fileNames = imageArray.split(","); 
+	
+	for (let i = 0; i < fileNames.length; i++) {
+	  const fileName = fileNames[i];
+	  const imageUrl = '/static/uploads/gym/' + fileName;
+
+	  createImagePreview(imageUrl, fileName);
+	}
+
+	function createImagePreview(imageUrl, fileName) {
+	  const img = document.createElement('img');
+	  img.src = imageUrl;
+	  img.alt = fileName;
+	  img.style.width = '200px';
+
+	  const span = document.createElement('span');
+	  span.classList.add('preview-item');
+	  span.innerHTML = '<span class="preview-image" style="float:left;">' + img.outerHTML + '</span>&nbsp;&nbsp;';
+	  previewContainer.appendChild(span);
+	}
+}
+</script>
 <body>
 <%@ include file="../../../../inc/Top.jsp" %>
 <div class="container">
@@ -46,9 +73,9 @@
 		</table>
 	</div>
 	
-	<div>
+	<div div class="card-body" style="width: 90%">
 		<h3>편의시설</h3>
-		<table class="table" border=2>
+		<table class="table" border=2 style="width:100%">
 			<tr align="center">
 				<td><img src="../static/admin/images/0001.png"/><br>주차</td>
 				<td><img src="../static/admin/images/0004.png"><br>헬스</td>
@@ -75,7 +102,7 @@
 			</tr>
 		</table>
 		<h3>운영시간</h3>
-		<table class="table" border=2>
+		<table class="table" border=2 style="width:100%">
 			<tr align="center">
 				<td colspan="2">평일</td>
 				<td colspan="2">토요일</td>
@@ -96,6 +123,14 @@
 				<td align="center">${dto.rtime_sat_end }</td>
 				<td align="center">${dto.rtime_holy_start }</td>
 				<td align="center">${dto.rtime_holy_end }</td>
+			</tr>
+		</table>
+		<h3>지점 사진</h3>
+		<table class="table" border=2 style="width:100%;">
+			<tr>
+				<td style="width: 100%; border: none;">
+					<span id="previewContainer" style="padding:10px;"></span>
+				</td>
 			</tr>
 		</table>
 	</div>

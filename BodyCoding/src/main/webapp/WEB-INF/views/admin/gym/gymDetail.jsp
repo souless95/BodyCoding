@@ -161,7 +161,7 @@ function deletchack(){
 						</tr>
 					</table>
 					
-						<h4>운영시간</h4>
+					<h4>운영시간</h4>
 					<table class="table" border=2>
 						<tr align="center">
 							<th colspan="2">평일</th>

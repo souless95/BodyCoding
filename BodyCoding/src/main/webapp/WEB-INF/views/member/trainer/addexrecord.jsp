@@ -40,7 +40,7 @@ function submitForm(frm){
 							<input type="hidden" name="exercise_type" value="${l.exercise_type }" />
 							<input type="hidden" name="user_id" value="${l.user_id }" />
 							<input type="hidden" name="training_date" value="${l.training_date.substring(0,10) } ${l.lesson_start_time }" />
-							<input type="hidden" name="reservaction_idx" value="${l.reservaction_idx}" />
+							<input type="hidden" name="reservation_idx" value="${l.reservation_idx}" />
 							<div>
 								분류 : ${l.exercise_type }, &nbsp;&nbsp;일시 : ${l.training_date.substring(0,10) } ${l.lesson_start_time }<br />
 								코멘트 : <input type="text" name="training_comment" value="" />
@@ -58,7 +58,7 @@ function submitForm(frm){
 							<input type="hidden" name="exercise_type" value="${l.exercise_type }" />
 							<input type="hidden" name="user_id" value="${l.user_id }" />
 							<input type="hidden" name="training_date" value="${l.training_date.substring(0,10) } ${l.lesson_start_time }" />
-							<input type="hidden" name="reservaction_idx" value="${l.reservaction_idx}" />
+							<input type="hidden" name="reservation_idx" value="${l.reservation_idx}" />
 							<div>
 								성명 : ${l.mem_name }, &nbsp;분류 : ${l.exercise_type }, &nbsp;일시 : ${l.training_date.substring(0,10)} ${l.lesson_start_time }<br />
 								코멘트 : <input type="text" name="training_comment" value="" />

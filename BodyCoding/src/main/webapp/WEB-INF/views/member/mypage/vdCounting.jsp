@@ -31,9 +31,6 @@
 		</c:if>
 	</div>
 	
-	<div>
-		멤버쉽
-	</div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>	
 </body>

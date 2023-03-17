@@ -137,7 +137,7 @@
 	</insert>	
 	
 	<delete id="deleteR" parameterType="global.dto.ExDTO">
-		delete from reservation where reservaction_idx= #{reservaction_idx}
+		delete from reservation where reservation_idx= #{reservation_idx}
 	</delete>  
 </mapper>	
 	

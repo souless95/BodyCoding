@@ -97,7 +97,6 @@ setDivHeight(contain_left, jspHeight, 580);
 		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
 		                                <li><a class="btn" href="reservation.do">수업예약</a></li>
 		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
-		                               <!--  <li><a class="btn" href="#">운동기록</a></li> -->
 		                                <li><a class="btn" href="chart">체중그래프</a></li>
 		                            </ul>
 		                        </div>

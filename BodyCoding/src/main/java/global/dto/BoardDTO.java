@@ -26,10 +26,12 @@ public class BoardDTO {
 	private String report_content; //신고내용
 	private Date report_date; //신고일
 	
-	private int reply_idx; //댓글번호
+	private String reply_idx; //댓글번호
 	private String reply_cont; // 댓글내용
 	
 	//검색필터
     private String type; //검색타입
     private Criteria cri;
+		
+	
 }

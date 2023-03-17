@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import global.dto.BoardDTO;
-import global.dto.ReplyDTO;
 
 @Mapper
 public interface memboardService {
@@ -15,7 +14,6 @@ public interface memboardService {
 	public List<BoardDTO> memselect();
 	//페이징 처리 글쓰기
 	//public List<BoardDTO> memselectpage(BoardDTO boardDTO);
-	
 	
 	public int boardListCnt();
 	public int boardListCnt1(Criteria cri);
@@ -40,19 +38,16 @@ public interface memboardService {
 	//신고하기에서 insert하기
 	public int insertreport(BoardDTO boardDTO);
 	
-	//댓글 작성하기
-	public int insertreply(ReplyDTO replyDTO);
-
-	//게시글 상세보기에서 댓글 데이터 가져오기
-	public List<ReplyDTO> selectreply(ReplyDTO replyDTO);
 	
-	//댓글 삭제하기
-	public int deletereply(ReplyDTO replyDTO);
-	//댓글 수정하기
-	public int updatereply(ReplyDTO replyDTO);
-	//기존 댓글 가져오기
-	public ReplyDTO selectreply(String reply_idx);
-
+	//댓글 작성하기
+	//public int insertreply(ReplyDTO replyDTO);
+	public int insertreply(BoardDTO boardDTO);
+	
+	public List<BoardDTO> selectreply(BoardDTO boardDTO);
+	public int deletereply(BoardDTO boardDTO);
+	public int updatereply(BoardDTO boardDTO);
+	public BoardDTO selectreply(String reply_idx);
+	
 	public List<Map<String, Object>> searchBoard(Criteria cri);
 //	public int searchBoardCnt(Criteria cri);
 	

@@ -94,10 +94,9 @@ setDivHeight(contain_left, jspHeight, 580);
 								data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="reservation.do">스케쥴예약</a></li>
-		                                <li><a class="btn" href="reservated.do">스케쥴확인</a></li>
+		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
+		                                <li><a class="btn" href="reservation.do">수업예약</a></li>
 		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
-		                               <!--  <li><a class="btn" href="#">운동기록</a></li> -->
 		                                <li><a class="btn" href="chart">체중그래프</a></li>
 		                            </ul>
 		                        </div>
@@ -111,8 +110,8 @@ setDivHeight(contain_left, jspHeight, 580);
 							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
 		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
+		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
 		                            </ul>
 		                        </div>
 							</div>

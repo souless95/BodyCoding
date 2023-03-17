@@ -14,30 +14,21 @@ body{
 }
 </style>
 </head>
-<%@ include file="../../../../inc/Top.jsp" %>
-<body>
-	 <div class="container">
-	 	<div class="sub_container">
-		 	<%@ include file ="../../../../inc/mypageside.jsp" %>
-	        <div id="layoutSidenav_content">
-		        <div class="card mb-5" style="border-bottom: none;">
-		        	<div class="card-header">
-						<h1>정보수정</h1>
-						<hr>
-						<h4>비밀번호 확인</h4>
-						본인 확인을 위해 비밀번호를 입력해 주세요.
-						<form method="post" action="pwcheck">
-						<input type="hidden" name="mem_id" value=${UserEmail }>
-						<input type="password" name="mem_pass">
-						<input type="submit" value="확인">
-						</form>
-						
-						
-		        	</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<%@ include file="../../../../inc/Top.jsp"%>
+<div class="container">
+	<div class="sub_container">
+		<%@ include file="../../../../inc/mypageside.jsp"%>
+		<br />
+		<h2>비밀번호 확인</h2>
+		<hr style="border: 1px solid #01538D;">
+		본인 확인을 위해 비밀번호를 입력해 주세요.
+		<form method="post" action="pwcheck">
+			<input type="hidden" name="mem_id" value=${UserEmail }>
+			<input type="password" name="mem_pass">
+			<input type="submit" value="확인">
+		</form>
+    </div>
+</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

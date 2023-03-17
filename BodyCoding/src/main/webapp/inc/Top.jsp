@@ -10,11 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
-<style type="text/css">
-.sub_container{
-	min-height: 800px;
-}
-</style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 <script type="text/javascript">
 function logoutcheck(){
    
@@ -117,9 +113,8 @@ function openChatRoom(event, mem_id){
                               <li>
                                   <a href="${mypageUrl}">MyPage</a>
                                   <ul> 
-                                      <li><a href="#">이용내역</a></li>
-                                      <li><a href="#">활동내역</a></li>
-                                      <li><a href="#">운동관리</a></li>
+                                      <li><a href="reservated.do">운동관리</a></li>
+                                      <li><a href="vdCounting.do">이용내역</a></li>
                                       <li><a href="pwcheck">정보수정</a></li>
                                       <li><a href="/cartList.do">장바구니</a></li>
                                   </ul>

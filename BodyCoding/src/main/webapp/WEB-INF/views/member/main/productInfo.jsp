@@ -114,9 +114,9 @@ function login(t){
 				<div class="rec_exp">
 					<h2 class="prod_title">${productInfo.product_name}</h2>
 					<p class="s_title"><h4>상품 상세정보</h4> ${productInfo.product_description }</p>
-					<div class="text_box">
-						<strong>상품 가격</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<fmt:formatNumber value="${productInfo.product_price }" pattern="###,###,###" />
+					<div class="text_box" style="font-size: 30px;">
+						<strong>판매가</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						<fmt:formatNumber value="${productInfo.product_price }" pattern="###,###,###"/>원
 					</div>
 				</div>
 				<div class="rec_mate">
@@ -124,91 +124,89 @@ function login(t){
 						<input type="hidden" name="ratevalue1" value="${avg_grade }" step="0.1" min="0" max="5" />
 						<div class="rating-wrap">
 				          	<div class="rating">
-				          		<b style="font-size: 28px;">평점</b>&nbsp&nbsp&nbsp&nbsp&nbsp
+				          		<b style="font-size: 23px;">평점</b>&nbsp&nbsp&nbsp&nbsp&nbsp
 				            	<div class="overlay"></div>
 				          	</div>
 	      		 		</div>
 					</div>
 				</div>
 				<div class="like_btn">
-					<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="login('p');">구매하기(결제)</button>
-					<button type="button" class="custom-btn btn-1" onclick="location.href='product'">목록으로</button>
+					<button type="button" class="custom-btn btn-1" style="width: 150px; background-color: #F9BF52; border-color: #F9BF52;" onclick="login('p');">구매하기(결제)</button>
+					<button type="button" class="custom-btn btn-1" style="width: 120px; background-color: #F9BF52; border-color: #F9BF52;" onclick="location.href='product'">목록으로</button>
 					<!-- 장바구니로 접근하는 버튼 -->
-					<button type="button" class="custom-btn btn-1" onclick="login('c');">장바구니</button>
+					<button type="button" class="custom-btn btn-1" style="width: 120px; background-color: #F9BF52; border-color: #F9BF52;" onclick="login('c');">장바구니</button>
 				</div>
 			</div>	
 		</div>	
-	</div>
-	<div class="rec_content">
-		<c:if test="${not empty avg_grade }">
-		<h3>후기</h3>
-			<table style="width:100%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
-				<tr style="background-color:#01538D; color: white;">
-					<th width="20%"><strong>작성자</strong></th>
-					<th width="50%"><strong>내용</strong></th>
-					<th width="15%"><strong>평점</strong></th>
-					<th width="15%"><strong>작성일</strong></th>
-				</tr>
-				<tr id="show_data"></tr>
-				<c:forEach items="${reviewInfo }" var="row" varStatus="loop">
-				<tr>
-					<td width="20%" style="text-align: center;">${row.mem_id}</td>
-					<td width="50%" style="text-align: center;">${row.review_comment}</td>
-					<td width="15%" style="text-align: center;"><div class="star-ratings">
-				       	<input type="hidden" name="ratevalue" value="${row.review_grade}" step="0.1" min="0" max="5" />
-				       	<div class="rating-wrap" style="height: 100px;">
-				          	<div class="rating">
-				            	<div class="overlay"></div>
-				          	</div>
-				       	</div>
-		   			</div></td>
-					<%-- <td>${row.review_grade}</td> --%>
-					<td width="15%" style="text-align: center;">${row.review_regidate}</td>
-				</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-	</div>
-	<div class="rec_content">
-		<c:if test="${not empty UserName }">
-			<form method="post" action="productReview">
-				<input type="hidden" name="review_subject" value="${productInfo.product_idx }" />
-				<div class="xans-board-commentwrite">
-				<fieldset>
-					<h3>후기작성</h3>
-					<p>
-						<span>
-							이름:
-							<input type="text" name="mem_id" value="${UserEmail}" style="border: none; background: transparent;" readonly/>
-						</span>
-							작성일
-							<input type="text" value="${nowdate}" style="border: none; background: transparent;" readonly/>
-					</p>
-					<p class="grade">
-						<div class="mb-3" name="star_rate" id="star_rates"  style="width: 400px; height: 35px;"> 
-							<fieldset>
-						      	<input type="radio" value="5.0" id="star_rate5" name="review_grade">
-						         	<label for="star_rate5">★</label> 
-						      	<input type="radio" value="4.0" id="star_rate4" name="review_grade">
-						         	<label for="star_rate4">★</label>
-						      	<input type="radio" value="3.0" id="star_rate3" name="review_grade">
-						         	<label for="star_rate3">★</label> 
-						      	<input type="radio" value="2.0" id="star_rate2" name="review_grade">
-						         	<label for="star_rate2">★</label> 
-						      	<input type="radio" value="1.0" id="star_rate1" name="review_grade">
-						         	<label for="star_rate1">★</label>
-						   	</fieldset>
-						</div>
-					</p>
-						<textarea name="review_comment" cols="100" rows="5" placeholder="내용을 입력하세요." required></textarea><br>
-						<button type="submit" class="custom-btn btn-1">후기등록</button>
-						<button type="reset" class="custom-btn btn-1">지우기</button>
-						</td>
+	
+		<div class="rec_content">
+			<c:if test="${not empty avg_grade }">
+			<h3>후기</h3>
+				<table style="width:100%; border-top: 1px solid #F9BF52; border-bottom: 1px solid #F9BF52;">
+					<tr style="background-color:#F9BF52; color: white;">
+						<th width="20%"><strong>작성자</strong></th>
+						<th width="50%"><strong>내용</strong></th>
+						<th width="15%"><strong>평점</strong></th>
+						<th width="15%"><strong>작성일</strong></th>
 					</tr>
-				</fieldset>
-				</div>
-			</form>
-		</c:if>
+					<tr id="show_data"></tr>
+					<c:forEach items="${reviewInfo }" var="row" varStatus="loop">
+					<tr>
+						<td width="20%" style="text-align: center;">${row.mem_id}</td>
+						<td width="50%" style="text-align: center;">${row.review_comment}</td>
+						<td width="15%" style="text-align: center;"><div class="star-ratings">
+					       	<input type="hidden" name="ratevalue" value="${row.review_grade}" step="0.1" min="0" max="5" />
+					       	<div class="rating-wrap" style="height: 100px;">
+					          	<div class="rating">
+					            	<div class="overlay"></div>
+					          	</div>
+					       	</div>
+			   			</div></td>
+						<%-- <td>${row.review_grade}</td> --%>
+						<td width="15%" style="text-align: center;">${row.review_regidate}</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+		</div>
+		<div class="rec_content">
+			<c:if test="${not empty UserName }">
+				<h3>후기작성</h3>
+				<form method="post" action="productReview">
+					<input type="hidden" name="review_subject" value="${productInfo.product_idx }" />
+					<div class="xans-board-commentwrite">
+					<fieldset>
+						<p>
+							<span>
+								<input type="text" name="mem_id" value="${UserEmail}" style="border: none; background: transparent;" readonly/>
+							</span>
+								작성일
+								<input type="text" value="${nowdate}" style="border: none; background: transparent;" readonly/>
+						</p>
+						<p class="grade">
+							<div class="mb-3" name="star_rate" id="star_rates"  style="width: 400px; height: 35px;"> 
+								<fieldset>
+							      	<input type="radio" value="5.0" id="star_rate5" name="review_grade">
+							         	<label for="star_rate5">★</label> 
+							      	<input type="radio" value="4.0" id="star_rate4" name="review_grade">
+							         	<label for="star_rate4">★</label>
+							      	<input type="radio" value="3.0" id="star_rate3" name="review_grade">
+							         	<label for="star_rate3">★</label> 
+							      	<input type="radio" value="2.0" id="star_rate2" name="review_grade">
+							         	<label for="star_rate2">★</label> 
+							      	<input type="radio" value="1.0" id="star_rate1" name="review_grade">
+							         	<label for="star_rate1">★</label>
+							   	</fieldset>
+							</div>
+						</p>
+							<textarea name="review_comment" cols="80" rows="3" placeholder="내용을 입력하세요." required></textarea><br>
+							<button type="submit" class="custom-btn btn-1" style="width: 120px; background-color: #F9BF52; border-color: #F9BF52;">후기등록</button>
+							<button type="reset" class="custom-btn btn-1" style="width: 120px; background-color: #F9BF52; border-color: #F9BF52;">지우기</button>
+					</fieldset>
+					</div>
+				</form>
+			</c:if>
+		</div>
 	</div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>

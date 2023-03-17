@@ -25,12 +25,13 @@ public interface MemberService {
 	public int deleteRoutine(RoutineDTO routineDTO);
 
 	public int delete(MemberDTO memberDTO);
-	public List<MemberDTO> selectexrecord(MemberDTO memberDTO);
+	public List<ExDTO> selectExrecord1(ExDTO exDTO);
+	public List<ExDTO> selectExrecord2(ExDTO exDTO);
 
 	//운동기록조회
 	public MemberDTO selectone(String traing_log_idx);
 	//운동기록수정
-	public int editexrecord(MemberDTO memberDTO);
+	public int editExrecord(ExDTO exDTO);
 	
 	public List<ExDTO> getPrevMEx(ExDTO exDTO);
 	public List<ExDTO> getPrevEx(ExDTO exDTO);

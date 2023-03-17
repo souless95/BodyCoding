@@ -29,7 +29,7 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -313,7 +313,6 @@ input[type="checkbox"]{
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  margin: 20px;
   outline: none;
 }
 
@@ -332,16 +331,14 @@ input[type="checkbox"]{
 .custom-btn2 {
   width: 100px;
   height: 80px;
-  border: 2px solid #99DAEA;
+  border: 2px solid #FAE100;
   border-radius : 10px;
   font-family: 'Lato', sans-serif;
-  background-color:#99DAEA;
-  color:white;
+  background-color:#FAE100;
+  color:#000;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  display: inline-block;
-  margin: 20px;
   outline: none;
 }
 /* 2 */
@@ -531,10 +528,6 @@ input[type="checkbox"]{
 		}
 /* 드롭다운 끝 */
 
-
-
-
-
 /* Footer */
 
 	#footer {
@@ -543,28 +536,12 @@ input[type="checkbox"]{
 		background-color: #fff;
 		/* border-top: 1px solid #01538D; */
 	}
-
-		#footer a {
-			color: inherit;
-			border-bottom-color: rgba(71, 71, 71, 0.25);
-		}
-
-			#footer a:hover {
-				color: #37c0fb;
-				border-bottom-color: transparent;
-			}
-
-		/* #footer .container {
-			margin-bottom: 4em;
-		} */
-
-		#footer .copyright {
-			color: #000;
-			margin-top: 1.5em;
-			text-align: center;
-			font-size: 0.9em;
-		}
-
+	#footer .copyright {
+		color: #000;
+		margin-top: 1.5em;
+		text-align: center;
+		font-size: 18px;
+	}
 /* Wide */
 
 	@media screen and (max-width: 1680px) {

@@ -79,7 +79,7 @@ function errCallBack(errData){
 </script> 
 <div class="container">
 <br>
-<h2 style="margin-bottom: 0;">트레이너 목록</h2>
+<h2>트레이너 목록</h2>
 <style>
 .input{
 	text-align:center;

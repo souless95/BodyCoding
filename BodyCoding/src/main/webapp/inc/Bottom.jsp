@@ -43,7 +43,7 @@ setDivHeight(contain_left, jspHeight, 580);
 <!--하단 채팅플로팅 버튼 끝-->
 <!-- Copyright -->
 	<div class="copyright">
-		<img src="static/assets/images/bodycoding.png" style="padding-left:200px; float: left;">
+		<img src="static/assets/images/logo-bottom.png" width="300px;" height="300px;" style="float: left;">
 		<p>상호명 : 바디코딩 
 			<span>ㅣ</span> 대표 : 정은솔, 한세영, 천희수, 김도형, 백용현, 이재필 
 			<span>ㅣ</span> 사업자등록번호 : 488-28-01014 

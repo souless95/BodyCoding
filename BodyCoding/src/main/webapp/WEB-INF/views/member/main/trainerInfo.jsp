@@ -14,6 +14,7 @@ element.style {
 .contain {
     width: 1080px;
     margin: 0 auto;
+    font-size: 20px;
 }
 .rec_view_top{
 	border-top: 1px solid #ececec;
@@ -131,8 +132,8 @@ function login(){
 			<c:if test="${not empty avg_grade }">
 				<!-- <h3>평점 &nbsp : &nbsp ${avg_grade }/5</h3>  -->
 				<h3>후기</h3>
-				<table style="width:100%; border-top: 1px solid #99DAEA; border-bottom: 1px solid #99DAEA;">
-					<tr style="background-color:#99DAEA;">
+				<table style="width:100%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
+					<tr style="background-color:#01538D; color: white;">
 						<th width="20%"><strong>작성자</strong></th>
 						<th width="50%"><strong>내용</strong></th>
 						<th width="20%"><strong>평점</strong></th>

@@ -7,20 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.button {
-	background-color : white;
-	border: 1.5px solid #37C0FB;
-	width: 100px;
-	border-radius: 6px;
-	font-size: 16px;
-}
-.button:hover {
-	background-color : #37C0FB;
-	border: none;
-	color: white;
-}
-</style>
 </head>
 <%@ include file="../../../../inc/Top.jsp"%>
 <body>
@@ -35,7 +21,7 @@
 				<fmt:formatNumber value="${save_point }" pattern="###,###,###p" />
 			</strong>
 			적립)<br>
-			<button class="button" onclick="location.href='main'">홈으로 이동</button>&nbsp;&nbsp;
+			<button class="custom-btn" onclick="location.href='main'">홈으로 이동</button>&nbsp;&nbsp;
 		</div>
 	</div>
 </div>

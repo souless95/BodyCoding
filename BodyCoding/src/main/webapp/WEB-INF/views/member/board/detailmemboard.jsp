@@ -78,7 +78,7 @@ pageContext.setAttribute("replaceChar", "\n");
 							<input type="hidden" value="${dto.board_idx }">
 							<!--  <button type="button" onclick="location.href='report.do?board_idx=' + parseInt('${dto.board_idx}')">신고하기</button>-->
 							<c:if test="${dto.board_category eq '자유' }">
-								<button type="button" style="margin:0px; width:70px;" class="custom-btn btn-1"
+								<button type="button" style="margin:0px; width:90px;" class="custom-btn btn-1"
 									onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
 							</c:if>
 						</div>
@@ -102,10 +102,11 @@ pageContext.setAttribute("replaceChar", "\n");
 														<input type="hidden" name="board_idx" value="${rdto.reply_idx }" />
 													<%-- <button type="button" class="btn btn-primary" onclick="openUpdateModal(${rdto.reply_idx})">수정</button> --%>
 													<!--  <button type="button" class="btn btn-primary" onclick="location.href='updatereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">수정</button>-->
-														
-														<button type="button" style="width:60px; height:30px; margin: 2px;" class="custom-btn btn-1" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
-														<button type="button"  style="width:60px; height:30px; margin: 2px;"  class="custom-btn btn-1"
+													
+														<button type="button" style="margin-bottom:40px; width:60px; height:30px; margin: 2px;" class="custom-btn btn-1" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
+														<button type="button" style="width:60px; height:30px; margin: 2px;"  class="custom-btn btn-1"
 															onclick="location.href='deletereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">삭제</button>
+													
 													</c:if>
 												</div>
 											</div>

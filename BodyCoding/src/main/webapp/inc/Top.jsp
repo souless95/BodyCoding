@@ -3,75 +3,19 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-   <head>
-   <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-   <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-   <link rel="stylesheet" href="../static/assets/css/main.css" />
-   <link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
+	<head>
+	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
 <style type="text/css">
-.custom-btn {
-  width: 120px;
-  height: 50px;
-  border: 2px solid #01538D;
-  border-radius : 10px;
-  font-family: 'Lato', sans-serif;
-  background-color:#01538D;
-  color:white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  margin: 20px;
-  outline: none;
-}
-
-/* 1 */
-.btn-1 {
-  transition: all 0.3s ease;
-}
-.btn-1:hover {
-   box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
-}
-
-.custom-btn2 {
-  width: 100px;
-  height: 80px;
-  border: 2px solid #99DAEA;
-  border-radius : 10px;
-  font-family: 'Lato', sans-serif;
-  background-color:#99DAEA;
-  color:white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  margin: 20px;
-  outline: none;
-}
-/* 2 */
-.btn-2 {
-  transition: all 0.3s ease;
-}
-.btn-2:hover {
-   box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
-}
-   
-.container{
-   min-height: 730px;
+.sub_container{
+	min-height: 800px;
 }
 </style>
 <script type="text/javascript">
-
 function logoutcheck(){
    
    var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
@@ -89,14 +33,14 @@ function openChatRoom(event, mem_id){
         window.location.href = "/login.do";
     }
     else{
-       var url = "../chatting/room?mem_id=" + mem_id;
-       var win = window.open(url, "chatRoom", "width=450,height=600, left=600, top=200");
-       if (win) {
-           win.focus();
-           win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&mem_id=" + mem_id;
-       } else {
-           alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
-       }
+    	var url = "../chatting/room?mem_id=" + mem_id;
+    	var win = window.open(url, "chatRoom", "width=450,height=600, left=600, top=200");
+    	if (win) {
+    	    win.focus();
+    	    win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&mem_id=" + mem_id + "&mem_name=" + mem_name;
+    	} else {
+    	    alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
+    	}
     }
 }
 </script>

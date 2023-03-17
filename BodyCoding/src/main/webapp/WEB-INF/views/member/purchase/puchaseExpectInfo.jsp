@@ -12,7 +12,7 @@
 .contents{
     padding: 30px 0 44px;
     background-color: #f4f4f4;
-    width:1400px;
+   	width:1380px;
 }
 .store_card{
     margin: 0 13px;
@@ -44,14 +44,13 @@
     border-bottom: 1px solid #f4f4f4;
 }
 .product_show{
-    padding: 30px 40px 20px 40px;
+    padding: 30px 20px 20px 20px;
 }
 .checkbox_inner{
     position: relative;
     display: flex;
 }
 .inner_info{
-    height: 100px;
     -webkit-box-flex: 1;
     flex-grow: 1;
     min-width: 0;
@@ -94,6 +93,7 @@
 }
 .items{
     margin: 0 20px;
+    height: 100px;
     padding: 30px 0 12px;
     background-color: transparent;
     border-right: 1px solid #e9ecef;
@@ -230,12 +230,12 @@
 }
 .price_sum{
     float: right;
-    padding: 38px 0px 0px 70px;
+    padding: 38px 30px 0px 140px;
     border: 1px solid #e9e9e9;
     border-right-color: #fff;
     border-bottom: 0;
     border-left: 0;
-    width: 300px;
+    width: 487px;
 }
 .sum{
     margin-top: 23px;
@@ -277,6 +277,7 @@
     bottom: 2px;
     left: 0;
     width: 4px;
+    height: 28px;
     background-color: #dcdee0;
     content: '';
 }
@@ -312,17 +313,11 @@
     border-radius: 6px;
     font-size: 16px;
     line-height: 48px;
+    color:white;
+    font-weight:bold;
     background-color: #ffa500;
     vertical-align: top;
     border: none;
-}
-.go_product{
-	border: 1.5px solid #37C0FB;
-	width: 100px;
-	border-radius: 6px;
-	background-color: #ffffff;
-	font-size: 16px;
-	
 }
 </style>
 <script type="text/javascript">
@@ -498,9 +493,6 @@ $(function(){
 					</div>
 					<div align="center">
 						<button type="button" class="buy_link"  id="purchase">구매하기(결제)</button>
-					</div>
-					<div align="right" style="padding-right:70px;">
-						<button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
 					</div>
 				</div>
 			</div>

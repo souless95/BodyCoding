@@ -10,25 +10,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<%@ include file="../../../../inc/Top.jsp" %>
 <body>
+<%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
-	<%@ include file ="../../../../inc/mypageside.jsp" %>
-        <div id="layoutSidenav_content">
-	        <div class="card mb-5" style="border-bottom: none;">
-	        	<div class="card-header">
-					<h2>체중 그래프</h2>
-					  	<canvas id="myChart" style="width:850px; height:450px;"></canvas>
-					  	<p>
-					  	<form method="post" action="chart">
-					  		오늘의 체중 : 
-						  	<input type="hidden" name="mem_id" value=${mem_id }>
-						  	<input type="number" name="mem_weight">
-						  	<input type="submit" value="입력">
-						</form>
-				</div>
-			</div>
+	<div class="sub_container">
+		<%@ include file="../../../../inc/mypageside.jsp"%>
+		<br />
+		<h2>체중 그래프</h2>
+		<hr style="border: 1px solid #01538D;">
+		<div style="width: 80%; float: left;">
+		  	<canvas id="myChart" style="width:850px; height:450px;"></canvas>
+		  	<p>
+		  	<form method="post" action="chart">
+		  		오늘의 체중 : 
+			  	<input type="hidden" name="mem_id" value=${mem_id }>
+			  	<input type="number" name="mem_weight">
+			  	<input type="submit" value="입력">
+			</form>
 		</div>
+	</div>
 </div>
 <!-- 차트 관련 script는 아래로 내려가야함 -->
 <script>

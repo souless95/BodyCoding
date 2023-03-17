@@ -61,21 +61,23 @@ $(document).ready(function() {
 <body>
 <%@ include file ="../../../../inc/Top.jsp" %>
 <div class="container">
-	<%@ include file ="../../../../inc/mypageside.jsp" %>
-	<br />
-	<h3>금주의 루틴</h3>
-	<br />
-	<select name="yoil" id="yoil" style="width:100px;">
-		<option value="월요일">월요일
-		<option value="화요일">화요일
-		<option value="수요일">수요일
-		<option value="목요일">목요일
-		<option value="금요일">금요일
-		<option value="토요일">토요일
-		<option value="일요일">일요일
-	</select>
-	<br /><br />
-	<div id="registeredRoutine"></div>
+	<div class="sub_container">
+		<%@ include file ="../../../../inc/mypageside.jsp" %>
+		<br />
+		<h3>금주의 루틴</h3>
+		<br />
+		<select name="yoil" id="yoil" style="width:100px;">
+			<option value="월요일">월요일
+			<option value="화요일">화요일
+			<option value="수요일">수요일
+			<option value="목요일">목요일
+			<option value="금요일">금요일
+			<option value="토요일">토요일
+			<option value="일요일">일요일
+		</select>
+		<br /><br />
+		<div id="registeredRoutine"></div>
+	</div>
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>	
 </body>

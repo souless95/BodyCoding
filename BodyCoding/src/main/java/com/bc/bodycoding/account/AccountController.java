@@ -1,7 +1,6 @@
 package com.bc.bodycoding.account;
 
 
-import java.nio.channels.MembershipKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,11 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bc.bodycoding.calendar.CalendarDTO;
 
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
-import global.dto.TrainingLogDTO;
 
 
 @Controller

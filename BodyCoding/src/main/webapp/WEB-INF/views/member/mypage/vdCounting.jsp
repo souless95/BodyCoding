@@ -10,11 +10,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<%@ include file ="../../../../inc/Top.jsp" %>
+<%@ include file="../../../../inc/Top.jsp"%>
 <div class="container">
-	<div>
-		<%@ include file ="../../../../inc/mypageside.jsp" %>
-		<br /><br />
+	<div class="sub_container">
+	<%@ include file="../../../../inc/mypageside.jsp"%>
+	<br />
+	<h2>이용권 차감 내역</h2>
+	<hr style="border: 1px solid #01538D;">
 		<c:if test="${empty newVD}">
 			${user_name} 회원님은 현재 이용 중인 횟수형 멤버쉽이 없습니다.
 		</c:if>
@@ -30,7 +32,6 @@
 			</c:forEach>
 		</c:if>
 	</div>
-	
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>	
 </body>

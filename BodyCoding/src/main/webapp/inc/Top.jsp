@@ -174,7 +174,7 @@ function openChatRoom(event, mem_id){
 						        </c:when>
 						        
 						        <c:otherwise>
-						            <c:set var="mypageUrl" value="trainermypage.do?gym_code=${UserInfo.gym_code}" />
+						            <c:set var="mypageUrl" value="calendar.do" />
 						            <li>
 						                <a href="${mypageUrl}">마이페이지</a>
 						                <ul> 

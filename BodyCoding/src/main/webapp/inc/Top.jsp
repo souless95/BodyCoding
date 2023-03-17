@@ -29,10 +29,6 @@ p {
   margin: 40px auto;
   text-align: center;
 } */
-button {
-  margin: 20px;
-  outline: none;
-}
 .custom-btn {
   width: 130px;
   height: 40px;
@@ -74,7 +70,7 @@ function logoutcheck(){
 }
 
 /* 1대1문의 윈도우창 생성 */
-function openChatRoom(event, mem_id){
+function openChatRoom(event, mem_id, mem_name){
     event.preventDefault(); // 기본 동작(링크 이동) 방지
     if(mem_id==null||mem_id==""){
     	alert("로그인 후 이용해 주세요.");
@@ -85,7 +81,7 @@ function openChatRoom(event, mem_id){
 	    var win = window.open(url, "chatRoom", "width=450,height=600, left=600, top=200");
 	    if (win) {
 	        win.focus();
-	        win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&mem_id=" + mem_id;
+	        win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&mem_id=" + mem_id + "&mem_name=" + mem_name;
 	    } else {
 	        alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
 	    }
@@ -146,7 +142,7 @@ function openChatRoom(event, mem_id){
 							<a href="/Freeboard.do">게시판</a>
 							<ul> 
 								<li><a href="/Freeboard.do">자유게시판</a></li>
-								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
+								<li><a href="#" onclick="openChatRoom(event, '${UserEmail}', '${UserName }');">1:1문의(웹소켓 채팅)</a></li>
 							</ul>
 						</li>
 						

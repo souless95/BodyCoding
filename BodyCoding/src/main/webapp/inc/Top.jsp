@@ -3,16 +3,14 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-   <head>
-   <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-   <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-   <link rel="stylesheet" href="../static/assets/css/main.css" />
-   <link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
-
+	<head>
+	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
 <script type="text/javascript">
-
 function logoutcheck(){
    
    var confirmed = confirm("정말로 로그아웃 하시겠습니까?");

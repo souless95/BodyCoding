@@ -19,6 +19,7 @@ body{
 <%@ include file="../../../../inc/Top.jsp" %>
 <body>
  <div class="container">
+ 	<div class="sub_container">
  	<%@ include file ="../../../../inc/mypageside.jsp" %>
        <div id="layoutSidenav_content">
         <div class="card mb-5" style="border-bottom: none;">
@@ -149,6 +150,7 @@ body{
         	</div>
 		</div>
 	</div>
+</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

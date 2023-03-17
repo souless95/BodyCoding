@@ -23,7 +23,8 @@ function submitForm(frm){
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp"%>	
-	<div class="container">
+<div class="container">
+	<div class="sub_container">
 		<!-- side -->
 		<%@ include file="../../../../inc/mypageside.jsp"%>
 		<br />
@@ -71,6 +72,7 @@ function submitForm(frm){
 			</c:otherwise>
 		</c:choose>
 	</div>
+</div>	
 <%@ include file="../../../../inc/Bottom.jsp"%>
 </body>
 </html>

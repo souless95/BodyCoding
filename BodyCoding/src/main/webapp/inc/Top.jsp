@@ -10,6 +10,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../static/assets/css/main.css" />
 	<link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
+<style type="text/css">
+.sub_container{
+	min-height: 800px;
+}
+</style>
 <script type="text/javascript">
 function logoutcheck(){
    

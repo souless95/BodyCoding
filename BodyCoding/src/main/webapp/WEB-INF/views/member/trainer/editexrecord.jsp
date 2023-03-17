@@ -24,6 +24,7 @@ function editRecord(training_log_idx) {
 </head>
 <body>
 	<div id="container">
+		<div class="sub_container">
 		<!-- side -->
 		<%@ include file="../../../../inc/mypageside.jsp"%>
 
@@ -78,6 +79,7 @@ function editRecord(training_log_idx) {
 					</form>
 				</div>
 			</div>
+		</div>
 		</div>
 		<!-- bottom -->
 		<%@ include file="../../../../inc/Bottom.jsp"%>

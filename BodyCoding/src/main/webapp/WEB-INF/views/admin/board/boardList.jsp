@@ -94,7 +94,7 @@ $(document).ready(function(){
 									</c:forEach>
 								</tbody>
 							</table>
-							<button type="button" class="custom-btn btn-2" onclick="location.href='main/admin'">홈으로</button>
+							<button type="button" class="custom-btn btn-1" onclick="location.href='main/admin'">홈으로</button>
 						</div>
 				</div>
 			</main>

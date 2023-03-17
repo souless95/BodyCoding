@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../../../../inc/Top.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script>
 function editRecord(training_log_idx) {
   if (confirm("게시글을 수정하시겠습니까?")) {
@@ -22,7 +23,8 @@ function deleteRecord(training_log_idx) {
 </script>
 </head>
 <body>
-	
+<%@ include file="../../../../inc/Top.jsp"%>
+<div class="container">
 	<div id="container">
 		<!-- side -->
 		<%@ include file="../../../../inc/mypageside.jsp"%>
@@ -30,7 +32,7 @@ function deleteRecord(training_log_idx) {
 		<div id="layoutSidenav_content">
 			<div id="layoutSidenav_content">
 				<div class="card mb-4">
-					<div class="card-header">
+					<div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle;">
 						<h2>운동기록 리스트</h2>
 					</div>
 					<br>
@@ -66,12 +68,9 @@ function deleteRecord(training_log_idx) {
 				</div>
 			</div>
 		</div>
+		</div>
 		<!-- bottom -->
-		<%@ include file="../../../../inc/Bottom.jsp"%>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-	<script src="../static/admin/js/datatables-simple-demo.js"></script>
+<%@ include file="../../../../inc/Bottom.jsp"%>
 </body>
 </html>

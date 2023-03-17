@@ -40,7 +40,7 @@ function sucCallBack(resData) {
 		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
 		+"<b>"+data.product_name+"<b><br>"
-		+data.product_price.toLocaleString() + "</div></a></div>";
+		+data.product_price.toLocaleString() + "원</div></a></div>";
 	}); 
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);
@@ -52,7 +52,7 @@ function errCallBack(errData){
 </script> 
 <div class="container">
 <br>
-	<h2>상품 목록</h2>
+	<h2 style="margin-bottom: 0;">상품 목록</h2>
 	<h5>
 	<select id="product_type" required>
 	    <option value="-">상품유형</option>
@@ -60,7 +60,7 @@ function errCallBack(errData){
 	    <option value="의류">의류</option>
 	    <option value="기구">기구</option>
 	</select>
-	<input type="button" value="유형선택" id="product_typechoice"> </h5>
+	<button type="button" class="custom-btn btn-1" style="width: 150px;" id="product_typechoice">유형선택</button>
 	
 	<form name="frm" method="post" >
 		<input type="hidden" id="product_idx" name="product_idx">

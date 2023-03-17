@@ -65,10 +65,9 @@ function sucCallBack(resData) {
 		tableData += "<div style='width:200px; margin:36px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
 		+"<img class='card-img-top mt-2' src='static/uploads/trainer/"+data.mem_img+"' "
 		+" style='width:100%; height:250px;'>"
-		+"<div class='card-body'>"
-		+"<b>"+data.mem_name+"</b><br>"
-		+data.mem_comment + "<br>#"
-		+data.mem_interest+"</div></a></div>";
+		+"<div class='card-body'style='overflow: hidden; height: 100px;'>"
+		+"<b>"+data.mem_name+"</b>&nbsp;<span class='input'>&nbsp;#"+data.mem_interest+"&nbsp;&nbsp;</span><br>"
+		+data.mem_comment + "<br></div></a></div>";
 	});
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);
@@ -79,6 +78,8 @@ function errCallBack(errData){
 }
 </script> 
 <div class="container">
+<br>
+<h2 style="margin-bottom: 0;">트레이너 목록</h2>
 <style>
 .input{
 	text-align:center;
@@ -99,7 +100,7 @@ h5 .input:hover{
 	color: white;
 }
 </style>
-	<h2 style="margin-bottom: 0;">트레이너 목록</h2>
+	
 	<h5>
 	<select id="gym_code" required>
 	    <option value="-">지점</option>
@@ -107,7 +108,7 @@ h5 .input:hover{
 	    <option value="${gym.gym_code }">${gym.mem_name }</option>
 		</c:forEach>
 	</select>
-	<input type="button" value="지점선택" id="gymchoice"> 
+	<button type="button" class="custom-btn btn-1" style="width: 150px;" id="gymchoice">지점선택</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;키워드 추천:&nbsp;&nbsp;
 		<button value="친절" name="interest" class="input"> #친절</button>
 		<button value="열정" name="interest" class="input"> #열정</button>
@@ -130,7 +131,7 @@ h5 .input:hover{
 	  border-bottom: 1px solid gray;
 	}
 	</style>
-	<c:if test="${not empty UserName}">
+	<c:if test="${not empty interest}">
 	<strong>회원님의&nbsp; 키워드&nbsp;<span class="input">&nbsp;#${interest}&nbsp;</span>&nbsp;에 &nbsp;맞는&nbsp; 트레이너 &nbsp;추천</strong>
 	<div class="trainer-container" style="margin-top: 5px;">
 		<c:forEach items="${recomtrainerList }" var="rec" varStatus="loop">

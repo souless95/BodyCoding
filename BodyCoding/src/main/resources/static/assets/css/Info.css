@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.table td{
+		border: 2px solid gray;
+		width:150px;
+	}
+.basic td{
+	border:0;
+	padding-bottom: 30px;
+}
+.Info{
+	display: inline-block; 
+	height: 320px; 
+	position: relative;
+	margin-left: 60px;
+	position: relative;
+	padding-top: 40px;
+}

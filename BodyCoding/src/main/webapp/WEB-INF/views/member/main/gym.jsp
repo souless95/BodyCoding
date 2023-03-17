@@ -16,12 +16,10 @@
     color: #fff;
     text-align: center;
     height: 24px;
-    line-height:22px;
+    line-height:24px;
     border-radius:4px;
     padding:0px 10px;
-}
-div{
-	border: 1px solid red;
+    font-size: 16px;
 }
 
 input[type="checkbox"] {
@@ -107,7 +105,7 @@ function sucCallBack(resData) {
    	$(resData).each(function(index, data) {
       	tableData +=
       	"<li style='border-bottom: 1px solid gray; color: black;'><div>" +data.mem_name
-      	+"<button style='float: right; width: 100px; height: 50px; margin: 10px;' onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
+      	+"<button class='custom-btn btn-1' style='float: right; width: 110px; height: 50px; margin: 10px;' onclick=\"location.href='gymInfo.do?gym_code="+data.gym_code +"'\">상세보기</button></div>"
       	+"<div>" +data.mem_address+ "</div>"
       	+"<div>" +data.mem_phone+ "</div></li>";
    }); 
@@ -124,7 +122,7 @@ function errCallBack(errData){
 <!-- 지도관련 코드: 위치 고정되야 함(지도 시작) -->
 <div class="container">
 	<br>
-	<h2>지점 정보</h2>
+	<h2 >지점 정보</h2>
 	<div class="main_left" style="width: 65%; float: left;">
 		<div id="map" style="width: 98%; height: 730px;"></div>
 	</div>
@@ -232,9 +230,7 @@ function errCallBack(errData){
     
 </script>
 <!-- 지도관련 코드: 위치 고정되야 함(지도 끝) -->
-
 		
-
 	<!-- 상세정보 체크박스 부분 -->
 	<div class="main_right" style="width: 35%; float: left;">
 		<div style="height: 300px;">
@@ -309,11 +305,11 @@ function errCallBack(errData){
 		</div>
 	</div>
 	<!-- 검색 & 지점리스트 -->
-	<div >
+	<div>
 		<ul style="text-align: center;">
 			<li>
 				<input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
-				<input type="button" value="검색하기" id="search" style="margin-left: 35px; height: 35px;">
+				<button type="button" id="search" class="custom-btn btn-1" style="margin-left: 35px;">검색하기</button>
 			</li>
 		</ul>
 	</div>
@@ -326,7 +322,7 @@ function errCallBack(errData){
 							<li style="border-bottom: 1px solid gray; color: black;">
 								<div>
 									${row.mem_name}
-									<button style="float: right; width: 100px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
+									<button class="custom-btn btn-1" style="float: right; width: 110px; height: 50px; margin: 10px;" onclick="location.href='gymInfo.do?gym_code=${row.gym_code }'">상세보기</button>
 								</div>
 								<div>${row.mem_address}</div>
 								<div>${row.mem_phone}</div>

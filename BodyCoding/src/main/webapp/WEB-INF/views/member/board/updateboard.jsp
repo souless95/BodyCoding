@@ -15,23 +15,23 @@
 	<div id="container">
 		<!-- side -->
 		<div id="layoutSidenav_content">
-			<div id="layoutSidenav_content">
+			<div>
 				<div class="card mb-4">
 					<div class="card-header">
 						<h2>게시글 등록</h2>
 					</div>
 						
 					<form method="post" action="/updateboard.do">
-						<div>
-						<input type="hid-den" name="board_idx" value=${Freeboard.board_idx }>
-							<div>
+						<div class="container">
+						<input type="hidden" name="board_idx" value=${Freeboard.board_idx }>
+							<div class="form-group">
 								<label for="board_title">제목입력</label>
-								<input type="text" class="form-control" id="board_title" name="board_title" value="${Freeboard.board_title }" required>
+								<input style="width:100%;"type="text" class="form-control" id="board_title" name="board_title" value="${Freeboard.board_title }" required>
 							</div>
 							
-							<div>
+							<div class="form-group">
 								<label for="board_contents">내용 입력</label>
-								<input type="text" class="form-control" id="board_contents" name="board_contents" value="${Freeboard.board_contents }" required>
+								<textarea style="width:100%; height:350px;" class="form-control" id="board_contents" name="board_contents" required>${Freeboard.board_contents }</textarea>
 							</div>
 							
 							<input type="submit" value="수정">

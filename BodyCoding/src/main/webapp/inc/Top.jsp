@@ -5,13 +5,61 @@
 <html>
 	<head>
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-	<style type="text/css">
-	  * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-	  	a{border:0;}
-	</style>
+	<link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+<style type="text/css">
+/* h1 {
+  position: relative;
+  text-align: center;
+  color: #353535;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #676767;
+}
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+} */
+button {
+  margin: 20px;
+  outline: none;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  border: 2px solid #99DAEA;
+  border-radius : 10px;
+  font-family: 'Lato', sans-serif;
+  background-color:#99DAEA;
+  color:white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+/* 1 */
+.btn-1 {
+  transition: all 0.3s ease;
+}
+.btn-1:hover {
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+	
+</style>
 <script type="text/javascript">
 
 function logoutcheck(){
@@ -48,7 +96,7 @@ function openChatRoom(event, mem_id){
 			<!-- Header -->
 			<div id="header">
 					<!-- Logo -->
-						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif';">
+						<h1><a href="main" id="logo"><span style="font-weight:bold; font-size:40px; font-family: 'Myriad Pro', 'sans-serif';">
 						Body Coding</span></a></h1>
 					<!-- Nav -->
 						<nav id="nav">
@@ -130,7 +178,7 @@ function openChatRoom(event, mem_id){
 						                <ul> 
 						                    <li><a href="/memberlistT.do">회원목록</a></li>
 						                    <li><a href="calendar.do">운동정보</a></li>
-							   				<li><a class="btn" href='javascript:void(0);' onclick='trainerInfo("${UserEmail}","${UserGymCode}");'>내 정보관리</a></li>
+							   				<li><a class="btn" href='javascript:void(0);' onclick='mytrainerInfo("${UserEmail}","${UserGymCode}");'>내 정보</a></li>
 						                </ul>
 						            </li>
 						            <li>
@@ -153,7 +201,6 @@ function openChatRoom(event, mem_id){
 				</nav>
 			</div>
 		</div>
-		
 		
 		<!-- Scripts -->
 		<script src="../static/assets/js/jquery.min.js"></script>

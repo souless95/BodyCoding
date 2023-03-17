@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +10,13 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="../static/admin/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<style>
+body{
+	border: 1px;
+}
+</style>
 </head>
-<body class="sb-nav-fixed">
+<%@ include file="../../../../inc/Top.jsp" %>
 <script>
 $(document).ready(function() {
 	$("#yoil").change(function() {
@@ -70,19 +75,16 @@ function routine(){
             + "scrollbars=yes, resize=no");
 }
 </script>
-<!-- top메뉴  -->
-<%@ include file="../../../../inc/Top.jsp" %>
-	<div id="container">
-	<!-- side -->
-	<%@ include file ="../../../../inc/mypageside.jsp" %>
-       
-		<div id="layoutSidenav_content">
-	        <main>
-	        	<div class="card mb-4" style="border-bottom: none;">
-	        		<div class="card-header">
-						<h2>${dto.mem_name } 회원 상세보기</h2>
-	        		</div>
-	        		<div class="card-body" style="width: 80%">
+<body>
+ <div class="container">
+ 	<%@ include file ="../../../../inc/mypageside.jsp" %>
+       <div id="layoutSidenav_content">
+        <div class="card mb-5" style="border-bottom: none;">
+        	<div class="card-header">
+				<h2> ${dto.mem_name } 회원 상세보기 </h2>
+					<div>
+						<div id="layoutSidenav">
+							<div class="card-header" style="width: 100%">
 	        			<h4>기본정보</h4>
 						<table class="table" border="2";>
 							<tr>
@@ -152,13 +154,9 @@ function routine(){
 			<%@ include file="../../../../inc/Bottom.jsp" %>
 	        		</div>
 				</div>
-			</main><br />
-			
+        	</div>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/datatables-simple-demo.js"></script>   
 </body>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

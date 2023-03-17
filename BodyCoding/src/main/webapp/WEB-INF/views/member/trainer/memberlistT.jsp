@@ -12,41 +12,49 @@ body{
 	border: 1px;
 }
 
+
+.table-header {
+  text-align: center;
+  font-weight: bold;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #DDD;
+  vertical-align:middle;
+}
+
+
 </style>
 <script>
 </script>
 <%@ include file="../../../../inc/Top.jsp" %>
 </head>
-<body>
+<body class="sb-nav-fixed">
+<div class="container">
 	<div id="layoutSidenav">
 		<!-- side -->
        <%@ include file ="../../../../inc/mypageside.jsp" %>
 			<div id="layoutSidenav_content">
 		        <main>
-		        	<div class="card mb-4" style="width:80%;">
-		        		<div class="card-header">
+		        	<div class="card mb-4" style="width:83%;">
+		        		<div class="card-header"
+		        			 style="height:75px; background-color:#99DFFD; vertical-align:middle;">
 							<h2>회원 리스트</h2>
 		        		</div>
 		        		<div class="container-fluid" style="width:100%;">
-							<table style="width:100%;">
-							<thead>
-								<tr>
-						         	<th style="text-align:center">이메일(아이디)</th>
-						         	<th style="text-align:center">이름</th>
-						         	<th style="text-align:center">성별</th>
-						         	<th style="text-align:center">생년월일</th>
-						         	<th style="text-align:center">이용권 유형</th>
-						         	<th style="text-align:center">이용권 이름</th>
-						       	 	<th style="text-align:center">전화번호</th>
-						       	  	<th style="text-align:center">가입일자</th>
-						       	  	<th></th>
-						      	</tr>
-							</thead>
-							<tbody >
+							<table style="width:100%; height:50px; border:1px solid #D7D7D7; margin-top:15px;">
+								<tr style="height:55px;">
+								  <th class="table-header">이메일(아이디)</th>
+								  <th class="table-header">이름</th>
+								  <th class="table-header">성별</th>
+								  <th class="table-header">생년월일</th>
+								  <th class="table-header">이용권 유형</th>
+								  <th class="table-header">이용권 이름</th>
+								  <th class="table-header">전화번호</th>
+								  <th class="table-header">가입일자</th>
+								  <th class="table-header"></th>
+								</tr>
 					     	<c:forEach items="${memberList }" var="row" varStatus="loop">
-						      	<tr style="padding-top: 10px; padding-bottom: 10px;">
-							        <td style="text-align:center;">
-							        ${row.mem_id }</td>
+						      	<tr style="padding-top:20px; padding-bottom:20px; height:50px;" >
+							        <td style="text-align:center;">${row.mem_id }</td>
 							        <td style="text-align:center">${row.mem_name }</td>
 							        <td style="text-align:center">${row.mem_gender }</td>
 							        <td style="text-align:center">${row.mem_birth }</td>
@@ -61,15 +69,13 @@ body{
 							        </td>
 							    </tr>
 						    </c:forEach>
-							</tbody>
-							</table>
-		        		</div>
-					</div>
-				</main>
-			<!-- bottom -->
-			</div>
+						</table>
+	        		</div>
+				</div>
+			</main>
 		</div>
-
+	</div>
+</div>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

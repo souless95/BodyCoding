@@ -42,7 +42,7 @@ input[class="facility"]:checked+label::after {
    text-align: center;
    position: absolute;
    left: -2px;
-   top: -8px;
+   top: -20px;
 }
 
 #fac li {
@@ -308,7 +308,7 @@ function errCallBack(errData){
    <div style="height: 380px;">
       <ul style="text-align: center;">
          <li>
-            <input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px;"> 
+            <input id="searchWord" type="text" placeholder="검색어 입력" style="width: 210px; height:50px; font-size: 18px;"> 
             <button type="button" id="search" class="custom-btn btn-1" style="margin-left: 35px;">검색하기</button>
          </li>
       </ul>

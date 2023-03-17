@@ -48,6 +48,13 @@
     	where mem_id=#{mem_id}
 </select> 
 
+<select id="kakaoautselect"
+	parameterType="global.dto.MemberDTO"
+	resultType="String">
+	select authority from member
+    	where mem_id=#{mem_id}
+</select> 
+
 <select id="kakaoUserInfo"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">
@@ -68,7 +75,7 @@
 <update id="kakaoupdate"
 	parameterType="global.dto.MemberDTO">
 	update member 
-    set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address= #{mem_address}
+    set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address= #{mem_address}, mem_interest = #{mem_interest}, gym_code = #{gym_code}
     where mem_id = #{mem_id}
 </update>	
 

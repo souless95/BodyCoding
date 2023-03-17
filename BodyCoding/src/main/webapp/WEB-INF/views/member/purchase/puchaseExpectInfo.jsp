@@ -54,7 +54,7 @@
     -webkit-box-flex: 1;
     flex-grow: 1;
     min-width: 0;
-    padding: 30px 0 12px;
+    padding: 20px 0 30px;
     border-right: 1px solid #e9ecef;
 }
 .product_tittle{

@@ -36,7 +36,7 @@ body{
 		        <main>
 		        	<div class="card mb-4" style="width:83%;">
 		        		<div class="card-header"
-		        			 style="height:75px; background-color:#99DFFD; vertical-align:middle;">
+		        			 style="color:white; height:75px; background-color:#01538D; vertical-align:middle;">
 							<h2>회원 리스트</h2>
 		        		</div>
 		        		<div class="container-fluid" style="width:100%;">
@@ -62,11 +62,12 @@ body{
 							        <td style="text-align:center">${row.product_name }</td>
 							        <td style="text-align:center">${row.mem_phone }</td>
 							        <td style="text-align:center">${row.mem_regidate }</td>
-							        <td>
-							       	<button type="button" 
-										onclick="location.href='memberdetailT.do?mem_id=${row.mem_id }'">
-									상세보기</button>
-							        </td>
+							        <td style="text-align:center;">
+									<button type="button" class="custom-btn btn-1" style="width:110px; height:40px; display: flex; align-items: center; justify-content: center;"
+									    onclick="location.href='memberdetailT.do?mem_id=${row.mem_id }'">
+									    상세보기
+									</button>
+									</td>
 							    </tr>
 						    </c:forEach>
 						</table>

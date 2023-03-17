@@ -17,7 +17,6 @@
 <%@ include file="../../../../inc/Top.jsp" %>
 <script type="text/javascript">
 function trainerInfo(mem_id, gym_code){
-	console.log("ㅇ왜");
 	let f = document.frm;
 	f.mem_id.value = mem_id;
 	f.gym_code.value = gym_code;
@@ -62,7 +61,7 @@ function sucCallBack(resData) {
 	console.log(resData);
 	let tableData = "";
 	$(resData).each(function(index, data) {
-		tableData += "<div style='width:200px; margin:36px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
+		tableData += "<div class ='cardfloat' style='width:200px; margin:36px; float:left;'><a href='javascript:void(0);' onclick='trainerInfo(\""+data.mem_id+"\",\""+ data.gym_code+"\");'>"
 		+"<img class='card-img-top mt-2' src='static/uploads/trainer/"+data.mem_img+"' "
 		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'style='overflow: hidden; height: 100px;'>"
@@ -85,17 +84,17 @@ function errCallBack(errData){
 	text-align:center;
 	width:90px;
 	padding: 2px;
-	border: 1.5px solid #37C0FB;
+	border: 1.5px solid #FF8200;
 	background: white;
 	border-radius: 67px;
-	color: #37C0FB;
+	color: #FF8200;
 }
 h5 .input:hover{
 	text-align:center;
 	width:90px;
 	padding: 2px;
 	border: 1.5px solid white;
-	background: #37C0FB;
+	background: #FF8200;
 	border-radius: 67px;
 	color: white;
 }

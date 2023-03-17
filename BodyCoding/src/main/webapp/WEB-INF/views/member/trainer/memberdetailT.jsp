@@ -93,7 +93,7 @@ function routine(){
  	<%@ include file ="../../../../inc/mypageside.jsp" %>
        <div id="layoutSidenav_content">
         <div class="card mb-5" style="border-radius:10px;">
-        	<div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle; border-radius:10px;">
+        	<div class="card-header" style="color:white; height:75px; background-color:#01538D; vertical-align:middle; border-radius:10px;">
 				<h2> ${dto.mem_name } 회원 상세보기 </h2>
 			</div>
 					<div id="layoutSidenav">
@@ -153,18 +153,20 @@ function routine(){
 										  onclick="location.href='addexrecord.do'">기록등록</button>
 									</div>
 									<br /><br /><br />
-										<div style="margin-bottom:10px;">
-											<select name="yoil" id="yoil" style="width:100px;">
-													<option value="월요일">월요일
-													<option value="화요일">화요일
-													<option value="수요일">수요일
-													<option value="목요일">목요일
-													<option value="금요일">금요일
-													<option value="토요일">토요일
-													<option value="일요일">일요일
-											</select>
+										<div style="border: 2px solid #D7D7D7; border-radius:7px; margin-bottom:20px; ">	
+											<div style="margin-bottom:10px; margin-top:10px; margin-left:10px;">
+												<select name="yoil" id="yoil" style="width:120px;">
+														<option value="월요일">월요일
+														<option value="화요일">화요일
+														<option value="수요일">수요일
+														<option value="목요일">목요일
+														<option value="금요일">금요일
+														<option value="토요일">토요일
+														<option value="일요일">일요일
+												</select>
+											</div>
+												<div id="registeredRoutine" style="margin-top:15px; margin-bottom:20px;"></div>
 										</div>
-											<div id="registeredRoutine"></div>
 					        		</div>
 				        		</div>
 			        		</div>

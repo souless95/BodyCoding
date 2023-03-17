@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import global.dto.BoardDTO;
 import global.dto.MemberDTO;
-import global.dto.ReplyDTO;
 
 @Controller
 public class memboardController {
@@ -116,9 +115,9 @@ public class memboardController {
 		model.addAttribute("dto", boardDTO);
 		
 		//reply 테이블에 있는 정보 가져오기위해 객체선언
-		ReplyDTO replyDTO = new ReplyDTO();
-		replyDTO.setBoard_idx(boardDTO.getBoard_idx());
-		List<ReplyDTO> replyDTOList = memboarddao.selectreply(replyDTO);
+		
+		boardDTO.setBoard_idx(boardDTO.getBoard_idx());
+		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
 		
 		model.addAttribute("rdto", replyDTOList);
 		
@@ -225,17 +224,18 @@ public class memboardController {
 		return "redirect:Freeboard.do";
 	}
 	
+	
 	//댓글등록
 	@RequestMapping(value="/insertreply.do", method=RequestMethod.POST)
-	public String insertreply(ReplyDTO replyDTO, HttpSession session,
+	public String insertreply(BoardDTO boardDTO, HttpSession session,
 			HttpServletRequest req) {
 		
-		List<ReplyDTO> replyDTOList = memboarddao.selectreply(replyDTO);
+		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
 		
 		String board_idx = req.getParameter("board_idx");
-		System.out.println(replyDTO);
+		System.out.println(boardDTO);
 		
-		int result = memboarddao.insertreply(replyDTO);
+		int result = memboarddao.insertreply(boardDTO);
 	
 		if(result==1)
 				
@@ -247,11 +247,11 @@ public class memboardController {
 	
 	//댓글 삭제
 	@RequestMapping("deletereply.do")
-	public String delete(ReplyDTO replyDTO, HttpServletRequest req) {
+	public String delete(BoardDTO boardDTO, HttpServletRequest req) {
 		
 		String board_idx = req.getParameter("board_idx");
 		System.out.println(board_idx);
-		int result = memboarddao.deletereply(replyDTO);
+		int result = memboarddao.deletereply(boardDTO);
 		if(result==1)
 		System.out.println("댓글삭제완료");
 		return "redirect:/detailmemberboard.do?board_idx="+board_idx;
@@ -259,14 +259,14 @@ public class memboardController {
 	
 	//댓글 수정 페이지 진입
 	@RequestMapping(value="updatereply.do", method=RequestMethod.GET)
-	public String updatereply(Model model, HttpServletRequest req, ReplyDTO replyDTO) {
+	public String updatereply(Model model, HttpServletRequest req) {
 		
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		String board_idx = boardDTO.getBoard_idx();
 		System.out.println(board_idx);
 		
-		List<ReplyDTO> replyDTOList = memboarddao.selectreply(replyDTO);
+		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
 		model.addAttribute("rdto", replyDTOList);
 		System.out.println(replyDTOList);
 		
@@ -281,20 +281,19 @@ public class memboardController {
 			
 	//댓글 수정
 	@RequestMapping(value="updatereply.do", method=RequestMethod.POST)
-	public String updatereply1(ReplyDTO replyDTO, HttpServletRequest req, Model model) {
+	public String updatereply1(HttpServletRequest req, Model model) {
 		
-		System.out.println("dddd");
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		String board_idx = boardDTO.getBoard_idx();
 		System.out.println(board_idx);
 		
-		replyDTO.setBoard_idx(boardDTO.getBoard_idx());
-		replyDTO.setReply_idx(req.getParameter("reply_idx"));
-		replyDTO.setBoard_idx(board_idx);
-		System.out.println(board_idx);
+		boardDTO.setBoard_idx(boardDTO.getBoard_idx());
+		boardDTO.setReply_idx(req.getParameter("reply_idx"));
+		boardDTO.setBoard_idx(board_idx);
+		boardDTO.setReply_cont(req.getParameter("reply_cont"));
 		
-		memboarddao.updatereply(replyDTO);
+		memboarddao.updatereply(boardDTO);
 				
 		return "redirect:/detailmemberboard.do?board_idx="+board_idx;
 	}

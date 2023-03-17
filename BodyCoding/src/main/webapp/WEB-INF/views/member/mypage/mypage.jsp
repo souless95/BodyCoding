@@ -14,29 +14,24 @@ body{
 }
 </style>
 </head>
-<%@ include file="../../../../inc/Top.jsp" %>
 <body>
-	 <div class="container">
-	 	<%@ include file ="../../../../inc/mypageside.jsp" %>
+<%@ include file="../../../../inc/Top.jsp"%>
+<div class="container">
+	<div class="sub_container">
+		<%@ include file="../../../../inc/mypageside.jsp"%>
+		<br />
+		<h2>등록된 지점</h2>
+		<hr style="border: 1px solid #01538D;">
 	 	<c:if test="${empty gymcheck}">
-	 	<div id="layoutSidenav_content">
-	        <div class="card mb-5" style="border-bottom: none;">
-	        	<div class="card-header">
-					<h2>등록된 지점</h2>
-	        	</div>
+	        <div class="card mb-5" style="border: none;">
 	        	<div class="card-body" style="width: 80%">
 			 		<b>등록한 지점이 없습니다.
 			 		정보수정 페이지에서 지점을 등록하여 주십시오.</b>
 			 	</div>
 			 </div>
-		</div>
 	 	</c:if>
 	 	<c:if test="${not empty gymcheck}">
-        <div id="layoutSidenav_content">
-	        <div class="card mb-5" style="border-bottom: none;">
-	        	<div class="card-header">
-					<h2>등록된 지점</h2>
-	        	</div>
+	        <div class="card mb-5" style="border: none;">
 				<div class="card-body" style="width: 80%">
 					<h4>기본정보</h4>
 					<table class="table" border=2>
@@ -119,9 +114,9 @@ body{
 					</table>
 				</div>
 			</div>
-		</div>
 		</c:if>
 	</div>
+</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

@@ -206,13 +206,9 @@ button{
     font-size: 16px;
     line-height: 48px;
     vertical-align: top;
-    border: 1.5px solid #37C0FB;
-}
-.go_product{
-   border: 1.5px solid #37C0FB;
-   width: 100px;
-   border-radius: 6px;
-   font-size: 16px;
+    font-weight:bold;
+    color:white;
+    background-color: #F9BF52;
 }
 
 </style>
@@ -418,9 +414,6 @@ function errCallBack(errData) {
                <div align="center">
                   <button type="button" class="buy_link" id="purchase">구매하기(결제)</button>
                </div>
-               <div align="right" style="padding-right:40px;">
-	              <button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
-              </div>
             </div>
          </div>
       </div>

@@ -105,15 +105,20 @@
 		where trainer_id=#{trainer_id} and lesson_day <![CDATA[<]]> sysdate order by lesson_day desc
 	</select> 
 	
-	<select id="selectexrecord"
-		parameterType="global.dto.MemberDTO"
-		resultType="global.dto.MemberDTO">
-		SELECT mem_name, tl.training_comment, tl.training_log_idx, tl.training_date, p.product_name, p.product_description
-			FROM member m
-			INNER JOIN training_log tl ON m.mem_id = tl.user_id
-			INNER JOIN membership ms ON ms.user_id = tl.user_id
-			INNER JOIN product p ON p.product_idx = ms.product_idx
-			WHERE tl.trainer_id = #{trainer_id}
+	<select id="selectExrecord1"
+		parameterType="global.dto.ExDTO"
+		resultType="global.dto.ExDTO">
+		SELECT tl.*, mem_name FROM training_log tl
+		inner join member m on m.mem_id = tl.trainer_id
+		WHERE user_id = #{user_id} order by training_date desc
+	</select>
+	
+	<select id="selectExrecord2"
+		parameterType="global.dto.ExDTO"
+		resultType="global.dto.ExDTO">
+		SELECT tl.*, mem_name FROM training_log tl
+		inner join member m on tl.user_id = m.mem_id
+		WHERE trainer_id = #{trainer_id}
 	</select>
 	
 	<select id="selectone" parameterType="String"
@@ -126,7 +131,7 @@
 		WHERE tl.training_log_idx = #{training_log_idx}
 	</select>
 	
-	<update id="editexrecord" parameterType="global.dto.MemberDTO" >
+	<update id="editExrecord" parameterType="global.dto.ExDTO" >
 		update training_log set training_comment = #{training_comment} where training_log_idx= #{training_log_idx}
 	</update>      
 	

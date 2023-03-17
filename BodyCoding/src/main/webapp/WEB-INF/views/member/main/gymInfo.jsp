@@ -77,9 +77,42 @@ element.style {
     background-color: #fbfafa;
     color: #353535;
 }
+.garry_wrap {
+    border: 1px solid #ddd;
+    padding: 20px 50px;
+    margin: 50px 0 0 0;
+}
 </style>
 </head>
 <link rel="stylesheet" href="../static/assets/css/Info.css" />
+<script type="text/javascript">
+window.onload = function() {
+	const previewContainer = document.querySelector('#previewContainer');
+	
+	var imageArray = '${ dto.gym_detail_img}';
+	var fileNames = imageArray.split(","); 
+	
+	for (let i = 0; i < fileNames.length; i++) {
+	  const fileName = fileNames[i];
+	  const imageUrl = '/static/uploads/gym/' + fileName;
+
+	  createImagePreview(imageUrl, fileName);
+	}
+
+	function createImagePreview(imageUrl, fileName) {
+	  const img = document.createElement('img');
+	  img.src = imageUrl;
+	  img.alt = fileName;
+	  img.style.width = '300px';
+	  img.style.height = '250px';
+
+	  const span = document.createElement('span');
+	  span.classList.add('preview-item');
+	  span.innerHTML = '<span class="preview-image" style="float:left; padding:10px">' + img.outerHTML + '</span>&nbsp;&nbsp;';
+	  previewContainer.appendChild(span);
+	}
+}
+</script>
 <body>
 <%@ include file="../../../../inc/Top.jsp" %>
 <div class="container">
@@ -138,8 +171,6 @@ element.style {
 					<td>${dto.facility_locker }</td>
 				</tr>
 			</table>
-		</div>
-		<div class="rec_content">
 			<h3>운영시간</h3>
 			<table style="width:100%; border-top: 1px solid #ececec; border-bottom: 1px solid #ececec;">
 				<tr style="background-color:#ececec; color: black; font-weight:bolder; text-align: center;">
@@ -147,7 +178,7 @@ element.style {
 					<td colspan="2">토요일</td>
 					<td colspan="2">일요일, 공휴일</td>
 				</tr>
-				<tr style="width:100%; border: 1px solid #ececec;">
+				<tr style="width:100%; border-bottom: 1px solid #ececec;">
 					<td width="10%" align="center">OPEN</td>
 					<td width="10%" align="center">CLOSE</td>
 					<td width="10%" align="center">OPEN</td>
@@ -162,6 +193,16 @@ element.style {
 					<td align="center">${dto.rtime_sat_end }</td>
 					<td align="center">${dto.rtime_holy_start }</td>
 					<td align="center">${dto.rtime_holy_end }</td>
+				</tr>
+			</table>
+		</div>
+		<div class="garry_wrap">
+			<h3>Gallery</h3>
+			<table>
+				<tr>
+					<td>
+						<span id="previewContainer"></span>
+					</td>
 				</tr>
 			</table>
 		</div>

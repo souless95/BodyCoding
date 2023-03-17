@@ -19,10 +19,11 @@ body{
 <%@ include file="../../../../inc/Top.jsp" %>
 <body>
  <div class="container">
+ 	<div class="sub_container">
  	<%@ include file ="../../../../inc/mypageside.jsp" %>
        <div id="layoutSidenav_content">
         <div class="card mb-5" style="border-bottom: none;">
-        	<div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle;">
+        	<div class="card-header" style="height:75px; color:white; background-color:#01538D; vertical-align:middle;">
 				<h2> ${UserName}님의 마이페이지 입니다.</h2>
 			</div>	
 				<div>
@@ -30,8 +31,7 @@ body{
 						<div class="container">
 						<br>
 							<h2>트레이너 정보</h2>
-								<div style="margin-top:-30px;">
-									<table class="table" style="border: 3px solid #D7D7D7; width:70%;  border-radius:7px;">
+								<table class="table" style="border: 3px solid #D7D7D7; width:70%;  border-radius:7px;">
 										<tr style="border: 2px solid gray;">
 											<td style="border: 2px solid gray; width: 300px; height: 360px;" rowspan="4"><img src="/static/uploads/trainer/${trainerInfo.mem_img}" style="width:100%;height:100%; margin-bottom: -55px;"></td>
 											<td style="vertical-align: middle; padding-left: 10px;"><strong>한마디 : </strong> ${trainerInfo.mem_comment }</td>  
@@ -46,7 +46,6 @@ body{
 											<td style="padding-left: 10px;"><strong>경력 : </strong> ${trainerInfo.mem_career }</td>
 										</tr>
 									</table>
-								</div>
 							<c:if test="${not empty avg_grade }">
 							 <!-- <h3>평점 &nbsp : &nbsp ${avg_grade }/5</h3>  -->
 						   	<div class="star-ratings">
@@ -86,7 +85,6 @@ body{
 								</c:forEach>
 							</table>
 							</c:if>
-							
 							
 							<c:if test="${not empty UserName && UserName ne trainerInfo.mem_name }">
 							<h3>후기작성</h3>
@@ -149,6 +147,7 @@ body{
         	</div>
 		</div>
 	</div>
+</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>
 </html>

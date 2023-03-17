@@ -18,7 +18,6 @@
 			<br />
 	<h2>결제 내역</h2>
 	<hr style="border: 1px solid #01538D;">
-		<div>
 		<br>
 		<table
 			style="width: 80%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
@@ -34,13 +33,12 @@
 						<td style="text-align: center;">${oList.order_idx}</td>
 						<td><a style="color: #01538D;" href="payLogDetail.do?order_idx=${oList.order_idx}">${oList.order_name}</a></td>
 						<td>${oList.order_status}</td>
-						<td>2023-03-17</td>
+						<td><fmt:formatDate value="${oList.order_date}" pattern="yyyy-MM-dd" /></td>
 				</tr>
 					</c:forEach>
 
 			</tbody>
 		</table>
-		</div>
 		</div>
 	</div>
 	<%@ include file="../../../../inc/Bottom.jsp"%>

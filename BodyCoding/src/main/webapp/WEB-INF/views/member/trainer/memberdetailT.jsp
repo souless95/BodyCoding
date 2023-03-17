@@ -26,6 +26,7 @@ table th {
   background-color: #DFE8EA;
   font-weight:bold;
   border-bottom: 1px solid #D7D7D7;
+  
 </style>
 </head>
 <%@ include file="../../../../inc/Top.jsp" %>
@@ -99,8 +100,8 @@ function routine(){
 						<div class="card-header" style="width: 100%">
 							<div style="border:1px solid #D7D7D7; margin-top:15px; margin-bottom:15px; border-radius:7px;">
 			        			<h3 style="margin-top:10px; margin-left:15px; margin-bottom:-2px;">상세정보</h3>
-								<div class="container-fluid" style="width:100%;">		
-									<table style="width:100%; border:1px solid #D7D7D7; border-radius:7px; border-collapse: separate;">
+								<div class="container-fluid">		
+									<table style="width:100%; border:1px solid #D7D7D7; border-radius:7px; border-collapse: separate; margin-bottom:0px;" >
 											<tr>
 												<th>이메일(아이디)</th>
 												<td>${dto.mem_id}</td>
@@ -142,10 +143,15 @@ function routine(){
 												<td>${dto.mem_inflow}</td>
 											</tr>
 									</table>
-									    
-									<button type="button" class="btn btn-primary" onclick="location.href='main'">홈으로</button> &nbsp;&nbsp; 
-									<button type="button" class="btn btn-primary" onclick="routine();">운동루틴 등록</button> &nbsp;&nbsp; 
-									<button type="button" class="btn btn-primary"  onclick="location.href='addexrecord.do'">기록등록</button>
+									
+									<div style="margin-top:10px;">
+										<button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
+										  onclick="location.href='main'">홈으로</button>  
+										<button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
+										   onclick="routine();">운동루틴 등록</button>  
+										<button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
+										  onclick="location.href='addexrecord.do'">기록등록</button>
+									</div>
 									<br /><br /><br />
 										<div style="margin-bottom:10px;">
 											<select name="yoil" id="yoil" style="width:100px;">

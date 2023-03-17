@@ -109,7 +109,7 @@
 		parameterType="global.dto.ExDTO"
 		resultType="global.dto.ExDTO">
 		SELECT tl.*, mem_name FROM training_log tl
-		inner join member m on m.mem_id = tl.user_id
+		inner join member m on m.mem_id = tl.trainer_id
 		WHERE user_id = #{user_id} order by training_date desc
 	</select>
 	
@@ -117,8 +117,8 @@
 		parameterType="global.dto.ExDTO"
 		resultType="global.dto.ExDTO">
 		SELECT tl.*, mem_name FROM training_log tl
-		inner join member m on tl.trainer_id = m.mem_id
-		WHERE user_id = #{user_id}
+		inner join member m on tl.user_id = m.mem_id
+		WHERE trainer_id = #{trainer_id}
 	</select>
 	
 	<select id="selectone" parameterType="String"

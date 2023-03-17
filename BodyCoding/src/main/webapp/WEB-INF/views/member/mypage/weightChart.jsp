@@ -13,22 +13,22 @@
 <%@ include file="../../../../inc/Top.jsp" %>
 <body>
 <div class="container">
-	<%@ include file ="../../../../inc/mypageside.jsp" %>
-        <div id="layoutSidenav_content">
-	        <div class="card mb-5" style="border-bottom: none;">
-	        	<div class="card-header">
-					<h2>체중 그래프</h2>
-					  	<canvas id="myChart" style="width:850px; height:450px;"></canvas>
-					  	<p>
-					  	<form method="post" action="chart">
-					  		오늘의 체중 : 
-						  	<input type="hidden" name="mem_id" value=${mem_id }>
-						  	<input type="number" name="mem_weight">
-						  	<input type="submit" value="입력">
-						</form>
-				</div>
+	<div class="sub_container">
+		<%@ include file ="../../../../inc/mypageside.jsp" %>
+        <div class="card mb-5" style="border-bottom: none;">
+        	<div class="card-header">
+				<h2>체중 그래프</h2>
+				  	<canvas id="myChart" style="width:850px; height:450px;"></canvas>
+				  	<p>
+				  	<form method="post" action="chart">
+				  		오늘의 체중 : 
+					  	<input type="hidden" name="mem_id" value=${mem_id }>
+					  	<input type="number" name="mem_weight">
+					  	<input type="submit" value="입력">
+					</form>
 			</div>
 		</div>
+	</div>
 </div>
 <!-- 차트 관련 script는 아래로 내려가야함 -->
 <script>

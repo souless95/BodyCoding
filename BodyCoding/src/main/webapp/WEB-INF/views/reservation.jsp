@@ -97,6 +97,7 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 <body>
 <%@ include file ="../../../inc/Top.jsp" %>
 <div class="container">
+	<div class="sub_container">
 	<%@ include file ="../../../inc/mypageside.jsp" %>
 	<br />
 	<h3>예약 가능한 일정</h3>
@@ -153,6 +154,7 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 	<c:if test="${empty Schedule}">
 		현재 이용가능한 일정이 없습니다.
 	</c:if>
+	</div>
 </div>
 <%@ include file="../../../inc/Bottom.jsp" %>
 </body>

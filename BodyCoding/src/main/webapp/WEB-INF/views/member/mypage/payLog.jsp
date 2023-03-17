@@ -13,6 +13,7 @@
 <body>
 	<%@ include file="../../../../inc/Top.jsp"%>
 	<div class="container">
+		<div class="sub_container">
 		<%@ include file="../../../../inc/mypageside.jsp"%>
 			<br />
 	<h3>결제 내역</h3>
@@ -37,6 +38,7 @@
 
 			</tbody>
 		</table>
+		</div>
 		</div>
 	</div>
 	<%@ include file="../../../../inc/Bottom.jsp"%>

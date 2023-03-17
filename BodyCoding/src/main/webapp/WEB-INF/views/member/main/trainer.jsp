@@ -79,7 +79,7 @@ function errCallBack(errData){
 </script> 
 <div class="container">
 <br>
-<h2 style="margin-bottom: 0;">트레이너 목록</h2>
+<h2>트레이너 목록</h2>
 <style>
 .input{
 	text-align:center;
@@ -116,7 +116,7 @@ h5 .input:hover{
 		<button value="정확" name="interest" class="input"> #정확</button>
 		<button value="칭찬" name="interest" class="input"> #칭찬</button>
 	</h5>
-	<style>
+	<style> 
 	.trainer-card {
 	  width: 200px;
 	  margin: 20px;

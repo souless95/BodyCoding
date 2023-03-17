@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 function editRecord(training_log_idx) {
   if (confirm("게시글을 수정하시겠습니까?")) {
@@ -32,7 +32,7 @@ function deleteRecord(training_log_idx) {
 		<div id="layoutSidenav_content">
 			<div id="layoutSidenav_content">
 				<div class="card mb-4">
-					<div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle;">
+					<div class="card-header" style="color: white; height:75px; background-color:#01538D; vertical-align:middle;">
 						<h2>운동기록 리스트</h2>
 					</div>
 					<br>

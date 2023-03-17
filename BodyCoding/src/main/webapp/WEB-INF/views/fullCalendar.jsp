@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 	.fc-toolbar-chunk {
 	    display: flex;
@@ -242,7 +242,7 @@
 	<br />
 	<div class="card mb-4" style="width:83%; margin-top:-35px;">
 	   <div class="card-header"
-	    			 style="height:75px; background-color:#99DFFD; vertical-align:middle;">
+	    			 style="color:white; height:75px; background-color:#01538D; vertical-align:middle;">
 			<h2>일정관리</h2>
 	    </div>
 	  	<br /><br />

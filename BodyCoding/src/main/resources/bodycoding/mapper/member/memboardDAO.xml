@@ -136,24 +136,24 @@
 		where board_idx= #{board_idx}
 	</update> 
 	
-		
+	<!-- 댓글 조회하기 -->	
 	<select id="selectreply" parameterType="String" resultType="global.dto.BoardDTO">
 		select * from reply where board_idx=#{board_idx} ORDER BY reply_idx DESC
 	</select>
 	
-		
+	<!-- 댓글 수정하기 -->
 	<update id="updatereply" parameterType="global.dto.BoardDTO" >
 		update reply set reply_cont = #{reply_cont}
 		where reply_idx= #{reply_idx}
 	</update>
-	
-		<insert id="insertreply" parameterType="global.dto.BoardDTO">
+	<!-- 댓글 작성하기 -->
+	<insert id="insertreply" parameterType="global.dto.BoardDTO">
 		INSERT INTO reply (
 			reply_idx, board_idx,  mem_id, reply_cont)
 		VALUES 
 			(bodycoding_seq.nextval, #{board_idx}, #{mem_id}, #{reply_cont})
 	</insert>
-	
+	<!--  댓글 삭제  -->
 	<delete id="deletereply" parameterType="global.dto.BoardDTO">
 		delete from reply where reply_idx=#{reply_idx}
 	</delete>

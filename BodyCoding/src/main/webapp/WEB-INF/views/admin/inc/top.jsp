@@ -41,7 +41,6 @@ button {
 .custom-btn {
   width: 130px;
   height: 40px;
-  padding: 10px 25px;
   border: 2px solid #212529;
   font-family: 'Lato', sans-serif;
   font-weight: 500;
@@ -51,6 +50,19 @@ button {
   position: relative;
   display: inline-block;
 }
+
+/* 1 */
+.btn-1 {
+  transition: all 0.3s ease;
+}
+.btn-1:hover {
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+
 /* 2 */
 .btn-2 {
   

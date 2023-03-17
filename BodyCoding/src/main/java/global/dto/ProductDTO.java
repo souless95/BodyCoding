@@ -83,7 +83,7 @@ public class ProductDTO {
 	private String type;
 	
 	//주문 날짜
-	private Date order_date;
+	private String order_date;
 	//총 매출
 	private int sales;
 	//주문명

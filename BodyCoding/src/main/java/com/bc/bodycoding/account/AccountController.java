@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bc.bodycoding.admin.member.MemberService;
 import com.bc.bodycoding.calendar.CalendarDTO;
 
+import global.dto.ExDTO;
 import global.dto.MemberDTO;
 import global.dto.ProductDTO;
 import global.dto.TrainingLogDTO;
@@ -31,6 +33,9 @@ public class AccountController {
 
    @Autowired
    AccountService accountdao;
+   
+   @Autowired
+   MemberService memberdao;
    
    @Autowired
    private MailService mailService;
@@ -161,13 +166,12 @@ public class AccountController {
    
    //회원권 남은 횟수 확인
    @GetMapping("vdCounting.do")
-   public String vdCounting(Model model, HttpSession session, ProductDTO productDTO) {
+   public String vdCounting(Model model, HttpSession session, ProductDTO productDTO, ExDTO exDTO) {
 	   
 	   String user_id = (String)session.getAttribute("UserEmail");
 	   String user_name = (String)session.getAttribute("UserName");
 	   productDTO.setUser_id(user_id);
 	   List<ProductDTO> totalVD = accountdao.getMInfo(productDTO);
-	   System.out.println(totalVD);
 	   
 	   List<Map<String, Object>> newVD = new ArrayList<Map<String, Object>>();
 	   for (ProductDTO tVD : totalVD) {
@@ -177,23 +181,20 @@ public class AccountController {
 		    event.put("category", tVD.getProduct_category());
 		    tVD.setUser_id(user_id);
 		    event.put("count", tVD.getMembership_count()-accountdao.getTLog(tVD));
-		    System.out.println(event);
 		    newVD.add(event);
 	   }
 	   model.addAttribute("user_name", user_name);
 	   model.addAttribute("newVD", newVD);
 	   
+	   exDTO.setUser_id(user_id);
+       List<ExDTO> TlList = new ArrayList<ExDTO>();
+	   TlList = memberdao.selectExrecord2(exDTO);
+	   System.out.println(TlList);
+   	   model.addAttribute("TlList", TlList);
+	   
       return "member/mypage/vdCounting";
    }
    
-   //트레이닝 로그에 기록하기 위한 코멘트작성
-   @GetMapping("??")
-   public String writeComment() {
-	  
-	   
-      return "member/mypage/??";
-   }
-
    // 탈퇴하기
    @PostMapping("/delete")
    public String delete1(HttpServletRequest req, HttpSession session) {

@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ExDTO {
 	
+	private String training_log_idx;
 	private String trainer_id;
 	private String exercise_type;
 	private String user_id;
@@ -13,5 +14,5 @@ public class ExDTO {
 
 	private String mem_name;
 	private String lesson_start_time;
-	private String reservaction_idx;
+	private String reservation_idx;
 }

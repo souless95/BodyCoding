@@ -31,6 +31,31 @@
 		</c:if>
 	</div>
 	
+	<br /><br /><br />
+	
+	<div>
+		<table style="width:80%;">
+			<thead>
+				<tr>
+		         	<th>트레이너</th>
+		         	<th>분류</th>
+		         	<th>일시</th>
+		         	<th>코멘트</th>
+		      	</tr>
+			</thead>
+			<tbody>
+		     	<c:forEach items="${TlList }" var="row" varStatus="loop">
+			      	<tr>
+				        <td>${row.mem_name }</td>
+				        <td>${row.exercise_type }</td>
+				        <td>${row.training_date.substring(0, 10)} &nbsp;&nbsp; ${row.training_date.substring(11, 16)}</td>
+				        <td>${row.training_comment }</td>
+				    </tr>
+			    </c:forEach>
+			</tbody>
+		</table>
+	</div>
+	
 </div>
 <%@ include file="../../../../inc/Bottom.jsp" %>	
 </body>

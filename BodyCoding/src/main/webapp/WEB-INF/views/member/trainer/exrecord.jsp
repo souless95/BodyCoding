@@ -8,19 +8,6 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script>
-function editRecord(training_log_idx) {
-  if (confirm("게시글을 수정하시겠습니까?")) {
-    location.href = "editexrecord.do?training_log_idx=" + training_log_idx;
-  }
-}
-
-function deleteRecord(training_log_idx) {
-  if (confirm("게시글을 삭제하시겠습니까?")) {
-    location.href = "deleteexrecord.do?training_log_idx=" + training_log_idx;
-  }
-}
-</script>
 </head>
 <body>
 <%@ include file="../../../../inc/Top.jsp"%>
@@ -40,30 +27,30 @@ function deleteRecord(training_log_idx) {
 						<table style="width:80%;">
 							<thead>
 								<tr>
-						         	<th>일자</th>
-						         	<th>이용권 유형</th>
-						         	<th>이용권 이름</th>
-						         	<th>회원이름</th>
-						         	<th>특이사항</th>
+						         	<th>회원명</th>
+						         	<th>분류</th>
+						         	<th>일시</th>
+						         	<th>코멘트</th>
 						      	</tr>
 							</thead>
 							<tbody>
-						     	<c:forEach items="${memberList }" var="row" varStatus="loop">
+						     	<c:forEach items="${TlList }" var="row" varStatus="loop">
 							      	<tr>
-								        <td>${row.training_date }</td>
-								        <td>${row.product_name }</td>
-								        <td>${row.product_description }
+							      		
 								        <td>${row.mem_name}</td>
-								        <td>${row.training_comment }</td>
+								        <td>${row.exercise_type }</td>
+								        <td>${row.training_date }</td>
 								        <td>
-								        	<button type="button" onclick="location.href='editexrecord.do?training_log_idx=${row.training_log_idx}'">수정</button>
+								        	<form action="editExrecord.do">
+									        	<input type="hidden" name="training_log_idx" value="${row.training_log_idx }" />
+									        	<input type="text" name="training_comment" value="${row.training_comment }" />
+									        	<button type="submit">저장</button>
+								        	</form>
 								        </td>
 								    </tr>
 							    </c:forEach>
 							</tbody>
 						</table>
-							<button type="button" onclick="location.href='addexrecord.do'">등록</button>
-							
 	        		</div>	
 				</div>
 			</div>

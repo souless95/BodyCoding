@@ -83,7 +83,6 @@ ul{
 		                                <li><a class="btn" href="reservation.do">스케쥴예약</a></li>
 		                                <li><a class="btn" href="reservated.do">스케쥴확인</a></li>
 		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
-		                                <li><a class="btn" href="#">운동기록</a></li>
 		                                <li><a class="btn" href="chart">체중그래프</a></li>
 		                            </ul>
 		                        </div>
@@ -98,7 +97,7 @@ ul{
 								<div class="card-body">
 		                            <ul>
 		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
-		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
+		                                <li><a class="btn" href="vdCounting.do?mem_id=${UserEmail}">이용권차감</a></li>
 		                            </ul>
 		                        </div>
 							</div>

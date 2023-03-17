@@ -51,8 +51,8 @@
 .cell{
    width: 100%;
    height: 150px;
-    display: inline-block;
-    border-bottom: 1px solid #f4f4f4;
+   display: inline-block;
+   border-bottom: 1px solid #f4f4f4;
 }
 .product_show{
     padding: 20px 20px 20px 0px;
@@ -80,7 +80,7 @@
 }
 .product_tittle{
     max-height: 44px;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 22px;
     font-weight: bold;
     text-align: left;
@@ -97,7 +97,7 @@
 }
 .product_content{
     max-height: 44px;
-    font-size: 14px;
+    font-size: 22px;
     line-height: 22px;
     font-weight: bold;
     letter-spacing: 0;
@@ -115,7 +115,7 @@
 .products_price{
     margin-top: 4px;
     font-family: tahoma,"나눔고딕","Nanum Gothic","맑은고딕","Malgun Gothic","돋움",dotum,helvetica,"Apple SD Gothic Neo",sans-serif;
-    font-size: 14px;
+    font-size: 22px;
     text-align: left;
     padding-left: 100px;
     font-weight: bold;
@@ -137,10 +137,9 @@
     margin: 0 20px;
     padding: 10px 0 12px;
     background-color: transparent;
-    border-bottom: 1px solid #e9ecef;
 }
 .option{
-    font-size: 12px;
+    font-size: 19px;
     line-height: 19px;
 }
 .option_price{
@@ -170,8 +169,8 @@ button{
     border-right: 1px solid #dfe4ec;
     height: 100%;
     vertical-align: top;
-    position: relative;   
-}
+    position: relative;
+}  
 #plus_btn{
     width: 27px;
     border-left: 1px solid #dfe4ec;
@@ -192,7 +191,7 @@ button{
     vertical-align: top;
 }
 .product-price{
-    font-size: 14px;
+    font-size: 20px;
     line-height: 18px;
     flex-grow: 1;
     text-align: right;

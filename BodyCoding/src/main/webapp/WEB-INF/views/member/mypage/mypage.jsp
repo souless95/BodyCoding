@@ -18,6 +18,20 @@ body{
 <body>
 	 <div class="container">
 	 	<%@ include file ="../../../../inc/mypageside.jsp" %>
+	 	<c:if test="${empty gymcheck}">
+	 	<div id="layoutSidenav_content">
+	        <div class="card mb-5" style="border-bottom: none;">
+	        	<div class="card-header">
+					<h2>등록된 지점</h2>
+	        	</div>
+	        	<div class="card-body" style="width: 80%">
+			 		<b>등록한 지점이 없습니다.
+			 		정보수정 페이지에서 지점을 등록하여 주십시오.</b>
+			 	</div>
+			 </div>
+		</div>
+	 	</c:if>
+	 	<c:if test="${not empty gymcheck}">
         <div id="layoutSidenav_content">
 	        <div class="card mb-5" style="border-bottom: none;">
 	        	<div class="card-header">
@@ -106,6 +120,7 @@ body{
 				</div>
 			</div>
 		</div>
+		</c:if>
 	</div>
 </body>
 <%@ include file="../../../../inc/Bottom.jsp" %>

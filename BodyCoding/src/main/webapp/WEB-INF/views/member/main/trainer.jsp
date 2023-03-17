@@ -116,12 +116,12 @@ h5 .input:hover{
 		<button value="정확" name="interest" class="input"> #정확</button>
 		<button value="칭찬" name="interest" class="input"> #칭찬</button>
 	</h5>
-	<style>
+	<style> 
 	.trainer-card {
 	  width: 200px;
 	  margin: 20px;
 	  float: left;
-	  height: 310px; /* 일정한 높이 설정 */
+	  height: 350px; /* 일정한 높이 설정 */
 	}
 	.trainer-container {
 	  display: flex;
@@ -136,11 +136,14 @@ h5 .input:hover{
 	<div class="trainer-container" style="margin-top: 5px;">
 		<c:forEach items="${recomtrainerList }" var="rec" varStatus="loop">
 			<div class="trainer-card">
-			<a href="javascript:void(0);" onclick="trainerInfo('${rec.mem_id}','${rec.gym_code}');">
-				<img class="card-img-top mt-2" src="static/uploads/trainer/${rec.mem_img}" style="width:100%; height:240px;">
-				<div class='card-body'>
-				<b>${rec.mem_name}</b><Br>
-				${rec.mem_comment}</div></a></div>
+				<a href="javascript:void(0);" onclick="trainerInfo('${rec.mem_id}','${rec.gym_code}');">
+					<img class="card-img-top mt-2" src="static/uploads/trainer/${rec.mem_img}" style="width:100%; height:240px;">
+					<div class='card-body' style="overflow: hidden; height: 100px;">
+						<b>${rec.mem_name}</b><Br>
+						${rec.mem_comment}
+					</div>
+				</a>
+			</div>
 		</c:forEach>
 	</div>
 	</c:if>

@@ -18,7 +18,7 @@
 .chat_ui .clear{
    clear: both;
 }
-.chat_ui .chating{/* 여기 뭔가이상해 수정해봐 */
+.chat_ui .chating{
    height: calc(100% - 72px);
    font-size: 12px;
    overflow-y: scroll;

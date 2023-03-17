@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.dto.ChatRoomDTO;
+import global.dto.MemberDTO;
 
 @Controller
 public class ChattingController {
@@ -44,11 +45,13 @@ public class ChattingController {
 	
 	/*방 페이지*/
 	@RequestMapping("/room")
-	public String room(Model model, HttpServletRequest req, Principal principal) {
-		
+	public String room(Model model, HttpServletRequest req, Principal principal, MemberDTO memberDTO) {
+		String mem_id = principal.getName();
+		memberDTO = chattingdao.selectName(mem_id);
 		if(req.getParameter("mtype")!=null) {			
-			String mem_id = principal.getName();
 			model.addAttribute("memberid", mem_id);
+			model.addAttribute("membername", memberDTO.getMem_name());
+			System.out.println("너의 이름은!!!!!!!"+memberDTO.getMem_name());
 		}
 		else {			
 			model.addAttribute("memberid", req.getParameter("mem_id"));
@@ -87,7 +90,9 @@ public class ChattingController {
 	    model.addAttribute("roomName", params.get("roomName"));
 	    model.addAttribute("roomidx", params.get("roomidx"));
 	    model.addAttribute("memberid", params.get("mem_id"));
+	    model.addAttribute("membername", params.get("mem_name"));
 	    System.err.println("현재 나의 id?"+params.get("mem_id"));
+	    System.err.println("현재 나의 name?"+params.get("mem_name"));
 	    model.addAttribute("cList",cList);
 	    return "chatting/chat";
 	}

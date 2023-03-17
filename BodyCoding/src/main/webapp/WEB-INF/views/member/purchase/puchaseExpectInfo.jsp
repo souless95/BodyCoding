@@ -12,6 +12,7 @@
 .contents{
     padding: 30px 0 44px;
     background-color: #f4f4f4;
+   	width:1380px;
 }
 .store_card{
     margin: 0 13px;
@@ -43,18 +44,17 @@
     border-bottom: 1px solid #f4f4f4;
 }
 .product_show{
-    padding: 30px 40px 20px 40px;
+    padding: 30px 20px 20px 20px;
 }
 .checkbox_inner{
     position: relative;
     display: flex;
 }
 .inner_info{
-    height: 100px;
     -webkit-box-flex: 1;
     flex-grow: 1;
     min-width: 0;
-    padding: 30px 0 12px;
+    padding: 20px 0 30px;
     border-right: 1px solid #e9ecef;
 }
 .product_tittle{
@@ -93,6 +93,7 @@
 }
 .items{
     margin: 0 20px;
+    height: 100px;
     padding: 30px 0 12px;
     background-color: transparent;
     border-right: 1px solid #e9ecef;
@@ -229,12 +230,12 @@
 }
 .price_sum{
     float: right;
-    padding: 38px 0px 0px 70px;
+    padding: 38px 30px 0px 140px;
     border: 1px solid #e9e9e9;
     border-right-color: #fff;
     border-bottom: 0;
     border-left: 0;
-    width: 300px;
+    width: 487px;
 }
 .sum{
     margin-top: 23px;
@@ -276,6 +277,7 @@
     bottom: 2px;
     left: 0;
     width: 4px;
+    height: 28px;
     background-color: #dcdee0;
     content: '';
 }

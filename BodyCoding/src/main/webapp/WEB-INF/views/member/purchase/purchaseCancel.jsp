@@ -14,7 +14,7 @@
 		<div>
 			<h2 style="color: red;'">결제취소</h2>
 			<strong>${UserName }님</strong>, 결제가 취소되었습니다.<br>
-			<button class=".custom-btn" onclick="location.href='main'">홈으로 이동</button>&nbsp;&nbsp;
+			<button class="custom-btn" onclick="location.href='main'">홈으로 이동</button>&nbsp;&nbsp;
 		</div>
 	</div>
 </div>

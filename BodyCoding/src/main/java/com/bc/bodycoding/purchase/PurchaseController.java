@@ -310,7 +310,7 @@ public class PurchaseController {
 
 		List<ProductDTO> payListDTO 
 			= purchaseDao.selectPayLogDetail(req.getParameter("order_idx"));
-	
+	System.out.println(payListDTO);
 		ProductDTO payDTO 
 			= purchaseDao.selectPayLogOne(req.getParameter("order_idx"));
 		

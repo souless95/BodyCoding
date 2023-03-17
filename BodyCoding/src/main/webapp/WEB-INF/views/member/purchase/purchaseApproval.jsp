@@ -21,7 +21,7 @@
 				<fmt:formatNumber value="${save_point }" pattern="###,###,###p" />
 			</strong>
 			적립)<br>
-			<button class=".custom-btn" onclick="location.href='main'">홈으로 이동</button>&nbsp;&nbsp;
+			<button class="custom-btn" onclick="location.href='main'">홈으로 이동</button>&nbsp;&nbsp;
 		</div>
 	</div>
 </div>

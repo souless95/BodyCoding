@@ -48,6 +48,13 @@
     	where mem_id=#{mem_id}
 </select> 
 
+<select id="kakaoautselect"
+	parameterType="global.dto.MemberDTO"
+	resultType="String">
+	select authority from member
+    	where mem_id=#{mem_id}
+</select> 
+
 <select id="kakaoUserInfo"
 	parameterType="global.dto.MemberDTO"
 	resultType="global.dto.MemberDTO">

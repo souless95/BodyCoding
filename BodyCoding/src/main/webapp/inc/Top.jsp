@@ -117,9 +117,8 @@ function openChatRoom(event, mem_id){
                               <li>
                                   <a href="${mypageUrl}">MyPage</a>
                                   <ul> 
-                                      <li><a href="#">이용내역</a></li>
-                                      <li><a href="#">활동내역</a></li>
-                                      <li><a href="#">운동관리</a></li>
+                                      <li><a href="reservated.do">운동관리</a></li>
+                                      <li><a href="vdCounting.do">이용내역</a></li>
                                       <li><a href="pwcheck">정보수정</a></li>
                                       <li><a href="/cartList.do">장바구니</a></li>
                                   </ul>

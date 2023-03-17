@@ -103,7 +103,7 @@ ul{
 		                        </div>
 							</div>
 						</div>
-						<div class="card">
+<!-- 						<div class="card">
 							<div class="card-header">
 								<a class="collapsed btn" data-bs-toggle="collapse"
 									href="#collapseThree"> 활동내역 </a>
@@ -116,7 +116,7 @@ ul{
 		                            </ul>
 		                        </div>
 							</div>
-						</div>
+						</div> -->
 						<div class="card">
 							<div class="card-header">
 								<a class="btn" href="pwcheck"> 정보수정 </a> 

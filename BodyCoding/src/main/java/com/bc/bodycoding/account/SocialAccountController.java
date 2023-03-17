@@ -154,6 +154,7 @@ public class SocialAccountController {
 				kakaoregister.put("mem_gender", mem_gender);
 				int result_kakao = socialdao.kakaoinsert(kakaoregister);
 				model.addAttribute("UserEmail",mem_id);
+				model.addAttribute("gymList", socialdao.gymlistSelect());
 //				session.setAttribute("UserInfo", UserInfo);
 //				session.setAttribute("UserName", mem_name);
 				return "member/account/kakaoLogin";

@@ -19,6 +19,7 @@
 			<div class="card-body p-4 p-sm-5">
 				<h2 class="card-title text-center mb-5 fw-light fs-5">추가정보 입력</h2>
 				<form method="post" action="/kakaoregist.do">
+					<input type="hidden"  name="mem_id" value="${UserEmail }">
 					<div class="form-floating mb-3">
 						<input type="text" class="form-control" id="mem_name" name="mem_name" required>
 						<label for="mem_name">이름</label>
@@ -31,6 +32,34 @@
 					<input type="text" class="form-control" id="mem_address" name="mem_address" required>
 						<label for="mem_phone">주소</label>
 					</div>
+					<div class="mb-1">
+		                <label for="gym_code">지점선택</label>&nbsp;
+		                <select name="gym_code" class="custom-select d-block w-100">
+						    <option value="">지점</option>
+							<c:forEach items="${gymList }" var="gym" varStatus="loop">
+						    <option value="${gym.gym_code }">${gym.mem_name }</option>
+							</c:forEach>
+						</select>
+		            </div>
+		            <label for="mem_interest">관심사항</label>
+		            <div class="interest">
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="친절">
+		               <label for="친절">친절&nbsp;&nbsp;</label>
+		                             
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="열정">
+		               <label for="열정">열정</label>&nbsp;&nbsp;
+		                       
+		               <input type="checkbox"  class="checkStyle" name="mem_interest" value="재미">   
+		               <label for="재미">재미</label>&nbsp;&nbsp;
+		               
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="정확">
+		               <label for="정확">정확</label>
+		               
+		               <input type="checkbox" class="checkStyle" name="mem_interest" value="칭찬">
+		               <label for="칭찬">칭찬</label>
+		               
+		               <input type="hidden" class="checkStyle" name="mem_interest" value="" checked>
+		            </div>
 	        		<button type="submit">완료</button>
 				</form>
 			</div>

@@ -7,8 +7,14 @@
 	
 <mapper namespace="com.bc.bodycoding.main.mypage.MypageService">
 
+	<select id="gymcheck"
+		parameterType='String'
+		resultType='global.dto.MemberDTO'>
+		select * from member where mem_id=#{mem_id}
+	</select>
+	
 	<select id="basicListM"
-		parameterType='global.dto.MemberDTO'
+		parameterType='String'
 		resultType='global.dto.MemberDTO'>
 		select mem_name, mem_phone, mem_address 
 		from member
@@ -16,7 +22,7 @@
 	</select>
 	
 	<select id="basicListG"
-		parameterType='global.dto.GymDTO'
+		parameterType='String'
 		resultType='global.dto.GymDTO'>
 		select gym_scale, facility_parking, facility_health, facility_yoga,
 			facility_gx, facility_pilates, facility_pt, facility_24hour,

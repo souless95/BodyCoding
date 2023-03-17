@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import global.dto.ChatRoomDTO;
+import global.dto.MemberDTO;
 
 @Mapper
 public interface chatService {
@@ -14,5 +15,5 @@ public interface chatService {
 	public List<ChatRoomDTO> selectALL();
 	/* public HashMap<String, ChatRoomDTO> selectroom(String roomname); */
 	public List<ChatRoomDTO> selectroom(String roomname);
-	
+	public MemberDTO selectName(String mem_id);
 }

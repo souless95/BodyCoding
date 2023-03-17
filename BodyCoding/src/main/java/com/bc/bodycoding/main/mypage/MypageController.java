@@ -24,13 +24,13 @@ public class MypageController {
 	MypageService mydao;
 	
 	@RequestMapping("mypage.do")
-	public String mypage(GymDTO gymDTO, MemberDTO memberDTO,Model model) {
-		System.out.println(gymDTO);
-		System.out.println(memberDTO);
-		gymDTO = mydao.basicListG(gymDTO);
-		memberDTO = mydao.basicListM(memberDTO);
+	public String mypage(String gym_code, String mem_id ,Model model) {
+		GymDTO gymDTO = mydao.basicListG(gym_code);
+		MemberDTO memberDTO = mydao.basicListM(gym_code);
+		MemberDTO gymcheck = mydao.gymcheck(mem_id);
 		model.addAttribute("basicListG", gymDTO);
 		model.addAttribute("basicListM", memberDTO);
+		model.addAttribute("gymcheck", gymcheck.getGym_code());
 		return "member/mypage/mypage";
 	}
 	
@@ -69,9 +69,9 @@ public class MypageController {
 	
 	//트레이너계정으로 로그인했을때 트레이너의 마이페이지로 이동
 	@RequestMapping("trainermypage.do")
-	public String trainermypage(GymDTO gymDTO, MemberDTO memberDTO,Model model) {
-		gymDTO = mydao.basicListG(gymDTO);
-		memberDTO = mydao.basicListM(memberDTO);
+	public String trainermypage(String gym_code, String mem_id,Model model) {
+		GymDTO gymDTO = mydao.basicListG(gym_code);
+		MemberDTO memberDTO = mydao.basicListM(gym_code);
 		model.addAttribute("basicListG", gymDTO);
 		model.addAttribute("basicListM", memberDTO);
 		return "member/trainer/trainermypage";

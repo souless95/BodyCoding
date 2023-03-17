@@ -17,8 +17,9 @@ public interface MypageService {
 	public MemberDTO trainerInfoSelect(MemberDTO memberDTO);
 	public String gymInfoSelect(MemberDTO memberDTO);
 	
-	public MemberDTO basicListM(MemberDTO memberDTO);
-	public GymDTO basicListG(GymDTO gymDTO);
+	public MemberDTO gymcheck(String mem_id);
+	public MemberDTO basicListM(String gym_code);
+	public GymDTO basicListG(String gym_code);
 //	public MemberDTO selectOneMember(MemberDTO memberDTO);
 //	public int update(MemberDTO memberDTO);
 	

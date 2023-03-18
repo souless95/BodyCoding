@@ -67,15 +67,15 @@
 					<c:choose>
 						<c:when test="${Authority eq 'ROLE_MEMBER' }">
 							<c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}&mem_id=${UserEmail}" />
-							<a href="${mypageUrl}"><i class="bi bi-person-fill"></i>MyPage</a>&nbsp&nbsp
-							<a href="/cartList.do"><i class="bi bi-cart"></i>장바구니</a>&nbsp&nbsp
-							<a href="#" onclick="logoutcheck()"><i class="bi bi-box-arrow-right"></i>LogOut</a>&nbsp&nbsp
+							<a href="${mypageUrl}"><i class="bi bi-person-fill"></i> MyPage</a>&nbsp&nbsp
+							<a href="/cartList.do"><i class="bi bi-cart"></i> 장바구니</a>&nbsp&nbsp
+							<a href="#" onclick="logoutcheck()"><i class="bi bi-box-arrow-right"></i> LogOut</a>&nbsp&nbsp
 						</c:when>
 	
 						<c:otherwise>
 							<c:set var="mypageUrl" value="calendar.do" />
-							<a href="${mypageUrl}"><i class="bi bi-person"></i>MyPage</a>&nbsp&nbsp
-							<a href="#" onclick="logoutcheck()"><i class="bi bi-box-arrow-right"></i>LogOut</a>&nbsp&nbsp
+							<a href="${mypageUrl}"><i class="bi bi-person"></i> MyPage</a>&nbsp&nbsp
+							<a href="#" onclick="logoutcheck()"><i class="bi bi-box-arrow-right"></i> LogOut</a>&nbsp&nbsp
 						</c:otherwise>
 					</c:choose>
 				</c:if>

@@ -51,7 +51,6 @@
     display: flex;
 }
 .inner_info{
-    -webkit-box-flex: 1;
     flex-grow: 1;
     min-width: 0;
     padding: 20px 0 30px;
@@ -59,11 +58,12 @@
 }
 .product_tittle{
     max-height: 44px;
+    width:800px;
     font-size: 20px;
     line-height: 22px;
     font-weight: bold;
     text-align: left;
-    padding-left: 100px;
+    padding-left: 70px;
     letter-spacing: 0;
     color: #222222;
     text-overflow: ellipsis;
@@ -76,11 +76,12 @@
 }
 .product_content{
     max-height: 44px;
+    width:800px;
     font-size: 14px;
     line-height: 22px;
     font-weight: bold;
     text-align: left;
-    padding-left: 100px;
+    padding-left: 70px;
     letter-spacing: 0;
     color: #222222;
     text-overflow: ellipsis;
@@ -94,6 +95,7 @@
 .items{
     margin: 0 20px;
     height: 100px;
+    width:80px;
     padding: 30px 0 12px;
     background-color: transparent;
     border-right: 1px solid #e9ecef;
@@ -133,8 +135,24 @@
     background-color: transparent;
     align-items: center;
 }
+.product-Title{
+	max-height: 44px;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0;
+    color: #222222;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
 .product-price{
-	width: 60px;
+	width: 100%;
     font-size: 15px;
     display: inline-block;
     height: 100%;
@@ -277,7 +295,7 @@
     bottom: 2px;
     left: 0;
     width: 4px;
-    height: 28px;
+    height: 15px;
     background-color: #dcdee0;
     content: '';
 }
@@ -288,7 +306,9 @@
     padding-left: 12px;
 }
 .calc_list strong{
+	line-height: 15px;
     float: left;
+    height: 15px;
     font-weight: normal;
     letter-spacing: -0.5px;
 }
@@ -297,7 +317,6 @@
     vertical-align: top;
 }
 .sum_side{
-	padding-top: 8px;
 	overflow: hidden;
     font-size: 13px;
     font-weight: normal;
@@ -423,7 +442,7 @@ $(function(){
 													</div>
 												</div>
 												<div class="price">
-													<div class="Title">
+													<div class="product-Title">
 														상품금액
 													</div>
 													<div class="product-price">
@@ -451,7 +470,7 @@ $(function(){
 														<fmt:formatNumber value="${totalPoint }" pattern="###,###,###" />
 													</div>
 													<div class="list_balance">
-															포인트 : <fmt:formatNumber value="${totalPoint }" pattern="###,###,###원" />
+															포인트 : <fmt:formatNumber value="${totalPoint }" pattern="###,###,###P" />
 													</div>
 												</div>
 											</li>
@@ -462,7 +481,7 @@ $(function(){
 												<div class="use_point">
 													<div class="input_area">
 														<input type="text" class="using_point" value="0" min="0" id="uPoint" name="use_point">
-														<span class="won">원</span>
+														<span class="won">P</span>
 													</div>
 														<input style="width: 19px; height: 18px;" type="checkbox">전액 사용
 												</div>
@@ -476,8 +495,9 @@ $(function(){
 											<strong class="sum_title">주문금액</strong>
 											<p class="sum_detail">
 												<em class="totalprice" id="totalP">
-													<fmt:formatNumber value="${totalPrice }" pattern="###,###,###원"/>
+													<fmt:formatNumber value="${totalPrice }" pattern="###,###,###"/>
 												</em>
+												원
 											</p>
 										</div>
 										<ul class="calc_list">

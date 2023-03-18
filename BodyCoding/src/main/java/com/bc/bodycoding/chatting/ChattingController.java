@@ -38,6 +38,7 @@ public class ChattingController {
 	@RequestMapping("/chat")
 	public String chat(Model model, HttpServletRequest req) {
 		model.addAttribute("memberid", req.getParameter("mem_id"));
+		model.addAttribute("membername", req.getParameter("mem_name"));
 		model.addAttribute("roomName", req.getParameter("roomName"));
 		model.addAttribute("roomidx", req.getParameter("roomidx"));
 		return "chatting/chat";

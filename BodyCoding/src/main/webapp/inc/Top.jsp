@@ -23,7 +23,7 @@ function logoutcheck(){
 }
 
 /* 1대1문의 윈도우창 생성 */
-function openChatRoom(event, mem_id){
+function openChatRoom(event, mem_id, mem_name){
     event.preventDefault(); // 기본 동작(링크 이동) 방지
     if(mem_id==null||mem_id==""){
        alert("로그인 후 이용해 주세요.");
@@ -98,7 +98,7 @@ function openChatRoom(event, mem_id){
                      <a href="/Freeboard.do">Board</a>
                      <ul> 
                         <li><a href="/Freeboard.do">Board</a></li>
-                        <li><a href="#" onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
+                        <li><a href="#" onclick="openChatRoom(event, '${UserEmail}', '${UserName }');">1:1문의(웹소켓 채팅)</a></li>
                      </ul>
                   </li>
                   

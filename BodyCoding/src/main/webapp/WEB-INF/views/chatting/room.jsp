@@ -31,7 +31,7 @@
 			if (targetRoom == null) {
 				var msg = {roomName : roomid};
 				/* 어드민이 아니고 기존에 생성된 채팅방이 없으면 생성후 입장 */
-				if ('${memberid}' != 'admin_super1') {
+				if ('${memberid}' != 'admin_sub1@korea.com') {
 					commonAjax('/createRoom',msg,'post',function(createRoom) {
 						goRoom(createRoom[createRoom.length - 1].roomidx, createRoom[createRoom.length - 1].roomName, "${memberid}", "${membername}");
 					});
@@ -47,8 +47,7 @@
 	}
 
 	function goRoom(idx, rname, memid, memname){
-		var url ="/moveChating?roomName="+rname+"&roomidx="+idx+"&mem_id="+memid+"&mem_name="+memname;
-		console.log("이거 왜 admin_super1관리자야!!!!!!!!"+memid);
+		var url = "/moveChating?roomName=" + rname + "&roomidx=" + idx + "&mem_id=" + memid + "&mem_name=" + memname;
 		window.open(url, "rname", "width=450,height=600, left=800, top=200");
 	}
 
@@ -58,13 +57,12 @@
 			res.forEach(function(d, idx) {
 				var rn = d.roomName.trim();
 				var roomidx = d.roomidx;
-				/* 여긴 정상적으로 이름하고 아이디 가져옴 */
 				var memid = "${memberid}";
 				var memname = "${membername}";
 				tag += "<tr>"
 					+ "<td>" + (idx + 1) + "</td>"
 					+ "<td>" + rn + "</td>"
-					+ "<td><button type='button' class='custom-btn btn-7' onclick='goRoom(\"" + roomidx + "\", \"" + rn + "\", \"" + memid + "\" + \"" + memname + "\")'>참여</button></td>" 
+					+ "<td><button type='button' class='custom-btn btn-7' onclick='goRoom(\"" + roomidx + "\", \"" + rn + "\", \"" + memid + "\", \"" + memname + "\")'>참여</button></td>" 
 					+ "</tr>";
 			});
 			$("#datatablesSimple").empty().append(tag);

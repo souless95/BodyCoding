@@ -54,13 +54,13 @@ function errCallBack(errData){
 <br>
 	<h2 style="margin-bottom: 0;">상품 목록</h2>
 	<h5>
-	<select id="product_type" required>
+	<select id="product_type" style="font-size: 20px; width: 150px; height: 50px; border-radius: 5px;" required>
 	    <option value="-">상품유형</option>
 	    <option value="식품">식품</option>
 	    <option value="의류">의류</option>
 	    <option value="기구">기구</option>
 	</select>
-	<button type="button" class="custom-btn btn-1" style="width: 150px;" id="product_typechoice">유형선택</button>
+	<button type="button" class="custom-btn btn-1" style="width: 150px; background-color: #F9BF52; border-color: #F9BF52;" id="product_typechoice">유형선택</button>
 	
 	<form name="frm" method="post" >
 		<input type="hidden" id="product_idx" name="product_idx">

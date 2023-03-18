@@ -58,11 +58,14 @@ ul{
     max-width: 1800px;
     margin: 0 auto;
 }
+.sub_container{
+	min-height: 700px;
+}
 </style>
 </head>
 <body>
 	<div class="contain mt-3">
-		<div class="contain_left1" style="height:580px;">
+		<div class="contain_left1">
 			<div class="accordion" id="accordion">
 				<div class="card">
 					<div class="left_h2">

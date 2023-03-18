@@ -72,11 +72,11 @@
   }
   .rv {
 	display: inline-block;
+	height: 40px;
 	border-radius: 6px;
 	border:none;
 	font-size: 16px;
-	line-height: 48px;
-	vertical-align: top;
+	line-height: 38px;
 	color:white;
 	background-color: #F9BF52;
   }
@@ -116,10 +116,11 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 			style="width:80%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D; text-align: center;">
 			<tbody>
 				<tr style="color:white; background-color: #01538D;">
-					<th width="20%"><strong>예약일</strong></th>
-					<th width="20%" ><strong>예약시간</strong></th>
+					<th width="15%"><strong>예약일</strong></th>
+					<th width="15%" ><strong>예약시간</strong></th>
 					<th width="15%"><strong>트레이너</strong></th>
-					<th width="15%"><strong>분류</strong></th>
+					<th width="10%"><strong>분류</strong></th>
+					<th width="15%"><strong>수업명</strong></th>
 					<th width="15%"><strong>정원</strong></th>
 					<th width="15%"><strong></strong></th>
 				</tr>
@@ -130,8 +131,9 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 						<td>${s.lesson_start_time} - ${s.lesson_end_time}</td>
 						<td>${s.trainer_name}</td>
 						<td>${s.lesson_category}</td>
+						<td>${s.lesson_name}</td>
 						<td>${s.rcount} / ${s.lesson_capacity}</td>
-						<td><button class="rv">예약</button></td>
+						<td><button class="rv" id="${s.lesson_idx}">예약</button></td>
 				</tr>
 					</c:forEach>
 					<c:choose>

@@ -95,7 +95,7 @@ function login(){
 	<div class="contain" style="height: auto !important;">
 	<h2>트레이너 정보</h2>
 		<div class="rec_view_top">
-			<div class="fl rec_view_img"> <!-- 사진위치 -->
+			<div class="fl rec_view_img" > <!-- 사진위치 -->
 				<img src="/static/uploads/trainer/${trainerInfo.mem_img}">
 			</div>
 			<div class="fr rec_view_info">

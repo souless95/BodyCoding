@@ -53,7 +53,6 @@ function errCallBack(errData){
 <div class="container">
 <br>
 	<h2 style="margin-bottom: 0;">상품 목록</h2>
-	<h5>
 	<select id="product_type" style="font-size: 20px; width: 150px; height: 50px; border-radius: 5px;" required>
 	    <option value="-">상품유형</option>
 	    <option value="식품">식품</option>

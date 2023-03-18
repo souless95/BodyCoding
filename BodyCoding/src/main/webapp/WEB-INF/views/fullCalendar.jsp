@@ -23,6 +23,15 @@
       padding: 10px;
       max-width: 400px;
    }
+   .fc-scroller .fc-col-header{
+	   	width: 798px;
+	   	margin-bottom: 5px;
+   }
+   .fc-scrollgrid-section .fc-scroller-liquid-absolute{
+  		height:650px;
+   		overflow: hidden;
+   }
+   
 </style>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -46,7 +55,7 @@
          </c:forEach>
         ];
        
-        var calendarEl = document.getElementById('calendar');
+       var calendarEl = document.getElementById('calendar');
        var calendar = new FullCalendar.Calendar(calendarEl, {
              initialView: 'dayGridMonth', //초기화면 설정(디폴트 월별로 설정됨. 바꾸고 싶으면 timeGridWeek timeGridDay)
            locale: 'ko', //언어설정
@@ -170,7 +179,7 @@
               var capacity = event.extendedProps['lesson_capacity'];
               var rCount = event.extendedProps['rCount'];
               var names = event.extendedProps['names'];
-
+              
               var eventInfo = document.getElementById('event-info');
               var eventTitle = document.getElementById('event-title');
               var eventDescription = document.getElementById('event-description');
@@ -220,12 +229,12 @@
        var eventInfo = $('#event-info');
        eventInfo.css({
           display: 'inline-block',
-           top: e.pageY + 10,
-           left: e.pageX + 10,
-           textAlign: 'left',
-           /* width: 'auto', */
-           height: 'auto',
-           verticalAlign: 'middle'
+          top: e.pageY + 10,
+          left: e.pageX + 10,
+          textAlign: 'left',
+          /* width: 'auto', */
+          height: 'auto',
+          verticalAlign: 'middle'
        });
     });
 
@@ -241,7 +250,7 @@
    <div class="sub_container">
    <%@ include file ="../../../inc/mypageside.jsp" %>
    <br />
-      <div class="card mb-4" style="width:83%; margin-top:-35px;">
+      <div class="card mb-4" style="width:83%; margin-top:-35px; height:1000px;">
          <div class="card-header"
                     style="height:75px; color:white; background-color:#01538D; vertical-align:middle;">
             <h2>일정관리</h2>
@@ -251,7 +260,7 @@
               <h3 id="event-title"></h3>
               <p id="event-description" style="white-space: pre-wrap;"></p>
          </div>
-         <div id='calendar' style="width:100%; max-width:800px; height:1500px; margin:0 auto; text-align:center;"></div>
+           <div id='calendar' style="width:100%; max-width:800px;  margin:0 auto; text-align:center;"></div>
       </div>
    </div>
 </div>

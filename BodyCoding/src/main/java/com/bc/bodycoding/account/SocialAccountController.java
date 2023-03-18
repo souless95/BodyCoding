@@ -144,7 +144,7 @@ public class SocialAccountController {
 			
 			//바디코딩에 이미 회원가입되어있는지 찾기(이미 등록되어있는 아이디의 회원이름 mem_name)
 			String mem_name = socialdao.kakaoselect(mem_id);
-			String authority = socialdao.kakaoautselect(mem_id);
+			MemberDTO info = socialdao.kakaoinfoselect(mem_id);
 			System.out.println(mem_name);
 			if(mem_name==null) {
 				System.out.println("회원이 아니므로 회원가입을 진행합니다.");
@@ -161,7 +161,8 @@ public class SocialAccountController {
 			}
 			
 			else {
-				session.setAttribute("Authority", authority);
+				session.setAttribute("UserInfo", info);
+				session.setAttribute("Authority", info.getAuthority());
 				System.out.println("elese후"+mem_name);
 //				session.setAttribute("UserInfo", socialdao.kakaoUserInfo(mem_id));
 				session.setAttribute("UserName", mem_name);

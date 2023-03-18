@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,8 @@
 					<span class="title">주문번호</span>${payLog.order_idx}</div>
 				<div style="float: left; margin-right: 5%">
 					<span class="title">주문일자</span>
-					<fmt:formatDate value="${payLog.order_date}" pattern="yyyy-MM-dd" />
+					<c:set value="${payLog.order_date}" var="date" />
+					${fn:substring(date,0,11)}
 				</div>
 				<div style="float: left; margin-right: 5%">
 					<span class="title">주문명</span> ${payLog.order_name}

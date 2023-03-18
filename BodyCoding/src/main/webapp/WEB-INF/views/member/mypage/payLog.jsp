@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,8 @@
 						<td style="text-align: center;">${oList.order_idx}</td>
 						<td><a style="color: #01538D;" href="payLogDetail.do?order_idx=${oList.order_idx}">${oList.order_name}</a></td>
 						<td>${oList.order_status}</td>
-						<td><fmt:formatDate value="${oList.order_date}" pattern="yyyy-MM-dd" /></td>
+						<td><c:set value="${oList.order_date}" var="date" />
+						${fn:substring(date,0,11)}</td>
 				</tr>
 					</c:forEach>
 

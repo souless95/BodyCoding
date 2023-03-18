@@ -170,7 +170,7 @@
               var capacity = event.extendedProps['lesson_capacity'];
               var rCount = event.extendedProps['rCount'];
               var names = event.extendedProps['names'];
-
+              
               var eventInfo = document.getElementById('event-info');
               var eventTitle = document.getElementById('event-title');
               var eventDescription = document.getElementById('event-description');
@@ -220,12 +220,12 @@
        var eventInfo = $('#event-info');
        eventInfo.css({
           display: 'inline-block',
-           top: e.pageY + 10,
-           left: e.pageX + 10,
-           textAlign: 'left',
-           /* width: 'auto', */
-           height: 'auto',
-           verticalAlign: 'middle'
+          top: e.pageY + 10,
+          left: e.pageX + 10,
+          textAlign: 'left',
+          /* width: 'auto', */
+          height: 'auto',
+          verticalAlign: 'middle'
        });
     });
 
@@ -240,20 +240,20 @@
 <div class="container">
    <div class="sub_container">
    <%@ include file ="../../../inc/mypageside.jsp" %>
-   <br />
+   	  <br />
       <div class="card mb-4" style="width:83%; margin-top:-35px;">
          <div class="card-header"
                     style="height:75px; color:white; background-color:#01538D; vertical-align:middle;">
             <h2>일정관리</h2>
-          </div>
-           <br /><br />
-         <div id="event-info" style="text-align:center;">
-              <h3 id="event-title"></h3>
-              <p id="event-description" style="white-space: pre-wrap;"></p>
          </div>
+         <br /><br />
          <div id='calendar' style="width:100%; max-width:800px; height:1500px; margin:0 auto; text-align:center;"></div>
       </div>
    </div>
+</div>
+<div id="event-info" style="text-align:center;">
+   <h3 id="event-title"></h3>
+   <p id="event-description" style="white-space: pre-wrap;"></p>
 </div>
 <%@ include file="../../../inc/Bottom.jsp" %>
 </body>

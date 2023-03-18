@@ -243,7 +243,7 @@
    <br />
       <div class="card mb-4" style="width:83%; margin-top:-35px;">
          <div class="card-header"
-                    style="height:75px; background-color:#99DFFD; vertical-align:middle;">
+                    style="height:75px; color:white; background-color:#01538D; vertical-align:middle;">
             <h2>일정관리</h2>
           </div>
            <br /><br />

@@ -16,7 +16,7 @@
 
 <!-- Footer -->
 
-<div id="footer" >
+<div id="footer" style="clear: both;">
 <!--하단 채팅플로팅 버튼 시작-->
 	<div class="floating-button">
 	 	<span class="chatbot">

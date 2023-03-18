@@ -58,25 +58,14 @@ ul{
     max-width: 1800px;
     margin: 0 auto;
 }
+.sub_container{
+	min-height: 700px;
+}
 </style>
-<script>
-function setDivHeight(divElement, height, minHeight) {
-	  divElement.style.height = height + 'px';
-	  console.log(parseInt(divElement.style.height));
-	  if (parseInt(divElement.style.height) < minHeight) {
-	    divElement.style.height = minHeight + 'px';
-	  }
-	}
-
-var jspHeight = document.documentElement.scrollHeight;
-var contain_left = document.querySelector('.contain_left1');
-
-setDivHeight(contain_left, jspHeight, 580);
-</script>
 </head>
 <body>
 	<div class="contain mt-3">
-		<div class="contain_left1" style="height:580px;">
+		<div class="contain_left1">
 			<div class="accordion" id="accordion">
 				<div class="card">
 					<div class="left_h2">

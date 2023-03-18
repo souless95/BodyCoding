@@ -79,8 +79,7 @@ ul{
 								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
 									운동관리 </a>
 							</div>
-							<div id="collapseOne" class="collapse show"
-								data-bs-parent="#accordion">
+							<div id="collapseOne" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
 		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
@@ -105,20 +104,6 @@ ul{
 		                        </div>
 							</div>
 						</div>
-<!-- 						<div class="card">
-							<div class="card-header">
-								<a class="collapsed btn" data-bs-toggle="collapse"
-									href="#collapseThree"> 활동내역 </a>
-							</div>
-							<div id="collapseThree" class="collapse"
-								data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                                <li><a class="btn" href="#">게시물</a></li>
-		                            </ul>
-		                        </div>
-							</div>
-						</div> -->
 						<div class="card">
 							<div class="card-header">
 								<a class="btn" href="pwcheck"> 정보수정 </a> 

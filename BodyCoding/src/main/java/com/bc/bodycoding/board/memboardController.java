@@ -121,18 +121,12 @@ public class memboardController {
 		memberDTO.setMem_id(userEmail);
 		memberDTO.setMem_name(uName);
 		
-		System.out.println(userEmail);
-		System.out.println(memberDTO);
-		
 		memberDTO = memberdao.selectDT(memberDTO);
-		System.out.println(memberDTO);
 		
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		System.out.println(boardDTO);
 		//view페이지에서 쓰기위해서 dto이름에 boardDTO정보저장
 		model.addAttribute("dto", boardDTO);
-		
-		//reply 테이블에 있는 정보 가져오기위해 객체선언
 		
 		boardDTO.setBoard_idx(boardDTO.getBoard_idx());
 		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
@@ -147,8 +141,6 @@ public class memboardController {
 			System.out.println("조회수 증가 실패");
 		}
 		
-		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
-							
 			return "member/board/detailmemboard";
 	}
 	

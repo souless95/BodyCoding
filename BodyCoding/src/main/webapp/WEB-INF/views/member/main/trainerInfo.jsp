@@ -29,6 +29,7 @@ element.style {
 }
 .rec_view_top .rec_view_img > img {
     width: 100%;
+    height: 500px;
 }
 .fl{
 	float: left;

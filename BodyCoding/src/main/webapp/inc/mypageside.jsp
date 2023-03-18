@@ -22,6 +22,7 @@ ul{
 .contain_left1{
    width:230px;
    float: left;
+   padding-top: 30px;
 }
 .right_body{
     width: 970px;

@@ -19,7 +19,7 @@
 		<h2>체중 그래프</h2>
 		<hr style="border: 1px solid #01538D;">
 		<div class="weightchart" style="width: 80%; float: left;">
-		  	<canvas id="myChart" style="width:850px; height:400px;"></canvas>
+		  	<canvas id="myChart" style="width:850px; height:450px;"></canvas>
 		  	<p>
 		  	<form method="post" action="chart">
 		  		오늘의 체중 : 

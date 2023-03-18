@@ -104,7 +104,7 @@ function openChatRoom(event, mem_id, mem_name){
                   
                   <c:if test="${not empty UserName}">
                       <li style="color: white;">
-                          WelCome! <span class="spoka"> &nbsp&nbsp ${UserName} </span>
+                          WelCome! <span class="spoka"> &nbsp&nbsp ${UserName}</span>
                       </li>
                       
                       <c:choose>

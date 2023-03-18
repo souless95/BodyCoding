@@ -9,22 +9,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
-<h3>레슨명</h3>
-	<input type="text" name="lesson_name" id="lesson_name" />
-	
-<h3>카테고리</h3>
-	<select name="lesson_category" id="lesson_category">
-		<option value="PT">PT</option>	
-		<option value="GX">GX</option>	
-		<option value="필라테스">필라테스</option>	
-		<option value="요가">요가</option>	
-	</select>
-	
-<h3>수용인원</h3>
-	<input type="text" name="lesson_capacity" id="lesson_capacity" />
-
-<button type="button" onclick="validate();">확인</button>
-
+<div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4;">
+	<div style="background-color:white;">
+		<h3>레슨명</h3>
+			<input type="text" name="lesson_name" id="lesson_name" />
+			
+		<h3>카테고리</h3>
+			<select name="lesson_category" id="lesson_category">
+				<option value="PT">PT</option>	
+				<option value="GX">GX</option>	
+				<option value="필라테스">필라테스</option>	
+				<option value="요가">요가</option>	
+			</select>
+			
+		<h3>수용인원</h3>
+			<input type="text" name="lesson_capacity" id="lesson_capacity" />
+		<button type="button" onclick="validate();">확인</button>
+	</div>
+</div>
 <script>
 function validate() {
 	

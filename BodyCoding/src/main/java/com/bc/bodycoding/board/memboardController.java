@@ -12,7 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.bc.bodycoding.admin.member.MemberService;
 
 import global.dto.BoardDTO;
 import global.dto.MemberDTO;
@@ -23,6 +24,8 @@ public class memboardController {
 	//여기는 멤버의 게시판을 다루는 컨트롤러
 	@Autowired
 	memboardService memboarddao;
+	@Autowired
+	MemberService memberdao;
 	
 	//게시글 리스트 페이징 
 	@RequestMapping("/Freeboard.do")
@@ -100,14 +103,29 @@ public class memboardController {
 	        model.addAttribute("paging", paging);
 		}
 		return "member/board/Freeboard";
-		
 	}
 	
 	//게시글 상세보기
 	@RequestMapping("/detailmemberboard.do")
 	public String board2(HttpServletRequest req, Model model, HttpSession session) {
 		//게시글상세보기 값저장
+		String userEmail = (String) session.getAttribute("UserEmail");
+		model.addAttribute("mem_id", userEmail);
+		
+		String uName = req.getParameter("mem_name");
+		
 		BoardDTO boardDTO = new BoardDTO();
+		MemberDTO memberDTO = new MemberDTO();
+		
+		model.addAttribute("mem_name", uName);
+		memberDTO.setMem_id(userEmail);
+		memberDTO.setMem_name(uName);
+		
+		System.out.println(userEmail);
+		System.out.println(memberDTO);
+		
+		memberDTO = memberdao.selectDT(memberDTO);
+		System.out.println(memberDTO);
 		
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		System.out.println(boardDTO);
@@ -130,9 +148,7 @@ public class memboardController {
 		}
 		
 		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
-		String userEmail = (String) session.getAttribute("UserEmail");
-		model.addAttribute("mem_id", userEmail);
-					
+							
 			return "member/board/detailmemboard";
 	}
 	

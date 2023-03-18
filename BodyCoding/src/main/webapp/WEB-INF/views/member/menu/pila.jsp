@@ -199,7 +199,7 @@ label.invisible{*position:Absolute;}
 					</li>
 				</ul><!-- // list_btm -->
 			</div><!-- // inner -->
-    		</div><!-- // mid_list -->
+   		</div><!-- // mid_list -->
 	</div><!-- // sub0202_con -->
 	<div class="sub0202_con2">
 		<div class="con_box1">

@@ -332,17 +332,11 @@
     border-radius: 6px;
     font-size: 16px;
     line-height: 48px;
+    color:white;
+    font-weight:bold;
     background-color: #ffa500;
     vertical-align: top;
     border: none;
-}
-.go_product{
-	border: 1.5px solid #37C0FB;
-	width: 100px;
-	border-radius: 6px;
-	background-color: #ffffff;
-	font-size: 16px;
-	
 }
 </style>
 <script type="text/javascript">
@@ -519,9 +513,6 @@ $(function(){
 					</div>
 					<div align="center">
 						<button type="button" class="buy_link"  id="purchase">구매하기(결제)</button>
-					</div>
-					<div align="right" style="padding-right:70px;">
-						<button type="button" class="go_product" onclick="location.href='product'">목록으로</button>
 					</div>
 				</div>
 			</div>

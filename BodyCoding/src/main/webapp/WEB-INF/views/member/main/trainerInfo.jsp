@@ -21,7 +21,7 @@ element.style {
 	padding-top: 60px;
 	border-bottom: 1px solid #ececec;
 	padding-bottom: 60px;
-	height: 620px;
+	height: 650px;
 }
 .rec_view_top .rec_view_img{
     padding-bottom: 60px;
@@ -29,6 +29,7 @@ element.style {
 }
 .rec_view_top .rec_view_img > img {
     width: 100%;
+    height: 500px;
 }
 .fl{
 	float: left;
@@ -91,8 +92,8 @@ function login(){
 </script>
 <div class="container">
 <br>
-	<h2>트레이너 정보</h2>
 	<div class="contain" style="height: auto !important;">
+	<h2>트레이너 정보</h2>
 		<div class="rec_view_top">
 			<div class="fl rec_view_img"> <!-- 사진위치 -->
 				<img src="/static/uploads/trainer/${trainerInfo.mem_img}">
@@ -135,9 +136,9 @@ function login(){
 				<table style="width:100%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
 					<tr style="background-color:#01538D; color: white;">
 						<th width="20%"><strong>작성자</strong></th>
-						<th width="50%"><strong>내용</strong></th>
+						<th width="48%"><strong>내용</strong></th>
 						<th width="20%"><strong>평점</strong></th>
-						<th width="10%"><strong>작성일</strong></th>
+						<th width="12%"><strong>작성일</strong></th>
 					</tr>
 					<tr id="show_data"></tr>
 					<c:forEach items="${reviewInfo }" var="row" varStatus="loop">
@@ -191,8 +192,8 @@ function login(){
 								   	</fieldset>
 								</div>
 							</p>
-								<textarea name="review_comment" cols="100" rows="5" placeholder="내용을 입력하세요." required></textarea><br />
-								<button type="submit" class="custom-btn btn-1" style="float: ">후기등록</button>
+								<textarea name="review_comment" cols="80" rows="3" placeholder="내용을 입력하세요." required></textarea><br />
+								<button type="submit" class="custom-btn btn-1">후기등록</button>
 								<button type="reset" class="custom-btn btn-1">지우기</button>
 						</fieldset>
 					</div>	

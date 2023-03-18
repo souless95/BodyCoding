@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,25 +14,28 @@
 <body>
 	<%@ include file="../../../../inc/Top.jsp"%>
 	<div class="container">
+		<div class="sub_container">
 		<%@ include file="../../../../inc/mypageside.jsp"%>
 			<br />
-	<h3>결제 내역</h3>
-		<div>
+	<h2>결제 내역</h2>
+	<hr style="border: 1px solid #01538D;">
+		<br>
 		<table
-			style="width: 80%; border-top: 1px solid #99DAEA; border-bottom: 1px solid #99DAEA;">
+			style="width: 80%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
 			<tbody>
-				<tr style="background-color: #99DAEA;">
-					<th width="20%"><strong>주문번호</strong></th>
+				<tr style="color:white; background-color: #01538D;">
+					<th width="20%" style="text-align: center;"><strong>주문번호</strong></th>
 					<th width="50%"><strong>주문명</strong></th>
 					<th width="20%"><strong>주문상태</strong></th>
 					<th width="10%"><strong>주문일자</strong></th>
 				</tr>
 					<c:forEach items="${oList}" var="oList">
 				<tr>
-						<td>${oList.order_idx}</td>
-						<td><a style="color: #36BDF7;" href="payLogDetail.do?order_idx=${oList.order_idx}">${oList.order_name}</a></td>
+						<td style="text-align: center;">${oList.order_idx}</td>
+						<td><a style="color: #01538D;" href="payLogDetail.do?order_idx=${oList.order_idx}">${oList.order_name}</a></td>
 						<td>${oList.order_status}</td>
-						<td>2023-03-17</td>
+						<td><c:set value="${oList.order_date}" var="date" />
+						${fn:substring(date,0,11)}</td>
 				</tr>
 					</c:forEach>
 

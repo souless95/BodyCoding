@@ -58,11 +58,14 @@ ul{
     max-width: 1800px;
     margin: 0 auto;
 }
+.sub_container{
+	min-height: 700px;
+}
 </style>
 </head>
 <body>
 	<div class="contain mt-3">
-		<div class="contain_left1" style="height:580px;">
+		<div class="contain_left1">
 			<div class="accordion" id="accordion">
 				<div class="card">
 					<div class="left_h2">
@@ -80,10 +83,9 @@ ul{
 								data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="reservation.do">스케쥴예약</a></li>
-		                                <li><a class="btn" href="reservated.do">스케쥴확인</a></li>
+		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
+		                                <li><a class="btn" href="reservation.do">수업예약</a></li>
 		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
-		                                <li><a class="btn" href="#">운동기록</a></li>
 		                                <li><a class="btn" href="chart">체중그래프</a></li>
 		                            </ul>
 		                        </div>
@@ -97,13 +99,13 @@ ul{
 							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
 		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
+		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
 		                            </ul>
 		                        </div>
 							</div>
 						</div>
-						<div class="card">
+<!-- 						<div class="card">
 							<div class="card-header">
 								<a class="collapsed btn" data-bs-toggle="collapse"
 									href="#collapseThree"> 활동내역 </a>
@@ -116,7 +118,7 @@ ul{
 		                            </ul>
 		                        </div>
 							</div>
-						</div>
+						</div> -->
 						<div class="card">
 							<div class="card-header">
 								<a class="btn" href="pwcheck"> 정보수정 </a> 

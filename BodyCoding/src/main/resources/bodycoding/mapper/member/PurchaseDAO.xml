@@ -83,7 +83,8 @@
 	</select>
 	
 	<select id="selectPayLogDetail" parameterType="String" resultType="global.dto.ProductDTO">
-		SELECT product_img, order_status, product_name, product_count
+		SELECT product_img, order_status, product_name, product_count 
+			,(product_count*product_price) product_price
 		    FROM pay_log P
 		INNER JOIN order_log O
 		    ON P.order_idx=O.order_idx

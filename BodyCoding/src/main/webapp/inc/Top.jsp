@@ -3,16 +3,15 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-   <head>
-   <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-   <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-   <link rel="stylesheet" href="../static/assets/css/main.css" />
-   <link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
-
+	<head>
+	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<link rel="stylesheet" href="https://use.typekit.net/efc4fdx.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 <script type="text/javascript">
-
 function logoutcheck(){
    
    var confirmed = confirm("정말로 로그아웃 하시겠습니까?");
@@ -110,13 +109,12 @@ function openChatRoom(event, mem_id, mem_name){
                       
                       <c:choose>
                           <c:when test="${Authority eq 'ROLE_MEMBER' }">
-                              <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}" />
+                              <c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}&mem_id=${UserEmail}" />
                               <li>
                                   <a href="${mypageUrl}">MyPage</a>
                                   <ul> 
-                                      <li><a href="#">이용내역</a></li>
-                                      <li><a href="#">활동내역</a></li>
-                                      <li><a href="#">운동관리</a></li>
+                                      <li><a href="reservated.do">운동관리</a></li>
+                                      <li><a href="vdCounting.do">이용내역</a></li>
                                       <li><a href="pwcheck">정보수정</a></li>
                                       <li><a href="/cartList.do">장바구니</a></li>
                                   </ul>

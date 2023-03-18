@@ -105,7 +105,6 @@ public class MemberController {
       return "member/trainer/routine";
    }
    
-   //새테이블 및 dto 추가된것 확인받기
    @ResponseBody
    @RequestMapping("/saveRoutine")
    public RoutineDTO saveRoutine(RoutineDTO routineDTO) {
@@ -121,8 +120,6 @@ public class MemberController {
       else {
          RoutineDTO nowRoutine = null;
          int result = memberdao.selectRoutine(routineDTO);
-         System.out.println(result);
-         System.out.println(routineDTO);
          
          if(result == 0) {
             memberdao.saveRoutine(routineDTO);
@@ -165,16 +162,15 @@ public class MemberController {
    
    //운동기록 리스트
    @RequestMapping(value="exrecord.do", method= RequestMethod.GET)
-   public String exrecord(Model model, HttpSession session) {
+   public String exrecord(Model model, HttpSession session, ExDTO exDTO, HttpServletRequest req) {
       
       String trainer_id = (String)(session.getAttribute("UserEmail"));
-      MemberDTO memberDTO = new MemberDTO();
-      memberDTO.setTrainer_id(trainer_id);
-      List<MemberDTO> memberList = memberdao.selectexrecord(memberDTO);
-      model.addAttribute("memberList", memberList);
-      
-      System.out.println(memberdao.selectexrecord(memberDTO));
-      return "member/trainer/exrecord";
+      exDTO.setTrainer_id(trainer_id);
+      List<ExDTO> TlList = new ArrayList<ExDTO>();
+	  TlList = memberdao.selectExrecord2(exDTO);
+	  model.addAttribute("TlList", TlList);
+    	  
+	  return "member/trainer/exrecord";
    }
    
    @RequestMapping(value="addexrecord.do", method=RequestMethod.GET)
@@ -192,6 +188,7 @@ public class MemberController {
 		  user_name = memberdao.getName(user_id);
 		  
 		  lists = memberdao.getPrevMEx(exDTO);
+		  System.out.println("11"+lists);
 	  }
 	  else {
 		  exDTO.setTrainer_id(trainer_id);
@@ -221,29 +218,10 @@ public class MemberController {
       }
    }
    
-   //운동기록 수정 페이지 진입
-   @RequestMapping(value="editexrecord.do", method=RequestMethod.GET)
-   public String editrecord(Model model, HttpServletRequest req) {
+   @RequestMapping("editExrecord.do")
+   public String editRecord(ExDTO exDTO) {
       
-      MemberDTO memberDTO = new MemberDTO();
-      memberDTO = memberdao.selectone(req.getParameter("training_log_idx"));
-      model.addAttribute("memberList", memberDTO);
-            
-      return "member/trainer/editexrecord";
-   }
-   
-   //운동기록 수정
-   @RequestMapping(value="editexrecord.do", method=RequestMethod.POST)
-   public String editrecord2(MemberDTO memberDTO) {
-      
-      System.out.println(memberDTO);
-      
-      int result = memberdao.editexrecord(memberDTO);
-      System.out.println(result);
-      
-      if(result==1)
-      System.out.println("특이사항 정보가 수정되었습니다.");
-      System.out.println(result);
+      memberdao.editExrecord(exDTO);
       
       return "redirect:exrecord.do";
    }

@@ -192,14 +192,14 @@ function errCallBackT(errData){
 .card{
 	width: 31%;
 	text-align: center;
-	border-color: #99DAEA;
-	color: #767676;
+	border-color: #F9BF52;
+	color: #F9BF52;
 	float: left;
 	margin-right: 1%;
 	margin-bottom: 1%;
 }
 .product:hover, .trainer:hover, .seleted {
-	background-color: #99DAEA;
+	background-color: #F9BF52;
 	color: white;
 	border:none;
 }

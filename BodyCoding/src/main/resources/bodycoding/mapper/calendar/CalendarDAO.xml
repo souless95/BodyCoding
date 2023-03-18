@@ -66,6 +66,10 @@
 	inner join member m on m.mem_id=l.trainer_id
     where lesson_idx NOT IN (SELECT lesson_idx FROM reservation WHERE user_id = #{arg0})
     and lesson_day <![CDATA[>]]>= sysdate-1
+    <if test="param1 == null or param1.size() == 0">
+    and 1=2
+    </if>
+    <if test="param1 != null and param1.size() > 0">
     and (
     <foreach collection="param1" item="list" separator="OR">
         (trainer_id = #{list.trainer_id} AND lesson_category = #{list.product_category})
@@ -74,6 +78,7 @@
         </if>
     </foreach>
     )
+    </if>
 </select>
 
 <select id="getRcount"

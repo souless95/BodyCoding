@@ -24,12 +24,12 @@
       max-width: 400px;
    }
    .fc-scroller .fc-col-header{
-	   	width: 798px;
-	   	margin-bottom: 5px;
+         width: 798px;
+         margin-bottom: 5px;
    }
    .fc-scrollgrid-section .fc-scroller-liquid-absolute{
-  		height:650px;
-   		overflow: hidden;
+        height:650px;
+         overflow: hidden;
    }
    
 </style>

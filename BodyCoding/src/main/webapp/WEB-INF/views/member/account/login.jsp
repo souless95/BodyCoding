@@ -63,7 +63,7 @@ input[type=submit]{
     border-radius: 5px;
     width:100%;
     height:35px;
-    font-size: 14pt;
+    font-size: 14px;
     margin-top:100px;
 }
 #forgot{
@@ -108,8 +108,8 @@ function submitForm()
 								<a href="findpw" type="submit" >비밀번호찾기</a>
 				            </div>
 				            <div style="text-align: center;">
-								<button type="submit" class="custom-btn btn-1" style="width: 200px; height: 50px; border-radius: 4px; font-size: 22px;">LOGIN</button>
-								<button type="button" class="custom-btn2 btn-2"  style="width: 200px; height: 50px; border-radius: 4px; font-size: 22px;"
+								<button type="submit" class="custom-btn btn-1" style="width: 200px; height: 50px; border-radius: 4px; font-size: 20px;">LOGIN</button>
+								<button type="button" class="custom-btn2 btn-2"  style="width: 200px; height: 50px; border-radius: 4px; font-size: 20px;"
 									onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=a7d2784fba5cd05b34f27b173250d1b7&redirect_uri=http://localhost:8586/callback&response_type=code'">
 									<i class="bi bi-chat-fill"></i>&nbsp Kakao Login
 								</button>

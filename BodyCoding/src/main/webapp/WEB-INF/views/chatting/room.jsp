@@ -90,7 +90,6 @@
 <input type="hidden" name="roomName" id="roomName" value="${memberid}-admin_super1">
 <input type="hidden" name="memberName" id="memberName" value="${membername}">
 <%@ include file ="../admin/inc/top.jsp" %>
-
 	<div id="layoutSidenav">
 	
 		<%@ include file ="../admin/inc/side.jsp" %>

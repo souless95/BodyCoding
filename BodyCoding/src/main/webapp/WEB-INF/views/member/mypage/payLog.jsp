@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,6 @@
 			<br />
 	<h2>결제 내역</h2>
 	<hr style="border: 1px solid #01538D;">
-		<div>
 		<br>
 		<table
 			style="width: 80%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
@@ -34,13 +34,13 @@
 						<td style="text-align: center;">${oList.order_idx}</td>
 						<td><a style="color: #01538D;" href="payLogDetail.do?order_idx=${oList.order_idx}">${oList.order_name}</a></td>
 						<td>${oList.order_status}</td>
-						<td>2023-03-17</td>
+						<td><c:set value="${oList.order_date}" var="date" />
+						${fn:substring(date,0,11)}</td>
 				</tr>
 					</c:forEach>
 
 			</tbody>
 		</table>
-		</div>
 		</div>
 	</div>
 	<%@ include file="../../../../inc/Bottom.jsp"%>

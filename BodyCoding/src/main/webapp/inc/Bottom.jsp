@@ -28,14 +28,15 @@
 <!--하단 채팅플로팅 버튼 끝-->
 <!-- Copyright -->
 	<div class="copyright">
-		<img src="static/assets/images/logo-bottom.png" width="300px;" height="300px;" style="float: left;">
+		<img src="static/assets/images/logo_bottom2.png" width="300px;" height="120px;" style="float: left; margin-left: 250px; margin-right: -250px;">
 		<p>상호명 : 바디코딩 
 			<span>ㅣ</span> 대표 : 정은솔, 한세영, 천희수, 김도형, 백용현, 이재필 
 			<span>ㅣ</span> 사업자등록번호 : 488-28-01014 
 			<br>
 			주소 : 서울시 종로구 우정국로2길 21 대왕빌딩 7층 702호
 			<span>ㅣ</span> E-mail : yj6807@gmail.com 
+			<br />
+			Copyright ⓒ (주)바디코딩, All rights reserved
 		</p>
-		<p>Copyright ⓒ (주)바디코딩, All rights reserved</p>
 	</div>
 </div>

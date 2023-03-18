@@ -88,7 +88,7 @@ pageContext.setAttribute("replaceChar", "\n");
 						<div>
 							
 							<div class="card" style="border: 1px solid #D7D7D7; border-radius:7px; width:90%; padding-bottom:20px;">
-							<h3 style="margin-left:30px; margin-top:5px;">댓글</h3>
+							<h3 style="margin-left:30px; margin-top:5px;">댓글목록3>
 								<div class="last-comment" style="margin-left:15px; width:100%; ">
 									<c:forEach var="rdto" items="${rdto}">
 										<div style="width: 100%; display: flex; justify-content: space-between;">
@@ -147,7 +147,7 @@ pageContext.setAttribute("replaceChar", "\n");
 				<div style="display: flex; flex-direction: column; width:88%; margin-top:10px;">
 			      <div><span style="font-weight:bold;">${mem_id }</span></div>
 			      <div style="display:flex; width:100%; margin-left:20px;">
-				      <input type="text" name="reply_cont" id="reply_cont" placeholder="댓글을 입력해보세요"
+				      <input type="text" name="reply_cont" id="reply_cont" placeholder=" 댓글을 입력하세요."
 				       style="width:100%;border-radius: 6px; border: 1px solid #D7D7D7; margin-left:10px;"/>
 				      <button type="submit" class="custom-btn btn-1" style="width: 65px; margin-left:5px; margin-right:0px; margin-bottom:0px; margin-top:0px;">등록</button>
 				  </div>

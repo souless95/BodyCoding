@@ -29,6 +29,7 @@
 			</form>
 		</div>
 	</div>
+	<%@ include file="../../../../inc/Bottom.jsp" %>
 </div>
 <!-- 차트 관련 script는 아래로 내려가야함 -->
 <script>
@@ -79,6 +80,6 @@ const config = {
  );
 </script>
 	
-<%@ include file="../../../../inc/Bottom.jsp" %>
+
 </body>
 </html>

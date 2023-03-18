@@ -242,8 +242,7 @@
    <%@ include file ="../../../inc/mypageside.jsp" %>
    <br />
       <div class="card mb-4" style="width:83%; margin-top:-35px;">
-         <div class="card-header"
-                    style="height:75px; background-color:#99DFFD; vertical-align:middle;">
+         <div class="card-header" style="height:75px; background-color:#99DFFD; vertical-align:middle;">
             <h2>일정관리</h2>
           </div>
            <br /><br />
@@ -251,7 +250,7 @@
               <h3 id="event-title"></h3>
               <p id="event-description" style="white-space: pre-wrap;"></p>
          </div>
-         <div id='calendar' style="width:100%; max-width:800px; height:1500px; margin:0 auto; text-align:center;"></div>
+         <div id='calendar' style="width:100%; height:1500px; margin:0 auto; text-align:center;"></div>
       </div>
    </div>
 </div>

@@ -85,9 +85,14 @@
 					<a href="/signup.do"><i class="bi bi-plus-circle"></i> Sign-Up</a>&nbsp&nbsp
 				</c:if>
 			</div>
+			
 			<!-- Logo -->
 			<div class="logo">
-				<img src="static/assets/images/bodycoding_logo.png">
+				<h1>
+					<a href="main">
+						<img src="static/assets/images/bodycoding_logo.png">
+					</a>
+				</h1>
 			</div>
 			
 			<!-- Nav -->

@@ -101,13 +101,13 @@ h5 .input:hover{
 </style>
 	
 	<h5>
-	<select id="gym_code" required>
+	<select id="gym_code" style="font-size: 20px; width: 150px; height: 50px; border-radius: 5px;" required>
 	    <option value="-">지점</option>
 		<c:forEach items="${gymList }" var="gym" varStatus="loop">
 	    <option value="${gym.gym_code }">${gym.mem_name }</option>
 		</c:forEach>
 	</select>
-	<button type="button" class="custom-btn btn-1" style="width: 150px; font-size: 25px;" id="gymchoice">지점선택</button>
+	<button type="button" class="custom-btn btn-1" style="width: 150px;" id="gymchoice">지점선택</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;키워드 추천:&nbsp;&nbsp;
 		<button value="친절" name="interest" class="input"> #친절</button>
 		<button value="열정" name="interest" class="input"> #열정</button>

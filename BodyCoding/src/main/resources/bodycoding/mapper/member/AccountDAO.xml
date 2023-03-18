@@ -48,10 +48,10 @@
     	where mem_id=#{mem_id}
 </select> 
 
-<select id="kakaoautselect"
+<select id= "kakaoinfoselect"
 	parameterType="global.dto.MemberDTO"
-	resultType="String">
-	select authority from member
+	resultType="global.dto.MemberDTO">
+	select * from member
     	where mem_id=#{mem_id}
 </select> 
 

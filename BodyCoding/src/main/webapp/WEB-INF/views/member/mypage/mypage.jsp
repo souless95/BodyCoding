@@ -25,8 +25,8 @@ body{
 	 	<c:if test="${empty gymcheck}">
 	        <div class="card mb-5" style="border: none;">
 	        	<div class="card-body" style="width: 80%">
-			 		<b>등록한 지점이 없습니다.
-			 		정보수정 페이지에서 지점을 등록하여 주십시오.</b>
+			 		등록한 지점이 없습니다.
+			 		정보수정 페이지에서 지점을 등록하여 주십시오.
 			 	</div>
 			 </div>
 	 	</c:if>

@@ -104,10 +104,10 @@ function deletchack(){
 						<input type="hidden" id="enabled" name="enabled" value="${memList.enabled }">
 					    <input type="hidden" id="authority" name="authority" value="${memList.authority }">
 						<tr>
-							<th>지점명</th>
-							<td>${memList.mem_name }</td>
 							<th>지점코드</th>
 							<td>${dto.gym_code }</td>
+							<th>지점명</th>
+							<td>${memList.mem_name }</td>
 						</tr>
 						<tr>
 							<th>평수</th>
@@ -118,6 +118,8 @@ function deletchack(){
 						<tr>
 							<th>지점 주소</th>
 							<td>${memList.mem_address }</td>
+							<th>지점 위도, 경도</th>
+							<td>${dto.gym_lat }, ${dto.gym_lng }</td>
 						</tr>
 					</table>
 				

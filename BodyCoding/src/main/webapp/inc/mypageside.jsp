@@ -63,20 +63,6 @@ ul{
 	min-height: 700px;
 }
 </style>
-<script>
-function setDivHeight(divElement, height, minHeight) {
-	  divElement.style.height = height + 'px';
-	  console.log(parseInt(divElement.style.height));
-	  if (parseInt(divElement.style.height) < minHeight) {
-	    divElement.style.height = minHeight + 'px';
-	  }
-	}
-
-var jspHeight = document.documentElement.scrollHeight;
-var contain_left = document.querySelector('.contain_left1');
-
-setDivHeight(contain_left, jspHeight, 580);
-</script>
 </head>
 <body>
 	<div class="contain mt-3">

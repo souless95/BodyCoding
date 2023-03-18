@@ -14,11 +14,12 @@
 <section class="page_wrap">
 <div class="location_wrap" style="text-align:center;">
  	<div class="contain" style="margin-top:10px;">
- 	<span style="font-size:40px; font-weight:bold;">프로그램</span>&nbsp;
- 	<span style="font-size:55px; font-weight:bold"> > </span>
- 	<span style="font-size:40px; font-weight:bold; color:#da304f;">  트레이닝</span>
+	 	<span style="font-size:40px; font-weight:bold;">프로그램</span>&nbsp;
+	 	<span style="font-size:55px; font-weight:bold"> > </span>
+	 	<span style="font-size:40px; font-weight:bold; color:#da304f;">  트레이닝</span>
+	</div>
 </div>
-</div>
+
 <div class="container">
   <p><img src="../static/assets/images/bodycoding1.jpg" style="margin-left:150px;">&nbsp;</p>
 </div>

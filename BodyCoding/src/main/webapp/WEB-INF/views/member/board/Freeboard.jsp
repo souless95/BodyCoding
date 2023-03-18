@@ -29,7 +29,7 @@
 	            </select>
 	        </div>
 	        &nbsp;&nbsp;
-	         <div>
+	         <div style="margin-top:15px;">
 	            <label for="searchKeyword">검색어</label>
 	            <input type="text" name="searchKeyword" id="searchKeyword" class="form-control">
 	            <button type="submit" style="height:50px; margin-left:0px; width:60px; font-size:20px; font-weight:bold;" class="custom-btn btn-1" onclick="search()">검색</button>

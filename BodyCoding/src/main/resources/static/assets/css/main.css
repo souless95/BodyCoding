@@ -125,7 +125,7 @@ input[type="checkbox"]{
 			transition: none !important;
 		}
 
-	body, input, select, textarea {
+	body {
 		color: #474747;
 		font-family: "myriad-pro-condensed", sans-serif;
 		font-style: normal;
@@ -133,6 +133,13 @@ input[type="checkbox"]{
 		font-weight: 300;
 		line-height: 1.65em;
 		
+	}
+	input, select, textarea {
+		background-color:white;
+		color: #474747;
+		font-family: "myriad-pro-condensed", sans-serif;
+		font-style: normal;
+		font-size: 20px;
 	}
 
 	a {

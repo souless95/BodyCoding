@@ -189,6 +189,7 @@ button{
     color: #111111;
     font-weight: bold;
     vertical-align: top;
+    line-height: 27px;
 }
 .product-price{
     font-size: 20px;

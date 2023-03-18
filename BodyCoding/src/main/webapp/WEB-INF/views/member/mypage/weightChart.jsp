@@ -18,7 +18,7 @@
 		<br />
 		<h2>체중 그래프</h2>
 		<hr style="border: 1px solid #01538D;">
-		<div style="width: 80%; float: left;">
+		<div class="weightchart" style="width: 80%; float: left;">
 		  	<canvas id="myChart" style="width:850px; height:450px;"></canvas>
 		  	<p>
 		  	<form method="post" action="chart">
@@ -31,6 +31,7 @@
 	</div>
 	<%@ include file="../../../../inc/Bottom.jsp" %>
 </div>
+<br><br><br><br>
 <!-- 차트 관련 script는 아래로 내려가야함 -->
 <script>
 const labels = [];

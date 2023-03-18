@@ -134,7 +134,6 @@
       ws.onmessage = function(data) {
          //메시지를 받으면 동작
          var msg = data.data;
-         console.log(msg);
          if(msg != null && msg.trim() != ''){
             var d = JSON.parse(msg);
             var time = nowTime();
@@ -142,12 +141,9 @@
                var si = d.sessionId != null ? d.sessionId : "";
                if(si != ''){
                   $("#sessionId").val(si); 
-                  console.log("나는getId에 잇수다");
-                  console.log('${memberid}');               
                }
             }else if(d.type == "message"){
                if(d.sessionId == $("#sessionId").val()){
-                  console.log("나는getI1d에 잇수다");
                   $("#chating").append("<div class='me' style='margin-top:10px;'>" + 
                   "<div class=\"b\">\n"+
                   "</div>\n"+
@@ -161,7 +157,7 @@
                }else{
                   $("#chating").append("<div class='others' style='margin-top:10px;'>" + 
                   "<div class=\"box\">"+
-                  "<div class=\"profile_name\">"+d.mem_id+"\n"+
+                  "<div class=\"profile_name\">"+d.mem_name+"\n"+
                   "</div>\n"+
                   "<div class=\"a\">"+
                   "</div>\n"+
@@ -183,7 +179,7 @@
    }
    
    function chatName(){
-      var userName = $("#mem_id").val();
+      var userName = $("#mem_name").val();
       wsOpen();
       $("#yourName").hide();
       $("#yourMsg").show();
@@ -195,6 +191,7 @@
          roomname: $("#roomName").val(),
          sessionId : $("#sessionId").val(),
          mem_id : $("#mem_id").val(),
+         mem_name : $("#mem_name").val(),
          msg : $("#content").val()
       }
       ws.send(JSON.stringify(option))
@@ -223,15 +220,17 @@
       $('#sendBtn').on('click', function(){
          
          var m_id = $("#mem_id").val();
-          var roomName = $("#roomName").val();
+         var m_name = $("#mem_name").val();
+         var roomName = $("#roomName").val();
          var content= $("#content").val();
-         console.log(m_id+"룸이름"+roomName+"내용"+content);
+         console.log(m_id+"룸이름"+roomName+"내용"+content+"회원이름="+m_name);
          
           $.ajax({
            url: '/saveChatLog',
            contentType: "application/json; charset=utf-8",
            data: {
             send_id: m_id,
+            send_name: m_name,
             roomName: roomName,
             content: content,
            },
@@ -252,6 +251,7 @@
    <input type="hidden" id="sessionId" value="">
    <input type="hidden" id="roomidx" name="roomidx" value="${roomidx}">
    <input type="hidden" id="roomName" name="roomName" value="${roomName }" />
+   <input type="hidden" id="mem_name" name="mem_name" value="${membername }" />
    <div class="chat_ui" id="chat_ui" style="width: 450px; height: 610px;">
       <div id="chating" class="chating">
       <c:forEach var="c" items="${cList }">
@@ -268,9 +268,10 @@
                </div>
             </c:when>
             <c:otherwise>
-               <div class="others" style="margin-top:10px;"><div class="box"><div class="profile_name">${c.send_id}
+               <div class="others" style="margin-top:10px;"><div class="box"><div class="profile_name">${c.send_name}
                   </div>
                   <div class="a"></div>
+                  
                   <div class="b" style="padding:6px 8px 0px 5px;">${c.content }
                   </div>
                   <div class="time">${c.regidate }

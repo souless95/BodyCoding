@@ -9,8 +9,8 @@
 
 	<insert id="insertchat" 
 		parameterType="global.dto.ChatRoomDTO">
-	 	insert into chatroom (roomidx, send_id, roomname, content)
-	 	values (bodycoding_seq.nextval, #{send_id}, #{roomName}, #{content})
+	 	insert into chatroom (roomidx, send_id, send_name, roomname, content)
+	 	values (bodycoding_seq.nextval, #{send_id}, #{send_name}, #{roomName}, #{content})
 	</insert>
 	
 	<select id="selectName"
@@ -28,17 +28,12 @@
 	<select id="selectroom"
 		parameterType="String"
 		resultType="global.dto.ChatRoomDTO">
-		select roomidx, send_id, roomname, content, TO_CHAR(REGIDATE, 'FMHH12:MI AM') as regidate
+		select roomidx, send_id, send_name, roomname, content, TO_CHAR(REGIDATE, 'FMHH12:MI AM') as regidate
 		from chatroom where roomname=#{roomname} order by roomidx asc
 	</select>
 	
 	<select id="selectALL"
 		parameterType="global.dto.ChatRoomDTO">
 		select * from chatroom
-	</select>
-	
-	<select id="selectchat" parameterType="int" resultType="global.dto.ChatRoomDTO">
-	    select roomidx, send_id, roomname, content, TO_CHAR(REGIDATE, 'FMHH12:MI AM') as regidate
-	    from chatroom where roomname like '%' || ${send_id} ||'-%';
 	</select>
 </mapper>

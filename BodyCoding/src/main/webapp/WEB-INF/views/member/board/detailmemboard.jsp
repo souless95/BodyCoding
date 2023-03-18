@@ -34,7 +34,7 @@ pageContext.setAttribute("replaceChar", "\n");
 							<th width="10%">번호</th>
 							<td width="10%">${dto.board_idx }</td>
 							<th width="20%">작성자</th>
-							<td width="20%">${dto.mem_id }</td>
+							<td width="20%">${dto.mem_name }</td>
 							<th width="20%">작성일</th>
 							<td width="*">${dto.board_postdate }</td>
 						</tr>
@@ -58,7 +58,6 @@ pageContext.setAttribute("replaceChar", "\n");
 						    	</c:if>
 							</td>
 						</tr>
-
 					</table>
 
 					<div style="display:flex;">
@@ -94,7 +93,7 @@ pageContext.setAttribute("replaceChar", "\n");
 										<div style="width: 100%; display: flex; justify-content: space-between;">
 											 <div style="display:flex; width:96%; height:40px; padding-bottom:30px; border-bottom: 1px solid #D7D7D7; align-items: center;">
 													<div>
-														<div style="font-weight:bold; width: 220px; height: 20px; display: flex-grow: 0; align-items: center;">${rdto.mem_id}</div>
+														<div style="font-weight:bold; width: 220px; height: 20px; display: flex-grow: 0; align-items: center;">${rdto.mem_name}</div>
 													</div>&nbsp;
 													<div style="margin-left: 10px; margin-top:30px; width: 70%;">${rdto.reply_cont }</div>
 													<c:if test="${rdto.mem_id eq mem_id}">
@@ -143,9 +142,9 @@ pageContext.setAttribute("replaceChar", "\n");
 		<div style="width:90%; margin-left:15px; margin-bottom:20px; margin-top:-10px;">
 			<form method="post" action="/insertreply.do">
 				<input type="hidden" name="board_idx" value="${dto.board_idx }" />
-				<input type="hidden" name="mem_id" value="${mem_id }" />
+				<input type="hidden" name="mem_id" value="${mem_name }" />
 				<div style="display: flex; flex-direction: column; width:88%; margin-top:10px;">
-			      <div><span style="font-weight:bold;">${mem_id }</span></div>
+			      <div><span style="font-weight:bold;">${mem_name }</span></div>
 			      <div style="display:flex; width:100%; margin-left:20px;">
 				      <input type="text" name="reply_cont" id="reply_cont" placeholder=" 댓글을 입력하세요."
 				       style="width:100%;border-radius: 6px; border: 1px solid #D7D7D7; margin-left:10px;"/>

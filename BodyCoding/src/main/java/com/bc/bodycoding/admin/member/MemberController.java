@@ -91,9 +91,12 @@ public class MemberController {
    public String trainermldeatil(Model model, MemberDTO memberDTO,
          HttpServletRequest req) {
       String uDetail = req.getParameter("mem_id");
+      System.out.println(uDetail);
       model.addAttribute("mem_id", uDetail);
       memberDTO.setMem_id(uDetail);
+     
       model.addAttribute("dto", memberdao.selectDT(memberDTO));
+      System.out.println(memberdao.selectDT(memberDTO));
       
       return "member/trainer/memberdetailT";
    }
@@ -188,6 +191,7 @@ public class MemberController {
 		  user_name = memberdao.getName(user_id);
 		  
 		  lists = memberdao.getPrevMEx(exDTO);
+		  System.out.println("11"+lists);
 	  }
 	  else {
 		  exDTO.setTrainer_id(trainer_id);

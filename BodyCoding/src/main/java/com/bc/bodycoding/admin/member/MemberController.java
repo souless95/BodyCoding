@@ -191,6 +191,7 @@ public class MemberController {
 		  user_name = memberdao.getName(user_id);
 		  
 		  lists = memberdao.getPrevMEx(exDTO);
+		  System.out.println("11"+lists);
 	  }
 	  else {
 		  exDTO.setTrainer_id(trainer_id);

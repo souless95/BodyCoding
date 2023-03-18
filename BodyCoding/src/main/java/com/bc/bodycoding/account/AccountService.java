@@ -18,7 +18,7 @@ public interface AccountService{
 	public MemberDTO login(MemberDTO memberDTO);
 	public int kakaoinsert(Map<String, String> map);
 	public String kakaoselect(String mem_id);
-	public String kakaoautselect(String mem_id);
+	public MemberDTO kakaoinfoselect(String mem_id);
 	public MemberDTO kakaoUserInfo(String mem_id);
 	public int kakaoupdate(MemberDTO memberDTO);
 	

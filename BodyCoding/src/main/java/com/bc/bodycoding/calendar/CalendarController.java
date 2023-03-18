@@ -190,16 +190,6 @@ public class CalendarController {
 		String[] timeDivided2 = time.split("T");
 		
 		calendarDTO.setLesson_idx(req.getParameter("id"));
-//		CalendarDTO aa = new CalendarDTO();
-//		aa = calendarDAO.selectSchedule(calendarDTO);
-//		String bb = timeDivided2[0] + "T" + aa.getLesson_end_time() + ":00+09:00";
-//		System.out.println(bb);
-//		
-//		
-//		CalendarDTO bb = new CalendarDTO();
-//		calendarDTO.setLesson_day(req.getParameter("id"));
-//		
-//		calendarDTO.setLesson_idx(req.getParameter("id"));
 		calendarDTO.setLesson_end_time(timeDivided2[1].substring(0, 5));
 		
 		calendarDAO.updateSchedule2(calendarDTO);

@@ -70,6 +70,16 @@
   .schedule-container .closed h3 {
     color: #999;
   }
+  .rv {
+	display: inline-block;
+	height: 40px;
+	border-radius: 6px;
+	border:none;
+	font-size: 16px;
+	line-height: 38px;
+	color:white;
+	background-color: #F9BF52;
+  }
 </style>
 <script>
 function reservating(lesson_name, lesson_idx, user_id, reservation_date){
@@ -100,30 +110,32 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 	<div class="sub_container">
 		<%@ include file="../../../../inc/mypageside.jsp"%>
 		<br />
-		<h2>예약 가능한 일정</h2>
-		<hr style="border: 1px solid #01538D;">
-		<c:if test="${not empty Schedule}">
-		<c:forEach items="${Schedule}" var="s">
-			<div id="${s.lesson_idx}" class="schedule-container" style="border:1px solid gray; width:30%; display:inline-block; margin:3px;">
-				<p style="font-size:24px;">
-					<c:if test="${s.lesson_category eq '요가'}">
-		 			<img src="../static/admin/images/0005.png" />&nbsp;&nbsp;${s.lesson_name}
-		 			</c:if>
-		 			<c:if test="${s.lesson_category eq 'GX'}">
-		 			<img src="../static/admin/images/0007.png" />&nbsp;&nbsp;${s.lesson_name}
-		 			</c:if>
-		 			<c:if test="${s.lesson_category eq '필라테스'}">
-		 			<img src="../static/admin/images/0010.png" />&nbsp;&nbsp;${s.lesson_name}
-		 			</c:if>
-		 			<c:if test="${s.lesson_category eq 'PT'}">
-		 			<img src="../static/admin/images/0011.png" />&nbsp;&nbsp;${s.lesson_name}
-		 			</c:if>
-		 		</p>
-				<p>트레이너 : ${s.trainer_name}</p>
-				<p>분류 : ${s.lesson_category}</p>
-				<p>일자 : ${s.lesson_day.substring(0, 10)}</p>
-				<p>시간 : ${s.lesson_start_time} - ${s.lesson_end_time}</p>
-				<p>정원 : ${s.rcount} / ${s.lesson_capacity}
+		<h2>수업 예약</h2>
+		<hr style="border: 1px solid #01538D;">		
+		<table
+			style="width:80%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D; text-align: center;">
+			<tbody>
+				<tr style="color:white; background-color: #01538D;">
+					<th width="15%"><strong>예약일</strong></th>
+					<th width="15%" ><strong>예약시간</strong></th>
+					<th width="15%"><strong>트레이너</strong></th>
+					<th width="10%"><strong>분류</strong></th>
+					<th width="15%"><strong>수업명</strong></th>
+					<th width="15%"><strong>정원</strong></th>
+					<th width="15%"><strong></strong></th>
+				</tr>
+				<c:if test="${not empty Schedule}">
+				<c:forEach items="${Schedule}" var="s">
+				<tr>
+						<td>${s.lesson_day.substring(0, 10)}</td>
+						<td>${s.lesson_start_time} - ${s.lesson_end_time}</td>
+						<td>${s.trainer_name}</td>
+						<td>${s.lesson_category}</td>
+						<td>${s.lesson_name}</td>
+						<td>${s.rcount} / ${s.lesson_capacity}</td>
+						<td><button class="rv" id="${s.lesson_idx}">예약</button></td>
+				</tr>
+					</c:forEach>
 					<c:choose>
 						<c:when test="${s.rcount eq s.lesson_capacity}">
 					    	<script>
@@ -147,10 +159,9 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 							</script>
 						</c:otherwise>
 					</c:choose>
-				</p>
-			</div>
-		</c:forEach>
-	</c:if>
+				</c:if>
+			</tbody>
+		</table>
 	<c:if test="${empty Schedule}">
 		현재 이용가능한 일정이 없습니다.
 	</c:if>

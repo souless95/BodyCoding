@@ -38,12 +38,12 @@ public class PurchaseController {
 
 	@RequestMapping("/membershipPurchase.do")
 	public String purchaseHome(HttpServletRequest req, Model model) {
-		
 		HttpSession session = req.getSession();
 
 		String mem_id = (String) session.getAttribute("UserEmail");
 		
 		model.addAttribute("mem_id", mem_id);
+		model.addAttribute("gym_code", req.getParameter("gym_code"));
 		System.out.println(mem_id);
 		model.addAttribute("gymList", purchaseDao.gymSelect());
 		return "/member/purchase/purchase";

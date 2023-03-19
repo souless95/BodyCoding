@@ -120,7 +120,7 @@ function login(){
 				</div>
 				<div class="like_btn">
 					<c:if test="${not empty UserName && UserName ne trainerInfo.mem_name }">
-						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="location.href='membershipPurchase.do'">PT 등록하기(결제)</button>
+						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="location.href='membershipPurchase.do?gym_code=${trainerInfo.gym_code}'">PT 등록하기(결제)</button>
 					</c:if>
 					<c:if test="${empty UserName && UserName ne trainerInfo.mem_name }">
 						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="login();">PT 등록하기(로그인)</button>

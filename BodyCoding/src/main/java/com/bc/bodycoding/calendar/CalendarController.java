@@ -125,14 +125,14 @@ public class CalendarController {
 		return "reservated";
 	}
 	
-	@GetMapping("/addCalendar1.do")
+	@GetMapping("/addCalendar.do")
 	public String addCalendar1() {
 		return "addCalendar";
 	}
 	
 	@ResponseBody
 	@RequestMapping("/addCalendar2.do")
-	public String addCalendar(@Param("lesson_idx") String lesson_idx, HttpServletRequest req,
+	public String addCalendar2(@Param("lesson_idx") String lesson_idx, HttpServletRequest req,
 			CalendarDTO calendarDTO, HttpSession session){
 		
 		String time = req.getParameter("start");
@@ -145,6 +145,7 @@ public class CalendarController {
 		calendarDTO.setLesson_category(req.getParameter("lesson_category"));
 		calendarDTO.setLesson_name(req.getParameter("title"));
 		calendarDTO.setLesson_day(timeDivided[0]);
+		calendarDTO.setRcount(0);
 		calendarDTO.setLesson_start_time(timeDivided[1].substring(0, 5));
 		calendarDTO.setLesson_end_time(timeDivided2[1].substring(0, 5));
 		calendarDTO.setLesson_capacity(req.getParameter("lesson_capacity"));

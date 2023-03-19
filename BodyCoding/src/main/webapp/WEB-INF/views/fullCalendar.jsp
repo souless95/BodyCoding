@@ -106,7 +106,7 @@
                   
                   if (timeB >= 6 && timeB <= 22) {
                      
-                     open("/addCalendar1.do",
+                     open("/addCalendar.do",
                            "calendarRegist",
                          "width=500, height=300, left=500, top=100, "
                           + "location=no, toolbar=no, menubar=no, "

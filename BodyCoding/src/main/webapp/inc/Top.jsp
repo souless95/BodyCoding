@@ -25,53 +25,41 @@
 	}
 
 	/* 1대1문의 윈도우창 생성 */
-	function openChatRoom(event, mem_id) {
-		event.preventDefault(); // 기본 동작(링크 이동) 방지
-		if (mem_id == null || mem_id == "") {
-			alert("로그인 후 이용해 주세요.");
-			window.location.href = "/login.do";
-		} else {
-			var url = "../chatting/room?mem_id=" + mem_id;
-			var win = window.open(url, "chatRoom",
-					"width=450,height=600, left=600, top=200");
-			if (win) {
-				win.focus();
-				win.location.href = "/moveChating?roomName=" + mem_id
-						+ "-admin_super1&mem_id=" + mem_id + "&mem_name="
-						+ mem_name;
-			} else {
-				alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
-			}
-		}
+	function openChatRoom(event, mem_id, mem_name){
+	    event.preventDefault(); // 기본 동작(링크 이동) 방지
+	    if(mem_id==null||mem_id==""){
+	       alert("로그인 후 이용해 주세요.");
+	        window.location.href = "/login.do";
+	    }
+	    else{
+	    	var url = "../chatting/room?mem_id=" + mem_id;
+	    	var win = window.open(url, "chatRoom", "width=450,height=600, left=600, top=200");
+	    	if (win) {
+	    	    win.focus();
+	    	    win.location.href = "/moveChating?roomName=" + mem_id + "-admin_super1&mem_id=" + mem_id + "&mem_name=" + mem_name;
+	    	} else {
+	    	    alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
+	    	}
+	    }
 	}
 </script>
-<style type="text/css">
-.myPage_top {
-	float: right;
-	font-size: 20px;
-}
-
-.logo {
-}
-
-</style>
 </head>
 <body class="is-preload">
 	<div id="page-wrapper">
 		<!-- Header -->
 		<div id="header">
-			<div class="myPage_top" style="margin-top: -90px; padding-right: 10px;">
+			<div class="myPage_top" style="float:right; font-size:20px; margin-top: -90px; padding-right: 10px;">
 				<c:if test="${not empty UserName}">
 					WelCome! <span class="spoka">&nbsp&nbsp ${UserName}<i class="bi bi-hearts"></i> </span>&nbsp&nbsp&nbsp&nbsp
 
 					<c:choose>
 						<c:when test="${Authority eq 'ROLE_MEMBER' }">
 							<c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}&mem_id=${UserEmail}" />
+							<span class="spoka"><i class="bi bi-c-circle"></i>보유포인트 : ${UserInfo.mem_point }&nbsp&nbsp</span>
 							<a href="${mypageUrl}"><i class="bi bi-person-fill"></i> MyPage</a>&nbsp&nbsp
 							<a href="/cartList.do"><i class="bi bi-cart"></i> 장바구니</a>&nbsp&nbsp
 							<a href="#" onclick="logoutcheck()"><i class="bi bi-box-arrow-right"></i> LogOut</a>&nbsp&nbsp
 						</c:when>
-	
 						<c:otherwise>
 							<c:set var="mypageUrl" value="calendar.do" />
 							<a href="${mypageUrl}"><i class="bi bi-person"></i> MyPage</a>&nbsp&nbsp
@@ -115,23 +103,19 @@
 							<li><a href="pila">필라테스</a></li>
 						</ul></li>
 
-					<li><a href="gym">Location</a> <!--    <ul>
-                        <li><a href="gym">지점확인</a></li>
-                     </ul> --></li>
+					<li><a href="gym">Location</a></li>
 
-					<li><a href="trainer">Trainer</a> <!--    <ul>
-                        <li><a href="trainer">트레이너정보</a></li>
-                     </ul> --></li>
+					<li><a href="trainer">Trainer</a></li>
 
 					<li><a href="product">Shop</a></li>
 
-					<li><a href="/Freeboard.do">Board</a>
-						<ul>
-							<li><a href="/Freeboard.do">Board</a></li>
-							<li><a href="#"
-								onclick="openChatRoom(event, '${UserEmail}');">1:1문의(웹소켓 채팅)</a></li>
-						</ul>
-					</li>
+					<li>
+                     <a href="/Freeboard.do">Board</a>
+                     <ul> 
+                        <li><a href="/Freeboard.do">Board</a></li>
+                        <li><a href="#" onclick="openChatRoom(event, '${UserEmail}', '${UserName }');">1:1문의(웹소켓 채팅)</a></li>
+                     </ul>
+                  </li>
 				</ul>
 			</nav>
 		</div>

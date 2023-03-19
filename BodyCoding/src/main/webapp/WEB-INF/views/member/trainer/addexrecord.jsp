@@ -24,6 +24,7 @@
 		}
 		frm.submit();
 		alert('작성이 완료되었습니다');
+	}
 </script>
 <style>
 body {
@@ -80,24 +81,21 @@ body {
 						<table
 							style="width: 100%; height: 50px; border: 1px solid #D7D7D7; margin-top: 15px; border-collapse: separate; border-radius: 7px;">
 							<tr style="height: 55px;">
-								<c:if test="${not empty user_name}"><th class="table-header" style="width: 10%;">성명</th></c:if>
+								<th class="table-header" style="width: 10%;">성명</th>
 								<th class="table-header" style="width: 10%;">분류</th>
 								<th class="table-header" style="width: 20%;">일시</th>
-								<th class="table-header" style="width: 40%;">코멘트</th>
-								<th class="table-header" style="width: 20%;"></th>
+								<th class="table-header" style="width: 70%;">코멘트</th>
 							</tr>
 							<c:forEach items="${lists}" var="l">
 								<tr
 									style="padding-top: 20px; padding-bottom: 20px; height: 50px;">
-									<c:if test="${not empty user_name}">
-										<td style="text-align: center;">${l.mem_name }</td>
-									</c:if>
+									<td style="text-align: center;">${l.mem_name }</td>
 									<td style="text-align: center">${l.exercise_type }</td>
 									<td style="text-align: center">${l.training_date.substring(0,10) }
 										${l.lesson_start_time }</td>
 									<td style="text-align: center">
 										<form action="addexrecord.do?mem_id=${l.user_id}"method="POST">
-											<input type="text" style="width: 100%;" name="training_comment" class="cInput" />
+											<input type="text" style="width: 60%;" name="training_comment" class="cInput" />
 											<input type="hidden" name="trainer_id" value="${l.trainer_id }" /> 
 											<input type="hidden" name="exercise_type" value="${l.exercise_type }" /> 
 											<input type="hidden" name="user_id" value="${l.user_id }" /> 

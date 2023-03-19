@@ -104,8 +104,8 @@ $(document).ready(function() {
 							<div id="collapseOne" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
 		                                <li><a class="btn" href="reservation.do">수업예약</a></li>
+		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
 		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
 		                                <li><a class="btn" href="chart">체중그래프</a></li>
 		                            </ul>

@@ -219,7 +219,11 @@ function errCallBackT(errData){
 		      <select name="gym_code" id="gymSelect">
 		            <option value="">지점을 선택해주세요</option>
 		            <c:forEach items="${gymList}" var="gym" varStatus="loop">
-		            <option value="${gym.gym_code}">${gym.mem_name}</option>
+		            <option value="${gym.gym_code}"
+		            <c:if test="${gym.gym_code eq gym_code}">
+		             selected
+		            </c:if>
+		            >${gym.mem_name}</option>
 		            </c:forEach>
 		      </select>
 	      </div>

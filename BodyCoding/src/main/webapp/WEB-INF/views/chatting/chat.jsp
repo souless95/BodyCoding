@@ -118,7 +118,6 @@
    };
    
    var ws;
-
    function wsOpen(){
       //웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
       ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomName").val());
@@ -135,12 +134,12 @@
          //메시지를 받으면 동작
          var msg = data.data;
          if(msg != null && msg.trim() != ''){
-            var d = JSON.parse(msg);
-            var time = nowTime();
-            if(d.type == "getId"){
-               var si = d.sessionId != null ? d.sessionId : "";
-               if(si != ''){
-                  $("#sessionId").val(si); 
+             var d = JSON.parse(msg);
+             var time = nowTime();
+             if(d.type == "getId"){
+                var si = d.sessionId != null ? d.sessionId : "";
+                if(si != ''){
+                   $("#sessionId").val(si); 
                }
             }else if(d.type == "message"){
                if(d.sessionId == $("#sessionId").val()){

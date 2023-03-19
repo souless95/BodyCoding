@@ -87,7 +87,7 @@ pageContext.setAttribute("replaceChar", "\n");
 						<div>
 							
 							<div class="card" style="border: 1px solid #D7D7D7; border-radius:7px; width:90%; padding-bottom:20px;">
-							<h3 style="margin-left:30px; margin-top:5px;">댓글목록3>
+							<h3 style="margin-left:30px; margin-top:5px;">댓글목록</h3>
 								<div class="last-comment" style="margin-left:15px; width:100%; ">
 									<c:forEach var="rdto" items="${rdto}">
 										<div style="width: 100%; display: flex; justify-content: space-between;">

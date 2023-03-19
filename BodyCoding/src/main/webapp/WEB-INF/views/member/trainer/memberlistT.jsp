@@ -20,8 +20,6 @@ body{
   border-bottom: 1px solid #DDD;
   vertical-align:middle;
 }
-
-
 </style>
 <script>
 </script>

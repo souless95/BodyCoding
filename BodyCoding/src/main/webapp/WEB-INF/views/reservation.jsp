@@ -80,7 +80,10 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 						<c:when test="${s.rcount eq s.lesson_capacity}">
 					    	<script>
 								var btn = document.getElementById('${s.lesson_idx}');
+								btn.innerText="예약불가";
+								btn.style.backgroundColor="gray";
 								btn.onclick = null;
+								btn.style.cursor="default";
 							</script>
 						</c:when>
 						<c:otherwise>

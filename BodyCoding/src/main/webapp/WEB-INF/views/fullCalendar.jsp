@@ -183,7 +183,8 @@
               var eventInfo = document.getElementById('event-info');
               var eventTitle = document.getElementById('event-title');
               var eventDescription = document.getElementById('event-description');
-
+			  
+              eventDescription.style.fontSize = "16px";
               eventDescription.innerHTML = "일정 : " + title 
                  + "<br>분류 : " + category + "<br>정원 : " + rCount + " / " + capacity;
               if (parseInt(rCount) >= parseInt(capacity)) {

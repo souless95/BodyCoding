@@ -76,10 +76,10 @@
 		<div class="card" style="width: 70%">
 			<div class="card-body">
 				<div style="float: left; margin-right: 5%">
-					<span class="title">주문번호</span>${payLog.order_idx}</div>
+					<c:set value="${payLog.order_date}" var="date" />
+					<span class="title">주문번호</span>${fn:trim(fn:replace(fn:substring(date,0,11),'-',''))}${payLog.order_idx}</div>
 				<div style="float: left; margin-right: 5%">
 					<span class="title">주문일자</span>
-					<c:set value="${payLog.order_date}" var="date" />
 					${fn:substring(date,0,11)}
 				</div>
 				<div style="float: left; margin-right: 5%">

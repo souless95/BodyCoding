@@ -55,24 +55,24 @@
 <body>
 	<h1>신고하기</h1>
 	<form method="post" action="/report.do">
-	<div>
-		<label for="board_idx">신고할 글 번호 : ${dto.board_idx }</label>
-		<input type="hidden" name="board_idx" value=${dto.board_idx }>
-	</div>
-	<div>
-		<label for="reporter">작성자 : ${dto.mem_id }</label>
-		<input type="hidden" name="mem_id" value=${dto.mem_id }>
-	</div>
-	<div>
-		<label for="board_title">신고할 글 제목 : ${dto.board_title }</label>
-	</div>
-		<label for="report_content">신고 내용</label>
-		<textarea name="report_content" id="report_content" required></textarea>
-	<div>
-		<label for="reporter">신고자 : ${mem_id }</label>
-	</div>
-		<br>
-		<input type="submit" value="등록" onclick="submitForm()">
+		<div>
+			<label for="board_idx">신고할 글 번호 : ${dto.board_idx }</label>
+			<input type="hidden" name="board_idx" value=${dto.board_idx }>
+		</div>
+		<div>
+			<label for="reporter">작성자 : ${dto.mem_id }</label>
+			<input type="hidden" name="mem_id" value=${dto.mem_id }>
+		</div>
+		<div>
+			<label for="board_title">신고할 글 제목 : ${dto.board_title }</label>
+		</div>
+			<label for="report_content">신고 내용</label>
+			<textarea name="report_content" id="report_content" required></textarea>
+		<div>
+			<label for="reporter">신고자 : ${mem_id }</label>
+		</div>
+			<br>
+			<input type="submit" value="등록" onclick="submitForm()">
 	</form>
 <script>
 	function submitForm() {

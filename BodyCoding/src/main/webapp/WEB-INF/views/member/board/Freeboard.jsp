@@ -20,9 +20,9 @@
 	<div class="container-fluid" style="width:80%; text-align:left; padding-left:15px;" >
 	 	<div style="margin-left:147px; display: flex; margin-top:-15px;">
 	    <form method="get" action="searchmemberboard.do" style=" display: flex;">
-	        <div class="form-group" style="margin-top:25px;">
+	        <div class="form-group" style="margin-top:15px;">
 	            <label for="searchType" >검색 종류</label>
-	            <select name="searchType" id="searchType" class="form-control">
+	            <select name="searchType" id="searchType" class="form-control" style="font-size:20px;">
 	                <option value="board_title">제목</option>
 	                <option value="board_contents">내용</option>
 	                <option value="mem_id">작성자</option>
@@ -31,8 +31,8 @@
 	        &nbsp;&nbsp;
 	         <div style="margin-top:15px;">
 	            <label for="searchKeyword">검색어</label>
-	            <input type="text" name="searchKeyword" id="searchKeyword" class="form-control">
-	            <button type="submit" style="height:50px; margin-left:0px; width:60px; font-size:20px; font-weight:bold;" class="custom-btn btn-1" onclick="search()">검색</button>
+	            <input type="text" name="searchKeyword" id="searchKeyword" class="form-control" style="width:130px; height:35px;">
+	            <button type="submit" style="height:40px; margin-left:0px; width:60px; font-size:20px; font-weight:bold;" class="custom-btn btn-1" onclick="search()">검색</button>
 	        </div>
 	    	</form>
 		</div><!-- 검색끝 -->
@@ -63,7 +63,7 @@
                     	<a style="color:red; font-weight:bold;" href="detailmemberboard.do?board_idx=${row.board_idx}">${row.board_title}</a>
                     </td>
                     
-                    <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_id}</td>
+                    <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_name}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_postdate}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_visitcount}</td>
                 </tr>
@@ -74,8 +74,8 @@
             <c:if test="${row.board_category ne '공지'}">
                 <tr style="width:100%; height:45px; border-bottom:1px solid #ccc; vertical-align: middle;">
                     <td style="vertical-align:middle; text-align:center;">${row.board_idx}</td>
-                    <td style="vertical-align:middle; text-align:center;"><a href="detailmemberboard.do?board_idx=${row.board_idx}"><span style="color:black;">${row.board_title}</span></a></td>
-                    <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_id}</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="detailmemberboard.do?board_idx=${row.board_idx}&mem_name=${row.mem_name}"><span style="color:black;">${row.board_title}</span></a></td>
+                    <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_name}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_postdate}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_visitcount}</td>
                     <%-- 첨부보류 <td class="text-center"><i class="bi bi-pin-angle-fill"></i></td> --%>

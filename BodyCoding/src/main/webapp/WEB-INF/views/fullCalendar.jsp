@@ -24,12 +24,12 @@
       max-width: 400px;
    }
    .fc-scroller .fc-col-header{
-	   	width: 798px;
-	   	margin-bottom: 5px;
+         width: 798px;
+         margin-bottom: 5px;
    }
    .fc-scrollgrid-section .fc-scroller-liquid-absolute{
-  		height:650px;
-   		overflow: hidden;
+        height:650px;
+         overflow: hidden;
    }
    
 </style>
@@ -256,13 +256,13 @@
             <h2>일정관리</h2>
           </div>
            <br /><br />
-         <div id="event-info" style="text-align:center;">
-              <h3 id="event-title"></h3>
-              <p id="event-description" style="white-space: pre-wrap;"></p>
-         </div>
            <div id='calendar' style="width:100%; max-width:800px;  margin:0 auto; text-align:center;"></div>
       </div>
    </div>
+</div>
+<div id="event-info" style="text-align:center;">
+     <h3 id="event-title"></h3>
+     <p id="event-description" style="white-space: pre-wrap;"></p>
 </div>
 <%@ include file="../../../inc/Bottom.jsp" %>
 </body>

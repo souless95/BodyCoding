@@ -22,7 +22,6 @@ ul{
 .contain_left1{
    width:230px;
    float: left;
-   padding-top: 30px;
 }
 .right_body{
     width: 970px;
@@ -63,6 +62,28 @@ ul{
 	min-height: 700px;
 }
 </style>
+<script>
+$(document).ready(function() {
+  // 이전에 열려있던 아코디언 저장
+  var prevAccordion = localStorage.getItem('accordion');
+  if (prevAccordion) {
+    $(prevAccordion).collapse('show');
+  } else {
+    // 이전에 열려있던 아코디언이 없는 경우, 첫번째 아코디언을 열어줌
+    $('#collapseOne').collapse('show');
+  }
+
+  // 아코디언이 열릴 때 이벤트 발생
+  $('.collapse').on('show.bs.collapse', function() {
+    localStorage.setItem('accordion', '#' + $(this).attr('id'));
+  });
+
+  // 아코디언이 닫힐 때 이벤트 발생
+  $('.collapse').on('hide.bs.collapse', function() {
+    localStorage.removeItem('accordion');
+  });
+});
+</script>
 </head>
 <body>
 	<div class="contain mt-3">
@@ -80,8 +101,7 @@ ul{
 								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
 									운동관리 </a>
 							</div>
-							<div id="collapseOne" class="collapse show"
-								data-bs-parent="#accordion">
+							<div id="collapseOne" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
 		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
@@ -106,20 +126,6 @@ ul{
 		                        </div>
 							</div>
 						</div>
-<!-- 						<div class="card">
-							<div class="card-header">
-								<a class="collapsed btn" data-bs-toggle="collapse"
-									href="#collapseThree"> 활동내역 </a>
-							</div>
-							<div id="collapseThree" class="collapse"
-								data-bs-parent="#accordion">
-								<div class="card-body">
-		                            <ul>
-		                                <li><a class="btn" href="#">게시물</a></li>
-		                            </ul>
-		                        </div>
-							</div>
-						</div> -->
 						<div class="card">
 							<div class="card-header">
 								<a class="btn" href="pwcheck"> 정보수정 </a> 
@@ -132,8 +138,7 @@ ul{
 								<a class="btn" data-bs-toggle="collapse" href="#collapseOne">
 									회원목록 </a>
 							</div>
-							<div id="collapseOne" class="collapse show"
-								data-bs-parent="#accordion">
+							<div id="collapseOne" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body" >
 		                            <ul>
 		                                <li><a class="btn" style="padding-top:10px;" href="memberlistT.do">회원목록</a></li>

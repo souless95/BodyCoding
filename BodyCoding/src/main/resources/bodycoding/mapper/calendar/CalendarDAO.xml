@@ -77,8 +77,9 @@
             AND lesson_day <![CDATA[<]]>= #{list.membership_end}
         </if>
     </foreach>
-    )
+    ) 
     </if>
+    order by lesson_day, lesson_start_time
 </select>
 
 <select id="getRcount"
@@ -119,6 +120,7 @@
     <if test="list.isEmpty()">
     and lesson_idx = ''
     </if>
+    order by lesson_day desc, lesson_start_time desc
 </select>
 
 <delete id="reservatedDeletion"

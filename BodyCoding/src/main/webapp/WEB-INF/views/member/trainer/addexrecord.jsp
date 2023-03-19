@@ -24,7 +24,6 @@
 		}
 		frm.submit();
 		alert('작성이 완료되었습니다');
-	}
 </script>
 <style>
 body {

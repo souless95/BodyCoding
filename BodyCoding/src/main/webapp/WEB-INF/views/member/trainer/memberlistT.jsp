@@ -29,17 +29,17 @@ body{
 </head>
 <body class="sb-nav-fixed">
 <div class="container">
-	<div id="layoutSidenav">
-		<!-- side -->
-       <%@ include file ="../../../../inc/mypageside.jsp" %>
-			<div id="layoutSidenav_content">
-		        <main>
+	<div class="sub_container">
+		<div id="layoutSidenav">
+			<!-- side -->
+	       <%@ include file ="../../../../inc/mypageside.jsp" %>
+				<div id="layoutSidenav_content">
 		        	<div class="card mb-4" style="width:83%;">
 		        		<div class="card-header"
 		        			 style="color:white; height:75px; background-color:#01538D; vertical-align:middle;">
 							<h2>회원 리스트</h2>
 		        		</div>
-		        		<div class="container-fluid" style="width:100%;">
+		        		<div class="container" style="width:100%;">
 							<table style="width:100%; height:50px; border:1px solid #D7D7D7; margin-top:15px; border-collapse: separate; border-radius:7px;">
 								<tr style="height:55px;">
 								  <th class="table-header">이메일(아이디)</th>
@@ -73,10 +73,10 @@ body{
 						</table>
 	        		</div>
 				</div>
-			</main>
+			</div>
 		</div>
 	</div>
 </div>
-<%@ include file="../../../../inc/Bottom.jsp" %>
+			<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

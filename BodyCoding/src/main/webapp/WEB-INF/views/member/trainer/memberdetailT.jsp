@@ -23,7 +23,7 @@ table th, table td {
 }
 
 table th {
-  background-color: #DFE8EA;
+  background-color: #E6EDEE;
   font-weight:bold;
   border-bottom: 1px solid #D7D7D7;
   
@@ -97,7 +97,7 @@ function routine(){
             <h2> ${dto.mem_name } 회원 상세보기 </h2>
          </div>
                <div id="layoutSidenav">
-                  <div class="card-header" style="width: 100%">
+                  <div class="card-header" style="width: 100%; background-color:white;">
                      <div style="border:1px solid #D7D7D7; margin-top:15px; margin-bottom:15px; border-radius:7px;">
                           <h3 style="margin-top:10px; margin-left:15px; margin-bottom:-2px;">상세정보</h3>
                         <div class="container-fluid">      

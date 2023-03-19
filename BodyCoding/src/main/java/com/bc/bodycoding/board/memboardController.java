@@ -12,7 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.bc.bodycoding.admin.member.MemberService;
 
 import global.dto.BoardDTO;
 import global.dto.MemberDTO;
@@ -23,6 +24,8 @@ public class memboardController {
 	//여기는 멤버의 게시판을 다루는 컨트롤러
 	@Autowired
 	memboardService memboarddao;
+	@Autowired
+	MemberService memberdao;
 	
 	//게시글 리스트 페이징 
 	@RequestMapping("/Freeboard.do")
@@ -100,21 +103,30 @@ public class memboardController {
 	        model.addAttribute("paging", paging);
 		}
 		return "member/board/Freeboard";
-		
 	}
 	
 	//게시글 상세보기
 	@RequestMapping("/detailmemberboard.do")
 	public String board2(HttpServletRequest req, Model model, HttpSession session) {
 		//게시글상세보기 값저장
+		String userEmail = (String) session.getAttribute("UserEmail");
+		model.addAttribute("mem_id", userEmail);
+		
+		String uName = req.getParameter("mem_name");
+		
 		BoardDTO boardDTO = new BoardDTO();
+		MemberDTO memberDTO = new MemberDTO();
+		
+		model.addAttribute("mem_name", uName);
+		memberDTO.setMem_id(userEmail);
+		memberDTO.setMem_name(uName);
+		
+		memberDTO = memberdao.selectDT(memberDTO);
 		
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		System.out.println(boardDTO);
 		//view페이지에서 쓰기위해서 dto이름에 boardDTO정보저장
 		model.addAttribute("dto", boardDTO);
-		
-		//reply 테이블에 있는 정보 가져오기위해 객체선언
 		
 		boardDTO.setBoard_idx(boardDTO.getBoard_idx());
 		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
@@ -129,10 +141,6 @@ public class memboardController {
 			System.out.println("조회수 증가 실패");
 		}
 		
-		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
-		String userEmail = (String) session.getAttribute("UserEmail");
-		model.addAttribute("mem_id", userEmail);
-					
 			return "member/board/detailmemboard";
 	}
 	

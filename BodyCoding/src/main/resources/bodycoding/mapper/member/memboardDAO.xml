@@ -37,13 +37,14 @@
 	        <![CDATA[
 	       SELECT *
 	         FROM (
-	              SELECT ROWNUM AS RNUM, fb.*
+	              SELECT ROWNUM AS RNUM, fb.*, m.mem_name
 			  FROM (
 			    SELECT * 
 			    FROM freeboard fb
 			    WHERE closed_chk = 'N' 
 			    ORDER BY board_category, board_idx DESC 
 			  ) fb
+			  INNER JOIN member m ON fb.mem_id = m.mem_id
 			  WHERE ROWNUM <= #{pageStart} + #{perPageNum}
 			) 
 			WHERE RNUM >= #{pageStart} + 1 
@@ -58,7 +59,7 @@
 	<!-- 게시글 상세보기 -->
  	<select id="memselect1" resultType="global.dto.BoardDTO" parameterType="com.bc.bodycoding.board.Criteria">
         <![CDATA[
-       SELECT *
+       SELECT fb.*, m.mem_name as mem_name
          FROM (
               SELECT ROWNUM AS RNUM, fb.*
 		  FROM (
@@ -69,13 +70,14 @@
 		      AND (closed_chk = 'N') 
 		    ORDER BY board_category, board_idx DESC 
 		  ) fb
+		   JOIN member m ON fb.mem_id = m.mem_id
 		  WHERE ROWNUM <= #{pageStart} + #{perPageNum}
 		) 
 		WHERE RNUM >= #{pageStart} + 1 
 		]]>
 	</select> 
 
-	<!-- 게시글 상세보기 (자게, 공지, 이벤트) -->
+	<!-- 게시글 상세보기 -->
 	<select id="memselectOneBoard"
 		parameterType="global.dto.BoardDTO"
 		resultType="global.dto.BoardDTO">
@@ -125,8 +127,10 @@
 	
 	<!-- 게시글 수정하기전에 등록된 데이터 가져오기 -->
 	<select id="selectone" parameterType="String" resultType="global.dto.BoardDTO">
-		SELECT * from freeboard               
-		WHERE board_idx = #{board_idx}
+		 SELECT fb.*, m.mem_name as mem_name
+	        FROM freeboard fb
+	        JOIN member m ON fb.mem_id = m.mem_id
+	        WHERE board_idx = #{board_idx}
 	</select>
 	
 	<!-- 게시글 수정하기 (자게)-->
@@ -138,7 +142,12 @@
 	
 	<!-- 댓글 조회하기 -->	
 	<select id="selectreply" parameterType="String" resultType="global.dto.BoardDTO">
-		select * from reply where board_idx=#{board_idx} ORDER BY reply_idx DESC
+		SELECT r.*, m.mem_name
+			FROM reply r
+			JOIN freeboard fb ON r.board_idx = fb.board_idx
+			JOIN member m ON fb.mem_id = m.mem_id
+			WHERE r.board_idx=#{board_idx}
+			ORDER BY r.reply_idx DESC
 	</select>
 	
 	<!-- 댓글 수정하기 -->

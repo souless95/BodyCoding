@@ -102,10 +102,10 @@ window.onload = function() {
 					<h4>기본정보</h4>
 					<table class="table" border=2>
 						<tr>
-							<th>지점명</th>
-							<td><input type="text" name="mem_name" value="${memList.mem_name}" style="width: 50%;"/></td>
 							<th>지점코드</th>
 							<td><input type="text" name="gym_code" value="${dto.gym_code}" readonly style="width: 100px; border: none;"/></td>
+							<th>지점명</th>
+							<td><input type="text" name="mem_name" value="${memList.mem_name}" style="width: 50%;"/></td>
 						</tr>
 						<tr>
 							<th>평수</th>
@@ -118,6 +118,12 @@ window.onload = function() {
 							<td><input type="text" name="mem_address" value="${memList.mem_address}" style="width: 80%;"/></td>
 							<th>비밀번호</th>
 							<td><input type="text" name="mem_pass" value="${memList.mem_pass}" style="width: 80%;"/></td>
+						</tr>
+						<tr>
+							<th>위도</th>
+							<td><input type="text" name="gym_lat" value="${dto.gym_lat}" style="width: 80%;"/></td>
+							<th>경도</th>
+							<td><input type="text" name="gym_lng" value="${dto.gym_lng}" style="width: 80%;"/></td>
 						</tr>
 					</table>
 				

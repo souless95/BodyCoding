@@ -12,6 +12,7 @@ public class BoardDTO {
 	private String board_idx;
 	private String board_category;
 	private String mem_id;
+	private String mem_name;
 	private String board_title;
 	private String board_contents;
 	private String board_file;

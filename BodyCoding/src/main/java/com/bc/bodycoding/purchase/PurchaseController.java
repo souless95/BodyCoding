@@ -258,9 +258,11 @@ public class PurchaseController {
 			model.addAttribute("save_point", save_point);
 			model.addAttribute("mem_id", mem_id);
 			
-			String mem_point = purchaseDao.selectPoint(mem_id);
 			
+			String mem_point = purchaseDao.selectPoint(mem_id);
+			System.out.println("포인트"+mem_point); 
 			session.setAttribute("UserPoint", mem_point);
+			 
 			
 			if (result1 == 1 && result2 == 1 && result3 == 1) {
 				System.out.println("주문성공");

@@ -15,15 +15,15 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
 <script>
 	function submitForm(frm) {
-		comsole.log(frm);
-		var comment = frm.elements["training_comment"].value;
-		;
+		console.log(frm);
+		var comment = frm.training_comment.value;
 		console.log(comment);
 		if (comment.trim() == "") {
 			alert("코멘트를 작성해주세요.")
 			return false;
 		}
 		frm.submit();
+		alert('작성이 완료되었습니다');
 	}
 </script>
 <style>
@@ -71,21 +71,17 @@ body {
 				<div class="card mb-4" style="width: 83%;">
 					<div class="card-header"
 						style="color: white; height: 75px; background-color: #01538D; vertical-align: middle;">
-						<c:choose>
-							<c:when test="${empty lists}">
-									작성할 수 있는 기록이 없습니다.
-								</c:when>
-							<c:otherwise>
-								<h3>
-									<c:if test="${not empty user_name}">${user_name} </c:if>
-									회원 운동기록 작성
-								</h3>
+						<h2>
+							<c:if test="${not empty user_name}">${user_name} </c:if>
+							회원 운동기록 작성
+						</h2>
 					</div>
+							
 					<div class="container" style="width: 100%;">
 						<table
 							style="width: 100%; height: 50px; border: 1px solid #D7D7D7; margin-top: 15px; border-collapse: separate; border-radius: 7px;">
 							<tr style="height: 55px;">
-								<th class="table-header" style="width: 10%;">성명</th>
+								<c:if test="${not empty user_name}"><th class="table-header" style="width: 10%;">성명</th></c:if>
 								<th class="table-header" style="width: 10%;">분류</th>
 								<th class="table-header" style="width: 20%;">일시</th>
 								<th class="table-header" style="width: 40%;">코멘트</th>
@@ -100,19 +96,14 @@ body {
 									<td style="text-align: center">${l.exercise_type }</td>
 									<td style="text-align: center">${l.training_date.substring(0,10) }
 										${l.lesson_start_time }</td>
-									<td style="text-align: center"><input type="text" style="width: 100%;"
-										name="training_comment" value="" class="cInput" /></td>
 									<td style="text-align: center">
-										<form action="addexrecord.do?mem_id=${l.user_id}"
-											method="POST">
-											<input type="hidden" name="trainer_id"
-												value="${l.trainer_id }" /> <input type="hidden"
-												name="exercise_type" value="${l.exercise_type }" /> <input
-												type="hidden" name="user_id" value="${l.user_id }" /> <input
-												type="hidden" name="training_date"
-												value="${l.training_date.substring(0,10) } ${l.lesson_start_time }" />
-											<input type="hidden" name="reservation_idx"
-												value="${l.reservation_idx}" />
+										<form action="addexrecord.do?mem_id=${l.user_id}"method="POST">
+											<input type="text" style="width: 100%;" name="training_comment" class="cInput" />
+											<input type="hidden" name="trainer_id" value="${l.trainer_id }" /> 
+											<input type="hidden" name="exercise_type" value="${l.exercise_type }" /> 
+											<input type="hidden" name="user_id" value="${l.user_id }" /> 
+											<input type="hidden" name="training_date" value="${l.training_date.substring(0,10) } ${l.lesson_start_time }" />
+											<input type="hidden" name="reservation_idx" value="${l.reservation_idx}" />
 											<button type="button" onclick="submitForm(this.form)" class="custom-btn btn_custom" style="width:80px; 	height:40px;">저장</button>
 											<button type="reset" class="custom-btn btn_custom" style="width:80px; height:40px;">취소</button>
 										</form>
@@ -121,8 +112,6 @@ body {
 							</c:forEach>
 						</table>
 					</div>
-					</c:otherwise>
-					</c:choose>
 				</div>
 			</div>
 		</div>

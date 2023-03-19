@@ -208,6 +208,7 @@ public class MemberController {
    public String insertexrecord1(ExDTO exDTO, HttpServletRequest req, HttpSession session) {
       
       String user_id = req.getParameter("mem_id");
+      System.out.println("11"+exDTO);
       
    	  memberdao.insertTL(exDTO);
    	  memberdao.deleteR(exDTO);

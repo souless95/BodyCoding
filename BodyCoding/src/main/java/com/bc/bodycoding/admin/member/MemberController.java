@@ -191,7 +191,6 @@ public class MemberController {
 		  user_name = memberdao.getName(user_id);
 		  
 		  lists = memberdao.getPrevMEx(exDTO);
-		  System.out.println("11"+lists);
 	  }
 	  else {
 		  exDTO.setTrainer_id(trainer_id);
@@ -209,6 +208,7 @@ public class MemberController {
    public String insertexrecord1(ExDTO exDTO, HttpServletRequest req, HttpSession session) {
       
       String user_id = req.getParameter("mem_id");
+      System.out.println("11"+exDTO);
       
    	  memberdao.insertTL(exDTO);
    	  memberdao.deleteR(exDTO);

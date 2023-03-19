@@ -10,66 +10,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-  /* 예약 가능한 일정 컨테이너의 스타일 */
-  .schedule-container {
-    border: 1px solid #ddd;
-    width: 30%;
-    display: inline-block;
-    margin: 3px;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  /* 예약 가능한 일정의 제목 스타일 */
-  .schedule-container h3 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-
-  /* 예약 가능한 일정의 카테고리 아이콘 스타일 */
-  .schedule-container img {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
-    vertical-align: middle;
-  }
-
-  /* 예약 가능한 일정의 버튼 스타일 */
-  .schedule-container button {
-    background-color: #fff;
-    border: 2px solid #007bff;
-    color: #007bff;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 10px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  /* 예약 가능한 일정의 버튼 호버 스타일 */
-  .schedule-container button:hover {
-    background-color: #007bff;
-    color: #fff;
-  }
-
-  /* 예약 가능한 일정의 정원 마감 스타일 */
-  .schedule-container .closed {
-    opacity: 0.7;
-    cursor: not-allowed;
-    background-color: #f7f7f7;
-    border: 1px solid #ddd;
-  }
-
-  /* 예약 가능한 일정의 정원 마감 스타일 */
-  .schedule-container .closed h3 {
-    color: #999;
-  }
   .rv {
 	display: inline-block;
 	height: 40px;
@@ -83,7 +23,7 @@
 </style>
 <script>
 function reservating(lesson_name, lesson_idx, user_id, reservation_date){
-	
+	console.log(lesson_name);
 	var reservating = confirm(lesson_name+" 일정을 예약하시겠습니까?");
 	if(reservating){
 		$.ajax({
@@ -96,6 +36,7 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 			},
 			dataType: 'text',
 			success: function(){
+				alert('예약이 완료되었습니다.');
 				location.href='reservated.do';
 			},
 			error: function(){}
@@ -135,30 +76,24 @@ function reservating(lesson_name, lesson_idx, user_id, reservation_date){
 						<td>${s.rcount} / ${s.lesson_capacity}</td>
 						<td><button class="rv" id="${s.lesson_idx}">예약</button></td>
 				</tr>
-					</c:forEach>
 					<c:choose>
 						<c:when test="${s.rcount eq s.lesson_capacity}">
 					    	<script>
-								var div = document.getElementById('${s.lesson_idx}');
-								div.onclick = null;
-								div.style.opacity = '1';
-								div.style.backgroundColor = 'gray';
-								div.style.pointer = 'auto';
+								var btn = document.getElementById('${s.lesson_idx}');
+								btn.onclick = null;
 							</script>
-							<span style="color:red;">(마감)</span>
 						</c:when>
 						<c:otherwise>
 					    	<script>
-								var div = document.getElementById('${s.lesson_idx}');
-								div.onclick = function(){
-									reservating('${s.lesson_name}', '${s.lesson_idx}', '${user_id}', '${s.lesson_day.substring(0, 10)}');
+								var btn = document.getElementById('${s.lesson_idx}');
+								btn.onclick = function(){
+									console.log("dd");
+									reservating('${s.lesson_name}','${s.lesson_idx}', '${user_id}', '${s.lesson_day.substring(0, 10)}');
 								}
-								div.style.opacity = '1';
-								div.style.backgroundColor = 'white';
-								div.style.cursor = 'pointer';
 							</script>
 						</c:otherwise>
 					</c:choose>
+					</c:forEach>
 				</c:if>
 			</tbody>
 		</table>

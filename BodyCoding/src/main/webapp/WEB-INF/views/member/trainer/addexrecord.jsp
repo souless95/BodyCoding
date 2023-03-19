@@ -12,7 +12,6 @@
 <script>
 function submitForm(frm){
 	var comment = frm.elements["training_comment"].value;;
-	console.log(comment);
 	if(comment.trim() == ""){
 		alert("코멘트를 작성해주세요.")
 		return false;

@@ -87,6 +87,13 @@ function routine(){
             + "location=no, toolbar=no, menubar=no, "
             + "scrollbars=yes, resize=no");
 }
+function ptrecord(){
+   open("addexrecord.do?mem_id=${dto.mem_id}",
+            "recordRegist",
+            "width=935, height=800, left=500, top=100, "
+            + "location=no, toolbar=no, menubar=no, "
+            + "scrollbars=yes, resize=no");
+}
 </script>
 <body>
  <div class="container">
@@ -150,7 +157,7 @@ function routine(){
                               <button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
                                  onclick="routine();">운동루틴 등록</button>  
                               <button type="button" style="margin:0px; background-color:#DFE8EA; border: 2px solid #D7D7D7; border-radius:7px; font-weight:bold;"
-                                onclick="location.href='addexrecord.do?mem_id=${dto.mem_id}'">기록등록</button>
+                                onclick="ptrecord();">기록등록</button>
                            </div>
                            <br /><br /><br />
                               <div style="border: 2px solid #D7D7D7; border-radius:7px; margin-bottom:20px; ">   

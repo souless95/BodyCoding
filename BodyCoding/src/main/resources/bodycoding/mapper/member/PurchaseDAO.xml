@@ -102,4 +102,8 @@
 			ON P.order_idx=O.order_idx
 		WHERE P.order_idx=#{order_idx}
 	</select>
+	
+	<select id="selectPoint" parameterType="String" resultType="String">
+		SELECT mem_point FROM member WHERE mem_id=#{mem_id}
+	</select>
 </mapper>

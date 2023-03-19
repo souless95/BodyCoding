@@ -62,6 +62,7 @@
 	line-height: 38px;
 	color:black;
 	background-color: gray;
+	cursor: default;
   }
 </style>
 </head>

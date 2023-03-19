@@ -55,7 +55,7 @@
 					<c:choose>
 						<c:when test="${Authority eq 'ROLE_MEMBER' }">
 							<c:set var="mypageUrl" value="mypage.do?gym_code=${UserInfo.gym_code}&mem_id=${UserEmail}" />
-							<span class="spoka"><i class="bi bi-c-circle"></i>보유포인트 : ${UserInfo.mem_point }&nbsp&nbsp</span>
+							<span class="spoka"><i class="bi bi-c-circle"></i>보유포인트 : ${UserPoint }&nbsp&nbsp</span>
 							<a href="${mypageUrl}"><i class="bi bi-person-fill"></i> MyPage</a>&nbsp&nbsp
 							<a href="/cartList.do"><i class="bi bi-cart"></i> 장바구니</a>&nbsp&nbsp
 							<a href="#" onclick="logoutcheck()"><i class="bi bi-box-arrow-right"></i> LogOut</a>&nbsp&nbsp

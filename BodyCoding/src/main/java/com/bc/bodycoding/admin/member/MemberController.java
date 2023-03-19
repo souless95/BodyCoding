@@ -214,7 +214,7 @@ public class MemberController {
    	  memberdao.deleteR(exDTO);
     	  
       if(user_id != "") {  
-    	  return "redirect:addexrecord.do?mem_id="+ user_id;
+    	  return "redirect:memberdetailT.do?mem_id="+ user_id;
       }
       else {
     	  return "redirect:addexrecord.do?mem_id=";

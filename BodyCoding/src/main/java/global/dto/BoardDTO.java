@@ -22,7 +22,7 @@ public class BoardDTO {
 	
 	//신고용
 	private int count; //신고횟수
-	private int report_idx; //신고번호
+	private String report_idx; //신고번호
 	private String reporter; //신고자
 	private String report_content; //신고내용
 	private Date report_date; //신고일

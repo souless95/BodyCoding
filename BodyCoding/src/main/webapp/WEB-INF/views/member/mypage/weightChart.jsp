@@ -29,8 +29,8 @@
 			</form>
 		</div>
 	</div>
-	<%@ include file="../../../../inc/Bottom.jsp" %>
 </div>
+	<%@ include file="../../../../inc/Bottom.jsp" %>
 <br><br><br><br>
 <!-- 차트 관련 script는 아래로 내려가야함 -->
 <script>

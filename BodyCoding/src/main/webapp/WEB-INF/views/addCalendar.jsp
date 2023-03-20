@@ -82,6 +82,7 @@ function validate() {
 				title: lesson_name,
 				start: start,
 				end: end,
+				rCount: '0',
 				lesson_category: lesson_category,
 				lesson_capacity: lesson_capacity
 	};

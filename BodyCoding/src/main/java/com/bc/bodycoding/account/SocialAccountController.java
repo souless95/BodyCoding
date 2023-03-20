@@ -167,6 +167,7 @@ public class SocialAccountController {
 //				session.setAttribute("UserInfo", socialdao.kakaoUserInfo(mem_id));
 				session.setAttribute("UserName", mem_name);
 				session.setAttribute("UserEmail", mem_id);
+				session.setAttribute("UserPoint", info.getMem_point());
 				return "redirect:main"; 
 			}
 			

@@ -106,7 +106,8 @@ $(document).ready(function() {
 		                            <ul>
 		                                <li><a class="btn" href="reservation.do">수업예약</a></li>
 		                                <li><a class="btn" href="reservated.do">예약내역</a></li>
-		                                <li><a class="btn" href="routineForMem.do">루틴</a></li>
+		                                <li><a class="btn" href="vdCounting.do">운동기록</a></li>
+		                                <li><a class="btn" href="routineForMem.do">운동루틴</a></li>
 		                                <li><a class="btn" href="chart">체중그래프</a></li>
 		                            </ul>
 		                        </div>
@@ -120,7 +121,6 @@ $(document).ready(function() {
 							<div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 								<div class="card-body">
 		                            <ul>
-		                                <li><a class="btn" href="vdCounting.do">이용권차감</a></li>
 		                                <li><a class="btn" href="payLog.do">결제내역</a></li>
 		                            </ul>
 		                        </div>

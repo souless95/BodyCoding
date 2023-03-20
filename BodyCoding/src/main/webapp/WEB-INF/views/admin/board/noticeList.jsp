@@ -52,7 +52,7 @@ $(document).ready(function(){
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th width="10%">공지게시여부</th>
+									<th width="10%">공지비공개여부</th>
 									<th width="10%">카테고리</th>
 									<th width="30%">공지 제목</th>
 									<th width="20%">작성자</th>

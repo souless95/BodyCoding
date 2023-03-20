@@ -45,9 +45,8 @@ pageContext.setAttribute("replaceChar", "\n");
 							<td>${dto.board_visitcount }</td>
 						</tr>
 						<tr style="border-bottom: 1px solid gray;">
-							<th style="vertical-align: middle">내용</th>
-							<td colspan="4"
-								style="height: 300px; vertical-align: top; padding-top: 10px; padding-bottom: 10px;">
+							<td colspan="5"
+								style="height: 300px; vertical-align: top; padding-top: 10px; padding-bottom: 10px; padding-left: 70px;">
 								${fn:replace(dto.board_contents, replaceChar, "<br/>")}
 								
 								<c:set var="board_file" value="${not empty dto.board_file}" />

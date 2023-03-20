@@ -38,9 +38,7 @@ public interface memboardService {
 	//신고하기에서 insert하기
 	public int insertreport(BoardDTO boardDTO);
 	
-	
 	//댓글 작성하기
-	//public int insertreply(ReplyDTO replyDTO);
 	public int insertreply(BoardDTO boardDTO);
 	
 	public List<BoardDTO> selectreply(BoardDTO boardDTO);

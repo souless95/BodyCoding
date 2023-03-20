@@ -119,10 +119,10 @@ function login(){
 				   	</div>
 				</div>
 				<div class="like_btn">
-					<c:if test="${not empty UserName && UserName ne trainerInfo.mem_name }">
+					<c:if test="${not empty UserName && 'ROLE_MEMBER' eq UserInfo.authority}">
 						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="location.href='membershipPurchase.do'">PT 등록하기(결제)</button>
 					</c:if>
-					<c:if test="${empty UserName && UserName ne trainerInfo.mem_name }">
+					<c:if test="${empty UserName}">
 						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="login();">PT 등록하기(로그인)</button>
 					</c:if>
 					<button type="button" class="custom-btn btn-1" onclick="location.href='trainer'">목록으로</button>
@@ -161,7 +161,7 @@ function login(){
 			</c:if>	
 		</div>
 		<div class="rec_content">
-			<c:if test="${not empty UserName && UserName ne trainerInfo.mem_name }">
+			<c:if test="${not empty UserName && 'ROLE_MEMBER' eq UserInfo.authority}">
 				<form method="post" action="trainerReview">
 					<input type="hidden" name="review_subject" value="${trainerInfo.mem_id }"/>
 					<input type="hidden" name="gym_code" value="${trainerInfo.gym_code }"/>

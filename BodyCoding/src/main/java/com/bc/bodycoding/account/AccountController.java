@@ -78,13 +78,13 @@ public class AccountController {
    public String login1(HttpSession session, MemberDTO memberDTO) {
       
       MemberDTO UserInfo = accountdao.login(memberDTO);
-      
       try {
          session.setAttribute("UserInfo", UserInfo);
          session.setAttribute("UserName", accountdao.login(memberDTO).getMem_name());
          session.setAttribute("UserEmail", accountdao.login(memberDTO).getMem_id());
          session.setAttribute("Authority", accountdao.login(memberDTO).getAuthority());
          session.setAttribute("UserGymCode", accountdao.login(memberDTO).getGym_code());
+         session.setAttribute("UserPoint", accountdao.login(memberDTO).getMem_point());
          
          return "redirect:main";
       } 

@@ -112,27 +112,25 @@ public class memboardController {
 		String userEmail = (String) session.getAttribute("UserEmail");
 		model.addAttribute("mem_id", userEmail);
 		
-		String uName = req.getParameter("mem_name");
-		
-		BoardDTO boardDTO = new BoardDTO();
+		//로그인한 사용자 정보를 가져옴
 		MemberDTO memberDTO = new MemberDTO();
-		
-		model.addAttribute("mem_name", uName);
 		memberDTO.setMem_id(userEmail);
-		memberDTO.setMem_name(uName);
+		memberDTO = memberdao.selectinfo(memberDTO);
+		model.addAttribute("mdto", memberDTO);
+		System.out.println(memberDTO);
 		
-		memberDTO = memberdao.selectDT(memberDTO);
-		
+		//선택한 게시글 정보를 가져옴
+		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		System.out.println(boardDTO);
-		//view페이지에서 쓰기위해서 dto이름에 boardDTO정보저장
 		model.addAttribute("dto", boardDTO);
 		
+		//댓글 목록을 가져옴
 		boardDTO.setBoard_idx(boardDTO.getBoard_idx());
 		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
-		
 		model.addAttribute("rdto", replyDTOList);
-		
+		System.out.println(replyDTOList);
+				
 		//조회수 증가
 		int result = memboarddao.updateVisitCount(boardDTO);
 		if(result == 1) {
@@ -141,6 +139,8 @@ public class memboardController {
 			System.out.println("조회수 증가 실패");
 		}
 		
+		System.out.println("선택한 게시글 번호 : " + boardDTO.getBoard_idx());
+							
 			return "member/board/detailmemboard";
 	}
 	
@@ -236,17 +236,15 @@ public class memboardController {
 	//댓글등록
 	@RequestMapping(value="/insertreply.do", method=RequestMethod.POST)
 	public String insertreply(BoardDTO boardDTO, HttpSession session,
-			HttpServletRequest req) {
-		
+			HttpServletRequest req, Model model) {
+				
 		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
 		
 		String board_idx = req.getParameter("board_idx");
 		System.out.println(boardDTO);
 		
 		int result = memboarddao.insertreply(boardDTO);
-	
 		if(result==1)
-				
 		System.out.println("댓글 등록이 완료되었습니다.");
 			
 		return "redirect:/detailmemberboard.do?board_idx="+board_idx;

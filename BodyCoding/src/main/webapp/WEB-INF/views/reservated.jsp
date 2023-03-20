@@ -16,7 +16,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$('button[type="button"]').on('click', function() {
+		$('.cancel').on('click', function() {
 			var lessonIdx = $(this).data('lessonidx');
 			console.log(lessonIdx);
 			var deletetion = confirm(" 일정을 취소하시겠습니까?");
@@ -62,6 +62,7 @@
 	line-height: 38px;
 	color:black;
 	background-color: gray;
+	cursor: default;
   }
 </style>
 </head>
@@ -99,7 +100,7 @@
 										var="formattedNow" /> <c:if
 										test="${s.lesson_day.substring(0, 10) ne formattedNow}">
 										<!-- 예약 당일이 아닌 경우에 출력할 내용 -->
-										<button type="button" class="cancelO"
+										<button type="button" class="cancel cancelO"
 											data-lessonidx='${s.lesson_idx}'
 											>예약 취소</button>
 									</c:if> <c:if test="${s.lesson_day.substring(0, 10) eq formattedNow}">

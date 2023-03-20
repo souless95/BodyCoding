@@ -32,5 +32,6 @@ public interface IPurchaseService {
 	public List<ProductDTO> selectPayLog(String mem_id);
 	public List<ProductDTO> selectPayLogDetail(String order_idx);
 	public ProductDTO selectPayLogOne(String order_idx);
+	public String selectPoint(String mem_id);
 
 }

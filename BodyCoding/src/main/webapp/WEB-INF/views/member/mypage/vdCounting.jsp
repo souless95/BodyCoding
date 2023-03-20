@@ -31,10 +31,7 @@
 		  		</c:if>
 			</c:forEach>
 		</c:if>
-	</div>
 	<br />
-	
-	<div>
 		<table style="width:80%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
 			<thead>
 				<tr style="color:white; background-color: #01538D;">

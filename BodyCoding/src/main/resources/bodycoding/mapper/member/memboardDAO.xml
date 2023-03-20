@@ -144,8 +144,8 @@
 	<select id="selectreply" parameterType="String" resultType="global.dto.BoardDTO">
 		SELECT r.*, m.mem_name
 			FROM reply r
-			JOIN freeboard fb ON r.board_idx = fb.board_idx
-			JOIN member m ON fb.mem_id = m.mem_id
+			INNER JOIN freeboard fb ON r.board_idx = fb.board_idx
+			INNER JOIN member m ON fb.mem_id = m.mem_id
 			WHERE r.board_idx=#{board_idx}
 			ORDER BY r.reply_idx DESC
 	</select>
@@ -155,13 +155,15 @@
 		update reply set reply_cont = #{reply_cont}
 		where reply_idx= #{reply_idx}
 	</update>
+	
 	<!-- 댓글 작성하기 -->
 	<insert id="insertreply" parameterType="global.dto.BoardDTO">
-		INSERT INTO reply (
-			reply_idx, board_idx,  mem_id, reply_cont)
-		VALUES 
-			(bodycoding_seq.nextval, #{board_idx}, #{mem_id}, #{reply_cont})
+	    INSERT INTO reply (
+	        reply_idx, board_idx,  mem_id, mem_name, reply_cont)
+	    VALUES 
+	        (bodycoding_seq.nextval, #{board_idx}, #{mem_id}, #{mem_name}, #{reply_cont})
 	</insert>
+
 	<!--  댓글 삭제  -->
 	<delete id="deletereply" parameterType="global.dto.BoardDTO">
 		delete from reply where reply_idx=#{reply_idx}

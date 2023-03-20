@@ -35,6 +35,13 @@
 		delete from MEMBER where mem_id=#{mem_id} 
 	</delete>
 	
+	<select id="selectinfo" parameterType="String" resultType="global.dto.MemberDTO">
+	
+		SELECT *
+		  FROM member
+		  WHERE mem_id = #{mem_id}
+	</select>
+	
 	<select id="selectFT"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
@@ -92,14 +99,14 @@
 	</delete>
 	
 	<select id="getPrevMEx" parameterType="global.dto.ExDTO" resultType="global.dto.ExDTO">
-		select r.*, lesson_category "EXERCISE_TYPE", trainer_id, lesson_day "Training_date", mem_name, LESSON_START_TIME from reservation r
+		select r.*, lesson_category "EXERCISE_TYPE", trainer_id, lesson_day "Training_date", mem_name, LESSON_START_TIME, reservation_idx from reservation r
 		inner join lesson l on l.lesson_idx = r.lesson_idx  
 		inner join member m on r.user_id = m.mem_id 
 		where trainer_id=#{trainer_id} and user_id=#{user_id} and lesson_day <![CDATA[<]]> sysdate order by lesson_day desc
 	</select> 
 	
 	<select id="getPrevEx" parameterType="global.dto.ExDTO" resultType="global.dto.ExDTO">
-		select r.*, lesson_category "EXERCISE_TYPE", trainer_id, lesson_day "Training_date", mem_name, LESSON_START_TIME from reservation r
+		select r.*, lesson_category "EXERCISE_TYPE", trainer_id, lesson_day "Training_date", mem_name, LESSON_START_TIME, reservation_idx from reservation r
 		inner join lesson l on l.lesson_idx = r.lesson_idx  
 		inner join member m on r.user_id = m.mem_id 
 		where trainer_id=#{trainer_id} and lesson_day <![CDATA[<]]> sysdate order by lesson_day desc

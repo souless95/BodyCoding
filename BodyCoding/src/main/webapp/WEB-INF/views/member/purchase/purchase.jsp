@@ -198,10 +198,12 @@ function errCallBackT(errData){
 	margin-right: 1%;
 	margin-bottom: 1%;
 }
+.card:after, .trainer:after, .product:after, .seleted:after{
+	clear: both;
+}
 .product:hover, .trainer:hover, .seleted {
 	background-color: #F9BF52;
 	color: white;
-	border:none;
 }
 </style>
 <%@ include file="../../../../inc/Top.jsp" %>
@@ -219,7 +221,11 @@ function errCallBackT(errData){
 		      <select name="gym_code" id="gymSelect">
 		            <option value="">지점을 선택해주세요</option>
 		            <c:forEach items="${gymList}" var="gym" varStatus="loop">
-		            <option value="${gym.gym_code}">${gym.mem_name}</option>
+		            <option value="${gym.gym_code}"
+		            <c:if test="${gym.gym_code eq gym_code}">
+		             selected
+		            </c:if>
+		            >${gym.mem_name}</option>
 		            </c:forEach>
 		      </select>
 	      </div>
@@ -250,7 +256,7 @@ function errCallBackT(errData){
 	     <div class="col-lg-2">
 	     <strong><span id="tTitle" style="display:none;">트레이너 선택</span></strong>
 	     </div>
-	     <div class="col-lg-8" align="left" id="show_trainer"></div>
+	     <div class="col-lg-8" id="show_trainer"></div>
 	     <div class="col-lg-1"></div>
       </div>
       <div>

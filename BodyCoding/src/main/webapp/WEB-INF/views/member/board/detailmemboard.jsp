@@ -99,9 +99,6 @@ pageContext.setAttribute("replaceChar", "\n");
 													<c:if test="${rdto.mem_id eq mem_id}">
 														<input type="hidden" name="board_idx" value="${dto.board_idx }" />
 														<input type="hidden" name="board_idx" value="${rdto.reply_idx }" />
-													<%-- <button type="button" class="btn btn-primary" onclick="openUpdateModal(${rdto.reply_idx})">수정</button> --%>
-													<!--  <button type="button" class="btn btn-primary" onclick="location.href='updatereply.do?reply_idx=${rdto.reply_idx }&board_idx=${dto.board_idx }'">수정</button>-->
-													
 														<div>
 															<button type="button" style="margin-bottom:40px; width:60px; height:30px; margin: 2px; display: inline-block; margin-top:40px; "
 															 class="custom-btn btn-1" onclick="setUpdateForm(${rdto.reply_idx}, '${rdto.reply_cont}');">수정</button>
@@ -142,9 +139,9 @@ pageContext.setAttribute("replaceChar", "\n");
 		<div style="width:90%; margin-left:15px; margin-bottom:20px; margin-top:-10px;">
 			<form method="post" action="/insertreply.do">
 				<input type="hidden" name="board_idx" value="${dto.board_idx }" />
-				<input type="hidden" name="mem_id" value="${mem_name }" />
+				<input type="hidden" name="mem_id" value="${UserInfo.mem_name }" />
 				<div style="display: flex; flex-direction: column; width:88%; margin-top:10px;">
-			      <div><span style="font-weight:bold;">${mem_name }</span></div>
+			      <div><span style="font-weight:bold;">${UserInfo.mem_name }</span></div>
 			      <div style="display:flex; width:100%; margin-left:20px;">
 				      <input type="text" name="reply_cont" id="reply_cont" placeholder=" 댓글을 입력하세요."
 				       style="width:100%;border-radius: 6px; border: 1px solid #D7D7D7; margin-left:10px;"/>

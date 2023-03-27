@@ -18,7 +18,6 @@ public interface MemberService {
 	public int pointUpdate(MemberDTO memberDTO);
 	public String selectPoint(String mem_id);
 	
-	
 	public int selectRoutine(RoutineDTO routineDTO);
 	public int saveRoutine(RoutineDTO routineDTO);
 	public RoutineDTO getRoutine(RoutineDTO routineDTO);

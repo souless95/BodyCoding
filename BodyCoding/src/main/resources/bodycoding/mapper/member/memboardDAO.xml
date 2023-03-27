@@ -59,21 +59,22 @@
 	<!-- 게시글 상세보기 -->
  	<select id="memselect1" resultType="global.dto.BoardDTO" parameterType="com.bc.bodycoding.board.Criteria">
         <![CDATA[
-       SELECT fb.*, m.mem_name as mem_name
-         FROM (
-              SELECT ROWNUM AS RNUM, fb.*
-		  FROM (
-		    SELECT * 
-		    FROM freeboard fb
-		    WHERE 
-		      (${searchType} LIKE '%'||#{searchKeyword}||'%')
-		      AND (closed_chk = 'N') 
-		    ORDER BY board_category, board_idx DESC 
-		  ) fb
-		   JOIN member m ON fb.mem_id = m.mem_id
-		  WHERE ROWNUM <= #{pageStart} + #{perPageNum}
-		) 
-		WHERE RNUM >= #{pageStart} + 1 
+      
+		SELECT *
+	         FROM (
+	              SELECT ROWNUM AS RNUM, fb.*, m.mem_name
+			  FROM (
+			    SELECT * 
+			    FROM freeboard fb
+			    WHERE 
+			    (${searchType} LIKE '%'||#{searchKeyword}||'%')
+		      	AND (closed_chk = 'N') 
+			    ORDER BY board_category, board_idx DESC 
+			  ) fb
+			  INNER JOIN member m ON fb.mem_id = m.mem_id
+			  WHERE ROWNUM <= #{pageStart} + #{perPageNum}
+			) 
+			WHERE RNUM >= #{pageStart} + 1  
 		]]>
 	</select> 
 

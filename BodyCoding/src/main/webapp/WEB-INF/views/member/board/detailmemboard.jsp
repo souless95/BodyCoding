@@ -77,8 +77,10 @@ pageContext.setAttribute("replaceChar", "\n");
 							<input type="hidden" value="${dto.board_idx }">
 							<!--  <button type="button" onclick="location.href='report.do?board_idx=' + parseInt('${dto.board_idx}')">신고하기</button>-->
 							<c:if test="${dto.board_category eq '자유' }">
-								<button type="button" style="margin:0px; width:90px;" class="custom-btn btn-1"
-									onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
+								<c:if test="${dto.mem_name ne UserName }">
+									<button type="button" style="margin:0px; width:90px;" class="custom-btn btn-1"
+										onclick="openReportForm('${dto.mem_id}', '${dto.board_idx}')">신고하기</button>
+								</c:if>
 							</c:if>
 						</div>
 					</div>

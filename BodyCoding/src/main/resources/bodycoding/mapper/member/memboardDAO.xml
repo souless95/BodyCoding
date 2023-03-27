@@ -52,8 +52,9 @@
 	</select> 
 
 	<select id="boardListCnt1" resultType="int" parameterType="com.bc.bodycoding.board.Criteria">
-	  	select count(*) from freeboard WHERE 
-			  	${searchType} LIKE '%'||#{searchKeyword}||'%'
+	  	select count(*) from freeboard fb 
+	  		INNER JOIN member m ON fb.mem_id = m.mem_id
+	  		WHERE ${searchType} LIKE '%'||#{searchKeyword}||'%'
 	</select>
 	
 	<!-- 게시글 상세보기 -->
@@ -61,16 +62,16 @@
         <![CDATA[
 		SELECT *
 	         FROM (
-	              SELECT ROWNUM AS RNUM, fb.*, m.mem_name
+	              SELECT ROWNUM AS RNUM, fb.*
 			  FROM (
 			    SELECT * 
 			    FROM freeboard fb
+			    INNER JOIN member m ON fb.mem_id = m.mem_id
 			    WHERE 
 			    (${searchType} LIKE '%'||#{searchKeyword}||'%')
 		      	AND (closed_chk = 'N') 
 			    ORDER BY board_category, board_idx DESC 
 			  ) fb
-			  INNER JOIN member m ON fb.mem_id = m.mem_id
 			  WHERE ROWNUM <= #{pageStart} + #{perPageNum}
 			) 
 			WHERE RNUM >= #{pageStart} + 1  

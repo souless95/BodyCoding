@@ -99,6 +99,7 @@ public class memboardController {
 	        paging.setTotalCount(boardListCnt);    
 		    // 게시글 리스트를 가져오는 코드 등
 		    List<Map<String, Object>> list = memboarddao.memselect1(cri);
+		    System.out.println(list);
 	        model.addAttribute("list", list);    
 	        model.addAttribute("paging", paging);
 		}

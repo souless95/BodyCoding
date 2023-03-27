@@ -60,7 +60,14 @@
 
                    	<td style="vertical-align:middle; padding-left:60px; text-align:left;">
                    		<span style="font-weight:bold;  color:#808080">[공지]</span>&nbsp;
-                    	<a style="color:red; font-weight:bold;" href="detailmemberboard.do?board_idx=${row.board_idx}">${row.board_title}</a>
+                    	<a style="color:red; font-weight:bold;" href="#" onclick="event.preventDefault(); 
+                         if ('${UserName}' == '') {
+                           alert('로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.');
+                           location.href = 'login.do';
+                         } else {
+                           location.href = 'detailmemberboard.do?board_idx=${row.board_idx}&mem_name=${row.mem_name}';
+                         }">${row.board_title}</a>
+
                     </td>
                     
                     <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_name}</td>
@@ -74,7 +81,17 @@
             <c:if test="${row.board_category ne '공지'}">
                 <tr style="width:100%; height:45px; border-bottom:1px solid #ccc; vertical-align: middle;">
                     <td style="vertical-align:middle; text-align:center;">${row.board_idx}</td>
-                    <td style="vertical-align:middle; text-align:center;"><a href="detailmemberboard.do?board_idx=${row.board_idx}&mem_name=${row.mem_name}"><span style="color:black;">${row.board_title}</span></a></td>
+                    <td style="vertical-align:middle; text-align:center;">
+	                   <a href="#" onclick="event.preventDefault(); 
+                         if ('${UserName}' == '') {
+                           alert('로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.');
+                           location.href = 'login.do';
+                         } else {
+                           location.href = 'detailmemberboard.do?board_idx=${row.board_idx}&mem_name=${row.mem_name}';
+                         }">
+                       <span style="color:black;">${row.board_title}</span>
+                       </a>
+                    </td>
                     <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_name}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_postdate}</td>
                     <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_visitcount}</td>

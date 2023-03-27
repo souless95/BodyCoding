@@ -59,7 +59,6 @@
 	<!-- 게시글 상세보기 -->
  	<select id="memselect1" resultType="global.dto.BoardDTO" parameterType="com.bc.bodycoding.board.Criteria">
         <![CDATA[
-      
 		SELECT *
 	         FROM (
 	              SELECT ROWNUM AS RNUM, fb.*, m.mem_name

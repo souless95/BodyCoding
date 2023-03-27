@@ -15,7 +15,7 @@
 	<div class="sub_container">
 	<%@ include file="../../../../inc/mypageside.jsp"%>
 	<br />
-	<h2>이용권 차감 내역</h2>
+	<h2>운동 기록</h2>
 	<hr style="border: 1px solid #01538D;">
 		<c:if test="${empty newVD}">
 			<strong style="font-size: 1.1em;">${user_name} 회원님</strong>은 현재 이용 중인 횟수형 멤버쉽이 없습니다.

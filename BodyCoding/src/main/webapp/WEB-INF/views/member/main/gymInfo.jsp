@@ -17,10 +17,9 @@ element.style {
 }
 .rec_view_top{
 	border-top: 1px solid #ececec;
-	padding-top: 60px;
+	padding-top: 40px;
 	border-bottom: 1px solid #ececec;
-	padding-bottom: 60px;
-	height: 550px;
+	height: 450px;
 }
 .rec_view_top .rec_view_img{
     padding-bottom: 60px;
@@ -40,7 +39,6 @@ element.style {
 }
 .rec_view_info .rec_exp{
 	padding: 35px 0;
-	border-bottom:  1px solid #f6f6f6;
 }
 .rec_exp .prod_title{
     font-size: 30px;
@@ -66,9 +64,8 @@ element.style {
     margin-top: 20px;
 }
 .rec_content {
-    padding-top: 70px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid #ececec;
+    padding-top: 40px;
+    padding-bottom: 20px;
 }
 .xans-board-commentwrite {
     margin: 30px 0 0;
@@ -124,7 +121,7 @@ window.onload = function() {
 				<img src="/static/uploads/gym/${memList.mem_img }">
 			</div>
 			<div class="fr rec_view_info">
-				<div class="rec_exp">
+				<div class="rec_exp" style="padding-top: 0;">
 					<h2 class="prod_title"> ${memList.mem_name }</h2>
 					<p class="s_title"><h4>지점 전화번호</h4>${memList.mem_phone }</p>
 					<p class="s_title"><h4>지점 주소 </h4> ${memList.mem_address }</p>

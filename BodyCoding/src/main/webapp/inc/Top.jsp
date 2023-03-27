@@ -113,7 +113,7 @@
                      <a href="/Freeboard.do">Board</a>
                      <ul> 
                         <li><a href="/Freeboard.do">Board</a></li>
-                        <li><a href="#" onclick="openChatRoom(event, '${UserEmail}', '${UserName }');">1:1문의(웹소켓 채팅)</a></li>
+                        <li><a href="#" onclick="openChatRoom(event, '${UserEmail}', '${UserName }');">1:1문의</a></li>
                      </ul>
                   </li>
 				</ul>

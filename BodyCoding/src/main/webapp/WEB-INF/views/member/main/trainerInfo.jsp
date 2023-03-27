@@ -99,13 +99,12 @@ function login(){
 				<img src="/static/uploads/trainer/${trainerInfo.mem_img}">
 			</div>
 			<div class="fr rec_view_info">
-				<div class="rec_exp">
+				<div class="rec_exp" style="padding: 0;">
 					<h2 class="prod_title">  ${trainerInfo.mem_name}</h2>
-					<p class="s_title"><h4>트레이너 한마디</h4> ${trainerInfo.mem_comment }</p>
-					<div class="text_box">
-						<strong>소속 지점명</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						${gymInfo }
-					</div>
+					<p class="s_title" style="color: #383838;">
+						<b>트레이너 한마디</b>&nbsp&nbsp ${trainerInfo.mem_comment }<br>
+						<b>트레이너 경력</b><br> ${trainerInfo.mem_career }<br>
+						<b>소속 지점명</b>&nbsp&nbsp ${gymInfo }
 				</div>
 				<div class="rec_mate">
 					<div class="star-ratings">
@@ -120,7 +119,7 @@ function login(){
 				</div>
 				<div class="like_btn">
 					<c:if test="${not empty UserName && 'ROLE_MEMBER' eq UserInfo.authority}">
-						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="location.href='membershipPurchase.do'">PT 등록하기(결제)</button>
+						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="location.href='membershipPurchase.do?gym_code=${trainerInfo.gym_code}'">PT 등록하기(결제)</button>
 					</c:if>
 					<c:if test="${empty UserName}">
 						<button type="button" class="custom-btn btn-1" style="width: 180px;" onclick="login();">PT 등록하기(로그인)</button>
@@ -130,6 +129,20 @@ function login(){
 			</div>
 		</div>
 		<div class="rec_content">
+			<c:if test="${empty avg_grade }">
+			<h3>후기</h3>
+			<table style="width:100%; border-top: 1px solid #01538D; border-bottom: 1px solid #01538D;">
+				<tr style="background-color:#01538D; color: white;">
+					<th width="20%"><strong>작성자</strong></th>
+					<th width="48%"><strong>내용</strong></th>
+					<th width="20%"><strong>평점</strong></th>
+					<th width="12%"><strong>작성일</strong></th>
+				</tr>
+				<tr>
+					<td colspan="4" style="text-align: center;">아직 등록되어 있는 후기가 없습니다.</td>
+				</tr>
+			</table>
+			</c:if>
 			<c:if test="${not empty avg_grade }">
 				<!-- <h3>평점 &nbsp : &nbsp ${avg_grade }/5</h3>  -->
 				<h3>후기</h3>

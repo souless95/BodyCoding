@@ -36,8 +36,7 @@
 						${fn:trim(fn:replace(fn:substring(date,0,11),'-',''))}${oList.order_idx}</td>
 						<td><a style="color: #01538D;" href="payLogDetail.do?order_idx=${oList.order_idx}">${oList.order_name}</a></td>
 						<td>${oList.order_status}</td>
-						<td>
-						${fn:substring(date,0,11)}</td>
+						<td>${fn:substring(date,0,11)}</td>
 				</tr>
 					</c:forEach>
 

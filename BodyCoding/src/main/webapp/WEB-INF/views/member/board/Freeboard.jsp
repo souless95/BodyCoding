@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>회원제 게시판</title>
 <style>
- 	
    
 </style>
 
@@ -25,7 +24,7 @@
 	            <select name="searchType" id="searchType" class="form-control" style="font-size:20px;">
 	                <option value="board_title">제목</option>
 	                <option value="board_contents">내용</option>
-	                <option value="mem_id">작성자</option>
+	                <option value="mem_name">작성자</option>
 	            </select>
 	        </div>
 	        &nbsp;&nbsp;

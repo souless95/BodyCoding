@@ -16,7 +16,7 @@
 		<!-- side -->
 		<div id="layoutSidenav_content">
 			<div>
-				<div class="card mb-4">
+				<div class="container">
 					<div class="card-header">
 						<h2>게시글 등록</h2>
 					</div>

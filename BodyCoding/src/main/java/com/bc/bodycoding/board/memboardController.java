@@ -46,43 +46,6 @@ public class memboardController {
 		return "member/board/Freeboard";
 	}
 	
-	//검색기능
-	/*
-	@RequestMapping("/searchmemberboard.do")
-	public String searchBoard(@ModelAttribute("cri") Criteria cri, Model model) {
-	    int boardListCnt = memboarddao.searchBoardCnt(cri);
-	    Paging paging = new Paging();
-	    paging.setCri(cri);
-	    paging.setTotalCount(boardListCnt);    
-	    List<Map<String, Object>> list = memboarddao.searchBoard(cri);
-	    model.addAttribute("list", list);    
-	    model.addAttribute("paging", paging);  
-	    return "member/board/Freeboard";
-	}	*/
-	
-	
-//	@RequestMapping(value = "/searchmemberboard.do", method = RequestMethod.GET)
-//	public String searchMemberBoard(@RequestParam("searchType") String searchType,
-//	                                      @RequestParam("searchKeyword") String searchKeyword,
-//	                                      Criteria cri, Model model) throws Exception {
-//			int boardListCnt = memboarddao.boardListCnt();
-//	        // 페이징 객체
-//	        Paging paging = new Paging();
-//	        // 검색 조건을 Criteria 객체에 설정
-//	        cri.setSearchType(searchType);
-//	        cri.setSearchKeyword(searchKeyword);
-//	        
-//	        paging.setCri(cri);
-//	        paging.setTotalCount(boardListCnt);    
-//	
-//		    // 게시글 리스트를 가져오는 코드 등
-//		    List<Map<String, Object>> list = memboarddao.memselect(cri);
-//	        model.addAttribute("list", list);    
-//	        model.addAttribute("paging", paging); 
-//			return "member/board/Freeboard";
-//		
-//	}
-	
 	//검색어 있을때 처리
 	@RequestMapping(value = "/searchmemberboard.do", method = RequestMethod.GET)
 	public String searchMemberBoard(@RequestParam("searchType") String searchType,

@@ -31,7 +31,7 @@
 		font-weight: bold;
 	}
 	textarea {
-		width: 100%;
+		width: 96%;
 		height: 200px;
 		padding: 10px;
 		border: 1px solid #ccc;
@@ -69,9 +69,10 @@
 			<label for="report_content">신고 내용</label>
 			<textarea name="report_content" id="report_content" required></textarea>
 		
-		<!--  <div> 컨트롤러랑 수정해야하는데 나중에 ...ㅜㅜ
-			<label for="reporter">신고자 : ${mem_name }</label>
-		</div> -->
+		<div> 
+			<label for="reporter">신고자 : ${mdto.mem_name }</label>
+		</div>
+		
 			<br>
 			<input type="submit" value="등록" onclick="submitForm()">
 	</form>

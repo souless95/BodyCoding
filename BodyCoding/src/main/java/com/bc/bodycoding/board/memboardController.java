@@ -161,7 +161,7 @@ public class memboardController {
 		return "redirect:Freeboard.do";
 	}
 	
-	//팝업창에서 insert하는 화면으로 이동
+	//신고하기 화면 
 	@RequestMapping(value="/report.do", method = RequestMethod.GET)
 	public String report(HttpServletRequest req, Model model, BoardDTO boardDTO,HttpSession session) {
 		
@@ -172,7 +172,11 @@ public class memboardController {
 		model.addAttribute("dto", boardDTO);
 		String userEmail = (String) session.getAttribute("UserEmail");
 		model.addAttribute("mem_id", userEmail);
-		boardDTO = memboarddao.memselectOneBoard(boardDTO);
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setMem_id(userEmail);
+		memberDTO = memberdao.selectinfo(memberDTO);
+		model.addAttribute("mdto", memberDTO);
 		
 		return "member/board/report";
 	}

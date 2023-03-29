@@ -56,20 +56,6 @@
 		]]>
 	</select> 
 
-	<!-- 게시글 상세보기 -->
-	<select id="memselectOneBoard"
-		parameterType="global.dto.BoardDTO"
-		resultType="global.dto.BoardDTO">
-		<!-- select * from freeboard where board_idx=#{board_idx} -->
-		SELECT FB.*, COUNT(R.board_idx) AS count, MAX(FB.closed_chk) AS closed_chk
-			FROM freeboard FB
-			LEFT JOIN report R ON FB.board_idx = R.board_idx
-			WHERE FB.board_idx = #{board_idx}
-			GROUP BY FB.board_idx, FB.board_category, FB.mem_id, FB.board_title, 
-					FB.board_contents, FB.board_file, FB.board_visitcount,
-					 FB.board_postdate, FB.closed_chk 
-	</select>
-	
 	<!-- 신고하기 등록 -->
 	<insert id="insertreport" parameterType="global.dto.BoardDTO">
 		INSERT INTO report (

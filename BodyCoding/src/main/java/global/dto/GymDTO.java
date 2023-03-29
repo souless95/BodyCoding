@@ -1,6 +1,5 @@
 package global.dto;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

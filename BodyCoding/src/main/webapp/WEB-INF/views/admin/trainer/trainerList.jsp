@@ -7,11 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="../static/admin/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body sb-nav-fixed>
+<script type="text/javascript">
+function msg(){
+	var msg = "트레이너 등록이 완료 되었습니다.";
+	alert(msg);
+}
+<c:if test="${not empty msg}">
+window.onload = msg;
+</c:if> 
+</script>
 	<!-- top메뉴  -->
 	<%@ include file ="../../admin/inc/top.jsp" %>
 		<div id="layoutSidenav">
@@ -54,8 +60,8 @@
 								</c:forEach>
 							</tbody>
 							</table>
-							<button type="button" onclick="location.href='trainerRegist.do'">트레이너 등록</button> 
-							<button type="button" onclick="location.href='main/admin'">홈으로</button> 
+							<button type="button" class="custom-btn btn-7" onclick="location.href='/admin/trainer/trainerRegist'">트레이너 등록</button> 
+							<button type="button" class="custom-btn btn-7" onclick="location.href='main/admin'">홈으로</button> 
 		        		</div>
 					</div>
 				</main>
@@ -63,9 +69,5 @@
 			<%@ include file ="../../admin/inc/bottom.jsp" %>
 			</div>
 		</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="../static/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>

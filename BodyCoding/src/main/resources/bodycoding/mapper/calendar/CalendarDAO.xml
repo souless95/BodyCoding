@@ -7,15 +7,126 @@
 	
 <mapper namespace="com.bc.bodycoding.calendar.CalendarService">
 
-<insert id="insertSchedule"
-	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
-	insert into calendar values (calendar_seq.nextval, #{title}, #{start1})
-</insert>
-
 <select id="loadCList"
 	parameterType="com.bc.bodycoding.calendar.CalendarDTO"
 	resultType="com.bc.bodycoding.calendar.CalendarDTO">
-	select * from calendar
+	select * from lesson where trainer_id=#{trainer_id}
 </select>
+
+<insert id="insertSchedule" parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	<selectKey keyProperty="lesson_idx" resultType="java.lang.String" order="BEFORE">
+    	select bodycoding_seq.nextval as lesson_idx from dual
+	</selectKey>
+ 	insert into lesson (lesson_idx, trainer_id, lesson_category, lesson_name,
+  		lesson_day, lesson_start_time, lesson_end_time, lesson_capacity)
+ 	values (#{lesson_idx}, #{trainer_id}, #{lesson_category}, #{lesson_name},
+  		#{lesson_day}, #{lesson_start_time}, #{lesson_end_time}, #{lesson_capacity})
+</insert>
+
+<delete id="deleteSchedule"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	delete from lesson where lesson_idx=#{lesson_idx}
+</delete>
+
+<update id="updateSchedule"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	update lesson set lesson_day=#{lesson_day}, lesson_start_time=#{lesson_start_time},
+	lesson_end_time=#{lesson_end_time} where lesson_idx=#{lesson_idx}
+</update>
+
+<update id="updateSchedule2"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	update lesson set lesson_end_time=#{lesson_end_time} where lesson_idx=#{lesson_idx}
+</update>
+
+<select id="selectSchedule"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO"
+	resultType="com.bc.bodycoding.calendar.CalendarDTO">
+	select * from lesson where lesson_idx=#{lesson_idx}
+</select>
+
+<update id="updateSchedule4"
+	parameterType="com.bc.bodycoding.calendar.CalendarDTO">
+	update lesson set lesson_name=#{lesson_name}, lesson_category=#{lesson_category}, lesson_capacity=#{lesson_capacity}
+	where lesson_idx=#{lesson_idx}
+</update>
+
+<select id="getInfo"
+	parameterType="global.dto.ProductDTO"
+	resultType="global.dto.ProductDTO">
+	select user_id, trainer_id, mem_name "trainer_name", membership_end, product_type, product_category, membership_count
+	from membership m
+	inner join product p on m.product_idx=p.product_idx
+	inner join member mb on m.trainer_id=mb.mem_id
+	where user_id = #{user_id}
+</select>
+
+<select id="getScheduleForMem" resultType="com.bc.bodycoding.calendar.CalendarDTO">
+	SELECT l.*, mem_name "trainer_name" FROM lesson l
+	inner join member m on m.mem_id=l.trainer_id
+    where lesson_idx NOT IN (SELECT lesson_idx FROM reservation WHERE user_id = #{arg0})
+    and lesson_day <![CDATA[>]]>= sysdate-1
+    <if test="param1 == null or param1.size() == 0">
+    and 1=2
+    </if>
+    <if test="param1 != null and param1.size() > 0">
+    and (
+    <foreach collection="param1" item="list" separator="OR">
+        (trainer_id = #{list.trainer_id} AND lesson_category = #{list.product_category})
+        <if test="list.product_type.contains('기간')">
+            AND lesson_day <![CDATA[<]]>= #{list.membership_end}
+        </if>
+    </foreach>
+    ) 
+    </if>
+    order by lesson_day, lesson_start_time
+</select>
+
+<select id="getRcount"
+	parameterType="String"
+	resultType="int">
+	select count(*) from reservation where lesson_idx=#{lesson_idx}
+</select>
+
+<select id="getLesson"
+	parameterType="String"
+	resultType="String">
+	select lesson_idx from reservation where user_id=#{user_id}
+</select>
+
+<select id="getNames"
+	parameterType="String"
+	resultType="String">
+	select mem_name from reservation r 
+	inner join member m on m.mem_id = r.user_id
+	where lesson_idx=#{lesson_idx}
+</select>
+
+<insert id="reservating" parameterType="com.bc.bodycoding.calendar.ReservationDTO">
+ 	insert into reservation values (bodycoding_seq.nextval, #{lesson_idx}, #{user_id}, sysdate)
+</insert>
+
+<select id="getMyLesson"
+	resultType="com.bc.bodycoding.calendar.CalendarDTO">
+	SELECT l.*, mem_name "trainer_name" FROM lesson l
+	inner join member m on m.mem_id=l.trainer_id
+    where lesson_day <![CDATA[>]]> sysdate-1
+    <if test="list != null and !list.isEmpty()">
+    and lesson_idx in
+		<foreach collection="list" item="lessonId" open="(" separator="," close=")">
+	   		#{lessonId}
+	    </foreach>
+    </if>
+    <if test="list.isEmpty()">
+    and lesson_idx = ''
+    </if>
+    order by lesson_day desc, lesson_start_time desc
+</select>
+
+<delete id="reservatedDeletion"
+	parameterType="com.bc.bodycoding.calendar.ReservationDTO">
+	delete from reservation where lesson_idx=#{lesson_idx} and user_id=#{user_id}
+</delete>
+
 
 </mapper>

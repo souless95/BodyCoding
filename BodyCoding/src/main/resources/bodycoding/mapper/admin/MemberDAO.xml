@@ -10,7 +10,7 @@
 	<select id="select"
 		parameterType="global.dto.MemberDTO"
 		resultType="global.dto.MemberDTO">
-		select * from member where mem_type like '%MEMBER%' order by mem_regidate desc
+		select * from member where authority like '%MEMBER%' order by mem_regidate desc
 	</select>
 
 	<select id="selectOneMember"
@@ -19,6 +19,138 @@
 		select * from MEMBER where mem_id=#{mem_id}
 	</select>
 
+	<update id="pointUpdate"
+		parameterType="global.dto.MemberDTO">
+		update MEMBER set mem_point = mem_point + #{mem_point} where mem_id=#{mem_id}
+	</update>
+	
+	<select id="selectPoint"
+		parameterType="String"
+		resultType="String">
+		select mem_point from MEMBER where mem_id=#{mem_id}	
+	</select>
+	
+	<delete id="delete"
+		parameterType="global.dto.MemberDTO">
+		delete from MEMBER where mem_id=#{mem_id} 
+	</delete>
+	
+	<select id="selectinfo" parameterType="String" resultType="global.dto.MemberDTO">
+	
+		SELECT *
+		  FROM member
+		  WHERE mem_id = #{mem_id}
+	</select>
+	
+	<select id="selectFT"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		SELECT m.*, product_type, ms.trainer_id, product_name
+		FROM member m
+		INNER JOIN membership ms ON m.mem_id = ms.user_id
+        INNER JOIN product p ON p.product_idx = ms.product_idx
+		WHERE ms.trainer_id = #{mem_id}
+	</select>
+	
+	<select id="selectDT"
+		parameterType="global.dto.MemberDTO"
+		resultType="global.dto.MemberDTO">
+		SELECT distinct m.*, product_type, product_name
+		FROM member m
+		INNER JOIN membership ms ON m.mem_id = ms.user_id
+        INNER JOIN product p ON p.product_idx = ms.product_idx
+		WHERE ms.user_id = #{mem_id}
+	</select>
+	
+	<select id="getName"
+		parameterType="String"
+		resultType="String">
+		SELECT mem_name FROM member WHERE mem_id = #{user_id}
+	</select>
+	
+	<select id="selectRoutine"
+		parameterType="global.dto.RoutineDTO"
+		resultType="int">
+		SELECT count(*) FROM ROUTINE WHERE mem_id = #{mem_id} and yoil = #{yoil}
+	</select>
+	
+	<insert id="saveRoutine"
+	parameterType="global.dto.RoutineDTO">
+		INSERT INTO ROUTINE 
+    	VALUES (bodycoding_seq.nextval, #{mem_id}, #{yoil}, #{actname}, #{atime}, #{aset})
+	</insert>
+	
+	<update id="updateRoutine"
+		parameterType="global.dto.RoutineDTO">
+		UPDATE ROUTINE SET actname = #{actname}, atime = #{atime}, aset = #{aset}
+		WHERE mem_id=#{mem_id} and yoil=#{yoil}
+	</update>
+	
+	<select id="getRoutine"
+		parameterType="global.dto.RoutineDTO"
+		resultType="global.dto.RoutineDTO">
+		SELECT * FROM ROUTINE WHERE mem_id = #{mem_id} and yoil = #{yoil}
+	</select>
+	
+	<delete id="deleteRoutine"
+		parameterType="global.dto.RoutineDTO">
+		DELETE FROM ROUTINE
+		WHERE mem_id=#{mem_id} and yoil=#{yoil}
+	</delete>
+	
+	<select id="getPrevMEx" parameterType="global.dto.ExDTO" resultType="global.dto.ExDTO">
+		select r.*, lesson_category "EXERCISE_TYPE", trainer_id, lesson_day "Training_date", mem_name, LESSON_START_TIME, reservation_idx from reservation r
+		inner join lesson l on l.lesson_idx = r.lesson_idx  
+		inner join member m on r.user_id = m.mem_id 
+		where trainer_id=#{trainer_id} and user_id=#{user_id} and lesson_day <![CDATA[<]]> sysdate order by lesson_day desc
+	</select> 
+	
+	<select id="getPrevEx" parameterType="global.dto.ExDTO" resultType="global.dto.ExDTO">
+		select r.*, lesson_category "EXERCISE_TYPE", trainer_id, lesson_day "Training_date", mem_name, LESSON_START_TIME, reservation_idx from reservation r
+		inner join lesson l on l.lesson_idx = r.lesson_idx  
+		inner join member m on r.user_id = m.mem_id 
+		where trainer_id=#{trainer_id} and lesson_day <![CDATA[<]]> sysdate order by lesson_day desc
+	</select> 
+	
+	<select id="selectExrecord1"
+		parameterType="global.dto.ExDTO"
+		resultType="global.dto.ExDTO">
+		SELECT tl.*, mem_name FROM training_log tl
+		inner join member m on m.mem_id = tl.trainer_id
+		WHERE user_id = #{user_id} order by training_date desc
+	</select>
+	
+	<select id="selectExrecord2"
+		parameterType="global.dto.ExDTO"
+		resultType="global.dto.ExDTO">
+		SELECT tl.*, mem_name FROM training_log tl
+		inner join member m on tl.user_id = m.mem_id
+		WHERE trainer_id = #{trainer_id}
+	</select>
+	
+	<select id="selectone" parameterType="String"
+		resultType="global.dto.MemberDTO">
+		SELECT m.*, tl.training_comment, tl.training_log_idx, tl.training_date, p.product_name, p.product_description
+		FROM member m                                          
+		INNER JOIN training_log tl ON m.mem_id = tl.user_id
+		INNER JOIN membership ms ON ms.user_id = tl.user_id
+		INNER JOIN product p ON p.product_idx = ms.product_idx
+		WHERE tl.training_log_idx = #{training_log_idx}
+	</select>
+	
+	<update id="editExrecord" parameterType="global.dto.ExDTO" >
+		update training_log set training_comment = #{training_comment} where training_log_idx= #{training_log_idx}
+	</update>      
+	
+	<insert id="insertTL"
+	parameterType="global.dto.ExDTO">
+		INSERT INTO training_log 
+    	VALUES (bodycoding_seq.nextval, #{trainer_id}, #{exercise_type}, #{user_id}, #{training_comment}, to_date(#{training_date}, 'YYYY-MM-DD HH24:MI'))
+	</insert>	
+	
+	<delete id="deleteR" parameterType="global.dto.ExDTO">
+		delete from reservation where reservation_idx= #{reservation_idx}
+	</delete>  
 </mapper>	
 	
 	

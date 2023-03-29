@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
 	compileOnly 'org.projectlombok:lombok'
@@ -31,7 +31,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	//testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	//JSP 사용설정
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'	
@@ -39,6 +39,18 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation fileTree(dir:'libs',include:['*.jar'])
 	compileOnly 'org.springframework.boot:spring-boot-devtools'
+	//시큐리티 의존설정 추가
+	implementation 'org.springframework.security:spring-security-taglibs'
+	//이메일 의존설정 추가
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation group: 'org.apache.commons', name : 'commons-email', version:'1.4'
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	implementation 'commons-io:commons-io:2.11.0'    
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+	implementation 'commons-fileupload:commons-fileupload:1.5'
+	//웹소켓
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }
 
 tasks.named('test') {

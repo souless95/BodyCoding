@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bc.bodycoding.main.mypage.MypageService">
+
+	<select id="gymcheck"
+		parameterType='String'
+		resultType='global.dto.MemberDTO'>
+		select * from member where mem_id=#{mem_id}
+	</select>
+	
+	<select id="basicListM"
+		parameterType='String'
+		resultType='global.dto.MemberDTO'>
+		select mem_name, mem_phone, mem_address 
+		from member
+		where gym_code=#{gym_code} and authority='ROLE_ADMIN_SUB'
+	</select>
+	
+	<select id="basicListG"
+		parameterType='String'
+		resultType='global.dto.GymDTO'>
+		select gym_scale, facility_parking, facility_health, facility_yoga,
+			facility_gx, facility_pilates, facility_pt, facility_24hour,
+			facility_shower, facility_wear, facility_locker
+		from GYM_DETAIL
+		where gym_code=#{gym_code}
+	</select>
+	
+	<select id="weightchart"
+		parameterType="String"
+		resultType="global.dto.WeightDTO">
+		select * from mem_weight where mem_id=#{mem_id}
+	</select>
+	
+	<insert id="insertWeight"
+		parameterType="global.dto.WeightDTO">
+	  	insert into mem_weight(mem_id, mem_weight)
+	    	values (#{mem_id}, #{mem_weight})
+	</insert>
+</mapper>

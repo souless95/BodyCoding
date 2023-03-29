@@ -130,7 +130,7 @@ public class SocialAccountController {
 //			System.out.println("카카오 생일:"+kakaoProfile.getKakao_account().getBirthday());
 			
 			
-			String mem_id = kakaoProfile.getId().toString()+"@kakao.com(카톡)";
+			String mem_id = kakaoProfile.getId().toString()+"@kakao.com(kakao)";
 			String mem_gender =null;
 			if(kakaoProfile.getKakao_account().getGender().equals("female")) {
 				mem_gender = "F";
@@ -144,7 +144,8 @@ public class SocialAccountController {
 			
 			//바디코딩에 이미 회원가입되어있는지 찾기(이미 등록되어있는 아이디의 회원이름 mem_name)
 			String mem_name = socialdao.kakaoselect(mem_id);
-			
+			MemberDTO info = socialdao.kakaoinfoselect(mem_id);
+			System.out.println(mem_name);
 			if(mem_name==null) {
 				System.out.println("회원이 아니므로 회원가입을 진행합니다.");
 				//카카오톡 회원가입
@@ -153,11 +154,20 @@ public class SocialAccountController {
 				kakaoregister.put("mem_gender", mem_gender);
 				int result_kakao = socialdao.kakaoinsert(kakaoregister);
 				model.addAttribute("UserEmail",mem_id);
-				return "member/account/kakaologin";
+				model.addAttribute("gymList", socialdao.gymlistSelect());
+//				session.setAttribute("UserInfo", UserInfo);
+//				session.setAttribute("UserName", mem_name);
+				return "member/account/kakaoLogin";
 			}
 			
 			else {
+				session.setAttribute("UserInfo", info);
+				session.setAttribute("Authority", info.getAuthority());
+				System.out.println("elese후"+mem_name);
+//				session.setAttribute("UserInfo", socialdao.kakaoUserInfo(mem_id));
 				session.setAttribute("UserName", mem_name);
+				session.setAttribute("UserEmail", mem_id);
+				session.setAttribute("UserPoint", info.getMem_point());
 				return "redirect:main"; 
 			}
 			
@@ -171,6 +181,9 @@ public class SocialAccountController {
 				System.out.println("카카오 정보 추가등록 완료");
 			}
 			session.setAttribute("UserName", memberDTO.getMem_name());
+			session.setAttribute("UserEmail", memberDTO.getMem_id());
+			session.setAttribute("UserEmail", memberDTO.getAuthority());
 			return "redirect:main";
 		}
+		
 }

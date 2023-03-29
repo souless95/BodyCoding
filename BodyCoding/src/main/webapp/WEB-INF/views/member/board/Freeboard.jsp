@@ -4,44 +4,132 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-	<link rel="stylesheet" href="../bootstrap5.2.3/css/bootstrap.css">
-    <script src="../bootstrap5.2.3/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+<title>회원제 게시판</title>
+<style>
+   
+</style>
+
 </head>
 <body>
 	<!-- Header -->
-	<%@ include file="../../member/inc/Top.jsp" %>
+	<%@ include file="../../../../inc/Top.jsp" %>
 	
-	<!-- body부분 -->
-	<!-- 자유게시판 리스트가 나와야 하는 부분임 -->
-	<div class="container">
-		<table class="table table-hover table-striped">
-            <thead class="table-dark text-center">
-                <tr>
-                    <th style="width: 8%;">번호</th>
-                    <th style="width: 60%;">제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>조회수</th>
-                    <th>첨부</th>
+	<div class="container" style="margin-top:25px;">
+	
+	<div class="container-fluid" style="width:80%; text-align:left; padding-left:15px;" >
+	 	<div style="margin-left:147px; display: flex; margin-top:-15px;">
+	    <form method="get" action="searchmemberboard.do" style=" display: flex;">
+	        <div class="form-group" style="margin-top:15px;">
+	            <label for="searchType" >검색 종류</label>
+	            <select name="searchType" id="searchType" class="form-control" style="font-size:20px;">
+	                <option value="board_title">제목</option>
+	                <option value="board_contents">내용</option>
+	                <option value="mem_name">작성자</option>
+	            </select>
+	        </div>
+	        &nbsp;&nbsp;
+	         <div style="margin-top:15px;">
+	            <label for="searchKeyword">검색어</label>
+	            <input type="text" name="searchKeyword" id="searchKeyword" class="form-control" style="width:130px; height:35px;">
+	            <button type="submit" style="height:40px; margin-left:0px; width:60px; font-size:20px; font-weight:bold;" class="custom-btn btn-1" onclick="search()">검색</button>
+	        </div>
+	    	</form>
+		</div><!-- 검색끝 -->
+	 </div>		
+	
+	<div style="display: flex; justify-content: center;  margin-top:10px;">
+		<table style="width:80%; height:300px; margin-bottom:0px;">
+		    <thead>
+		        <tr style="border-bottom:1px solid #ccc; height:50px; vertical-align: middle;">
+		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">번호</td>
+		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">제목</td>
+		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">작성자</td>
+		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">작성일</td>
+		            <td style="vertical-align:middle; text-align:center; font-weight:bold; font-size:22px;">조회수</td>
+		        </tr>
+		    </thead>
+    	<tbody>
+        <c:forEach items="${list}" var="row" varStatus="loop">
+            <c:if test="${row.board_category eq '공지'}">
+                <tr style="width:100%; height:30px; border-bottom:1px solid #ccc; vertical-align: middle;">
+                    <td style="vertical-align:middle; text-align:center; justify-content:center;  height:45px; margin-top:5px; margin-bottom:5px; ">
+					  	<span style="height:30px; display:inline-block; width:60px; background-color: #FFE3E4; color: red;
+					  		text-align:center; border: 1px solid red; border-radius:10px; vertical-align:middle; line-height: 30px;">공지</span>
+					</td>
+
+                   	<td style="vertical-align:middle; padding-left:60px; text-align:left;">
+                   		<span style="font-weight:bold;  color:#808080">[공지]</span>&nbsp;
+                    	<a style="color:red; font-weight:bold;" href="#" onclick="event.preventDefault(); 
+                         if ('${UserName}' == '') {
+                           alert('로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.');
+                           location.href = 'login.do';
+                         } else {
+                           location.href = 'detailmemberboard.do?board_idx=${row.board_idx}&mem_name=${row.mem_name}';
+                         }">${row.board_title}</a>
+
+                    </td>
+                    
+                    <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_name}</td>
+                    <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_postdate}</td>
+                    <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_visitcount}</td>
                 </tr>
-            </thead>
-            <tbody>
-            	<c:forEach items="${boardList }" var="row" varStatus="loop">
-	                <tr>
-	                    <td>${row.board_idx }</td>
-	                    <td><a href="#">${row.board_title }</a></td>
-	                    <td class="text-center">${row.mem_id }</td>
-	                    <td class="text-center">${row.board_postdate }</td>
-	                    <td class="text-center">${row.board_visitcount }</td>
-	                    <td class="text-center"><i class="bi bi-pin-angle-fill"></i></td>
-	                </tr>
-	            </c:forEach>
-            </tbody>
-        </table>
+            </c:if>
+        </c:forEach>
+
+        <c:forEach items="${list}" var="row" varStatus="loop">
+            <c:if test="${row.board_category ne '공지'}">
+                <tr style="width:100%; height:45px; border-bottom:1px solid #ccc; vertical-align: middle;">
+                    <td style="vertical-align:middle; text-align:center;">${row.board_idx}</td>
+                    <td style="vertical-align:middle; text-align:center;">
+	                   <a href="#" onclick="event.preventDefault(); 
+                         if ('${UserName}' == '') {
+                           alert('로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.');
+                           location.href = 'login.do';
+                         } else {
+                           location.href = 'detailmemberboard.do?board_idx=${row.board_idx}&mem_name=${row.mem_name}';
+                         }">
+                       <span style="color:black;">${row.board_title}</span>
+                       </a>
+                    </td>
+                    <td style="vertical-align:middle; text-align:center;"class="text-center">${row.mem_name}</td>
+                    <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_postdate}</td>
+                    <td style="vertical-align:middle; text-align:center;" class="text-center">${row.board_visitcount}</td>
+                    <%-- 첨부보류 <td class="text-center"><i class="bi bi-pin-angle-fill"></i></td> --%>
+                </tr>
+            </c:if>
+	        </c:forEach>
+		    </tbody>
+		</table>
+	 </div>      
+	 
+	 	<div style="text-align:right; width:90%; margin-right:0px;">
+			<div>
+	            <button type="button" style="margin-top:10px; margin-right:0px; border-radius:5px; font-size:17px; height:45px; width:80px;" class="custom-btn btn-1" onclick="location.href='insertboard.do'">글쓰기</button>
+	        </div>
+		</div>
+	 
+        <div style="text-align:center; margin-top:10px; padding-top:10px;">
+	        <ul class="paging">
+			    <c:if test="${paging.prev}">
+			        <span style="font-size:25px;"><a href='<c:url value="/Freeboard.do?page=${paging.startPage-1}"/>'>이전</a></span>
+			    </c:if>
+			    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+			        <span style="font-size:25px;"><a href='<c:url value="/Freeboard.do?page=${num}"/>'>${num}</a></span>
+			    </c:forEach>
+			    <c:if test="${paging.next && paging.endPage>0}">
+			        <span style="font-size:25px;"><a href='<c:url value="/Freeboard.do?page=${paging.endPage+1}"/>'>다음</a></span>
+			    </c:if>
+			</ul>
+		</div>
 	</div>
 	<!-- footer -->
-	<%@ include file="../../member/inc/Bottom.jsp" %>
+	<%@ include file="../../../../inc/Bottom.jsp" %>
+<script>
+function search() {
+	  var searchType = document.getElementById("searchType").value;
+	  var searchKeyword = document.getElementById("searchKeyword").value;
+
+}
+</script>
 </body>
 </html>

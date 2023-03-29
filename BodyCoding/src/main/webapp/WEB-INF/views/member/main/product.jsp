@@ -10,9 +10,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 </head>
 <body>
+<%@ include file="../../../../inc/Top.jsp" %>
 <script type="text/javascript">
 $(function() {
 	//해당 버튼을 클릭하면 ajax() 함수를 선택한다.
@@ -35,13 +35,12 @@ function sucCallBack(resData) {
 	console.log(resData);
 	let tableData = "";
 	$(resData).each(function(index, data) {
-		tableData += "<a href='productInfo?product_idx="+data.product_idx+"'>"
-		+"<img class='card-img-top mt-2' src='static/member/images/kakao_login.png' "
-		+" style='width:100%; height:180px;'>"
+		tableData += "<div style='width:200px; margin:30px; float:left;'><a href='productInfo?product_idx="+data.product_idx+"'>"
+		+"<img class='card-img-top mt-2' src='static/uploads/product/"+data.product_img+"' "
+		+" style='width:100%; height:250px;'>"
 		+"<div class='card-body'>"
-		+"<b>"+data.product_img+"<b><br>"
 		+"<b>"+data.product_name+"<b><br>"
-		+data.product_price + "</div></a>";
+		+data.product_price.toLocaleString() + "원</div></a></div>";
 	}); 
 	//해당 엘리먼트에 새롭게 파싱된 내용으로 교체한다.
 	$('#show_data').html(tableData);
@@ -51,23 +50,24 @@ function errCallBack(errData){
 	console.log(errData.status+":"+errData.statusText);
 }
 </script> 
-<h2>상품 목록</h2>
-<hr>
-<h5>
-<select id="product_type" required>
-    <option value="-">상품유형</option>
-    <option value="식품">식품</option>
-    <option value="의류">의류</option>
-    <option value="기구">기구</option>
-</select>
-<input type="button" value="유형선택" id="product_typechoice"> </h5>
-
-<form name="frm" method="post" >
-	<input type="hidden" id="product_idx" name="product_idx">
-</form>
-
-<div id="show_data" class="card m-2" style="width:150px" >
-</div> 
-
+<div class="container">
+<br>
+	<h2 style="margin-bottom: 0;">상품 목록</h2>
+	<select id="product_type" style="font-size: 20px; width: 150px; height: 50px; border-radius: 5px;" required>
+	    <option value="-">상품유형</option>
+	    <option value="식품">식품</option>
+	    <option value="의류">의류</option>
+	    <option value="기구">기구</option>
+	</select>
+	<button type="button" class="custom-btn btn-1" style="width: 150px; background-color: #F9BF52; border-color: #F9BF52;" id="product_typechoice">유형선택</button>
+	
+	<form name="frm" method="post" >
+		<input type="hidden" id="product_idx" name="product_idx">
+	</form>
+	
+	<div id="show_data">
+	</div>
+</div>
+<%@ include file="../../../../inc/Bottom.jsp" %>
 </body>
 </html>

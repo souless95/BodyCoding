@@ -7,31 +7,58 @@
 	
 <mapper namespace="com.bc.bodycoding.account.AccountService">
 
+<!-- 모든 지점 선택 -->
+<select id="gymlistSelect"
+   parameterType="global.dto.MemberDTO"
+   resultType="global.dto.MemberDTO">
+   select * from member where authority='ROLE_ADMIN_SUB' and enabled ='1'
+</select>
+
 <insert id="insertMember"
 	parameterType="global.dto.MemberDTO">
-	insert 
+  	insert 
 		into MEMBER (mem_id, mem_pass, mem_name, mem_gender, 
-			mem_birth, mem_phone, mem_address, mem_type, mem_status, 
+			mem_birth, mem_phone, mem_address, authority, enabled, 
 			gym_code, mem_height, mem_weight, mem_disease, mem_purpose, 
-			mem_interest, mem_inflow, mem_point,mem_regidate)
+			mem_interest, mem_inflow, mem_regidate)
    		values (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_gender},
-	   		#{mem_birth}, #{mem_phone}, #{mem_address}, #{mem_type}, #{mem_status}, 
+	   		#{mem_birth}, #{mem_phone}, #{mem_address}, #{authority}, #{enabled}, 
 	   		#{gym_code}, #{mem_height}, #{mem_weight}, #{mem_disease}, #{mem_purpose}, 
-	   		#{mem_interest}, #{mem_inflow}, #{mem_point}, sysdate)
+	   		#{mem_interest}, #{mem_inflow}, sysdate)
 </insert>
+
+<select id="checkIdDuplicate"
+	parameterType="global.dto.MemberDTO"
+	resultType="String">
+	select count(*) from member where mem_id=#{mem_id}
+</select>
 
 <select id="login"
 	parameterType="global.dto.MemberDTO"
-	resultType="String">
-	select mem_name from member
-    	where mem_id=#{mem_id} and mem_pass=#{mem_pass}
+	resultType="global.dto.MemberDTO">
+	select * from member
+    	where mem_id=#{mem_id} and mem_pass=#{mem_pass} and enabled ='1'
 </select>
 
 <!-- 카카오로 회원가입 되어있는지 확인 -->
 <select id="kakaoselect"
 	parameterType="global.dto.MemberDTO"
 	resultType="String">
-	select mem_id from member
+	select mem_name from member
+    	where mem_id=#{mem_id}
+</select> 
+
+<select id= "kakaoinfoselect"
+	parameterType="global.dto.MemberDTO"
+	resultType="global.dto.MemberDTO">
+	select * from member
+    	where mem_id=#{mem_id}
+</select> 
+
+<select id="kakaoUserInfo"
+	parameterType="global.dto.MemberDTO"
+	resultType="global.dto.MemberDTO">
+	select * from member
     	where mem_id=#{mem_id}
 </select> 
 
@@ -39,16 +66,82 @@
 <insert id="kakaoinsert"
 	parameterType="hashMap">
 	insert into MEMBER (mem_id, mem_pass, mem_name, mem_gender, 
-		mem_phone, mem_address, mem_type, mem_status)
+		mem_phone, mem_address, authority, enabled)
    	values (#{mem_id}, '1234', '회원이름', #{mem_gender},
-   		'전화번호', '주소', 'MEMBER', '1')
+   		'전화번호', '주소', 'ROLE_MEMBER', '1')
 </insert>
 
+<!-- 카카오 회원정보 추가 -->
 <update id="kakaoupdate"
 	parameterType="global.dto.MemberDTO">
 	update member 
-    set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address= #{mem_address}
+    set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_address= #{mem_address}, mem_interest = #{mem_interest}, gym_code = #{gym_code}
     where mem_id = #{mem_id}
 </update>	
+
+<!-- 비밀번호 확인 -->
+<select id="pwCheck"
+	parameterType="String"
+	resultType="String">
+	select mem_pass from member where mem_id = #{mem_id}
+</select> 
+
+<select id="selectOneMember"
+	parameterType="global.dto.MemberDTO"
+	resultType="global.dto.MemberDTO">
+	select * from member where mem_id=#{mem_id}
+</select>
+
+<update id="update"
+	parameterType="global.dto.MemberDTO">
+	update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_gender=#{mem_gender}, mem_phone=#{mem_phone},
+		mem_address=#{mem_address}, gym_code=#{gym_code}, mem_height=#{mem_height}, mem_weight=#{mem_weight}, mem_disease=#{mem_disease},
+		mem_purpose=#{mem_purpose}, mem_interest=#{mem_interest}
+	where mem_id=#{mem_id}
+</update>
+
+<!-- 탈퇴하기 -->
+<update id="deleteMember"
+	parameterType="String">
+	update member 
+		set enabled='0' where mem_id = #{mem_id}
+</update>
+
+
+<!--아이디 비번찾기 -->
+<select id="gofindid" parameterType="global.dto.MemberDTO" resultType="global.dto.MemberDTO">
+	select * from member where mem_name=#{mem_name} and mem_birth=#{mem_birth} and
+	mem_phone=#{mem_phone}
+</select>
+
+<select id="gofindpass" parameterType="global.dto.MemberDTO" resultType="global.dto.MemberDTO">
+	select * from member where mem_id=#{mem_id} and mem_name=#{mem_name} and
+	mem_birth=#{mem_birth}
+</select>
+
+<!-- 비번찾기할때 아이디,이름 같은지 확인 -->
+<select id="updatePass" parameterType="global.dto.MemberDTO" resultType="int">
+	SELECT COUNT(*) FROM member
+	WHERE mem_id=#{mem_id} AND mem_name=#{mem_name}
+</select>
+
+<!-- 비밀번호 업데이트  -->
+<update id="updateuserPass" parameterType="global.dto.MemberDTO">
+	update member set mem_pass=#{mem_pass} where mem_id=#{mem_id} 
+</update>
+
+<select id="getMInfo" parameterType="global.dto.ProductDTO" resultType="global.dto.ProductDTO">
+	SELECT mb.TRAINER_ID, m.mem_NAME "trainer_name", p.PRODUCT_category, SUM(p.MEMBERSHIP_COUNT) "MEMBERSHIP_COUNT"
+	FROM MEMBERSHIP mb 
+	INNER JOIN PRODUCT p ON mb.PRODUCT_IDX = p.PRODUCT_IDX 
+	INNER JOIN member m ON mb.trainer_id = m.mem_id 
+	WHERE p.MEMBERSHIP_COUNT != 0 AND mb.USER_ID = #{user_id}
+	GROUP BY mb.TRAINER_ID, m.mem_NAME, p.PRODUCT_category
+</select>
+
+<select id="getTLog" parameterType="global.dto.ProductDTO" resultType="int">
+	SELECT COUNT(*) FROM TRAINING_LOG
+	WHERE user_id=#{user_id} AND trainer_id=#{trainer_id} and exercise_type=#{product_category}
+</select>
 
 </mapper>

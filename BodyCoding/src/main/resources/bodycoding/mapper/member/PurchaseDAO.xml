@@ -4,25 +4,104 @@
 <!DOCTYPE mapper 
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+
 <mapper namespace="com.bc.bodycoding.purchase.IPurchaseService">
+
 	<select id="gymSelect" parameterType="global.dto.MemberDTO"
-		resultType="global.dto.MemberDTO">
-		SELECT gym_code, mem_name FROM member WHERE mem_type='ADMIN_SUB'
+		resultType="global.dto.MemberDTO"> 
+		SELECT gym_code, mem_name FROM member WHERE authority='ROLE_ADMIN_SUB'
 	</select>
-	
+
 	<select id="productSelect" parameterType="global.dto.ProductDTO"
 		resultType="global.dto.ProductDTO">
 		SELECT * FROM product WHERE product_category=#{product_category}
 	</select>
-	
+
 	<select id="trainerSelect" parameterType="global.dto.ProductDTO"
 		resultType="global.dto.ProductDTO">
-		SELECT mem_name, mem_img 
-    		FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
-    	INNER JOIN (SELECT * FROM lesson WHERE lesson_category=#{product_category}) L
-    	ON M.mem_id=L.trainer_id
+		SELECT mem_name, mem_img ,mem_id
+			FROM (SELECT * FROM member WHERE gym_code=#{gym_code}) M
+		INNER JOIN 
+			(SELECT lesson_category, trainer_id FROM lesson 
+			WHERE lesson_category=#{lesson_category} GROUP BY lesson_category, trainer_id) L
+			ON M.mem_id=L.trainer_id
+	</select>
+
+	<insert id="insertOrder" parameterType="global.dto.ProductDTO">
+		<if test="use_point!='' ">
+		INSERT INTO order_log VALUES
+			(bodycoding_seq.nextval,#{order_name},#{mem_id},0,'결제완료',sysdate,'Y')
+		</if>
+		INSERT INTO order_log VALUES
+			(bodycoding_seq.nextval,#{order_name},#{mem_id},#{use_point},'결제완료',sysdate,'Y')
+		<selectKey keyProperty="order_idx" resultType="String"
+			order="AFTER">
+			select bodycoding_seq.currval as order_idx from dual
+		</selectKey>
+	</insert>
+
+	<insert id="insertMembership"
+		parameterType="global.dto.ProductDTO">
+		INSERT INTO membership
+			(membership_idx, order_idx, gym_code, user_id, trainer_id, membership_start, membership_end, product_idx)
+		VALUES (bodycoding_seq.nextval,#{order_idx}, #{gym_code}, #{mem_id}, #{trainer_id}, 
+			sysdate, sysdate, #{product_idx})
+	</insert>
+
+ 	<insert id="insertOrderDetail"
+		parameterType="global.dto.ProductDTO">
+		INSERT INTO order_log_detail
+			(order_detail_idx, order_idx, product_idx, product_count, product_serial_num, receive_check)
+		VALUES (bodycoding_seq.nextval,#{order_idx}, #{product_idx}, 
+			#{product_count}, #{product_serial_num}, 'N')
+	</insert>
+
+	<insert id="insertPayAndUpdatePoint"
+		parameterType="global.dto.ProductDTO" statementType="CALLABLE">
+		{ CALL 
+			PAY_AND_POINT_PROCESS (
+                 IN_TYPE 		 => #{type}
+                ,IN_MEM_ID 		 => #{mem_id}
+                ,IN_ORDER_IDX    => #{order_idx}
+                ,IN_TOTAL_PRICE  => #{total_price}
+                ,IN_USE_POINT    => #{use_point}
+                ,IN_FINAL_PRICE  => #{final_price}
+                ,IN_SAVE_POINT   => #{save_point}
+                ,IN_PAY_METHOD   => #{pay_method}
+            )
+		 }
+	</insert>
+	
+	<select id="selectPayLog" parameterType="String" resultType="global.dto.ProductDTO">
+		SELECT O.order_idx,O.order_name,O.order_status,O.order_date
+		    FROM pay_log P
+		INNER JOIN (SELECT * FROM order_log WHERE mem_id=#{mem_id}) O
+		    ON P.order_idx=O.order_idx
+		GROUP BY O.order_idx,O.order_name,O.order_status,O.order_date
 	</select>
 	
+	<select id="selectPayLogDetail" parameterType="String" resultType="global.dto.ProductDTO">
+		SELECT product_img, order_status, product_name, product_count 
+			,(product_count*product_price) product_price
+		    FROM pay_log P
+		INNER JOIN order_log O
+		    ON P.order_idx=O.order_idx
+		INNER JOIN order_log_detail OD
+		    ON O.order_idx=OD.order_idx
+		INNER JOIN product P
+            ON P.product_idx=OD.product_idx
+		WHERE O.order_idx=#{order_idx}
+	</select>
 	
+	<select id="selectPayLogOne" parameterType="String" resultType="global.dto.ProductDTO">
+		SELECT * 
+			FROM pay_log P
+		INNER JOIN order_log O
+			ON P.order_idx=O.order_idx
+		WHERE P.order_idx=#{order_idx}
+	</select>
+	
+	<select id="selectPoint" parameterType="String" resultType="String">
+		SELECT mem_point FROM member WHERE mem_id=#{mem_id}
+	</select>
 </mapper>

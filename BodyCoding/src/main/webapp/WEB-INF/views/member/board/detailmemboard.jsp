@@ -188,7 +188,7 @@ pageContext.setAttribute("replaceChar", "\n");
    </div>
    <%@ include file="../../../../inc/Bottom.jsp"%>
 
-   <script>
+<script>
 function setUpdateForm(reply_idx, reply_cont) {
     var replyIdxElement = document.getElementById("reply_idx");
     if (replyIdxElement) {

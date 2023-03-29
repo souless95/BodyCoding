@@ -142,7 +142,6 @@ public class memboardController {
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		model.addAttribute("Freeboard", boardDTO);
-		System.out.println(boardDTO);
 
 		return "member/board/updateboard";
 	}
@@ -152,7 +151,6 @@ public class memboardController {
 	public String editrecord2(BoardDTO boardDTO) {
 		
 		int result = memboarddao.updateboard(boardDTO);
-		System.out.println(result);
 		
 		if(result==1)
 		System.out.println("게시글이 수정되었습니다.");
@@ -167,7 +165,6 @@ public class memboardController {
 		
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		model.addAttribute("dto", boardDTO);
-		System.out.println(boardDTO);
 		
 		String userEmail = (String) session.getAttribute("UserEmail");
 		model.addAttribute("mem_id", userEmail);
@@ -176,7 +173,6 @@ public class memboardController {
 		memberDTO.setMem_id(userEmail);
 		memberDTO = memberdao.selectinfo(memberDTO);
 		model.addAttribute("mdto", memberDTO);
-		System.out.println(memberDTO);
 		
 		return "member/board/report";
 	}
@@ -192,7 +188,6 @@ public class memboardController {
 		return "redirect:Freeboard.do";
 	}
 	
-	
 	//댓글등록
 	@RequestMapping(value="/insertreply.do", method=RequestMethod.POST)
 	public String insertreply(BoardDTO boardDTO, HttpSession session,
@@ -201,7 +196,6 @@ public class memboardController {
 		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
 		
 		String board_idx = req.getParameter("board_idx");
-		System.out.println(boardDTO);
 		
 		int result = memboarddao.insertreply(boardDTO);
 		if(result==1)
@@ -216,7 +210,6 @@ public class memboardController {
 	public String delete(BoardDTO boardDTO, HttpServletRequest req) {
 		
 		String board_idx = req.getParameter("board_idx");
-		System.out.println(board_idx);
 		int result = memboarddao.deletereply(boardDTO);
 		if(result==1)
 		System.out.println("댓글삭제완료");
@@ -231,7 +224,6 @@ public class memboardController {
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
 		String board_idx = boardDTO.getBoard_idx();
-		System.out.println(board_idx);
 		
 		boardDTO.setBoard_idx(boardDTO.getBoard_idx());
 		boardDTO.setReply_idx(req.getParameter("reply_idx"));

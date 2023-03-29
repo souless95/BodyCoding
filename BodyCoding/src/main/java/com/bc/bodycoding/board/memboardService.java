@@ -47,8 +47,5 @@ public interface memboardService {
 	public BoardDTO selectreply(String reply_idx);
 	
 	public List<Map<String, Object>> searchBoard(Criteria cri);
-//	public int searchBoardCnt(Criteria cri);
-	
-	
 	
 }

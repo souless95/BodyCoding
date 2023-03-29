@@ -230,8 +230,6 @@ function cancelUpdate() { // 추가된 함수
     event.preventDefault();
 }
 
-
-//아래는 잘되니까 건들지마
 function openReportForm(id, idx) {
    open('report.do?mem_id='+id+'&board_idx='+idx,
           "calendarUpdate",

@@ -31,7 +31,6 @@ public class memboardController {
 	@RequestMapping("/Freeboard.do")
 	public String board1(Criteria cri, Model model) {
 		
-		//model.addAttribute("Freeboard", memboarddao.memselect());
 		// 전체 글 개수
         int boardListCnt = memboarddao.boardListCnt();
         // 페이징 객체
@@ -62,7 +61,6 @@ public class memboardController {
 	        paging.setTotalCount(boardListCnt);    
 		    // 게시글 리스트를 가져오는 코드 등
 		    List<Map<String, Object>> list = memboarddao.memselect1(cri);
-		    System.out.println(list);
 	        model.addAttribute("list", list);    
 	        model.addAttribute("paging", paging);
 		}
@@ -81,19 +79,16 @@ public class memboardController {
 		memberDTO.setMem_id(userEmail);
 		memberDTO = memberdao.selectinfo(memberDTO);
 		model.addAttribute("mdto", memberDTO);
-		System.out.println(memberDTO);
 		
 		//선택한 게시글 정보를 가져옴
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
-		System.out.println(boardDTO);
 		model.addAttribute("dto", boardDTO);
 		
 		//댓글 목록을 가져옴
 		boardDTO.setBoard_idx(boardDTO.getBoard_idx());
 		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
 		model.addAttribute("rdto", replyDTOList);
-		System.out.println(replyDTOList);
 				
 		//조회수 증가
 		int result = memboarddao.updateVisitCount(boardDTO);
@@ -155,7 +150,6 @@ public class memboardController {
 	//게시글 실제 수정
 	@RequestMapping(value="updateboard.do", method=RequestMethod.POST)
 	public String editrecord2(BoardDTO boardDTO) {
-		
 		
 		int result = memboarddao.updateboard(boardDTO);
 		System.out.println(result);
@@ -227,27 +221,6 @@ public class memboardController {
 		return "redirect:/detailmemberboard.do?board_idx="+board_idx;
 	}
 	
-	//댓글 수정 페이지 진입
-	@RequestMapping(value="updatereply.do", method=RequestMethod.GET)
-	public String updatereply(Model model, HttpServletRequest req) {
-		
-		BoardDTO boardDTO = new BoardDTO();
-		boardDTO = memboarddao.selectone(req.getParameter("board_idx"));
-		String board_idx = boardDTO.getBoard_idx();
-		System.out.println(board_idx);
-		
-		List<BoardDTO> replyDTOList = memboarddao.selectreply(boardDTO);
-		model.addAttribute("rdto", replyDTOList);
-		System.out.println(replyDTOList);
-		
-		//현재 페이지에 머무르기 위해 board_idx,mem_id, dto정보 모델에 추가
-		model.addAttribute("board_idx", board_idx);
-		model.addAttribute("mem_id", req.getParameter("mem_id"));
-		model.addAttribute("dto", boardDTO);
-		
-		//;
-		return "redirect:detailmemberboard.do?board_idx="+ board_idx;
-	}
 			
 	//댓글 수정
 	@RequestMapping(value="updatereply.do", method=RequestMethod.POST)
@@ -267,6 +240,5 @@ public class memboardController {
 				
 		return "redirect:/detailmemberboard.do?board_idx="+board_idx;
 	}
-
 	
 }

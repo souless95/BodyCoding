@@ -1,6 +1,5 @@
 package global.dto;
 
-
 import java.sql.Date;
 
 import lombok.Data;

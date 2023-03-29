@@ -1,6 +1,5 @@
 package global.dto;
 
-
 import lombok.Data;
 
 @Data

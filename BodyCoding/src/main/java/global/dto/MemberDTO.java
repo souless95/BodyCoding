@@ -2,8 +2,6 @@ package global.dto;
 
 import java.sql.Date;
 
-import org.apache.ibatis.jdbc.SQL;
-
 import lombok.Data;
 
 @Data

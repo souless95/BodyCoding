@@ -71,7 +71,6 @@ pageContext.setAttribute("replaceChar", "\n");
                         삭제</button>
                   </c:if>
 
-
                   <div style="margin-top: 10px;">
                      <button type="button" class="custom-btn btn-1"
                         onclick="location.href='Freeboard.do'"

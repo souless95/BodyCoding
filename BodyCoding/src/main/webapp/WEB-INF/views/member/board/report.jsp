@@ -60,7 +60,7 @@
 			<input type="hidden" name="board_idx" value=${dto.board_idx }>
 		</div>
 		<div>
-			<label for="reporter">작성자 : ${dto.mem_name }</label>
+			<label for="mem_id">작성자 : ${dto.mem_name }</label>
 			<input type="hidden" name="mem_id" value=${dto.mem_name }>
 		</div>
 		<div>
@@ -71,6 +71,7 @@
 		
 		<div> 
 			<label for="reporter">신고자 : ${mdto.mem_name }</label>
+			<input type="hidden" name="reporter" value=${mdto.mem_name }>
 		</div>
 		
 			<br>

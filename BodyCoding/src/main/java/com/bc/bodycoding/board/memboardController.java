@@ -169,7 +169,6 @@ public class memboardController {
 		model.addAttribute("dto", boardDTO);
 		System.out.println(boardDTO);
 		
-		model.addAttribute("dto", boardDTO);
 		String userEmail = (String) session.getAttribute("UserEmail");
 		model.addAttribute("mem_id", userEmail);
 		
@@ -177,6 +176,7 @@ public class memboardController {
 		memberDTO.setMem_id(userEmail);
 		memberDTO = memberdao.selectinfo(memberDTO);
 		model.addAttribute("mdto", memberDTO);
+		System.out.println(memberDTO);
 		
 		return "member/board/report";
 	}
@@ -185,8 +185,6 @@ public class memboardController {
 	public String insertreport(BoardDTO boardDTO, Model model, HttpServletRequest req) {
 		
 		String cont = req.getParameter("report_content");
-		System.out.println(cont);
-		System.out.println(boardDTO);
 		int result = memboarddao.insertreport(boardDTO);
 		if(result==1)
 		System.out.println("신고하기 완료");

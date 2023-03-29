@@ -276,7 +276,7 @@ public class AccountController {
 //          }
 //      }
          
-       //이메일로 비밀번호 찾기 GET으로 findpw 페이지로 넘겨만 준다. 
+      //이메일로 비밀번호 찾기 GET으로 findpw 페이지로 넘겨만 준다. 
       @RequestMapping(value="findpw", method = RequestMethod.GET)
       public String findpw() {
          return "member/account/findpw";

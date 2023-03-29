@@ -104,7 +104,15 @@
 	 
 	 	<div style="text-align:right; width:90%; margin-right:0px;">
 			<div>
-	            <button type="button" style="margin-top:10px; margin-right:0px; border-radius:5px; font-size:17px; height:45px; width:80px;" class="custom-btn btn-1" onclick="location.href='insertboard.do'">글쓰기</button>
+	            <button type="button" style=" margin-top:10px; margin-right:0px; border-radius:5px; font-size:17px; height:45px; width:80px;" class="custom-btn btn-1;">
+		            <a style="color:white;" href="#" onclick="event.preventDefault(); 
+	                         if ('${UserName}' == '') {
+	                           alert('로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.');
+	                           location.href = 'login.do';
+	                         } else {
+	                           location.href = 'insertboard.do'};">글쓰기
+	                </a>
+                </button>
 	        </div>
 		</div>
 	 

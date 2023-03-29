@@ -61,7 +61,7 @@
 		INSERT INTO report (
 			report_idx, board_idx, reporter, report_content)
 		VALUES 
-			(bodycoding_seq.nextval, #{board_idx}, #{mem_id}, #{report_content})
+			(bodycoding_seq.nextval, #{board_idx}, #{reporter}, #{report_content})
 	</insert> 
 	
 	<!-- 신고내용 보여주기(board_idx가 같은 번호의 신고내용 전부 foreach 출력 -->
